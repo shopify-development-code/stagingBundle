@@ -132,7 +132,6 @@ app.get(
           finalPrice: { "color": "#008061", "fontSize": 17 }
         }
       },
-      
       collectionMixMatch: {
         theme: "light",
         box: {
@@ -162,7 +161,6 @@ app.get(
           text:"Grab The Deal !!"
          }
       },
-    
       popUp:{    
         box: {
           backgroundColor: "#FFFFFF"
@@ -198,7 +196,7 @@ app.get(
       }
       }
        
-    const customizationData =  await customizationModel.findOneAndUpdate({shop : session.shop}, {shop : session.shop, bundle:data.bundle,collectionMixMatch :data.collection,popUp :data.popUp,
+    const customizationData =  await customizationModel.findOneAndUpdate({shop : session.shop}, {shop : session.shop, bundle:data.bundle,collectionMixMatch :data.collectionMixMatch,popUp :data.popUp,
        volume:data.volume}, {upsert:true, new : true})
        if(customizationData){
         console.log("customization data saved successfully !!!")
