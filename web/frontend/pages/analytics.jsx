@@ -6,6 +6,7 @@ import BoatLoader from '../components/BoatLoader'
 import { Icon, Thumbnail } from "@shopify/polaris";
 import { Button } from '@shopify/polaris'
 import { useAPI } from '../components/shop'
+import noProductImg from "../assets/NoProductImage.png"
 
 import {AnalyticsMajor,QuickSaleMajor,BehaviorMajor,ViewMajor} from '@shopify/polaris-icons';
 const Analytics = () => {
@@ -85,12 +86,12 @@ const handleAnalyticsReload = ()=>{
             <div className="sd-bundle-dashboard-img">
               {/* <img src={ele?.images ? ele.images[0].originalSrc : ele?.image ? ele.image.originalSrc:""} alt="" /> */}
               <Thumbnail
-                source={
-                  ele?.images
-                    ? ele.images[0]?.originalSrc
-                    : ele?.image
-                    ? ele.image?.originalSrc
-                    : ""
+                 source={
+                  ele.images
+                    ? ele?.images[0]?.originalSrc !== "" ? ele.images[0]?.originalSrc : noProductImg
+                    : ele?.image 
+                    ? ele?.image?.originalSrc !== "" ? ele.image?.originalSrc : noProductImg 
+                    : noProductImg
                 }
                 size="small"
                 alt="products thumbnails"

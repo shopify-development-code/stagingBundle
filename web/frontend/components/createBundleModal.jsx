@@ -180,7 +180,9 @@ function CreateBundleModal(props) {
         initialSelectionIds={[...props?.data.bundleDetail?.products]}
         onCancel={handleCancel}
         initialQuery={props.searchValue ? props.searchValue : ""}
-        selectMultiple={props.page == "volumeBundle" ? false : true || props.page == "CollectionMixMatch" ? 2 : true}
+        // selectMultiple={props.page == "volumeBundle" ? false : true || props.page == "CollectionMixMatch" ? 2 : true}
+        selectMultiple ={props.page == "productBundle" ? true : props.page == "volumeBundle" ? false : props.page == "CollectionMixMatch" ? 2 : true}
+        showDraftBadge={true}
       />
     </>
   );
