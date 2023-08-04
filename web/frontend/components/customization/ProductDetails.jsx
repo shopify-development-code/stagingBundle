@@ -191,7 +191,14 @@ return(
 
 </div>
 </div>
+<div className="sd-bundle-custom-item-inputSection">
+<input type="color" value={data[bundleOption]["productDetails"]["plusBackgroundColor"]} onChange={(e)=>handleChangeCommon(e,"productDetails","plusBackgroundColor",data,setData,bundleOption)}/>
+<div className="sd-bundle-custom-fieldColorCode-common">
+    <p>Background Color </p>
+<p>{data[bundleOption]["productDetails"]["plusBackgroundColor"]}</p>
 
+</div>
+</div>
 </div>}
 
 </div> 

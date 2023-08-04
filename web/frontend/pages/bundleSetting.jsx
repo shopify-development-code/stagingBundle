@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Card ,Divider,Typography,Row,Col,Spin} from 'antd';
+import { Card ,Divider,Typography,Row,Col,Spin,Input} from 'antd';
 import {Button,Icon,} from "@shopify/polaris";
 import { ArrowLeftOutlined} from "@ant-design/icons";
 import { useNavigate } from "@shopify/app-bridge-react";
@@ -130,7 +130,8 @@ setSettingData({...settingData,discountLabel:e.target.value})
           margin: 0,
         }}
       >
-       Label: <input type="text" placeholder='BUNDLE DISCOUNT' value={settingData.discountLabel} onChange={handleDiscountLabel} />
+       {/* Label: <input type="text" placeholder='BUNDLE DISCOUNT' value={settingData.discountLabel} onChange={handleDiscountLabel} />  */}
+       <Input className='sd-setting-discount-prefix'  addonAfter="-XXXXXX" onChange={handleDiscountLabel} value={settingData.discountLabel} />
       </Typography.Title>
              </Card>
           </div>

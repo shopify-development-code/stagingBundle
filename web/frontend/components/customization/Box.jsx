@@ -33,7 +33,7 @@ const Box=(props)=>{
     <div  className="sd-bundle-custom-item-inputSection">
 <input type="color" value={dataToChange.box.backgroundColor}  onChange={(e)=>handleChangeCommon(e,"box","backgroundColor",props.bundleOption)}/>
 <div className="sd-bundle-custom-fieldColorCode-common">
-    <p>BackgroundColor </p>
+    <p>Background Color </p>
 <p> {dataToChange.box.backgroundColor} </p>
 </div>
 </div>
@@ -43,7 +43,7 @@ const Box=(props)=>{
 <div className="sd-bundle-custom-item-inputSection" >
 <input type="color"  value={dataToChange.box.borderColor} onChange={(e)=>handleChangeCommon(e,"box","borderColor",props.bundleOption)}/>
 <div className="sd-bundle-custom-fieldColorCode-common">
-    <p>BorderColor </p>
+    <p>Border Color </p>
 <p> {dataToChange.box.borderColor} </p>
 </div>
 </div>
@@ -66,7 +66,7 @@ props.displayOption == "popUp" ?
     <div  className="sd-bundle-custom-item-inputSection">
 <input type="color" value={dataToChange.box.backgroundColor}  onChange={(e)=>handleChangeCommon(e,"box","backgroundColor",props.bundleOption)}/>
 <div className="sd-bundle-custom-fieldColorCode-common">
-    <p>BackgroundColor </p>
+    <p>Background Color </p>
 <p> {dataToChange.box.backgroundColor} </p>
 </div>
 </div>

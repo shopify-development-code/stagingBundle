@@ -263,9 +263,9 @@ return check;
               <Thumbnail
                 source={
                   ele.images
-                    ? ele?.images[0]?.originalSrc !== "" ? ele.images[0].originalSrc : noProductImg
+                    ? ele?.images[0]?.originalSrc !== "" ? ele?.images[0]?.originalSrc : noProductImg
                     : ele?.image 
-                    ? ele?.image?.originalSrc !== "" ? ele.image.originalSrc : noProductImg 
+                    ? ele?.image?.originalSrc !== "" ? ele?.image?.originalSrc : noProductImg 
                     : noProductImg
                 }
                 size="small"
@@ -395,9 +395,9 @@ return check;
               <Thumbnail
                source={
                 ele.images
-                  ? ele?.images[0]?.originalSrc !== "" ? ele.images[0].originalSrc : noProductImg
+                  ? ele?.images[0]?.originalSrc !== "" ? ele.images[0]?.originalSrc : noProductImg
                   : ele?.image 
-                  ? ele?.image?.originalSrc !== "" ? ele.image.originalSrc : noProductImg 
+                  ? ele?.image?.originalSrc !== "" ? ele.image?.originalSrc : noProductImg 
                   : noProductImg
               }
                 size="small"

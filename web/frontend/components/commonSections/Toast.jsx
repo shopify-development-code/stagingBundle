@@ -3,13 +3,15 @@ import { notification} from 'antd';
   
 const toastNotification = (type,res,placement) => {
  return( 
-  notification[type]({
-    
-    // message: `${type}`,
-    description: `${res}`,
-    placement:`${placement}`,
- 
-  })
+
+    notification[type]({
+      // message: `${type}`,
+      description: `${res}`,
+      className: 'sd-bundle-universal-toast',
+      placement:`${placement}`,
+      //  duration:500,
+    })
+
   
  
  )

@@ -286,7 +286,7 @@ const ProductBundlePreview = ({
                   )}
                   {data.bundleDetail.products.indexOf(item) !=
                   data.bundleDetail.products.length - 1 ? (
-                    <div className="sd-bundle-svg-common">
+                    <div className="sd-bundle-svg-common" style={{background: data.customization[0].bundle.productDetails.plusBackgroundColor}}>
                       {/* <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"

@@ -198,14 +198,14 @@ useState(()=>{
       selected: activeMenu[4].selected,
     },
    
-    {
-      label: "Plans",
-      icon:   PlanMajor,
-      onClick: () => {
-        handleClick('/plans', 5);
-      },
-      selected: activeMenu[5].selected,
-    },
+    // {
+    //   label: "Plans",
+    //   icon:   PlanMajor,
+    //   onClick: () => {
+    //     handleClick('/plans', 5);
+    //   },
+    //   selected: activeMenu[5].selected,
+    // },
      {
       label: "Contact us",
       icon:   InviteMinor,

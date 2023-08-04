@@ -2304,21 +2304,28 @@ nav.Polaris-Navigation {
 
 
 /********* notification css *********/
-.ant-notification-notice {
-  width: 300px;
+
+.sd-bundle-universal-toast {
+  background: #202937 !important;
+  padding: 10px !important;
+  width: 300px !important;
 }
-.ant-notification-notice {
-  background: #202937;
-  padding: 10px;
-}
-.ant-notification-notice-description {
-  color: #fff;
+.sd-bundle-universal-toast .ant-notification-notice-description {
+  color: #fff !important;
   width: 220px;
 }
-.ant-notification-notice-with-icon {
+.sd-bundle-universal-toast .ant-notification-notice-with-icon {
   position: relative;
   bottom: 4px;
 }
-.ant-notification-notice .ant-notification-notice-close {
-  top: 14px;
+.sd-bundle-universal-toast .ant-notification-notice-close {
+  top: 14px !important;
+}
+.sd-bundle-universal-toast .ant-notification-notice-close svg {
+  fill: #fff;
+}
+.sd-bundle-universal-toast .ant-input-group-wrapper.sd-setting-discount-prefix,
+ .sd-setting-discount-prefix span {
+  opacity: 1;
+  width: 70%;
 }

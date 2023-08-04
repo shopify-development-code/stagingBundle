@@ -9,11 +9,11 @@ return(
  <div className="sd-bundle-titleCustom">
 
 <div className="sd-bundle-custom-item-common">
-    <p className="sd-bundle-custom-item-heading-common">Title-styling</p>
+    <p className="sd-bundle-custom-item-heading-common">Title styling</p>
     <div className="sd-bundle-custom-item-inputSection">
 <input type="color" value={data[bundleOption]["title"]["color"]}  onChange={(e)=>handleChangeCommon(e,"title","color",data,setData,bundleOption)}/>
 <div className="sd-bundle-custom-fieldColorCode-common">
-    <p>TitleColor </p>
+    <p>Title Color </p>
 <p> {data[bundleOption]["title"]["color"]} </p>
 
 </div>

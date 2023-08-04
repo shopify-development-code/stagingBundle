@@ -24,7 +24,8 @@
         "color": "#000000",
         "backgroundColor": "#FFFFFF"
       },
-      "plusColor": "#5e5e5e"
+      "plusColor": "#5e5e5e",
+      "plusBackgroundColor" :"#ffffff"
     },
 
     "totalSection": {

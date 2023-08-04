@@ -57,26 +57,27 @@ app.get(
           text_noDiscount: "Add to cart ",
           position: "bottom"
         },
-        title: { color: "#000000", fontSize: 17, alignment: "left" },
+        title: { color: "#000000", fontSize: 16, alignment: "left" },
         productDetails: {
           title: { "color": "#000000", fontSize: 15 },
           price: { "color": "#000000", fontSize: 13 },
-          image: { borderColor: "#FFFFFF", borderRadius: 5 },
-          quantities: { color: "#000000", backgroundColor: "#f6f6f7" },
+          image: { borderColor: "#8f8f8f", borderRadius: 5 },
+          quantities: { color: "#ffffff", backgroundColor: "#000000" },
           variantSelector: {
             color: "#000000",
-            backgroundColor: "#f5f5f5"
+            backgroundColor: "#ffffff"
           },
-          plusColor: "#5e5e5e"
+          plusColor: "#ffffff",
+          plusBackgroundColor : "#000000"
         },
     
         totalSection: {
           backgroundColor: "#FFFFFF",
           color: "#000000",
-          fontSize: 17,
+          fontSize: 15,
           text: "Total",
-          originalPrice: { color: "#f79c9c", fontSize: 14 },
-          finalPrice: { color: "#008061", fontSize: 17 }
+          originalPrice: { color: "#f79c9c", fontSize: 13 },
+          finalPrice: { color: "#008061", fontSize: 15 }
         }
       },
       volume: {
@@ -89,16 +90,16 @@ app.get(
         button: {
           backgroundColor: "#000000",
           color: "#FFFFFF",
-          fontSize: 17,
+          fontSize: 15,
           text_others: "Add to cart",
           text_noDiscount: "Add to cart ",
           position: "bottom"
         },
-        title: { color: "#000000", "fontSize": 17, "alignment": "left" },
+        title: { color: "#000000", "fontSize": 16, "alignment": "left" },
         productDetails: {
           title: { color: "#000000", "fontSize": 15 },
           price: { color: "#000000", "fontSize": 13 },
-          image: { borderColor: "#FFFFFF", "borderRadius": 5 },
+          image: { borderColor: "#949494", "borderRadius": 5 },
           quantities: { color: "#000000", "backgroundColor": "#FFFFFF" },
           quantitiesSelector: {
             color: "#000000",
@@ -114,22 +115,22 @@ app.get(
         options: {
           iconColor: "#000000",
           color: "#000000",
-          fontSize: 16,
+          fontSize: 15,
           saveDiscount:{
               color:"#FFFFFF",
                 backgroundColor:"#ff0000",
-                fontSize:16,
-                borderRadius:15
+                fontSize:11,
+                borderRadius:4
           }
         },
     
         totalSection: {
           backgroundColor: "#FFFFFF",
           color: "#000000",
-          fontSize: 18,
+          fontSize: 15,
           text: "Total",
-          originalPrice: { "color": "#FF0000", "fontSize": 15 },
-          finalPrice: { "color": "#008061", "fontSize": 17 }
+          originalPrice: { "color": "#FF0000", "fontSize": 13 },
+          finalPrice: { "color": "#008061", "fontSize": 15 }
         }
       },
       collectionMixMatch: {
@@ -137,7 +138,7 @@ app.get(
         box: {
           backgroundColor: "#FFFFFF",
           borderColor: "#e5e5e5",
-          borderRadius: 14
+          borderRadius: 3
         },
         button: {
           backgroundColor: "#000000",
@@ -147,17 +148,17 @@ app.get(
           text_noDiscount: "Add to cart",
           position: "bottom"
         },
-        title: { color: "#000000", fontSize: 18, alignment: "left",description:{color:"#000000",fontSize:15} },
+        title: { color: "#000000", fontSize: 16, alignment: "left",description:{color:"#000000",fontSize:15} },
         collectionDetails: {
-          title: { color: "#000000", fontSize: 17 },
-           description:{color:"#000000",fontSize:15},
-           plus:{backgroundColor:"#e5e5e5" ,color:"#5e5e5e"},
-           imageBorderColor:"#ffffff"
+          title: { color: "#000000", fontSize: 15 },
+           description:{color:"#000000",fontSize:13},
+           plus:{backgroundColor:"#000000" ,color:"#ffffff"},
+           imageBorderColor:"#1c1c1c"
          },
          saveDiscount:{
           color:"#FFFFFF",
           backgroundColor:"#ff0000",
-          fontSize:16,
+          fontSize:11,
           text:"Grab The Deal !!"
          }
       },

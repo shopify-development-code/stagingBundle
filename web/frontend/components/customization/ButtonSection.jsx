@@ -51,7 +51,7 @@ return(
             min="0"
           />
 
-<TextField
+{/* <TextField
            
             label="text"
             // placeholder="set minimum order  for item"
@@ -69,7 +69,7 @@ return(
             value={data[bundleOption]["button"]["text_noDiscount"]}
             autoComplete="off"
             
-          />
+          /> */}
  
 </div>
 {bundleOption != "collection" &&

@@ -14,7 +14,7 @@ return(
     <div className="sd-bundle-custom-item-inputSection">
 <input type="color" value={data[bundleOption]["totalSection"]["background"]}  onChange={(e)=>handleChangeCommon(e,"totalSection","backgroundColor",data,setData,bundleOption)}/>
 <div className="sd-bundle-custom-fieldColorCode-common">
-    <p>BackgroundColor </p>
+    <p>Background Color </p>
 <p> {data[bundleOption]["totalSection"]["background"]}</p>
 
 </div>
@@ -33,7 +33,7 @@ return(
 
 <TextField
             type="number"
-            label="Radius"
+            label="Font Size"
             // placeholder="set minimum order  for item"
             onChange={(newvalue)=>handleChangeValueCommon(newvalue,"totalSection","fontSize",data,setData,bundleOption)}
             value={data[bundleOption]["totalSection"]["fontSize"]}
