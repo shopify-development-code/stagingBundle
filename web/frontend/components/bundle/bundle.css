@@ -1,0 +1,52 @@
+
+.sd-bundle-select-bundle {
+    justify-content: center;
+    display: flex;
+    column-gap: 1rem;
+}
+  .ant-modal-body .ant-card {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin-bottom: 1.5rem;
+}
+  
+ .sd-bundle-choose-bundle{
+    cursor: pointer;
+}
+
+ .sd-bundle-choose-volume-discount{
+    cursor: pointer;
+}
+.sd-bundle-choose-collectionMixAndMatch{
+    cursor: pointer;
+}
+
+.sd-bundle-icon{
+    text-align: center;
+   font-size: 32px
+}
+.sd-bundle-volumeDiscount-icon{
+    text-align: center;
+    font-size: 32px
+}
+.sd-bundle-collectionMix-Icon{
+    text-align: center;
+    font-size: 32px
+}
+
+.ant-card-body{
+    min-height : 500px
+}
+.sd-bundle-dashboard-box{
+    background: aliceblue;
+    border: 1px solid black;
+    margin: 8px;
+}
+
+
+
+
+/* @media (min-width: 981px) {
+  .ant-modal {
+   width: 90% !important;
+ }
+ } */
