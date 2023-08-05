@@ -229,16 +229,16 @@ app.get(
      if(translation){
       console.log("translation data successfully saved !!")
      }
-     function generateRandomSixDigitNumber() {
-      // Generate a random number between 100,000 and 999,999 (inclusive)
-      const min = 100000;
-      const max = 999999;
-      const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    //  function generateRandomSixDigitNumber() {
+    //   // Generate a random number between 100,000 and 999,999 (inclusive)
+    //   const min = 100000;
+    //   const max = 999999;
+    //   const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
     
-      return randomNumber;
-    }
-     const randomSixDigitNumber = generateRandomSixDigitNumber();
-      await settingModel.findOneAndUpdate({shop:session.shop},{discountLabel:`SMART-${randomSixDigitNumber}`},{upsert:true,new:true}).then((resp)=>{
+    //   return randomNumber;
+    // }
+    //  const randomSixDigitNumber = generateRandomSixDigitNumber();
+      await settingModel.findOneAndUpdate({shop:session.shop},{discountLabel:'SMART'},{upsert:true,new:true}).then((resp)=>{
         console.log("setting updated",resp)
       }).catch((err)=>{
         console.log(err.message)
