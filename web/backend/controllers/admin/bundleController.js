@@ -18,9 +18,10 @@ export async function createRule(req,res){
     const endDate = req.body.endDate;
     const bundleType = req.body.bundleType
     const totalPrice = req.body.totalPrice
+    const discountId = req.body.discountCreateId
     let quantityItem = variantsId.length
     console.log("body------------->",req.body)
-    const discountId = await discountIdModel.findOne({shop:shop})
+    // const discountId = await discountIdModel.findOne({shop:shop})
     
     const shopInfo = await shopInfoModel.findOne({shop})
      console.log("shooop",shopInfo)
@@ -31,9 +32,9 @@ export async function createRule(req,res){
     const uniqueSet = new Set(variantsId);
     const mergedArray = Array.from(uniqueSet);
     let productVariantsId = []
-    if(discountId){
+    if(discountId){ 
       let getDiscountquery =`query {
-        codeDiscountNode(id:"${discountId.discountId}") {
+        codeDiscountNode(id:"${discountId}") {
           id
           codeDiscount {
             ... on DiscountCodeBasic {
@@ -74,7 +75,7 @@ export async function createRule(req,res){
               "startsAt": startDate,
           
               "appliesOncePerCustomer": false,
-              "title": title,
+              "title": code,
               "code": code,
               "minimumRequirement": {
                 "subtotal": {
@@ -194,7 +195,7 @@ export async function createRule(req,res){
               },
            
               "startsAt": startDate,
-              "title": title,
+              "title": code,
               "usageLimit": null
             }
           }
@@ -269,7 +270,7 @@ export async function createRule(req,res){
             "startsAt": startDate,
         
             "appliesOncePerCustomer": false,
-            "title": title,
+            "title": code,
             "code": code,
             "minimumRequirement": {
               "subtotal": {
@@ -339,14 +340,14 @@ return res.status(400).json({message:"SUCCESS!",error:"some error occuring in sa
 
         }else{
           console.log("bundle updating")
-          let getDiscountProductArr = response.body.data.codeDiscountNode.codeDiscount.customerGets?.items.productVariants.edges
+          let getDiscountProductArr = response.body.data.codeDiscountNode.codeDiscount.customerGets?.items.productVariants.edges ;
           getDiscountProductArr?.forEach((e)=>{
             productVariantsId.push(e.node.id)
           })
   
           const filteredArray = productVariantsId.filter((element) => !mergedArray.includes(element));
           let bundleDiscountId = response.body.data.codeDiscountNode.id
-         
+          
   
           let Input ={
             "basicCodeDiscount": {
@@ -380,7 +381,7 @@ return res.status(400).json({message:"SUCCESS!",error:"some error occuring in sa
               },
            
               "startsAt": startDate,
-              "title": title,
+              "title": code,
               "usageLimit": null
             },
             "id":bundleDiscountId
@@ -453,7 +454,7 @@ return res.status(400).json({message:"SUCCESS!",error:"some error occuring in sa
             "startsAt": "2022-06-22T21:12:07.000Z",
         
             "appliesOncePerCustomer": false,
-            "title": title,
+            "title": code,
             "code": code,
             "minimumRequirement": {
               "subtotal": {
@@ -535,6 +536,8 @@ return res.status(400).json({message:"SUCCESS!",error:"some error occuring in sa
          return res.status(400).json({message:"SUCCESS!",error:"some error occuring in saving discount id",status:400})
         }
       }else{
+
+        console.log("creating new bundle without id")
         let Input ={
           "basicCodeDiscount": {
             "appliesOncePerCustomer": false,
@@ -566,7 +569,7 @@ return res.status(400).json({message:"SUCCESS!",error:"some error occuring in sa
             },
          
             "startsAt": startDate,
-            "title": title,
+            "title": code,
             "usageLimit": null
           }
         }
@@ -622,15 +625,16 @@ return res.status(400).json({message:"SUCCESS!",error:"some error occuring in sa
                   },
                 });
      
+                console.log(response.body.data.discountCodeBasicCreate.userErrors)
           let bundleDiscountId = response.body.data.discountCodeBasicCreate.codeDiscountNode.id
-                 const saveId = await discountIdModel.findOneAndUpdate({shop:shop},{shop:shop,discountId:bundleDiscountId},{upsert:true,new:true})
-                 if(saveId._id){
+                //  const saveId = await discountIdModel.findOneAndUpdate({shop:shop},{shop:shop,discountId:bundleDiscountId},{upsert:true,new:true})
+                //  if(saveId._id){
                
                   
               return  res.status(200).json({message:"SUCCESS!",response:bundleDiscountId,status:200})
-                 }else{
-                  return res.status(400).json({message:"SUCCESS!",error:"some error occuring in saving discount id",status:400})
-                 }
+                //  }else{
+                  // return res.status(400).json({message:"SUCCESS!",error:"some error occuring in saving discount id",status:400})
+                //  }
       }
    
     }
