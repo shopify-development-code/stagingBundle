@@ -2361,3 +2361,24 @@ nav.Polaris-Navigation {
   border: 1px solid #d2d2d2;
   margin-bottom: 10px;
 }
+
+:where(.css-dev-only-do-not-override-fpg3f5).ant-modal .ant-modal-close {
+  position: absolute;
+  top: 0px;
+  inset-inline-end: 17px;
+  z-index: 1010;
+  padding: 0;
+  color: rgb(0 0 0);
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  background: transparent;
+  border-radius: 4px;
+  width: 22px;
+  height: 22px;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  transition: color 0.2s,background-color 0.2s;
+  right: 3px;
+}
