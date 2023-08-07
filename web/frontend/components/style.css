@@ -2329,3 +2329,35 @@ nav.Polaris-Navigation {
   opacity: 1;
   width: 70%;
 }
+
+.sd-bundle-faq-images {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #bcc0c4;
+  border-radius: 3px;
+  padding: 4px;
+  box-shadow: 0 2px 3px rgb(56 72 97 / 15%);
+}
+.sd-bundle-faq-parent-img{
+  width:60%;
+  margin: auto;
+}
+
+.sd-bundle-FAQ-accordion .ant-collapse-item {
+  background: #fff;
+  box-shadow: 0 2px 3px rgba(56, 72, 97, .06);
+  margin-bottom: 6px;
+}
+
+.sd-bundle-FAQ-accordion .ant-collapse-header-text {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.sd-bundle-faq-accordion-box {
+  background: #f4f5f6;
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #d2d2d2;
+  margin-bottom: 10px;
+}

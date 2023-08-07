@@ -21,6 +21,9 @@
     .sd-bundle-dashboard-img-box {
         width: 130px !important;
     }
+    .sd-bundle-faq-parent-img {
+        width: 100% !important;
+    }
     /* .sd-bundle-analytics-tab-box .ant-tabs-content-holder .ant-row {
         grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)) !important;
     } */

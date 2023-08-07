@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Card } from 'antd'
-
-
+import {MediaCard,VideoThumbnail} from '@shopify/polaris';
+import enableAppGif from "../assets/enableAppGif.gif";
 const Dashboard = () => {
   return (
     <div>
@@ -30,7 +30,13 @@ cancelText="No"
     className='sd-bundle-contact-box'
     extra={<Button>activate</Button>}
     >
+       <div>
 
+      <div>How to enable app from theme customizer?</div>
+      <video width='100%' src="https://cdn.shopify.com/videos/c/o/v/e7432e9d283242099a6ba5e653e31e1c.mp4" type="video/mp4" controls></video>
+   
+       </div>
+    
     </Card>
  </div>
 

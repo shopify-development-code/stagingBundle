@@ -19,7 +19,8 @@ const navigate=useNavigate();
           <div  className="sd-bundle-customization-sub-section">
             <p className="sd-bundle-bundleSection-heading-common">Design</p>
             <p>
-            You can customize different design types of bundles in different displays and change the colors, typography and other items in accordance with your shop design.
+           
+You have the option to customize various design types for your bundles in different displays. This includes the ability to change colors, typography, and other elements to match your shop's design.
 
             </p>
             
@@ -30,7 +31,7 @@ const navigate=useNavigate();
           <div className="sd-bundle-customization-card">
           <p className="sd-bundle-bundleSection-heading-common">Design</p>
           <p>
-            You can customize different design types of bundles in different displays and change the colors, typography and other items in accordance with your shop design.
+          To access the customization screen, simply click on the "Customization" button. This will take you to the interface where you can personalize your bundles' appearance.
             </p>
            
            <Button  onClick={()=>navigate("/bundleCustomization")}>Customize</Button>
