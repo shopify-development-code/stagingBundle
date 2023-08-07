@@ -37,8 +37,25 @@ cancelText="No"
    
        </div> */}
     
-    </Card>
+
+
+   <div>
+    <div >
+    How to enable app from theme customizer?
+    </div>
+    <video width='100%' height="100%" src="https://cdn.shopify.com/videos/c/o/v/e7432e9d283242099a6ba5e653e31e1c.mp4" type="video/mp4" controls></video>
+   </div>
+   <div>
+    <div>
+    How to add app block to product page?
+    </div>
+   <video width='100%' src="https://cdn.shopify.com/videos/c/o/v/eb22e191ac75405eb12e40c55d64c33f.mp4" type="video/mp4" controls></video>
+   </div>
+
+
     
+    </Card>
+   
  </div>
 
     </div>

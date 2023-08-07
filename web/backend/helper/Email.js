@@ -20,15 +20,15 @@ const contactEmail = (req, res) => {
       port: 465,
       secure: true,
       auth: {
-        user: "robinkaith1@gmail.com",
-        pass: "sltvdvipyykjiflu",
+        user: "shopifyapp.shinedezign@gmail.com",
+        pass: "gdnetbnzmlsoehti",
       },
     });
 
     const emailData = {
-      logoURL: "https://cdn.shopify.com/s/files/1/0662/0171/4903/files/logo.png?v=1678105804",
-      emailTo: "robinkaith1@gmail.com",
-      emailSub: `Mail from  ${uname} - ${shop}`,
+      logoURL: "https://cdn.shopify.com/s/files/1/0801/7264/6691/files/MicrosoftTeams-image_12.png?v=1691413762",
+      emailTo: "robin.kaith@shinedezign.com",
+      emailSub:`Smart Bundle Support Request by ${uname} - ${shop}`,
       userEmail: umail,
       userName: uname,
       storeName: shop,
@@ -42,8 +42,9 @@ const contactEmail = (req, res) => {
           console.log(err);
         } else {
           let mailOptions = {
-            from: `Shine Bundle App - robinkaith1@gmail.com`,
+            from:`Smart Bundle Discounts  ${emailOptions.userEmail}`,
             to: emailOptions.emailTo,
+            cc:['vipin.garg@shinedezign.com'],
             subject: emailOptions.emailSub,
             replyTo: umail,
             html: data,

@@ -142,7 +142,6 @@ export async function verifyWebhooks(req, res) {
                       id: id,
                     },
                   },
-                  status: "draft",
                 }
               )
               .then((response) => console.log(response))
@@ -217,7 +216,7 @@ export async function verifyWebhooks(req, res) {
                       id: id,
                     },
                   },
-                  status: "draft",
+                
                 }
               )
               .then((response) => console.log(response))
@@ -258,7 +257,7 @@ export async function verifyWebhooks(req, res) {
                         ? ""
                         : responseWebhook.image.src,
                   },
-                  status: "draft",
+            
                 }
               )
               .then((response) => console.log(response))
