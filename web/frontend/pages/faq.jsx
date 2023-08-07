@@ -9,7 +9,7 @@ const Faq = () => {
 const items = [
     {
       key: '1',
-      label: 'This is panel header 1',
+      label: 'How to create a simple bundle ?',
       children: <p>{text}</p>,
     },
     {
@@ -29,7 +29,7 @@ const items = [
     <div className='sd-bundle-setting-translation'>
            <div className='sd-bundle-MoveToHome-section'>
     
-       <div className="sd-bundle-commonHeading">Frequently Asked Questions</div>
+       <div className="sd-bundle-commonHeading">FAQ and Instructions</div>
       
     </div>
     <div  >
