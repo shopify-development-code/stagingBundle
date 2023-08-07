@@ -3,7 +3,7 @@ import { Collapse,Card } from 'antd';
 import faqCreateBundle from  "../assets/FAQ_createBundle.png"
 import faqSelectBundle from  "../assets/FAQ_selectBundle.png"
 import faqSelectProduct from  "../assets/FAQ_selectProduct.png"
-import faqSelectNameAndTitle from  "../assets/FAQ_selectNameAndTitle.png"
+import faqSelectNameAndTitle from  "../assets/Faq_selectNameAndTitle.png"
 import faqSelectDiscount from  "../assets/FAQ_selectDiscount.png"
 import faqSelectDates from  "../assets/FAQ_selectDates.png"
 import faqPreviewBundle from  "../assets/FAQ_previewBundle.png"

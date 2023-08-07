@@ -30,14 +30,15 @@ cancelText="No"
     className='sd-bundle-contact-box'
     extra={<Button>activate</Button>}
     >
-       <div>
+       {/* <div>
 
       <div>How to enable app from theme customizer?</div>
       <video width='100%' src="https://cdn.shopify.com/videos/c/o/v/e7432e9d283242099a6ba5e653e31e1c.mp4" type="video/mp4" controls></video>
    
-       </div>
+       </div> */}
     
     </Card>
+    
  </div>
 
     </div>
