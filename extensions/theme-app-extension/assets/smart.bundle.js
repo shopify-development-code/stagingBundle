@@ -1,6 +1,6 @@
 
-// let server = "https://smartbundle.shinedezigninfotech.com";
-// let server = "https://0aad-14-99-195-170.ngrok-free.app"  ;
+let server = "https://smartbundle.shinedezigninfotech.com";
+// let server = "https://4d3d-14-99-195-170.ngrok-free.app";
   let smartNoImg = `data:image/png;base64,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`;
 
 let productPageClass = document.getElementsByClassName(
@@ -134,8 +134,13 @@ async function getData() {
 
       });
       console.log("ddataAARAY",dataArray)
+
+        if(dataArray.length){
+        createDiscountName(dataArray)
+          
+        }
+      
       createBundle(dataArray);
-    
       let bundleId = []
       dataArray.forEach((id)=>{
         bundleId.push(id._id)
@@ -653,6 +658,8 @@ function createBundle(BUNDLE_DATA) {
 
       ADD_TO_CART_BTN_DIV.append(ADD_TO_CART_BUTTON);
       ADD_TO_CART_BUTTON.addEventListener("click", (e) => {
+        let code = JSON.parse(localStorage.getItem("sd_bundle_data"));
+        let discountCodeId = code.discountCreateId ?? "" ;
         // // console.log("bundle----add to cart", el);
         ADD_TO_CART_BUTTON.innerText = "";
         let btnSpinner = document.createElement("div");
@@ -743,7 +750,7 @@ function createBundle(BUNDLE_DATA) {
                   
                   let sd_bundle_data = {
                           discount_name: el.name,
-                          code: el.settings.discountLabel,
+                          code: code.code,
                           bundleId : el._id,
                            discountType: isDiscount,
                           variantsId: mergedArrayResult,
@@ -801,7 +808,7 @@ function createBundle(BUNDLE_DATA) {
                   console.log("add to cart",el.bundleDetail.discountType)
                   let sd_bundle_data = {
                     discount_name: el.name,
-                    code: el.settings.discountLabel,
+                    code: code.code,
                     discountType: isDiscount,
                     discountValue: finalPrice,
                     variantsId: mergedGidArray,
@@ -810,6 +817,7 @@ function createBundle(BUNDLE_DATA) {
                     shop: Shopify.shop,
                     bundleType: el.bundleDetail.discountType,
                     totalPrice: total.toFixed(2),
+                    discountCreateId: discountCodeId ,
                   };
 
                   fetch(server + "/api/storefront/createRule", {
@@ -843,15 +851,15 @@ function createBundle(BUNDLE_DATA) {
                        
                         let sd_bundle_data = {
                           discount_name: el.name,
-                          code: el.settings.discountLabel,
+                          code: code.code,
                           bundleId : el._id,
-                           discountType: isDiscount,
+                          discountType: isDiscount,
                           variantsId: mergedArrayResult,
                           discountCreateId: data.response,
                         };
                         var jsonString = JSON.stringify(sd_bundle_data);
                         localStorage.setItem("sd_bundle_data", jsonString);
-
+                        console.log(localStorage)
                         window.location.assign(`https://${Shopify.shop}/cart`);
                       }
                     });
@@ -1603,6 +1611,8 @@ function createBundle(BUNDLE_DATA) {
       }
       
       addToCartBtn.addEventListener("click", function () {
+        let code = JSON.parse(localStorage.getItem("sd_bundle_data"));
+        let discountCodeId = code.discountCreateId ?? "";
         addToCartBtn.innerText = "";
         let volumeBtnSpinner = document.createElement("div");
         addToCartBtn.append(volumeBtnSpinner);
@@ -1686,7 +1696,7 @@ function createBundle(BUNDLE_DATA) {
                       let isDiscount =  el.bundleDetail.discountOptions[optionIndex].type == "noDiscount" ? "noDiscount" : "Fix"
                         let sd_bundle_data = {
                           discount_name: el.name,
-                          code: el.settings.discountLabel,
+                          code: code.code,
                           bundleId : el._id,
                           discountType: isDiscount,
                           variantsId: mergedArrayResult,
@@ -1756,7 +1766,7 @@ function createBundle(BUNDLE_DATA) {
              
                   let sd_bundle_data = {
                     discount_name: el.name,
-                    code: el.settings.discountLabel,
+                    code: code.code,
                     discountType: "Fix",
                     discountValue: finalPrice,
                     variantsId: mergedGidArray,
@@ -1765,6 +1775,7 @@ function createBundle(BUNDLE_DATA) {
                     shop: Shopify.shop,
                     bundleType: isDiscount,
                     totalPrice: xtotalprice,
+                    discountCreateId : discountCodeId
                   }; 
 
                     console.log(sd_bundle_data)
@@ -1794,7 +1805,7 @@ function createBundle(BUNDLE_DATA) {
                        let isDiscount =  el.bundleDetail.discountOptions[optionIndex].type == "noDiscount" ? "noDiscount" : "Fix"
                         let sd_bundle_data = {
                           discount_name: el.name,
-                          code: el.settings.discountLabel,
+                          code: code.code,
                           bundleId : el._id,
                            discountType: isDiscount,
                           variantsId: mergedArrayResult,
@@ -2734,6 +2745,8 @@ async function bundlePageBuilder(data) {
   cartAddBtn.addEventListener("click", (e) => {
 
             if(!checkCartButtonActive(selectedProducts,data.response.bundleDetail.products)){
+               let code = JSON.parse(localStorage.getItem("sd_bundle_data"));
+               let discountCodeId = code.discountCreateId ?? "";    
               console.log("true",checkCartButtonActive(selectedProducts,data.response.bundleDetail.products))
               
     cartAddBtn.innerText = "";
@@ -2818,7 +2831,7 @@ async function bundlePageBuilder(data) {
                
                    let sd_bundle_data = {
                       discount_name: data.response.name,
-                      code: data.response.settings.discountLabel,
+                      code: code.code,
                       bundleId : data.response._id,
                       discountType: isDiscount,
                       variantsId: idArray,
@@ -2867,7 +2880,7 @@ async function bundlePageBuilder(data) {
               let isDiscount =  data.response.bundleDetail.discountType == "noDiscount" ? "noDiscount" : "Fix"
               let sd_bundle_data = {
                 discount_name: data.response.name,
-                code: data.response.settings.discountLabel ,
+                code: code.code ,
                 discountType: isDiscount,
                 discountValue: finalPrice,
                 variantsId: variantGid,
@@ -2876,6 +2889,7 @@ async function bundlePageBuilder(data) {
                 shop: Shopify.shop,
                 bundleType: data.response.bundleDetail.discountType,
                 totalPrice: totalPrice,
+                discountCreateId:discountCodeId
               };
 
               fetch(server + "/api/storefront/createRule", {
@@ -2905,10 +2919,10 @@ async function bundlePageBuilder(data) {
                     BundleBuilderSpinner.remove();
                     // console.log("res", res);
                     // console.log("resposne", response);
-                   
+                   console.log(data.response)
                     let sd_bundle_data = {
                       discount_name: data.response.name,
-                      code: data.response.settings.discountLabel ,
+                      code: code.code ,
                       bundleId : data.response._id,
                       discountType: isDiscount,
                       variantsId: idArray,
@@ -3227,4 +3241,25 @@ async function deactivateRule (localData){
   }).catch((error)=>{
     console.log(error.message)
   })
+}
+function createDiscountName (dataArray){
+ let checkLocalStorage = localStorage.sd_bundle_data
+  console.log("checking local storage data",checkLocalStorage)
+  if(!checkLocalStorage){
+      function generateRandomSixDigitNumber() {
+      // Generate a random number between 100,000 and 999,999 (inclusive)
+      const min = 100000;
+      const max = 999999;
+      const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    
+      return randomNumber;
+    }
+     const randomSixDigitNumber = generateRandomSixDigitNumber();
+  let sd_bundle_data = {
+                          code: dataArray[0].settings.discountLabel+"-"+randomSixDigitNumber,
+                        };
+                        var jsonString = JSON.stringify(sd_bundle_data);
+                        localStorage.setItem("sd_bundle_data", jsonString);
+    
+  }
 }
