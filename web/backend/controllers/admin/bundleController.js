@@ -1,6 +1,5 @@
 import shopify from "../../../shopify.js";
 import shopInfoModel from "../../models/shopInfoSchema.js";
-import discountIdModel from "../../models/discountIdSchema.js";
 const MAX_RETRIES = 3;
 let retries = 0;
 
@@ -142,15 +141,8 @@ export async function createRule(req,res){
          
 
           let bundleDiscountId = response.body.data.discountCodeFreeShippingCreate.codeDiscountNode.id
-          const saveId = await discountIdModel.findOneAndUpdate({shop:shop},{shop:shop,discountId:bundleDiscountId},{upsert:true,new:true})
-          if(saveId._id){
-       return  res.status(200).json({message:"SUCCESS!",response:bundleDiscountId,status:200})
-          }else{
-           return res.status(400).json({message:"SUCCESS!",error:"some error occuring in saving discount id",status:400})
-          }
-
-
-
+          return  res.status(200).json({message:"SUCCESS!",response:bundleDiscountId,status:200})
+         
         }else{
 
        
@@ -241,10 +233,9 @@ export async function createRule(req,res){
                     },
                   });
             let bundleDiscountId = response.body.data.discountCodeBasicCreate.codeDiscountNode.id
-            const saveId = await discountIdModel.findOneAndUpdate({shop:shop},{shop:shop,discountId:bundleDiscountId},{upsert:true,new:true})
-            if(saveId){
+           
               return  res.status(200).json({message:"SUCCESS!",response:bundleDiscountId,status:200})
-            }
+            
         }
        
       }else{
@@ -315,13 +306,9 @@ data: {
 
 
 let bundleShoppingDiscountId = update.body.data.discountCodeFreeShippingUpdate.codeDiscountNode.id
-const saveId = await discountIdModel.findOneAndUpdate({shop:shop},{shop:shop,discountId:bundleShoppingDiscountId},{upsert:true,new:true})
-if(saveId._id){
 
 return  res.status(200).json({message:"SUCCESS!",response:bundleShoppingDiscountId,status:200})
-}else{
-return res.status(400).json({message:"SUCCESS!",error:"some error occuring in saving discount id",status:400})
-}
+
 
 
 
@@ -508,14 +495,10 @@ return res.status(400).json({message:"SUCCESS!",error:"some error occuring in sa
           },
         });
         let bundleDiscountId = response.body.data.discountCodeFreeShippingCreate.codeDiscountNode.id
-        const saveId = await discountIdModel.findOneAndUpdate({shop:shop},{shop:shop,discountId:bundleDiscountId},{upsert:true,new:true})
-      
 
-        if(saveId){
+
      return  res.status(200).json({message:"SUCCESS!",response:bundleDiscountId,status:200})
-        }else{
-         return res.status(400).json({message:"SUCCESS!",error:"some error occuring in saving discount id",status:400})
-        }
+      
       }else{
 
         let Input ={
@@ -606,14 +589,9 @@ return res.status(400).json({message:"SUCCESS!",error:"some error occuring in sa
                 });
      
           let bundleDiscountId = response.body.data.discountCodeBasicCreate.codeDiscountNode.id
-                //  const saveId = await discountIdModel.findOneAndUpdate({shop:shop},{shop:shop,discountId:bundleDiscountId},{upsert:true,new:true})
-                //  if(saveId._id){
-               
-                  
+              
               return  res.status(200).json({message:"SUCCESS!",response:bundleDiscountId,status:200})
-                //  }else{
-                  // return res.status(400).json({message:"SUCCESS!",error:"some error occuring in saving discount id",status:400})
-                //  }
+              
       }
    
     }

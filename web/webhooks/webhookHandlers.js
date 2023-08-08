@@ -4,9 +4,10 @@ import { ObjectId } from "mongodb";
 import bundleModel from "../backend/models/bundleSchema.js";
 import shopInfoModel from "../backend/models/shopInfoSchema.js";
 import customizationModel from "../backend/models/customizationSchema.js";
-import discountIdModel from "../backend/models/discountIdSchema.js";
 import pageDataModel from "../backend/models/pageData.js";
 import settingModel from "../backend/models/settings.js";
+import translationModel from "../backend/models/translationSchema.js";
+
 
 export async function verifyWebhooks(req, res) {
   try {
@@ -97,11 +98,12 @@ export async function verifyWebhooks(req, res) {
             });
             // Perform the bulkWrite operation
             await bundleModel
-              .bulkWrite(bulkOps)
-              .then((res) => console.log(res))
-              .catch((err) => console.log(err.message));
-
-            res.status(200).json("success");
+            .bulkWrite(bulkOps)
+            .then((res) =>{
+              res.status(200).json("success");
+              }).catch((err) =>{
+              res.status(200).json("error during product delete");
+              });
           } else {
             res.status(401).json("Unauthorized access");
           }
@@ -135,15 +137,19 @@ export async function verifyWebhooks(req, res) {
                   },
                 }
               )
-              .then((response) => console.log(response))
-              .catch((err) => console.log(err.message));
+              .then((response) =>{
+                res.status(200).json("success");
+              })
+              .catch((err) =>{
+                res.status(200).json("error during product delete");
+              });
 
-            res.status(200).json("success");
           } else {
             res.status(401).json("Unauthorized access");
           }
         } catch (error) {
-          console.log(error.message);
+          res.status(401).json("Unauthorized access");
+
         }
         break;
       case "orders/create":
@@ -172,7 +178,13 @@ export async function verifyWebhooks(req, res) {
                   bundleSalesValue: price,
                 },
               };
-              await analyticsModel.updateOne(filter, update);
+               analyticsModel.updateOne(filter, update).then((response)=>{
+                res.status(200).json("success");
+
+               }).catch((error)=>{
+                res.status(200).json("error during order create");
+
+               })
             }
           } else {
             res.status(401).json("Unauthorized access");
@@ -193,7 +205,6 @@ export async function verifyWebhooks(req, res) {
             console.log(responseWebhook);
             let id = "gid://shopify/Collection/" + responseWebhook.id;
 
-            // console.log(responseWebhook)
             bundleModel
               .updateMany(
                 {
@@ -210,15 +221,21 @@ export async function verifyWebhooks(req, res) {
                 
                 }
               )
-              .then((response) => console.log(response))
-              .catch((err) => console.log(err.message));
+              .then((response) => {
 
-            res.status(200).json("success");
+                res.status(200).json("success");
+              })
+              .catch((err) => {
+                res.status(200).json("error during collection delete");
+
+              });
+
           } else {
             res.status(401).json("Unauthorized access");
           }
         } catch (error) {
-          console.log(error.message);
+          res.status(401).json("Unauthorized access");
+          
         }
         break;
       case "collections/update":
@@ -251,14 +268,18 @@ export async function verifyWebhooks(req, res) {
             
                 }
               )
-              .then((response) => console.log(response))
-              .catch((err) => console.log(err.message));
-            res.status(200).json("success");
+              .then((response) =>{
+                res.status(200).json("success");
+              }).catch((err) =>{
+                res.status(200).json("error during collection update");
+
+              });
           } else {
             res.status(401).json("Unauthorized access");
           }
         } catch (error) {
-          console.log(error.message);
+          res.status(401).json("Unauthorized access");
+
         }
         break;
       case "shop/redact":
@@ -268,68 +289,27 @@ export async function verifyWebhooks(req, res) {
             .update(req.body)
             .digest("base64");
           if (calculated_hmac == hmac_header) {
-            await bundleModel
-              .deleteMany({ shop: shop })
-              .then((response) => {
-                console.log("deleted shop bundle data");
-              })
-              .catch((err) => {
-                console.log(err.message);
-              });
-            await customizationModel
-              .deleteOne({ shop: shop })
-              .then((response) => {
-                console.log("deleted shop customization data");
-              })
-              .catch((err) => {
-                console.log(err.message);
-              });
-            await analyticsModel
-              .deleteMany({ shop: shop })
-              .then((response) => {
-                console.log("deleted shop analytics data");
-              })
-              .catch((err) => {
-                console.log(err.message);
-              });
-            await discountIdModel
-              .deleteOne({ shop: shop })
-              .then((response) => {
-                console.log("deleted shop discount Id data");
-              })
-              .catch((err) => {
-                console.log(err.message);
-              });
-            await pageDataModel
-              .deleteOne({ shop: shop })
-              .then((response) => {
-                console.log("deleted shop pagedata data");
-              })
-              .catch((err) => {
-                console.log(err.message);
-              });
-            await settingModel
-              .deleteOne({ shop: shop })
-              .then((response) => {
-                console.log("deleted shop settings data");
-              })
-              .catch((err) => {
-                console.log(err.message);
-              });
-            await translationModel
-              .deleteOne({ shop: shop })
-              .then((response) => {
-                console.log("deleted shop translations data");
-              })
-              .catch((err) => {
-                console.log(err.message);
-              });
-            res.status(200).json("success");
+            const deletionPromises = [];
+            deletionPromises.push(bundleModel.deleteMany({ shop: shop }));
+            deletionPromises.push(customizationModel.deleteOne({ shop: shop }));
+            deletionPromises.push(analyticsModel.deleteMany({ shop: shop }));
+            deletionPromises.push(pageDataModel.deleteOne({ shop: shop }));
+            deletionPromises.push(settingModel.deleteOne({ shop: shop }));
+            deletionPromises.push(translationModel.deleteOne({ shop: shop }));
+              
+                      Promise.all(deletionPromises)
+                      .then(() => {
+                        res.status(200).json("success");
+                      })
+                      .catch((err) => {
+                        res.status(200).json("Error during data deletion");
+                      });
           } else {
             res.status(401).json("Unauthorized access");
           }
         } catch (error) {
-          console.log(error.message);
+          res.status(401).json("Unauthorized access");
+           
         }
         break;
       case "app/uninstalled":
@@ -342,18 +322,19 @@ export async function verifyWebhooks(req, res) {
             await shopInfoModel
               .deleteOne({ shop: shop })
               .then((response) => {
-                console.log("app uninstalled shop data delete", response);
+                res.status(200).json("success");
               })
               .catch((err) => {
-                console.log(err.message);
+                res.status(200).json("error during shop info delete");
               });
 
-            res.status(200).json("success");
+           
           } else {
             res.status(401).json("Unauthorized access");
           }
         } catch (error) {
-          console.log(error.message);
+          res.status(401).json("Unauthorized access");
+
         }
         break;
       case "customers/data_request":
@@ -364,7 +345,8 @@ export async function verifyWebhooks(req, res) {
             res.status(401).json("Unauthorized access");
           }
         } catch (error) {
-          console.log(error.message);
+          res.status(401).json("Unauthorized access");
+
         }
         break;
       case "customers/redact":
@@ -375,7 +357,8 @@ export async function verifyWebhooks(req, res) {
             res.status(401).json("Unauthorized access");
           }
         } catch (error) {
-          console.log(error.message);
+          res.status(401).json("Unauthorized access");
+
         }
         break;
       default:
