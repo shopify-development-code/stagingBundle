@@ -7,8 +7,10 @@ const APIContext = createContext();
    const [currency,setCurrency]=useState("") ;
    const [currencyCode,setCurrencyCode]=useState("") ;
    const [timeZone,setTimeZone] = useState("")
+  const [themeId, setThemeId] = useState("");
+
    const app=useAppBridge();
-  const [getShop, setGetShop] = useState(new URL(location.href).searchParams.get("shop"));
+  const [getShop, setGetShop] = useState(new URL(location).searchParams.get("shop"));
 
   async function getCurrencyCode(){
                  
@@ -23,9 +25,20 @@ const APIContext = createContext();
   
   getCurrencyCode(currencyCode)
 
+  async function getThemeId () {
+
+  const response = await postApi('/api/admin/getThemeId',{},app)
+  console.log(response)
+  if(response.data.status == 200){
+    setThemeId(response.data.response)
+    
+
+  }
+  }
+  getThemeId()
   return (
 
-    <APIContext.Provider value={{ shop: getShop,timeZone:timeZone,app:app,currencyCode:currencyCode}}>
+    <APIContext.Provider value={{ shop: getShop,timeZone:timeZone,app:app,currencyCode:currencyCode,themeId:themeId}}>
 
       {children}
 

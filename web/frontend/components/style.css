@@ -1454,10 +1454,10 @@ button.Polaris-Navigation__Item {
   background: #202937;
 }
 .sd-bundle-contact-main-container .ant-btn-primary:hover {
-  background: #0c2f39;
+  background: #0c2f39 !important;
   color: #fff;
-    
 }
+
 .sd-bundle-select-bundle p {
   font-size: 17px;
 }
@@ -1827,6 +1827,13 @@ button.Polaris-Navigation__Item {
   border-color: #093032 !important;
 }
 
+.ant-btn-default:hover {
+  color: #fff !important;
+  border-color: #0c2f39 !important;
+}
+.ant-popconfirm-buttons .ant-btn-default:hover {
+  color: #000 !important;
+}
 [type="radio"]:checked+label,
 [type="radio"]:not(:checked)+label {
   position: relative;

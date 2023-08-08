@@ -19,6 +19,7 @@ import {
   getCustomization,
   saveSetting,
   getSetting,
+  getThemeId,
   
  
 } from "../controllers/admin/adminController.js";
@@ -51,6 +52,7 @@ router.post("/admin/getAnalyticsData",getAnalyticsData);
 router.post("/admin/fetchVariants",fetchVariants);
 router.post("/admin/saveSetting",saveSetting);
 router.post("/admin/getSetting",getSetting);
+router.post("/admin/getThemeId",getThemeId);
 //---------------------------------- Bundle Product Discount Routes :--------------------------------------------
 
 router.post("/createRule", createRule);

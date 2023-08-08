@@ -27,8 +27,8 @@ const contactEmail = (req, res) => {
 
     const emailData = {
       logoURL: "https://cdn.shopify.com/s/files/1/0801/7264/6691/files/MicrosoftTeams-image_12.png?v=1691413762",
-      emailTo: "robin.kaith@shinedezign.com",
-      emailSub:`Smart Bundle Support Request by ${uname} - ${shop}`,
+      emailTo: "vikas@shinedezign.com",
+      emailSub:`Smart Bundle Support Request by ${uname} - [${shop}]`,
       userEmail: umail,
       userName: uname,
       storeName: shop,

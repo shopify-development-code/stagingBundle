@@ -1,4 +1,6 @@
 import shopify from "../../../shopify.js";
+import {  DataType } from "@shopify/shopify-api";
+
 import bundleModel from "../../models/bundleSchema.js";
 import customizationModel from "../../models/customizationSchema.js";
 import translationModel from "../../models/translationSchema.js";
@@ -533,5 +535,28 @@ export async function getSetting(req,res){
   } catch (error) {
     console.log(error.message)
     
+  }
+}
+
+export async function getThemeId(req, res) {
+  try {
+    console.log("get theme ---------")
+    const session = res.locals.shopify.session;
+   
+    const client = new shopify.api.clients.Rest({session});
+const data = await client.get({
+  path: 'themes',
+});
+console.log(data)
+    // const client = new shopify.api.clients.Rest.Theme(shop,session.accessToken);
+    const {
+      body: { themes },
+    } = await client.get({ path: "themes", type: DataType.JSON });
+    const { id } = themes.find((el) => el.role === "main");
+    console.log(id, 'iddd')
+    res.status(200).json({message:"success",response: id,status:200 });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error getting theme ID");
   }
 }
