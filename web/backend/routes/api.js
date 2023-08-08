@@ -20,6 +20,7 @@ import {
   saveSetting,
   getSetting,
   getThemeId,
+ 
   
  
 } from "../controllers/admin/adminController.js";
@@ -73,6 +74,8 @@ router.post("/getBundleClick",getBundleClick)
 //--------------------------------------Pricing Plans :--------------------------------------------------------
 router.post("/getBilling",recurringBiling)
 router.post("/billingSelected",recurringBilingSelected)
+
+//----------------------------------------privacy policy-------------------------------------------------------
 
 
 

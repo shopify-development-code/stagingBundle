@@ -1,6 +1,7 @@
 import shopify from "../../../shopify.js";
 import {  DataType } from "@shopify/shopify-api";
-
+import path from 'path';
+import { fileURLToPath } from 'url';
 import bundleModel from "../../models/bundleSchema.js";
 import customizationModel from "../../models/customizationSchema.js";
 import translationModel from "../../models/translationSchema.js";
@@ -13,7 +14,7 @@ let retries = 0;
 
 
 export async function createBundle(req,res){
-  try{console.log("first")
+  try{
  
     const session = res.locals.shopify.session;
     let shop = session.shop;
@@ -37,7 +38,6 @@ export async function createBundle(req,res){
    if(response){
    
     let bundleId = response._id
-    console.log(bundleId)
     const createBundle =  await analyticsModel.create({shop:shop,
                                                          bundleId:bundleId,
                                                          bundleClick:0,
@@ -84,13 +84,11 @@ export async function fetchVariants(req,res){
    p_id=p_id.split("/").at(-1);
           
 
-   console.log(p_id,"TRIMMMMMMMM");
 
 
 
    let session =res.locals.shopify.session;
 
-   console.log('SESSSIONNN',session)
 
  const data = await shopify.api.rest.Product.find({
    session: session,
@@ -98,7 +96,6 @@ export async function fetchVariants(req,res){
  });
 
 
-console.log('VVVVVVVVVVVVV',data);
 
 let arr=[];
 
@@ -117,7 +114,6 @@ data.variants.map((item,index)=>{
  
 })
 
-console.log("arr",arr)
 
 res.send({data:arr})
 
@@ -134,7 +130,6 @@ export async function editBundle (req,res){
   
 try {
   const {id}= req.body
-console.log(id)
 const session = res.locals.shopify.session;
 let shop = session.shop;
 const response = await bundleModel.aggregate([
@@ -175,9 +170,7 @@ return res.status(503).send({message:"something went wrong",status:503})
 
 export async function getBundle (req,res){
    try {
-    console.log("createBundle")
     const session = res.locals.shopify.session;
-    console.log(session)
     let shop = session.shop;
     const response = await bundleModel.aggregate(
       [
@@ -239,10 +232,8 @@ export async function getBundle (req,res){
 
 export async function updateStatus (req,res){
   try{
-    console.log(req.body.status)
     const {id,status} = req.body
     const response =  await bundleModel.findOneAndUpdate({_id:id},{status:status})
-    console.log(response)
     if(response){
     return res.status(200).send({message:"success",response:response,status:200})
     }else{
@@ -267,7 +258,6 @@ export async function updateStatus (req,res){
 
 export async function getCurrencyCode(req,res){
    try{
-    console.log("getCurrency  ")
      let session =res.locals.shopify.session;
       const client = new shopify.api.clients.Graphql({ session });
       let queryString =`{
@@ -280,11 +270,9 @@ export async function getCurrencyCode(req,res){
         }
       }`
        const data= await client.query({ data:queryString }) 
-       console.log("currency = >>>>>>>>>>>>>>>>>>>>>>>>>",data.body.data)
         res.send({message:"success",data:data.body.data.shop}) 
       } catch(error)
       {
-         console.log(error) 
          res.send({message:error.message}) 
         }
        }
@@ -299,7 +287,6 @@ export async function getCurrencyCode(req,res){
       const filter = {shop:shop, _id: { $in: idsToDelete } };
 
     const response = await bundleModel.deleteMany(filter)
-    console.log(response.acknowledged)
     if(response.acknowledged == true){
       return res.status(200).send({message:"success",status:200})
     }
@@ -321,9 +308,7 @@ return res.status(503).send({message:"something went wrong",status:503})
       let shop = session.shop;
       const ids = req.body.id;
      const status = req.body.status;
-     console.log(ids)
     const response = await bundleModel.updateMany( { shop:shop, _id: { $in: ids } },{status:status} )
-    console.log(response)
     if(response){
       return res.status(200).send({message:"success",status:200})
     }
@@ -344,7 +329,6 @@ return res.status(503).send({message:"something went wrong",status:503})
       const filter = {shop:shop, _id: req.body.id };
 
     const response = await bundleModel.deleteOne(filter)
-    console.log(response.acknowledged)
     if(response.acknowledged == true){
       return res.status(200).send({message:"success",status:200})
     }
@@ -364,7 +348,6 @@ return res.status(503).send({message:"something went wrong",status:503})
       let shop = session.shop;
 
     const response = await bundleModel.updateOne({shop:shop, _id:req.body._id},{...req.body})
-console.log(response)
 if(response.acknowledged == true){
   return res.status(200).send({message:"success",status:200})
 }
@@ -387,7 +370,6 @@ return res.status(503).send({message:"something went wrong",status:503})
                                                                           popUp:req.body.popUp},{upsert:true})
 
                                                                           
-  console.log(response)
   if(response){
     return res.status(200).send({message :"success",status : 200})
   }
@@ -399,9 +381,7 @@ return res.status(503).send({message:"something went wrong",status:503})
     try{
       const session = res.locals.shopify.session;
       let shop = session.shop;
-   console.log(req.body)
     const response = await translationModel.updateOne({shop:shop},{translation:req.body},{upsert:true,new:true})
-console.log(response)
 if(response.acknowledged == true){
   return res.status(200).send({message:"success",status:200})
 }
@@ -540,23 +520,31 @@ export async function getSetting(req,res){
 
 export async function getThemeId(req, res) {
   try {
-    console.log("get theme ---------")
     const session = res.locals.shopify.session;
    
     const client = new shopify.api.clients.Rest({session});
 const data = await client.get({
   path: 'themes',
 });
-console.log(data)
     // const client = new shopify.api.clients.Rest.Theme(shop,session.accessToken);
     const {
       body: { themes },
     } = await client.get({ path: "themes", type: DataType.JSON });
     const { id } = themes.find((el) => el.role === "main");
-    console.log(id, 'iddd')
     res.status(200).json({message:"success",response: id,status:200 });
   } catch (err) {
     console.error(err);
     res.status(500).send("Error getting theme ID");
   }
+}
+
+
+export function  privacyPolicy  (req,res) {
+  const __filename = fileURLToPath(import.meta.url);
+
+    const __dirname = path.dirname(__filename);
+    const dirPath = path.join(__dirname, "../../helper/templates");
+    res.render(`${dirPath}/privacyPolicy.ejs`);
+
+    res.end();
 }

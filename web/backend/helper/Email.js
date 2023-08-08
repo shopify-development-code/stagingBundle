@@ -12,7 +12,6 @@ const contactEmail = (req, res) => {
     const { uname, umail, message, storePassword } = req.body;
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
-    console.log(__dirname)
     const dirPath = path.join(__dirname, "./templates");
 
     let transporter = nodemailer.createTransport({

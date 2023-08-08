@@ -58,7 +58,6 @@ export async function recurringBiling(req, res) {
        id : charge_id
      })
   
-     console.log(verifyBilling, "verify");
   
      if(verifyBilling.status === "active") {
       const updatePlan = await pandaBilling.findOneAndUpdate(

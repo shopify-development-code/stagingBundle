@@ -80,6 +80,7 @@ function handleOpenCustomization () {
  </div>
 
       <Modal
+      className='sd-bundle-video-modal'
         footer={null}
         centered
         open={open}
@@ -92,6 +93,7 @@ function handleOpenCustomization () {
        </video>
       </Modal>
       <Modal
+      className='sd-bundle-video-modal'
         footer={null}
         centered
         open={open1}

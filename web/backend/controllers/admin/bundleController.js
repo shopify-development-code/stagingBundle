@@ -8,7 +8,6 @@ let retries = 0;
 export async function createRule(req,res){
 
   try{
-   console.log("ccccccccccrrrrrrrrrrrreeeeeeeeeeeeaaaaaaaaaaaaaattttttttttttttttteeeeeeeeeeeeee")
     const shop = req.body.shop;
     const title = req.body.discount_name;
     const code = req.body.code;
@@ -20,11 +19,8 @@ export async function createRule(req,res){
     const totalPrice = req.body.totalPrice
     const discountId = req.body.discountCreateId
     let quantityItem = variantsId.length
-    console.log("body------------->",req.body)
-    // const discountId = await discountIdModel.findOne({shop:shop})
     
     const shopInfo = await shopInfoModel.findOne({shop})
-     console.log("shooop",shopInfo)
     const client = new shopify.api.clients.Graphql({ session:  {
       shop:shop,
       accessToken:shopInfo.accessToken
@@ -67,7 +63,6 @@ export async function createRule(req,res){
      
 
       if(response.body.data.codeDiscountNode == null){
-        console.log("discountCreate == NULL , creating new !!!")
         if(bundleType == "freeShipping"){
                
           let Input ={
@@ -144,13 +139,11 @@ export async function createRule(req,res){
               variables: Input,
             },
           });
-          // console.log(response)
          
 
           let bundleDiscountId = response.body.data.discountCodeFreeShippingCreate.codeDiscountNode.id
           const saveId = await discountIdModel.findOneAndUpdate({shop:shop},{shop:shop,discountId:bundleDiscountId},{upsert:true,new:true})
           if(saveId._id){
-          //  console.log("response3",response)
        return  res.status(200).json({message:"SUCCESS!",response:bundleDiscountId,status:200})
           }else{
            return res.status(400).json({message:"SUCCESS!",error:"some error occuring in saving discount id",status:400})
@@ -160,10 +153,7 @@ export async function createRule(req,res){
 
         }else{
 
-          console.log("17 july")
-          console.log(code)
-          console.log(discountValue)
-          console.log(totalPrice)
+       
           let Input ={
             "basicCodeDiscount": {
               "appliesOncePerCustomer": false,
@@ -250,7 +240,6 @@ export async function createRule(req,res){
                       variables: Input,
                     },
                   });
-          // console.log(response.body.data.discountCodeBasicCreate.userErrors)
             let bundleDiscountId = response.body.data.discountCodeBasicCreate.codeDiscountNode.id
             const saveId = await discountIdModel.findOneAndUpdate({shop:shop},{shop:shop,discountId:bundleDiscountId},{upsert:true,new:true})
             if(saveId){
@@ -259,11 +248,9 @@ export async function createRule(req,res){
         }
        
       }else{
-        console.log("discount updating !!!!!")
         if(bundleType == "freeShipping"){
 
           let bundleDiscountId = response.body.data.codeDiscountNode.id
-          console.log("update free shiping")
          let input=  {
          
           "freeShippingCodeDiscount": {
@@ -339,7 +326,6 @@ return res.status(400).json({message:"SUCCESS!",error:"some error occuring in sa
 
 
         }else{
-          console.log("bundle updating")
           let getDiscountProductArr = response.body.data.codeDiscountNode.codeDiscount.customerGets?.items.productVariants.edges ;
           getDiscountProductArr?.forEach((e)=>{
             productVariantsId.push(e.node.id)
@@ -446,9 +432,7 @@ return res.status(400).json({message:"SUCCESS!",error:"some error occuring in sa
       
       }
     }else{
-      console.log("creating new discount")
       if(bundleType == "freeShipping"){
-        console.log("shipping")
         let Input ={
           "freeShippingCodeDiscount": {
             "startsAt": "2022-06-22T21:12:07.000Z",
@@ -523,21 +507,17 @@ return res.status(400).json({message:"SUCCESS!",error:"some error occuring in sa
             variables: Input,
           },
         });
-        // console.log(response)
         let bundleDiscountId = response.body.data.discountCodeFreeShippingCreate.codeDiscountNode.id
-        console.log(bundleDiscountId)
         const saveId = await discountIdModel.findOneAndUpdate({shop:shop},{shop:shop,discountId:bundleDiscountId},{upsert:true,new:true})
       
 
         if(saveId){
-         console.log("response3",response)
      return  res.status(200).json({message:"SUCCESS!",response:bundleDiscountId,status:200})
         }else{
          return res.status(400).json({message:"SUCCESS!",error:"some error occuring in saving discount id",status:400})
         }
       }else{
 
-        console.log("creating new bundle without id")
         let Input ={
           "basicCodeDiscount": {
             "appliesOncePerCustomer": false,
@@ -625,7 +605,6 @@ return res.status(400).json({message:"SUCCESS!",error:"some error occuring in sa
                   },
                 });
      
-                console.log(response.body.data.discountCodeBasicCreate.userErrors)
           let bundleDiscountId = response.body.data.discountCodeBasicCreate.codeDiscountNode.id
                 //  const saveId = await discountIdModel.findOneAndUpdate({shop:shop},{shop:shop,discountId:bundleDiscountId},{upsert:true,new:true})
                 //  if(saveId._id){
@@ -661,7 +640,6 @@ return res.status(400).json({message:"SUCCESS!",error:"some error occuring in sa
 
 export async function deactivateRule (req,res){
   try{
-    console.log("***************deactive**********************")
     const {shop,discountId} = req.body
     const shopInfo = await shopInfoModel.findOne({shop:shop})
 
@@ -700,7 +678,6 @@ export async function deactivateRule (req,res){
         variables: Input,
       },
     });
-    // console.log(response)
     return  res.status(200).json({message:"SUCCESS!",response:response})
 
   }
@@ -722,7 +699,6 @@ export async function deactivateRule (req,res){
 
 export async function activateRule (req,res){
   try{
-    // console.log(req.body)
     const {shop,discountId} = req.body
     const shopInfo = await shopInfoModel.findOne({shop:shop})
 
@@ -761,7 +737,6 @@ export async function activateRule (req,res){
         variables: Input,
       },
     });
-    // console.log(response)
     return  res.status(200).json({message:"SUCCESS!",response:response})
 
   }

@@ -2389,3 +2389,9 @@ nav.Polaris-Navigation {
   transition: color 0.2s,background-color 0.2s;
   right: 3px;
 }
+
+.sd-bundle-video-modal .ant-modal-close {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+}

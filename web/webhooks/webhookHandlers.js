@@ -10,12 +10,10 @@ import settingModel from "../backend/models/settings.js";
 
 export async function verifyWebhooks(req, res) {
   try {
-    console.log("webhooks running");
     const topic = req.headers["x-shopify-topic"];
     let shop = req.headers["x-shopify-shop-domain"];
     let hmac_header = req.headers["x-shopify-hmac-sha256"];
     const secretKey = process.env.SHOPIFY_API_SECRET;
-    console.log("topic:-", topic);
     switch (topic) {
       case "products/update":
         try {
@@ -24,10 +22,8 @@ export async function verifyWebhooks(req, res) {
             .update(req.body)
             .digest("base64");
           if (calculated_hmac == hmac_header) {
-            //   console.log(calculated_hmac, hmac_header);
 
             const responseWebhook = JSON.parse(req.body);
-            console.log("product ---->", responseWebhook);
             let id = "gid://shopify/Product/" + responseWebhook.id;
             let productArr = responseWebhook.variants;
 
@@ -62,14 +58,11 @@ export async function verifyWebhooks(req, res) {
             productArr.forEach((apiVariant) => {
               const variantId = "gid://shopify/ProductVariant/" + apiVariant.id; // Replace 'variantId' with the field name containing the variant ID in the API response.
               let variantImg = null;
-              // console.log(apiVariant.image_id)
-              console.log("**************************************");
               responseWebhook?.images?.map((img) => {
                 if (img.id == apiVariant.image_id) {
                   variantImg = img.src;
                 }
               });
-              console.log(variantImg);
 
               const variantData = {
                 id: variantId,
@@ -102,7 +95,6 @@ export async function verifyWebhooks(req, res) {
               };
               bulkOps.push(variantUpdateOp);
             });
-            // console.log(bulkOps)
             // Perform the bulkWrite operation
             await bundleModel
               .bulkWrite(bulkOps)
@@ -128,7 +120,6 @@ export async function verifyWebhooks(req, res) {
 
             let id = "gid://shopify/Product/" + responseWebhook.id;
 
-            console.log(responseWebhook);
             bundleModel
               .updateMany(
                 {

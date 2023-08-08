@@ -28,7 +28,6 @@ const APIContext = createContext();
   async function getThemeId () {
 
   const response = await postApi('/api/admin/getThemeId',{},app)
-  console.log(response)
   if(response.data.status == 200){
     setThemeId(response.data.response)
     

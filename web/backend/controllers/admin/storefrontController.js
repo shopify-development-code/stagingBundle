@@ -83,12 +83,9 @@ export async function getBundleData (req,res){
  }
 
 export async function createPage (req,res){
-  // console.log(process.env)
-  console.log("create")
   let shop = req.body.shop
   const session = await shopInfoModel.findOne({shop:shop})
   if(session){
-    // console.log(shopify.api.rest.Page)
     const page =  new shopify.api.rest.Page({
       session:{
         shop:session.shop,
@@ -100,7 +97,6 @@ export async function createPage (req,res){
     await page.save({
       update: true,
     });
-    console.log(page)
     if(page){
       const data = await pageDataModel.findOneAndUpdate({shop:shop},{shop:shop,pageId:page.id},{upsert:true,new:true})
       if(data){
@@ -115,11 +111,9 @@ export async function createPage (req,res){
 }
 
 export async function getPage (req,res){
-  // console.log(process.env)
   let shop = req.body.shop
   const session = await shopInfoModel.findOne({shop:shop})
   if(session){
-    // console.log(shopify.api.rest.Page)
     const page =  await shopify.api.rest.Page.all({
       session:{
         shop:shop,
@@ -127,7 +121,6 @@ export async function getPage (req,res){
       }
     });
    
-    console.log(page)
     if(page){
         const getId = await pageDataModel.findOne({shop:shop})
  
@@ -174,6 +167,14 @@ export async function getCollectionMixMatchData (req,res){
                     }
                   },
                   {
+                    $lookup: {
+                      from: 'settings',
+                      localField: 'shop',
+                      foreignField: 'shop',
+                      as: 'settings'
+                    }
+                  },
+                  {
                     $project: {
                       _id: 1,
                       shop: 1,
@@ -186,7 +187,8 @@ export async function getCollectionMixMatchData (req,res){
                       startdate: 1,
                       endDate: 1,
                       display: 1,
-                      'translations': { '$arrayElemAt': ["$translations", 0] }
+                      'translations': { '$arrayElemAt': ["$translations", 0] },
+                      'settings': { '$arrayElemAt': ["$settings", 0] }
                     }
                   }
                 ],
@@ -207,7 +209,6 @@ export async function getCollectionMixMatchData (req,res){
 
 export async function getCollectionProducts (req,res){
   try{
-    // console.log(req.body)
     const {shop,collectionGid} = req.body ;
     const shopInfos = await shopInfoModel.findOne({shop:shop})
     if(shopInfos){
@@ -216,7 +217,6 @@ export async function getCollectionProducts (req,res){
         accessToken:shopInfos.accessToken
       }});
     
-      // console.log(collectionGid)
       let queryField = 'id: "' + collectionGid + '"'
 
 
@@ -261,7 +261,6 @@ export async function getCollectionProducts (req,res){
       const response = await client.query({
         data: queryString,
       });
-      console.log(response.body.data)
       
       return res.json({message:"success",response:response.body.data.collection})
     }
@@ -277,7 +276,6 @@ export async function getMoreCollectionProducts (req,res){
   try{
 
     const {shop,hasNextPage,gid,nextPageCursor} = req.body ;
-     console.log(req.body)
      if(hasNextPage == true){
       const shopInfos = await shopInfoModel.findOne({shop:shop})
       if(shopInfos){
@@ -331,7 +329,6 @@ export async function getMoreCollectionProducts (req,res){
         const response = await client.query({
           data: queryString,
         });
-        console.log(response.body.data.collection)
         
         return res.json({message:"success",response:response.body.data.collection ,flag:1})
       }
@@ -352,7 +349,6 @@ export async function getMoreCollectionProducts (req,res){
 
 export async function searchCollectionProducts (req,res){
   try{
-        console.log(req.body)
     const {shop,hasNextPage,collectionGid,nextPageCursor,search} = req.body ;
    
     const shopInfos = await shopInfoModel.findOne({shop:shop})
@@ -419,9 +415,7 @@ export async function searchCollectionProducts (req,res){
           }
         })
       })
-      // response.response.products
       
-      //  console.log("arrr",arr)
        return res.json({message:"success",response:arr})
     }
 
@@ -458,7 +452,6 @@ export async function getBundleViews(req,res){
 
 export async function getBundleClick(req,res){
   try {
-    console.log(req.body)
     const objectId = ObjectId(req.body.bundleId);
 
   const bundles =  await analyticsModel.find({bundleId:objectId})

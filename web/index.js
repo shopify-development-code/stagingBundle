@@ -15,6 +15,7 @@ import customizationModel from "./backend/models/customizationSchema.js";
 import shopInfoModel from "./backend/models/shopInfoSchema.js";
 import translationModel from "./backend/models/translationSchema.js";
 import settingModel from "./backend/models/settings.js";
+import { privacyPolicy } from "./backend/controllers/admin/adminController.js";
 const app=express();
 const PORT = parseInt(process.env.BACKEND_PORT || process.env.PORT, 10);
 // DB.connect();
@@ -256,9 +257,10 @@ app.post(
 app.use(express.json());
 // All endpoints after this point will require an active session
 app.use("/api/storefront",api)
+app.get("/api/privacy-policy", privacyPolicy)
+
 app.use("/api/*", shopify.validateAuthenticatedSession());
 app.use("/api",api)
-
 
 
 app.get("/api/products/count", async (_req, res) => {

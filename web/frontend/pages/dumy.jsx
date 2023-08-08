@@ -72,7 +72,6 @@ resourceType="Product"
 open={pmodal}
 selectMultiple={false}
 onSelection={(e) => { e.selection.map((e) => { 
-  // console.log(e)
  }); setPModal(false); }}
 onCancel={handleCancel}
 /> :
@@ -82,7 +81,6 @@ resourceType="Collection"
 open={cmodal}
 selectMultiple={false}
 onSelection={(e) => { e.selection.map((e) => { 
-  // console.log(e)
  }); setCModal(false); }}
 onCancel={handleCancel}
 />
