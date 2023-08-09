@@ -1,7 +1,7 @@
 import React from "react" ;
 import { TextField } from "@shopify/polaris";
 import { handleChangeCommon,handleChangeValueCommon } from "../helperFunctions";
-const ButtonSection=({bundleOption,displayOption,data,setData})=>{
+const ButtonSection=({bundleOption,data,setData})=>{
 
 const handleNoDiscountText=(newvalue)=>{
 setData({...data,[bundleOption]:{...data[bundleOption],button:{...data[bundleOption]["button"],text_noDiscount:newvalue}}})

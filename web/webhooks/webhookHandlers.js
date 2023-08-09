@@ -11,6 +11,7 @@ import translationModel from "../backend/models/translationSchema.js";
 
 export async function verifyWebhooks(req, res) {
   try {
+    console.log("verify webhooks")
     const topic = req.headers["x-shopify-topic"];
     let shop = req.headers["x-shopify-shop-domain"];
     let hmac_header = req.headers["x-shopify-hmac-sha256"];
@@ -339,6 +340,10 @@ export async function verifyWebhooks(req, res) {
         break;
       case "customers/data_request":
         try {
+          const calculated_hmac = crypto
+          .createHmac("sha256", secretKey)
+          .update(req.body)
+          .digest("base64");
           if (calculated_hmac == hmac_header) {
             res.status(200).json("Currently, we are not using customer data");
           } else {
@@ -351,6 +356,10 @@ export async function verifyWebhooks(req, res) {
         break;
       case "customers/redact":
         try {
+          const calculated_hmac = crypto
+          .createHmac("sha256", secretKey)
+          .update(req.body)
+          .digest("base64");
           if (calculated_hmac == hmac_header) {
             res.status(200).json("Currently, we are not using customer data");
           } else {
