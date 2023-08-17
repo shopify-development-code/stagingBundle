@@ -10,7 +10,11 @@ pageId :{
     type:Number
 }
 
+},{
+  timestamps:true
 });
+
+pageDataSchema.index({ shop: 1 });
 
 const pageDataModel = mongoose.model('pageData', pageDataSchema);
 export default pageDataModel ;

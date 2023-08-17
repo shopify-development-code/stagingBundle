@@ -11,7 +11,11 @@ const shopInfoSchema = new mongoose.Schema({
   },
 
 
+},{
+  timestamps:true
 });
 
+
+shopInfoSchema.index({ shop: 1 });
 const shopInfoModel = mongoose.model('shopInfo', shopInfoSchema);
 export default shopInfoModel ;

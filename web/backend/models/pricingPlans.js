@@ -25,5 +25,6 @@ ChargeId :{
     timestamps:true
   });
 
+  pricingPlanSchema.index({ shop: 1 });
 const pricingPlanModel = mongoose.model('pricingPlan', pricingPlanSchema);
 export default pricingPlanModel ;

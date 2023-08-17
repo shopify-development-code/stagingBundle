@@ -207,7 +207,8 @@ export async function getBundle (req,res){
         }
       ],
       { maxTimeMS: 60000, allowDiskUse: true }
-    );
+    )
+  
     if(response){
         return res.status(200).json({message:"success!!",response:response.reverse(), status:200})
         }else{
@@ -398,6 +399,7 @@ return res.status(503).send({message:"something went wrong",status:503})
     const session = res.locals.shopify.session;
     let shop = session.shop;
     const translation = await translationModel.findOne({shop:shop})
+ 
     if(translation){
       return res.status(200).json({message:"success",response : translation,status:200})
     }else{
@@ -468,6 +470,7 @@ return res.status(503).send({message:"something went wrong",status:503})
       const session = res.locals.shopify.session;
       let shop = session.shop;
       const response = await customizationModel.findOne({shop})
+    
       if(response){
        return res.status(200).json({message:"success",response:response,status:200})
       }else{

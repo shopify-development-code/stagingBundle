@@ -22,7 +22,11 @@ const analyticsSchema = new mongoose.Schema({
     type:Number
   }
 
+},{
+  timestamps:true
 });
+
+analyticsSchema.index({ shop: 1 })
 
 const analyticsModel = mongoose.model('analytics', analyticsSchema);
 export default analyticsModel ;

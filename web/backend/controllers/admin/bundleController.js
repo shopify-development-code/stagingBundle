@@ -18,7 +18,7 @@ export async function createRule(req,res){
     const totalPrice = req.body.totalPrice
     const discountId = req.body.discountCreateId
     let quantityItem = variantsId.length
-    
+    console.log(req.body)
     const shopInfo = await shopInfoModel.findOne({shop})
     const client = new shopify.api.clients.Graphql({ session:  {
       shop:shop,

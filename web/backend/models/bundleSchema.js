@@ -41,5 +41,15 @@ const bundleSchema = new mongoose.Schema({
   timestamps:true
 });
 
+
+bundleSchema.index({ shop: 1, status:1 },function(err, result) {
+  if(err) {
+     console.log(err);
+
+  } else {
+    console.log(result);
+ } 
+});
+
 const bundleModel = mongoose.model('bundleData', bundleSchema);
 export default bundleModel ;

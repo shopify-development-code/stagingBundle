@@ -9,8 +9,11 @@ const settingSchema = new mongoose.Schema({
    discountLabel:{
     type:String
    }
-
+},{
+  timestamps:true
 });
+
+settingSchema.index({ shop: 1 });
 
 const settingModel = mongoose.model('settings', settingSchema);
 export default settingModel ;

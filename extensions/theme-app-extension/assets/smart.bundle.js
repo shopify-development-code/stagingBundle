@@ -1,3 +1,4 @@
+
 let server = "https://smartbundle.shinedezigninfotech.com";
 let smartNoImg = `data:image/png;base64,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`;
 console.log("Smart Bundle Discount app")
@@ -126,7 +127,7 @@ async function getData() {
       if (dataArray.length) {
         createDiscountName(dataArray);
       }
-
+         console.log(dataArray)
       createBundle(dataArray);
       let bundleId = [];
       dataArray.forEach((id) => {
@@ -634,7 +635,6 @@ function createBundle(BUNDLE_DATA) {
         ADD_TO_CART_BUTTON.innerText =
           el.translations.translation.addToCartButton;
         // sd-bundle-volume-addtocart-btn
-
         ADD_TO_CART_BTN_DIV.append(ADD_TO_CART_BUTTON);
         ADD_TO_CART_BUTTON.addEventListener("click", (e) => {
           let code = JSON.parse(localStorage.getItem("sd_bundle_data"));
@@ -780,7 +780,7 @@ function createBundle(BUNDLE_DATA) {
                           : "Fix";
                       let sd_bundle_data = {
                         discount_name: el.name,
-                        code: el.settings.discountlabel + "-" + code.code,
+                        code: `${el.settings.discountLabel}-${code.code}`,
                         discountType: isDiscount,
                         discountValue: finalPrice,
                         variantsId: mergedGidArray,
@@ -3097,17 +3097,21 @@ async function addDiscountToProduct() {
           if (allIdsMatch == true) {
             /*here are true id match */
             activateRule(localData);
-            let productVariantIds = response.items.map((obj) => {
-              return `${obj.id}:${obj.quantity}`;
-            });
-            const attributes_url = Object.entries(response.attributes)
-              .map(
-                ([key, value]) =>
-                  `attributes[${key}]=${encodeURIComponent(value)}`
-              )
-              .join("&");
+            // let productVariantIds = response.items.map((obj) => {
+            //   return `${obj.id}:${obj.quantity}`;
+            // });
+            // const attributes_url = Object.entries(response.attributes)
+            //   .map(
+            //     ([key, value]) =>
+            //       `attributes[${key}]=${encodeURIComponent(value)}`
+            //   )
+            //   .join("&");
 
-            window.location.href = `${window.location.origin}/cart/${productVariantIds}?discount=${localData.prefixCode}-${localData.code}&${attributes_url}`;
+            // window.location.href = `${window.location.origin}/cart/${productVariantIds}?discount=${localData.prefixCode}-${localData.code}&${attributes_url}`;
+
+            window.location.href = `${window.location.origin}/checkout?discount=${localData.prefixCode}-${localData.code}`;
+            
+            
           } else {
             /*here are false id match */
             deactivateRule(localData);
@@ -3145,7 +3149,7 @@ async function activateRule(localData) {
         inputElement.id = "shineBundleDiscount";
         inputElement.type = "hidden";
         inputElement.name = "discount";
-        inputElement.value = localData.code;
+        inputElement.value = `${localData.prefixCode}-${localData.code}`;
         let formDiv = document.querySelectorAll('form[action="/cart"]');
         formDiv.forEach((form) => {
           form.append(inputElement);

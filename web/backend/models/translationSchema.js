@@ -12,6 +12,7 @@ const translationSchema = new mongoose.Schema({
 
 
 });
+translationSchema.index({ shop: 1 });
 
 const translationModel = mongoose.model('translation', translationSchema);
 export default translationModel ;

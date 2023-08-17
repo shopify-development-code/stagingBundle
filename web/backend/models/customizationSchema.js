@@ -19,7 +19,9 @@ const customizationSchema = new mongoose.Schema({
     type:Object
   }
 
+},{
+  timestamps:true
 });
-
+customizationSchema.index({ shop: 1 });
 const customizationModel = mongoose.model('customization', customizationSchema);
 export default customizationModel ;
