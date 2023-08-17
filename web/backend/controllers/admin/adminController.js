@@ -190,23 +190,23 @@ export async function getBundle (req,res){
         {
           $project: {
             _id: 1,
-            shop: 1,
+            // shop: 1,
             type: 1,
             name: 1,
-            title: 1,
+            // title: 1,
             status: 1,
             currencyCode: 1,
             bundleDetail: 1,
-            startdate: 1,
-            endDate: 1,
-            timeZone: 1,
+            // startdate: 1,
+            // endDate: 1,
+            // timeZone: 1,
             analytics: {
               $arrayElemAt: ['$analytics', 0]
             }
           }
         }
       ],
-      { maxTimeMS: 60000, allowDiskUse: true }
+      // { maxTimeMS: 60000, allowDiskUse: true }
     )
   
     if(response){

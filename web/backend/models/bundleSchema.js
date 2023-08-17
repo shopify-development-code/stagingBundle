@@ -42,7 +42,7 @@ const bundleSchema = new mongoose.Schema({
 });
 
 
-bundleSchema.index({ shop: 1, status:1 },function(err, result) {
+bundleSchema.index({ shop: 1 },function(err, result) {
   if(err) {
      console.log(err);
 
