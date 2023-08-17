@@ -240,13 +240,11 @@ useState(()=>{
     
 
   useEffect(() => {
-    const fullPage = sessionStorage.getItem("full_screen");
-
-
-    if (fullPage == "enter") {
+ 
+ 
       fullscreen.dispatch(Fullscreen.Action.ENTER);
       setFullScreen(true);
-    }
+    
   }, []);
 
   useEffect(() => {
@@ -277,17 +275,14 @@ useState(()=>{
   // ) : null;
 
   const handleFullScreen = () => {
-    const fullPage = sessionStorage.getItem("full_screen");
-    // const fullscreen = Fullscreen.create(app);
-    if (fullPage == "enter") {
-      sessionStorage.setItem("full_screen", "exit");
-      fullscreen.dispatch(Fullscreen.Action.EXIT);
-      setFullScreen(false);
-    } else {
-      sessionStorage.setItem("full_screen", "enter");
-      fullscreen.dispatch(Fullscreen.Action.ENTER);
-      setFullScreen(true);
-    }
+    setFullScreen(!fullScreen);
+      if(fullScreen){
+        fullscreen.dispatch(Fullscreen.Action.EXIT)
+      } else{
+        fullscreen.dispatch(Fullscreen.Action.ENTER);
+      }
+  
+  
   };
 
   const userMenuMarkup = (

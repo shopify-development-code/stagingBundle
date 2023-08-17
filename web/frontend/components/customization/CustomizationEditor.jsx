@@ -218,6 +218,7 @@ const CustomizationEditor = (props) => {
               {/* <option className="option" value="popUp">
               Pop Up
             </option> */}
+            
             </select>
           </div>
           <Button onClick={handleCustomizeSave}>Save</Button>

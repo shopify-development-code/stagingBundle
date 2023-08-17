@@ -1,6 +1,8 @@
+import React,{Suspense} from "react";
 import { BrowserRouter } from "react-router-dom";
-import { NavigationMenu } from "@shopify/app-bridge-react";
-import Routes from "./Routes";
+const Routes = React.lazy(() => import('./Routes'));
+import BoatLoader from "./components/BoatLoader";
+// import Routes from "./Routes";
 import "./components/responsive.css"
 import "./components/style.css"
 
@@ -19,16 +21,20 @@ export default function App() {
   const pages = import.meta.globEager("./pages/**/!(*.test.[jt]sx)*.([jt]sx)");
 
   return (
-    <PolarisProvider>
+    <Suspense fallback={<div className="sd-bundle-lazy-loading"><BoatLoader/></div>}>
+      <PolarisProvider>
       <BrowserRouter>
         <AppBridgeProvider>
           <QueryProvider>
           <ContextProvider>
+            
             <Routes pages={pages} />
             </ContextProvider>
           </QueryProvider>
         </AppBridgeProvider>
       </BrowserRouter>
     </PolarisProvider>
+            </Suspense>
+
   );
 }

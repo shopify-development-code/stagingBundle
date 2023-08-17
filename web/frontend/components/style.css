@@ -2395,3 +2395,9 @@ nav.Polaris-Navigation {
   top: 2px;
   right: 4px;
 }
+
+.sd-bundle-lazy-loading{
+  position: fixed;
+  top: 40%;
+  left: 50%;
+}
