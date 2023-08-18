@@ -1156,6 +1156,8 @@ input[type="radio"] {
 
 .sd-info-variants-data {
   width: 100%;
+  max-height: 170px;
+  overflow-y: auto;
 }
 
 .sd-bundle-hide-click {
