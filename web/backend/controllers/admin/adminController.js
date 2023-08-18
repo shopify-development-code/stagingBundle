@@ -172,42 +172,68 @@ export async function getBundle (req,res){
    try {
     const session = res.locals.shopify.session;
     let shop = session.shop;
-    const response = await bundleModel.aggregate(
-      [
-        {
-          $match: {
-            shop: shop
-          }
-        },
-        {
-          $lookup: {
-            from: 'analytics',
-            localField: '_id',
-            foreignField: 'bundleId',
-            as: 'analytics'
-          }
-        },
-        {
-          $project: {
-            _id: 1,
-            // shop: 1,
-            type: 1,
-            name: 1,
-            // title: 1,
-            status: 1,
-            currencyCode: 1,
-            bundleDetail: 1,
-            // startdate: 1,
-            // endDate: 1,
-            // timeZone: 1,
-            analytics: {
-              $arrayElemAt: ['$analytics', 0]
-            }
-          }
+    // const response = await bundleModel.aggregate(
+    //   [
+    //     {
+    //       $match: {
+    //         shop: shop
+    //       }
+    //     },
+    //     {
+    //       $lookup: {
+    //         from: 'analytics',
+    //         localField: '_id',
+    //         foreignField: 'bundleId',
+    //         as: 'analytics'
+    //       }
+    //     },
+    //     {
+    //       $project: {
+    //         _id: 1,
+    //         type: 1,
+    //         name: 1,
+    //         status: 1,
+    //         currencyCode: 1,
+    //         bundleDetail: 1,
+    //         analytics: {
+    //           $arrayElemAt: ['$analytics', 0]
+    //         }
+    //       }
+    //     }
+    //   ],
+
+    // )
+
+    const response = await bundleModel.aggregate([
+      {
+        $match: { shop: shop }
+      },
+      {
+        $project: {
+          _id: 1,
+          type: 1,
+          name: 1,
+          status: 1,
+          currencyCode: 1,
+          bundleDetail: 1
         }
-      ],
-      // { maxTimeMS: 60000, allowDiskUse: true }
-    )
+      },
+      {
+        $lookup: {
+          from: 'analytics',
+          localField: '_id',
+          foreignField: 'bundleId',
+          as: 'analytics'
+        }
+      },
+      {
+        $addFields: {
+          analytics: { $arrayElemAt: ['$analytics', 0] }
+        }
+      }
+    ]);
+    
+    // console.log(response)
   
     if(response){
         return res.status(200).json({message:"success!!",response:response.reverse(), status:200})
@@ -216,17 +242,17 @@ export async function getBundle (req,res){
         }
    }   catch(error){
     console.error(`Error: ${error.message}`);
-    if (error.code === 'ETIMEDOUT' && retries < MAX_RETRIES)  {
-        console.log(`Operation timed out, retrying... (attempt ${retries + 1} of ${MAX_RETRIES})`);
-        retries++;
-        await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for 1 second before retrying
-        return myOperation(); // Retry the operation
+    // if (error.code === 'ETIMEDOUT' && retries < MAX_RETRIES)  {
+    //     console.log(`Operation timed out, retrying... (attempt ${retries + 1} of ${MAX_RETRIES})`);
+    //     retries++;
+    //     await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for 1 second before retrying
+    //     return myOperation(); // Retry the operation
     
-    } else {
-      // Gracefully terminate the application
-      console.log('Fatal error occurred, terminating application.');
-      process.exit(1);
-    }
+    // } else {
+    //   // Gracefully terminate the application
+    //   console.log('Fatal error occurred, terminating application.');
+    //   process.exit(1);
+    // }
 }
 }
 

@@ -42,14 +42,16 @@ const bundleSchema = new mongoose.Schema({
 });
 
 
-bundleSchema.index({ shop: 1 },function(err, result) {
-  if(err) {
-     console.log(err);
+bundleSchema.index({ shop: 1 });
 
-  } else {
-    console.log(result);
- } 
+bundleSchema.index({
+  shop: 1,
+  type: 1,
+  name: 1,
+  status: 1,
+  currencyCode: 1,
 });
+  
 
 const bundleModel = mongoose.model('bundleData', bundleSchema);
 export default bundleModel ;

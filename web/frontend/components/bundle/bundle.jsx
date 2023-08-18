@@ -358,12 +358,12 @@ return check;
     //     { value: 'active', label: 'Active' },
     //     { value: 'draft', label: 'Draft' },
 
-    //   ]}
+  //   ]}
     //   onChange={(e)=>handleUpdateStatus(e,item._id)}
     // />
     // </div>,
 
-    type: item.type,
+    type: item.type == "productBundle" ? "Product Bundle" : item.type == "volumeBundle" ? "Volume Bundle" : item.type == "collectionMixMatch" ? "Collection Mix & Match" : "",
     performance: item.analytics.bundleSold+" " +"Sold" ,
   }));
 
@@ -477,7 +477,7 @@ return check;
         />
       </div>
     ),
-    type: item.type,
+    type: item.type == "productBundle" ? "Product Bundle" : item.type == "volumeBundle" ? "Volume Bundle" : item.type == "collectionMixMatch" ? "Collection Mix & Match" : "",
     performance: item.analytics.bundleSold +" "+ "Sold",
   }));
 
@@ -592,7 +592,7 @@ return check;
         />
       </div>
     ),
-    type: item.type,
+    type: item.type == "productBundle" ? "Product Bundle" : item.type == "volumeBundle" ? "Volume Bundle" : item.type == "collectionMixMatch" ? "Collection Mix & Match" : "",
     performance: item.analytics.bundleSold +" "+ "Sold",
   }));
 

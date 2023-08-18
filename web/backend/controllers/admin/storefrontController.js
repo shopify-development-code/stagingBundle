@@ -123,10 +123,8 @@ export async function getPage (req,res){
    
     if(page){
         const getId = await pageDataModel.findOne({shop:shop})
- 
         if(getId !== null ){
-
-          const filter = page.filter((e)=>e.id == getId.pageId)
+          const filter = page.data.filter((e)=>e.id == getId.pageId)
           if(filter.length){
             return res.status(200).send({message :"success",data:filter[0],status:200})
           }else{
