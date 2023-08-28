@@ -98,18 +98,15 @@ export async function verifyWebhooks(req, res) {
               bulkOps.push(variantUpdateOp);
             });
             // Perform the bulkWrite operation
-            await bundleModel
-            .bulkWrite(bulkOps)
-            .then((res) =>{
-              res.status(200).json("success");
-              }).catch((err) =>{
-              res.status(200).json("error during product delete");
-              });
+            await bundleModel.bulkWrite(bulkOps)
+           
+              res.status(200).send("success");
+              
           } else {
-            res.status(401).json("Unauthorized access");
+            res.status(401).send("Unauthorized access");
           }
         } catch (err) {
-          res.status(401).json("Unauthorized access");
+          res.status(401).send("Unauthorized access");
         }
         break;
       case "products/delete":
@@ -123,7 +120,7 @@ export async function verifyWebhooks(req, res) {
 
             let id = "gid://shopify/Product/" + responseWebhook.id;
 
-            bundleModel
+           await bundleModel
               .updateMany(
                 {
                   shop: shop,
@@ -138,18 +135,15 @@ export async function verifyWebhooks(req, res) {
                   },
                 }
               )
-              .then((response) =>{
-                res.status(200).json("success");
-              })
-              .catch((err) =>{
-                res.status(200).json("error during product delete");
-              });
+          
+                res.status(200).send("success");
+             
 
           } else {
-            res.status(401).json("Unauthorized access");
+            res.status(401).send("Unauthorized access");
           }
         } catch (error) {
-          res.status(401).json("Unauthorized access");
+          res.status(401).send("Unauthorized access");
 
         }
         break;
@@ -162,12 +156,13 @@ export async function verifyWebhooks(req, res) {
           if (calculated_hmac == hmac_header) {
             // console.log(req.body)
             const bodyData = JSON.parse(req.body);
-            console.log(" orders  webhook", bodyData);
+            // console.log(" orders  webhook", bodyData);
+
             const bundleId = bodyData?.note_attributes?.filter(
               (name) => name.name == "SD_BUNDLE_ID"
             );
 
-            if (bundleId[0].value !== "-") {
+            if (bundleId[0].value !== "") {
               console.log(" orders  webhook", bodyData);
               let price = parseInt(bodyData.current_total_price);
               const filter = {
@@ -179,19 +174,15 @@ export async function verifyWebhooks(req, res) {
                   bundleSalesValue: price,
                 },
               };
-               analyticsModel.updateOne(filter, update).then((response)=>{
-                res.status(200).json("success");
-
-               }).catch((error)=>{
-                res.status(200).json("error during order create");
-
-               })
+            await analyticsModel.updateOne(filter, update)
+                res.status(200).send("success");         
             }
           } else {
-            res.status(401).json("Unauthorized access");
+        
+            res.status(401).send("Unauthorized access");
           }
         } catch (err) {
-          res.status(401).json("Unauthorized access");
+          res.status(401).send("Unauthorized access");
         }
 
         break;
@@ -206,7 +197,7 @@ export async function verifyWebhooks(req, res) {
             console.log(responseWebhook);
             let id = "gid://shopify/Collection/" + responseWebhook.id;
 
-            bundleModel
+           await bundleModel
               .updateMany(
                 {
                   shop: shop,
@@ -222,20 +213,16 @@ export async function verifyWebhooks(req, res) {
                 
                 }
               )
-              .then((response) => {
+            
 
-                res.status(200).json("success");
-              })
-              .catch((err) => {
-                res.status(200).json("error during collection delete");
-
-              });
+                res.status(200).send("success");
+             
 
           } else {
-            res.status(401).json("Unauthorized access");
+            res.status(401).send("Unauthorized access");
           }
         } catch (error) {
-          res.status(401).json("Unauthorized access");
+          res.status(401).send("Unauthorized access");
           
         }
         break;
@@ -249,7 +236,7 @@ export async function verifyWebhooks(req, res) {
             const responseWebhook = JSON.parse(req.body);
             console.log(responseWebhook);
             let id = "gid://shopify/Collection/" + responseWebhook.id;
-            bundleModel
+           await bundleModel
               .updateMany(
                 {
                   shop: shop,
@@ -269,17 +256,14 @@ export async function verifyWebhooks(req, res) {
             
                 }
               )
-              .then((response) =>{
-                res.status(200).json("success");
-              }).catch((err) =>{
-                res.status(200).json("error during collection update");
-
-              });
+           
+                res.status(200).send("success");
+             
           } else {
-            res.status(401).json("Unauthorized access");
+            res.status(401).send("Unauthorized access");
           }
         } catch (error) {
-          res.status(401).json("Unauthorized access");
+          res.status(401).send("Unauthorized access");
 
         }
         break;
@@ -298,18 +282,15 @@ export async function verifyWebhooks(req, res) {
             deletionPromises.push(settingModel.deleteOne({ shop: shop }));
             deletionPromises.push(translationModel.deleteOne({ shop: shop }));
               
-                      Promise.all(deletionPromises)
-                      .then(() => {
-                        res.status(200).json("success");
-                      })
-                      .catch((err) => {
-                        res.status(200).json("Error during data deletion");
-                      });
+                    await  Promise.all(deletionPromises)
+                     
+                        res.status(200).send("success");
+                     
           } else {
-            res.status(401).json("Unauthorized access");
+            res.status(401).send("Unauthorized access");
           }
         } catch (error) {
-          res.status(401).json("Unauthorized access");
+          res.status(401).send("Unauthorized access");
            
         }
         break;
@@ -320,21 +301,18 @@ export async function verifyWebhooks(req, res) {
             .update(req.body)
             .digest("base64");
           if (calculated_hmac == hmac_header) {
-            await shopInfoModel
-              .deleteOne({ shop: shop })
-              .then((response) => {
-                res.status(200).json("success");
-              })
-              .catch((err) => {
-                res.status(200).json("error during shop info delete");
-              });
+            await shopInfoModel.deleteOne({ shop: shop })
+           
+                res.status(200).send("success");
+              
+             
 
            
           } else {
-            res.status(401).json("Unauthorized access");
+            res.status(401).send("Unauthorized access");
           }
         } catch (error) {
-          res.status(401).json("Unauthorized access");
+          res.status(401).send("Unauthorized access");
 
         }
         break;
@@ -345,12 +323,12 @@ export async function verifyWebhooks(req, res) {
           .update(req.body)
           .digest("base64");
           if (calculated_hmac == hmac_header) {
-            res.status(200).json("Currently, we are not using customer data");
+            res.status(200).send("Currently, we are not using customer data");
           } else {
-            res.status(401).json("Unauthorized access");
+            res.status(401).send("Unauthorized access");
           }
         } catch (error) {
-          res.status(401).json("Unauthorized access");
+          res.status(401).send("Unauthorized access");
 
         }
         break;
@@ -361,12 +339,12 @@ export async function verifyWebhooks(req, res) {
           .update(req.body)
           .digest("base64");
           if (calculated_hmac == hmac_header) {
-            res.status(200).json("Currently, we are not using customer data");
+            res.status(200).send("Currently, we are not using customer data");
           } else {
-            res.status(401).json("Unauthorized access");
+            res.status(401).send("Unauthorized access");
           }
         } catch (error) {
-          res.status(401).json("Unauthorized access");
+          res.status(401).send("Unauthorized access");
 
         }
         break;
@@ -374,6 +352,7 @@ export async function verifyWebhooks(req, res) {
         break;
     }
   } catch (err) {
+
     res.status(401).send("Unauthorized Access");
   }
   res.end();

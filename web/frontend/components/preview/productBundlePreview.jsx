@@ -13,6 +13,7 @@ import pic from "../../assets/image2.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import { Thumbnail } from "@shopify/polaris";
+import { showAmountWithCurrency } from "../showCurrencyFormat";
 const ProductBundlePreview = ({
   data,
   currency,
@@ -183,10 +184,17 @@ const ProductBundlePreview = ({
                                 .fontSize + "px",
                           }}
                         >
-                          {currency}{" "}
+                          {/* {currency}{" "}
                           {showPrice[mainindex]
                             ? showPrice[mainindex]
-                            : item.variants[0]?.price}
+                            : item.variants[0]?.price} */}
+                            
+                           {
+                           showPrice[mainindex]?
+                           showAmountWithCurrency(showPrice[mainindex],currency)
+                           :
+                           showAmountWithCurrency(item.variants[0]?.price,currency)
+            }
                         </div>
                       </div>
                     </div>
@@ -350,7 +358,8 @@ const ProductBundlePreview = ({
                       }}
                     >
                       <del>
-                        {currency} {mrp}{" "}
+                        {/* {currency} {mrp}{" "} */}
+                        {showAmountWithCurrency(mrp,currency)}
                       </del>
                     </span>
                   )}
@@ -365,7 +374,8 @@ const ProductBundlePreview = ({
                           .fontSize + "px",
                     }}
                   >
-                    {currency} {endPrice}
+                    {/* {currency} {endPrice} */}
+                   { showAmountWithCurrency(endPrice,currency)}
                   </span>
                 </div>
               </div>

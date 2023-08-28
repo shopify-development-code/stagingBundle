@@ -17,9 +17,9 @@ const APIContext = createContext();
   let data= await postApi("api/admin/getCurrencyCode",{},app)
     let codeCurrency=data?.data?.data?.currencyFormats.moneyFormat;
     let shopTimeZone = data?.data?.data?.ianaTimezone;
-    let moneyFormat = codeCurrency.replace(/\{\{amount\}\}/g, '');
-
-    setCurrencyCode(moneyFormat)
+    // let moneyFormat = codeCurrency.replace(/{{.*?}}/g, "");
+    console.log(codeCurrency)
+    setCurrencyCode(codeCurrency)
     setTimeZone(shopTimeZone)
   }
   

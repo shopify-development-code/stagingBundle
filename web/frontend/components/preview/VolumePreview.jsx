@@ -9,6 +9,7 @@ import {
   MinusOutlined,
 } from "@ant-design/icons";
 import { Button ,Tooltip} from "antd";
+import { showAmountWithCurrency } from "../showCurrencyFormat";
 const VolumePreview = ({ data,sumData,endPriceData,handleVariantChoice,showPrice,currency}) => {
   const [selected, setSelected] = useState(0);
   const [quantity, setQuantity] = useState(2);
@@ -164,7 +165,11 @@ const VolumePreview = ({ data,sumData,endPriceData,handleVariantChoice,showPrice
               }}
             >
               
-              <span>Save {currency} {(sumData[index]-endPriceData[index]).toFixed(2)}</span> 
+              <span>
+                {/* Save {currency} {(sumData[index]-endPriceData[index]).toFixed(2)} */}
+                Save {" "}
+                {showAmountWithCurrency((sumData[index]-endPriceData[index]).toFixed(2),currency)}
+                </span> 
             
               <span> 
                 
@@ -226,11 +231,11 @@ const VolumePreview = ({ data,sumData,endPriceData,handleVariantChoice,showPrice
                       }}
                     >
                       {
-                        data.bundleDetail.discountedProductType=="all_products" || data.bundleDetail.discountedProductType=="collection" ? currency +" 50" 
+                        data.bundleDetail.discountedProductType=="all_products" || data.bundleDetail.discountedProductType=="collection" ? showAmountWithCurrency("50",currency )
                       :
                       showPrice[index]
-                  ? showPrice[index]
-                  : data.bundleDetail.products[0]?.variants[0] ?.price}
+                  ? showAmountWithCurrency(showPrice[index],currency)
+                  : showAmountWithCurrency(data.bundleDetail.products[0]?.variants[0] ?.price,currency)}
                      
                     </div>
                      {index==data.bundleDetail.discountOptions.length-1 && data.bundleDetail.allowDiscountOnIncrease ==true &&
@@ -375,7 +380,7 @@ const VolumePreview = ({ data,sumData,endPriceData,handleVariantChoice,showPrice
                     .fontSize + "px",
               }}
             >
-              <del> {currency} {sumData[selected]}</del>
+              <del> {showAmountWithCurrency(sumData[selected],currency)}</del>
             </span>
             <span
               className="sd-bundle-real-price"
@@ -387,7 +392,8 @@ const VolumePreview = ({ data,sumData,endPriceData,handleVariantChoice,showPrice
                     .fontSize + "px",
               }}
             >
-              {currency} {endPriceData[selected]}
+              
+              {showAmountWithCurrency(endPriceData[selected],currency)}
             </span>
           </div>
         </div>

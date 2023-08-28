@@ -56,7 +56,7 @@ const DiscountOptions=(props)=>{
             label="set value for discount"
             // placeholder="set minimum order  for item"
             onChange={props.handleDiscountValue}
-            suffix={props.currency}
+            suffix={props.currency.replace(/{{.*?}}/g, "") }
             value={props.discountValue}
             autoComplete="off"
             min="0"
@@ -84,7 +84,7 @@ const DiscountOptions=(props)=>{
               label="set Price for discount"
               // placeholder="set minimum order  for item"
               onChange={props.handleDiscountValue}
-              suffix={props.currency}
+              suffix={props.currency.replace(/{{.*?}}/g, "")}
               value={props.discountValue}
               autoComplete="off"
               min="0"

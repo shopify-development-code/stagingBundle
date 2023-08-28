@@ -7,7 +7,7 @@ import { Icon, Thumbnail } from "@shopify/polaris";
 import { Button } from '@shopify/polaris'
 import { useAPI } from '../components/shop'
 import noProductImg from "../assets/NoProductImage.png"
-
+import { showAmountWithCurrency } from '../components/showCurrencyFormat'
 import {AnalyticsMajor,QuickSaleMajor,BehaviorMajor,ViewMajor} from '@shopify/polaris-icons';
 const Analytics = () => {
 
@@ -114,7 +114,10 @@ status:(
   /> */}
 </div>
 ),
-salesValue:(<div className='sd-analytics-salesValues-div'>{currencyCode}{item.analytics.bundleSalesValue}</div>),
+salesValue:(<div className='sd-analytics-salesValues-div'>
+  {/* {currencyCode}{item.analytics.bundleSalesValue} */}
+  {showAmountWithCurrency(item.analytics.bundleSalesValue,currencyCode)}
+  </div>),
 SalesNumber:(<div className='sd-analytics-salesNumber-div'>{item.analytics.bundleSold}</div>),
 Clicks:(<div className='sd-analytics-click-div'>{item.analytics.bundleClick}</div>),
 Views:(<div className='sd-analytics-views-div'>{item.analytics.bundleViews}</div>)
@@ -191,7 +194,9 @@ Views:(<div className='sd-analytics-views-div'>{item.analytics.bundleViews}</div
               <div className='sd-bundle-card-inner-main'>
               <div className='sd-bundle-card-inner-content'>
               <h3>Sales value on bundles</h3>
-              <p> {currencyCode} {salesValue} </p>
+              <p>
+              {showAmountWithCurrency(salesValue,currencyCode)}
+               </p>
               </div>
               <div className='sd-bundle-card-inner-icon'>
               <Icon

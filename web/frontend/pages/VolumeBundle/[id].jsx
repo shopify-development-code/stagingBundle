@@ -959,10 +959,10 @@ function getPreviewData(response){
                             value: "price",
                             label: "Set Price",
                           },
-                          {
-                            value: "freeShipping",
-                            label: "Free Shipping",
-                          },
+                          // {
+                          //   value: "freeShipping",
+                          //   label: "Free Shipping",
+                          // },
                           {
                             value: "noDiscount",
                             label: "No Discount",
