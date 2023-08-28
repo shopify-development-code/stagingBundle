@@ -1,7 +1,8 @@
 
 
 export function showAmountWithCurrency(value,currency) {
-    console.log(value)
+
+    let stringValue = value.toString()
     let moneyFormat = currency;
     let sdCurrencyFormatcondition;
     if (moneyFormat.includes("{{amount_no_decimals}}")) {
@@ -21,28 +22,37 @@ export function showAmountWithCurrency(value,currency) {
    let sdCurrencyprice ;
     switch (sdCurrencyFormatcondition) {
         case "amount":
-       sdCurrencyprice = moneyFormat.replace("{{amount}}",value);
+       sdCurrencyprice = moneyFormat.replace("{{amount}}",stringValue);
            break;
         case "amount_with_comma_separator":
-        let comma_seperator = value.replace(".",",")
-        sdCurrencyprice = moneyFormat.replace("{{amount_with_comma_separator}}",comma_seperator);
+            if(stringValue.indexOf('.') > 0){
+                let comma_seperator = stringValue.replace(".",",")
+                sdCurrencyprice = moneyFormat.replace("{{amount_with_comma_separator}}",comma_seperator);
+            }else{
+                sdCurrencyprice = moneyFormat.replace("{{amount_with_comma_separator}}",stringValue);
+            }
             break;
         case "amount_no_decimals_with_space_separator":
-        let noDecimalwithSpace = parseInt(value);
+        let noDecimalwithSpace = parseInt(stringValue);
         sdCurrencyprice = moneyFormat.replace("{{amount_no_decimals_with_space_separator}}",noDecimalwithSpace);
             break;
         case "amount_no_decimals":
-        let noDecimal = parseInt(value);
+        let noDecimal = parseInt(stringValue);
         sdCurrencyprice = moneyFormat.replace("{{amount_no_decimals}}",noDecimal);
             break;
         case "amount_no_decimals_with_comma_separator":
-        let noDecimalwithComma = parseInt(value);
+        let noDecimalwithComma = parseInt(stringValue);
 
           sdCurrencyprice = moneyFormat.replace("{{amount_no_decimals_with_comma_separator}}",noDecimalwithComma);
             break;
         case "amount_with_space_separator":
-          let Space_comma_seperator = value.replace(".",",")
+            if(stringValue.indexOf('.') > 0){
+          let Space_comma_seperator = stringValue.replace(".",",")
         sdCurrencyprice = moneyFormat.replace("{{amount_with_space_separator}}",Space_comma_seperator);
+            }else{
+        sdCurrencyprice = moneyFormat.replace("{{amount_with_space_separator}}",stringValue);
+
+            }
             break;
         default:
             // code block
