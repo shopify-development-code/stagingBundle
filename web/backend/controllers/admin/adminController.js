@@ -285,6 +285,7 @@ export async function updateStatus (req,res){
 
 export async function getCurrencyCode(req,res){
    try{
+
      let session =res.locals.shopify.session;
       const client = new shopify.api.clients.Graphql({ session });
       let queryString =`{

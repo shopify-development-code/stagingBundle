@@ -1,9 +1,10 @@
-import React, { useContext, useState, createContext,useEffect } from "react";
+import React, { useContext, useState, createContext } from "react";
 import postApi from "./postApi";
 import { useAppBridge } from "@shopify/app-bridge-react";
 const APIContext = createContext();
 
  function ContextProvider({ children }) {
+
    const [currency,setCurrency]=useState("") ;
    const [currencyCode,setCurrencyCode]=useState("") ;
    const [timeZone,setTimeZone] = useState("")
@@ -14,16 +15,18 @@ const APIContext = createContext();
 
   async function getCurrencyCode(){
                  
-  let data= await postApi("api/admin/getCurrencyCode",{},app)
+  let data= await postApi("/api/admin/getCurrencyCode",{},app)
+
     let codeCurrency=data?.data?.data?.currencyFormats.moneyFormat;
     let shopTimeZone = data?.data?.data?.ianaTimezone;
     // let moneyFormat = codeCurrency.replace(/{{.*?}}/g, "");
-    console.log(codeCurrency)
+  
     setCurrencyCode(codeCurrency)
     setTimeZone(shopTimeZone)
   }
-  
-  getCurrencyCode(currencyCode)
+ 
+
+    getCurrencyCode()
 
   async function getThemeId () {
 
@@ -35,6 +38,7 @@ const APIContext = createContext();
   }
   }
   getThemeId()
+ 
   return (
 
     <APIContext.Provider value={{ shop: getShop,timeZone:timeZone,app:app,currencyCode:currencyCode,themeId:themeId}}>

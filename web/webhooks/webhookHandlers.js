@@ -163,7 +163,7 @@ export async function verifyWebhooks(req, res) {
             );
 
             if (bundleId[0].value !== "") {
-              console.log(" orders  webhook", bodyData);
+         
               let price = parseInt(bodyData.current_total_price);
               const filter = {
                 bundleId: ObjectId(bundleId[0].value),
@@ -234,7 +234,7 @@ export async function verifyWebhooks(req, res) {
             .digest("base64");
           if (calculated_hmac == hmac_header) {
             const responseWebhook = JSON.parse(req.body);
-            console.log(responseWebhook);
+        
             let id = "gid://shopify/Collection/" + responseWebhook.id;
            await bundleModel
               .updateMany(

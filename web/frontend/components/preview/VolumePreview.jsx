@@ -125,7 +125,7 @@ const VolumePreview = ({ data,sumData,endPriceData,handleVariantChoice,showPrice
                   <span>
                     {item.type == "fixed" ||
                     item.type == "price"
-                      ? currency + " "
+                      ? " "
                       : "" }
                   </span>
                   <span>
@@ -133,7 +133,7 @@ const VolumePreview = ({ data,sumData,endPriceData,handleVariantChoice,showPrice
                       ? item.value
                      
                       : item.type == "price"
-                      ? mrp - item.value
+                      ? ""
                       : null}
                   </span>
                   <span>
@@ -166,8 +166,9 @@ const VolumePreview = ({ data,sumData,endPriceData,handleVariantChoice,showPrice
             >
               
               <span>
-                {/* Save {currency} {(sumData[index]-endPriceData[index]).toFixed(2)} */}
+        
                 Save {" "}
+               
                 {showAmountWithCurrency((sumData[index]-endPriceData[index]).toFixed(2),currency)}
                 </span> 
             
@@ -193,9 +194,9 @@ const VolumePreview = ({ data,sumData,endPriceData,handleVariantChoice,showPrice
               <div className="sd-preview-data-section-common sd-volume-preview-data-section">
                 <div className="sd-bundle-custom-center-imgTitlePrice-wrapper">
                   <div>
-
+               
                         <img
-                      src={data.bundleDetail.discountedProductType == "collection"  ? item?.image ? item?.image?.originalSrc : pic  :  data.bundleDetail.discountedProductType == "all_products" ?  pic  : item?.images ? item?.images[0]?.originalSrc : item ?.src ? item ?.src : pic  }
+                      src={data.bundleDetail.discountedProductType == "collection"  ? data.bundleDetail?.products[0]?.image?.originalSrc   :  data.bundleDetail.discountedProductType == "all_products" ?  pic  : data.bundleDetail.discountedProductType == "all_products" ?  pic  : data.bundleDetail.products[0].images ? data.bundleDetail.discountedProductType == "all_products" ?  pic  : data.bundleDetail?.products[0]?.images[0].originalSrc: pic  }
                       style={{
                         borderColor:
                           data.customization[0].volume.productDetails.image
@@ -231,7 +232,7 @@ const VolumePreview = ({ data,sumData,endPriceData,handleVariantChoice,showPrice
                       }}
                     >
                       {
-                        data.bundleDetail.discountedProductType=="all_products" || data.bundleDetail.discountedProductType=="collection" ? showAmountWithCurrency("50",currency )
+                        data.bundleDetail.discountedProductType=="all_products" || data.bundleDetail.discountedProductType=="collection" ? showAmountWithCurrency(50,currency )
                       :
                       showPrice[index]
                   ? showAmountWithCurrency(showPrice[index],currency)
@@ -380,6 +381,7 @@ const VolumePreview = ({ data,sumData,endPriceData,handleVariantChoice,showPrice
                     .fontSize + "px",
               }}
             >
+      
               <del> {showAmountWithCurrency(sumData[selected],currency)}</del>
             </span>
             <span
@@ -392,7 +394,7 @@ const VolumePreview = ({ data,sumData,endPriceData,handleVariantChoice,showPrice
                     .fontSize + "px",
               }}
             >
-              
+             
               {showAmountWithCurrency(endPriceData[selected],currency)}
             </span>
           </div>

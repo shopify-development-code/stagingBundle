@@ -87,7 +87,7 @@ return(
                      
                     </select>
                   </div>
-           {console.log("databundle",data.bundle)}
+     
             <div className="sd-bundle-svg-common" style={{background:data.bundle.productDetails.plusBackgroundColor}}>
               {/* <svg
                 xmlns="http://www.w3.org/2000/svg"

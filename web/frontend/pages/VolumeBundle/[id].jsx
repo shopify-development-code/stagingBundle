@@ -83,24 +83,32 @@ const VolumeBundle = () => {
 
   const getVolumeBundleData = async()=>{
     let body = {id :param.id}
-    setSpinner(true)
+   
 const response = await postApi("/api/admin/editBundle",body,app)
 if(response.status === 200){
+
     setData(response.data.response)
     // setVariantData(response.data.response.bundleDetail.products[0].variants)
-    getPreviewData(response)
+    getPreviewData(response.data.response)
     setSpinner(false)
   
 }
 }
 
 useEffect(() => {
+  setSpinner(true)
 if(param.id !== "create"){
+
+
     getVolumeBundleData()
+} else{
+  setSpinner(false)
 }
 }, [])
 
-function getPreviewData(response){
+
+
+function getPreviewData(data){
   // let priceArray = [];
   //   let sumArray = [];
   //   let endPriceArray = [];
@@ -123,20 +131,23 @@ function getPreviewData(response){
   let priceArray =[];
   let sumArray = [];
   let endPriceArray = [];
-  response.data.response.bundleDetail.discountOptions.map((item,index)=>{
+
+ data.bundleDetail.discountOptions.map((item,index)=>{
+  
     let temp = Array.from({ length: item.quantity }, (x, itemIndex) =>
-        response.data.response.bundleDetail.discountedProductType == "specific_product"
-            ? response.data.response.bundleDetail.products[0]?.variants[0].price
+       data.bundleDetail.discountedProductType == "specific_product"
+            ? data.bundleDetail.products[0]?.variants[0].price
             : 50
         );
         priceArray.push(temp);
         sumArray.push(calculateMrp(temp))
         let finalPrice = 0;
-        if (response.data.response.bundleDetail.discountOptions[index].type == "percent") {
-          if (response.data.response.bundleDetail.discountOptions[index].value > 100) {
+
+        if (data.bundleDetail.discountOptions[index].type == "percent") {
+          if (data.bundleDetail.discountOptions[index].value > 100) {
             finalPrice = 0;
           } else {
-           let discountedPrice =  parseFloat(sumArray[index]) -parseFloat(sumArray[index]) * (response.data.response.bundleDetail.discountOptions[index].value / 100);
+           let discountedPrice =  parseFloat(sumArray[index]) -parseFloat(sumArray[index]) * (data.bundleDetail.discountOptions[index].value / 100);
             finalPrice = discountedPrice ;
           }
         }else if (data.bundleDetail.discountOptions[index]?.type == "fixed") {
@@ -148,12 +159,15 @@ function getPreviewData(response){
               data.bundleDetail.discountOptions[index].value;
           }
         } else if (data.bundleDetail.discountOptions[index]?.type == "price") {
+      
           if (
             data.bundleDetail.discountOptions[index].value >
             parseFloat(sumArray[index])
           ) {
+         
             finalPrice = parseFloat(sumArray[index]);
           } else {
+       
             finalPrice = parseFloat(data.bundleDetail.discountOptions[index].value);
           }
         } else if (
@@ -164,7 +178,7 @@ function getPreviewData(response){
         }
         endPriceArray.push(finalPrice)
       })
-    
+ 
       setPriceData(priceArray)
       setSumData(sumArray)
     setEndPriceData(endPriceArray);
