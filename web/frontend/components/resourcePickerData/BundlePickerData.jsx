@@ -58,7 +58,7 @@ return(
                                 </Button>
                               </span>   
                               {showOutOfStockError(item)  && (
-                                 <div className="sd-bundle-out-of-stock">Out of Stock!</div>)}
+                                 <div className="sd-bundle-out-of-stock">few variants are out of stock.</div>)}
                               
 
                             </div>
