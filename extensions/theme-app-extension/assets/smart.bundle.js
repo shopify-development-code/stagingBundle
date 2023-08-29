@@ -1,6 +1,7 @@
+
 let server = "https://smartbundle.shinedezigninfotech.com";
 let smartNoImg = `data:image/png;base64,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`;
-console.log("Smart Bundle Discount app");
+console.log("Smart Bundle Discount app")
 let productPageClass = document.getElementsByClassName("sd-bundle-app");
 
 if (sdbundlePageType == "product") {
@@ -126,7 +127,7 @@ async function getData() {
       if (dataArray.length) {
         createDiscountName(dataArray);
       }
-    
+        
       createBundle(dataArray);
       let bundleId = [];
       dataArray.forEach((id) => {
@@ -302,10 +303,15 @@ function createBundle(BUNDLE_DATA) {
           DATA_SECTION_PRICE.style.fontSize = `${el.customization.bundle.productDetails.price.fontSize}px`;
           DATA_SECTION_PRICE.className = "sd-bundle-datasection-price";
           DATA_SECTION_PRICE.id = `sd-bundle-datasection-price${index}${bundleIndex}`;
-   
+          // console.log( ele.variants[0].price)
           let covertedPrice = ele.variants[0].price;
-
-          DATA_SECTION_PRICE.innerText = showAmountWithCurrency(covertedPrice);
+         
+          // var newDataSectionPrice = sdCurrencySymbolCode.replace(
+          //   "{{amount}}",
+          //   ele.variants[0].price
+          // );
+          // DATA_SECTION_PRICE.innerText = newDataSectionPrice;
+          DATA_SECTION_PRICE.innerText = showAmountWithCurrency(covertedPrice)
           DATA_SECTION_TITLE_PRICE_DIV.append(
             DATA_SECTION_TITLE,
             DATA_SECTION_PRICE
@@ -437,7 +443,7 @@ function createBundle(BUNDLE_DATA) {
 
                 // let newId = sdCurrencySymbolCode.replace("{{amount}}", id);
                 // priceDiv.innerText = newId;
-                priceDiv.innerText = showAmountWithCurrency(id);
+               priceDiv.innerText =  showAmountWithCurrency(id)
 
                 arr.splice(i, 0, id);
 
@@ -455,16 +461,16 @@ function createBundle(BUNDLE_DATA) {
                 const getDivPrice = document.getElementById(
                   `sd-bundle-discount-price${bundleIndex}`
                 );
-
+              
                 // var newPrice = sdCurrencySymbolCode.replace(
                 //   "{{amount}}",
                 //   total.toFixed(2)
                 // );
                 // getDivPrice.innerHTML = newPrice;
-                var newPrice = total.toFixed(2);
-
-                getDivPrice.innerHTML = showAmountWithCurrency(newPrice);
-
+                 var newPrice = total.toFixed(2)
+                
+                getDivPrice.innerHTML = showAmountWithCurrency(newPrice)
+                
                 const discountedPriceDiv = document.getElementById(
                   `sd-bundle-final-price${bundleIndex}`
                 );
@@ -477,9 +483,8 @@ function createBundle(BUNDLE_DATA) {
                   //   totalPrice.toFixed(2)
                   // );
                   // discountedPriceDiv.innerHTML = newPrice;
-                  var newPrice = totalPrice.toFixed(2);
-                  discountedPriceDiv.innerHTML =
-                    showAmountWithCurrency(newPrice);
+                   var newPrice =  totalPrice.toFixed(2)
+                  discountedPriceDiv.innerHTML = showAmountWithCurrency(newPrice)
                 } else if (el.bundleDetail.discountType == "fixed") {
                   let part = parseFloat(el.bundleDetail.discountValue);
                   let fixed = total - part;
@@ -487,11 +492,10 @@ function createBundle(BUNDLE_DATA) {
                   //   "{{amount}}",
                   //   fixed.toFixed(2)
                   // );
-
+                  
                   // discountedPriceDiv.innerHTML = newPrice;
-                  var newPrice = fixed.toFixed(2);
-                  discountedPriceDiv.innerHTML =
-                    showAmountWithCurrency(newPrice);
+                  var newPrice =  fixed.toFixed(2)
+                  discountedPriceDiv.innerHTML = showAmountWithCurrency(newPrice)
                 }
               });
 
@@ -597,8 +601,8 @@ function createBundle(BUNDLE_DATA) {
         //   total.toFixed(2)
         // );
         // discountPrice.innerText = newDiscountPrice;
-        let newDiscountPrice = total.toFixed(2);
-        discountPrice.innerText = showAmountWithCurrency(newDiscountPrice);
+        let newDiscountPrice =  total.toFixed(2);
+          discountPrice.innerText = showAmountWithCurrency(newDiscountPrice)
         discountedPriceDiv.append(discountPrice);
         if (
           el.bundleDetail.discountType == "freeShipping" ||
@@ -621,6 +625,7 @@ function createBundle(BUNDLE_DATA) {
           let newfinalPricePrice = total.toFixed(2);
           finalPrice.innerText = showAmountWithCurrency(newfinalPricePrice);
 
+          
           discountedPriceDiv.append(finalPrice);
         } else {
           let finalPrice = document.createElement("div");
@@ -637,9 +642,10 @@ function createBundle(BUNDLE_DATA) {
           // );
 
           // finalPrice.innerText = newfinalPricePrice;
-          finalPrice.innerText = showAmountWithCurrency(discountedPrice);
+        finalPrice.innerText = showAmountWithCurrency(discountedPrice);
 
           discountedPriceDiv.append(finalPrice);
+          
         }
         TOTAL_DIV.append(discountedPriceDiv);
         BUNDLE_DIV.append(TOTAL_DIV);
@@ -947,18 +953,23 @@ function createBundle(BUNDLE_DATA) {
                   ele.value + "%"
                 );
                 discountOptTitle.innerText = updatedString;
-              } else if (ele.type == "price" || ele.type == "fixed") {
-                // let newPrice = sdCurrencySymbolCode.replace(
-                //   "{{amount}}",
-                //   ele.value
-                // );
-                let newPrice = showAmountWithCurrency(ele.value);
+              } else if ( ele.type == "fixed") {
+               
+                let newPrice = showAmountWithCurrency(ele.value)
                 let updatedString = ele.description.replace(
                   "{discount}",
-                  newPrice + " " + el.translations.translation.off
+                  newPrice +" "+ el.translations.translation.off
                 );
                 discountOptTitle.innerText = updatedString;
-              } else if (
+              }else if (ele.type == "price") {
+               
+                // let newPrice = showAmountWithCurrency(ele.value)
+                let updatedString = ele.description.replace(
+                  "{discount}",
+                  ""
+                );
+                discountOptTitle.innerText = updatedString;
+              }else if (
                 ele.type == "noDiscount" ||
                 ele.type == "freeShipping"
               ) {
@@ -984,22 +995,24 @@ function createBundle(BUNDLE_DATA) {
               DISCOUNT_OPT_BadgeSection.innerText =
                 el.translations.translation.save + " " + ele.value + "%";
             } else if (ele.type == "price") {
+             
               let newPrice = ele.value;
-
-              DISCOUNT_OPT_BadgeSection.innerText =
-                el.translations.translation.save +
-                " " +
-                showAmountWithCurrency(newPrice) +
-                " " +
-                el.translations.translation.off;
+                 
+              DISCOUNT_OPT_BadgeSection.innerText = 
+                // el.translations.translation.save +
+                // " " +
+                showAmountWithCurrency(newPrice) 
+                // + " "+
+                // el.translations.translation.off;
+              
             } else if (ele.type == "fixed") {
+             
               let newPrice = ele.value;
-
+              
               DISCOUNT_OPT_BadgeSection.innerText =
                 el.translations.translation.save +
                 " " +
-                showAmountWithCurrency(newPrice) +
-                " " +
+                showAmountWithCurrency(newPrice) + " "+
                 el.translations.translation.off;
             }
 
@@ -1061,16 +1074,13 @@ function createBundle(BUNDLE_DATA) {
               "productPrice" + bundleIndex + volumeIndex
             );
             let xprice;
-            if (
-              el.bundleDetail.discountedProductType == "all_products" ||
-              el.bundleDetail.discountedProductType == "collection"
-            ) {
-              let sdDivivde =
-                el.bundleDetail.products[0].variants[0].price / 100;
-              xprice = sdDivivde.toFixed(2);
+            if (el.bundleDetail.discountedProductType == "all_products" || el.bundleDetail.discountedProductType == "collection" ) {
+      
+               let sdDivivde = el.bundleDetail.products[0].variants[0].price / 100 ;
+                xprice = sdDivivde.toFixed(2)
             } else {
-              let toFixedPrice = el.bundleDetail.products[0].variants[0].price;
-              xprice = parseInt(toFixedPrice).toFixed(2);
+             let toFixedPrice =  el.bundleDetail.products[0].variants[0].price; 
+              xprice =   parseInt(toFixedPrice).toFixed(2)
             }
             // let newProductPrice = sdCurrencySymbolCode.replace(
             //   "{{amount}}",
@@ -1078,7 +1088,7 @@ function createBundle(BUNDLE_DATA) {
             // );
 
             // productPrice.innerText = newProductPrice;
-
+          
             productPrice.innerText = showAmountWithCurrency(xprice);
 
             productPrice.id = `sd-volume-datasection-price${index}${bundleIndex}${volumeIndex}`;
@@ -1158,16 +1168,14 @@ function createBundle(BUNDLE_DATA) {
                 );
 
                 let xPrice;
-                if (
-                  el.bundleDetail.discountedProductType == "all_products" ||
-                  el.bundleDetail.discountedProductType == "collection"
-                ) {
+                if (el.bundleDetail.discountedProductType == "all_products" || el.bundleDetail.discountedProductType == "collection") {
                   xPrice = (varientPrice / 100).toFixed(2);
                 } else {
-                  let toFixedPrice = parseInt(varientPrice).toFixed(2);
-                  xPrice = toFixedPrice;
+                  let toFixedPrice = parseInt(varientPrice).toFixed(2)
+                  xPrice = toFixedPrice
                 }
                 let newdisplayPrice = showAmountWithCurrency(xPrice);
+               
                 displayPrice.innerText = newdisplayPrice;
                 bundleSum[bundleIndex][i - 1] = varientPrice;
                 const textAmount = document.getElementById(
@@ -1179,16 +1187,13 @@ function createBundle(BUNDLE_DATA) {
                   0
                 );
                 let tPrice;
-                if (
-                  el.bundleDetail.discountedProductType == "all_products" ||
-                  el.bundleDetail.discountedProductType == "collection"
-                ) {
+                if (el.bundleDetail.discountedProductType == "all_products" || el.bundleDetail.discountedProductType == "collection") {
                   tPrice = (tAmount / 100).toFixed(2);
                 } else {
                   tPrice = tAmount.toFixed(2);
                 }
-                var newTextAmt = showAmountWithCurrency(tPrice);
-
+                var newTextAmt = showAmountWithCurrency(tPrice)
+              
                 textAmount.innerHTML = newTextAmt;
 
                 let total = myArray.reduce(
@@ -1197,10 +1202,7 @@ function createBundle(BUNDLE_DATA) {
                 );
 
                 let dTotalprice;
-                if (
-                  el.bundleDetail.discountedProductType == "all_products" ||
-                  el.bundleDetail.discountedProductType == "collection"
-                ) {
+                if (el.bundleDetail.discountedProductType == "all_products" || el.bundleDetail.discountedProductType == "collection") {
                   dTotalprice = total / 100;
                 } else {
                   dTotalprice = total;
@@ -1231,7 +1233,7 @@ function createBundle(BUNDLE_DATA) {
                   );
                   discountedPrice = part.toFixed(2);
                 }
-           
+                
                 let newProductPrice = showAmountWithCurrency(discountedPrice);
 
                 if (
@@ -1294,7 +1296,7 @@ function createBundle(BUNDLE_DATA) {
             let selectedElement = document.getElementsByClassName(
               "sd-volume-select-option"
             );
-
+           
             let radioGroup = document.getElementsByName(
               "bundle-radio" + bundleIndex
             );
@@ -1306,7 +1308,7 @@ function createBundle(BUNDLE_DATA) {
 
           radioGroup.forEach((radio) => {
             radio.addEventListener("change", () => {
-           
+         
               document
                 .getElementsByClassName(
                   "volumeDiscount" + volumeIndex + bundleIndex
@@ -1321,18 +1323,14 @@ function createBundle(BUNDLE_DATA) {
                     )
                     .forEach((priceDiv) => {
                       let xprice;
-                      if (
-                        el.bundleDetail.discountedProductType ==
-                          "all_products" ||
-                        el.bundleDetail.discountedProductType == "collection"
-                      ) {
+                      if (el.bundleDetail.discountedProductType == "all_products" || el.bundleDetail.discountedProductType == "collection") {
                         xprice = (price / 100).toFixed(2);
                       } else {
-                        let toFixedPrice = parseInt(price).toFixed(2);
+                        let toFixedPrice = parseInt(price).toFixed(2)
                         xprice = toFixedPrice;
                       }
-                      let newProductPrice = showAmountWithCurrency(xprice);
-
+                      let newProductPrice = showAmountWithCurrency(xprice)
+                      
                       priceDiv.innerText = newProductPrice;
                     });
                 });
@@ -1379,6 +1377,7 @@ function createBundle(BUNDLE_DATA) {
         );
         radioBtnBundle.forEach((elem, ind) => {
           elem.addEventListener("change", (e) => {
+          
             optionIndex = ind;
             bundleData[bundleIndex] = [];
             bundleSum[bundleIndex] = [];
@@ -1405,17 +1404,15 @@ function createBundle(BUNDLE_DATA) {
 
             let xprice;
             let xtotal;
-            if (
-              el.bundleDetail.discountedProductType == "all_products" ||
-              el.bundleDetail.discountedProductType == "collection"
-            ) {
+            if (el.bundleDetail.discountedProductType == "all_products" || el.bundleDetail.discountedProductType == "collection") {
               xprice = (total / 100).toFixed(2);
               xtotal = (total / 100).toFixed(2);
             } else {
               xprice = total.toFixed(2);
               xtotal = total;
             }
-            let newProductPrice = showAmountWithCurrency(xprice);
+            let newProductPrice = showAmountWithCurrency(xprice)
+            
 
             const showTotalval = document.getElementById(
               `sd-bundle-volume-discounted-price${bundleIndex}`
@@ -1436,9 +1433,7 @@ function createBundle(BUNDLE_DATA) {
               let part = parseFloat(el.bundleDetail.discountOptions[ind].value);
               discountedPrice = part.toFixed(2);
             }
-         
-            let newDiscountedProductPrice =
-              showAmountWithCurrency(discountedPrice);
+            let newDiscountedProductPrice = showAmountWithCurrency(discountedPrice);
             if (
               el.bundleDetail.discountOptions[optionIndex].type ==
                 "noDiscount" ||
@@ -1463,10 +1458,7 @@ function createBundle(BUNDLE_DATA) {
           0
         );
         let dNewTotalprice;
-        if (
-          el.bundleDetail.discountedProductType == "all_products" ||
-          el.bundleDetail.discountedProductType == "collection"
-        ) {
+        if (el.bundleDetail.discountedProductType == "all_products" || el.bundleDetail.discountedProductType == "collection") {
           dNewTotalprice = total / 100;
         } else {
           dNewTotalprice = total;
@@ -1504,20 +1496,20 @@ function createBundle(BUNDLE_DATA) {
         firstDiscountText.style.fontSize =
           el.customization.volume.totalSection.originalPrice.fontSize + "px";
         let tPrice;
-        if (
-          el.bundleDetail.discountedProductType == "all_products" ||
-          el.bundleDetail.discountedProductType == "collection"
-        ) {
+        if (el.bundleDetail.discountedProductType == "all_products" || el.bundleDetail.discountedProductType == "collection") {
           tPrice = (total / 100).toFixed(2);
         } else {
           tPrice = total.toFixed(2);
         }
-       
         
-        let newFirstDiscountPrice = tPrice;
-        firstDiscountText.innerText = showAmountWithCurrency(
-          newFirstDiscountPrice
-        );
+        // let newFirstDiscountPrice = sdCurrencySymbolCode.replace(
+        //   "{{amount}}",
+        //   tPrice
+        // );
+       let newFirstDiscountPrice = tPrice
+     
+      
+        firstDiscountText.innerText = showAmountWithCurrency(newFirstDiscountPrice);
 
         let secondDiscountText = document.createElement("div");
         secondDiscountText.className = "sd-bundle-volume-discount-final-price";
@@ -1531,16 +1523,14 @@ function createBundle(BUNDLE_DATA) {
         //   "{{amount}}",
         //   discountedPrice
         // );
-        newSecondDiscountPrice = discountedPrice;
+        newSecondDiscountPrice = discountedPrice
         if (
           el.bundleDetail.discountOptions[optionIndex].type == "noDiscount" ||
           el.bundleDetail.discountOptions[optionIndex].type == "freeShipping"
         ) {
           secondDiscountText.innerText = newFirstDiscountPrice;
         } else {
-          secondDiscountText.innerText = showAmountWithCurrency(
-            newSecondDiscountPrice
-          );
+          secondDiscountText.innerText = showAmountWithCurrency(newSecondDiscountPrice)
         }
         totalDiscountDiv.append(secondDiscountText);
         totalDiv.append(totalTextDiv, totalDiscountDiv);
@@ -1682,9 +1672,7 @@ function createBundle(BUNDLE_DATA) {
                       );
                       let xtotalprice;
                       if (
-                        el.bundleDetail.discountedProductType ==
-                          "all_products" ||
-                        el.bundleDetail.discountedProductType == "collection"
+                        el.bundleDetail.discountedProductType == "all_products" ||  el.bundleDetail.discountedProductType == "collection"
                       ) {
                         xtotalprice = (total / 100).toFixed(2);
                       } else {
@@ -1725,7 +1713,7 @@ function createBundle(BUNDLE_DATA) {
                           console.log("how are you ?");
                           break;
                       }
-              
+                 
                       let isDiscount =
                         el.bundleDetail.discountOptions[optionIndex].type ==
                         "noDiscount"
@@ -2425,9 +2413,9 @@ async function bundlePageBuilder(data) {
             let productPriceDiv = document.createElement("div");
             productPriceDiv.className = "sd-bundle-builder-product-price";
 
-            let newProductPrice = ele.node.variants.edges[0].node.price;
-
-            productPriceDiv.innerText = showAmountWithCurrency(newProductPrice);
+            let newProductPrice =ele.node.variants.edges[0].node.price;
+          
+            productPriceDiv.innerText =showAmountWithCurrency(newProductPrice);
             productDiv.append(productPriceDiv);
 
             let productButtonDiv = document.createElement("div");
@@ -2690,9 +2678,9 @@ async function bundlePageBuilder(data) {
   ) {
     totalRawPrice.style.textDecoration = "none";
   }
-  let newTotalPrice = "0.00";
+  let newTotalPrice =  "0.00";
 
-  totalRawPrice.innerText = showAmountWithCurrency(newTotalPrice);
+  totalRawPrice.innerText = showAmountWithCurrency(newTotalPrice)
   totalPriceText.append(totalRawPrice);
   let totalDiscountedPrice = document.createElement("span");
   totalDiscountedPrice.className = "sd-builder-total-discounted-price";
@@ -2767,6 +2755,7 @@ async function bundlePageBuilder(data) {
           return response.json();
         })
         .then((response) => {
+          
           let errorDiv = document.getElementsByClassName(
             "sd-bundle-error-message"
           );
@@ -2993,7 +2982,7 @@ function addselectedProductList(selectedProducts, mainIndex, extra, data) {
         getCartButton.style.cursor = "no-drop";
         getCartButton.disabled = true;
         addselectedProductList(selectedProducts, mainIndex, "", data);
-
+         
         sumOfVariants(selectedProducts, data);
       });
     });
@@ -3014,7 +3003,7 @@ function sumOfVariants(params, data) {
     }
   }
   const updateSum = document.getElementById("sd-builder-total-raw-price");
-  let updatedTotalSum = sum.toFixed(2);
+  let updatedTotalSum = sum.toFixed(2)
   updateSum.innerText = showAmountWithCurrency(updatedTotalSum);
   let totalDiv = document.getElementById(
     "sd-builder-total-discounted-price-text"
@@ -3027,20 +3016,20 @@ function sumOfVariants(params, data) {
       let percentage = (sum * part) / 100;
       result = sum - percentage;
       discountedPrice = result.toFixed(2);
-      let newDiscountPrice = discountedPrice;
-
+      let newDiscountPrice =   discountedPrice;
+      
       totalDiv.innerText = showAmountWithCurrency(newDiscountPrice);
     } else if (data.response.bundleDetail.discountType == "fixed") {
       let part = parseFloat(data.response.bundleDetail.discountValue);
       let fixed = sum - part;
       discountedPrice = fixed.toFixed(2);
-      let newDiscountPrice = discountedPrice;
-      totalDiv.innerText = showAmountWithCurrency(newDiscountPrice);
+            let newDiscountPrice =   discountedPrice;
+            totalDiv.innerText = showAmountWithCurrency(newDiscountPrice);
     } else if (data.response.bundleDetail.discountType == "price") {
       let part = parseFloat(data.response.bundleDetail.discountValue);
       discountedPrice = part;
-      let newDiscountPrice = discountedPrice;
-      totalDiv.innerText = showAmountWithCurrency(newDiscountPrice);
+           let newDiscountPrice =   discountedPrice;
+            totalDiv.innerText = showAmountWithCurrency(newDiscountPrice);
     } else if (data.response.bundleDetail.discountType == "freeShipping") {
       totalDiv?.remove();
     } else if (data.response.bundleDetail.discountType == "noDiscount") {
@@ -3049,8 +3038,8 @@ function sumOfVariants(params, data) {
 
     pageInfoTotalPrice = sum;
   } else {
-    let newDiscountPrice = "0";
-    totalDiv.innerText = showAmountWithCurrency(newDiscountPrice);
+    let newDiscountPrice =  "0";
+          totalDiv.innerText = showAmountWithCurrency(newDiscountPrice);
   }
 }
 // sd-builder-cart-info-add-btn
@@ -3119,6 +3108,8 @@ async function addDiscountToProduct() {
             // window.location.href = `${window.location.origin}/cart/${productVariantIds}?discount=${localData.prefixCode}-${localData.code}&${attributes_url}`;
 
             window.location.href = `${window.location.origin}/checkout?discount=${localData.prefixCode}-${localData.code}`;
+            
+            
           } else {
             /*here are false id match */
             deactivateRule(localData);
@@ -3214,101 +3205,70 @@ function createDiscountName(dataArray) {
 }
 
 function showAmountWithCurrency(value) {
-  let moneyFormat = sdCurrencySymbolCode;
-  let sdCurrencyFormatcondition;
 
-  if (moneyFormat.includes("{{amount_no_decimals}}")) {
-    sdCurrencyFormatcondition = "amount_no_decimals";
-  } else if (moneyFormat.includes("{{amount_with_comma_separator}}")) {
-    sdCurrencyFormatcondition = "amount_with_comma_separator";
-  } else if (
-    moneyFormat.includes("{{amount_no_decimals_with_space_separator}}")
-  ) {
-    sdCurrencyFormatcondition = "amount_no_decimals_with_space_separator";
-  } else if (
-    moneyFormat.includes("{{amount_no_decimals_with_comma_separator}}")
-  ) {
-    sdCurrencyFormatcondition = "amount_no_decimals_with_comma_separator";
-  } else if (moneyFormat.includes("{{amount_with_space_separator}}$")) {
-    sdCurrencyFormatcondition = "amount_with_space_separator";
-  } else {
-    sdCurrencyFormatcondition = "amount";
-  }
+    let moneyFormat = sdCurrencySymbolCode;
+    let sdCurrencyFormatcondition;
+  
+    if (moneyFormat.includes("{{amount_no_decimals}}")) {
+        sdCurrencyFormatcondition = "amount_no_decimals";
+    } else if (moneyFormat.includes("{{amount_with_comma_separator}}")) {
+        sdCurrencyFormatcondition = "amount_with_comma_separator";
+    } else if (moneyFormat.includes("{{amount_no_decimals_with_space_separator}}")) {
+        sdCurrencyFormatcondition = "amount_no_decimals_with_space_separator";
+    } else if (moneyFormat.includes("{{amount_no_decimals_with_comma_separator}}")) {
+        sdCurrencyFormatcondition = "amount_no_decimals_with_comma_separator";
+    }else if(moneyFormat.includes("{{amount_with_space_separator}}$")){
+        sdCurrencyFormatcondition = "amount_with_space_separator";
+    } else {
+        sdCurrencyFormatcondition = "amount";
+    }
 
-  let sdCurrencyprice;
-  switch (sdCurrencyFormatcondition) {
-    case "amount":
-      sdCurrencyprice = moneyFormat.replace("{{amount}}", value);
-      break;
-    case "amount_with_comma_separator":
-      if (value) {
-        let stringValue = value.toString();
-        if (stringValue.indexOf(".") > 0) {
-          let comma_seperator = stringValue.replace(".", ",");
-          sdCurrencyprice = moneyFormat.replace(
-            "{{amount_with_comma_separator}}",
-            comma_seperator
-          );
-        } else {
-          sdCurrencyprice = moneyFormat.replace(
-            "{{amount_with_comma_separator}}",
-            value
-          );
-        }
-      } else {
-        sdCurrencyprice = moneyFormat.replace(
-          "{{amount_with_comma_separator}}",
-          value
-        );
-      }
-      break;
-    case "amount_no_decimals_with_space_separator":
-      let noDecimalwithSpace = parseInt(value);
-      sdCurrencyprice = moneyFormat.replace(
-        "{{amount_no_decimals_with_space_separator}}",
-        noDecimalwithSpace
-      );
-      break;
-    case "amount_no_decimals":
-      let noDecimal = parseInt(value);
-      sdCurrencyprice = moneyFormat.replace(
-        "{{amount_no_decimals}}",
-        noDecimal
-      );
-      break;
-    case "amount_no_decimals_with_comma_separator":
-      let noDecimalwithComma = parseInt(value);
+   let sdCurrencyprice ;
+    switch (sdCurrencyFormatcondition) {
+        case "amount":
+       sdCurrencyprice = moneyFormat.replace("{{amount}}",value);
+           break;
+        case "amount_with_comma_separator":
+        if(value){  let stringValue = value.toString();
+            if(stringValue.indexOf('.') > 0){
+                let comma_seperator = stringValue.replace(".",",")
+                sdCurrencyprice = moneyFormat.replace("{{amount_with_comma_separator}}",comma_seperator);
+            }else{
+                sdCurrencyprice = moneyFormat.replace("{{amount_with_comma_separator}}",value);
+            }}else{
+                sdCurrencyprice = moneyFormat.replace("{{amount_with_comma_separator}}",value);
+            }
+            break;
+        case "amount_no_decimals_with_space_separator":
+        let noDecimalwithSpace = parseInt(value);
+        sdCurrencyprice = moneyFormat.replace("{{amount_no_decimals_with_space_separator}}",noDecimalwithSpace);
+            break;
+        case "amount_no_decimals":
+        let noDecimal = parseInt(value);
+        sdCurrencyprice = moneyFormat.replace("{{amount_no_decimals}}",noDecimal);
+            break;
+        case "amount_no_decimals_with_comma_separator":
+        let noDecimalwithComma = parseInt(value);
 
-      sdCurrencyprice = moneyFormat.replace(
-        "{{amount_no_decimals_with_comma_separator}}",
-        noDecimalwithComma
-      );
-      break;
-    case "amount_with_space_separator":
-      if (value) {
-        let spaceStringValue = value.toString();
-        if (spaceStringValue.indexOf(".") > 0) {
-          let Space_comma_seperator = spaceStringValue.replace(".", ",");
-          sdCurrencyprice = moneyFormat.replace(
-            "{{amount_with_space_separator}}",
-            Space_comma_seperator
-          );
-        } else {
-          sdCurrencyprice = moneyFormat.replace(
-            "{{amount_with_space_separator}}",
-            value
-          );
-        }
-      } else {
-        sdCurrencyprice = moneyFormat.replace(
-          "{{amount_with_space_separator}}",
-          value
-        );
-      }
-      break;
-    default:
-    // code block
-  }
+          sdCurrencyprice = moneyFormat.replace("{{amount_no_decimals_with_comma_separator}}",noDecimalwithComma);
+            break;
+   case "amount_with_space_separator":
+        if(value){let spaceStringValue = value.toString();
+            if(spaceStringValue.indexOf('.') > 0){
+          let Space_comma_seperator = spaceStringValue.replace(".",",")
+        sdCurrencyprice = moneyFormat.replace("{{amount_with_space_separator}}",Space_comma_seperator);
+            }else{
+        sdCurrencyprice = moneyFormat.replace("{{amount_with_space_separator}}",value);
 
-  return sdCurrencyprice;
+            }}else{
+        sdCurrencyprice = moneyFormat.replace("{{amount_with_space_separator}}",value);
+
+            }
+            break;
+        default:
+            // code block
+    }
+    
+    return sdCurrencyprice;
 }
+
