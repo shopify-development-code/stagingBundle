@@ -441,7 +441,7 @@ export async function getBundleViews(req,res){
       }
     };
     await analyticsModel.updateMany(filter, update);
-
+   res.status(200).send("success")
   }
   } catch (error) {
     console.log(error.message)
