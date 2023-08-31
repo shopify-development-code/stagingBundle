@@ -464,6 +464,7 @@ export async function getBundleClick(req,res){
       }
     };
     await analyticsModel.updateOne(filter, update).then((response)=>console.log(response)).catch((error)=>console.log(error.message))
+    res.status(200).send("success")
 
   }
   } catch (error) {
