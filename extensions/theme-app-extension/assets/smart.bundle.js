@@ -4,7 +4,8 @@ let smartNoImg = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw
 console.log("Smart Bundle Discount app")
 let productPageClass = document.getElementsByClassName("sd-bundle-app");
 
-if (sdbundlePageType == "product") {
+if(productPageClass.length){
+  if (sdbundlePageType == "product") {
   let sdBundleLoader = document.createElement("div");
   sdBundleLoader.id = "sd-bundle-main-container-loader";
   sdBundleLoader.className = "sd-bundle-main-container-loader";
@@ -37,6 +38,11 @@ if (sdbundlePageType == "product") {
 
   getData();
 }
+}else{
+  console.log('SMART BUNDLE BLOCK is not enabled')
+  
+}
+
 
 async function getData() {
   let shop = Shopify.shop;
@@ -351,7 +357,9 @@ function createBundle(BUNDLE_DATA) {
           show_less.innerText = el.translations.translation.seeLess;
           seeLessDiv.classList.add("sd-bundle-hide-click");
           for (let i = 1; i <= ele.minimumOrder; i++) {
-            if (ele.minimumOrder <= 2) {
+            console.log("product v",ele.variants.length)
+            
+            if (ele.minimumOrder <= 2 || ele.variants.length <= 1 ) {
               seeMoreDiv.style.display = "none";
             }
             gidArray[bundleIndex][index][i - 1] = ele.variants[0].id;
@@ -1118,7 +1126,7 @@ function createBundle(BUNDLE_DATA) {
             DISCOUNTOPTIONS.append(DISCOUNT_OPT_PRODUCT_DATA);
 
             let VOLUME_SELECT;
-
+           
             let VOLUME_SELECTION_DIV = document.createElement("div");
             let seeMoreDiv = document.createElement("div");
             seeMoreDiv.className = "sd-bundle-see-more-box";
@@ -1132,7 +1140,8 @@ function createBundle(BUNDLE_DATA) {
             seeLessDiv.append(show_less);
             show_less.innerText = el.translations.translation.seeLess;
             seeLessDiv.classList.add("sd-volume-hide-click");
-            if (ele.quantity <= 2) {
+          
+            if (ele.quantity <= 2 ) {
               seeMoreDiv.style.display = "none";
             }
             for (let i = 1; i <= ele.quantity; i++) {
@@ -1273,6 +1282,11 @@ function createBundle(BUNDLE_DATA) {
               });
 
               VOLUME_SELECTION_DIV.append(selectRow);
+          
+                  if(el.bundleDetail.products[0].variants.length <= 1){
+                
+                   VOLUME_SELECTION_DIV.style.display = "none"
+                 }
               if (i > 2) {
                 selectRow.classList.add("sd-volume-hide-click");
               }
