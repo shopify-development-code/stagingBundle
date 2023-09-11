@@ -657,7 +657,7 @@ function createBundle(BUNDLE_DATA) {
         let ADD_TO_CART_BTN_DIV = document.createElement("div");
         ADD_TO_CART_BTN_DIV.className = "sd-bundle-add-to-cart-box";
         let ADD_TO_CART_BUTTON = document.createElement("button");
-        if(Shopify.designMode && document.cookie.includes('SdBundleCookies')== true){
+        if(Shopify.designMode && document.cookie.includes('SdBundleCookies') == false){
           ADD_TO_CART_BUTTON.disabled = true
         }
         ADD_TO_CART_BUTTON.style.background =
@@ -1573,7 +1573,7 @@ function createBundle(BUNDLE_DATA) {
           el.customization.volume.totalSection.backgroundColor;
         VOLUME_DIV.append(totalDiv);
         let addToCartBtn = document.createElement("button");
-        if(Shopify.designMode && document.cookie.includes('SdBundleCookies')== true){
+        if(Shopify.designMode && document.cookie.includes('SdBundleCookies') == false){
           addToCartBtn.disabled = true
         }
         addToCartBtn.className = "sd-bundle-volume-addtocart-btn";
@@ -2728,7 +2728,7 @@ async function bundlePageBuilder(data) {
   CART_INFO_ADD_BTN_div.ClassName = "sd-builder-add-btn-container";
   CART_INFO_ACTION_BOX.append(CART_INFO_ADD_BTN_div);
   let cartAddBtn = document.createElement("button");
-  if(Shopify.designMode && document.cookie.includes('SdBundleCookies')== true){
+  if(Shopify.designMode && document.cookie.includes('SdBundleCookies') == false){
     cartAddBtn.disabled = true
   }
   cartAddBtn.className = "sd-builder-cart-info-add-btn";
