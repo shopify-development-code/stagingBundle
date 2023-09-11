@@ -143,6 +143,7 @@ export async function verifyWebhooks(req, res) {
         break;
       case "orders/create":
         try {
+          console.log("order create",hmac_header)
           const calculated_hmac = crypto
             .createHmac("sha256", secretKey)
             .update(req.body)
