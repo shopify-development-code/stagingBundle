@@ -3227,7 +3227,7 @@ async function deactivateRule(localData) {
 function createDiscountName(dataArray) {
   // let checkLocalStorage = localStorage.sd_bundle_data;
   setCookie('SdBundleCookies', 'active', 30);
-  if(Shopify.designMode && document.cookie.includes('SdBundleCookies')== true){
+  if(Shopify.designMode && document.cookie.includes('SdBundleCookies') == false){
   console.log("For real bundle please disable (Block third-party cookies)")
 
   }else{
