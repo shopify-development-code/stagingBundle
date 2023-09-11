@@ -657,6 +657,9 @@ function createBundle(BUNDLE_DATA) {
         let ADD_TO_CART_BTN_DIV = document.createElement("div");
         ADD_TO_CART_BTN_DIV.className = "sd-bundle-add-to-cart-box";
         let ADD_TO_CART_BUTTON = document.createElement("button");
+        if(Shopify.designMode && document.cookie.includes('SdBundleCookies')== true){
+          ADD_TO_CART_BUTTON.disabled = true
+        }
         ADD_TO_CART_BUTTON.style.background =
           el.customization.bundle.button.backgroundColor;
         ADD_TO_CART_BUTTON.style.color = el.customization.bundle.button.color;
@@ -1570,6 +1573,9 @@ function createBundle(BUNDLE_DATA) {
           el.customization.volume.totalSection.backgroundColor;
         VOLUME_DIV.append(totalDiv);
         let addToCartBtn = document.createElement("button");
+        if(Shopify.designMode && document.cookie.includes('SdBundleCookies')== true){
+          addToCartBtn.disabled = true
+        }
         addToCartBtn.className = "sd-bundle-volume-addtocart-btn";
         addToCartBtn.style.background =
           el.customization.volume.button.backgroundColor;
@@ -2722,6 +2728,9 @@ async function bundlePageBuilder(data) {
   CART_INFO_ADD_BTN_div.ClassName = "sd-builder-add-btn-container";
   CART_INFO_ACTION_BOX.append(CART_INFO_ADD_BTN_div);
   let cartAddBtn = document.createElement("button");
+  if(Shopify.designMode && document.cookie.includes('SdBundleCookies')== true){
+    cartAddBtn.disabled = true
+  }
   cartAddBtn.className = "sd-builder-cart-info-add-btn";
   cartAddBtn.id = "sd-builder-cart-info-add-btn";
   cartAddBtn.style.cursor = "no-drop";
@@ -3217,24 +3226,35 @@ async function deactivateRule(localData) {
 }
 function createDiscountName(dataArray) {
   // let checkLocalStorage = localStorage.sd_bundle_data;
-  let checkLocalStorage = localStorage.getItem("sd_bundle_data");
+  setCookie('SdBundleCookies', 'active', 30);
+  if(Shopify.designMode && document.cookie.includes('SdBundleCookies')== true){
+  console.log("For real bundle please disable (Block third-party cookies)")
 
-  if (!checkLocalStorage) {
-    function generateRandomSixDigitNumber() {
-      // Generate a random number between 100,000 and 999,999 (inclusive)
-      const min = 100000;
-      const max = 999999;
-      const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+  }else{
+    let checkLocalStorage = localStorage.getItem("sd_bundle_data");
 
-      return randomNumber;
+    if (!checkLocalStorage) {
+      function generateRandomSixDigitNumber() {
+        // Generate a random number between 100,000 and 999,999 (inclusive)
+        const min = 100000;
+        const max = 999999;
+        const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+  
+        return randomNumber;
+      }
+      const randomSixDigitNumber = generateRandomSixDigitNumber();
+      let sd_bundle_data = {
+        code: randomSixDigitNumber,
+      };
+      var jsonString = JSON.stringify(sd_bundle_data);
+      localStorage.setItem("sd_bundle_data", jsonString);
     }
-    const randomSixDigitNumber = generateRandomSixDigitNumber();
-    let sd_bundle_data = {
-      code: randomSixDigitNumber,
-    };
-    var jsonString = JSON.stringify(sd_bundle_data);
-    localStorage.setItem("sd_bundle_data", jsonString);
   }
+  
+   
+  
+  
+ 
 }
 
 function showAmountWithCurrency(value) {
@@ -3335,4 +3355,11 @@ function showAmountWithCurrency(value) {
   }
 
   return sdCurrencyprice;
+}
+
+function setCookie(name, value, daysToExpire) {
+  const date = new Date();
+  date.setTime(date.getTime() + (daysToExpire * 24 * 60 * 60 * 1000));
+  const expires = `expires=${date.toUTCString()}`;
+  document.cookie = `${name}=${value}; ${expires}; path=/`;
 }
