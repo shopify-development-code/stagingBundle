@@ -657,9 +657,7 @@ function createBundle(BUNDLE_DATA) {
         let ADD_TO_CART_BTN_DIV = document.createElement("div");
         ADD_TO_CART_BTN_DIV.className = "sd-bundle-add-to-cart-box";
         let ADD_TO_CART_BUTTON = document.createElement("button");
-        if(Shopify.designMode && document.cookie.includes('SdBundleCookies') == false){
-          ADD_TO_CART_BUTTON.disabled = true
-        }
+        
         ADD_TO_CART_BUTTON.style.background =
           el.customization.bundle.button.backgroundColor;
         ADD_TO_CART_BUTTON.style.color = el.customization.bundle.button.color;
@@ -1573,9 +1571,7 @@ function createBundle(BUNDLE_DATA) {
           el.customization.volume.totalSection.backgroundColor;
         VOLUME_DIV.append(totalDiv);
         let addToCartBtn = document.createElement("button");
-        if(Shopify.designMode && document.cookie.includes('SdBundleCookies') == false){
-          addToCartBtn.disabled = true
-        }
+      
         addToCartBtn.className = "sd-bundle-volume-addtocart-btn";
         addToCartBtn.style.background =
           el.customization.volume.button.backgroundColor;
@@ -2728,9 +2724,7 @@ async function bundlePageBuilder(data) {
   CART_INFO_ADD_BTN_div.ClassName = "sd-builder-add-btn-container";
   CART_INFO_ACTION_BOX.append(CART_INFO_ADD_BTN_div);
   let cartAddBtn = document.createElement("button");
-  if(Shopify.designMode && document.cookie.includes('SdBundleCookies') == false){
-    cartAddBtn.disabled = true
-  }
+
   cartAddBtn.className = "sd-builder-cart-info-add-btn";
   cartAddBtn.id = "sd-builder-cart-info-add-btn";
   cartAddBtn.style.cursor = "no-drop";
@@ -3226,11 +3220,8 @@ async function deactivateRule(localData) {
 }
 function createDiscountName(dataArray) {
   // let checkLocalStorage = localStorage.sd_bundle_data;
-  setCookie('SdBundleCookies', 'active', 30);
-  if(Shopify.designMode && document.cookie.includes('SdBundleCookies') == false){
-  console.log("For real bundle please disable (Block third-party cookies)")
 
-  }else{
+  if(!Shopify.designMode){
     let checkLocalStorage = localStorage.getItem("sd_bundle_data");
 
     if (!checkLocalStorage) {
@@ -3357,9 +3348,3 @@ function showAmountWithCurrency(value) {
   return sdCurrencyprice;
 }
 
-function setCookie(name, value, daysToExpire) {
-  const date = new Date();
-  date.setTime(date.getTime() + (daysToExpire * 24 * 60 * 60 * 1000));
-  const expires = `expires=${date.toUTCString()}`;
-  document.cookie = `${name}=${value}; ${expires}; path=/`;
-}
