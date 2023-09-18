@@ -1,7 +1,13 @@
 let server = "https://smartbundle.shinedezigninfotech.com";
+
+
 let smartNoImg = `data:image/png;base64,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`;
+
 console.log("Smart Bundle Discount app");
+
 let productPageClass = document.getElementsByClassName("sd-bundle-app");
+
+let shopCurrencyRate = Shopify.currency.rate ;
 
 if (sdbundlePageType == "product") {
   if (productPageClass.length) {
@@ -36,9 +42,10 @@ if (sdbundlePageType == "product") {
       "block";
 
     getData();
-  } else {
-    console.log("SMART BUNDLE BLOCK is not enabled");
   }
+  //  else {
+  //   console.log("SMART BUNDLE BLOCK is not enabled");
+  // }
 }
 
 async function getData() {
@@ -127,6 +134,7 @@ async function getData() {
         }
       });
 
+   
       if (dataArray.length) {
         createDiscountName(dataArray);
       }
@@ -175,7 +183,7 @@ if (sdbundlePageType == "cart") {
         } else {
           deactivateRule(localData);
           let formData = {
-            attributes: { SD_BUNDLE_ID: el._id },
+            attributes: { SD_BUNDLE_ID: "" },
           };
           fetch(window.Shopify.routes.root + "cart/add.js", {
             method: "POST",
@@ -220,12 +228,19 @@ if (sdbundlePageType == "page") {
 }
 
 const arr = [];
+
 const bundleData = [];
+
 const bundleSum = [];
+
 const gidArray = [];
+
 let volumeBundleArr = [];
+
 let volumeBundleSum = [];
+
 function createBundle(BUNDLE_DATA) {
+
   // let bundleMainDiv = `<div id="sd-bundle-main-container" class="sd-bundle-main-container"></div>`;
   let bundleMainDiv = document.createElement("div");
   bundleMainDiv.className = "sd-bundle-main-container";
@@ -234,20 +249,26 @@ function createBundle(BUNDLE_DATA) {
   productPageClass[0].append(bundleMainDiv);
 
   let mainDiv = document.getElementById("sd-bundle-main-container");
-  BUNDLE_DATA.forEach((el, bundleIndex) => {
+  BUNDLE_DATA.forEach(async(el, bundleIndex) => {
     bundleData.push([]);
     bundleSum.push([]);
     gidArray.push([]);
 
     if (el.type == "productBundle") {
       //--------------------------------------------------------------------------Product Bundle----------------------------------------------------------------------------
-      let StoreCurrentTime = new Date().toISOString("en-US", {
-        timeZone: el.startdate,
-      });
+
       let checkDate = el.endDate == "" ? true : sdCurrentDateTime <= el.endDate;
 
       if (sdCurrentDateTime >= el.startdate && checkDate) {
-        let BUNDLE_DIV = document.createElement("div");
+    
+         const productData = await getSFProducts(el);
+       
+        el.bundleDetail.products.map((item,itemIndex)=>{
+      productData[itemIndex].minimumOrder = item.minimumOrder
+          
+        })
+       if(productData.length){
+               let BUNDLE_DIV = document.createElement("div");
         BUNDLE_DIV.className = "sd-bundle-product-container";
         BUNDLE_DIV.classList.add("sd-bundleProduct" + bundleIndex);
         BUNDLE_DIV.style.borderColor = el.customization.bundle.box.borderColor;
@@ -266,8 +287,7 @@ function createBundle(BUNDLE_DATA) {
         BUNDLE_TITLE.append(bundleTitleText);
         mainDiv.append(BUNDLE_DIV);
         BUNDLE_DIV.append(BUNDLE_TITLE);
-        // ds is dataSection
-        el.bundleDetail.products.map((ele, index) => {
+       productData.map((ele, index) => {
           bundleData[bundleIndex].push([]);
           bundleSum[bundleIndex].push([]);
           gidArray[bundleIndex].push([]);
@@ -287,7 +307,8 @@ function createBundle(BUNDLE_DATA) {
             "1px solid" +
             el.customization.bundle.productDetails.image.borderColor;
           DATA_SECTION_IMG.style.borderRadius = `${el.customization.bundle.productDetails.image.borderRadius}px`;
-          let bundleProductImg = ele.images[0]?.originalSrc ?? smartNoImg;
+ 
+          let bundleProductImg = ele.images[0]?.src ?? smartNoImg;
           DATA_SECTION_IMG.setAttribute("src", bundleProductImg);
           DATA_SECTION_IMAGE_DIV.append(DATA_SECTION_IMG);
           let DATA_SECTION_TITLE_PRICE_DIV = document.createElement("div");
@@ -354,17 +375,21 @@ function createBundle(BUNDLE_DATA) {
           show_less.innerText = el.translations.translation.seeLess;
           seeLessDiv.classList.add("sd-bundle-hide-click");
           for (let i = 1; i <= ele.minimumOrder; i++) {
-            console.log("product v", ele.variants.length);
+         
 
             if (ele.minimumOrder <= 2 || ele.variants.length <= 1) {
               seeMoreDiv.style.display = "none";
             }
-            gidArray[bundleIndex][index][i - 1] = ele.variants[0].id;
-            bundleData[bundleIndex][index][i - 1] = {
-              id: ele.variants[0].id.replace(
-                "gid://shopify/ProductVariant/",
-                ""
-              ),
+            gidArray[bundleIndex][index][i - 1] = `gid://shopify/ProductVariant/${ele.variants[0].id}`;
+            // bundleData[bundleIndex][index][i - 1] = {
+            //   id: ele.variants[0].id.replace(
+            //     "gid://shopify/ProductVariant/",
+            //     ""
+            //   ),
+            //   quantity: 1,
+            // };
+             bundleData[bundleIndex][index][i - 1] = {
+              id: ele.variants[0].id,
               quantity: 1,
             };
             bundleSum[bundleIndex][index][i - 1] = ele.variants[0].price;
@@ -390,10 +415,11 @@ function createBundle(BUNDLE_DATA) {
               ele.variants.map((elem, optionIndex) => {
                 let BUNDLE_OPTION = document.createElement("option");
                 BUNDLE_OPTION.textContent = elem.title;
-                BUNDLE_OPTION.value = elem.id.replace(
-                  "gid://shopify/ProductVariant/",
-                  ""
-                );
+                // BUNDLE_OPTION.value = elem.id.replace(
+                //   "gid://shopify/ProductVariant/",
+                //   ""
+                // );
+                  BUNDLE_OPTION.value = elem.id;
                 BUNDLE_OPTION.setAttribute("optionIndex", optionIndex);
                 BUNDLE_OPTION.setAttribute("data-id", elem.price);
                 BUNDLE_SELECT.appendChild(BUNDLE_OPTION);
@@ -424,7 +450,7 @@ function createBundle(BUNDLE_DATA) {
             let selectedElement = document.getElementsByClassName(
               `sd-bundle-select-option${i}${bundleIndex}${index}`
             );
-
+       
             selectedElement.forEach((selected) => {
               const selectedOption = selected.options[1];
               const id = selectedOption?.getAttribute("data-id");
@@ -439,7 +465,7 @@ function createBundle(BUNDLE_DATA) {
                   quantity: 1,
                 };
                 const gitVal = "gid://shopify/ProductVariant/" + e.target.value;
-                gidArray[bundleIndex][index][i - 1] = gitVal;
+                gidArray[bundleIndex][index][i - 1] = `gid://shopify/ProductVariant/${gitVal}`;
                 let priceDiv = document.getElementById(
                   `sd-bundle-datasection-price${index}${bundleIndex}`
                 );
@@ -684,6 +710,7 @@ function createBundle(BUNDLE_DATA) {
             (acc, curr) => acc.concat(curr),
             []
           );
+     
           let mergedResult = {};
           for (let item of mergedArray) {
             if (mergedResult[item.id]) {
@@ -804,7 +831,19 @@ function createBundle(BUNDLE_DATA) {
                           // // console.log("how are you ?");
                           break;
                       }
-
+              
+                      let convertedTotal ;
+                      let convertedFinalPrice ;
+                      if(sdCurrencyIsoCode !== Shopify.currency.active){
+                    
+                        convertedFinalPrice = finalPrice/Shopify.currency.rate
+                         convertedTotal =total/Shopify.currency.rate
+                      
+                      }else{  
+                      convertedFinalPrice = finalPrice;
+                      convertedTotal = total;
+                      }
+                   
                       let isDiscount =
                         el.bundleDetail.discountType == "noDiscount"
                           ? "noDiscount"
@@ -813,13 +852,13 @@ function createBundle(BUNDLE_DATA) {
                         discount_name: el.name,
                         code: `${el.settings.discountLabel}-${code.code}`,
                         discountType: isDiscount,
-                        discountValue: finalPrice,
+                        discountValue: convertedFinalPrice.toFixed(2),
                         variantsId: mergedGidArray,
                         startDate: el.startdate,
                         endDate: el.endDate,
                         shop: Shopify.shop,
                         bundleType: el.bundleDetail.discountType,
-                        totalPrice: total.toFixed(2),
+                        totalPrice: convertedTotal.toFixed(2),
                         discountCreateId: discountCodeId,
                       };
 
@@ -882,13 +921,22 @@ function createBundle(BUNDLE_DATA) {
         }
 
         waterMark(BUNDLE_DIV);
+       }
+      
+   
       } else {
       }
     } else if (el.type == "volumeBundle") {
+  
       //--------------------------------------------------------------------------Volume Bundle----------------------------------------------------------------------------
       let checkDate = el.endDate == "" ? true : sdCurrentDateTime <= el.endDate;
 
       if (sdCurrentDateTime >= el.startdate && checkDate) {
+
+        const productData = await getSFProducts(el);
+
+      if(productData.length){
+          
         let optionIndex;
         let discountedPrice;
         let VOLUME_DIV = document.createElement("div");
@@ -917,7 +965,7 @@ function createBundle(BUNDLE_DATA) {
 
           mainDiv.append(VOLUME_DIV);
 
-          el.bundleDetail.products.map((elem, index) => {
+          productData.map((elem, index) => {
             let DISCOUNT_OPT_HEADLINE = document.createElement("div");
             DISCOUNT_OPT_HEADLINE.className =
               "sd-bundle-volume-discountOption-headline";
@@ -1043,20 +1091,11 @@ function createBundle(BUNDLE_DATA) {
             productImg.style.borderColor =
               el.customization.volume.productDetails.image.borderColor;
             productImg.style.borderRadius = `${el.customization.volume.productDetails.image.borderRadius}px`;
-            if (
-              el.bundleDetail.discountedProductType == "collection" ||
-              el.bundleDetail.discountedProductType == "all_products"
-            ) {
               productImg.setAttribute(
                 "src",
-                el.bundleDetail.products[0].images[0]
+               productData[0].images[0].src
               );
-            } else {
-              productImg.setAttribute(
-                "src",
-                el.bundleDetail.products[0].images[0].originalSrc
-              );
-            }
+          
             productImgDiv.append(productImg);
             let productTitlePriceDiv = document.createElement("div");
             productTitlePriceDiv.className =
@@ -1066,30 +1105,18 @@ function createBundle(BUNDLE_DATA) {
             productTitle.style.color =
               el.customization.volume.productDetails.title.color;
             productTitle.style.fontSize = `${el.customization.volume.productDetails.title.fontSize}px`;
-            productTitle.innerText = el.bundleDetail.products[0].title;
+            productTitle.innerText = productData[0].title;
             let productPrice = document.createElement("div");
             productPrice.className = "sd-bundle-productOption-productPrice";
             productPrice.classList.add(
               "productPrice" + bundleIndex + volumeIndex
             );
-            let xprice;
-            if (
-              el.bundleDetail.discountedProductType == "all_products" ||
-              el.bundleDetail.discountedProductType == "collection"
-            ) {
-              let sdDivivde =
-                el.bundleDetail.products[0].variants[0].price / 100;
-              xprice = sdDivivde.toFixed(2);
-            } else {
-              let toFixedPrice = el.bundleDetail.products[0].variants[0].price;
-              xprice = parseInt(toFixedPrice).toFixed(2);
-            }
-            // let newProductPrice = sdCurrencySymbolCode.replace(
-            //   "{{amount}}",
-            //   xprice
-            // );
-
-            // productPrice.innerText = newProductPrice;
+           
+          
+              
+          let xprice = productData[0].variants[0].price;
+            
+       
 
             productPrice.innerText = showAmountWithCurrency(xprice);
 
@@ -1170,16 +1197,9 @@ function createBundle(BUNDLE_DATA) {
                   `sd-volume-datasection-price${index}${bundleIndex}${volumeIndex}`
                 );
 
-                let xPrice;
-                if (
-                  el.bundleDetail.discountedProductType == "all_products" ||
-                  el.bundleDetail.discountedProductType == "collection"
-                ) {
-                  xPrice = (varientPrice / 100).toFixed(2);
-                } else {
-                  let toFixedPrice = parseInt(varientPrice).toFixed(2);
-                  xPrice = toFixedPrice;
-                }
+                let xPrice = varientPrice; 
+              
+                
                 let newdisplayPrice = showAmountWithCurrency(xPrice);
 
                 displayPrice.innerText = newdisplayPrice;
@@ -1192,15 +1212,8 @@ function createBundle(BUNDLE_DATA) {
                   (accumulator, currentValue) => accumulator + currentValue,
                   0
                 );
-                let tPrice;
-                if (
-                  el.bundleDetail.discountedProductType == "all_products" ||
-                  el.bundleDetail.discountedProductType == "collection"
-                ) {
-                  tPrice = (tAmount / 100).toFixed(2);
-                } else {
-                  tPrice = tAmount.toFixed(2);
-                }
+                let tPrice = tAmount.toFixed(2)
+                
                 var newTextAmt = showAmountWithCurrency(tPrice);
 
                 textAmount.innerHTML = newTextAmt;
@@ -1210,15 +1223,8 @@ function createBundle(BUNDLE_DATA) {
                   0
                 );
 
-                let dTotalprice;
-                if (
-                  el.bundleDetail.discountedProductType == "all_products" ||
-                  el.bundleDetail.discountedProductType == "collection"
-                ) {
-                  dTotalprice = total / 100;
-                } else {
-                  dTotalprice = total;
-                }
+                let dTotalprice = total;
+                
 
                 if (
                   el.bundleDetail.discountOptions[volumeIndex].type == "percent"
@@ -1256,28 +1262,20 @@ function createBundle(BUNDLE_DATA) {
                 ) {
                   document.getElementById(
                     "sd-bundle-volume-discount-final-price" + bundleIndex
-                  ).innerText = newTextAmt;
+                  ).innerText = newTextAmt
                 } else {
                   document.getElementById(
                     "sd-bundle-volume-discount-final-price" + bundleIndex
-                  ).innerText = newProductPrice;
+                  ).innerText = newProductPrice
                 }
               });
               elem.variants.map((element) => {
                 let VOLUME_OPTION = document.createElement("option");
                 VOLUME_OPTION.textContent = element.title;
 
-                if (
-                  el.bundleDetail.discountedProductType == "collection" ||
-                  el.bundleDetail.discountedProductType == "all_products"
-                ) {
+               
                   VOLUME_OPTION.value = element.id;
-                } else {
-                  VOLUME_OPTION.value = element.id.replace(
-                    "gid://shopify/ProductVariant/",
-                    ""
-                  );
-                }
+                
 
                 VOLUME_OPTION.setAttribute("data-id", element.price);
                 VOLUME_SELECT.appendChild(VOLUME_OPTION);
@@ -1286,7 +1284,7 @@ function createBundle(BUNDLE_DATA) {
 
               VOLUME_SELECTION_DIV.append(selectRow);
 
-              if (el.bundleDetail.products[0].variants.length <= 1) {
+              if (productData[0].variants.length <= 1) {
                 VOLUME_SELECTION_DIV.style.display = "none";
               }
               if (i > 2) {
@@ -1337,17 +1335,9 @@ function createBundle(BUNDLE_DATA) {
                       "productPrice" + bundleIndex + volumeIndex
                     )
                     .forEach((priceDiv) => {
-                      let xprice;
-                      if (
-                        el.bundleDetail.discountedProductType ==
-                          "all_products" ||
-                        el.bundleDetail.discountedProductType == "collection"
-                      ) {
-                        xprice = (price / 100).toFixed(2);
-                      } else {
-                        let toFixedPrice = parseInt(price).toFixed(2);
-                        xprice = toFixedPrice;
-                      }
+                      let xprice = price
+                      
+                      
                       let newProductPrice = showAmountWithCurrency(xprice);
 
                       priceDiv.innerText = newProductPrice;
@@ -1420,18 +1410,11 @@ function createBundle(BUNDLE_DATA) {
               0
             );
 
-            let xprice;
-            let xtotal;
-            if (
-              el.bundleDetail.discountedProductType == "all_products" ||
-              el.bundleDetail.discountedProductType == "collection"
-            ) {
-              xprice = (total / 100).toFixed(2);
-              xtotal = (total / 100).toFixed(2);
-            } else {
-              xprice = total.toFixed(2);
-              xtotal = total;
-            }
+            let xprice  = total.toFixed(2) ;
+            let xtotal = total.toFixed(2)
+           
+             
+            
             let newProductPrice = showAmountWithCurrency(xprice);
 
             const showTotalval = document.getElementById(
@@ -1444,14 +1427,14 @@ function createBundle(BUNDLE_DATA) {
               let part = parseFloat(el.bundleDetail.discountOptions[ind].value);
               let percentage = (xtotal * part) / 100;
               result = xtotal - percentage;
-              discountedPrice = result.toFixed(2);
+              discountedPrice = result.toFixed(2)
             } else if (el.bundleDetail.discountOptions[ind].type == "fixed") {
               let part = parseFloat(el.bundleDetail.discountOptions[ind].value);
               let fixed = xtotal - part;
-              discountedPrice = fixed.toFixed(2);
+              discountedPrice = fixed.toFixed(2)
             } else if (el.bundleDetail.discountOptions[ind].type == "price") {
               let part = parseFloat(el.bundleDetail.discountOptions[ind].value);
-              discountedPrice = part.toFixed(2);
+              discountedPrice = part.toFixed(2)
             }
             let newDiscountedProductPrice =
               showAmountWithCurrency(discountedPrice);
@@ -1467,26 +1450,20 @@ function createBundle(BUNDLE_DATA) {
             } else {
               document.getElementById(
                 "sd-bundle-volume-discount-final-price" + bundleIndex
-              ).innerText = newDiscountedProductPrice;
+              ).innerText = newDiscountedProductPrice
             }
           });
         });
 
         let total = bundleSum[bundleIndex].reduce(
           (accumulator, currentValue) => {
-            return accumulator + parseInt(currentValue, 10);
+            return accumulator + parseFloat(currentValue, 10);
           },
           0
         );
-        let dNewTotalprice;
-        if (
-          el.bundleDetail.discountedProductType == "all_products" ||
-          el.bundleDetail.discountedProductType == "collection"
-        ) {
-          dNewTotalprice = total / 100;
-        } else {
-          dNewTotalprice = total;
-        }
+     
+        let dNewTotalprice = total;
+        
 
         if (el.bundleDetail.discountOptions[0].type == "percent") {
           let part = parseFloat(el.bundleDetail.discountOptions[0].value);
@@ -1520,21 +1497,16 @@ function createBundle(BUNDLE_DATA) {
         firstDiscountText.style.fontSize =
           el.customization.volume.totalSection.originalPrice.fontSize + "px";
         let tPrice;
-        if (
-          el.bundleDetail.discountedProductType == "all_products" ||
-          el.bundleDetail.discountedProductType == "collection"
-        ) {
-          tPrice = (total / 100).toFixed(2);
-        } else {
-          tPrice = total.toFixed(2);
-        }
+       
+          tPrice = total
+        
 
         // let newFirstDiscountPrice = sdCurrencySymbolCode.replace(
         //   "{{amount}}",
         //   tPrice
         // );
-        let newFirstDiscountPrice = tPrice;
-
+        let newFirstDiscountPrice = tPrice
+         
         firstDiscountText.innerText = showAmountWithCurrency(
           newFirstDiscountPrice
         );
@@ -1604,7 +1576,7 @@ function createBundle(BUNDLE_DATA) {
             (acc, curr) => acc.concat(curr),
             []
           );
-
+  
           let mergedResult = {};
           for (let item of mergedArray) {
             if (mergedResult[item.id]) {
@@ -1696,22 +1668,15 @@ function createBundle(BUNDLE_DATA) {
                         []
                       );
                       let myArray = finalSumBundle.map(parseFloat);
+              
                       let total = myArray.reduce(
                         (accumulator, currentValue) =>
                           accumulator + currentValue,
                         0
                       );
-                      let xtotalprice;
-                      if (
-                        el.bundleDetail.discountedProductType ==
-                          "all_products" ||
-                        el.bundleDetail.discountedProductType == "collection"
-                      ) {
-                        xtotalprice = (total / 100).toFixed(2);
-                      } else {
-                        xtotalprice = total;
-                      }
-
+                      let xtotalprice = total;
+                     
+                   
                       let finalPrice;
 
                       switch (
@@ -1724,9 +1689,9 @@ function createBundle(BUNDLE_DATA) {
                             el.bundleDetail.discountedProductType ==
                             "all_products"
                           ) {
-                            finalPrice = percentage.toFixed(2);
+                            finalPrice = percentage;
                           } else {
-                            finalPrice = percentage.toFixed(2);
+                            finalPrice = percentage;
                           }
                           break;
                         case "price":
@@ -1734,13 +1699,13 @@ function createBundle(BUNDLE_DATA) {
                             el.bundleDetail.discountOptions[optionIndex].value
                           );
                           result = xtotalprice - pricePart;
-                          finalPrice = result.toFixed(2);
+                          finalPrice = result;
                           break;
                         case "fixed":
                           let fixedPart = parseFloat(
                             el.bundleDetail.discountOptions[optionIndex].value
                           );
-                          finalPrice = fixedPart.toFixed(2);
+                          finalPrice = fixedPart;
                           break;
                         default:
                           console.log("how are you ?");
@@ -1753,6 +1718,20 @@ function createBundle(BUNDLE_DATA) {
                           ? "noDiscount"
                           : "Fix";
 
+                            let convertedTotal ;
+                      let convertedFinalPrice ;
+                      if(sdCurrencyIsoCode !== Shopify.currency.active){
+                    
+                        convertedFinalPrice = finalPrice/Shopify.currency.rate
+                         convertedTotal =xtotalprice/Shopify.currency.rate
+                      
+                      }else{  
+                      convertedFinalPrice = finalPrice;
+                      convertedTotal = xtotalprice;
+                      }
+                   
+                 
+                      
                       let sd_bundle_data = {
                         discount_name: el.name,
                         code: el.settings.discountLabel + "-" + code.code,
@@ -1827,6 +1806,8 @@ function createBundle(BUNDLE_DATA) {
         });
 
         waterMark(VOLUME_DIV);
+      }
+      
       } else {
       }
     } else if (el.type == "collectionMixMatch") {
@@ -2054,8 +2035,11 @@ function createBundle(BUNDLE_DATA) {
     }
   });
 }
+
 let selectedProducts = [];
+
 let pageInfoTotalPrice;
+
 async function bundlePageBuilder(data) {
   const url = window.location.href;
 
@@ -2195,7 +2179,9 @@ async function bundlePageBuilder(data) {
       collctionProductMainBox.classList.add("sd-accordion-panel");
       collctionProductMainBox.style.maxHeight = "0px";
       collectionDiv.append(collctionProductMainBox);
-
+       let collectionSpinner = document.createElement("div")
+      collectionSpinner.innerText = "loading..."
+      collctionProductMainBox.append(collectionSpinner)
       let nextPageCursor = "";
       let hasNextPage = "";
       let collectionGid = el.id;
@@ -2241,6 +2227,7 @@ async function bundlePageBuilder(data) {
           collctionProductMainBox.append(CollectionProductDiv);
 
           let pdata = response?.response?.products;
+         
           CollectionProductsData(pdata, CollectionProductDiv);
           let delayTimer;
 
@@ -2423,9 +2410,13 @@ async function bundlePageBuilder(data) {
         })
         .catch((error) => {});
 
-      function CollectionProductsData(response, newDiv) {
-        if (response?.edges?.length) {
-          response.edges.map((ele) => {
+     async function CollectionProductsData(response, newDiv) {
+       console.log(collctionProductMainBox)
+        if (response.edges) {
+          collectionSpinner.remove()
+         const collectionData = await getCollectionProducts(response)
+          collectionData?.map((ele) => {
+            
             let productDiv = document.createElement("div");
             productDiv.className = "sd-bundle-CMM-productDiv";
             newDiv.append(productDiv);
@@ -2437,16 +2428,16 @@ async function bundlePageBuilder(data) {
             productImg.className = "sd-bundle-CMM-product-img";
             productImageDiv.append(productImg);
             let builderProductImg =
-              ele?.node?.images?.edges[0]?.node?.url ?? smartNoImg;
+              ele?.image?.src ?? smartNoImg;
             productImg.setAttribute("src", builderProductImg);
             let productTitleDiv = document.createElement("div");
             productTitleDiv.className = "sd-bundle-CMM-product-title-div";
             productDiv.append(productTitleDiv);
-            productTitleDiv.innerText = ele.node.title;
+            productTitleDiv.innerText = ele.title;
             let productPriceDiv = document.createElement("div");
             productPriceDiv.className = "sd-bundle-builder-product-price";
 
-            let newProductPrice = ele.node.variants.edges[0].node.price;
+            let newProductPrice = ele.variants[0].price;
 
             productPriceDiv.innerText = showAmountWithCurrency(newProductPrice);
             productDiv.append(productPriceDiv);
@@ -2454,8 +2445,8 @@ async function bundlePageBuilder(data) {
             let productButtonDiv = document.createElement("div");
             productButtonDiv.className = "sd-bundle-builder-product-btn-box";
             productDiv.append(productButtonDiv);
-
-            if (ele.node.variants.edges.length <= 1) {
+        
+            if (ele.variants.length <= 1) {
               let addProductButton = document.createElement("button");
               addProductButton.className = "sd-bundle-builder-add-product-btn";
 
@@ -2469,11 +2460,11 @@ async function bundlePageBuilder(data) {
                   selectedProducts[index].length
                 ) {
                   selectedProducts[index].push({
-                    title: ele.node.title,
-                    variantTitle: ele.node.variants.edges[0].node.title,
-                    id: ele.node.variants.edges[0].node.id,
-                    price: ele.node.variants.edges[0].node.price,
-                    image: ele?.node?.images?.edges[0]?.node.url,
+                    title: ele.title,
+                    variantTitle: ele.variants[0].title,
+                    id: ele.variants[0].id,
+                    price: ele.variants[0].price,
+                    image: ele?.image.src,
                   });
                   const getDiv = document.getElementById(
                     "sd-builder-info-variants-data" + index
@@ -2525,14 +2516,11 @@ async function bundlePageBuilder(data) {
                 data.response.translations.translation.add;
               productSelectOptions.hidden = true;
 
-              ele.node.variants.edges.map((elem, variantIndex) => {
+              ele.variants.map((elem, variantIndex) => {
                 let productSelectOptions = document.createElement("option");
-                productSelectOptions.value = elem.node.id.replace(
-                  "gid://shopify/ProductVariant/",
-                  ""
-                );
+                productSelectOptions.value = elem.id
                 productSelectOptions.setAttribute("index", variantIndex);
-                productSelectOptions.textContent = elem.node.title;
+                productSelectOptions.textContent = elem.title;
                 productSelectVariant.appendChild(productSelectOptions);
               });
               productSelectVariant.addEventListener("change", (e) => {
@@ -2543,11 +2531,11 @@ async function bundlePageBuilder(data) {
                   let get_val =
                     event.target.selectedOptions[0].getAttribute("index");
                   selectedProducts[index].push({
-                    title: ele.node.title,
-                    variantTitle: ele.node.variants.edges[get_val].node.title,
-                    id: ele.node.variants.edges[get_val].node.id,
-                    price: ele.node.variants.edges[get_val].node.price,
-                    image: ele?.node?.images?.edges[0]?.node.url,
+                    title: ele.title,
+                    variantTitle: ele.variants[get_val].title,
+                    id: ele.variants[get_val].id,
+                    price: ele.variants[get_val].price,
+                    image: ele?.image?.src,
                   });
                   const getDiv = document.getElementById(
                     "sd-builder-info-variants-data" + index
@@ -2644,7 +2632,7 @@ async function bundlePageBuilder(data) {
     let variantCounter1 = document.createElement("span");
     variantCounter.className = "sd-builder-variant-counter";
     variantCounter1.className = "sd-builder-variant-counter";
-    console.warn(data);
+ 
     variantCounter.innerText = `/${ele.quantity} ${data.response.translations.translation.added}`;
     variantCounter1.innerText = "0";
     variantCounter1.id = `sd-quantityCheck${subIndex}`;
@@ -2767,13 +2755,14 @@ async function bundlePageBuilder(data) {
         for (const product of category) {
           // Push the ID of each product to the idArray
           idArray.push({
-            id: product.id.replace("gid://shopify/ProductVariant/", ""),
+            id: product.id,
             quantity: 1,
           });
-          variantGid.push(product.id);
+          variantGid.push(`gid://shopify/ProductVariant/${product.id}`);
         }
       }
 
+  
       let formData = {
         items: idArray,
         attributes: { SD_BUNDLE_ID: data.response._id },
@@ -2876,22 +2865,38 @@ async function bundlePageBuilder(data) {
                       break;
                   }
 
+
+                   let convertedTotal ;
+                      let convertedFinalPrice ;
+                      if(sdCurrencyIsoCode !== Shopify.currency.active){
+                    
+                        convertedFinalPrice =( finalPrice/Shopify.currency.rate).toFixed(2)
+                         convertedTotal =(totalPrice/Shopify.currency.rate).toFixed(2)
+                      
+                      }else{  
+                      convertedFinalPrice = finalPrice;
+                      convertedTotal = totalPrice;
+                      }
+                
                   let isDiscount =
                     data.response.bundleDetail.discountType == "noDiscount"
                       ? "noDiscount"
                       : "Fix";
+
+ 
+                  
                   let sd_bundle_data = {
                     discount_name: data.response.name,
                     code:
                       data.response.settings.discountLabel + "-" + code.code,
                     discountType: isDiscount,
-                    discountValue: finalPrice,
+                    discountValue: convertedFinalPrice,
                     variantsId: variantGid,
                     startDate: data.response.startdate,
                     endDate: data.response.endDate,
                     shop: Shopify.shop,
                     bundleType: data.response.bundleDetail.discountType,
-                    totalPrice: totalPrice,
+                    totalPrice: convertedTotal,
                     discountCreateId: discountCodeId,
                   };
                   fetch(server + "/api/storefront/createRule", {
@@ -2947,7 +2952,6 @@ async function bundlePageBuilder(data) {
   });
 }
 
-// function addselectedProductList(selectedProducts, mainIndex, extra, arr1) {
 function addselectedProductList(selectedProducts, mainIndex, extra, data) {
   if (selectedProducts[mainIndex].length) {
     if (extra == "") {
@@ -2982,7 +2986,7 @@ function addselectedProductList(selectedProducts, mainIndex, extra, data) {
       selectedProductTitleDiv.append(ProductTitle);
       let productVariantTitle = document.createElement("div");
       productVariantTitle.className = "sd-builder-info-variant-title";
-      console.log(el.variantTitle);
+    
       productVariantTitle.innerText = el.variantTitle;
       if (el.variantTitle == "Default Title") {
         productVariantTitle.style.display = "none";
@@ -3079,7 +3083,7 @@ function sumOfVariants(params, data) {
     totalDiv.innerText = showAmountWithCurrency(newDiscountPrice);
   }
 }
-// sd-builder-cart-info-add-btn
+
 function checkCartButtonActive(arr1, arr2) {
   let t = [];
   for (let i = 0; i < arr1.length; i++) {
@@ -3157,6 +3161,7 @@ async function addDiscountToProduct() {
     });
   });
 }
+
 async function activateRule(localData) {
   const data = {
     shop: Shopify.shop,
@@ -3193,6 +3198,7 @@ async function activateRule(localData) {
       console.log(error.message);
     });
 }
+
 async function deactivateRule(localData) {
   const data = {
     shop: Shopify.shop,
@@ -3218,7 +3224,8 @@ async function deactivateRule(localData) {
       console.log(error.message);
     });
 }
-function createDiscountName(dataArray) {
+
+function createDiscountName() {
   // let checkLocalStorage = localStorage.sd_bundle_data;
 
   if(!Shopify.designMode){
@@ -3244,11 +3251,14 @@ function createDiscountName(dataArray) {
   
    
   
-  
+
  
 }
 
 function showAmountWithCurrency(value) {
+  
+  // console.log("value",price)
+  // let value = (price * shopCurrencyRate).toFixed(2) ;
   let moneyFormat = sdCurrencySymbolCode;
   let sdCurrencyFormatcondition;
 
@@ -3347,4 +3357,43 @@ function showAmountWithCurrency(value) {
 
   return sdCurrencyprice;
 }
+
+function shopCurrencyValue(value){
+  let priceValue = (value * shopCurrencyRate).toFixed(2) ;
+  var roundedUp = Math.ceil(priceValue);
+return roundedUp ;
+}
+
+async  function getSFProducts(el){
+   let products = el.bundleDetail.products.map(async (handle) => {
+    const res = await fetch(`https://${Shopify.shop}/products/${handle.handle}.json`);
+    return res.json();
+  });
+  
+  const resolvedProducts = await Promise.all(products);
+    let productArr = []
+   resolvedProducts.forEach((ele)=>{
+     productArr.push(ele.product)
+   })
+
+  return productArr;
+    
+         }
+          
+async  function getCollectionProducts(el){
+
+  let products = el.edges.map(async(handle)=>{
+     const res = await fetch(`https://${Shopify.shop}/products/${handle.node.handle}.json`);
+    return res.json();
+  })
+
+  const resolvedProducts = await Promise.all(products);
+    let productArr = []
+   resolvedProducts.forEach((ele)=>{
+     productArr.push(ele.product)
+   })
+  return productArr;
+    
+         }
+
 

@@ -59,7 +59,7 @@ export async function getBundleData (req,res){
                  
 
                 if(response){
-           
+                     console.log(response)
                 
                 
                   return res.status(200).send({message:"success",response:response,status:200})
@@ -228,6 +228,7 @@ export async function getCollectionProducts (req,res){
               node {
                 id
                 title
+                handle
                 images(first:1) {
                   edges {
                     node {
@@ -296,6 +297,7 @@ export async function getMoreCollectionProducts (req,res){
                 node {
                   id
                   title
+                  handle
                   images(first:1) {
                     edges {
                       node {
@@ -368,6 +370,7 @@ export async function searchCollectionProducts (req,res){
       cursor
       node {
         title
+        handle
         id
         images(first:1){
           edges{
