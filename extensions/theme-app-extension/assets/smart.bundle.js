@@ -3324,10 +3324,11 @@ function showAmountWithCurrency(value) {
     case "amount_no_decimals_with_comma_separator":
       let noDecimalwithComma = parseInt(value);
 
-      sdCurrencyprice = moneyFormat.replace(
-        "{{amount_no_decimals_with_comma_separator}}",
-        noDecimalwithComma
-      );
+      // sdCurrencyprice = moneyFormat.replace(
+      //   "{{amount_no_decimals_with_comma_separator}}",
+      //   noDecimalwithComma
+      // );
+      sdCurrencyprice = moneyFormat.replace(/{{amount_no_decimals_with_comma_separator}}|\${{ amount_no_decimals_with_comma_separator }}/g, noDecimalwithComma);
       break;
     case "amount_with_space_separator":
       if (value) {
