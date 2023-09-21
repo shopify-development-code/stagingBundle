@@ -3271,7 +3271,7 @@ function showAmountWithCurrency(value) {
   ) {
     sdCurrencyFormatcondition = "amount_no_decimals_with_space_separator";
   } else if (
-    moneyFormat.includes("{{amount_no_decimals_with_comma_separator}}")
+    moneyFormat.includes("{{amount_no_decimals_with_comma_separator}}") || moneyFormat.includes("${{ amount_no_decimals_with_comma_separator }}")
   ) {
     sdCurrencyFormatcondition = "amount_no_decimals_with_comma_separator";
   } else if (moneyFormat.includes("{{amount_with_space_separator}}$")) {
