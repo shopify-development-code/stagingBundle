@@ -255,7 +255,7 @@ app.post(
   shopify.config.webhooks.path,
   shopify.processWebhooks({ webhookHandlers: GDPRWebhookHandlers })
 );
-app.use(express.json());
+app.use(express.json({limit : "50mb"}));
 // All endpoints after this point will require an active session
 
 app.use("/api/storefront",api)
