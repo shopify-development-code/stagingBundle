@@ -25,7 +25,7 @@ import { useNavigate } from "@shopify/app-bridge-react";
 import { Outlet, useLocation } from "react-router-dom";
 import { Fullscreen } from "@shopify/app-bridge/actions";
 import { useAppBridge } from "@shopify/app-bridge-react";
-import smartLogo from "../assets/smart-logo.png"
+
 
 function CommonFrame() {
   const param = useLocation();
@@ -320,8 +320,8 @@ useState(()=>{
 
   const logo = {
     width: 200,
-    topBarSource:smartLogo,
-    contextualSaveBarSource:smartLogo,
+    topBarSource:'https://cdn.shopify.com/s/files/1/0801/7264/6691/files/MicrosoftTeams-image_4.png?v=1695627134',
+    contextualSaveBarSource:'https://cdn.shopify.com/s/files/1/0801/7264/6691/files/MicrosoftTeams-image_4.png?v=1695627134',
     accessibilityLabel: "smart_discount_bundle",
     url:"#"
    

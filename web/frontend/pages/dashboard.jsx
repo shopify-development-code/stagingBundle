@@ -2,8 +2,7 @@ import {useState} from 'react'
 import { Button, Card,Modal } from 'antd'
 import {MediaCard,VideoThumbnail} from '@shopify/polaris';
 import {useAPI} from "../components/shop"
-import thumbnail1 from "../assets/enableAppThumbs.png"
-import thumbnail2 from "../assets/addProductThumbs.png"
+
 const Dashboard = () => {
   const {shop,themeId} = useAPI()
   const [open, setOpen] = useState(false);
@@ -45,7 +44,7 @@ function handleOpenCustomization () {
       >
         <VideoThumbnail
           videoLength={15}
-          thumbnailUrl={thumbnail1}
+          thumbnailUrl='https://cdn.shopify.com/s/files/1/0801/7264/6691/files/MicrosoftTeams-image_2.png?v=1695627080'
           onClick={()=>setOpen(true)}
         
         />
@@ -67,7 +66,7 @@ function handleOpenCustomization () {
     >
       <VideoThumbnail
         videoLength={21}
-        thumbnailUrl={thumbnail2}
+        thumbnailUrl='https://cdn.shopify.com/s/files/1/0801/7264/6691/files/MicrosoftTeams-image_3.png?v=1695627080'
         onClick={()=>setOpen1(true)}
       />
     </MediaCard>

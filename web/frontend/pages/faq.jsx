@@ -1,25 +1,6 @@
 import React from 'react';
 import { Collapse,Card } from 'antd';
-import faqCreateBundle from  "../assets/FAQ_createBundle.png"
-import faqSelectBundle from  "../assets/FAQ_selectBundle.png"
-import faqSelectProduct from  "../assets/FAQ_selectProduct.png"
-import faqSelectNameAndTitle from  "../assets/Faq_selectNameAndTitle.png"
-import faqSelectDiscount from  "../assets/FAQ_selectDiscount.png"
-import faqSelectDates from  "../assets/FAQ_selectDates.png"
-import faqPreviewBundle from  "../assets/FAQ_previewBundle.png"
-import faqDisplayOption from  "../assets/FAQ_displayOption.png"
-import faqSaveBundle from  "../assets/FAQ_saveBundle.png"
-import faqSelectCustomization from  "../assets/FAQ_selectCustomization.png"
-import faqEnterCustomization from  "../assets/FAQ_enterCustomizationScreen.png"
-import faqSelectCustomizationType from  "../assets/FAQ_selectCustomizationType.png"
-import faqCustomizationBox from  "../assets/FAQ_customizationBox.png"
-import faqCustomizationBoxRadius from  "../assets/FAQ_customizationBoxRadius.png"
-import faqCustomizationTitle from  "../assets/FAQ_customizationTitle.png"
-import faqCustomizationProductDetail from  "../assets/FAQ_customizationProductDetail.png"
-import faqCustomizationButton from  "../assets/FAQ_customizationButton.png"
-import faqCustomizationTotalSection from  "../assets/FAQ_customizationTotalSection.png"
-import faqAnalytics from  "../assets/FAQ_analytics.png"
-import faqTranslation from  "../assets/FAQ_translation.png"
+
 
 const Faq = () => {
     
@@ -35,7 +16,7 @@ const items = [
           </li>
           </ul>
         <div className='sd-bundle-faq-parent-img'>
-          <img className='sd-bundle-faq-images' src={faqCreateBundle} alt="FAQ_create_Bundle" />
+          <img className='sd-bundle-faq-images' src='https://cdn.shopify.com/s/files/1/0801/7264/6691/files/FAQ_createBundle.f1896072.png?v=1695625535' alt="FAQ_create_Bundle" />
         </div>
       </div>
       <div className='sd-bundle-faq-accordion-box'>
@@ -46,7 +27,7 @@ const items = [
           </li>
           </ul>
         <div className='sd-bundle-faq-parent-img'>
-          <img className='sd-bundle-faq-images' src={faqSelectBundle} alt="FAQ_Select_Bundle" />
+          <img className='sd-bundle-faq-images' src='https://cdn.shopify.com/s/files/1/0801/7264/6691/files/FAQ_selectBundle.72d896ed.png?v=1695625624' alt="FAQ_Select_Bundle" />
         </div>
       </div>
       <div className='sd-bundle-faq-accordion-box'>
@@ -57,7 +38,7 @@ const items = [
           </li>
           </ul>
         <div className='sd-bundle-faq-parent-img'>
-          <img className='sd-bundle-faq-images' src={faqSelectProduct} alt="FAQ_Select_Product" />
+          <img className='sd-bundle-faq-images' src='https://cdn.shopify.com/s/files/1/0801/7264/6691/files/FAQ_selectProduct.fdbb8a76.png?v=1695625660' alt="FAQ_Select_Product" />
         </div>
       </div>
       <div className='sd-bundle-faq-accordion-box'>
@@ -68,7 +49,7 @@ const items = [
           </li>
           </ul>
         <div className='sd-bundle-faq-parent-img'>
-          <img className='sd-bundle-faq-images' src={faqSelectNameAndTitle} alt="FAQ_Select_Name_and_Title" />
+          <img className='sd-bundle-faq-images' src='https://cdn.shopify.com/s/files/1/0801/7264/6691/files/Faq_selectNameAndTitle.89f5d878.png?v=1695625939' alt="FAQ_Select_Name_and_Title" />
         </div>
       </div>
       <div className='sd-bundle-faq-accordion-box'>
@@ -79,7 +60,7 @@ const items = [
           </li>
           </ul>
         <div className='sd-bundle-faq-parent-img'>
-          <img className='sd-bundle-faq-images' src={faqSelectDiscount} alt="FAQ_Select_Discount" />
+          <img className='sd-bundle-faq-images' src='https://cdn.shopify.com/s/files/1/0801/7264/6691/files/FAQ_selectDiscount.717a92aa.png?v=1695625939' alt="FAQ_Select_Discount" />
         </div>
       </div>
       <div className='sd-bundle-faq-accordion-box'>
@@ -91,7 +72,7 @@ const items = [
           </li>
         </ul>
         <div className='sd-bundle-faq-parent-img'>
-          <img className='sd-bundle-faq-images' src={faqSelectDates} alt="FAQ_Select_Date" />
+          <img className='sd-bundle-faq-images' src='https://cdn.shopify.com/s/files/1/0801/7264/6691/files/FAQ_selectDates.b444657b.png?v=1695625939' alt="FAQ_Select_Date" />
         </div>
       </div>
       <div className='sd-bundle-faq-accordion-box'>
@@ -102,7 +83,7 @@ const items = [
           </li>
           </ul>
         <div className='sd-bundle-faq-parent-img'>
-          <img className='sd-bundle-faq-images' src={faqPreviewBundle} alt="FAQ_Preview_Bundle" />
+          <img className='sd-bundle-faq-images' src='https://cdn.shopify.com/s/files/1/0801/7264/6691/files/FAQ_previewBundle.30c4acec.png?v=1695625940' alt="FAQ_Preview_Bundle" />
         </div>
       </div>
       <div className='sd-bundle-faq-accordion-box'>
@@ -113,7 +94,7 @@ const items = [
           </li>
           </ul>
         <div className='sd-bundle-faq-parent-img'>
-          <img className='sd-bundle-faq-images' src={faqDisplayOption} alt="FAQ_Display_Option" />
+          <img className='sd-bundle-faq-images' src='https://cdn.shopify.com/s/files/1/0801/7264/6691/files/FAQ_displayOption.25afcf82.png?v=1695625939' alt="FAQ_Display_Option" />
         </div>
       </div>
       <div className='sd-bundle-faq-accordion-box'>
@@ -124,7 +105,7 @@ const items = [
           </li>
           </ul>
         <div className='sd-bundle-faq-parent-img'>
-          <img className='sd-bundle-faq-images' src={faqSaveBundle} alt="FAQ_Display_Option" />
+          <img className='sd-bundle-faq-images' src='https://cdn.shopify.com/s/files/1/0801/7264/6691/files/FAQ_saveBundle.a17f79bd.png?v=1695625940' alt="FAQ_Display_Option" />
         </div>
       </div>
       </>,
@@ -142,7 +123,7 @@ To access the customization options on the Smart Bundle admin panel, navigate to
           </li>
           </ul>
         <div className='sd-bundle-faq-parent-img'>
-          <img className='sd-bundle-faq-images' src={faqSelectCustomization} alt="FAQ_Customization" />
+          <img className='sd-bundle-faq-images' src='https://cdn.shopify.com/s/files/1/0801/7264/6691/files/FAQ_selectCustomization.9fe732db.png?v=1695625940' alt="FAQ_Customization" />
         </div>
       </div>
       <div className='sd-bundle-faq-accordion-box'>
@@ -152,7 +133,7 @@ To access the customization options on the Smart Bundle admin panel, navigate to
           </li>
           </ul>
         <div className='sd-bundle-faq-parent-img'>
-          <img className='sd-bundle-faq-images' src={faqEnterCustomization} alt="FAQ_Customization" />
+          <img className='sd-bundle-faq-images' src='https://cdn.shopify.com/s/files/1/0801/7264/6691/files/FAQ_enterCustomizationScreen.9ea9f626.png?v=1695625940' alt="FAQ_Customization" />
         </div>
       </div>
       <div className='sd-bundle-faq-accordion-box'>
@@ -162,7 +143,7 @@ To access the customization options on the Smart Bundle admin panel, navigate to
           </li>
           </ul>
         <div className='sd-bundle-faq-parent-img'>
-          <img className='sd-bundle-faq-images' src={faqSelectCustomizationType} alt="FAQ_Customization" />
+          <img className='sd-bundle-faq-images' src='https://cdn.shopify.com/s/files/1/0801/7264/6691/files/FAQ_selectCustomizationType.b96180a9.png?v=1695625940' alt="FAQ_Customization" />
         </div>
       </div>
       <div className='sd-bundle-faq-accordion-box'>
@@ -172,7 +153,7 @@ To access the customization options on the Smart Bundle admin panel, navigate to
           </li>
           </ul>
         <div className='sd-bundle-faq-parent-img'>
-          <img className='sd-bundle-faq-images' src={faqCustomizationBox} alt="FAQ_Customization" />
+          <img className='sd-bundle-faq-images' src='https://cdn.shopify.com/s/files/1/0801/7264/6691/files/FAQ_customizationBox.8f187cae.png?v=1695625940' alt="FAQ_Customization" />
         </div>
       </div>
       <div className='sd-bundle-faq-accordion-box'>
@@ -182,7 +163,7 @@ To access the customization options on the Smart Bundle admin panel, navigate to
           </li>
           </ul>
         <div className='sd-bundle-faq-parent-img'>
-          <img className='sd-bundle-faq-images' src={faqCustomizationBoxRadius} alt="FAQ_Customization" />
+          <img className='sd-bundle-faq-images' src='https://cdn.shopify.com/s/files/1/0801/7264/6691/files/FAQ_customizationBoxRadius.0b15e929.png?v=1695625940' alt="FAQ_Customization" />
         </div>
       </div>
       <div className='sd-bundle-faq-accordion-box'>
@@ -192,7 +173,7 @@ To access the customization options on the Smart Bundle admin panel, navigate to
           </li>
           </ul>
         <div className='sd-bundle-faq-parent-img'>
-          <img className='sd-bundle-faq-images' src={faqCustomizationTitle} alt="FAQ_Customization" />
+          <img className='sd-bundle-faq-images' src='https://cdn.shopify.com/s/files/1/0801/7264/6691/files/FAQ_customizationTitle.296765a7.png?v=1695625940' alt="FAQ_Customization" />
         </div>
       </div>
       <div className='sd-bundle-faq-accordion-box'>
@@ -211,7 +192,7 @@ This level of flexibility allows you to tailor each element's appearance to suit
           </li>
           </ul>
         <div className='sd-bundle-faq-parent-img'>
-          <img className='sd-bundle-faq-images' src={faqCustomizationProductDetail} alt="FAQ_create_Bundle" />
+          <img className='sd-bundle-faq-images' src='https://cdn.shopify.com/s/files/1/0801/7264/6691/files/FAQ_customizationProductDetail.25e7d58f.png?v=1695625941' alt="FAQ_create_Bundle" />
         </div>
       </div>
       <div className='sd-bundle-faq-accordion-box'>
@@ -228,7 +209,7 @@ These options give you the flexibility to create an appealing and functional but
           </li>
           </ul>
         <div className='sd-bundle-faq-parent-img'>
-          <img className='sd-bundle-faq-images' src={faqCustomizationButton} alt="FAQ_create_Bundle" />
+          <img className='sd-bundle-faq-images' src='https://cdn.shopify.com/s/files/1/0801/7264/6691/files/FAQ_customizationButton.087bceef.png?v=1695625941' alt="FAQ_create_Bundle" />
         </div>
       </div>
       <div className='sd-bundle-faq-accordion-box'>
@@ -238,7 +219,7 @@ These options give you the flexibility to create an appealing and functional but
           </li>
           </ul>
         <div className='sd-bundle-faq-parent-img'>
-          <img className='sd-bundle-faq-images' src={faqCustomizationTotalSection} alt="FAQ_create_Bundle" />
+          <img className='sd-bundle-faq-images' src='https://cdn.shopify.com/s/files/1/0801/7264/6691/files/FAQ_customizationTotalSection.3472ac69.png?v=1695625940' alt="FAQ_create_Bundle" />
         </div>
       </div>
       </>,
@@ -254,7 +235,7 @@ These options give you the flexibility to create an appealing and functional but
           </li>
           </ul>
         <div className='sd-bundle-faq-parent-img'>
-          <img className='sd-bundle-faq-images' src={faqAnalytics} alt="FAQ_Analytics" />
+          <img className='sd-bundle-faq-images' src='https://cdn.shopify.com/s/files/1/0801/7264/6691/files/FAQ_analytics.00d242ad.png?v=1695625940' alt="FAQ_Analytics" />
         </div>
       </div>
       </>,
@@ -270,7 +251,7 @@ These options give you the flexibility to create an appealing and functional but
           </li>
           </ul>
         <div className='sd-bundle-faq-parent-img'>
-          <img  className='sd-bundle-faq-images' src={faqTranslation} alt="FAQ_translation" />
+          <img  className='sd-bundle-faq-images' src='https://cdn.shopify.com/s/files/1/0801/7264/6691/files/FAQ_translation.e487d82c.png?v=1695625940' alt="FAQ_translation" />
         </div>
       </div>
       </>,

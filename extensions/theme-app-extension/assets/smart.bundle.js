@@ -3263,8 +3263,12 @@ function showAmountWithCurrency(value) {
     sdCurrencyFormatcondition = "amount_no_decimals_with_comma_separator";
   } else if (moneyFormat.includes("{{amount_with_space_separator}}$")) {
     sdCurrencyFormatcondition = "amount_with_space_separator";
-  } else {
+  } else if (moneyFormat.includes("{{amount}}")) {
     sdCurrencyFormatcondition = "amount";
+  }else{
+      let pattern = /{{(.*?)}}/;
+       let match = moneyFormat.match(pattern);
+       sdCurrencyFormatcondition = `${match[1]}`
   }
 
   let sdCurrencyprice;
@@ -3343,7 +3347,7 @@ function showAmountWithCurrency(value) {
       }
       break;
     default:
-    // code block
+      sdCurrencyprice = moneyFormat.replace(`{{${sdCurrencyFormatcondition}}}`,value);
   }
 
   return sdCurrencyprice;
