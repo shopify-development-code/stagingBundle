@@ -23,11 +23,11 @@ const shopify = shopifyApp({
     apiVersion: LATEST_API_VERSION,
     restResources,
     billing: undefined, // or replace with billingConfig above to enable example billing
-    // apiKey : process.env.SHOPIFY_API_KEY,
-    // apiSecretKey: process.env.SHOPIFY_API_SECRET,
-    // hostScheme : "https",
-    // hostName : process.env.DOMAIN,
-    // scopes: scopes
+    apiKey : process.env.SHOPIFY_API_KEY,
+    apiSecretKey: process.env.SHOPIFY_API_SECRET,
+    hostScheme : "https",
+    hostName : process.env.DOMAIN,
+    scopes: scopes
   },
   auth: {
     path: "/api/auth",
