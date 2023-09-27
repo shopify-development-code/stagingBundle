@@ -33,13 +33,13 @@ function handleOpenCustomization () {
        
         <MediaCard
         title="How to enable app from theme customizer?"
-        description={<div>
+        description={<span>
           <li>1. From your Shopify admin, go to <strong>Online Store</strong>  &gt; <strong>Themes</strong> .</li>
           <li>2. Find the theme that you want to edit, and then click <strong>Customize</strong> .</li>
           <li>3. Click the <strong>App embeds</strong> tab.</li>
           <li>4. Select the app embed that you want to activate or click the <strong>Search</strong> bar and enter a search term to search through your installed apps.</li>
           <li>5. Beside the app embed that you want to activate, click the toggle to activate it.</li>
-        </div>}
+        </span>}
         size='small'
       >
         <VideoThumbnail
@@ -51,7 +51,7 @@ function handleOpenCustomization () {
       </MediaCard>
       <MediaCard
       title="How to add app block to product page?"
-      description={<div>
+      description={<span>
         <li>1. From your Shopify admin, go to <strong>Online Store</strong>  &gt; <strong>Themes</strong> .</li>
         <li>2. Find the theme that you want to edit, and then click <strong>Customize</strong> .</li>
         <li>3. Navigate to the product page and section where you want to add the app block.</li>
@@ -60,7 +60,7 @@ function handleOpenCustomization () {
         <li>6. Optional: Click and drag the ⋮⋮ icon to move the block to another available location on the page. You can also customize the block using any available settings.</li>
         <li>7. Click <strong>Save..</strong></li>
         
-      </div>}
+      </span>}
       size='small'
 
     >

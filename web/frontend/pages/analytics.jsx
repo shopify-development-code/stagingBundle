@@ -80,12 +80,13 @@ const handleAnalyticsReload = ()=>{
 
       const data = analyticsData.map((item, index) => ({
         
-        bundle:( <div className="sd-bundle-dashboard-img-box">
-        {item.bundleDetail.products.map((ele) => {
+        bundle:( <div key={index} className="sd-bundle-dashboard-img-box">
+        {item.bundleDetail.products.map((ele,index) => {
           return (
-            <div className="sd-bundle-dashboard-img">
+            <div key={index} className="sd-bundle-dashboard-img">
               {/* <img src={ele?.images ? ele.images[0].originalSrc : ele?.image ? ele.image.originalSrc:""} alt="" /> */}
               <Thumbnail
+              key={index}
                  source={
                   ele.images
                     ? ele?.images[0]?.originalSrc !== "" ? ele.images[0]?.originalSrc : noProductImg
@@ -100,13 +101,13 @@ const handleAnalyticsReload = ()=>{
           );
         })}{" "}
       </div>),
-      bundleName :(  <a  className="sd-bundle-list-name">
+      bundleName :(  <a key={index} className="sd-bundle-list-name">
       {item.name}
       
     </a>),
 status:(
-  <div>
-    {item.status == "active" ? <div className='sd-analytics-status-active'>Active</div> : <div className='sd-analytics-status-draft'>Draft</div>}
+  <div key={index}>
+    {item.status == "active" ? <div  className='sd-analytics-status-active'>Active</div> : <div className='sd-analytics-status-draft'>Draft</div>}
   {/* <Switch
     defaultChecked
     checked={item.status == "active" ? true : false}
@@ -114,13 +115,13 @@ status:(
   /> */}
 </div>
 ),
-salesValue:(<div className='sd-analytics-salesValues-div'>
+salesValue:(<div key={index} className='sd-analytics-salesValues-div'>
   {/* {currencyCode}{item.analytics.bundleSalesValue} */}
   {showAmountWithCurrency(item.analytics.bundleSalesValue,currencyCode)}
   </div>),
-SalesNumber:(<div className='sd-analytics-salesNumber-div'>{item.analytics.bundleSold}</div>),
-Clicks:(<div className='sd-analytics-click-div'>{item.analytics.bundleClick}</div>),
-Views:(<div className='sd-analytics-views-div'>{item.analytics.bundleViews}</div>)
+SalesNumber:(<div key={index} className='sd-analytics-salesNumber-div'>{item.analytics.bundleSold}</div>),
+Clicks:(<div key={index} className='sd-analytics-click-div'>{item.analytics.bundleClick}</div>),
+Views:(<div key={index} className='sd-analytics-views-div'>{item.analytics.bundleViews}</div>)
 
       }))
 

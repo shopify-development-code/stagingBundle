@@ -203,6 +203,7 @@ export async function getBundle (req,res){
     //   ],
 
     // )
+    console.time("test1");
 
     const response = await bundleModel.aggregate([
       {
@@ -232,27 +233,18 @@ export async function getBundle (req,res){
         }
       }
     ]);
-    
-    // console.log(response)
+
   
-    if(response){
+    if(response.length){
+    console.timeEnd("test1");
+
         return res.status(200).json({message:"success!!",response:response.reverse(), status:200})
         }else{
             return res.status(503).json({message :"Query failed!!",status:503})
         }
    }   catch(error){
     console.error(`Error: ${error.message}`);
-    // if (error.code === 'ETIMEDOUT' && retries < MAX_RETRIES)  {
-    //     console.log(`Operation timed out, retrying... (attempt ${retries + 1} of ${MAX_RETRIES})`);
-    //     retries++;
-    //     await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for 1 second before retrying
-    //     return myOperation(); // Retry the operation
-    
-    // } else {
-    //   // Gracefully terminate the application
-    //   console.log('Fatal error occurred, terminating application.');
-    //   process.exit(1);
-    // }
+
 }
 }
 

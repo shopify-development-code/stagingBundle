@@ -281,7 +281,7 @@ return check;
       </div>
     ),
     name: (
-      <a  className="sd-bundle-list-name"
+      <span  className="sd-bundle-list-name"
         onClick={() => {
           handleEditBundle(item._id, item.type);
         }}
@@ -306,7 +306,7 @@ return check;
 
 
         :""}
-      </a>
+      </span>
       
     ),
     
