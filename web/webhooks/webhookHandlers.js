@@ -15,6 +15,7 @@ export async function verifyWebhooks(req, res) {
     let shop = req.headers["x-shopify-shop-domain"];
     let hmac_header = req.headers["x-shopify-hmac-sha256"];
     const secretKey = process.env.SHOPIFY_API_SECRET;
+    console.log("topic and shpop:-",topic,shop)
     switch (topic) {
       case "products/update":
         try {
