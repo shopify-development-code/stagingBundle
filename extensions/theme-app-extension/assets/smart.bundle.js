@@ -2033,8 +2033,22 @@ function createBundle(BUNDLE_DATA) {
                       go_to_bundleBuilder_btn.innerText =
                         el.translations.translation.goToBundleBuilder;
                       collectionSpinner.remove();
-                      let newWindow = window.open("", "_blank");
-                      newWindow.location.href = `https://${Shopify.shop}/pages/collection-mix-match?b=${el._id}`;
+                      // let newWindow = window.open("", "_blank");
+                      // newWindow.location.href = `https://${Shopify.shop}/pages/collection-mix-match?b=${el._id}`;
+                      navigator.sayswho= (function(){
+                        var N= navigator.appName, ua= navigator.userAgent, tem,
+                        M= ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*([\d\.]+)/i);
+                        if(M && (tem= ua.match(/version\/([\.\d]+)/i))!= null) M[2]= tem[1];
+                        M= M? [M[1], M[2]]:[N, navigator.appVersion, '-?'];
+                        return M.join(' ');
+                    })();
+                    
+                    if(navigator.sayswho.includes("Safari") == true){
+                         window.location.assign(`https://${Shopify.shop}/pages/collection-mix-match?b=${el._id}`);
+                    }else{
+                        let newWindow = window.open("", "_blank");
+                                      newWindow.location.href = `https://${Shopify.shop}/pages/collection-mix-match?b=${el._id}`;
+                    }
                     }
                   });
               } else {
@@ -2043,8 +2057,22 @@ function createBundle(BUNDLE_DATA) {
                     el.translations.translation.goToBundleBuilder;
 
                   collectionSpinner.remove();
-                  let newWindow = window.open("", "_blank");
-                  newWindow.location.href = `https://${Shopify.shop}/pages/collection-mix-match?b=${el._id}`;
+                  // let newWindow = window.open("", "_blank");
+                  // newWindow.location.href = `https://${Shopify.shop}/pages/collection-mix-match?b=${el._id}`;
+                  navigator.sayswho= (function(){
+                    var N= navigator.appName, ua= navigator.userAgent, tem,
+                    M= ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*([\d\.]+)/i);
+                    if(M && (tem= ua.match(/version\/([\.\d]+)/i))!= null) M[2]= tem[1];
+                    M= M? [M[1], M[2]]:[N, navigator.appVersion, '-?'];
+                    return M.join(' ');
+                })();
+                
+                if(navigator.sayswho.includes("Safari") == true){
+                     window.location.assign(`https://${Shopify.shop}/pages/collection-mix-match?b=${el._id}`);
+                }else{
+                    let newWindow = window.open("", "_blank");
+                                  newWindow.location.href = `https://${Shopify.shop}/pages/collection-mix-match?b=${el._id}`;
+                }
                 }
               }
             });

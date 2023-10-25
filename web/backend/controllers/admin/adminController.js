@@ -203,7 +203,7 @@ export async function getBundle (req,res){
     //   ],
 
     // )
-    console.time("test1");
+ 
 
     const response = await bundleModel.aggregate([
       {
@@ -236,7 +236,6 @@ export async function getBundle (req,res){
 
   
     if(response.length){
-    console.timeEnd("test1");
 
         return res.status(200).json({message:"success!!",response:response.reverse(), status:200})
         }else{
