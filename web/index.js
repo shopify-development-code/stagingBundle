@@ -17,6 +17,11 @@ import translationModel from "./backend/models/translationSchema.js";
 import settingModel from "./backend/models/settings.js";
 
 import { privacyPolicy } from "./backend/controllers/admin/adminController.js";
+
+import dotenv from "dotenv";
+ 
+ 
+dotenv.config();
 const app=express();
 const PORT = parseInt(process.env.BACKEND_PORT || process.env.PORT, 10);
 // DB.connect();
