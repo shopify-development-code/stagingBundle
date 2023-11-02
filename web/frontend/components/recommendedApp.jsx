@@ -4,28 +4,28 @@ import { MediaCard } from "@shopify/polaris";
 import { Redirect } from "@shopify/app-bridge/actions";
 import createApp from "@shopify/app-bridge";
 const { Meta } = Card;
-const config = {
-  // The client ID provided for your application in the Partner Dashboard.
-  apiKey: process.env.SHOPIFY_API_KEY,
-  // The host of the specific shop that's embedding your app. This value is provided by Shopify as a URL query parameter that's appended to your application URL when your app is loaded inside the Shopify admin.
-  host: new URLSearchParams(location.search).get("host"),
-  forceRedirect: true
-};
+// const config = {
+//   // The client ID provided for your application in the Partner Dashboard.
+//   apiKey: process.env.SHOPIFY_API_KEY,
+//   // The host of the specific shop that's embedding your app. This value is provided by Shopify as a URL query parameter that's appended to your application URL when your app is loaded inside the Shopify admin.
+//   host: new URLSearchParams(location.search).get("host"),
+//   forceRedirect: true
+// };
 const RecommendedApp = () => {
   // console.log(process.env.SHOPIFY_API_KEY)
 
-  const redirectApp = createApp(config);
-  const redirect = Redirect.create(redirectApp);
+  // const redirectApp = createApp(config);
+  // const redirect = Redirect.create(redirectApp);
   return (
     <Card
       title="Recommended apps & themes "
       className="sd-bundle-contact-box recommended-app-section"
-      extra={<a    onClick={() => {
-        redirect.dispatch(Redirect.Action.REMOTE, {
-          url: "https://apps.shopify.com/partners/shine-dezign-infonet",
-          newContext: true,
-        })
-      }} >More apps</a>}
+      // extra={<a    onClick={() => {
+      //   redirect.dispatch(Redirect.Action.REMOTE, {
+      //     url: "https://apps.shopify.com/partners/shine-dezign-infonet",
+      //     newContext: true,
+      //   })
+      // }} >More apps</a>}
     >
       <div className="sd-bundle-meta-card-main">
         <div className="sd-bundle-meta-card">
