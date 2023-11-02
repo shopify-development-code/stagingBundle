@@ -59,6 +59,7 @@ const CreateBundle = () => {
       );
       setLoader(false);
     }
+    setLoader(false);
   }
 
 
