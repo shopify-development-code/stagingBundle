@@ -243,7 +243,7 @@ export async function getBundle (req,res){
 
         return res.status(200).json({message:"success!!",response:response.reverse(), status:200})
         }else{
-            return res.status(503).json({message :"Query failed!!",status:503})
+            return res.status(200).json({message :"Query failed!!",status:503})
         }
    }   catch(error){
     console.error(`Error: ${error.message}`);
