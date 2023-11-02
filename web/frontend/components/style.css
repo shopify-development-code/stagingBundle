@@ -90,7 +90,7 @@
 
 .sd-bundle-MoveToHome-section .sd-bundle-commonHeading {
   padding-left: 10px;
-  font-size: 20px;
+  font-size: 21px;
   font-weight: 500;
   color: #202937;
 }
@@ -617,8 +617,9 @@ input[type="radio"] {
   line-height: 1.5;
   color: #202937;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 21px;
   height: 60px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 .sd-bundle-customization-wrapper {
   padding: 20px 0;
@@ -639,7 +640,10 @@ input[type="radio"] {
   background-color: white;
   padding: 13px 20px;
   border-radius: 4px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
+
+
 
 .sd-bundle-customization-card button {
   margin: 20px 20px 0 0px
@@ -1389,6 +1393,7 @@ button.Polaris-Navigation__Item {
   width: 100%;
   max-width: 1200px;
   margin: 20px auto;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 /******************** aside nav css ***************/
@@ -1784,7 +1789,7 @@ button.Polaris-Navigation__Item {
 }
 .sd-bundle-analytics-tab-box .ant-tabs-content-holder .ant-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-row-gap: 0.75rem;
 }
 .sd-bundle-analytics-tab-box .ant-tabs-content-holder .ant-row .ant-col.ant-col-6 {
