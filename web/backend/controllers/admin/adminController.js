@@ -239,7 +239,7 @@ export async function getBundle (req,res){
     ]);
 
   
-    if(response.length){
+    if(response){
 
         return res.status(200).json({message:"success!!",response:response.reverse(), status:200})
         }else{
