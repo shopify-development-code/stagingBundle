@@ -121,9 +121,9 @@ if(key == "basic"){
                     $0<span>/mo</span>
                   </div>
                   <div className="sd-plan-pricing-btn">
-                    <Button disabled={selectedPlan == "free" ? true : false} onClick={(e)=>handleChoosePlan(e,"free")}  className="sd-plan-btn">
+                    {/* <Button disabled={selectedPlan == "free" ? true : false} onClick={(e)=>handleChoosePlan(e,"free")}  className="sd-plan-btn">
                         {selectedPlan == "free" ? "Current Plan" : "Choose Plan"}
-                     </Button>
+                     </Button> */}
                   </div>
                 </Card>
                 </Skeleton>
