@@ -7,6 +7,7 @@ import {TranslationOutlined,FormOutlined,SettingOutlined,UnorderedListOutlined} 
 import { useNavigate } from "@shopify/app-bridge-react";
 import Watermark from '../components/watermark';
 import ContactUs from '../components/contactUs';
+import LogoHeader from '../components/logoHeader';
 
 
 const Settings = () => {
@@ -34,7 +35,9 @@ const Settings = () => {
   };
 
   return (
-    <div className='sd-bundle-setting-container'>
+    <>
+    <LogoHeader/>
+    <div className='sd-bundle-setting-container sd-margin-top'>
         <div className="sd-bundle-MoveToHome-section">
      
         
@@ -81,6 +84,7 @@ const Settings = () => {
         <Watermark/>
         <ContactUs/>
     </div>
+    </>
   )
 }
 

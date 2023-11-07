@@ -674,7 +674,7 @@ return check;
     ),
     active: (
       <div>
-                {/* {SearchBox()} */}
+                {SearchBox()}
 
         <div>
         <Skeleton style={{marginTop:"1rem"}} loading={loader} active  paragraph={{rows:5,width:"100%"}} title={{width:"100%"}}>
@@ -701,7 +701,7 @@ return check;
     ),
     draft: (
       <div>
-               {/* {SearchBox()} */}
+               {SearchBox()}
 
         <div>
         <Skeleton style={{marginTop:"1rem"}} loading={loader} active  paragraph={{rows:5,width:"100%"}} title={{width:"100%"}}>

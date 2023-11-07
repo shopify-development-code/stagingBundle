@@ -78,7 +78,7 @@
   display: flex;
   align-items: center;
   padding: 19px 13px;
-  margin-top: 20px !important;
+  margin-top: 20px ;
   background: #fff;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   border-radius: 4px;
@@ -87,7 +87,10 @@
   height: 60px;
   max-width: 1200px;
 }
-
+.sd-watermark p {
+  font-size: 13px;
+  color: #8b8b8b;
+}
 .sd-bundle-MoveToHome-section .sd-bundle-commonHeading {
   padding-left: 10px;
   font-size: 21px;
@@ -622,7 +625,7 @@ input[type="radio"] {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 .sd-bundle-customization-wrapper {
-  padding: 20px 0;
+  padding: 0px 0;
 }
 
 .sd-bundle-customization-wrapper .sd-bundle-customization-section {
@@ -1395,7 +1398,20 @@ button.Polaris-Navigation__Item {
   margin: 20px auto;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
-
+.sd-bundle-logo-header {
+  background: #1f2936;
+  padding: 3px 14px;
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+  top: 0;
+}
+.sd-margin-top{
+  margin-top: 80px;
+}
+.sd-bundle-logo-header img {
+  width: 260px;
+}
 /******************** aside nav css ***************/
 .Polaris-Navigation__Item:hover svg {
   fill: #fff !important;
@@ -1605,6 +1621,7 @@ button.Polaris-Navigation__Item {
   max-width: 1200px;
   margin: 0 auto;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  min-height: 500px;
 }
 
 .ant-table-content table {
@@ -2085,9 +2102,11 @@ nav.Polaris-Navigation {
 .sd-bundle-analytics-data-box .ant-card-body{
   margin-top: 20px;
   padding: 0px;
+
 }
 .sd-bundle-analytics-data-box .ant-card-body .ant-table-wrapper{
   margin-top: 0;
+  min-height: 500px;
 }
 .sd-bundle-card-data-box{
   margin-top: 20px;
@@ -2448,3 +2467,94 @@ nav.Polaris-Navigation {
   max-height: 160px;
   overflow: hidden;
 }
+.ant-row.sd-plan-group {
+  justify-content: center;
+  margin-top: 1rem;
+
+}
+
+
+.sd-plan{
+  border: 1px solid #f0f0f0;
+
+}
+.ant-card.sd-plan {
+  min-height: 400px;
+}
+.sd-plan-inner{
+  min-height: 200px;
+
+}
+.sd-plan-second-inner{
+  
+  min-height: 100px;
+  margin-top: 1rem;
+
+}
+.sd-plan-pricing-text {
+  font-size: xx-large;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 0.625rem;
+}
+.sd-plan-pricing-text span {
+  font-size: small;
+  font-weight: 300;
+}
+.sd-plan-btn{
+  width: 100%;
+  background: #55d871;
+  border-color: #55d871;
+  color: white;
+}
+.sd-plan-btn:hover{
+  border-color: #55d871 !important;
+  color: #000 !important;
+}
+.sd-plan-group p svg {
+  height: 15px;
+  width: 15px;
+  fill: #2c744b;
+}
+.sd-plan-group p span {
+  margin: initial;
+  height: auto;
+  width: auto;
+}
+.sd-plan-group p {
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
+  color: #585858;
+}
+.sd-plan .ant-card-head-title {
+  font-size: 22px;
+}
+.sd-plan-inner .ant-card-body {
+  position: relative;
+  overflow: hidden;
+}
+.sd-plan-active-plan {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #55d871;
+  color: #fff;
+  font-size: 15px;
+  padding: 5px 10px;
+  border-top-right-radius: 8px;
+}
+.sd-fixed-contactUs-btn .sd-fixed-float-btn {
+  width: 60px;
+  height: 60px;
+}
+
+.sd-fixed-contactUs-btn .sd-fixed-float-btn .ant-float-btn-body {
+  background-color: #57d770;
+}
+
+.sd-fixed-contactUs-btn .sd-fixed-float-btn .ant-float-btn-content .ant-float-btn-icon {
+  width: 24px;
+  font-size: 24px;
+}
+

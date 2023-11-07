@@ -2,39 +2,30 @@ import React from "react";
 import { Card, Avatar, Button} from "antd";
 import { MediaCard } from "@shopify/polaris";
 import { Redirect } from "@shopify/app-bridge/actions";
-import createApp from "@shopify/app-bridge";
 const { Meta } = Card;
-// const config = {
-//   // The client ID provided for your application in the Partner Dashboard.
-//   apiKey: process.env.SHOPIFY_API_KEY,
-//   // The host of the specific shop that's embedding your app. This value is provided by Shopify as a URL query parameter that's appended to your application URL when your app is loaded inside the Shopify admin.
-//   host: new URLSearchParams(location.search).get("host"),
-//   forceRedirect: true
-// };
-const RecommendedApp = () => {
-  // console.log(process.env.SHOPIFY_API_KEY)
 
-  // const redirectApp = createApp(config);
-  // const redirect = Redirect.create(redirectApp);
+const RecommendedApp = () => {
+
   return (
     <Card
       title="Recommended apps & themes "
       className="sd-bundle-contact-box recommended-app-section"
-      // extra={<a    onClick={() => {
-      //   redirect.dispatch(Redirect.Action.REMOTE, {
-      //     url: "https://apps.shopify.com/partners/shine-dezign-infonet",
-      //     newContext: true,
-      //   })
-      // }} >More apps</a>}
+      extra={<a    onClick={() => {
+        window.open(
+          "https://apps.shopify.com/partners/shine-dezign-infonet"
+        );
+      
+      }} >More apps</a>}
     >
       <div className="sd-bundle-meta-card-main">
         <div className="sd-bundle-meta-card">
           <a
             onClick={() => {
-              redirect.dispatch(Redirect.Action.REMOTE, {
-                url: "https://apps.shopify.com/advanced-pre-order",
-                newContext: true,
-              });
+              window.open(
+                "https://apps.shopify.com/advanced-pre-order"
+              );
+             
+               
             }}
           >
             <Meta
@@ -53,10 +44,10 @@ const RecommendedApp = () => {
         <div className="sd-bundle-meta-card">
           <a
             onClick={() => {
-              redirect.dispatch(Redirect.Action.REMOTE, {
-                url: "https://apps.shopify.com/advanced-subscription-pro",
-                newContext: true,
-              });
+              window.open(
+                "https://apps.shopify.com/advanced-subscription-pro"
+              );
+           
             }}
           >
             <Meta
@@ -75,10 +66,9 @@ const RecommendedApp = () => {
         <div className="sd-bundle-meta-card">
           <a
             onClick={() => {
-              redirect.dispatch(Redirect.Action.REMOTE, {
-                url: "https://apps.shopify.com/genie-product-options",
-                newContext: true,
-              });
+              window.open(
+                "https://apps.shopify.com/genie-product-options"
+              );
             }}
           >
             <Meta
@@ -97,10 +87,9 @@ const RecommendedApp = () => {
         <div className="sd-bundle-meta-card">
           <a
             onClick={() => {
-              redirect.dispatch(Redirect.Action.REMOTE, {
-                url: "https://apps.shopify.com/advanced-gst",
-                newContext: true,
-              });
+              window.open(
+                "https://apps.shopify.com/advanced-gst"
+              );
             }}
           >
             <Meta
@@ -121,10 +110,11 @@ const RecommendedApp = () => {
             title="Yuva"
             primaryAction={{
               content: "Learn about getting started",
-              onAction: () => {redirect.dispatch(Redirect.Action.REMOTE, {
-                url: "https://themes.shopify.com/themes/yuva/styles/amaze",
-                newContext: true,
-              })},
+              onAction: () => {
+                window.open(
+                  "https://themes.shopify.com/themes/yuva/styles/amaze"
+                );
+            },
             }}
             description="Modern yet elegant theme to best showcase your product catalog."
           >
@@ -136,7 +126,7 @@ const RecommendedApp = () => {
                 objectFit: "cover",
                 objectPosition: "top center",
               }}
-              src="https://cdn.shopify.com/theme-store/7lbke6ae9l6wchu6hqml4ilcg5r9.jpg"
+              src="https://cdn.shopify.com/s/files/1/0801/7264/6691/files/yuva-image.webp?v=1699336765"
             />
           </MediaCard>
        
@@ -146,10 +136,11 @@ const RecommendedApp = () => {
             title="Fame"
             primaryAction={{
               content: "Learn about getting started",
-              onAction: () => {redirect.dispatch(Redirect.Action.REMOTE, {
-                url: "https://themes.shopify.com/themes/fame/styles/dark",
-                newContext: true,
-              })},
+              onAction: () => {
+                window.open(
+                  "https://themes.shopify.com/themes/fame/styles/dark"
+                );
+            },
             }}
             description="Powerfully evoking emotion through creativity."
           >
@@ -161,7 +152,7 @@ const RecommendedApp = () => {
                 objectFit: "cover",
                 objectPosition: "top center",
               }}
-              src="https://cdn.shopify.com/theme-store/xtrxektwput93wofkwxiy4o4q0zd.jpg"
+              src="https://cdn.shopify.com/s/files/1/0801/7264/6691/files/fame-image.webp?v=1699336744"
             />
           </MediaCard>
          

@@ -42,7 +42,12 @@ export default function App() {
                   label: "Settings"  ,
                   destination: "/settings",
                 },
-               
+                {
+                  label: "Plan"  ,
+                  destination: "/plan",
+                  
+                }
+
               ]}
 
             />

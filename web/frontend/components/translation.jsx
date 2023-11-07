@@ -134,7 +134,7 @@ if(response.data.status == 200){
      </div>
      <div>
      </div>
-     <Watermark/>
+     
     </div>
     // </Spin>
   )

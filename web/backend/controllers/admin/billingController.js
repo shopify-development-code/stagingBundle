@@ -1,14 +1,18 @@
+import shopify from "../../../shopify.js";
+import planModel from "../../models/plan.js";
+
+
 export async function recurringBiling(req, res) {
     try {
   
-      const { shop, plan, interval, price } = req.body;
+      const { plan, interval, price } = req.body;
       const session = res.locals.shopify.session;
+      const shop = session.shop 
       const API_KEY = process.env.SHOPIFY_API_KEY;
       const client = new shopify.api.clients.Graphql({session});
       let testCharge;
       if (
-        shop == "nahidp-store.myshopify.com" ||
-        shop == "size-chart-test.myshopify.com"
+        shop == "nezuko-komada.myshopify.com" 
       ) {
         testCharge = true;
       } else {
@@ -17,7 +21,7 @@ export async function recurringBiling(req, res) {
       const recurringString = `mutation CreateSubscription {
               appSubscriptionCreate(
                   name: "${plan}",
-        returnUrl: "https://${shop}/admin/apps/${API_KEY}/pricing"
+        returnUrl: "https://${shop}/admin/apps/${API_KEY}/plan"
                   test : ${testCharge}
                   lineItems: [{
                       plan: {
@@ -52,7 +56,8 @@ export async function recurringBiling(req, res) {
   /****************************Billing Success***************************************** */
   export async function recurringBilingSelected(req, res) {
     try {
-      const { shop, charge_id } = req.body;
+      const { charge_id } = req.body;
+      const shop =  res.locals.shopify.session.shop ;
      const verifyBilling = await shopify.api.rest.RecurringApplicationCharge.find({
        session : res.locals.shopify.session,
        id : charge_id
@@ -60,7 +65,7 @@ export async function recurringBiling(req, res) {
   
   
      if(verifyBilling.status === "active") {
-      const updatePlan = await pandaBilling.findOneAndUpdate(
+      const updatePlan = await planModel.findOneAndUpdate(
         { shop },
         { charge_id, plan: verifyBilling.name, price: verifyBilling.price, interval: "MONTHLY" },
         { upsert: true, new: true }
@@ -81,5 +86,32 @@ export async function recurringBiling(req, res) {
      }
     } catch (err) {
       return res.json({ message: "INTERNAL_SERVER_ERROR", err: err.message });
+    }
+  }
+
+  export async function getPlans(req,res){
+try {
+  const shop = res.locals.shopify.session.shop
+    const response = await planModel.findOne({shop:shop})
+    if(response){
+      res.status(200).json({message:"success",data:response,status:"200"})
+    }
+} catch (error) {
+  console.log(error)
+}
+  }
+
+  export async function freePlans (req,res){
+    try {
+      console.log(req.body)
+      const {plan} = req.body
+      const shop = res.locals.shopify.session.shop ;
+      const response = await planModel.findOneAndUpdate({ shop }, { charge_id:"", plan: plan, price: "0", interval: "MONTHLY" },
+      { upsert: true, new: true })
+      if(response){
+        res.status(200).json({message:"success",data:response,status:"200"})
+      }
+    } catch (error) {
+      console.log(error)
     }
   }

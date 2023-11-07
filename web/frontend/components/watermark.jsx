@@ -6,10 +6,12 @@ const Watermark = () => {
       <div className='sd-logo'>
         <a href="https://shinedezigninfonet.com/" target="_blank" rel="noopener noreferrer">
 
-        <img className='sd-logo-img' src="https://cdn-kammn.nitrocdn.com/CJqqULFRUfoRbYfmUDbSSliIeMSseXyB/assets/images/optimized/rev-a4a0774/shinedezigninfonet.com/wp-content/uploads/2021/07/logo-1.png" alt=""  />
+        <img className='sd-logo-img' src="https://cdn.shopify.com/s/files/1/0801/7264/6691/files/logo-1.png?v=1699250778" alt=""  />
         </a>
       </div>
-      {/* <div className='sd-logo-text'>SHINE DEZIGN 2023</div> */}
+      <span>Powered by</span>
+      <div className='sd-logo-text'>SHINE DEZIGN INFONET</div>
+      <p>Copyright © 2023 Shine Dezign infonet. All Rights Reserved</p>
     </div>
   )
 }

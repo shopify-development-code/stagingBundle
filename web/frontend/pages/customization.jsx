@@ -11,6 +11,7 @@ import {
     Divider
   } from "antd";
 import ContactUs from "../components/contactUs";
+import LogoHeader from "../components/logoHeader";
 
 const Customization =()=>{
 const app = useAppBridge();
@@ -28,7 +29,9 @@ useEffect(() => {
 
 }, [])
     return(
-        <div className="sd-bundle-customization-wrapper">
+      <>
+      <LogoHeader/>
+        <div className="sd-bundle-customization-wrapper sd-margin-top">
        <div className="sd-bundle-customization-title">Customization</div>
        <div className="sd-bundle-customization-section">
         <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }} className="test">
@@ -99,9 +102,10 @@ You have the option to customize various design types for your bundles in differ
     </div> */}
 
 
-<Watermark/>
+{/* <Watermark/> */}
 <ContactUs/>
 </div>
+</>
     )
 }
 export  default  Customization;

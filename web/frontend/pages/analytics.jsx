@@ -11,6 +11,7 @@ import { showAmountWithCurrency } from '../components/showCurrencyFormat'
 import {AnalyticsMajor,QuickSaleMajor,BehaviorMajor,ViewMajor} from '@shopify/polaris-icons';
 import Watermark from '../components/watermark'
 import ContactUs from '../components/contactUs'
+import LogoHeader from '../components/logoHeader'
 const Analytics = () => {
 
   const {currencyCode} = useAPI()
@@ -336,8 +337,11 @@ Views:(<div key={index} className='sd-analytics-views-div'>{item.analytics.bundl
     // <Spin spinning={spinner}
     // indicator={<BoatLoader/>}
     // size="large"> 
+   
+   
     <div>
-         <div className="sd-bundle-MoveToHome-section">
+      <LogoHeader/>
+         <div className="sd-bundle-MoveToHome-section sd-margin-top">
      
         
      <div className="sd-bundle-MoveToHome-arrow">

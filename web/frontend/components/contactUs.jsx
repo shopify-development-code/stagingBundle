@@ -50,7 +50,7 @@ const ContactUs = () => {
 
   return (
     <div className='sd-fixed-contactUs-btn'>
-<FloatButton icon={<CommentOutlined />} tooltip='Contact us'  style={{ right: 50 }} onClick={showModal} />
+<FloatButton className='sd-fixed-float-btn' icon={<CommentOutlined />} tooltip='Contact us'  style={{ right: 80 }} onClick={showModal} />
 
 <Modal
         title="Contact Us"
