@@ -13,8 +13,8 @@
     "start": "node web/index.js"
   },
   "dependencies": {
-    "@shopify/app": "3.36.2",
-    "@shopify/cli": "3.36.2",
+    "@shopify/app": "^3.48.3",
+    "@shopify/cli": "^3.48.3",
     "dotenv": "^16.3.1"
   },
   "author": "ShineD-106"
