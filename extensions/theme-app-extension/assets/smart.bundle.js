@@ -424,7 +424,7 @@ function createBundle(BUNDLE_DATA) {
             BUNDLE_PRODUCT_DIV.append(BUNDLE_SELECTION_DIV);
 
             let selectedElement = document.querySelectorAll(
-              `sd-bundle-select-option${i}${bundleIndex}${index}`
+              `.sd-bundle-select-option${i}${bundleIndex}${index}`
             );
 
             selectedElement.forEach((selected) => {
@@ -1328,7 +1328,7 @@ function createBundle(BUNDLE_DATA) {
             radio.addEventListener("change", () => {
               document
                 .querySelectorAll(
-                  "volumeDiscount" + volumeIndex + bundleIndex
+                  ".volumeDiscount" + volumeIndex + bundleIndex
                 )
                 .forEach((selected) => {
                   selected.options[0].selected = true;
@@ -1336,7 +1336,7 @@ function createBundle(BUNDLE_DATA) {
                   let price = selected.options[0].getAttribute("data-id");
                   document
                     .querySelectorAll(
-                      "productPrice" + bundleIndex + volumeIndex
+                      ".productPrice" + bundleIndex + volumeIndex
                     )
                     .forEach((priceDiv) => {
                       let xprice;
@@ -1394,7 +1394,7 @@ function createBundle(BUNDLE_DATA) {
           }
         });
         let radioBtnBundle = document.querySelectorAll(
-          "sd-radio-btn" + bundleIndex
+          ".sd-radio-btn" + bundleIndex
         );
         radioBtnBundle.forEach((elem, ind) => {
           elem.addEventListener("change", (e) => {
