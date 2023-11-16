@@ -621,6 +621,11 @@ input[type="radio"] {
     margin: 10px 0;
 }
 
+.sd-bundle-collectionMixMatchSearchSection .sd-bundle-collectionMixMatch-searchButton:hover {
+    color: #fff !important;
+    border-color: #008060 !important;
+}
+
 .ant-popconfirm-buttons .ant-btn-primary {
     background-color: #212938;
 }
@@ -1959,7 +1964,7 @@ button.Polaris-Navigation__Item {
     margin: 10px auto;
     position: relative;
     overflow: hidden;
-    max-width: 1200px;
+    max-width: 80%;
     margin-top: 1.5rem;
 }
 
