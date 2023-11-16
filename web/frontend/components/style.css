@@ -339,6 +339,11 @@ input[type="radio"] {
     max-width: 60%;
 }
 
+.sd-bundle-discount-value .Polaris-TextField {
+    width: 150px !important;
+    height: 35px !important;
+}
+
 .sd-bundle-createBundleDiscountSection .sd-bundle-item-price p {
     display: block;
     width: 60%;
