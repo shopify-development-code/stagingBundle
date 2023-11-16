@@ -1,8 +1,8 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
-name = "GulshanBundle"
-client_id = "1b5c4e61193878e00794d0f76a63427a"
-application_url = "https://travel-burden-librarian-cgi.trycloudflare.com"
+name = "bundleFrontend"
+client_id = "a5b86339b3858e715ac32d6554a50bef"
+application_url = "https://realtor-correct-cast-gl.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -12,14 +12,14 @@ use_legacy_install_flow = true
 
 [auth]
 redirect_urls = [
-  "https://travel-burden-librarian-cgi.trycloudflare.com/auth/callback",
-  "https://travel-burden-librarian-cgi.trycloudflare.com/auth/shopify/callback",
-  "https://travel-burden-librarian-cgi.trycloudflare.com/api/auth/callback",
-  "https://travel-burden-librarian-cgi.trycloudflare.com/.shopify/graphiql/auth/callback"
+  "https://realtor-correct-cast-gl.trycloudflare.com/auth/callback",
+  "https://realtor-correct-cast-gl.trycloudflare.com/auth/shopify/callback",
+  "https://realtor-correct-cast-gl.trycloudflare.com/api/auth/callback",
+  "https://realtor-correct-cast-gl.trycloudflare.com/.shopify/graphiql/auth/callback"
 ]
 
 [webhooks]
-api_version = "2023-10"
+api_version = "2023-04"
 
 [pos]
 embedded = false
