@@ -43,8 +43,8 @@ export default function App() {
                   destination: "/settings",
                 },
                 {
-                  label: "Plan"  ,
-                  destination: "/plan",
+                  label: "Plans"  ,
+                  destination: "/plans",
                   
                 }
 

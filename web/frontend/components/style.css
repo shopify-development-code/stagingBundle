@@ -340,6 +340,11 @@ input[type="radio"] {
     max-width: 60%;
 }
 
+.sd-bundle-discount-value .Polaris-TextField {
+    width: 150px !important;
+    height: 35px !important;
+}
+
 .sd-bundle-createBundleDiscountSection .sd-bundle-item-price p {
     display: block;
     width: 60%;
@@ -1708,14 +1713,15 @@ button.Polaris-Navigation__Item {
     background: #fff;
     width: 100%;
     max-width: 80%;
-    padding: 19px 13px;
+    padding: 15px 13px;
     display: flex;
     justify-content: space-between;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     margin: auto;
     border-radius: 4px;
     align-items: center;
-    height: 60px;
+    flex-flow: row wrap;
+    row-gap: 10px;
 }
 
 .sd-bundle-dashboard-heading {
@@ -2611,7 +2617,7 @@ nav.Polaris-Navigation {
     width: 100%;
     text-align: center;
     padding: 30px;
-    max-width: 1200px;
+    max-width: 80%;
     margin: 0 auto;
 }
 
@@ -2622,12 +2628,13 @@ nav.Polaris-Navigation {
 .sd-bundle-meta-card-main {
     display: grid;
     align-items: center;
-    grid-template-columns: 1fr 1fr;
     gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 }
 
 .sd-bundle-meta-card-theme {
     grid-area: span 2/ span 2;
+    margin-top: 3rem;
 }
 
 .sd-bundle-meta-card-theme .Polaris-MediaCard .Polaris-MediaCard__MediaContainer {
@@ -2723,6 +2730,9 @@ nav.Polaris-Navigation {
 .sd-fixed-contactUs-btn .sd-fixed-float-btn {
     width: 60px;
     height: 60px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px !important;
 }
 
 .sd-fixed-contactUs-btn .sd-fixed-float-btn .ant-float-btn-body {
@@ -2742,4 +2752,31 @@ nav.Polaris-Navigation {
     max-width: 80%;
     margin: auto;
     margin-top: 1.5rem;
+}
+
+@media (max-width:1160px) {
+    .sd-bundle-meta-card-main {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width:767px) {
+    .sd-bundle-MoveToHome-section,
+    .sd-bundle-contact-box,
+    .sd-bundle-dashboard-fixed-header,
+    .sd-bundle-dashboard-tab-box,
+    .sd-bundle-customization-title,
+    .sd-bundle-customization-wrapper .sd-bundle-customization-section,
+    .sd-bundle-analytics-tab-box,
+    .sd-bundle-setting-container .ant-card-bordered,
+    .sd-bundle-wrapper-common {
+        max-width: 90%;
+    }
+}
+
+@media (max-width:767px) {
+    .sd-watermark {
+        max-width: 100%;
+        padding: 15px;
+    }
 }
