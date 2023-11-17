@@ -2,7 +2,7 @@
 
 name = "bundleFrontend"
 client_id = "a5b86339b3858e715ac32d6554a50bef"
-application_url = "https://realtor-correct-cast-gl.trycloudflare.com"
+application_url = "https://victory-agrees-ad-rogers.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -12,10 +12,10 @@ use_legacy_install_flow = true
 
 [auth]
 redirect_urls = [
-  "https://realtor-correct-cast-gl.trycloudflare.com/auth/callback",
-  "https://realtor-correct-cast-gl.trycloudflare.com/auth/shopify/callback",
-  "https://realtor-correct-cast-gl.trycloudflare.com/api/auth/callback",
-  "https://realtor-correct-cast-gl.trycloudflare.com/.shopify/graphiql/auth/callback"
+  "https://victory-agrees-ad-rogers.trycloudflare.com/auth/callback",
+  "https://victory-agrees-ad-rogers.trycloudflare.com/auth/shopify/callback",
+  "https://victory-agrees-ad-rogers.trycloudflare.com/api/auth/callback",
+  "https://victory-agrees-ad-rogers.trycloudflare.com/.shopify/graphiql/auth/callback"
 ]
 
 [webhooks]

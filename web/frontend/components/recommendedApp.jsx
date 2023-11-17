@@ -105,7 +105,9 @@ const RecommendedApp = () => {
             />
           </a>
         </div>
-        <div className="sd-bundle-meta-card-theme">
+      
+      </div>
+      <div className="sd-bundle-meta-card-theme">
           <MediaCard
             title="Yuva"
             primaryAction={{
@@ -157,7 +159,6 @@ const RecommendedApp = () => {
           </MediaCard>
          
         </div>
-      </div>
     </Card>
   );
 };
