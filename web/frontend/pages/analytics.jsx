@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from 'react'
-import { Card,Tabs, Col, Row,Table,Spin,Switch } from 'antd'
+import { Card,Tabs, Col, Row,Table,Spin,Skeleton } from 'antd'
 import postApi from '../components/postApi'
 import { useAppBridge } from '@shopify/app-bridge-react'
 import BoatLoader from '../components/BoatLoader'
@@ -9,6 +9,9 @@ import { useAPI } from '../components/shop'
 import noProductImg from "../assets/NoProductImage.png"
 import { showAmountWithCurrency } from '../components/showCurrencyFormat'
 import {AnalyticsMajor,QuickSaleMajor,BehaviorMajor,ViewMajor} from '@shopify/polaris-icons';
+import Watermark from '../components/watermark'
+import ContactUs from '../components/contactUs'
+import LogoHeader from '../components/logoHeader'
 const Analytics = () => {
 
   const {currencyCode} = useAPI()
@@ -195,9 +198,11 @@ Views:(<div key={index} className='sd-analytics-views-div'>{item.analytics.bundl
               <div className='sd-bundle-card-inner-main'>
               <div className='sd-bundle-card-inner-content'>
               <h3>Sales value on bundles</h3>
+              <Skeleton loading={spinner} active paragraph={{rows:1}} title={false} >
               <p>
               {showAmountWithCurrency(salesValue,currencyCode)}
                </p>
+               </Skeleton>
               </div>
               <div className='sd-bundle-card-inner-icon'>
               <Icon
@@ -216,7 +221,11 @@ Views:(<div key={index} className='sd-analytics-views-div'>{item.analytics.bundl
             <div className='sd-bundle-card-inner-main'>
             <div className='sd-bundle-card-inner-content'>
               <h3>Number of sold bundles</h3>
+              <Skeleton loading={spinner} active paragraph={{rows:1}} title={false} >
+
              <p>{soldBundle}</p> 
+             </Skeleton>
+
               </div>
               <div className='sd-bundle-card-inner-icon'>
               <Icon
@@ -233,7 +242,11 @@ Views:(<div key={index} className='sd-analytics-views-div'>{item.analytics.bundl
             <div className='sd-bundle-card-inner-main'>
             <div className='sd-bundle-card-inner-content'>
               <h3>Bundles clicks</h3>
+              <Skeleton loading={spinner} active paragraph={{rows:1}} title={false} >
+
               <p>{bundleClicks}</p>
+              </Skeleton >
+
               </div>
               <div className='sd-bundle-card-inner-icon'>
               <Icon
@@ -250,7 +263,11 @@ Views:(<div key={index} className='sd-analytics-views-div'>{item.analytics.bundl
             <div className='sd-bundle-card-inner-main'>
             <div className='sd-bundle-card-inner-content'>
               <h3>Bundles views</h3>
+              <Skeleton loading={spinner} active paragraph={{rows:1}} title={false} >
+
              <p> {bundleViews}</p>
+             </Skeleton  >
+
               </div>
               <div className='sd-bundle-card-inner-icon'>
               <Icon
@@ -267,11 +284,13 @@ Views:(<div key={index} className='sd-analytics-views-div'>{item.analytics.bundl
         <Card
           className="sd-bundle-analytics-data-box"
         >
+              <Skeleton className='sd-bundle-skeleton-pd' loading={spinner} active paragraph={{rows:15 , width:"100%"}} title={false}  >
                   
            <Table
              columns={columns}
              dataSource={data}
            />
+              </Skeleton  >
         
         </Card>
       </div>
@@ -315,11 +334,14 @@ Views:(<div key={index} className='sd-analytics-views-div'>{item.analytics.bundl
 
        
   return (
-    <Spin spinning={spinner}
-    indicator={<BoatLoader/>}
-    size="large"> 
+    // <Spin spinning={spinner}
+    // indicator={<BoatLoader/>}
+    // size="large"> 
+   
+   
     <div>
-         <div className="sd-bundle-MoveToHome-section">
+      <LogoHeader/>
+         <div className="sd-bundle-MoveToHome-section sd-margin-top">
      
         
      <div className="sd-bundle-MoveToHome-arrow">
@@ -335,8 +357,10 @@ Views:(<div key={index} className='sd-analytics-views-div'>{item.analytics.bundl
 
 
 </div>
+<Watermark/>
+<ContactUs/>
     </div>
-    </Spin>
+    // </Spin>
   )
 }
 

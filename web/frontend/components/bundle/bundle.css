@@ -1,8 +1,9 @@
 
 .sd-bundle-select-bundle {
     justify-content: center;
-    display: flex;
-    column-gap: 1rem;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
 }
   .ant-modal-body .ant-card {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -33,9 +34,9 @@
     font-size: 32px
 }
 
-.ant-card-body{
+/* .ant-card-body{
     min-height : 500px
-}
+} */
 .sd-bundle-dashboard-box{
     background: aliceblue;
     border: 1px solid black;
@@ -43,4 +44,12 @@
 }
 
 
-
+.recommended-app-section .ant-card-body {
+    min-height: unset;
+}
+.sd-bundle-meta-card .ant-avatar {
+    box-shadow: 1px 3px 9px #524f4fba;
+}
+.sd-logo .sd-logo-img {
+    max-width: 200px;
+}

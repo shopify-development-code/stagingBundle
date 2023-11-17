@@ -7,6 +7,7 @@ import customizationModel from "../backend/models/customizationSchema.js";
 import pageDataModel from "../backend/models/pageData.js";
 import settingModel from "../backend/models/settings.js";
 import translationModel from "../backend/models/translationSchema.js";
+import planModel from "../backend/models/plan.js";
 
 export async function verifyWebhooks(req, res) {
   try {
@@ -286,6 +287,7 @@ export async function verifyWebhooks(req, res) {
             .digest("base64");
           if (calculated_hmac == hmac_header) {
             await shopInfoModel.deleteOne({ shop: shop });
+            await planModel.deleteOne({ shop: shop });
 
             res.status(200).send("success");
           } else {

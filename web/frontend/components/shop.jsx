@@ -10,6 +10,7 @@ const APIContext = createContext();
    const [timeZone,setTimeZone] = useState("")
   const [themeId, setThemeId] = useState("");
 
+
    const app=useAppBridge();
   const [getShop, setGetShop] = useState(new URL(location).searchParams.get("shop"));
 
@@ -30,12 +31,12 @@ const APIContext = createContext();
 
   async function getThemeId () {
 
-  const response = await postApi('/api/admin/getThemeId',{},app)
-  if(response.data.status == 200){
-    setThemeId(response.data.response)
+  // const response = await postApi('/api/admin/getThemeId',{},app)
+  // if(response.data.status == 200){
+  //   setThemeId(response.data.response)
     
 
-  }
+  // }
   }
   getThemeId()
  

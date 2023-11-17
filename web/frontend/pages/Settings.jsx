@@ -1,11 +1,13 @@
 import React from 'react'
 import { Card, Button, Input, Modal, Table,Select,Dropdown,Space,Tabs} from "antd";
 import { ArrowLeftOutlined} from "@ant-design/icons";
-import BundleSetting from './bundleSetting';
-import Translation from './translation';
+import BundleSetting from '../components/bundleSetting';
+import Translation from '../components/translation';
 import {TranslationOutlined,FormOutlined,SettingOutlined,UnorderedListOutlined} from "@ant-design/icons"
 import { useNavigate } from "@shopify/app-bridge-react";
-
+import Watermark from '../components/watermark';
+import ContactUs from '../components/contactUs';
+import LogoHeader from '../components/logoHeader';
 
 
 const Settings = () => {
@@ -33,7 +35,9 @@ const Settings = () => {
   };
 
   return (
-    <div className='sd-bundle-setting-container'>
+    <>
+    <LogoHeader/>
+    <div className='sd-bundle-setting-container sd-margin-top'>
         <div className="sd-bundle-MoveToHome-section">
      
         
@@ -45,7 +49,7 @@ const Settings = () => {
 
 
 </div>
-        <Card
+        <Card className='sd-bundle-setting-card-box'
         // title="Settings"
         >
    
@@ -77,7 +81,10 @@ const Settings = () => {
 
            
         </Card>
+        <Watermark/>
+        <ContactUs/>
     </div>
+    </>
   )
 }
 

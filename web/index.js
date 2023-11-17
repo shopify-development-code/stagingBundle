@@ -17,6 +17,12 @@ import translationModel from "./backend/models/translationSchema.js";
 import settingModel from "./backend/models/settings.js";
 
 import { privacyPolicy } from "./backend/controllers/admin/adminController.js";
+
+import dotenv from "dotenv";
+import planModel from "./backend/models/plan.js";
+ 
+ 
+dotenv.config();
 const app=express();
 const PORT = parseInt(process.env.BACKEND_PORT || process.env.PORT, 10);
 // DB.connect();
@@ -237,6 +243,13 @@ app.get(
       }).catch((err)=>{
         console.log(err.message)
       })
+
+      await planModel.findOneAndUpdate({shop:session.shop},{plan:"free",price:"0",interval:"monthly",charge_id:""},{upsert:true,new:true}).then((resp)=>{
+        console.log("Plans updated",resp)
+      }).catch((err)=>{
+        console.log(err.message)
+      })
+
 
      const page =  new shopify.api.rest.Page({session:session});
     page.title = "Collection Mix & Match";

@@ -5,6 +5,7 @@ export function showAmountWithCurrency(value,currency) {
   
 
     let moneyFormat = currency;
+    console.log("moneyformat",moneyFormat)
     let sdCurrencyFormatcondition;
     if (moneyFormat.includes("{{amount_no_decimals}}")) {
         sdCurrencyFormatcondition = "amount_no_decimals";
@@ -19,10 +20,12 @@ export function showAmountWithCurrency(value,currency) {
     } else if(moneyFormat.includes("{{amount}}")) {
         sdCurrencyFormatcondition = "amount";
     }else{
-        
-       let pattern = /{{(.*?)}}/;
-       let match = moneyFormat.match(pattern);
-       sdCurrencyFormatcondition = `${match[1]}`
+        if(moneyFormat.length){
+
+            let pattern = /{{(.*?)}}/;
+            let match = moneyFormat.match(pattern);
+            sdCurrencyFormatcondition = `${match[1]}`
+        }
     }
 
    let sdCurrencyprice ;

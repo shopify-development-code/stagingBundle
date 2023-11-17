@@ -3,7 +3,10 @@ import { Button, Card,Modal } from 'antd'
 import {MediaCard,VideoThumbnail} from '@shopify/polaris';
 import {useAPI} from "../components/shop"
 
+import Watermark from './watermark';
+import RecommendedApp from './recommendedApp'
 const Dashboard = () => {
+
   const {shop,themeId} = useAPI()
   const [open, setOpen] = useState(false);
   const [open1, setOpen1] = useState(false);
@@ -102,8 +105,11 @@ function handleOpenCustomization () {
       
        <video width="100%" controls  src='https://cdn.shopify.com/videos/c/o/v/eb22e191ac75405eb12e40c55d64c33f.mp4'/>
       </Modal>
+       
+       <RecommendedApp/>
+      
+      <Watermark/>
     </div>
-
   
   )
 }

@@ -1,13 +1,13 @@
 import React, { useState,useEffect } from 'react'
-import { Card ,Divider,Spin} from 'antd';
+import { Card ,Divider,Spin,Skeleton} from 'antd';
 import {Button,Icon,} from "@shopify/polaris";
 import { ArrowLeftOutlined} from "@ant-design/icons";
 import { useNavigate } from "@shopify/app-bridge-react";
 import { useAppBridge } from "@shopify/app-bridge-react";
-import postApi from '../components/postApi';
-import BoatLoader from '../components/BoatLoader';
-import toastNotification from "../components/commonSections/Toast.jsx";
-
+import postApi from './postApi';
+import BoatLoader from './BoatLoader';
+import toastNotification from "./commonSections/Toast.jsx";
+import Watermark from './watermark';
 
 const Translation = () => {
   const navigate = useNavigate()
@@ -50,9 +50,9 @@ if(response.data.status == 200){
 }
 
   return (
-    <Spin spinning={spinner}
-    indicator={<BoatLoader/>}
-    size="large"> 
+    // <Spin spinning={spinner}
+    // indicator={<BoatLoader/>}
+    // size="large"> 
     <div className='sd-bundle-setting-translation'>
      {/* <div className='sd-bundle-MoveToHome-section'>
         <div className='sd-bundle-MoveToHome-arrow'>
@@ -67,6 +67,7 @@ if(response.data.status == 200){
         </div>
      </div> */}
      <div className='sd-bundle-translate-content'>
+      <Skeleton active paragraph={{rows:25}} loading={spinner}>
                <div className='sd-bundle-translate-heading-row'>
                <div className='sd-bundle-translate-original-col'>
                <div className='sd-bundle-translate-heading-text'><h3>Original</h3>
@@ -129,11 +130,13 @@ if(response.data.status == 200){
                <div className='sd-bundle-translate-originalButton'>
                 <button onClick={handleSave}>Save</button>
               </div>
+              </Skeleton>
      </div>
      <div>
      </div>
+     
     </div>
-    </Spin>
+    // </Spin>
   )
 }
 

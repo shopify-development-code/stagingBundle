@@ -1,7 +1,7 @@
 # Environment Configuration
 .env
 .env.*
-
+.toml
 # Dependency directory
 node_modules
 
@@ -10,6 +10,7 @@ coverage
 
 # Ignore Apple macOS Desktop Services Store
 .DS_Store
+
 
 # Logs
 logs

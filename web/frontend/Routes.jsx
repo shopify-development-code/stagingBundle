@@ -1,8 +1,5 @@
-import React,{useState,useEffect} from "react";
 import { Routes as ReactRouterRoutes, Route } from "react-router-dom";
-import CommonFrame from "./components/sidebarFrame";
-import BundleCustomization from "./pages/bundleCustomization";
-// import FrameExample from "./components/test";
+
 /**
  * File-based routing.
  * @desc File-based routing that uses React Router under the hood.
@@ -18,27 +15,17 @@ import BundleCustomization from "./pages/bundleCustomization";
  * @return {Routes} `<Routes/>` from React Router, with a `<Route/>` for each file in `pages`
  */
 export default function Routes({ pages }) {
-
   const routes = useRoutes(pages);
   const routeComponents = routes.map(({ path, component: Component }) => (
-   
-       path !="/bundleCustomization" && <Route key={path} path={path} element={<Component />}  /> 
-  //  <Route key={path} path={path} element={<Component />} />
+    <Route key={path} path={path} element={<Component />} />
   ));
 
   const NotFound = routes.find(({ path }) => path === "/notFound").component;
 
   return (
     <ReactRouterRoutes>
-      <Route element={<CommonFrame/>}>
       {routeComponents}
       <Route path="*" element={<NotFound />} />
-                 
-      </Route>
-    
-      {/* <Route  path="/volumeCustomization"   element={<VolumeCustomization/>} /> */}
-
-      <Route  path="/bundleCustomization"   element={<BundleCustomization/>} />
     </ReactRouterRoutes>
   );
 }

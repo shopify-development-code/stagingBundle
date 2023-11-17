@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { Card ,Divider,Typography,Row,Col,Spin,Input} from 'antd';
+import { Card ,Divider,Typography,Row,Col,Spin,Input,Skeleton} from 'antd';
 import {Button,Icon,} from "@shopify/polaris";
 import { ArrowLeftOutlined} from "@ant-design/icons";
 import { useNavigate } from "@shopify/app-bridge-react";
 import { useAppBridge } from "@shopify/app-bridge-react";
-import postApi from '../components/postApi';
-import BoatLoader from '../components/BoatLoader';
-import toastNotification from '../components/commonSections/Toast';
+import postApi from './postApi';
+import BoatLoader from './BoatLoader';
+import toastNotification from './commonSections/Toast';
 
 const BundleSetting = () => {
   const navigate = useNavigate()
@@ -50,10 +50,10 @@ function handleDiscountLabel(e){
 setSettingData({...settingData,discountLabel:e.target.value})
 }
   return (
-   <Spin 
-   spinning={spinner}
-   indicator={<BoatLoader/>}
-   >
+  //  <Spin 
+  //  spinning={spinner}
+  //  indicator={<BoatLoader/>}
+  //  >
      
      <div className='sd-bundle-setting-translation'>
       <div className='sd-bundle-bundle-setting'>
@@ -100,6 +100,7 @@ setSettingData({...settingData,discountLabel:e.target.value})
       </div> */}
 
       <div className='sd-bundle-setting-box'>
+        <Skeleton active loading={spinner}>
         <div className='sd-bundle-setting-left-heading'>
         <Typography.Title
         level={4}
@@ -135,6 +136,7 @@ setSettingData({...settingData,discountLabel:e.target.value})
       </Typography.Title>
              </Card>
           </div>
+          </Skeleton>
       </div>
 
       <div className='sd-bundle-setting-box'>
@@ -146,13 +148,14 @@ setSettingData({...settingData,discountLabel:e.target.value})
           </div>
       </div>
       <div>
+        
         <button onClick={handleSave}>save</button>
       </div>
       </div> 
      
 
    </div>
-   </Spin>
+  //  {/* </Spin> */}
   )
 }
 

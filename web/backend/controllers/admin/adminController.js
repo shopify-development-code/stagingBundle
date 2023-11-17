@@ -211,12 +211,16 @@ export async function getBundle (req,res){
       },
       {
         $project: {
-          _id: 1,
-          type: 1,
-          name: 1,
-          status: 1,
-          currencyCode: 1,
-          bundleDetail: 1
+          _id:1,
+          shop:1,
+          type:1,
+          name :1,
+          status:1,
+          "bundleDetail.discountValue" : 1,
+          "bundleDetail.discountOptions" : 1,
+          "bundleDetail.products.images" : 1,
+          "bundleDetail.products.image" : 1,
+          "bundleDetail.discountType":1
         }
       },
       {
@@ -235,11 +239,11 @@ export async function getBundle (req,res){
     ]);
 
   
-    if(response.length){
+    if(response){
 
         return res.status(200).json({message:"success!!",response:response.reverse(), status:200})
         }else{
-            return res.status(503).json({message :"Query failed!!",status:503})
+            return res.status(200).json({message :"Query failed!!",status:503})
         }
    }   catch(error){
     console.error(`Error: ${error.message}`);

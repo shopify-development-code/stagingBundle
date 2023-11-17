@@ -8,6 +8,7 @@ import {
   Dropdown,
   Space,
   Switch,
+  Skeleton
 
 } from "antd";
 import {
@@ -58,6 +59,7 @@ const CreateBundle = () => {
       );
       setLoader(false);
     }
+    setLoader(false);
   }
 
 
@@ -245,7 +247,7 @@ return check;
   const data = mainData.map((item, index) => ({
  
     key: item._id,
-    // bundle:<div><img src={item.bundleDetail.products[0]?.images ? item.bundleDetail.products[0]?.images[0].originalSrc : item.bundleDetail.products[0]?.image ? item.bundleDetail.products[0]?.image.originalSrc : ""} alt="" srcset="" /></div>,
+
     bundle: (
 
       <div className="sd-bundle-dashboard-img-box">
@@ -287,7 +289,7 @@ return check;
         }}
       >
         {item.name}
-        {item.type == "productBundle" || (item.type == "volumeBundle" && item.bundleDetail.discountedProductType == "specific_product") ?
+        {/* {item.type == "productBundle" || (item.type == "volumeBundle" && item.bundleDetail.discountedProductType == "specific_product") ?
        
         showOutOfStockError(item)  && (
 
@@ -305,7 +307,7 @@ return check;
    
 
 
-        :""}
+        :""} */}
       </span>
       
     ),
@@ -420,7 +422,7 @@ return check;
         }}
       >
         {item.name}
-        {item.type == "productBundle" || (item.type == "volumeBundle" && item.bundleDetail.discountedProductType == "specific_product") ?
+        {/* {item.type == "productBundle" || (item.type == "volumeBundle" && item.bundleDetail.discountedProductType == "specific_product") ?
        
        showOutOfStockError(item)  && (
 
@@ -438,7 +440,7 @@ return check;
   
 
 
-       :""}
+       :""} */}
       </a>
     ),
     discount: item.type == "productBundle"
@@ -535,7 +537,7 @@ return check;
         }}
       >
         {item.name}
-        {item.type == "productBundle" || (item.type == "volumeBundle" && item.bundleDetail.discountedProductType == "specific_product") ?
+        {/* {item.type == "productBundle" || (item.type == "volumeBundle" && item.bundleDetail.discountedProductType == "specific_product") ?
        
        showOutOfStockError(item)  && (
 
@@ -553,7 +555,7 @@ return check;
   
 
 
-       :""}
+       :""} */}
       </a>
     ),
     discount: item.type == "productBundle"
@@ -644,12 +646,10 @@ return check;
      
         {SearchBox()}
         <div>
+        <Skeleton style={{marginTop:"1rem"}} loading={loader} active  paragraph={{rows:5,width:"100%"}} title={{width:"100%"}}>
+
           <Table
-            loading={{
-              spinning :loader,
-              indicator:<BoatLoader/>
-            }}
-            // loading={loader}
+          
             
             rowSelection={{
               type: "checkbox",
@@ -666,6 +666,9 @@ return check;
 
             }}
           />
+              </Skeleton>
+              <Skeleton style={{marginTop:"1rem"}} loading={loader} active  paragraph={{rows:5,width:"100%"}} title={{width:"100%"}}> </Skeleton>
+              <Skeleton style={{marginTop:"1rem"}} loading={loader} active  paragraph={{rows:3,width:"100%"}} title={{width:"100%"}}> </Skeleton>
         </div>
       </div>
     ),
@@ -674,11 +677,9 @@ return check;
                 {SearchBox()}
 
         <div>
+        <Skeleton style={{marginTop:"1rem"}} loading={loader} active  paragraph={{rows:5,width:"100%"}} title={{width:"100%"}}>
           <Table
-            loading={{
-              spinning :loader,
-              indicator:<BoatLoader/>
-            }}
+           
             rowSelection={{
               type: "checkbox",
               selectedRowKeys: actionId,
@@ -692,6 +693,9 @@ return check;
               
             }}
           />
+           </Skeleton>
+           <Skeleton style={{marginTop:"1rem"}} loading={loader} active  paragraph={{rows:5,width:"100%"}} title={{width:"100%"}}> </Skeleton>
+              <Skeleton style={{marginTop:"1rem"}} loading={loader} active  paragraph={{rows:3,width:"100%"}} title={{width:"100%"}}> </Skeleton>
         </div>
       </div>
     ),
@@ -700,11 +704,9 @@ return check;
                {SearchBox()}
 
         <div>
+        <Skeleton style={{marginTop:"1rem"}} loading={loader} active  paragraph={{rows:5,width:"100%"}} title={{width:"100%"}}>
           <Table
-             loading={{
-              spinning :loader,
-              indicator:<BoatLoader/>
-            }}
+         
             rowSelection={{
               type: "checkbox",
               selectedRowKeys: actionId,
@@ -718,6 +720,9 @@ return check;
               
             }}
           />
+              </Skeleton>
+           <Skeleton style={{marginTop:"1rem"}} loading={loader} active  paragraph={{rows:5,width:"100%"}} title={{width:"100%"}}> </Skeleton>
+              <Skeleton style={{marginTop:"1rem"}} loading={loader} active  paragraph={{rows:3,width:"100%"}} title={{width:"100%"}}> </Skeleton>
         </div>
       </div>
     ),

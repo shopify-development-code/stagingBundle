@@ -1,8 +1,8 @@
 let server = "https://smartbundle.shinedezigninfotech.com";
 
-// let server = 'https://71d7-14-99-195-170.ngrok-free.app '
+// let server = 'https://tommy-presentations-lucy-competent.trycloudflare.com'
 let smartNoImg = `data:image/png;base64,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`;
-console.log("Smart Bundle Discount app new version ---");
+console.log("Smart Bundle Discount app new version ---v2.0");
 let productPageClass = document.getElementsByClassName("sd-bundle-app");
 
 if (sdbundlePageType == "product") {
@@ -45,7 +45,10 @@ if (sdbundlePageType == "product") {
 
 async function getData() {
   let shop = Shopify.shop;
-
+  let collectionId = [];
+  sdBundleCollectionId.map((id) => {
+    collectionId.push(`gid://shopify/Collection/${id}`);
+  });
   const response = await fetch(`${server}/api/storefront/getBundleData`, {
     method: "POST",
     headers: {
@@ -53,6 +56,8 @@ async function getData() {
     },
     body: JSON.stringify({
       shop: shop,
+      id: sdBundleProductId,
+      collId: collectionId,
     }),
   });
   data = await response.json();
@@ -64,68 +69,19 @@ async function getData() {
       let dataArray = [];
       data.response.map((el) => {
         if (el.type == "productBundle") {
-          if (el.bundleDetail.display.productPages == true) {
-            let pId = `gid://shopify/Product/${sdBundleProductId}`;
-            el.bundleDetail.display.productPagesList.forEach((ele) => {
-              if (pId == ele) {
-                dataArray.push(el);
-              }
-            });
-          } else {
-            dataArray.push(el);
-          }
+          dataArray.push(el);
         } else if (el.type == "volumeBundle") {
           if (el.bundleDetail.discountedProductType == "specific_product") {
-            if (el.bundleDetail.display.productPages == true) {
-              let pId = `gid://shopify/Product/${sdBundleProductId}`;
-              el.bundleDetail.display.productPagesList.forEach((ele) => {
-                if (pId == ele) {
-                  dataArray.push(el);
-                }
-              });
-            } else {
-              dataArray.push(el);
-            }
+            dataArray.push(el);
           } else if (el.bundleDetail.discountedProductType == "collection") {
-            if (el.bundleDetail.display.productPages == true) {
-              let cId = [];
-              sdBundleCollectionId.map((id) => {
-                cId.push(`gid://shopify/Collection/${id}`);
-              });
-              const matchingItems =
-                el.bundleDetail.display.productPagesList.filter((item) =>
-                  cId.includes(item)
-                );
-
-              if (matchingItems.length > 0) {
-                el.bundleDetail.products = [sdProductJson];
-                dataArray.push(el);
-              }
-            } else {
-              el.bundleDetail.products = [sdProductJson];
-              dataArray.push(el);
-            }
+            el.bundleDetail.products = [sdProductJson];
+            dataArray.push(el);
           } else if (el.bundleDetail.discountedProductType == "all_products") {
             el.bundleDetail.products = [sdProductJson];
             dataArray.push(el);
           }
         } else if (el.type == "collectionMixMatch") {
-          if (el.bundleDetail.display.productPages == true) {
-            let cId = [];
-            sdBundleCollectionId.map((id) => {
-              cId.push(`gid://shopify/Collection/${id}`);
-            });
-            const matchingItems =
-              el.bundleDetail.display.productPagesList.filter((item) =>
-                cId.includes(item)
-              );
-
-            if (matchingItems.length > 0) {
-              dataArray.push(el);
-            }
-          } else {
-            dataArray.push(el);
-          }
+          dataArray.push(el);
         }
       });
 
@@ -882,8 +838,9 @@ function createBundle(BUNDLE_DATA) {
         } else {
           BUNDLE_DIV.prepend(ADD_TO_CART_BTN_DIV);
         }
-
+        if (el.plans.plan == "free") {
         waterMark(BUNDLE_DIV);
+        }
       } else {
       }
     } else if (el.type == "volumeBundle") {
@@ -1327,9 +1284,7 @@ function createBundle(BUNDLE_DATA) {
           radioGroup.forEach((radio) => {
             radio.addEventListener("change", () => {
               document
-                .querySelectorAll(
-                  ".volumeDiscount" + volumeIndex + bundleIndex
-                )
+                .querySelectorAll(".volumeDiscount" + volumeIndex + bundleIndex)
                 .forEach((selected) => {
                   selected.options[0].selected = true;
 
@@ -1827,8 +1782,9 @@ function createBundle(BUNDLE_DATA) {
               console.error("Error:", error.message);
             });
         });
-
+        if (el.plans.plan == "free") {
         waterMark(VOLUME_DIV);
+        }
       } else {
       }
     } else if (el.type == "collectionMixMatch") {
@@ -2035,20 +1991,30 @@ function createBundle(BUNDLE_DATA) {
                       collectionSpinner.remove();
                       // let newWindow = window.open("", "_blank");
                       // newWindow.location.href = `https://${Shopify.shop}/pages/collection-mix-match?b=${el._id}`;
-                      navigator.sayswho= (function(){
-                        var N= navigator.appName, ua= navigator.userAgent, tem,
-                        M= ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*([\d\.]+)/i);
-                        if(M && (tem= ua.match(/version\/([\.\d]+)/i))!= null) M[2]= tem[1];
-                        M= M? [M[1], M[2]]:[N, navigator.appVersion, '-?'];
-                        return M.join(' ');
-                    })();
-                    
-                    if(navigator.sayswho.includes("Safari") == true){
-                         window.location.assign(`https://${Shopify.shop}/pages/collection-mix-match?b=${el._id}`);
-                    }else{
+                      navigator.sayswho = (function () {
+                        var N = navigator.appName,
+                          ua = navigator.userAgent,
+                          tem,
+                          M = ua.match(
+                            /(opera|chrome|safari|firefox|msie)\/?\s*([\d\.]+)/i
+                          );
+                        if (
+                          M &&
+                          (tem = ua.match(/version\/([\.\d]+)/i)) != null
+                        )
+                          M[2] = tem[1];
+                        M = M ? [M[1], M[2]] : [N, navigator.appVersion, "-?"];
+                        return M.join(" ");
+                      })();
+
+                      if (navigator.sayswho.includes("Safari") == true) {
+                        window.location.assign(
+                          `https://${Shopify.shop}/pages/collection-mix-match?b=${el._id}`
+                        );
+                      } else {
                         let newWindow = window.open("", "_blank");
-                                      newWindow.location.href = `https://${Shopify.shop}/pages/collection-mix-match?b=${el._id}`;
-                    }
+                        newWindow.location.href = `https://${Shopify.shop}/pages/collection-mix-match?b=${el._id}`;
+                      }
                     }
                   });
               } else {
@@ -2059,26 +2025,34 @@ function createBundle(BUNDLE_DATA) {
                   collectionSpinner.remove();
                   // let newWindow = window.open("", "_blank");
                   // newWindow.location.href = `https://${Shopify.shop}/pages/collection-mix-match?b=${el._id}`;
-                  navigator.sayswho= (function(){
-                    var N= navigator.appName, ua= navigator.userAgent, tem,
-                    M= ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*([\d\.]+)/i);
-                    if(M && (tem= ua.match(/version\/([\.\d]+)/i))!= null) M[2]= tem[1];
-                    M= M? [M[1], M[2]]:[N, navigator.appVersion, '-?'];
-                    return M.join(' ');
-                })();
-                
-                if(navigator.sayswho.includes("Safari") == true){
-                     window.location.assign(`https://${Shopify.shop}/pages/collection-mix-match?b=${el._id}`);
-                }else{
+                  navigator.sayswho = (function () {
+                    var N = navigator.appName,
+                      ua = navigator.userAgent,
+                      tem,
+                      M = ua.match(
+                        /(opera|chrome|safari|firefox|msie)\/?\s*([\d\.]+)/i
+                      );
+                    if (M && (tem = ua.match(/version\/([\.\d]+)/i)) != null)
+                      M[2] = tem[1];
+                    M = M ? [M[1], M[2]] : [N, navigator.appVersion, "-?"];
+                    return M.join(" ");
+                  })();
+
+                  if (navigator.sayswho.includes("Safari") == true) {
+                    window.location.assign(
+                      `https://${Shopify.shop}/pages/collection-mix-match?b=${el._id}`
+                    );
+                  } else {
                     let newWindow = window.open("", "_blank");
-                                  newWindow.location.href = `https://${Shopify.shop}/pages/collection-mix-match?b=${el._id}`;
-                }
+                    newWindow.location.href = `https://${Shopify.shop}/pages/collection-mix-match?b=${el._id}`;
+                  }
                 }
               }
             });
         });
-
+        if (el.plans.plan == "free") {
         waterMark(collectionDiv);
+        }
       } else {
       }
     }
@@ -3294,10 +3268,10 @@ function showAmountWithCurrency(value) {
     sdCurrencyFormatcondition = "amount_with_space_separator";
   } else if (moneyFormat.includes("{{amount}}")) {
     sdCurrencyFormatcondition = "amount";
-  }else{
-      let pattern = /{{(.*?)}}/;
-       let match = moneyFormat.match(pattern);
-       sdCurrencyFormatcondition = `${match[1]}`
+  } else {
+    let pattern = /{{(.*?)}}/;
+    let match = moneyFormat.match(pattern);
+    sdCurrencyFormatcondition = `${match[1]}`;
   }
 
   let sdCurrencyprice;
@@ -3376,7 +3350,10 @@ function showAmountWithCurrency(value) {
       }
       break;
     default:
-      sdCurrencyprice = moneyFormat.replace(`{{${sdCurrencyFormatcondition}}}`,value);
+      sdCurrencyprice = moneyFormat.replace(
+        `{{${sdCurrencyFormatcondition}}}`,
+        value
+      );
   }
 
   return sdCurrencyprice;
