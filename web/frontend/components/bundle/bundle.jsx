@@ -31,7 +31,6 @@ import {
 } from '@shopify/polaris-icons';
 import "./bundle.css";
 import {Tooltip } from '@shopify/polaris';
-import BoatLoader from "../BoatLoader";
 import allProductsImg from "../../assets/all_products.png"
 import noProductImg from "../../assets/NoProductImage.png"
 const CreateBundle = () => {
@@ -45,31 +44,54 @@ const CreateBundle = () => {
   const [loader, setLoader] = useState(false);
   const [showAction, setShowAction] = useState(false);
   const [actionId, setActionId] = useState([]);
-  async function getBundle() {
-    setLoader(true);
+  const [switchIndex,setSwitchIndex] = useState('')
+  const [switchLoading,setSwitchLoading] = useState(false)
+  async function getBundle(key) {
+    if(key== "onLoad"){
+
+      setLoader(true);
+    }else{
+      setSwitchLoading(true)
+    }
     const response = await postApi("/api/admin/getBundle", { shop: shop }, app);
     if (response.data.status === 200) {
       setDashboardData(response.data.response);
-      setLoader(false);
+      if(key== "onLoad"){
+
+        setLoader(false);
+      }else{
+        setSwitchLoading(false)
+      }
     } else if (response.data.status === 503) {
       toastNotification(
         "danger",
         "Something went wrong! please try again",
         "bottom"
       );
-      setLoader(false);
+      if(key== "onLoad"){
+
+        setLoader(false);
+      }else{
+        setSwitchLoading(false)
+      }
     }
-    setLoader(false);
+    if(key== "onLoad"){
+      setLoader(false);
+    }else{
+      setSwitchLoading(false)
+    }
   }
 
 
 
   useEffect(() => {
-    getBundle();
+    getBundle("onLoad");
   }, []);
 
-  const handleUpdateStatus = async (e, id) => {
-    setLoader(true);
+  const handleUpdateStatus = async (e, id,index) => {
+    // setLoader(true);
+    setSwitchLoading(true)
+    setSwitchIndex(index)
     let data = {
       id: id,
       status: e === true ? "active" : "draft",
@@ -77,7 +99,9 @@ const CreateBundle = () => {
     const response = await postApi("api/admin/updateStatus", data, app);
 
     if (response.data.status === 200) {
-      await getBundle();
+      await getBundle("onSwitch");
+    setSwitchLoading(false)
+
       toastNotification("success", "status updated successfully", "bottom");
     }
   };
@@ -344,9 +368,10 @@ return check;
     status: (
       <div>
         <Switch
+        loading={switchIndex === index ? switchLoading : null }
           defaultChecked
           checked={item.status == "active" ? true : false}
-          onChange={(e) => handleUpdateStatus(e, item._id)}
+          onChange={(e) => handleUpdateStatus(e, item._id,index)}
         />
       </div>
     ),
@@ -511,9 +536,9 @@ return check;
               <Thumbnail
                  source={
                   ele.images
-                    ? ele?.images[0]?.originalSrc !== "" ? ele.images[0].originalSrc : noProductImg
+                    ? ele?.images[0]?.originalSrc !== "" ? ele.images[0]?.originalSrc : noProductImg
                     : ele?.image 
-                    ? ele?.image?.originalSrc !== "" ? ele.image.originalSrc : noProductImg 
+                    ? ele?.image?.originalSrc !== "" ? ele.image?.originalSrc : noProductImg 
                     : noProductImg
                 }
                 size="small"
