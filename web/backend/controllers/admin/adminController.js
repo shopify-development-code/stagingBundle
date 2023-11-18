@@ -209,6 +209,7 @@ export async function getBundle (req,res){
       {
         $match: { shop: shop }
       },
+      { $sort: { createdAt: 1 } },
       {
         $project: {
           _id:1,
