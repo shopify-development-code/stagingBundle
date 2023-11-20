@@ -1,7 +1,7 @@
 import React from "react";
 import { InlineError } from "@shopify/polaris";
 const BundleNameTitle=(props)=>{
-
+  // console.log("props==>", props)
         return <>
     <div className="sd-bundle-bundleSection-common sd-bundle-createBundleNamingSection">
     <div className="sd-bundle-bundleSection-heading-common">
@@ -65,7 +65,7 @@ const BundleNameTitle=(props)=>{
         ""
       )}
     </div>
-{ props.type == "collectonMix&Match"   ? 
+{ props.type == "collectonMix&Match" || props.data.type == "productMixMatch"    ? 
 <div className="sd-bundle-descriptionBlock">
       <label className="sd-bundle-plainText-common">Description</label>
       <br />

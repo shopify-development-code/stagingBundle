@@ -95,7 +95,7 @@ export async function fetchVariants(req,res){
    id: Number(p_id),
  });
 
-
+console.log(data)
 
 let arr=[];
 

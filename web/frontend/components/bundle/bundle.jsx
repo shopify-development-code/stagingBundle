@@ -45,6 +45,7 @@ const CreateBundle = () => {
   const [loader, setLoader] = useState(false);
   const [showAction, setShowAction] = useState(false);
   const [actionId, setActionId] = useState([]);
+
   async function getBundle() {
     setLoader(true);
     const response = await postApi("/api/admin/getBundle", { shop: shop }, app);
@@ -96,8 +97,12 @@ const CreateBundle = () => {
       navigate(`/ProductBundle/${id}`);
     } else if (type == "volumeBundle") {
       navigate(`/VolumeBundle/${id}`);
-    } else {
+    } else if(type == "CollectionMixMatch") {
       navigate(`/CollectionMixMatch/${id}`);
+    }else if(type=="BuyXGetY"){
+      navigate(`/BuyXGetY/${id}`);
+    }else{
+      navigate(`/ProductMixMatch/${id}`);
     }
   };
 
@@ -831,6 +836,74 @@ return check;
               </p>
               <br />
               <p>Example: BOGO, Buy 3 items of X to get 20% off.</p>
+            </Card>
+          </div>
+          <div
+            className="sd-bundle-choose-collectionMixAndMatch"
+            onClick={() => navigate("/collectionMixMatch/create")}
+          >
+            <Card
+              title="Collection Mix & Match"
+              style={{
+                width: 300,
+              }}
+            >
+              <p className="sd-bundle-collectionMix-Icon">
+                <TagsOutlined />
+              </p>
+              <p>
+                Offer a discount when a customer buys specified numbers of
+                products from specified collections.
+              </p>
+              <br />
+              <p>
+                Example: Buy 4 items from collection X and 2 from collection Y
+                to get $30 off.
+              </p>
+            </Card>
+          </div>
+
+{/* add three more bundle by taran */}
+
+          <div
+            className="sd-bundle-choose-bundle"
+            onClick={() => navigate("/BuyXgetY/create")}
+          >
+            <Card
+              title="Buy X Get Y"
+              style={{
+                width: 300,
+              }}
+            >
+              <p className="sd-bundle-icon">
+                <UnorderedListOutlined />
+              </p>
+              <p>
+                Offer a discount when a customer buys some fixed products
+                together. (Combo product option is available)
+              </p>
+              <br />
+              <p>Example: Buy x + y to get 20% off.</p>
+            </Card>
+          </div>
+          <div
+            className="sd-bundle-choose-volume-discount"
+            onClick={() => navigate("/ProductMixMatch/create")}
+          >
+            <Card
+              title="Product Mix & Match"
+              style={{
+                width: 300,
+              }}
+            >
+              <p className="sd-bundle-volumeDiscount-icon">
+                <PercentageOutlined />
+              </p>
+              <p>
+              Let your customers build their own bundle out of a group of products
+              </p>
+              <br />
+              <p>Example: Buy 2 items and get 20% off.</p>
             </Card>
           </div>
           <div

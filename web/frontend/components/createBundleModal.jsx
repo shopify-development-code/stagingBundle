@@ -13,16 +13,16 @@ function CreateBundleModal(props) {
   };
 
   const handleProducts = (e, page) => {
-    
-
     if (page == "productBundle") {
       let x = {};
       props?.data.bundleDetail.products.map((item) => {
         x[item.id] = item.minimumOrder ? item.minimumOrder : 0;
       });
+      console.log("x",x)
       const result1 = e.selection.filter(({ id: id1 }) =>
         props?.data.bundleDetail.products.some(({ id: id2 }) => id2 === id1)
       );
+      console.log("result1",result1)
       let update = result1.map((item) => {
         if (x[item.id] || x[item.id] == 0) {
           item.minimumOrder = x[item.id];
@@ -164,11 +164,11 @@ function CreateBundleModal(props) {
 
     //------------------------------------
 
-    props.setOpen(false);
-  if(props.page!= "CollectionMixMatch")
-  {
-    props.setSearchValue("");
-    } 
+       props.setOpen(false);
+      if(props.page!= "CollectionMixMatch")
+      {
+        props.setSearchValue("");
+        } 
    };
 
   return (
