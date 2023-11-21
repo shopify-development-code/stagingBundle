@@ -19,8 +19,9 @@ function CreateBundleModal(props) {
         x[item.id] = item.minimumOrder ? item.minimumOrder : 0;
       });
       console.log("x",x)
-      const result1 = e.selection.filter(({ id: id1 }) =>
-        props?.data.bundleDetail.products.some(({ id: id2 }) => id2 === id1)
+      const result1 = e.selection.filter(({ id: id1 }) =>{
+      console.log("id==>", id)
+        props?.data.bundleDetail.products.some(({ id: id2 }) => id2 === id1)}
       );
       console.log("result1",result1)
       let update = result1.map((item) => {
@@ -34,7 +35,7 @@ function CreateBundleModal(props) {
         ({ id: id1 }) =>
           !props.data.bundleDetail.products.some(({ id: id2 }) => id2 === id1)
       );
-
+      console.log("result2",result2)
       let arr = [];
       result2.map((item, index) => {
         item.minimumOrder = 1;

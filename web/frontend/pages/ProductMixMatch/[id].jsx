@@ -28,6 +28,7 @@ export default function ProductMixMatch() {
   const { shop, timeZone, currencyCode } = useAPI();
   const [errorArray, setErrorArray] = useState([]);
   const [error, setError] = useState("");
+  const [priceData, setPriceData] = useState([]);
   const [endPriceData, setEndPriceData] = useState([]);
   const [sumData, setSumData] = useState([]);
     const [data, setData] = useState({
