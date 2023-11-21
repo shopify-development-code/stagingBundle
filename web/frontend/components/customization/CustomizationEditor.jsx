@@ -35,6 +35,7 @@ import postApi from "../postApi";
 import { useAppBridge } from "@shopify/app-bridge-react";
 import BoatLoader from "../BoatLoader";
 import toastNotification from "../commonSections/Toast";
+import CustomizationBuyXgetY from "./CustomizationBuyXgetY";
 const CustomizationEditor = (props) => {
   const app = useAppBridge();
   const navigate = useNavigate();
@@ -78,14 +79,16 @@ const CustomizationEditor = (props) => {
       // props.setData(defaultData["popUp"]) 2
     }
   };
-
+console.log(props)
   const handleBundleOption = (bundleName) => {
     if (props.bundleOption != bundleName) {
       props.setBundleOption(bundleName);
       // props.setData(defaultData[bundleName]);
       bundleName == "collection" ||
       bundleName == "bundle" ||
-      bundleName == "volume"
+      bundleName == "volume" ||
+      bundleName == "buyXgetY" ||
+      bundleName == "productMixMatch" 
         ? setCustomOption("Box")
         : "";
     }
@@ -282,6 +285,41 @@ const CustomizationEditor = (props) => {
                 {props.bundleOption == "collection"
                   ? leftSideSectionCommon()
                   : ""}
+                  <div
+                  className={`sd-bundle-listItem-common sd-bundle-listItem  ${
+                    props.bundleOption == "buyXgetY" ? "sd-active" : ""
+                  }`}
+                  onClick={() => handleBundleOption("buyXgetY")}
+                >
+                  {props.bundleOption == "buyXgetY" ? (
+                    <CaretDownOutlined />
+                  ) : (
+                    <CaretRightOutlined />
+                  )}
+                  <AppstoreAddOutlined />
+                  <p>Buy X get Y</p>
+                </div>
+                {props.bundleOption == "buyXgetY"
+                  ? leftSideSectionCommon()
+                  : ""}
+                   <div
+                  className={`sd-bundle-listItem-common sd-bundle-listItem  ${
+                    props.bundleOption == "productMixMatch" ? "sd-active" : ""
+                  }`}
+                  onClick={() => handleBundleOption("productMixMatch")}
+                >
+                  {props.bundleOption == "productMixMatch" ? (
+                    <CaretDownOutlined />
+                  ) : (
+                    <CaretRightOutlined />
+                  )}
+                  <AppstoreAddOutlined />
+                  <p>Product Mix & Match</p>
+                </div>
+                {props.bundleOption == "productMixMatch"
+                  ? leftSideSectionCommon()
+                  : ""}
+                  
               </div>
             ) : displayOption == "popUp" ? (
               <div className="sd-bundle-bundleList-section">
@@ -308,6 +346,9 @@ const CustomizationEditor = (props) => {
               )}
               {props.bundleOption == "collection" && (
                 <CustomizationCollectionBundlePreview data={props.data} />
+              )}
+              {props.bundleOption == "buyXgetY" && (
+                <CustomizationBuyXgetY data={props.data} />
               )}
             </div>
           ) : displayOption == "popUp" ? (
@@ -402,7 +443,7 @@ const CustomizationEditor = (props) => {
 
             {displayOption == "productPages" ? (
               <div className="sd-bundle-editSection-wrappper">
-                {customOption == "Design" && props.bundleOption == "bundle" ? (
+                {customOption == "Design" && props.bundleOption == "bundle" && props.bundleOption == "buyXandGetY" ? (
                   <Design
                     bundleOption={props.bundleOption}
                     data={props.data}
@@ -432,7 +473,8 @@ const CustomizationEditor = (props) => {
                   />
                 ) : customOption == "productDetails" &&
                   (props.bundleOption == "bundle" ||
-                    props.bundleOption == "volume") ? (
+                    props.bundleOption == "volume"||
+                    props.bundleOption == "buyXgetY") ? (
                   <ProductDetails
                     bundleOption={props.bundleOption}
                     data={props.data}
@@ -449,7 +491,8 @@ const CustomizationEditor = (props) => {
                   />
                 ) : customOption == "Total_section" &&
                   (props.bundleOption == "bundle" ||
-                    props.bundleOption == "volume") ? (
+                    props.bundleOption == "volume" ||
+                    props.bundleOption == "buyXgetY") ? (
                   <TotalSection
                     bundleOption={props.bundleOption}
                     data={props.data}

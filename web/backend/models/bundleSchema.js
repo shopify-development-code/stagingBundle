@@ -17,9 +17,7 @@ const bundleSchema = new mongoose.Schema({
     type: String
   },
   status: {
-    type: String,
-    enum : ["active","draft"],
-    default: 'draft'
+    type: String
   },
   currencyCode:{
     type:String

@@ -1,5 +1,6 @@
 import shopify from "../../../shopify.js";
 import planModel from "../../models/plan.js";
+import shopInfoModel from "../../models/shopInfoSchema.js";
 
 
 export async function recurringBiling(req, res) {
@@ -21,7 +22,7 @@ export async function recurringBiling(req, res) {
       const recurringString = `mutation CreateSubscription {
               appSubscriptionCreate(
                   name: "${plan}",
-        returnUrl: "https://${shop}/admin/apps/${API_KEY}/plan"
+        returnUrl: "https://${shop}/admin/apps/${API_KEY}/plans"
                   test : ${testCharge}
                   lineItems: [{
                       plan: {
@@ -67,7 +68,7 @@ export async function recurringBiling(req, res) {
      if(verifyBilling.status === "active") {
       const updatePlan = await planModel.findOneAndUpdate(
         { shop },
-        { charge_id, plan: verifyBilling.name, price: verifyBilling.price, interval: "MONTHLY" },
+        { chargeId:charge_id, plan: verifyBilling.name, price: verifyBilling.price, interval: "MONTHLY" },
         { upsert: true, new: true }
       );
   
@@ -115,3 +116,25 @@ try {
       console.log(error)
     }
   }
+
+
+export async function createPlan (req,res){
+const shopData = await shopInfoModel.find({},{shop:1})
+var ops = []
+shopData.forEach(item => {
+                ops.push(
+                    {
+                        updateOne: {
+                            filter: { shop:  item.shop },
+                            update:{ shop:item.shop,interval:"MONTHLY",plan:"free",price:"0",chargeId:""},
+                            upsert: true
+                        }
+                    }
+                )
+            })
+           
+      const createPlan =await  planModel.bulkWrite(ops, { ordered: false })
+      console.log(createPlan)
+      res.send("success")
+
+}

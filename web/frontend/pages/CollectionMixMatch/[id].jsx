@@ -25,6 +25,7 @@ import noImg from "../../assets/no-Image.png"
 
 
 const  CollectionMixMatch=()=>{
+  let headerkey = "Create Collection Mix & Match" ;
   const param = useParams()
  const navigate = useNavigate()
  const app=useAppBridge();
@@ -379,7 +380,7 @@ if(flag==true){
         indicator={<BoatLoader/>}
         size="large"> 
     <div className="Polaris-Page Polaris-Page--fullWidth">
-    <MoveToHomePage/>
+    <MoveToHomePage data={headerkey}/>
     {alert.state == true && (<AlertSection  message={alert.message} setAlert={setAlert}  status={alert.status} />)}
 
     <div className="sd-bundle-wrapper-common">

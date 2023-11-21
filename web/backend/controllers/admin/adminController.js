@@ -209,6 +209,7 @@ export async function getBundle (req,res){
       {
         $match: { shop: shop }
       },
+      { $sort: { createdAt: 1 } },
       {
         $project: {
           _id:1,
@@ -255,7 +256,7 @@ export async function getBundle (req,res){
 export async function updateStatus (req,res){
   try{
     const {id,status} = req.body
-    const response =  await bundleModel.findOneAndUpdate({_id:id},{status:status})
+    const response =  await bundleModel.findOneAndUpdate({_id:id},{$set: { status:status}})
     if(response){
     return res.status(200).send({message:"success",response:response,status:200})
     }else{

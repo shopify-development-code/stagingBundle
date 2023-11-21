@@ -2,6 +2,7 @@ import React from "react" ;
 import { TextField } from "@shopify/polaris";
 
 const Box=(props)=>{
+console.log(props)
 
      let dataToChange=props["data"][props.bundleOption]
     const handleChangeCommon=(e,key1,key2,bundleOption)=>{
@@ -25,7 +26,7 @@ const Box=(props)=>{
      return(
 
      <>
-{  props.displayOption == "productPages"  ?
+{  props.displayOption == "productPages"   ? 
     <div className="sd-bundle-boxCustom">
 <div className="sd-bundle-custom-item-common">
     <p className="sd-bundle-custom-item-heading-common">Background</p>
@@ -52,6 +53,14 @@ const Box=(props)=>{
             // placeholder="set minimum order  for item"
             onChange={(newvalue)=>handleChangeValueCommon(newvalue,"box","borderRadius",props.bundleOption)}
             value={dataToChange.box.borderRadius}
+            autoComplete="off"
+            min="0"
+          />
+<TextField
+            type="number"
+            label="Thickness"
+            onChange={(newvalue)=>handleChangeValueCommon(newvalue,"box","thickness",props.bundleOption)}
+            value={dataToChange.box.thickness}
             autoComplete="off"
             min="0"
           />

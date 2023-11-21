@@ -7,7 +7,7 @@ import { Fullscreen } from '@shopify/app-bridge/actions';
 import { useAppBridge } from "@shopify/app-bridge-react";
 
 const MoveToHomePage = (props) => {
-
+console.log(props)
   const navigate = useNavigate();
 
 
@@ -33,7 +33,7 @@ const MoveToHomePage = (props) => {
     
 
       </div>
-      <div className="sd-bundle-commonHeading">Build Your Bundle</div>
+      <div className="sd-bundle-commonHeading">{props.data}</div>
      
 
   </div>

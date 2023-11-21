@@ -7,6 +7,7 @@ import { CircleTickMajor } from "@shopify/polaris-icons";
 import postApi from "../components/postApi";
 import { useAppBridge } from "@shopify/app-bridge-react";
 import { useSearchParams } from "react-router-dom"
+import ContactUs from "../components/contactUs";
 
 const Plan = () => {
     const [searchParams] = useSearchParams();
@@ -170,6 +171,7 @@ if(key == "basic"){
       </Card>
 
       <Watermark />
+      <ContactUs/>
     </div>
   );
 };

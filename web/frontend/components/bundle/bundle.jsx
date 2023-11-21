@@ -17,7 +17,8 @@ import {
   TagsOutlined,
   PercentageOutlined,
   DownOutlined,
-  EllipsisOutlined
+  EllipsisOutlined,
+  GiftOutlined 
 } from "@ant-design/icons";
 import { useNavigate } from "@shopify/app-bridge-react";
 import { useAppBridge } from "@shopify/app-bridge-react";
@@ -31,7 +32,6 @@ import {
 } from '@shopify/polaris-icons';
 import "./bundle.css";
 import {Tooltip } from '@shopify/polaris';
-import BoatLoader from "../BoatLoader";
 import allProductsImg from "../../assets/all_products.png"
 import noProductImg from "../../assets/NoProductImage.png"
 const CreateBundle = () => {
@@ -45,31 +45,54 @@ const CreateBundle = () => {
   const [loader, setLoader] = useState(false);
   const [showAction, setShowAction] = useState(false);
   const [actionId, setActionId] = useState([]);
-  async function getBundle() {
-    setLoader(true);
+  const [switchIndex,setSwitchIndex] = useState('')
+  const [switchLoading,setSwitchLoading] = useState(false)
+  async function getBundle(key) {
+    if(key== "onLoad"){
+
+      setLoader(true);
+    }else{
+      setSwitchLoading(true)
+    }
     const response = await postApi("/api/admin/getBundle", { shop: shop }, app);
     if (response.data.status === 200) {
       setDashboardData(response.data.response);
-      setLoader(false);
+      if(key== "onLoad"){
+
+        setLoader(false);
+      }else{
+        setSwitchLoading(false)
+      }
     } else if (response.data.status === 503) {
       toastNotification(
         "danger",
         "Something went wrong! please try again",
         "bottom"
       );
-      setLoader(false);
+      if(key== "onLoad"){
+
+        setLoader(false);
+      }else{
+        setSwitchLoading(false)
+      }
     }
-    setLoader(false);
+    if(key== "onLoad"){
+      setLoader(false);
+    }else{
+      setSwitchLoading(false)
+    }
   }
 
 
 
   useEffect(() => {
-    getBundle();
+    getBundle("onLoad");
   }, []);
 
-  const handleUpdateStatus = async (e, id) => {
-    setLoader(true);
+  const handleUpdateStatus = async (e, id,index) => {
+    // setLoader(true);
+    setSwitchLoading(true)
+    setSwitchIndex(index)
     let data = {
       id: id,
       status: e === true ? "active" : "draft",
@@ -77,7 +100,9 @@ const CreateBundle = () => {
     const response = await postApi("api/admin/updateStatus", data, app);
 
     if (response.data.status === 200) {
-      await getBundle();
+      await getBundle("onSwitch");
+    setSwitchLoading(false)
+
       toastNotification("success", "status updated successfully", "bottom");
     }
   };
@@ -344,9 +369,10 @@ return check;
     status: (
       <div>
         <Switch
+        loading={switchIndex === index ? switchLoading : null }
           defaultChecked
           checked={item.status == "active" ? true : false}
-          onChange={(e) => handleUpdateStatus(e, item._id)}
+          onChange={(e) => handleUpdateStatus(e, item._id,index)}
         />
       </div>
     ),
@@ -511,9 +537,9 @@ return check;
               <Thumbnail
                  source={
                   ele.images
-                    ? ele?.images[0]?.originalSrc !== "" ? ele.images[0].originalSrc : noProductImg
+                    ? ele?.images[0]?.originalSrc !== "" ? ele.images[0]?.originalSrc : noProductImg
                     : ele?.image 
-                    ? ele?.image?.originalSrc !== "" ? ele.image.originalSrc : noProductImg 
+                    ? ele?.image?.originalSrc !== "" ? ele.image?.originalSrc : noProductImg 
                     : noProductImg
                 }
                 size="small"
@@ -805,11 +831,8 @@ return check;
                 <UnorderedListOutlined />
               </p>
               <p>
-                Offer a discount when a customer buys some fixed products
-                together. (Combo product option is available)
+              Highlight special product combinations with an exclusive discount.
               </p>
-              <br />
-              <p>Example: Buy x + y to get 20% off.</p>
             </Card>
           </div>
           <div
@@ -826,11 +849,9 @@ return check;
                 <PercentageOutlined />
               </p>
               <p>
-                Offer a discount when a customer buys several instances of the
-                same product.
+              Offer a discount when purchasing multiple units of a product.
               </p>
-              <br />
-              <p>Example: BOGO, Buy 3 items of X to get 20% off.</p>
+             
             </Card>
           </div>
           <div
@@ -847,15 +868,73 @@ return check;
                 <TagsOutlined />
               </p>
               <p>
-                Offer a discount when a customer buys specified numbers of
-                products from specified collections.
+              Empower your customers to create personalized bundles by mixing and matching items from different collections.
               </p>
-              <br />
-              <p>
-                Example: Buy 4 items from collection X and 2 from collection Y
-                to get $30 off.
-              </p>
+            
             </Card>
+            
+          </div>
+          <div
+            className="sd-bundle-choose-collectionMixAndMatch"
+            onClick={() => navigate("/buyXgetY/create")}
+          >
+            <Card
+              title="Buy X get Y"
+              style={{
+                width: 300,
+              }}
+            >
+              <p className="sd-bundle-collectionMix-Icon">
+              <GiftOutlined />
+              </p>
+              <p>
+              Provide complimentary gifts or discounted items with specific purchases.
+              </p>
+             
+             
+            </Card>
+            
+          </div>
+          <div
+            className="sd-bundle-choose-collectionMixAndMatch"
+            onClick={() => navigate("/productMixMatch/create")}
+          >
+            <Card
+              title="Product mix & match"
+              style={{
+                width: 300,
+              }}
+            >
+              <p className="sd-bundle-collectionMix-Icon">
+                <TagsOutlined />
+              </p>
+              <p>
+              Allow your customers to create their own bundle from a selection of products.
+              </p>
+             
+            </Card>
+            
+          </div>
+          <div
+            className="sd-bundle-choose-collectionMixAndMatch"
+            // onClick={() => navigate("/collectionMixMatch/create")}
+            
+          >
+            <Card
+              title="Frequently bought together"
+              style={{
+                width: 300,
+              }}
+            >
+              <p className="sd-bundle-collectionMix-Icon">
+                <TagsOutlined />
+              </p>
+              <p>
+              Encourage the purchase of frequently paired products with a special discount.
+              </p>
+              
+            </Card>
+            
           </div>
         </div>
       </Modal>

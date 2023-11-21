@@ -22,6 +22,8 @@ const BundleCustomization = () => {
     volume:defaultData["volume"],
     collection:defaultData["collectionMixMatch"],
     popUp:defaultData["popUp"],
+    buyXgetY:defaultData["buyXgetY"],
+    productMixMatch:defaultData["productMixMatch"]
     });
 
     async function getCustomizationData(){
@@ -33,7 +35,10 @@ const BundleCustomization = () => {
          setData({bundle:response.data.response.bundle,
                   volume:response.data.response.volume,
                    collection:response.data.response.collectionMixMatch,
-                  popUp:response.data.response.popUp})
+                   buyXgetY:defaultData['buyXgetY'],
+                   productMixMatch:defaultData['productMixMatch'],
+                  popUp:response.data.response.popUp
+                })
       }
     }
 useEffect(()=>{
@@ -48,7 +53,6 @@ useEffect(() => {
   // setFullScreen(true);
 
 }, [])
-
   return (
     <>
     <Spin

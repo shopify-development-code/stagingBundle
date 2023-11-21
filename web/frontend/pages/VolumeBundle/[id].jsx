@@ -22,6 +22,8 @@ import { useNavigate,useParams } from "react-router-dom";
 import toastNotification from "../../components/commonSections/Toast";
 import BoatLoader from "../../components/BoatLoader";
 const VolumeBundle = () => {
+  let headerkey = "Create Volume Bundle" ;
+
  const navigate = useNavigate()
  const app = useAppBridge()
  const param = useParams()
@@ -783,7 +785,7 @@ function getPreviewData(data){
     indicator={<BoatLoader/>}
     size="large"> 
     <div className="Polaris-Page Polaris-Page--fullWidth">
-      <MoveToHomePage />
+      <MoveToHomePage data={headerkey} />
       {alert.state == true && (
         <AlertSection
           message={alert.message}

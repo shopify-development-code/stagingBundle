@@ -838,9 +838,9 @@ function createBundle(BUNDLE_DATA) {
         } else {
           BUNDLE_DIV.prepend(ADD_TO_CART_BTN_DIV);
         }
-        if (el.plans.plan == "free") {
+        // if (el.plans.plan == "free") {
           waterMark(BUNDLE_DIV);
-        }
+        // }
       } else {
       }
     } else if (el.type == "volumeBundle") {
@@ -1782,9 +1782,9 @@ function createBundle(BUNDLE_DATA) {
               console.error("Error:", error.message);
             });
         });
-        if (el.plans.plan == "free") {
+        // if (el.plans.plan == "free") {
           waterMark(VOLUME_DIV);
-        }
+        // }
       } else {
       }
     } else if (el.type == "collectionMixMatch") {
@@ -2050,9 +2050,9 @@ function createBundle(BUNDLE_DATA) {
               }
             });
         });
-        if (el.plans.plan == "free") {
+        // if (el.plans.plan == "free") {
           waterMark(collectionDiv);
-        }
+        // }
       } else {
       }
     }
