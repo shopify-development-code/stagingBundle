@@ -2780,3 +2780,7 @@ nav.Polaris-Navigation {
         padding: 15px;
     }
 }
+
+.sd-hideSpinner span.ant-spin-dot.ant-spin-dot-spin {
+    display: none;
+}

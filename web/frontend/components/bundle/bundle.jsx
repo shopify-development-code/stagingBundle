@@ -8,7 +8,8 @@ import {
   Dropdown,
   Space,
   Switch,
-  Skeleton
+  Skeleton,
+  Spin 
 
 } from "antd";
 import {
@@ -776,6 +777,7 @@ return check;
       > */}
 
       <div className="sd-bundle-card-data-box">
+        <Spin className="sd-hideSpinner" spinning={switchLoading} >
         <Card
           className="sd-bundle-dashboard-tab-box"
           tabList={tabListNoTitle}
@@ -804,6 +806,7 @@ return check;
         >
           {contentListNoTitle[activeTabKey2]}
         </Card>
+        </Spin>
       </div>
 
       {/* </Card> */}

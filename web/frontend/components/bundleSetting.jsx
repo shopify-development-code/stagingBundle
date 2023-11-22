@@ -148,8 +148,11 @@ setSettingData({...settingData,discountLabel:e.target.value})
           </div>
       </div>
       <div>
+      <Skeleton active loading={spinner}>
+        
         
         <button onClick={handleSave}>save</button>
+      </Skeleton>
       </div>
       </div> 
      

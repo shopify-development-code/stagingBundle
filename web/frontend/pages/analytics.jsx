@@ -21,13 +21,17 @@ const [salesValue,setSalesValue] = useState(0)
 const [soldBundle,setSoldBundle] = useState(0)
 const [bundleClicks,setBundleClicks] = useState(0)
 const [bundleViews,setBundleViews] = useState(0)
+const [btnDisabled,setBtnDisabled] = useState(false)
   const app = useAppBridge();
 
 async function getBundleAnalyticsData(){
   setSpinner(true)
+  setBtnDisabled(true)
   const response = await postApi("/api/admin/getAnalyticsData", {}, app);
  if(response.data.status == 200){
   setSpinner(false)
+  setBtnDisabled(false)
+
   let data = response.data.response
   bundleclickSum(data)
   bundleViewSum(data)
@@ -37,6 +41,8 @@ async function getBundleAnalyticsData(){
  
  }else if(response.data.status == 500){
   setSpinner(false)
+  setBtnDisabled(false)
+
 
  }
 
@@ -352,7 +358,7 @@ Views:(<div key={index} className='sd-analytics-views-div'>{item.analytics.bundl
 </div>
 
  <div className='sd-bundle-analytics-tab-box'>
-  <Button onClick={handleAnalyticsReload}>Reload</Button>
+  <Button disabled={btnDisabled}  onClick={handleAnalyticsReload}>Reload</Button>
 <Tabs defaultActiveKey="1" items={items} onChange={onChange}  />
 
 
