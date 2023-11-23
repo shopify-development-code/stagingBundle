@@ -31,35 +31,36 @@ export default function ProductMixMatch() {
   const [priceData, setPriceData] = useState([]);
   const [endPriceData, setEndPriceData] = useState([]);
   const [sumData, setSumData] = useState([]);
-    const [data, setData] = useState({
-        name: "",
-        title: "",
-        shop: "",
-        type: "productMixMatch",
-        status: "active",
-        startdate: "",
-        endDate: "",
-        bundleDetail: {
-            products: [],
-            discountedProductType: "specific_product",
-            discountOptions: [
-              {
-                quantity: 2,
-                type: "percent",
-                value: 5,
-                description: "Buy 2 & Save {discount}",
-              },
-            ],
-            allowDiscountOnIncrease: false,
-            display: { productPages: false,
-               bundle: false,
-               
-                productPagesList: [],
-               },
-          },
-        customization: [defaultData] ,
-        timeZone:timeZone
-      });
+  const [data, setData] = useState({
+    shop: shop,
+    type: "productBundle",
+    name: "",
+    title: "",
+    status: "active",
+    startdate: "",
+    endDate: "",
+    currencyCode: currencyCode,
+    bundleDetail: {
+      products: [],
+      discountedProductType: "specific_product",
+      discountOptions: [
+        {
+          quantity: 2,
+          type: "percent",
+          value: 5,
+          description: "Buy 2 & Save {discount}",
+        },
+      ],
+      allowDiscountOnIncrease: false,
+      display: { 
+        productPages: false,
+         bundle: false,
+          productPagesList: [],
+         },
+    },
+    customization: [defaultData] ,
+    timeZone:timeZone
+  });
 // console.log(data)
       const handleBrowseProducts = async () => {
         setMyModal(true);
@@ -137,40 +138,40 @@ export default function ProductMixMatch() {
         setVariantData,
       };
 
-      function calculateFinalPrice(index, sumArray) {
-        let finalPrice = 0;
+      // function calculateFinalPrice(index, sumArray) {
+      //   let finalPrice = 0;
     
-        if (data.bundleDetail.discountOptions[index].type == "percent") {
-          if (data.bundleDetail.discountOptions[index].value > 100) {
-            finalPrice = 0;
-          } else {
-            finalPrice =  parseFloat(sumArray[index]) -parseFloat(sumArray[index]) * (data.bundleDetail.discountOptions[index].value / 100);
-          }
-        } else if (data.bundleDetail.discountOptions[index].type == "fixed") {
-          if (parseFloat(data.bundleDetail.discountValue) > sumArray[index]) {
-            finalPrice = 0;
-          } else {
-            finalPrice =
-              parseFloat(sumArray[index]) -
-              data.bundleDetail.discountOptions[index].value;
-          }
-        } else if (data.bundleDetail.discountOptions[index].type == "price") {
-          if (
-            data.bundleDetail.discountOptions[index].value >
-            parseFloat(sumArray[index])
-          ) {
-            finalPrice = parseFloat(sumArray[index]);
-          } else {
-            finalPrice = parseFloat(data.bundleDetail.discountOptions[index].value);
-          }
-        } else if (
-          data.bundleDetail.discountOptions[index].discountType == "freeShipping" ||
-          data.bundleDetail.discountOptions[index].discountType == "noDiscount"
-        ) {
-          finalPrice = parseFloat(sumArray[index]);
-        }
-        return finalPrice.toFixed(2);
-      }
+      //   if (data.bundleDetail.discountOptions[index].type == "percent") {
+      //     if (data.bundleDetail.discountOptions[index].value > 100) {
+      //       finalPrice = 0;
+      //     } else {
+      //       finalPrice =  parseFloat(sumArray[index]) -parseFloat(sumArray[index]) * (data.bundleDetail.discountOptions[index].value / 100);
+      //     }
+      //   } else if (data.bundleDetail.discountOptions[index].type == "fixed") {
+      //     if (parseFloat(data.bundleDetail.discountValue) > sumArray[index]) {
+      //       finalPrice = 0;
+      //     } else {
+      //       finalPrice =
+      //         parseFloat(sumArray[index]) -
+      //         data.bundleDetail.discountOptions[index].value;
+      //     }
+      //   } else if (data.bundleDetail.discountOptions[index].type == "price") {
+      //     if (
+      //       data.bundleDetail.discountOptions[index].value >
+      //       parseFloat(sumArray[index])
+      //     ) {
+      //       finalPrice = parseFloat(sumArray[index]);
+      //     } else {
+      //       finalPrice = parseFloat(data.bundleDetail.discountOptions[index].value);
+      //     }
+      //   } else if (
+      //     data.bundleDetail.discountOptions[index].discountType == "freeShipping" ||
+      //     data.bundleDetail.discountOptions[index].discountType == "noDiscount"
+      //   ) {
+      //     finalPrice = parseFloat(sumArray[index]);
+      //   }
+      //   return finalPrice.toFixed(2);
+      // }
 
       
       const setOk = () => {
@@ -835,7 +836,7 @@ export default function ProductMixMatch() {
 
             <DateTime data={data} setData={setData} errorArray={errorArray} />
 
-            {/* <DeleteSave handleSave={handleSave} /> */}
+            <DeleteSave handleSave={handleSave} />
           </div>
 
         <div className="sd-bundle-productBundle-rightSection Polaris-Layout__Section Polaris-Layout__Section--secondary">

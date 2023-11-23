@@ -33,7 +33,7 @@ import {
 } from "../controllers/admin/bundleController.js";
 import { createPage, getBundleData, getCollectionMixMatchData, getPage ,getCollectionProducts, getMoreCollectionProducts, searchCollectionProducts,getBundleViews, getBundleClick} from "../controllers/admin/storefrontController.js";
 import contactEmail from "../helper/Email.js";
-import { freePlans, getPlans, recurringBiling,recurringBilingSelected } from "../controllers/admin/billingController.js";
+import { createPlan, freePlans, getPlans, recurringBiling,recurringBilingSelected } from "../controllers/admin/billingController.js";
 // ---------------------------------------App -Admin Routes  :------------------------------------------------------
 router.post("/admin/createBundle", createBundle);
 router.post("/admin/deleteBundle", deleteBundle);
@@ -76,6 +76,7 @@ router.post("/admin/getBilling",recurringBiling)
 router.post("/admin/billingSelected",recurringBilingSelected)
 router.post("/admin/getPlans",getPlans)
 router.post("/admin/freePlans",freePlans)
+router.post("/admin/createPlans",createPlan)
 
 //----------------------------------------privacy policy-------------------------------------------------------
 

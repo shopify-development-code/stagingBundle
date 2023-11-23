@@ -9,7 +9,7 @@ const BundlePickerData=({page,modalType,data,setData,errorArray,removeProductFro
 const {app}=useAPI()
 
 function  showOutOfStockError(item){
-
+console.log("item==>",item)
   let check ;
   for (let index = 0; index < item.variants.length; index++) {
     if(item.variants[index].inventoryQuantity <= 0){

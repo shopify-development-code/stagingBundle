@@ -20,7 +20,7 @@ function CreateBundleModal(props) {
       });
       console.log("x",x)
       const result1 = e.selection.filter(({ id: id1 }) =>{
-      console.log("id==>", id)
+     
         props?.data.bundleDetail.products.some(({ id: id2 }) => id2 === id1)}
       );
       console.log("result1",result1)

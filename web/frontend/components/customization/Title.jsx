@@ -1,9 +1,9 @@
 import React from "react" ;
 import { Divider } from "antd";
-import { TextField } from "@shopify/polaris";
+import { TextField,Select } from "@shopify/polaris";
 import { handleChangeCommon,handleChangeValueCommon } from "../helperFunctions";
 const Title=({bundleOption,displayOption,data,setData})=>{
-  
+
 return(
 
  <div className="sd-bundle-titleCustom">
@@ -28,6 +28,42 @@ return(
             autoComplete="off"
             min="0"
           /> 
+        
+           <Select
+
+              label="Boldness"
+              options={['100','200','300','400','500','600','700','800','900']}
+              value={data[bundleOption]["title"]["titleBold"]}
+              onChange={(e)=>handleChangeValueCommon(e,"title","titleBold",data,setData,bundleOption)}
+            />
+</div>
+<div className="sd-bundle-custom-item-common">
+    <p className="sd-bundle-custom-item-heading-common">Description styling</p>
+    <div className="sd-bundle-custom-item-inputSection">
+<input type="color" value={data[bundleOption]["title"]["color"]}  onChange={(e)=>handleChangeCommon(e,"title","descriptionColor",data,setData,bundleOption)}/>
+<div className="sd-bundle-custom-fieldColorCode-common">
+    <p>Description Color </p>
+<p> {data[bundleOption]["title"]["descriptionColor"]} </p>
+
+</div>
+</div>
+
+ <TextField
+            type="number"
+            label="Size"
+            // placeholder="set minimum order  for item"
+            onChange={(e)=>handleChangeValueCommon(e,"title","descriptionFontSize",data,setData,bundleOption)}
+            value={data[bundleOption]["title"]["descriptionFontSize"]}
+            autoComplete="off"
+            min="0"
+          /> 
+           <Select
+
+label="Boldness"
+options={['100','200','300','400','500','600','700','800','900']}
+value={data[bundleOption]["title"]["descriptionBold"]}
+onChange={(e)=>handleChangeValueCommon(e,"title","descriptionBold",data,setData,bundleOption)}
+/>
 </div>
 
  <div className="sd-bundle-custom-item-common">

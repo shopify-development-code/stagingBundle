@@ -2,19 +2,19 @@
 
 name = "productbundle"
 client_id = "e18fa917fa90c132ba197988cc8c3182"
-application_url = "https://circulation-incurred-named-parks.trycloudflare.com"
+application_url = "https://ethernet-maintains-coffee-ix.trycloudflare.com"
 embedded = true
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "read_products,write_products,write_price_rules, write_discounts,read_content,write_content,write_orders,read_themes"
+scopes = "read_products,write_products,write_price_rules,write_discounts,read_content,write_content,write_orders,read_themes"
 
 [auth]
 redirect_urls = [
-  "https://circulation-incurred-named-parks.trycloudflare.com/auth/callback",
-  "https://circulation-incurred-named-parks.trycloudflare.com/auth/shopify/callback",
-  "https://circulation-incurred-named-parks.trycloudflare.com/api/auth/callback",
-  "https://circulation-incurred-named-parks.trycloudflare.com/.shopify/graphiql/auth/callback"
+  "https://ethernet-maintains-coffee-ix.trycloudflare.com/auth/callback",
+  "https://ethernet-maintains-coffee-ix.trycloudflare.com/auth/shopify/callback",
+  "https://ethernet-maintains-coffee-ix.trycloudflare.com/api/auth/callback",
+  "https://ethernet-maintains-coffee-ix.trycloudflare.com/.shopify/graphiql/auth/callback"
 ]
 
 [webhooks]
