@@ -2784,3 +2784,9 @@ nav.Polaris-Navigation {
 .sd-hideSpinner span.ant-spin-dot.ant-spin-dot-spin {
     display: none;
 }
+.ant-spin.ant-spin-spinning.sd-lazy-loader {
+    position: fixed;
+    top: 50%;
+    z-index: 9;
+    left: 50%;
+}
