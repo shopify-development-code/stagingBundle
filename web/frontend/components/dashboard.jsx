@@ -1,16 +1,14 @@
-import {useState} from 'react'
-import { Button, Card,Modal } from 'antd'
+import React ,{useState,Suspense,lazy} from 'react'
+import { Button, Card } from 'antd'
 import {MediaCard,VideoThumbnail} from '@shopify/polaris';
 import {useAPI} from "../components/shop"
 
-import Watermark from './watermark';
-import RecommendedApp from './recommendedApp'
+const Watermark = lazy(() => import('./watermark'));
+const RecommendedApp = lazy(() => import('./recommendedApp'));
 const Dashboard = () => {
 
   const {shop,themeId} = useAPI()
-  const [open, setOpen] = useState(false);
-  const [open1, setOpen1] = useState(false);
-
+  const [playVideo,setPlayVideo] = useState(false)
 function handleOpenCustomization () {
   window.open(
     `https://${shop}/admin/themes/${themeId}/editor?context=apps`
@@ -33,82 +31,44 @@ function handleOpenCustomization () {
     className='sd-bundle-contact-box'
     extra={<Button onClick={handleOpenCustomization}>Activate</Button>}
     >
-       
-        <MediaCard
-        title="How to enable app from theme customizer?"
-        description={<span>
-          <li>1. From your Shopify admin, go to <strong>Online Store</strong>  &gt; <strong>Themes</strong> .</li>
-          <li>2. Find the theme that you want to edit, and then click <strong>Customize</strong> .</li>
-          <li>3. Click the <strong>App embeds</strong> tab.</li>
-          <li>4. Select the app embed that you want to activate or click the <strong>Search</strong> bar and enter a search term to search through your installed apps.</li>
-          <li>5. Beside the app embed that you want to activate, click the toggle to activate it.</li>
-        </span>}
-        size='small'
-      >
-        <VideoThumbnail
-          videoLength={15}
-          thumbnailUrl='https://cdn.shopify.com/s/files/1/0801/7264/6691/files/MicrosoftTeams-image_2.png?v=1695627080'
-          onClick={()=>setOpen(true)}
-        
-        />
-      </MediaCard>
-      <MediaCard
-      title="How to add app block to product page?"
-      description={<span>
-        <li>1. From your Shopify admin, go to <strong>Online Store</strong>  &gt; <strong>Themes</strong> .</li>
-        <li>2. Find the theme that you want to edit, and then click <strong>Customize</strong> .</li>
-        <li>3. Navigate to the product page and section where you want to add the app block.</li>
-        <li>4. On the sidebar, click <strong>Add block</strong>.</li>
-        <li>5. From the drop-down menu, in the <strong>Apps</strong> section, select the app block that you want to add to the section or click the <strong>Search</strong> bar and enter a search term to search through your installed apps.</li>
-        <li>6. Optional: Click and drag the ⋮⋮ icon to move the block to another available location on the page. You can also customize the block using any available settings.</li>
-        <li>7. Click <strong>Save..</strong></li>
-        
-      </span>}
+      
+
+<MediaCard
+     
+      title="Welcome to Smart Bundles !"
+portrait
+      description="This video provides a step-by-step guide on activating App Block and enabling your app's functionality in your store. Follow along to easily set up and enhance your app's performance."
+      // popoverActions={[{content: 'Dismiss', onAction: () => {}}]}
       size='small'
-
     >
-      <VideoThumbnail
-        videoLength={21}
-        thumbnailUrl='https://cdn.shopify.com/s/files/1/0801/7264/6691/files/MicrosoftTeams-image_3.png?v=1695627080'
-        onClick={()=>setOpen1(true)}
+
+     {
+      playVideo == true ?
+      <iframe loading='lazy' width="100%" height="600" src="https://cdn.shopify.com/videos/c/o/v/6d748a8aa914485b9c9635c4c9020949.mp4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+      :  <VideoThumbnail
+       
+        videoLength={35}
+        thumbnailUrl="https://cdn.shopify.com/s/files/1/0801/7264/6691/files/MicrosoftTeams-image_3.png?v=1695627080"
+        onClick={() => setPlayVideo(true)}
       />
+      
+     }
+        
+    
     </MediaCard>
-
-
 
     
     </Card>
    
  </div>
 
-      <Modal
-      className='sd-bundle-video-modal'
-        footer={null}
-        centered
-        open={open}
-        onCancel={() => setOpen(false)}
-        width={1200}
-      >
-      
-       <video width="100%" controls name="media" >
-        <source  src='https://cdn.shopify.com/videos/c/o/v/e7432e9d283242099a6ba5e653e31e1c.mp4' type="video/mp4"/>
-       </video>
-      </Modal>
-      <Modal
-      className='sd-bundle-video-modal'
-        footer={null}
-        centered
-        open={open1}
-        onCancel={() => setOpen1(false)}
-        width={1200}
-      >
-      
-       <video width="100%" controls  src='https://cdn.shopify.com/videos/c/o/v/eb22e191ac75405eb12e40c55d64c33f.mp4'/>
-      </Modal>
-       
+<Suspense fallback={<div></div>}>
        <RecommendedApp/>
-      
+       </Suspense>
+<Suspense fallback={<div></div>}>
       <Watermark/>
+</Suspense>
+
     </div>
   
   )

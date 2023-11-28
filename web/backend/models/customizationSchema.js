@@ -17,6 +17,9 @@ const customizationSchema = new mongoose.Schema({
   },
   volume:{
     type:Object
+  },
+  bxgy:{
+    type:Object
   }
 
 },{

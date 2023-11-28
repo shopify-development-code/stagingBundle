@@ -2,19 +2,20 @@
 
 name = "RobinBundleApp"
 client_id = "4907bbf433e1b6953549dd702efdfe87"
-application_url = "https://katie-mails-kai-presents.trycloudflare.com"
+application_url = "https://charity-ci-record-doe.trycloudflare.com"
 embedded = true
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products,write_price_rules, write_discounts,read_content,write_content,write_orders,read_themes"
 use_legacy_install_flow = true
 
 [auth]
 redirect_urls = [
-  "https://katie-mails-kai-presents.trycloudflare.com/auth/callback",
-  "https://katie-mails-kai-presents.trycloudflare.com/auth/shopify/callback",
-  "https://katie-mails-kai-presents.trycloudflare.com/api/auth/callback",
-  "https://katie-mails-kai-presents.trycloudflare.com/.shopify/graphiql/auth/callback"
+  "https://charity-ci-record-doe.trycloudflare.com/auth/callback",
+  "https://charity-ci-record-doe.trycloudflare.com/auth/shopify/callback",
+  "https://charity-ci-record-doe.trycloudflare.com/api/auth/callback",
+  "https://charity-ci-record-doe.trycloudflare.com/.shopify/graphiql/auth/callback"
 ]
 
 [webhooks]

@@ -547,7 +547,7 @@ export async function getSetting(req,res){
 export async function getThemeId(req, res) {
   try {
     const session = res.locals.shopify.session;
-   
+   console.log(session)
     const client = new shopify.api.clients.Rest({session});
 const data = await client.get({
   path: 'themes',

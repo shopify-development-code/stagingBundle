@@ -185,7 +185,7 @@ console.log(props)
           </div>
         )}
 
-        {props.bundleOption == "collection" && (
+        {(props.bundleOption == "collection"  || props.bundleOption == "buyXgetY" ) && (
           <div
             className={`sd-bundle-listItem-common sd-bundle-listItem-sub ${
               customOption == "DiscountBadge" ? "sd-option-active" : ""
@@ -515,7 +515,7 @@ console.log(props)
                     displayOption={displayOption}
                   />
                 ) : customOption == "DiscountBadge" &&
-                  props.bundleOption == "collection" ? (
+                  props.bundleOption == "collection" ||  props.bundleOption == "buyXgetY" ? (
                   <DiscountBadge
                     bundleOption={props.bundleOption}
                     data={props.data}

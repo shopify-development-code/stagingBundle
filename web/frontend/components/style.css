@@ -1061,6 +1061,7 @@ input[type="radio"] {
 
 .sd-collection-main-section {
     padding: 10px;
+    position: relative;
 }
 
 .sd-collection-customise-titleNaming {
@@ -1069,6 +1070,7 @@ input[type="radio"] {
 
 .sd-collection-customise-titleSection>* {
     padding: 4px;
+    margin-top: 2.5rem;
 }
 
 .sd-selected-collection {
@@ -2809,7 +2811,7 @@ nav.Polaris-Navigation {
 .bxgy_product_listingImg img {
     height: 100%;
     width: 100%;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .bxgy_product_listingText {
@@ -3011,4 +3013,10 @@ nav.Polaris-Navigation {
     border-radius: 7px;
     cursor: pointer;
     font-size: 19px;
+}
+.ant-spin.ant-spin-spinning.sd-lazy-loader {
+    position: fixed;
+    top: 50%;
+    z-index: 9;
+    left: 50%;
 }
