@@ -2631,7 +2631,7 @@ nav.Polaris-Navigation {
     margin: 0 auto;
 }
 .ant-table-content {
-    max-height: 230px;
+    max-height: 630px;
     overflow-y: auto;
 }
 .sd-logo-text {
