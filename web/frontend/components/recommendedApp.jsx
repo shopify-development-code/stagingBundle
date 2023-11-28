@@ -1,7 +1,7 @@
 import React from "react";
-import { Card, Avatar, Button} from "antd";
+import { Card, Avatar} from "antd";
 import { MediaCard } from "@shopify/polaris";
-import { Redirect } from "@shopify/app-bridge/actions";
+
 const { Meta } = Card;
 
 const RecommendedApp = () => {
@@ -121,6 +121,7 @@ const RecommendedApp = () => {
             description="Modern yet elegant theme to best showcase your product catalog."
           >
             <img
+            loading="lazy"
               alt=""
               width="100%"
               height="100%"
@@ -147,6 +148,7 @@ const RecommendedApp = () => {
             description="Powerfully evoking emotion through creativity."
           >
             <img
+            loading="lazy"
               alt=""
               width="100%"
               height="100%"

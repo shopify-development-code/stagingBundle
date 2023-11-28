@@ -113,11 +113,12 @@
        "plus":{"backgroundColor":"#e5e5e5" ,"color":"#5e5e5e"},
        "imageBorderColor":"#ffffff"
      },
-     "saveDiscount":{
+     "DiscountBadge":{
       "color":"#FFFFFF",
       "backgroundColor":"#ff0000",
       "fontSize":16,
-      "text":"Grab The Deal !!"
+      "text":"Grab The Deal !!",
+      "badgeType":"leftBanner"
      }
   },
   "buyXgetY": {
@@ -141,22 +142,30 @@
       "title": { "color": "#000000", "fontSize": 18 },
       "price": { "color": "#000000", "fontSize": 18 },
       "image": { "borderColor": "#FFFFFF", "borderRadius": 5 },
-      "quantities": { "color": "#000000", "backgroundColor": "#FFFFFF" },
+      "quantities": { "color": "#000000", "backgroundColor": "#FFFFFF","borderColor":"#e8dede" },
       "variantSelector": {
         "color": "#000000",
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#FFFFFF",
+        "borderColor": "#FFFFFF"
       },
       "plusColor": "#5e5e5e",
       "plusBackgroundColor" :"#ffffff"
     },
 
     "totalSection": {
-      "backgroundColor": "#FFFFFF",
+      "background": "#d4d3d3",
       "color": "#000000",
       "fontSize": 18,
       "text": "Total",
       "originalPrice": { "color": "#FF0000", "fontSize": 18 },
       "finalPrice": { "color": "#008061", "fontSize": 18 }
+    },
+    "DiscountBadge":{
+      "color":"#FFFFFF",
+      "backgroundColor":"#ff0000",
+      "fontSize":16,
+      "text":"50% OFF",
+      "badgeType":"leftBanner"
     }
   },
   "productMixMatch": {
