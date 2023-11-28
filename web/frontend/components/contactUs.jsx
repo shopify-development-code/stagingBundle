@@ -54,6 +54,7 @@ const ContactUs = () => {
 
 <Modal
         title="Contact Us"
+        className="contact-box-modal-title"
         open={open}
         onCancel={handleCancel}
         footer={[
@@ -67,7 +68,7 @@ const ContactUs = () => {
       >
          <div className='sd-bundle-contact-main-container'>
     <Card
-        className="sd-bundle-contact-box"
+        className="sd-bundle-contact-modal"
         title="For any query mail us"
         headStyle={{ textAlign: "center" }}
       >

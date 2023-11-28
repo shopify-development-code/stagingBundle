@@ -89,7 +89,7 @@ if(key == "basic"){
         <div className="sd-bundle-MoveToHome-arrow"></div>
         <div className="sd-bundle-commonHeading">Plan details</div>
       </div>
-      <Card className="sd-bundle-contact-box">
+      <Card className="sd-bundle-contact-box sd-plan-box">
         {/* <Card style={{width:'300px'}} title="Current Plan">
         Free
 
@@ -97,10 +97,10 @@ if(key == "basic"){
 
         <div className="sd-plan-card-box">
           <Row className="sd-plan-group" gutter={16}>
-            <Col span={8}>
+            <Col  >
               <Card className="sd-plan" title="Free" bordered={false}>
               <Skeleton active loading={loader} paragraph={{rows:7}}>
-                <Card className="sd-plan-inner">
+                <Card className="sd-plan-inner sd-plan-inner-box">
                     {selectedPlan == "free" ? (<div className="sd-plan-active-plan">Active</div>) : ""}
                   
                   <strong>Includes:</strong>
@@ -117,7 +117,7 @@ if(key == "basic"){
                     24/7 support
                   </p> */}
                 </Card>
-                <Card className="sd-plan-second-inner">
+                <Card className="sd-plan-second-inner sd-plan-inner-box">
                   <div className="sd-plan-pricing-text">
                     $0<span>/mo</span>
                   </div>
@@ -130,11 +130,11 @@ if(key == "basic"){
                 </Skeleton>
               </Card>
             </Col>
-            <Col span={8}>
+            <Col >
               <Card className="sd-plan" title="Basic" bordered={false}>
               <Skeleton active loading={loader} paragraph={{rows:7}}>
 
-                <Card className="sd-plan-inner">
+                <Card className="sd-plan-inner sd-plan-inner-box">
                 {selectedPlan == "basic" ? (<div className="sd-plan-active-plan">Active</div>) : ""}
                   <strong>All Free features, plus:</strong>
                   <p>
@@ -155,7 +155,7 @@ if(key == "basic"){
                   </p>
                 </Card>
                
-                <Card className="sd-plan-second-inner">
+                <Card className="sd-plan-second-inner sd-plan-inner-box">
                   <div className="sd-plan-pricing-text">
                     $2.99<span>/mo</span>
                   </div>

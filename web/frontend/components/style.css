@@ -88,7 +88,7 @@
     padding: 19px 13px;
     margin-top: 20px;
     background: #fff;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 3px 14px;
     border-radius: 4px;
     width: 100%;
     margin: auto;
@@ -152,7 +152,18 @@
     font-size: 14px;
     border-radius: 4px 4px 0 0;
 }
-
+.sd-bundle-contact-modal {
+    box-shadow: none !important;
+}
+.sd-bundle-contact-modal .ant-card-head-title {
+    font-size: 19px;
+}
+.sd-bundle-contact-modal .ant-form-item-extra{
+    font-size: 12px;
+}
+.contact-box-modal-title .ant-modal-title {
+    font-size: 21px;
+}
 .sd-bundle-modal-bundles-listing .ant-modal-content {
     border-radius: 4px;
 }
@@ -677,7 +688,7 @@ input[type="radio"] {
     font-weight: 500;
     font-size: 21px;
     height: 60px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 3px 14px;
 }
 
 .sd-bundle-customization-wrapper {
@@ -699,7 +710,7 @@ input[type="radio"] {
     background-color: white;
     padding: 13px 20px;
     border-radius: 4px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 3px 14px;
 }
 
 .sd-bundle-customization-card button {
@@ -1367,11 +1378,11 @@ td.ant-table-cell a:hover {
     text-transform: capitalize;
 }
 
-.sd-bundle-card-data-box .ant-table-wrapper .ant-table-thead>tr>th,
+/* .sd-bundle-card-data-box .ant-table-wrapper .ant-table-thead>tr>th,
 .sd-bundle-card-data-box .ant-table-wrapper .ant-table-thead>tr>td {
     border-bottom: 1px solid #dde0e4 !important;
     border-top: 1px solid #dde0e4 !important;
-}
+} */
 
 .sd-bundle-card-data-box .ant-table-wrapper .ant-table-container table>thead>tr:first-child>*:first-child {
     border-start-start-radius: 0;
@@ -1490,7 +1501,7 @@ button.Polaris-Navigation__Item {
     width: 100%;
     max-width: 80%;
     margin: 20px auto;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 3px 14px;
 }
 
 .sd-bundle-logo-header {
@@ -1628,7 +1639,7 @@ button.Polaris-Navigation__Item {
     padding: 13px;
     margin-top: 20px !important;
     background: #fff;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 3px 14px;
     border-radius: 4px;
     width: 100%;
     max-width: 80%;
@@ -1716,7 +1727,7 @@ button.Polaris-Navigation__Item {
     padding: 15px 13px;
     display: flex;
     justify-content: space-between;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 0px 8px;
     margin: auto;
     border-radius: 4px;
     align-items: center;
@@ -1735,8 +1746,7 @@ button.Polaris-Navigation__Item {
     width: 100%;
     max-width: 80%;
     margin: 0 auto;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    min-height: 500px;
+    height: 100%;
 }
 
 .ant-table-content table {
@@ -2100,7 +2110,7 @@ nav.Polaris-Navigation {
     padding: 13px;
     margin-top: 20px !important;
     background: #fff;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 3px 14px;
     border-radius: 5px;
     width: 98%;
     margin: auto;
@@ -2111,7 +2121,7 @@ nav.Polaris-Navigation {
     padding: 0 13px 13px;
     margin-top: 20px !important;
     background: #fff;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 3px 14px;
     border-radius: 5px;
     width: 100%;
     margin: auto;
@@ -2273,7 +2283,7 @@ nav.Polaris-Navigation {
 
 .sd-bundle-analytics-data-box .ant-card-body .ant-table-wrapper {
     margin-top: 0;
-    min-height: 500px;
+    height: 100%;
 }
 
 .sd-bundle-card-data-box {
@@ -2408,7 +2418,7 @@ nav.Polaris-Navigation {
     padding: 13px;
     margin-top: 20px !important;
     background: #fff;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 3px 14px;
     border-radius: 5px;
     width: 100%;
     margin: auto;
@@ -2494,7 +2504,7 @@ nav.Polaris-Navigation {
 
 .sd-bundle-analytics-tab-box .ant-tabs-content-holder .ant-card-bordered {
     border: none;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 6px 0px;
 }
 
 .sd-bundle-card-inner-icon {
@@ -2620,7 +2630,10 @@ nav.Polaris-Navigation {
     max-width: 80%;
     margin: 0 auto;
 }
-
+.ant-table-content {
+    max-height: 230px;
+    overflow-y: auto;
+}
 .sd-logo-text {
     font-weight: 600;
 }
@@ -2643,10 +2656,16 @@ nav.Polaris-Navigation {
 }
 
 .ant-row.sd-plan-group {
-    justify-content: center;
-    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    grid-gap: 1rem;
 }
-
+.sd-plan-box .ant-card-body:first-child {
+    padding: 24px 0;
+}
+.sd-plan-inner-box .ant-card-body {
+    padding: 24px 10px !important;
+}
 .sd-plan {
     border: 1px solid #f0f0f0;
 }
