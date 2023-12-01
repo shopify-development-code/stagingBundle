@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import CustomizationEditor from "../components/customization/CustomizationEditor";
+import React, { useEffect, useState,Suspense,lazy } from "react";
+// import CustomizationEditor from "../components/customization/CustomizationEditor";
+const CustomizationEditor = lazy(() => import("../components/customization/CustomizationEditor"));
+
 import defaultData from "../components/customization/defaultData.json";
-import { themeData } from "../components/customization/themeData";
 import { Fullscreen } from "@shopify/app-bridge/actions";
 import { useAppBridge } from "@shopify/app-bridge-react";
 import { useLocation } from "react-router-dom";
 import { Spin } from "antd";
 import postApi from "../components/postApi";
-import BoatLoader from "../components/BoatLoader";
 const BundleCustomization = () => {
   const app = useAppBridge();
  const params = useLocation()
@@ -51,18 +51,20 @@ useEffect(() => {
 
   return (
     <>
+    <Suspense fallback={<Spin className="sd-lazy-loader"  spinning/>}>
     <Spin
     spinning={spinner}
-    indicator={<BoatLoader/>}
     size="large"
     >
+
         <CustomizationEditor
           data={data}
           setData={setData}
           bundleOption={bundleOption}
           setBundleOption={setBundleOption}
-        />
+          />
         </Spin>
+          </Suspense>
          </>
   );
 };

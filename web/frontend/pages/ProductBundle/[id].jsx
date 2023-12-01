@@ -19,7 +19,6 @@ import { alertCommon } from "../../components/helperFunctions";
 import defaultData from "../../components/customization/defaultData.json";
 import postApi from "../../components/postApi";
 import { useNavigate, useParams } from "react-router-dom";
-import BoatLoader from "../../components/BoatLoader";
 function CreateBundle() {
   const navigate = useNavigate();
   const param = useParams();
@@ -101,49 +100,7 @@ function CreateBundle() {
     }
   };
 
-  //     let update = [...data.bundleDetail.products];
-  //     update.splice(update.indexOf(item),1);
-  //     setData({...data,bundleDetail:{...data.bundleDetail,products:update}});
-
-  //     let copyErrorArray=[...errorArray];
-  //     let copyArray=[];
-
-  //   copyErrorArray.map((item2)=>
-  //       {
-  //     if( item2 >= index )
-  //     {
-  //       copyArray.push(item2 - 1)
-
-  //     }}
-  //    )
-  // setErrorArray(copyArray)
-
-  //     // let copy = [...(data.display?.productPagesList)];
-  //     // copy.splice(copy.indexOf(item.id),1);
-
-  // let copy =[...(data.bundleDetail.display.productPagesList)];
-  // copy= copy.filter(item2=>item2 != item.id )
-
-  // if(copy.length == 0 ){
-
-  //   setData({ ...data,
-  //     bundleDetail:{
-  //       ...data.bundleDetail,
-  //     display:{...(data.bundleDetail.display),productPages:false,productPagesList:[]}
-  //   }
-  //   });
-  //     }
-  // else{
-
-  //   setData({ ...data,
-  //     bundleDetail:{...data.bundleDetail,
-  //     display:{...(data.bundleDetail.display),productPagesList: copy }
-  //     }
-  //   });
-
-  // }
-
-  //   };
+  
 
   const removeProductFromList = (item, index) => {
     let update = [...data.bundleDetail.products];
@@ -285,9 +242,9 @@ function CreateBundle() {
       });
     } else {
       newvalue = String(newvalue);
-      // if (String(newvalue).length > 1) {
+ 
       newvalue = newvalue.replace(/^0/, "");
-      // }
+  
 
       setData({
         ...data,
@@ -306,8 +263,7 @@ function CreateBundle() {
   const handleVariantChoice = (e, main, index) => {
     let newArr = [...arr];
 
-    // let getIndex = Number(e.target.value.split("/")[0]);
-    // let getPrice = e.target.value.split("/")[1];
+   
 
     setShowPrice({ ...showPrice, [main]: e.target.value });
     newArr[main].splice(index, 1, e.target.value);
@@ -371,7 +327,6 @@ function CreateBundle() {
 
   const handleDisplayPageOptions = (e) => {
     if (e.target.checked) {
-      // setData([...data,e.target.value])
       let update = { ...data };
 
       if (update.bundleDetail.display?.productPagesList.length < 1) {
@@ -553,7 +508,7 @@ function CreateBundle() {
 
   return (
     <Spin spinning={spinner}
-    indicator={<BoatLoader/>} size="large">
+     size="large">
       <div className="Polaris-Page Polaris-Page--fullWidth">
         <MoveToHomePage data={data} />
 
@@ -657,7 +612,7 @@ function CreateBundle() {
             />
           </div>
         </div>
-
+ 
         {/* below code is for the modal opening on click of Edit Further  */}
         {antModal && (
           <Modal

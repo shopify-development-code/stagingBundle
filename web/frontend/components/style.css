@@ -2157,82 +2157,12 @@ nav.Polaris-Navigation {
 }
 
 
-/* boat loader spinner */
 
-.sd-bundle-boat-loader svg {
-    width: 60px;
-    height: 60px;
-}
 
-.boat {
-    fill: #202937;
-    transform-origin: 50% 50%;
-    animation: floating 1.2s ease-in-out infinite;
-}
 
-.mask {
-    fill: white;
-}
 
-.wave-top {
-    stroke: #202937;
-    fill: none;
-    stroke-width: 3;
-    stroke-miterlimit: 10;
-}
 
-.wave-group {
-    animation: waveMoveTop 1.4s linear infinite;
-}
 
-.wave-bottom {
-    fill: none;
-    stroke: #202937;
-    stroke-width: 3;
-    stroke-miterlimit: 10;
-    animation: waveMoveBottom 1.4s linear infinite;
-}
-
-@keyframes waveMoveTop {
-    0% {
-        transform: translateX(0px);
-    }
-    100% {
-        transform: translateX(-50px);
-    }
-}
-
-@keyframes waveMoveBottom {
-    0% {
-        transform: translateX(-50px) translateY(-1px);
-    }
-    100% {
-        transform: translateX(0) translateY(-1px);
-    }
-}
-
-.cruise {
-    animation: cruiseSwing 1s ease-in-out infinite alternate;
-}
-
-@keyframes cruiseSwing {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(-5px);
-    }
-}
-
-@keyframes floating {
-    0%,
-    100% {
-        transform: rotate(10deg);
-    }
-    50% {
-        transform: rotate(-15deg);
-    }
-}
 
 .ant-spin-nested-loading>div>.ant-spin {
     position: fixed;
@@ -2800,12 +2730,13 @@ nav.Polaris-Navigation {
     }
 }
 
-.sd-hideSpinner span.ant-spin-dot.ant-spin-dot-spin {
+/* .sd-hideSpinner span.ant-spin-dot.ant-spin-dot-spin {
     display: none;
-}
+} */
 .ant-spin.ant-spin-spinning.sd-lazy-loader {
     position: fixed;
     top: 50%;
     z-index: 9;
     left: 50%;
 }
+

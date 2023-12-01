@@ -1,16 +1,11 @@
 import React, { useState,useEffect } from 'react'
-import { Card ,Divider,Spin,Skeleton} from 'antd';
-import {Button,Icon,} from "@shopify/polaris";
-import { ArrowLeftOutlined} from "@ant-design/icons";
-import { useNavigate } from "@shopify/app-bridge-react";
+import {Skeleton} from 'antd';
+
 import { useAppBridge } from "@shopify/app-bridge-react";
 import postApi from './postApi';
-import BoatLoader from './BoatLoader';
 import toastNotification from "./commonSections/Toast.jsx";
-import Watermark from './watermark';
 
 const Translation = () => {
-  const navigate = useNavigate()
   const app = useAppBridge();
 
   const [translateField,setTranslateField] = useState({})
@@ -50,24 +45,11 @@ if(response.data.status == 200){
 }
 
   return (
-    // <Spin spinning={spinner}
-    // indicator={<BoatLoader/>}
-    // size="large"> 
+  
     <div className='sd-bundle-setting-translation'>
-     {/* <div className='sd-bundle-MoveToHome-section'>
-        <div className='sd-bundle-MoveToHome-arrow'>
-        <Button 
-         onClick={() => navigate("/settings")}>
-        <ArrowLeftOutlined />
-      </Button>
-        </div>
-        <div className="sd-bundle-commonHeading">Translation</div>
-        <div>
-    
-        </div>
-     </div> */}
+
      <div className='sd-bundle-translate-content'>
-      <Skeleton active paragraph={{rows:25}} loading={spinner}>
+      <Skeleton active paragraph={{rows:15}} loading={spinner}>
                <div className='sd-bundle-translate-heading-row'>
                <div className='sd-bundle-translate-original-col'>
                <div className='sd-bundle-translate-heading-text'><h3>Original</h3>
@@ -136,7 +118,6 @@ if(response.data.status == 200){
      </div>
      
     </div>
-    // </Spin>
   )
 }
 

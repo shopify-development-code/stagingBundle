@@ -33,7 +33,6 @@ import CustomizationPopUpPreview from "./CustomizationPopupPreview";
 import defaultData from "./defaultData.json";
 import postApi from "../postApi";
 import { useAppBridge } from "@shopify/app-bridge-react";
-import BoatLoader from "../BoatLoader";
 import toastNotification from "../commonSections/Toast";
 const CustomizationEditor = (props) => {
   const app = useAppBridge();
@@ -197,7 +196,7 @@ const CustomizationEditor = (props) => {
     );
   };
   return (
-    <Spin spinning={spinner} indicator={<BoatLoader />} size="large">
+    <Spin spinning={spinner} size="large">
       <div className="sd-bundle-customizationBundle-wrapper">
         <div className="sd-bundle-customizationBundle-topbar">
           <div>

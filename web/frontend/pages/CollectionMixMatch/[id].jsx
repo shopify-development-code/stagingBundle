@@ -20,7 +20,6 @@ import defaultData from "../../components/customization/defaultData.json";
 import postApi from "../../components/postApi";
 import { useNavigate,useParams } from "react-router-dom";
 import toastNotification from "../../components/commonSections/Toast";
-import BoatLoader from '../../components/BoatLoader';
 import noImg from "../../assets/no-Image.png" 
 
 
@@ -376,7 +375,6 @@ if(flag==true){
 
     return(
         <Spin spinning={spinner}
-        indicator={<BoatLoader/>}
         size="large"> 
     <div className="Polaris-Page Polaris-Page--fullWidth">
     <MoveToHomePage/>

@@ -5,7 +5,6 @@ import { ArrowLeftOutlined} from "@ant-design/icons";
 import { useNavigate } from "@shopify/app-bridge-react";
 import { useAppBridge } from "@shopify/app-bridge-react";
 import postApi from './postApi';
-import BoatLoader from './BoatLoader';
 import toastNotification from './commonSections/Toast';
 
 const BundleSetting = () => {
@@ -50,54 +49,11 @@ function handleDiscountLabel(e){
 setSettingData({...settingData,discountLabel:e.target.value})
 }
   return (
-  //  <Spin 
-  //  spinning={spinner}
-  //  indicator={<BoatLoader/>}
-  //  >
+ 
      
      <div className='sd-bundle-setting-translation'>
       <div className='sd-bundle-bundle-setting'>
-      {/* <Typography.Title
-        level={3}
-        style={{
-          margin: 0,
-        }}
-      >
-        Discount Label
-      </Typography.Title>
-        <span>This label appears on the discounted bundle items in your cart.</span>
-        <Typography.Title
-        level={2}
-        style={{
-          margin: 0,
-        }}
-      >
-      Bundle-
-      </Typography.Title>
-      */}
-    
-      {/* <div className='sd-bundle-setting-box'>
-        <div className='sd-bundle-setting-left-heading'>
-        <Typography.Title
-        level={4}
-        style={{
-          margin: 0,
-        }}
-      >
-        Subscription
-      </Typography.Title>
-       <span>
-
-        Install any subscription app and start selling your bundles weekly, monthly, yearly, etc.
-       </span>
-      
-        </div>
-        <div className='sd-bundle-setting-right-heading'>
-             <Card className='sd-bundle-subscription-box'>
-              this feature is comming soon.
-             </Card>
-          </div>
-      </div> */}
+     
 
       <div className='sd-bundle-setting-box'>
         <Skeleton active loading={spinner}>
@@ -131,7 +87,7 @@ setSettingData({...settingData,discountLabel:e.target.value})
           margin: 0,
         }}
       >
-       {/* Label: <input type="text" placeholder='BUNDLE DISCOUNT' value={settingData.discountLabel} onChange={handleDiscountLabel} />  */}
+   
        <Input className='sd-setting-discount-prefix'  addonAfter="-XXXXXX" onChange={handleDiscountLabel} value={settingData.discountLabel} />
       </Typography.Title>
              </Card>
@@ -158,7 +114,7 @@ setSettingData({...settingData,discountLabel:e.target.value})
      
 
    </div>
-  //  {/* </Spin> */}
+
   )
 }
 

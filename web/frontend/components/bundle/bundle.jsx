@@ -26,16 +26,12 @@ import { useAPI } from "../shop";
 import postApi from "../postApi";
 import {  Thumbnail } from "@shopify/polaris";
 import toastNotification from "../commonSections/Toast";
-import { Icon } from "@shopify/polaris";
-import {
-  CircleAlertMajor
-} from '@shopify/polaris-icons';
+
 import "./bundle.css";
-import {Tooltip } from '@shopify/polaris';
 import allProductsImg from "../../assets/all_products.png"
 import noProductImg from "../../assets/NoProductImage.png"
 const CreateBundle = () => {
-  const { shop, currency, currencyCode } = useAPI();
+  const { shop } = useAPI();
   const app = useAppBridge();
   const [dashboardData, setDashboardData] = useState([]);
   const [allSearchTerm, setAllSearchTerm] = useState("");
@@ -43,7 +39,6 @@ const CreateBundle = () => {
   const [activeTabKey2, setActiveTabKey2] = useState("all");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loader, setLoader] = useState(false);
-  const [showAction, setShowAction] = useState(false);
   const [actionId, setActionId] = useState([]);
   const [switchIndex,setSwitchIndex] = useState('')
   const [switchLoading,setSwitchLoading] = useState(false)
@@ -127,7 +122,8 @@ const CreateBundle = () => {
   };
 
   async function handleActionDelete() {
-    setLoader(true);
+    setSwitchLoading(true)
+
     if (actionId.length) {
       let data = {
         id: actionId,
@@ -136,11 +132,13 @@ const CreateBundle = () => {
       if (response.data.status == 200) {
         return (
           toastNotification("success", "Successfully deleted !", "bottom"),
+    setSwitchLoading(false),
           await getBundle(),
           setActionId([])
         );
       } else if (response.data.status == 503) {
         return (
+          setSwitchLoading(false),
           getBundle(),
           await toastNotification(
             "warning",
@@ -152,7 +150,7 @@ const CreateBundle = () => {
     }
   }
   async function handleActionActive() {
-    setLoader(true);
+    setSwitchLoading(true)
     if (actionId.length) {
       let data = {
         id: actionId,
@@ -161,12 +159,14 @@ const CreateBundle = () => {
       let response = await postApi("/api/admin/actionStatus", data, app);
       if (response.data.status == 200) {
         return (
+          setSwitchLoading(false),
           await getBundle(),
           toastNotification("success", "Successfully Active !", "bottom"),
           setActionId([])
         );
       } else if (response.data.status == 503) {
         return (
+          setSwitchLoading(false),
           await getBundle(),
           toastNotification(
             "warning",
@@ -178,7 +178,7 @@ const CreateBundle = () => {
     }
   }
   async function handleActionDraft() {
-    setLoader(true);
+    setSwitchLoading(true)
     if (actionId.length) {
       let data = {
         id: actionId,
@@ -187,12 +187,14 @@ const CreateBundle = () => {
       let response = await postApi("/api/admin/actionStatus", data, app);
       if (response.data.status == 200) {
         return (
+          setSwitchLoading(false),
           await getBundle(),
           toastNotification("success", "Successfully Draft !",  'bottom'),
           setActionId([])
         );
       } else if (response.data.status == 503) {
         return (
+          setSwitchLoading(false),
           await getBundle(),
           toastNotification(
             "warning",
@@ -694,7 +696,6 @@ return check;
           />
               </Skeleton>
               <Skeleton style={{marginTop:"1rem"}} loading={loader} active  paragraph={{rows:5,width:"100%"}} title={{width:"100%"}}> </Skeleton>
-              <Skeleton style={{marginTop:"1rem"}} loading={loader} active  paragraph={{rows:3,width:"100%"}} title={{width:"100%"}}> </Skeleton>
         </div>
       </div>
     ),

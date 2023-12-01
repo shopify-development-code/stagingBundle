@@ -20,7 +20,6 @@ import { useAppBridge } from "@shopify/app-bridge-react";
 import postApi from "../../components/postApi";
 import { useNavigate,useParams } from "react-router-dom";
 import toastNotification from "../../components/commonSections/Toast";
-import BoatLoader from "../../components/BoatLoader";
 const VolumeBundle = () => {
  const navigate = useNavigate()
  const app = useAppBridge()
@@ -780,7 +779,6 @@ function getPreviewData(data){
 }
   return (
     <Spin spinning={spinner}
-    indicator={<BoatLoader/>}
     size="large"> 
     <div className="Polaris-Page Polaris-Page--fullWidth">
       <MoveToHomePage />
