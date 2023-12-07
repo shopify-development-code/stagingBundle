@@ -30,6 +30,9 @@ import toastNotification from "../commonSections/Toast";
 import "./bundle.css";
 import allProductsImg from "../../assets/all_products.png"
 import noProductImg from "../../assets/NoProductImage.png"
+import LogoHeader from "../logoHeader";
+import Watermark from "../watermark";
+import ContactUs from "../contactUs";
 const CreateBundle = () => {
   const { shop } = useAPI();
   const app = useAppBridge();
@@ -674,7 +677,7 @@ return check;
      
         {SearchBox()}
         <div>
-        <Skeleton style={{marginTop:"1rem"}} loading={loader} active  paragraph={{rows:5,width:"100%"}} title={{width:"100%"}}>
+        <Skeleton style={{marginTop:"1rem"}} loading={loader}   paragraph={{rows:5,width:"100%"}} title={{width:"100%"}}>
 
           <Table
           
@@ -695,7 +698,7 @@ return check;
             }}
           />
               </Skeleton>
-              <Skeleton style={{marginTop:"1rem"}} loading={loader} active  paragraph={{rows:5,width:"100%"}} title={{width:"100%"}}> </Skeleton>
+             
         </div>
       </div>
     ),
@@ -704,7 +707,7 @@ return check;
                 {SearchBox()}
 
         <div>
-        <Skeleton style={{marginTop:"1rem"}} loading={loader} active  paragraph={{rows:5,width:"100%"}} title={{width:"100%"}}>
+        <Skeleton style={{marginTop:"1rem"}} loading={loader}   paragraph={{rows:5,width:"100%"}} title={{width:"100%"}}>
           <Table
            
             rowSelection={{
@@ -721,8 +724,7 @@ return check;
             }}
           />
            </Skeleton>
-           <Skeleton style={{marginTop:"1rem"}} loading={loader} active  paragraph={{rows:5,width:"100%"}} title={{width:"100%"}}> </Skeleton>
-              <Skeleton style={{marginTop:"1rem"}} loading={loader} active  paragraph={{rows:3,width:"100%"}} title={{width:"100%"}}> </Skeleton>
+       
         </div>
       </div>
     ),
@@ -731,7 +733,7 @@ return check;
                {SearchBox()}
 
         <div>
-        <Skeleton style={{marginTop:"1rem"}} loading={loader} active  paragraph={{rows:5,width:"100%"}} title={{width:"100%"}}>
+        <Skeleton style={{marginTop:"1rem"}} loading={loader}   paragraph={{rows:5,width:"100%"}} title={{width:"100%"}}>
           <Table
          
             rowSelection={{
@@ -748,8 +750,6 @@ return check;
             }}
           />
               </Skeleton>
-           <Skeleton style={{marginTop:"1rem"}} loading={loader} active  paragraph={{rows:5,width:"100%"}} title={{width:"100%"}}> </Skeleton>
-              <Skeleton style={{marginTop:"1rem"}} loading={loader} active  paragraph={{rows:3,width:"100%"}} title={{width:"100%"}}> </Skeleton>
         </div>
       </div>
     ),
@@ -763,7 +763,9 @@ return check;
   };
 
   return (
-    <div className="sd-bundle-dashboard-container">
+    <>
+    <LogoHeader/>
+    <div className="sd-bundle-dashboard-container sd-margin-top">
       <div className="sd-bundle-dashboard-fixed-header">
         <div className="sd-bundle-dashboard-heading">Bundles</div>
         <div>
@@ -889,6 +891,9 @@ return check;
         </div>
       </Modal>
     </div>
+    <Watermark/>
+     <ContactUs/>
+    </>
   );
 };
 

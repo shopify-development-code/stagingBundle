@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Card ,Divider,Typography,Row,Col,Spin,Input,Skeleton} from 'antd';
-import {Button,Icon,} from "@shopify/polaris";
-import { ArrowLeftOutlined} from "@ant-design/icons";
-import { useNavigate } from "@shopify/app-bridge-react";
+import { Card ,Typography,Input,Skeleton} from 'antd';
 import { useAppBridge } from "@shopify/app-bridge-react";
 import postApi from './postApi';
 import toastNotification from './commonSections/Toast';
 
 const BundleSetting = () => {
-  const navigate = useNavigate()
   const app = useAppBridge();
   const [spinner,setSpinner] = useState(false)
   const [settingData,setSettingData] = useState({
@@ -56,7 +52,7 @@ setSettingData({...settingData,discountLabel:e.target.value})
      
 
       <div className='sd-bundle-setting-box'>
-        <Skeleton active loading={spinner}>
+        <Skeleton  loading={spinner}>
         <div className='sd-bundle-setting-left-heading'>
         <Typography.Title
         level={4}
@@ -104,7 +100,7 @@ setSettingData({...settingData,discountLabel:e.target.value})
           </div>
       </div>
       <div>
-      <Skeleton active loading={spinner}>
+      <Skeleton  loading={spinner}>
         
         
         <button onClick={handleSave}>save</button>

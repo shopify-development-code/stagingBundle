@@ -99,7 +99,7 @@ if(key == "basic"){
           <Row className="sd-plan-group" gutter={16}>
             <Col  >
               <Card className="sd-plan" title="Free" bordered={false}>
-              <Skeleton active loading={loader} paragraph={{rows:7}}>
+              <Skeleton  loading={loader} paragraph={{rows:7}}>
                 <Card className="sd-plan-inner sd-plan-inner-box">
                     {selectedPlan == "free" ? (<div className="sd-plan-active-plan">Active</div>) : ""}
                   
@@ -132,7 +132,7 @@ if(key == "basic"){
             </Col>
             <Col >
               <Card className="sd-plan" title="Basic" bordered={false}>
-              <Skeleton active loading={loader} paragraph={{rows:7}}>
+              <Skeleton  loading={loader} paragraph={{rows:7}}>
 
                 <Card className="sd-plan-inner sd-plan-inner-box">
                 {selectedPlan == "basic" ? (<div className="sd-plan-active-plan">Active</div>) : ""}

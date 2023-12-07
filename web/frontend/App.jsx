@@ -49,7 +49,7 @@ export default function App() {
                 }
 
               ]}
-
+              matcher={(link, location) => link.destination === location.pathname}
             />
             <Routes pages={pages} />
             </ContextProvider>

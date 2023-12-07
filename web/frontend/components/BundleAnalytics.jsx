@@ -1,6 +1,6 @@
 
 import React, {useState, useEffect } from 'react'
-import { Card,Tabs, Col, Row,Table,Spin,Skeleton } from 'antd'
+import { Card,Tabs, Col, Row,Table,Skeleton } from 'antd'
 import postApi from '../components/postApi'
 import { useAppBridge } from '@shopify/app-bridge-react'
 import { Icon, Thumbnail } from "@shopify/polaris";
@@ -204,7 +204,7 @@ Views:(<div key={index} className='sd-analytics-views-div'>{item.analytics.bundl
               <div className='sd-bundle-card-inner-main'>
               <div className='sd-bundle-card-inner-content'>
               <h3>Sales value on bundles</h3>
-              <Skeleton loading={spinner} active paragraph={{rows:1}} title={false} >
+              <Skeleton loading={spinner}  paragraph={{rows:1}} title={false} >
               <p>
               {showAmountWithCurrency(salesValue,currencyCode)}
                </p>
@@ -227,7 +227,7 @@ Views:(<div key={index} className='sd-analytics-views-div'>{item.analytics.bundl
             <div className='sd-bundle-card-inner-main'>
             <div className='sd-bundle-card-inner-content'>
               <h3>Number of sold bundles</h3>
-              <Skeleton loading={spinner} active paragraph={{rows:1}} title={false} >
+              <Skeleton loading={spinner}  paragraph={{rows:1}} title={false} >
 
              <p>{soldBundle}</p> 
              </Skeleton>
@@ -248,7 +248,7 @@ Views:(<div key={index} className='sd-analytics-views-div'>{item.analytics.bundl
             <div className='sd-bundle-card-inner-main'>
             <div className='sd-bundle-card-inner-content'>
               <h3>Bundles clicks</h3>
-              <Skeleton loading={spinner} active paragraph={{rows:1}} title={false} >
+              <Skeleton loading={spinner}  paragraph={{rows:1}} title={false} >
 
               <p>{bundleClicks}</p>
               </Skeleton >
@@ -269,7 +269,7 @@ Views:(<div key={index} className='sd-analytics-views-div'>{item.analytics.bundl
             <div className='sd-bundle-card-inner-main'>
             <div className='sd-bundle-card-inner-content'>
               <h3>Bundles views</h3>
-              <Skeleton loading={spinner} active paragraph={{rows:1}} title={false} >
+              <Skeleton loading={spinner} paragraph={{rows:1}} title={false} >
 
              <p> {bundleViews}</p>
              </Skeleton  >
@@ -290,7 +290,7 @@ Views:(<div key={index} className='sd-analytics-views-div'>{item.analytics.bundl
         <Card
           className="sd-bundle-analytics-data-box"
         >
-              <Skeleton className='sd-bundle-skeleton-pd' loading={spinner} active paragraph={{rows:15 , width:"100%"}} title={false}  >
+              <Skeleton className='sd-bundle-skeleton-pd' loading={spinner} paragraph={{rows:15 , width:"100%"}} title={false}  >
                   
            <Table
              columns={columns}

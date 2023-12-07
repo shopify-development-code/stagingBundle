@@ -1,22 +1,17 @@
 
 import React,{Suspense,lazy} from "react";
 const CreateBundle = lazy(() => import("../components/bundle/bundle"));
-const Watermark = lazy(() => import("../components/watermark"));
-const ContactUs = lazy(() => import("../components/contactUs"));
-const LogoHeader = lazy(() => import("../components/logoHeader"));
-import { Spin } from "antd";
+import {Frame, Loading} from '@shopify/polaris';
+
 const Bundle = () => {
   return (
-    <div>
-<Suspense fallback={<Spin className="sd-lazy-loader"  spinning/>}>
-      <LogoHeader/>
-      <div className='sd-margin-top'>
+ 
+<Suspense fallback={<Frame>
+        <Loading />
+      </Frame>}>
       <CreateBundle/>
-     <Watermark/>
-     <ContactUs/>
-      </div>
 </Suspense>
-    </div>
+  
   )
 }
 

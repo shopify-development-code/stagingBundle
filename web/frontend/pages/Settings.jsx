@@ -1,11 +1,13 @@
 
 import React,{Suspense,lazy} from "react";
 const Setting = lazy(() => import("../components/Setting"));
+import {Frame, Loading} from '@shopify/polaris';
 
-import { Spin } from "antd";
 const Settings = () => {
   return (
-    <Suspense fallback={<Spin className="sd-lazy-loader"  spinning/>}>
+    <Suspense fallback={<Frame>
+      <Loading />
+    </Frame>}>
 
       <Setting/>
     </Suspense>

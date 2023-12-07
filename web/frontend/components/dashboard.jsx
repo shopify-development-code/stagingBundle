@@ -1,10 +1,13 @@
-import React ,{useState,Suspense,lazy} from 'react'
+import React ,{useState} from 'react'
 import { Button, Card } from 'antd'
-import {MediaCard,VideoThumbnail} from '@shopify/polaris';
+import {MediaCard} from '@shopify/polaris';
 import {useAPI} from "../components/shop"
 
-const Watermark = lazy(() => import('./watermark'));
-const RecommendedApp = lazy(() => import('./recommendedApp'));
+import Watermark from './watermark';
+import RecommendedApp from './recommendedApp';
+import LogoHeader from './logoHeader';
+import ContactUs from './contactUs';
+
 const Dashboard = () => {
 
   const {shop,themeId} = useAPI()
@@ -15,9 +18,10 @@ function handleOpenCustomization () {
   );
 }
   return (
-    
+    <>
+    <LogoHeader/>
   <div>
-         <div className="sd-bundle-MoveToHome-section">
+         <div className="sd-bundle-MoveToHome-section sd-margin-top">
      
         
      <div className="sd-bundle-MoveToHome-arrow">
@@ -72,15 +76,13 @@ portrait
    
  </div>
 
-<Suspense fallback={<div></div>}>
        <RecommendedApp/>
-       </Suspense>
-<Suspense fallback={<div></div>}>
-      <Watermark/>
-</Suspense>
+ 
 
+      <Watermark/>
+      <ContactUs/>
     </div>
-  
+    </>
   )
 }
 

@@ -1,10 +1,12 @@
 import React,{Suspense,lazy} from "react";
-import { Spin } from "antd";
+import {Frame, Loading} from '@shopify/polaris';
 
 const PricingPlan = lazy(() => import("../components/PricingPlan"));
 const plans = () => {
   return (
-<Suspense fallback={<Spin className="sd-lazy-loader"  spinning/>}>
+<Suspense fallback={<Frame>
+        <Loading />
+      </Frame>}>
     <PricingPlan/>
 </Suspense>
  
