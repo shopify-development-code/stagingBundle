@@ -223,22 +223,12 @@ export async function getBundle (req,res){
           "bundleDetail.products.image" : 1,
           "bundleDetail.discountType":1
         }
-      },
-      {
-        $lookup: {
-          from: 'analytics',
-          localField: '_id',
-          foreignField: 'bundleId',
-          as: 'analytics'
-        }
-      },
-      {
-        $addFields: {
-          analytics: { $arrayElemAt: ['$analytics', 0] }
-        }
       }
+     
+      
     ]);
-
+    
+    
   
     if(response){
 
@@ -258,7 +248,7 @@ export async function updateStatus (req,res){
     const {id,status} = req.body
     const response =  await bundleModel.findOneAndUpdate({_id:id},{$set: { status:status}})
     if(response){
-    return res.status(200).send({message:"success",response:response,status:200})
+    return res.status(200).send({message:"success",status:200})
     }else{
       return res.status(503).send({message:"something went wrong",status:503})
     }

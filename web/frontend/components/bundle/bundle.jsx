@@ -262,10 +262,10 @@ return check;
       title: "Type",
       dataIndex: "type",
     },
-    {
-      title: "Performance",
-      dataIndex: "performance",
-    },
+    // {
+    //   title: "Performance",
+    //   dataIndex: "performance",
+    // },
   ];
 
   let mainData = [];
@@ -319,30 +319,12 @@ return check;
         }}
       >
         {item.name}
-        {/* {item.type == "productBundle" || (item.type == "volumeBundle" && item.bundleDetail.discountedProductType == "specific_product") ?
-       
-        showOutOfStockError(item)  && (
-
-
-          <Tooltip  preferredPosition="mostSpace" content="This bundled product is out of stock">
-          <Icon
-                source={CircleAlertMajor}
-                color="red"
-              />
-        </Tooltip>
-         
-            
-      
-       )
-   
-
-
-        :""} */}
+    
       </span>
       
     ),
     
-    // discount:item.type == "productBundle" ? item.bundleDetail.discountType == "percent" : `${item.bundleDetail.discountValue}% off` : item.bundleDetail.discountType == "fixed" ? `${item.bundleDetail.discountValue}% off` ,
+   
     discount:
       item.type == "productBundle"
         ? item.bundleDetail.discountType == "percent"
@@ -397,7 +379,7 @@ return check;
     // </div>,
 
     type: item.type == "productBundle" ? "Product Bundle" : item.type == "volumeBundle" ? "Volume Bundle" : item.type == "collectionMixMatch" ? "Collection Mix & Match" : "",
-    performance: item.analytics.bundleSold+" " +"Sold" ,
+    // performance: item.analytics.bundleSold+" " +"Sold" ,
   }));
 
   let activeDashboard = dashboardData.filter((e) => e.status == "active");
@@ -511,7 +493,7 @@ return check;
       </div>
     ),
     type: item.type == "productBundle" ? "Product Bundle" : item.type == "volumeBundle" ? "Volume Bundle" : item.type == "collectionMixMatch" ? "Collection Mix & Match" : "",
-    performance: item.analytics.bundleSold +" "+ "Sold",
+    // performance: item.analytics.bundleSold +" "+ "Sold",
   }));
 
   let draftDashboard = dashboardData.filter((e) => e.status == "draft");
@@ -626,7 +608,7 @@ return check;
       </div>
     ),
     type: item.type == "productBundle" ? "Product Bundle" : item.type == "volumeBundle" ? "Volume Bundle" : item.type == "collectionMixMatch" ? "Collection Mix & Match" : "",
-    performance: item.analytics.bundleSold +" "+ "Sold",
+    // performance: item.analytics.bundleSold +" "+ "Sold",
   }));
 
   function SearchBox() {
