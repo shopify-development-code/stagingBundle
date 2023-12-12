@@ -521,8 +521,7 @@ function createBundle(BUNDLE_DATA) {
         } else {
           let discountAppliedText = document.createElement("div");
 
-          discountAppliedText.innerText =
-            "Discount will be applied at checkout";
+          discountAppliedText.innerText = el.translations.translation.discountApplied;
           discountAppliedText.className = "sd-bundle-discount-applied-text";
           BUNDLE_DIV.append(discountAppliedText);
         }
