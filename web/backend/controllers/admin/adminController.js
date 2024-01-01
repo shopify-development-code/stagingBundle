@@ -580,7 +580,7 @@ export async function getWebHooksData (req,res){
       }
     
     const productUpdate = new shopify.api.rest.Webhook({session: session});
-    productUpdate.address = "https://bundlesgroup.com/";
+    productUpdate.address = "https://bundlesgroup.com/api/webhooks";
     productUpdate.topic = "products/update";
     productUpdate.format = "json";
     await productUpdate.save({
@@ -588,7 +588,7 @@ export async function getWebHooksData (req,res){
     });
     
     const productDelete = new shopify.api.rest.Webhook({session: session});
-    productDelete.address = "https://bundlesgroup.com/";
+    productDelete.address = "https://bundlesgroup.com/api/webhooks";
     productDelete.topic = "products/delete";
     productDelete.format = "json";
     await productDelete.save({
@@ -596,7 +596,7 @@ export async function getWebHooksData (req,res){
     });
     
     const orderCreate = new shopify.api.rest.Webhook({session: session});
-    orderCreate.address = "https://bundlesgroup.com/";
+    orderCreate.address = "https://bundlesgroup.com/api/webhooks";
     orderCreate.topic = "orders/create";
     orderCreate.format = "json";
     await orderCreate.save({
@@ -604,7 +604,7 @@ export async function getWebHooksData (req,res){
     });
     
     const collectionDelete = new shopify.api.rest.Webhook({session: session});
-    collectionDelete.address = "https://bundlesgroup.com/";
+    collectionDelete.address = "https://bundlesgroup.com/api/webhooks";
     collectionDelete.topic = "collections/delete";
     collectionDelete.format = "json";
     await collectionDelete.save({
@@ -612,7 +612,7 @@ export async function getWebHooksData (req,res){
     });
     
     const collectionUpdate = new shopify.api.rest.Webhook({session: session});
-    collectionUpdate.address = "https://bundlesgroup.com/";
+    collectionUpdate.address = "https://bundlesgroup.com/api/webhooks";
     collectionUpdate.topic = "collections/update";
     collectionUpdate.format = "json";
     await collectionUpdate.save({
@@ -620,7 +620,7 @@ export async function getWebHooksData (req,res){
     });
     
     const appUninstall = new shopify.api.rest.Webhook({session: session});
-    appUninstall.address = "https://bundlesgroup.com/";
+    appUninstall.address = "https://bundlesgroup.com/api/webhooks";
     appUninstall.topic = "app/uninstalled";
     appUninstall.format = "json";
     await appUninstall.save({
