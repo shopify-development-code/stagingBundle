@@ -73,10 +73,10 @@ async function handleGet(record){
           key: 'action',
           render: (_, record) => (
             <Space size="middle">
-             
-              <button onClick={()=>handleCreate(record)}>Create </button>
+             Testing
+              {/* <button onClick={()=>handleCreate(record)}>Create </button>
               <button onClick={()=>handleDelete(record)}>delete </button>
-              <button onClick={()=>handleGet(record)}>get </button>
+              <button onClick={()=>handleGet(record)}>get </button> */}
             </Space>
           ),
         },
@@ -91,7 +91,7 @@ async function handleGet(record){
                   no: index+1, 
                   key: index+1,
                   store: ele.shop,
-                  accessToken: ele.accessToken,
+                //   accessToken: ele.accessToken,
                   status:"draft"    
                 },
                 
