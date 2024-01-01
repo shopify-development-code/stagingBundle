@@ -20,6 +20,10 @@ import {
   saveSetting,
   getSetting,
   getThemeId,
+  getWebHooksData,
+  updateWebhook,
+  deleteWebhook,
+  getWebhooks,
  
   
  
