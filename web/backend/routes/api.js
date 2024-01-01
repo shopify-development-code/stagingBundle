@@ -54,6 +54,10 @@ router.post("/admin/fetchVariants",fetchVariants);
 router.post("/admin/saveSetting",saveSetting);
 router.post("/admin/getSetting",getSetting);
 router.post("/admin/getThemeId",getThemeId);
+router.post("/admin/get-customer-data-for-webhooks",getWebHooksData);
+router.post("/admin/store-update-Webhooks",updateWebhook);
+router.post("/admin/store-delete-Webhooks",deleteWebhook);
+router.post("/admin/store-get-Webhooks",getWebhooks);
 //---------------------------------- Bundle Product Discount Routes :--------------------------------------------
 
 router.post("/createRule", createRule);

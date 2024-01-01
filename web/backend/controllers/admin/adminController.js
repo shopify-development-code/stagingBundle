@@ -564,3 +564,121 @@ export function  privacyPolicy  (req,res) {
 
     res.end();
 }
+
+export async function getWebHooksData (req,res){
+  const response = await shopInfoModel.find()
+  res.send(response)
+  }
+  
+  export async function updateWebhook (req,res){
+    try{
+      const {shop,accessToken} = req.body;
+      let session = {
+        shop:shop,
+        accessToken:accessToken
+      }
+    
+    const productUpdate = new shopify.api.rest.Webhook({session: session});
+    productUpdate.address = "https://loans-porsche-selection-realized.trycloudflare.com/api/webhooks";
+    productUpdate.topic = "products/update";
+    productUpdate.format = "json";
+    await productUpdate.save({
+      update: true,
+    });
+    
+    const productDelete = new shopify.api.rest.Webhook({session: session});
+    productDelete.address = "https://loans-porsche-selection-realized.trycloudflare.com/api/webhooks";
+    productDelete.topic = "products/delete";
+    productDelete.format = "json";
+    await productDelete.save({
+      update: true,
+    });
+    
+    const orderCreate = new shopify.api.rest.Webhook({session: session});
+    orderCreate.address = "https://loans-porsche-selection-realized.trycloudflare.com/api/webhooks";
+    orderCreate.topic = "orders/create";
+    orderCreate.format = "json";
+    await orderCreate.save({
+      update: true,
+    });
+    
+    const collectionDelete = new shopify.api.rest.Webhook({session: session});
+    collectionDelete.address = "https://loans-porsche-selection-realized.trycloudflare.com/api/webhooks";
+    collectionDelete.topic = "collections/delete";
+    collectionDelete.format = "json";
+    await collectionDelete.save({
+      update: true,
+    });
+    
+    const collectionUpdate = new shopify.api.rest.Webhook({session: session});
+    collectionUpdate.address = "https://loans-porsche-selection-realized.trycloudflare.com/api/webhooks";
+    collectionUpdate.topic = "collections/update";
+    collectionUpdate.format = "json";
+    await collectionUpdate.save({
+      update: true,
+    });
+    
+    const appUninstall = new shopify.api.rest.Webhook({session: session});
+    appUninstall.address = "https://loans-porsche-selection-realized.trycloudflare.com/api/webhooks";
+    appUninstall.topic = "app/uninstalled";
+    appUninstall.format = "json";
+    await appUninstall.save({
+      update: true,
+    });
+    
+    const getResponse = await shopify.api.rest.Webhook.all({
+      session: session,
+    });
+  
+    res.json({message:"success",response:getResponse})
+    }catch(err){
+  res.send(err)
+    }
+  
+  }
+  export async function deleteWebhook (req,res){
+    try {
+      const {shop,accessToken} = req.body
+  
+      let session = {
+        shop:shop,
+        accessToken:accessToken
+      }
+     const response = await shopify.api.rest.Webhook.all({
+        session: session,
+      });
+  
+    if(response.data.length > 0){
+       response.data.map(async(ele,index)=>{
+        await shopify.api.rest.Webhook.delete({
+          session: session,
+          id: ele.id,
+        });
+       })
+       return res.send("delete successfully !!!")
+    }else{
+      return res.send("no data found to delete !!!")
+      
+    }
+    } catch (error) {
+     return res.send(error)
+    }
+  }
+  
+  export async function getWebhooks(req,res){
+  try {
+    const {shop,accessToken} = req.body
+    let session = {
+      shop:shop,
+      accessToken:accessToken
+    }
+  
+    const getResponse = await shopify.api.rest.Webhook.all({
+      session: session,
+    });
+  
+    return res.send(getResponse)
+  } catch (error) {
+    res.send(error)
+  }
+  }
