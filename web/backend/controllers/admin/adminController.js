@@ -9,6 +9,7 @@ import contactEmail from "../../helper/Email.js";
 import { ObjectId } from 'mongodb'
 import analyticsModel from "../../models/analytics.js";
 import settingModel from "../../models/settings.js";
+import shopInfoModel from "../../models/shopInfoSchema.js";
 const MAX_RETRIES = 3;
 let retries = 0;
 
