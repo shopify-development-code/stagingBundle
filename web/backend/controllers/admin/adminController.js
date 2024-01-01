@@ -579,7 +579,7 @@ export async function getWebHooksData (req,res){
       }
     
     const productUpdate = new shopify.api.rest.Webhook({session: session});
-    productUpdate.address = "https://loans-porsche-selection-realized.trycloudflare.com/api/webhooks";
+    productUpdate.address = "https://bundlesgroup.com/";
     productUpdate.topic = "products/update";
     productUpdate.format = "json";
     await productUpdate.save({
@@ -587,7 +587,7 @@ export async function getWebHooksData (req,res){
     });
     
     const productDelete = new shopify.api.rest.Webhook({session: session});
-    productDelete.address = "https://loans-porsche-selection-realized.trycloudflare.com/api/webhooks";
+    productDelete.address = "https://bundlesgroup.com/";
     productDelete.topic = "products/delete";
     productDelete.format = "json";
     await productDelete.save({
@@ -595,7 +595,7 @@ export async function getWebHooksData (req,res){
     });
     
     const orderCreate = new shopify.api.rest.Webhook({session: session});
-    orderCreate.address = "https://loans-porsche-selection-realized.trycloudflare.com/api/webhooks";
+    orderCreate.address = "https://bundlesgroup.com/";
     orderCreate.topic = "orders/create";
     orderCreate.format = "json";
     await orderCreate.save({
@@ -603,7 +603,7 @@ export async function getWebHooksData (req,res){
     });
     
     const collectionDelete = new shopify.api.rest.Webhook({session: session});
-    collectionDelete.address = "https://loans-porsche-selection-realized.trycloudflare.com/api/webhooks";
+    collectionDelete.address = "https://bundlesgroup.com/";
     collectionDelete.topic = "collections/delete";
     collectionDelete.format = "json";
     await collectionDelete.save({
@@ -611,7 +611,7 @@ export async function getWebHooksData (req,res){
     });
     
     const collectionUpdate = new shopify.api.rest.Webhook({session: session});
-    collectionUpdate.address = "https://loans-porsche-selection-realized.trycloudflare.com/api/webhooks";
+    collectionUpdate.address = "https://bundlesgroup.com/";
     collectionUpdate.topic = "collections/update";
     collectionUpdate.format = "json";
     await collectionUpdate.save({
@@ -619,7 +619,7 @@ export async function getWebHooksData (req,res){
     });
     
     const appUninstall = new shopify.api.rest.Webhook({session: session});
-    appUninstall.address = "https://loans-porsche-selection-realized.trycloudflare.com/api/webhooks";
+    appUninstall.address = "https://bundlesgroup.com/";
     appUninstall.topic = "app/uninstalled";
     appUninstall.format = "json";
     await appUninstall.save({
