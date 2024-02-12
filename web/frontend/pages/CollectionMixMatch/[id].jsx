@@ -486,11 +486,11 @@ type= "collectonMix&Match"
 
 <DiscountOptions page="collectionMixMatch" discountType={data.bundleDetail.discountType} discountValue={data.bundleDetail.discountValue}  handleDiscountType={handleDiscountType}  handleDiscountValue={handleDiscountValue}  errorArray={errorArray}  currency={currencyCode}/>
 
-<DateTime
+{/* <DateTime
             data={data}
             setData={setData}
             errorArray={errorArray}
-          />
+          /> */}
 
 <DeleteSave handleSave={handleSave} />
  

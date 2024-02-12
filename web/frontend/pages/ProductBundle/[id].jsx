@@ -5,7 +5,7 @@ import toastNotification from "../../components/commonSections/Toast";
 import { useAppBridge } from "@shopify/app-bridge-react";
 import { useAPI } from "../../components/shop";
 import BundleNameTitle from "../../components/commonSections/bundleNameTitle";
-import DateTime from "../../components/commonSections/dateTime";
+// import DateTime from "../../components/commonSections/dateTime";
 import BundleStatus from "../../components/commonSections/bundleStatus";
 import ProductBundlePreview from "../../components/preview/productBundlePreview";
 import MoveToHomePage from "../../components/commonSections/MoveToHomePage";
@@ -458,13 +458,13 @@ function CreateBundle() {
       alertText.push("Please provide title of bundle");
     }
     
-    if (data.startdate == "") {
-      if (!errorArray.includes("startdate")) {
-        setErrorArray((prev) => [...prev, "startdate"]);
-      }
-      flag = false;
-      alertText.push("Please select start date & time");
-    }
+    // if (data.startdate == "") {
+    //   if (!errorArray.includes("startdate")) {
+    //     setErrorArray((prev) => [...prev, "startdate"]);
+    //   }
+    //   flag = false;
+    //   alertText.push("Please select start date & time");
+    // }
     if (flag == false) {
       alertCommon(setAlert, alertText, "critical", false);
     }
@@ -584,7 +584,7 @@ function CreateBundle() {
               currency={currencyCode}
             />
 
-            <DateTime data={data} setData={setData} errorArray={errorArray} />
+            {/* <DateTime data={data} setData={setData} errorArray={errorArray} /> */}
 
             <DeleteSave handleSave={handleSave} />
           </div>

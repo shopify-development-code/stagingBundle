@@ -683,14 +683,14 @@ function getPreviewData(data){
           alertText .push("Please provide title of bundle")    
     }
 
-    if (data.startdate == "") {
-      if(!errorArray.includes("startdate")){
-        setErrorArray((prev)=>[...prev,"startdate"])
-      }
-        flag=false
-        alertText.push("Please select start date & time")
+    // if (data.startdate == "") {
+    //   if(!errorArray.includes("startdate")){
+    //     setErrorArray((prev)=>[...prev,"startdate"])
+    //   }
+    //     flag=false
+    //     alertText.push("Please select start date & time")
       
-    }
+    // }
 
     if(flag==false ){
       alertCommon(
@@ -1036,7 +1036,7 @@ function getPreviewData(data){
             </Button>
           </div>
           <BundleNameTitle data={data} setData={setData} errorArray={errorArray} />
-          <DateTime data={data} setData={setData} errorArray={errorArray} />
+          {/* <DateTime data={data} setData={setData} errorArray={errorArray} /> */}
           <DeleteSave  handleSave={handleSave} />
         </div>
         <div className="sd-bundle-productBundle-rightSection Polaris-Layout__Section Polaris-Layout__Section--secondary">
