@@ -1,0 +1,26 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+name = "Staging Advanced Bundles"
+client_id = "b8c12ad6dd6cca8d5809e99013d4289b"
+application_url = "https://bundle.shinedezigninfotech.com"
+embedded = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+use_legacy_install_flow = true
+
+[auth]
+redirect_urls = [
+  "https://bundle.shinedezigninfotech.com/api/auth",
+  "https://bundle.shinedezigninfotech.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2024-04"
+
+[pos]
+embedded = false
+
+[build]
+automatically_update_urls_on_dev = false
+dev_store_url = "robins-store1.myshopify.com"
