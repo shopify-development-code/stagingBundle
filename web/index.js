@@ -26,7 +26,6 @@ import discountIdModel from "./backend/models/discountIdSchema.js";
 dotenv.config();
 const app=express();
 const PORT = parseInt(process.env.BACKEND_PORT || process.env.PORT, 10);
-// DB.connect();
 // app.use(express.static(`${process.cwd()}/../uploads`))
 
 app.post(shopify.config.webhooks.path, express.text({type: '*/*'}), verifyWebhooks);
