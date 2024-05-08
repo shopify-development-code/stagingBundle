@@ -40,9 +40,7 @@ process.env.NODE_ENV === "production"
 
 db()
 
-console.log(process.env.HOST)
-
-// Set up Shopify authentication and webhook handling
+console.log(process.env.HOST);
 app.get(shopify.config.auth.path, shopify.auth.begin());
 app.get(
   shopify.config.auth.callbackPath,
