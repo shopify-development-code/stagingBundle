@@ -148,7 +148,7 @@ Views:(<div key={index} className='sd-analytics-views-div'>{item.analytics.bundl
           dataIndex: "status",
         },
         {
-          title: "sales value",
+          title: "Sales value",
           dataIndex: "salesValue",
         },
         {

@@ -48,7 +48,7 @@ portrait
        <p>2. Locate and click on the theme you wish to modify, then select <strong>Customize</strong>.</p>
        <p>3. Access the <strong>App embeds</strong> tab within the customization options.</p>
        <p>4. Choose the desired app embed for activation, or use the <strong>Search</strong> Search bar to find specific installed apps.</p>
-       <p>5. <strong>Activate</strong>Activate the selected app embed by toggling the switch next to it.</p>
+       <p>5. <strong>Activate</strong> the selected app embed by toggling the switch next to it.</p>
         </div> 
         <br />
         <div className='Polaris-Stack Polaris-Stack--vertical Polaris-Stack--spacingTight'>

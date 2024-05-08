@@ -11,7 +11,7 @@ const Watermark = () => {
       </div>
       <span>Powered by</span>
       <div className='sd-logo-text'>SHINE DEZIGN INFONET</div>
-      <p>Copyright © 2023 Shine Dezign infonet. All Rights Reserved</p>
+      <p>Copyright © {new Date().getFullYear} Shine Dezign infonet. All Rights Reserved</p>
     </div>
   )
 }

@@ -21,6 +21,7 @@ import postApi from "../../components/postApi";
 import { useNavigate,useParams } from "react-router-dom";
 import toastNotification from "../../components/commonSections/Toast";
 import noImg from "../../assets/no-Image.png" 
+import General from '../../components/bxgy/General';
 
 
 const  CollectionMixMatch=()=>{
@@ -122,15 +123,30 @@ setQuantityError(copyArray)
 
 
 const handleDiscountType = (e) => {
-    setData({
+  setData({
     ...data,
     bundleDetail:{
       ...(data.bundleDetail),
-    discountType: e.target.value,
+      discountType: e.target.value,
     }
   });
-     };
-
+};
+  useEffect(()=>{
+    let update = { ...data };
+    if(data.bundleDetail.discountType == "percent"){
+      update.bundleDetail.description = "Buy products from below collections,Save {discount}"
+      setData(update);
+    }else if(data.bundleDetail.discountType == "fixed"){ 
+      update.bundleDetail.description = "Buy products from below collections,Save {discount}"
+      setData(update);
+    }else if(data.bundleDetail.discountType == "freeShipping"){
+      update.bundleDetail.description = "Buy products from below collections,Get Free Shipping"
+      setData(update);
+    }else{
+      update.bundleDetail.description = "Buy products from below collections"
+      setData(update);
+    }
+  },[data.bundleDetail.discountType])
   const handleDiscountValue = (newvalue) => {
     if (newvalue == "" || newvalue < 0) {
       setData({ ...data,
@@ -477,14 +493,29 @@ if(flag==true){
                  </div>
    </div>
 
- <BundleNameTitle 
+ {/* <BundleNameTitle 
  data={data}
  setData={setData}
  errorArray={errorArray}
 type= "collectonMix&Match"
- /> 
+ />  */}
+      <General
+        data={data}
+        setData={setData}
+        type= "collectonMix&Match"
+      />
 
-<DiscountOptions page="collectionMixMatch" discountType={data.bundleDetail.discountType} discountValue={data.bundleDetail.discountValue}  handleDiscountType={handleDiscountType}  handleDiscountValue={handleDiscountValue}  errorArray={errorArray}  currency={currencyCode}/>
+      <DiscountOptions 
+        page="collectionMixMatch" 
+        data = {data}
+        setData = {setData}
+        discountType={data.bundleDetail.discountType} 
+        discountValue={data.bundleDetail.discountValue}  
+        handleDiscountType={handleDiscountType}  
+        handleDiscountValue={handleDiscountValue}  
+        errorArray={errorArray}  
+        currency={currencyCode}
+      />
 
 {/* <DateTime
             data={data}

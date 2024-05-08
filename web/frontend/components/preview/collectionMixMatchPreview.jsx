@@ -2,11 +2,12 @@ import React from "react";
 // import { useAPI} from "../shop"
 import { Divider } from "antd";
 import {PlusOutlined} from '@ant-design/icons';
-
+import { showAmountWithCurrency } from "../showCurrencyFormat";
 import pic from "../../assets/image2.png";
 import EmptyPreview from "../commonSections/emptyPreview";
-const CollectionMixMatchPreview=({data})=>{
+const CollectionMixMatchPreview=({data,currency})=>{
 // const {currency}=useAPI();
+// console.log('check collection data****',data);
 
     return (
         <div className="sd-bundle-bundleSection-common">
@@ -14,8 +15,8 @@ const CollectionMixMatchPreview=({data})=>{
 {data.bundleDetail.products.length > 0  ?
 <div className="sd-collection-customise-preview sd-preview-wrapper-common sd-only-collection" style={{backgroundColor:data.customization[0].collectionMixMatch.box.backgroundColor,borderRadius:data.customization[0].collectionMixMatch.box.borderRadius+"px",borderColor:data.customization[0].collectionMixMatch.box.borderColor}}>
      
-<div className="sd-collection-discount-badge"  style={{color:data.customization[0].collectionMixMatch.saveDiscount.color,backgroundColor:data.customization[0].collectionMixMatch.saveDiscount.backgroundColor,fontSize:data.customization[0].collectionMixMatch.saveDiscount.fontSize+"px"}} >
-    <span>{data.customization[0].collectionMixMatch.saveDiscount.text}</span>  
+<div className="sd-collection-discount-badge"  style={{color:data.customization[0].collectionMixMatch.DiscountBadge.color,backgroundColor:data.customization[0].collectionMixMatch.DiscountBadge.backgroundColor,fontSize:data.customization[0].collectionMixMatch.DiscountBadge.fontSize+"px"}} >
+    <span>{data.customization[0].collectionMixMatch.DiscountBadge.text}</span>  
  </div>
 <div className="sd-collection-main-section">
 <div className="sd-collection-customise-titleSection" style={{textAlign:data.customization[0].collectionMixMatch.title.alignment}}>
@@ -26,17 +27,20 @@ const CollectionMixMatchPreview=({data})=>{
               "Buy products from below collections,Save {discount}" ? (
                 <p>
                   <span>Buy products from below collections,Save </span>
-                  <span>
+                  {/* <span>
                     {data.bundleDetail.discountType == "fixed"
                     
-                      ? data.currency + " "
+                      ? currency + " "
                       : "" }
+                  </span> */}
+                  <span>
+                    {data.bundleDetail.discountType == "fixed"
+                      ?showAmountWithCurrency(data.bundleDetail.discountValue.toFixed(2),currency) 
+                
+                      : ""}
                   </span>
                   <span>
-                    {data.bundleDetail.discountType == "percent" || data.bundleDetail.discountType == "fixed"
-                      ? data.bundleDetail.discountValue
-                
-                      : null}
+                    {data.bundleDetail.discountType == "percent" && data.bundleDetail.discountValue}
                   </span>
                   <span>
                    {

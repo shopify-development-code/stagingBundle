@@ -45,72 +45,63 @@ function handleDiscountLabel(e){
 setSettingData({...settingData,discountLabel:e.target.value})
 }
   return (
- 
-     
      <div className='sd-bundle-setting-translation'>
       <div className='sd-bundle-bundle-setting'>
-     
-
-      <div className='sd-bundle-setting-box'>
-        <Skeleton  loading={spinner}>
-        <div className='sd-bundle-setting-left-heading'>
-        <Typography.Title
-        level={4}
-        style={{
-          margin: 0,
-        }}
-      >
-        Discount
-      </Typography.Title>
-        
-        </div>
-        <div className='sd-bundle-setting-right-heading'>
-        <Card className='sd-bundle-subscription-box'>
-        <Typography.Title
-        level={5}
-        style={{
-          margin: 0,
-        }}
-      >
-        Discount label
-      </Typography.Title>
-      <span>
-      This label appears on the discounted bundle items in your cart.
-      </span>
-      <Typography.Title
-        level={5}
-        style={{
-          margin: 0,
-        }}
-      >
-   
-       <Input className='sd-setting-discount-prefix'  addonAfter="-XXXXXX" onChange={handleDiscountLabel} value={settingData.discountLabel} />
-      </Typography.Title>
-             </Card>
-          </div>
+        <div className='sd-bundle-setting-box'>
+          <Skeleton  loading={spinner}>
+            <div className='sd-bundle-setting-left-heading'>
+              <Typography.Title
+                level={4}
+                style={{
+                  margin: 0,
+                }}
+              >
+                Discount
+              </Typography.Title>
+            </div>
+            <div className='sd-bundle-setting-right-heading'>
+              <Card className='sd-bundle-subscription-box'>
+                <Typography.Title
+                  level={5}
+                  style={{
+                    margin: 0,
+                  }}
+                >
+                  Discount label
+                </Typography.Title>
+                <span>
+                  This label appears on the discounted bundle items in your cart.
+                </span>
+                <Typography.Title
+                  level={5}
+                  style={{
+                    margin: 0,
+                  }}
+                >
+                  <Input className='sd-setting-discount-prefix'  addonAfter="-XXXXXX" onChange={handleDiscountLabel} value={settingData.discountLabel} />
+                </Typography.Title>
+              </Card>
+            </div>
           </Skeleton>
-      </div>
-
-      <div className='sd-bundle-setting-box'>
-        <div className='sd-bundle-setting-left-heading'>
-
         </div>
-        <div className='sd-bundle-setting-right-heading'>
+
+        <div className='sd-bundle-setting-box'>
+          <div className='sd-bundle-setting-left-heading'>
 
           </div>
-      </div>
-      <div>
-      <Skeleton  loading={spinner}>
-        
-        
-        <button onClick={handleSave}>save</button>
-      </Skeleton>
-      </div>
+          
+          <div className='sd-bundle-setting-right-heading'>
+          
+          </div>
+        </div>
+
+        <div>
+          <Skeleton  loading={spinner}>  
+            <button onClick={handleSave}>Save</button>
+          </Skeleton>
+        </div>
       </div> 
-     
-
    </div>
-
   )
 }
 

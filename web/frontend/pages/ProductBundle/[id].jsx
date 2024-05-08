@@ -5,6 +5,7 @@ import toastNotification from "../../components/commonSections/Toast";
 import { useAppBridge } from "@shopify/app-bridge-react";
 import { useAPI } from "../../components/shop";
 import BundleNameTitle from "../../components/commonSections/bundleNameTitle";
+import General from "../../components/bxgy/General";
 // import DateTime from "../../components/commonSections/dateTime";
 import BundleStatus from "../../components/commonSections/bundleStatus";
 import ProductBundlePreview from "../../components/preview/productBundlePreview";
@@ -570,7 +571,12 @@ function CreateBundle() {
               />
             )}
 
-            <BundleNameTitle
+            {/* <BundleNameTitle
+              data={data}
+              setData={setData}
+              errorArray={errorArray}
+            /> */}
+            <General 
               data={data}
               setData={setData}
               errorArray={errorArray}

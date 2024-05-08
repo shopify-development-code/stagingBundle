@@ -29,6 +29,7 @@ import DiscountBadge from "./DiscountBadge";
 import CustomizationProductBundlePreview from "./CustomizationProductBundlePreview";
 import CustomizationVolumeBundlePreview from "./CustomizationVolumeBundlePreview";
 import CustomizationCollectionBundlePreview from "./CustomizationCollectionBundlePreview";
+import CustomizationProductMixMatchPreview from "./CustomizationProductMixMatchPreview";
 import CustomizationPopUpPreview from "./CustomizationPopupPreview";
 import defaultData from "./defaultData.json";
 import postApi from "../postApi";
@@ -84,7 +85,8 @@ const CustomizationEditor = (props) => {
       // props.setData(defaultData[bundleName]);
       bundleName == "collection" ||
       bundleName == "bundle" ||
-      bundleName == "volume"
+      bundleName == "volume"||
+      bundleName == "productMixMatch"
         ? setCustomOption("Box")
         : "";
     }
@@ -220,7 +222,7 @@ const CustomizationEditor = (props) => {
             
             </select>
           </div>
-          <Button onClick={handleCustomizeSave}>Save</Button>
+          <Button className="sd-bundle-backArrow" onClick={handleCustomizeSave}>Save</Button>
         </div>
         {/* <Divider /> */}
         <div className="sd-bundle-mainContent-wrapper">
@@ -281,7 +283,25 @@ const CustomizationEditor = (props) => {
                 {props.bundleOption == "collection"
                   ? leftSideSectionCommon()
                   : ""}
+                  <div
+                  className={`sd-bundle-listItem-common sd-bundle-listItem  ${
+                    props.bundleOption == "productMixMatch" ? "sd-active" : ""
+                  }`}
+                  onClick={() => handleBundleOption("productMixMatch")}
+                >
+                  {props.bundleOption == "productMixMatch" ? (
+                    <CaretDownOutlined />
+                  ) : (
+                    <CaretRightOutlined />
+                  )}
+                  <AppstoreAddOutlined />
+                  <p>Product Mix & Match</p>
+                </div>
+                {props.bundleOption == "productMixMatch"
+                  ? leftSideSectionCommon()
+                  : ""}
               </div>
+              
             ) : displayOption == "popUp" ? (
               <div className="sd-bundle-bundleList-section">
                 <div className="sd-bundle-listItem-common sd-bundle-listItem">
@@ -307,6 +327,9 @@ const CustomizationEditor = (props) => {
               )}
               {props.bundleOption == "collection" && (
                 <CustomizationCollectionBundlePreview data={props.data} />
+              )}
+              {props.bundleOption == "productMixMatch" && (
+                <CustomizationProductMixMatchPreview data={props.data}/>
               )}
             </div>
           ) : displayOption == "popUp" ? (
@@ -431,7 +454,8 @@ const CustomizationEditor = (props) => {
                   />
                 ) : customOption == "productDetails" &&
                   (props.bundleOption == "bundle" ||
-                    props.bundleOption == "volume") ? (
+                    props.bundleOption == "volume" ||
+                    props.bundleOption == "productMixMatch") ? (
                   <ProductDetails
                     bundleOption={props.bundleOption}
                     data={props.data}
@@ -448,7 +472,8 @@ const CustomizationEditor = (props) => {
                   />
                 ) : customOption == "Total_section" &&
                   (props.bundleOption == "bundle" ||
-                    props.bundleOption == "volume") ? (
+                    props.bundleOption == "volume"||
+                    props.bundleOption == "productMixMatch") ? (
                   <TotalSection
                     bundleOption={props.bundleOption}
                     data={props.data}

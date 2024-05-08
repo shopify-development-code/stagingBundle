@@ -17,6 +17,7 @@ const VolumePreview = ({ data,sumData,endPriceData,handleVariantChoice,showPrice
   const [mrp,setMrp]=useState(0)
   const [endPrice,setEndPrice]=useState(0)
   const [arr,setArr]=useState([])
+  const [discountType,setDiscountType] = useState(data?.bundleDetail?.discountOptions[0].type);
 
   const [selectedOption, setSelectedOption] = useState('option0');
 
@@ -32,9 +33,13 @@ const VolumePreview = ({ data,sumData,endPriceData,handleVariantChoice,showPrice
   }, [quantity]);
 
 
-  const handleOptionChange = (e) => {
+  const handleOptionChange = (e,index) => {
     setSelectedOption(e.target.value);
+    // setDiscountType(data.bundleDetail.discountOptions[index].type)
+    console.log("ehheherghgr",data,index);
+    setDiscountType(data.bundleDetail?.discountOptions[index].type)
   };
+  
   return (
 <>
 <div className="sd-bundle-bundleSection-common">
@@ -101,13 +106,13 @@ const VolumePreview = ({ data,sumData,endPriceData,handleVariantChoice,showPrice
                   color: data.customization[0].volume.options.iconColor,
                 }}
               >
-               <input
-            type="radio"
-            id={"option"+index}
-            value={"option"+index}
-            checked={selectedOption === "option"+index}
-            onChange={handleOptionChange}
-          />
+              <input
+                type="radio"
+                id={"option"+index}
+                value={"option"+index}
+                checked={selectedOption === "option"+index}
+                onChange={(e)=>handleOptionChange(e,index)}
+              />
         
                 {/* {selected == index ? (
                   <CaretDownOutlined />
@@ -147,7 +152,7 @@ const VolumePreview = ({ data,sumData,endPriceData,handleVariantChoice,showPrice
                 item.description
               )}
             </div>
-            { item.type != "noDiscount" &&
+            { (item.type != "noDiscount") && (item.type != "freeShipping") ?
             <div
               className="sd-option-badgeSection"
               style={{
@@ -168,8 +173,11 @@ const VolumePreview = ({ data,sumData,endPriceData,handleVariantChoice,showPrice
               <span>
         
                 Save {" "}
-               
-                {showAmountWithCurrency((sumData[index]-endPriceData[index]).toFixed(2),currency)}
+                {item.type == "fixed" ? 
+                  showAmountWithCurrency((sumData[index]-endPriceData[index]).toFixed(2),currency)
+                  :
+                  data.bundleDetail.discountOptions[index].value
+                }
                 </span> 
             
               <span> 
@@ -177,14 +185,14 @@ const VolumePreview = ({ data,sumData,endPriceData,handleVariantChoice,showPrice
              {
                item.type == "percent" ? "%"
                : item.type == "fixed"
-                ? "Off"
+                ? ""
             
                 : item.type == "price"
                 ? ""
                 : ""
              }
             </span> 
-            </div>
+            </div> : <></>
              }
           </div>
           </label>
@@ -381,7 +389,7 @@ const VolumePreview = ({ data,sumData,endPriceData,handleVariantChoice,showPrice
                     .fontSize + "px",
               }}
             >
-      
+              
               <del> {showAmountWithCurrency(sumData[selected],currency)}</del>
             </span>
             <span
@@ -394,8 +402,12 @@ const VolumePreview = ({ data,sumData,endPriceData,handleVariantChoice,showPrice
                     .fontSize + "px",
               }}
             >
-             
-              {showAmountWithCurrency(endPriceData[selected],currency)}
+            {console.log("sd",discountType)}
+              {(discountType == "freeShipping") || (discountType == "noDiscount") ?
+                showAmountWithCurrency(sumData[selected],currency)
+                : 
+                showAmountWithCurrency(endPriceData[selected],currency)
+              }
             </span>
           </div>
         </div>
@@ -412,7 +424,7 @@ const VolumePreview = ({ data,sumData,endPriceData,handleVariantChoice,showPrice
             }}
           >
             {data.customization[0].volume.button.text_others + " "}
-            {"discount"}%{" "}
+
           </button>
         )}
       </div>

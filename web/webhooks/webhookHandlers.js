@@ -145,29 +145,30 @@ export async function verifyWebhooks(req, res) {
         break;
       case "orders/create":
         try {
-          console.log("order create",hmac_header)
+          console.log("create orders works------");
           const calculated_hmac = crypto
-            .createHmac("sha256", secretKey)
-            .update(req.body)
-            .digest("base64");
+          .createHmac("sha256", secretKey)
+          .update(req.body)
+          .digest("base64");
           if (calculated_hmac == hmac_header) {
             const bodyData = JSON.parse(req.body);
             const bundleId = bodyData?.note_attributes?.filter(
               (name) => name.name == "SD_BUNDLE_ID"
             );
-
+            console.log("order create",bundleId[0].value)
             if (bundleId[0].value !== "") {
               let price = parseInt(bodyData.current_total_price);
               const filter = {
-                bundleId: ObjectId(bundleId[0].value),
+                bundleId: new ObjectId(bundleId[0].value),
               };
+              console.log("updateupdateupdate........",filter)
               const update = {
                 $inc: {
                   bundleSold: 1,
                   bundleSalesValue: price,
                 },
               };
-              await analyticsModel.updateOne(filter, update);
+              await analyticsModel.findOneAndUpdate(filter, update);
               res.status(200).send("success");
             } else {
               res.status(200).send("success");

@@ -12,6 +12,7 @@ import { handleEditFurther } from "../../components/helperFunctions";
 import { useAPI } from "../../components/shop";
 import AlertSection from "../../components/commonSections/AlertSection";
 import { alertCommon } from "../../components/helperFunctions";
+import General from "../../components/bxgy/General";
 import VolumePreview from "../../components/preview/VolumePreview";
 import defaultData from "../../components/customization/defaultData.json";
 import { Col, Row, Button, Input, Divider, Modal, Select,Spin } from "antd";
@@ -79,7 +80,6 @@ const VolumeBundle = () => {
     timeZone:timeZone
   });
 
-
   const getVolumeBundleData = async()=>{
     let body = {id :param.id}
    
@@ -104,8 +104,6 @@ if(param.id !== "create"){
   setSpinner(false)
 }
 }, [])
-
-
 
 function getPreviewData(data){
   // let priceArray = [];
@@ -132,7 +130,7 @@ function getPreviewData(data){
   let endPriceArray = [];
 
  data.bundleDetail.discountOptions.map((item,index)=>{
-  
+  console.log("helllllooooooo*******",parseFloat(sumArray[index]));
     let temp = Array.from({ length: item.quantity }, (x, itemIndex) =>
        data.bundleDetail.discountedProductType == "specific_product"
             ? data.bundleDetail.products[0]?.variants[0].price
@@ -173,6 +171,7 @@ function getPreviewData(data){
           data.bundleDetail.discountOptions[index]?.discountType == "freeShipping" ||
           data.bundleDetail.discountOptions[index]?.discountType == "noDiscount"
         ) {
+
           finalPrice = parseFloat(sumArray[index]);
         }
         endPriceArray.push(finalPrice)
@@ -183,9 +182,6 @@ function getPreviewData(data){
     setEndPriceData(endPriceArray);
 
 } 
-
-
-
 
   const handleDiscountProductType = (e) => {
 
@@ -241,7 +237,6 @@ function getPreviewData(data){
     }
   };
 
-
   const handleSearchInput = (e) => {
     setSearchValue(e.target.value);
     setModal(true);
@@ -293,53 +288,54 @@ function getPreviewData(data){
     setAntModal(false);
   };
 
-  const handleDiscountQuantity = (newvalue, index) => {
-   if (newvalue != "" ){
-    if (parseInt(newvalue) < 2){
-      if(errorArray.includes(`minimumQuantity${index}`)==false) {
+  const removeOptionErrHandler = (deletedIndex) =>{
+    let copy = [...errorArray]
+    // if (errorArray.includes(`minimumQuantity${deletedIndex}`) == true) {
+    //   let i = copy.indexOf(`minimumQuantity${deletedIndex}`)
+    //   errorArray.splice(i, 1);
+    //   setErrorArray([...errorArray])
+    // }
+    if (errorArray.includes(`increasingOrder${deletedIndex}`)==true) {
+      copy.splice(copy.indexOf(`increasingOrder${deletedIndex}`), 1);
+      setErrorArray([...copy])
+    }
+  };
 
-      let copy = [...errorArray];
-      if (errorArray.includes(`increasingOrder${index}`)) {
-        copy.splice(copy.indexOf[`increasingOrder${index}`], 1);
-      }
-      setErrorArray([...copy, `minimumQuantity${index}`]);    
-    } 
-  }
-    else if (
-      (data.bundleDetail?.discountOptions[index + 1] &&
-        parseInt(newvalue) >= parseInt(data.bundleDetail?.discountOptions[index + 1].quantity)) 
-    ) {
-      if(errorArray.includes(`increasingOrder${index}`)==false && parseInt(newvalue) >= 2){
-        let copy = [...errorArray];
-      if (errorArray.includes(`minimumQuantity${index}`)) {
-        copy.splice(copy.indexOf[`minimumQuantity${index}`], 1);
-      }
-      setErrorArray([...copy, `increasingOrder${index}`]);
-    }
-    }
-    else if( index > 0 && parseInt(newvalue) <= parseInt(data.bundleDetail?.discountOptions[index-1].quantity)){
+
+  const handleDiscountQuantity = (newvalue, index) => {
+   if (newvalue != "" && newvalue != 0){
+    
+    let update = { ...data };
+    update.bundleDetail.discountOptions[index].quantity = newvalue;
+
+    // if(parseInt(newvalue) >= 2){
+    //   let copy = [...errorArray];
+    //   if (errorArray.includes(`minimumQuantity${index}`) == true) {
+    //     let i = copy.indexOf(`minimumQuantity${index}`)
+    //     errorArray.splice(i, 1);
+    //   }
+    //   setErrorArray([...errorArray])
+    // }
+
+    // if (parseInt(newvalue) < 2){
+    //   let copy = [...errorArray];
+    //   if(errorArray.includes(`minimumQuantity${index}`)==false) {
+    //     setErrorArray([...errorArray, `minimumQuantity${index}`]);
+    //   }
+    // }else 
+    if ((data.bundleDetail?.discountOptions[index + 1] && parseInt(newvalue) >= parseInt(data.bundleDetail?.discountOptions[index + 1].quantity)) ) {
       if(errorArray.includes(`increasingOrder${index}`)==false){
-      let copy = [...errorArray];
-      if (errorArray.includes(`minimumQuantity${index}`)) {
-        copy.splice(copy.indexOf[`minimumQuantity${index}`], 1);
+        setErrorArray([...errorArray, `increasingOrder${index}`]);
       }
-      setErrorArray([...errorArray, `increasingOrder${index}`]);
-       }
+    }else if( index > 0 && parseInt(newvalue) <= parseInt(data.bundleDetail?.discountOptions[index-1].quantity)){
+      if(errorArray.includes(`increasingOrder${index}`)==false){
+        setErrorArray([...errorArray, `increasingOrder${index}`]);
+      }
+    }else if ((data.bundleDetail?.discountOptions[index + 1] && parseInt(newvalue) < parseInt(data.bundleDetail?.discountOptions[index + 1]?.quantity)) ) {
+        removeValidationHandler(newvalue,update.bundleDetail.discountOptions,index);
+    }else if(parseInt(newvalue) > parseInt(data.bundleDetail?.discountOptions[index-1]?.quantity)){
+        removeValidationHandler(newvalue,update.bundleDetail.discountOptions,index);
     }
-    else if (String(newvalue).includes(".") == false) {
-      let copy = [...errorArray];
-      if (errorArray.includes(`minimumQuantity${index}`)) {
-        copy.splice(copy.indexOf[`minimumQuantity${index}`], 1);
-      }
-  
-      if (errorArray.includes(`increasingOrder${index}`)) {
-        copy.splice(copy.indexOf[`increasingOrder${index}`], 1);
-      }
-  
-      setErrorArray(copy);
-    }
-      let update = { ...data };
-      update.bundleDetail.discountOptions[index].quantity = newvalue;
 
       if (
         !(
@@ -379,21 +375,72 @@ function getPreviewData(data){
     }
   };
 
+  const removeValidationHandler = (newvalue,update,currentIndex) => {
+    let copy = [...errorArray];
+    let duplicates = [];
+    let array = [];
+    let isAscending = false;
+
+    update.map((items,updateIndex)=>{
+      console.log("fvdghfewghdfgdghfghdsh d dhgfgdsghfvd",items.quantity);
+      array.push(Number(items.quantity));
+    })
+    array.forEach(function (value, index, array) {
+      if (array.indexOf(value, index + 1) !== -1
+          && duplicates.indexOf(value) === -1) {
+          duplicates.push(value);
+      }
+    });
+    console.log("***********dfdgfydfdfdfdg**************",array);
+    if(duplicates.length == 0 && update.length > 1){
+      for (let i = 0; i < update.length - 1; i++) { 
+        if (array[i] > array[i + 1]) { 
+          console.log("not in ascending order",array);
+          return false
+        }
+      }
+      isAscending = true;
+    }
+    console.log("iciiciiciiciiciiciciciciic",isAscending);
+    if(isAscending == true){
+      console.log("enter in delete");
+      update.map((item,updateIndex)=>{
+        if (errorArray.includes(`increasingOrder${updateIndex}`)==true) {
+          copy.splice(copy.indexOf(`increasingOrder${updateIndex}`), 1);
+        }
+        if (errorArray.includes(`increasingOrder${currentIndex}`)==true) {
+          copy.splice(copy.indexOf(`increasingOrder${currentIndex}`), 1);
+        }
+        setErrorArray([...copy]);
+      })
+    }
+  };
 
   const handleDiscountType = (value, index) => {
+    console.log("hello check the values",value);
     let update = { ...data };
     update.bundleDetail.discountOptions[index].type = value;
     setData(update);
-
+    
+    if(value == "freeShipping"){
+      update.bundleDetail.discountOptions[index].description = `Buy ${update.bundleDetail.discountOptions[index].quantity} & Get Free Shipping`;
+      setData(update); 
+    }else if(value == "noDiscount"){
+      update.bundleDetail.discountOptions[index].description = `Buy ${update.bundleDetail.discountOptions[index].quantity} items`;
+      setData(update); 
+    }else{
+      update.bundleDetail.discountOptions[index].description = `Buy ${update.bundleDetail.discountOptions[index].quantity} & Save {discount}`;
+      setData(update); 
+    }
     let newUpdate = [...endPriceData];
     newUpdate.splice(index, 1, calculateFinalPrice(index, sumData));
     setEndPriceData(newUpdate);
   };
-
+// console.log("datatatatatatatatatata------->>>",data);
   const handleDiscountValue = (newvalue, index) => {
-    if (newvalue == "" || newvalue < 0) {
+    if (newvalue == "" || newvalue < 1) {
       let update = { ...data };
-      update.bundleDetail.discountOptions[index].value = 0;
+      update.bundleDetail.discountOptions[index].value = 1;
 
       let newUpdate = [...endPriceData];
       newUpdate.splice(index, 1, calculateFinalPrice(index, sumData));
@@ -402,7 +449,7 @@ function getPreviewData(data){
       setData(update);
     } else {
       setError("");
-      if (!(data.bundleDetail.discountOptions[index].type=="percent" &&   newvalue > 100) ) {
+      if (!(data.bundleDetail.discountOptions[index].type=="percent" && newvalue > 100) ) {
         newvalue = String(newvalue);
         // if (String(newvalue).length > 1) {
         newvalue = newvalue.replace(/^0/, "");
@@ -419,11 +466,10 @@ function getPreviewData(data){
     }
   };
 
-
   const handleDiscountDescription = (e, index) => {
-    let update = { ...data };
-    update.bundleDetail.discountOptions[index].description = e.target.value;
-    setData(update);
+      let update = { ...data };
+      update.bundleDetail.discountOptions[index].description = e.target.value;
+      setData(update);
   };
 
   const handleAddDiscountOption = () => {
@@ -446,7 +492,11 @@ function getPreviewData(data){
       } & Save {discount}`,
     });
     setData(update);
-
+    // if(update?.bundleDetail?.discountOptions[update.bundleDetail.discountOptions.length-2]?.quantity < update?.bundleDetail?.discountOptions[update.bundleDetail.discountOptions.length-3]?.quantity){
+    //   console.log("return nothing");
+    // }else{ 
+      removeValidationHandler(update.bundleDetail.discountOptions[update.bundleDetail.discountOptions.length - 1].quantity,update.bundleDetail.discountOptions,update.bundleDetail.discountOptions.length - 1)
+    // }
     if (
       data.bundleDetail.products[0] ||
       data.bundleDetail.discountedProductType == "all_products"
@@ -477,12 +527,20 @@ function getPreviewData(data){
 
   const handleDeleteDiscountOption = (index) => {
     let update = { ...data };
+    let lengthOfData = update.bundleDetail.discountOptions.length;
     update.bundleDetail.discountOptions.splice(index, 1);
+    if(lengthOfData > 1){
+      removeOptionErrHandler(lengthOfData-1);
+      if(index > 0){
+        removeValidationHandler(update.bundleDetail.discountOptions[index-1].quantity,update.bundleDetail.discountOptions,index-1);
+      }else if(index == 0){
+        removeValidationHandler(update.bundleDetail.discountOptions[index+1].quantity,update.bundleDetail.discountOptions,index+1);
+      }
+    }else{
+      setErrorArray([]);
+    }
     setData(update);
-
-   setErrorArray([])
     
-
     let update2 = [...priceData];
     update2.splice(index, 1);
     setPriceData(update2);
@@ -518,7 +576,6 @@ function getPreviewData(data){
     });
   };
  
-
   const handleDisplayOptions = (e) => {
     if (e.target.checked) {
       if (
@@ -638,69 +695,50 @@ function getPreviewData(data){
     setEndPriceData(newUpdate);
   };
 
-  const handleDelete = () => {};
-
-
-  
+  // const handleDelete = () => {};
 
   const handleSave = async() => {
-
     let alertText=[]
     let flag=true;
 
-
-     if (data.bundleDetail.discountedProductType!="all_products"  && data.bundleDetail.products.length == 0) {
-      if(!errorArray.includes("emptyProduct"))
-      {
-          setErrorArray((prev)=>[...prev,"emptyProduct"])
-
-     }
-     flag=false
-    let message=   `Please add atleast one ${
-      data.bundleDetail.discountedProductType == "specific_product"
-       ? "product"
-    : "collection"
-     }`
-   alertText.push(message)
+    if ((data.bundleDetail.products.length < 1) && (data.bundleDetail.discountedProductType == "specific_product")) {
+      flag = false;
+      alertText.push(
+        "Please select product for bundle."
+      );
     }
 
+    if ((data.bundleDetail.products.length < 1) && (data.bundleDetail.discountedProductType == "collection")) {
+      flag = false;
+      alertText.push(
+        "Please select collection for bundle."
+      );
+    }
+    
     if (data.name == "") {
-     
-        if(!errorArray.includes("bundleName"))
-        {
-          setErrorArray((prev)=>[...prev,"bundleName"])
-        }
-       
-        flag=false
-        alertText.push("Please provide name of bundle")
+      flag = false;
+      alertText.push("Please provide name of bundle");
     }
 
     if (data.title == "") {
-        if(!errorArray.includes("bundleTitle")){
-               setErrorArray((prev)=>[...prev,"bundleTitle"])
-      }
-          flag=false
-          alertText .push("Please provide title of bundle")    
+      flag = false;
+      alertText.push("Please provide title of bundle");
     }
-
-    // if (data.startdate == "") {
-    //   if(!errorArray.includes("startdate")){
-    //     setErrorArray((prev)=>[...prev,"startdate"])
-    //   }
-    //     flag=false
-    //     alertText.push("Please select start date & time")
-      
-    // }
-
-    if(flag==false ){
-      alertCommon(
-          setAlert,
-          alertText,
-          "critical",
-          false
-        );
+      // if (data.startdate == "") {
+        //   if (!errorArray.includes("startdate")) {
+          //     setErrorArray((prev) => [...prev, "startdate"]);
+          //   }
+          //   flag = false;
+          //   alertText.push("Please select start date & time");
+          // }
+    if(errorArray.length != 0){
+      flag = false;
+      alertText.push("Options quantities must be in increasing order");
     }
-   if(flag==true){
+    if (flag == false) {
+      alertCommon(setAlert, alertText, "critical", false);
+    }
+    if (flag == true) {
   //   if (param.id == "create") {
   //   const response  = await postApi("/api/admin/createBundle",data,app)
   //   if(response.data.status === 200){
@@ -772,8 +810,8 @@ function getPreviewData(data){
     }
   }
 
-  }else {
-    return alertCommon(setAlert, ["Something went wrong"],"warning",false)
+  // }else {
+  //   return alertCommon(setAlert, ["Somethingddede went wrong"],"warning",false)
   }
   
 }
@@ -916,7 +954,7 @@ function getPreviewData(data){
                   className="sd-bundle-volume-discount-option-topbar"
                   style={{ display: "flex", justifyContent: "space-between" }}
                 >
-                  <p>option{index + 1}</p>
+                  <p>Option {index + 1}</p>
                   {data.bundleDetail.discountOptions.length > 1 && (
                     <Button
                       danger
@@ -939,11 +977,11 @@ function getPreviewData(data){
                         }
                         value={item.quantity}
                         autoComplete="off"
-                        // min={2}
+                        min={1}
                       />
-                      {errorArray.includes(`minimumQuantity${index}`) && (
+                      {/* {errorArray.includes(`minimumQuantity${index}`) && (
                         <InlineError message="Minimum quantity must be 2 " />
-                      )}
+                      )} */}
                       {errorArray.includes(`increasingOrder${index}`) && (
                         <InlineError message="Options quantities must be in increasing order " />
                       )}
@@ -967,14 +1005,14 @@ function getPreviewData(data){
                             value: "percent",
                             label: "Percentage Discount",
                           },
-                          {
-                            value: "price",
-                            label: "Set Price",
-                          },
                           // {
-                          //   value: "freeShipping",
-                          //   label: "Free Shipping",
+                          //   value: "price",
+                          //   label: "Set Price",
                           // },
+                          {
+                            value: "freeShipping",
+                            label: "Free Shipping",
+                          },
                           {
                             value: "noDiscount",
                             label: "No Discount",
@@ -983,23 +1021,25 @@ function getPreviewData(data){
                       />
                     </div>
                   </Col>
-                  <Col className="gutter-row" span={8}>
-                    <div>
-                      <p>Discount value</p>
-                      <TextField
-                        type="number"
-                        // label="Minimum order"
-                        // placeholder="set minimum order  for item"
-                        onChange={(newvalue) =>
-                          handleDiscountValue(newvalue, index)
-                        }
-                        value={item.value}
-                        autoComplete="off"
-                        min="0"
-                      />
-                      
-                    </div>
-                  </Col>
+                  {(data.bundleDetail.discountOptions[index].type === "percent" || data.bundleDetail.discountOptions[index].type === "fixed") &&
+                    <Col className="gutter-row" span={8}>
+                      <div>
+                        <p>Discount value</p>
+                        <TextField
+                          type="number"
+                          // label="Minimum order"
+                          // placeholder="set minimum order  for item"
+                          onChange={(newvalue) =>
+                            handleDiscountValue(newvalue, index)
+                          }
+                          value={item.value}
+                          autoComplete="off"
+                          min={1}
+                        />
+                        
+                      </div>
+                    </Col>
+                  }
                 </Row>
                 <br />
                 <p>Description</p>
@@ -1008,9 +1048,11 @@ function getPreviewData(data){
                   value={item.description}
                   onChange={(e) => handleDiscountDescription(e, index)}
                 />
-                <span className="sd-bundle-Disclaimer-common">
-                  Use discount to show the discount value
-                </span>
+                {(data.bundleDetail?.discountOptions[index]?.type =="fixed" || data.bundleDetail?.discountOptions[index]?.type =="percent") &&
+                  <span className="sd-bundle-Disclaimer-common">
+                    Use discount to show the discount value
+                  </span>
+                }
                 <br />
 
                 {/* {data.bundleDetail.discountOptions.length == index + 1 && (
@@ -1035,7 +1077,11 @@ function getPreviewData(data){
               Add Another Option
             </Button>
           </div>
-          <BundleNameTitle data={data} setData={setData} errorArray={errorArray} />
+          <General 
+              data={data}
+              setData={setData}
+              errorArray={errorArray}
+            />
           {/* <DateTime data={data} setData={setData} errorArray={errorArray} /> */}
           <DeleteSave  handleSave={handleSave} />
         </div>

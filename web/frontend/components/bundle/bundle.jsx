@@ -9,7 +9,7 @@ import {
   Space,
   Switch,
   Skeleton,
-  Spin 
+  Spin
 
 } from "antd";
 import {
@@ -18,7 +18,8 @@ import {
   TagsOutlined,
   PercentageOutlined,
   DownOutlined,
-  EllipsisOutlined
+  EllipsisOutlined,
+  // GiftOutlined 
 } from "@ant-design/icons";
 import { useNavigate } from "@shopify/app-bridge-react";
 import { useAppBridge } from "@shopify/app-bridge-react";
@@ -26,8 +27,12 @@ import { useAPI } from "../shop";
 import postApi from "../postApi";
 import {  Thumbnail } from "@shopify/polaris";
 import toastNotification from "../commonSections/Toast";
-
+// import { Icon } from "@shopify/polaris";
+// import {
+//   AlertCircleIcon
+// } from '@shopify/polaris-icons';
 import "./bundle.css";
+// import {Tooltip } from '@shopify/polaris';
 import allProductsImg from "../../assets/all_products.png"
 import noProductImg from "../../assets/NoProductImage.png"
 import LogoHeader from "../logoHeader";
@@ -42,6 +47,7 @@ const CreateBundle = () => {
   const [activeTabKey2, setActiveTabKey2] = useState("all");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loader, setLoader] = useState(false);
+  // const [showAction, setShowAction] = useState(false);
   const [actionId, setActionId] = useState([]);
   const [switchIndex,setSwitchIndex] = useState('')
   const [switchLoading,setSwitchLoading] = useState(false)
@@ -119,14 +125,19 @@ const CreateBundle = () => {
       navigate(`/ProductBundle/${id}`);
     } else if (type == "volumeBundle") {
       navigate(`/VolumeBundle/${id}`);
-    } else {
+    // } else if(type == "bxgy"){
+    //   navigate(`/buyxgety/${id}`);
+    // }else if(type==='fbt'){
+    //   navigate(`/FrequentlyBoughtTogether/${id}`);
+    } else if(type == "productMixMatch"){
+      navigate(`/ProductMixMatch/${id}`);
+    } else{
       navigate(`/CollectionMixMatch/${id}`);
     }
   };
 
   async function handleActionDelete() {
     setSwitchLoading(true)
-
     if (actionId.length) {
       let data = {
         id: actionId,
@@ -135,7 +146,7 @@ const CreateBundle = () => {
       if (response.data.status == 200) {
         return (
           toastNotification("success", "Successfully deleted !", "bottom"),
-    setSwitchLoading(false),
+          setSwitchLoading(false),
           await getBundle(),
           setActionId([])
         );
@@ -262,10 +273,10 @@ return check;
       title: "Type",
       dataIndex: "type",
     },
-    // {
-    //   title: "Performance",
-    //   dataIndex: "performance",
-    // },
+    {
+      title: "Performance",
+      dataIndex: "performance",
+    },
   ];
 
   let mainData = [];
@@ -288,7 +299,8 @@ return check;
    size="small"
    alt="products thumbnails"
  />: null)}
-        {item.bundleDetail.products.slice(0,3).map((ele,index) => {
+        {item.type == "bxgy" ?
+        item.bundleDetail?.xproducts?.slice(0,3).map((ele,index) => {
           return (
             <div key={index} className="sd-bundle-dashboard-img">
               {/* <img src={ele?.images ? ele.images[0].originalSrc : ele?.image ? ele.image.originalSrc:""} alt="" /> */}
@@ -306,9 +318,29 @@ return check;
              
             </div>
           );
-        })}
+        })
+       : item.bundleDetail?.products?.slice(0,3).map((ele,index) => {
+        return (
+          <div key={index} className="sd-bundle-dashboard-img">
+            {/* <img src={ele?.images ? ele.images[0].originalSrc : ele?.image ? ele.image.originalSrc:""} alt="" /> */}
+            <Thumbnail
+              source={
+                ele.images
+                  ? ele?.images[0]?.originalSrc !== "" ? ele?.images[0]?.originalSrc : noProductImg
+                  : ele?.image 
+                  ? ele?.image?.originalSrc !== "" ? ele?.image?.originalSrc : noProductImg 
+                  : noProductImg
+              }
+              size="small"
+              alt="products thumbnails"
+            />
+           
+          </div>
+        );
+      })}
+      
           {
-    item.bundleDetail.products.length > 3 ? <div className="sd-bundle-more-item"><EllipsisOutlined /></div> : null
+    item.bundleDetail.products?.length > 3 ? <div className="sd-bundle-more-item"><EllipsisOutlined /></div> : null
    }
       </div>
     ),
@@ -319,12 +351,30 @@ return check;
         }}
       >
         {item.name}
-    
+        {/* {item.type == "productBundle" || (item.type == "volumeBundle" && item.bundleDetail.discountedProductType == "specific_product") ?
+       
+        showOutOfStockError(item)  && (
+
+
+          <Tooltip  preferredPosition="mostSpace" content="This bundled product is out of stock">
+          <Icon
+                source={CircleAlertMajor}
+                color="red"
+              />
+        </Tooltip>
+         
+            
+      
+       )
+   
+
+
+        :""} */}
       </span>
       
     ),
     
-   
+    // discount:item.type == "productBundle" ? item.bundleDetail.discountType == "percent" : `${item.bundleDetail.discountValue}% off` : item.bundleDetail.discountType == "fixed" ? `${item.bundleDetail.discountValue}% off` ,
     discount:
       item.type == "productBundle"
         ? item.bundleDetail.discountType == "percent"
@@ -340,6 +390,8 @@ return check;
           : null
         : item.type == "volumeBundle"
         ? `${item.bundleDetail.discountOptions.length} Options`
+        : item.type == "productMixMatch"
+        ? `${item.bundleDetail.discountOptions.length} Options`
         : item.type == "collectionMixMatch"
         ? item.bundleDetail.discountType == "percent"
           ? `${item.bundleDetail.discountValue}% off`
@@ -352,6 +404,18 @@ return check;
           : item.bundleDetail.discountType == "noDiscount"
           ? "No Discount"
           : null
+        : item.type == "fbt"
+        ? item.bundleDetail.discountType == "percent"
+          ? `${item.bundleDetail.discountValue}% off`
+          : item.bundleDetail.discountType == "fixed"
+          ? `Rs.${item.bundleDetail.discountValue} off`
+          : item.bundleDetail.discountType == "price"
+          ? `Fixed Rs.${item.bundleDetail.discountValue} `
+          : item.bundleDetail.discountType == "freeShipping"
+          ? "Free Shipping"
+          : item.bundleDetail.discountType == "noDiscount"
+          ? "No Discount"
+          :null
         : null,
     status: (
       <div>
@@ -378,8 +442,9 @@ return check;
     // />
     // </div>,
 
-    type: item.type == "productBundle" ? "Product Bundle" : item.type == "volumeBundle" ? "Volume Bundle" : item.type == "collectionMixMatch" ? "Collection Mix & Match" : "",
-    // performance: item.analytics.bundleSold+" " +"Sold" ,
+    // type: item.type == "productBundle" ? "Product Bundle" : item.type == "volumeBundle" ? "Volume Bundle" : item.type == "collectionMixMatch" ? "Collection Mix & Match" : "",
+    type: item.type == "productBundle" ? "Product Bundle" : item.type == "volumeBundle" ? "Volume Bundle" : item.type == "collectionMixMatch" ? "Collection Mix & Match" :item.type == "productMixMatch" ? "Product Mix & Match" :item.type == "fbt"? "Frequently Baught Together" :"",
+    performance: item.analytics.bundleSold+" " +"Sold" ,
   }));
 
   let activeDashboard = dashboardData.filter((e) => e.status == "active");
@@ -403,27 +468,48 @@ return check;
    size="small"
    alt="products thumbnails"
  />: null)}
-        {item.bundleDetail.products.slice(0,3).map((ele,index) => {
+        { item.type == "bxgy" ?
+        item.bundleDetail?.xproducts?.slice(0,3).map((ele,index) => {
           return (
             <div key={index} className="sd-bundle-dashboard-img">
               {/* <img src={ele?.images ? ele.images[0].originalSrc : ele?.image ? ele.image.originalSrc:""} alt="" /> */}
               <Thumbnail
-               source={
-                ele.images
-                  ? ele?.images[0]?.originalSrc !== "" ? ele.images[0]?.originalSrc : noProductImg
-                  : ele?.image 
-                  ? ele?.image?.originalSrc !== "" ? ele.image?.originalSrc : noProductImg 
-                  : noProductImg
-              }
+                source={
+                  ele.images
+                    ? ele?.images[0]?.originalSrc !== "" ? ele?.images[0]?.originalSrc : noProductImg
+                    : ele?.image 
+                    ? ele?.image?.originalSrc !== "" ? ele?.image?.originalSrc : noProductImg 
+                    : noProductImg
+                }
                 size="small"
                 alt="products thumbnails"
               />
              
             </div>
           );
-        })}
+        }) 
+       : item.bundleDetail?.products?.slice(0,3).map((ele,index) => {
+        {/* {console.log('check home items:*******',item)} */}
+        return (
+          <div key={index} className="sd-bundle-dashboard-img">
+            {/* <img src={ele?.images ? ele.images[0].originalSrc : ele?.image ? ele.image.originalSrc:""} alt="" /> */}
+            <Thumbnail
+              source={
+                ele.images
+                  ? ele?.images[0]?.originalSrc !== "" ? ele?.images[0]?.originalSrc : noProductImg
+                  : ele?.image 
+                  ? ele?.image?.originalSrc !== "" ? ele?.image?.originalSrc : noProductImg 
+                  : noProductImg
+              }
+              size="small"
+              alt="products thumbnails"
+            />
+           
+          </div>
+        );
+      })}
           {
-    item.bundleDetail.products.length > 3 ? <div className="sd-bundle-more-item"><EllipsisOutlined /></div> : null
+    item.bundleDetail.products?.length > 3 ? <div className="sd-bundle-more-item"><EllipsisOutlined /></div> : null
    }
       </div>
     ),
@@ -470,6 +556,8 @@ return check;
       : null
     : item.type == "volumeBundle"
     ? `${item.bundleDetail.discountOptions.length} Options`
+    : item.type == "productMixMatch"
+    ? `${item.bundleDetail.discountOptions.length} Options`
     : item.type == "collectionMixMatch"
     ? item.bundleDetail.discountType == "percent"
       ? `${item.bundleDetail.discountValue}% off`
@@ -482,6 +570,18 @@ return check;
       : item.bundleDetail.discountType == "noDiscount"
       ? "No Discount"
       : null
+    : item.type == "fbt"
+    ? item.bundleDetail.discountType == "percent"
+      ? `${item.bundleDetail.discountValue}% off`
+      : item.bundleDetail.discountType == "fixed"
+      ? `Rs.${item.bundleDetail.discountValue} off`
+      : item.bundleDetail.discountType == "price"
+      ? `Fixed Rs.${item.bundleDetail.discountValue} `
+      : item.bundleDetail.discountType == "freeShipping"
+      ? "Free Shipping"
+      : item.bundleDetail.discountType == "noDiscount"
+      ? "No Discount"
+      :null
     : null,
     status: (
       <div>
@@ -492,8 +592,8 @@ return check;
         />
       </div>
     ),
-    type: item.type == "productBundle" ? "Product Bundle" : item.type == "volumeBundle" ? "Volume Bundle" : item.type == "collectionMixMatch" ? "Collection Mix & Match" : "",
-    // performance: item.analytics.bundleSold +" "+ "Sold",
+    type: item.type == "productBundle" ? "Product Bundle" : item.type == "volumeBundle" ? "Volume Bundle" : item.type == "collectionMixMatch" ? "Collection Mix & Match" :item.type == "productMixMatch" ? "Product Mix & Match" : item.type == "fbt"? "Frequently Baught Together" :"",
+    performance: item.analytics.bundleSold +" "+ "Sold",
   }));
 
   let draftDashboard = dashboardData.filter((e) => e.status == "draft");
@@ -517,16 +617,17 @@ return check;
    size="small"
    alt="products thumbnails"
  />: null)}
-        {item.bundleDetail.products.slice(0,3).map((ele,index) => {
+         {item.type == "bxgy" ?
+        item.bundleDetail?.xproducts?.slice(0,3).map((ele,index) => {
           return (
             <div key={index} className="sd-bundle-dashboard-img">
               {/* <img src={ele?.images ? ele.images[0].originalSrc : ele?.image ? ele.image.originalSrc:""} alt="" /> */}
               <Thumbnail
-                 source={
+                source={
                   ele.images
-                    ? ele?.images[0]?.originalSrc !== "" ? ele.images[0]?.originalSrc : noProductImg
+                    ? ele?.images[0]?.originalSrc !== "" ? ele?.images[0]?.originalSrc : noProductImg
                     : ele?.image 
-                    ? ele?.image?.originalSrc !== "" ? ele.image?.originalSrc : noProductImg 
+                    ? ele?.image?.originalSrc !== "" ? ele?.image?.originalSrc : noProductImg 
                     : noProductImg
                 }
                 size="small"
@@ -535,9 +636,28 @@ return check;
              
             </div>
           );
-        })}
+        })
+       : item.bundleDetail?.products?.slice(0,3).map((ele,index) => {
+        return (
+          <div key={index} className="sd-bundle-dashboard-img">
+            {/* <img src={ele?.images ? ele.images[0].originalSrc : ele?.image ? ele.image.originalSrc:""} alt="" /> */}
+            <Thumbnail
+              source={
+                ele.images
+                  ? ele?.images[0]?.originalSrc !== "" ? ele?.images[0]?.originalSrc : noProductImg
+                  : ele?.image 
+                  ? ele?.image?.originalSrc !== "" ? ele?.image?.originalSrc : noProductImg 
+                  : noProductImg
+              }
+              size="small"
+              alt="products thumbnails"
+            />
+           
+          </div>
+        );
+      })}
           {
-    (item.bundleDetail.products.length > 3 ? <div className="sd-bundle-more-item"><EllipsisOutlined /></div> : null)
+    (item.bundleDetail.products?.length > 3 ? <div className="sd-bundle-more-item"><EllipsisOutlined /></div> : null)
      
     
    }
@@ -585,6 +705,8 @@ return check;
       : null
     : item.type == "volumeBundle"
     ? `${item.bundleDetail.discountOptions.length} Options`
+    : item.type == "productMixMatch"
+    ? `${item.bundleDetail.discountOptions.length} Options`
     : item.type == "collectionMixMatch"
     ? item.bundleDetail.discountType == "percent"
       ? `${item.bundleDetail.discountValue}% off`
@@ -607,8 +729,8 @@ return check;
         />
       </div>
     ),
-    type: item.type == "productBundle" ? "Product Bundle" : item.type == "volumeBundle" ? "Volume Bundle" : item.type == "collectionMixMatch" ? "Collection Mix & Match" : "",
-    // performance: item.analytics.bundleSold +" "+ "Sold",
+    type: item.type == "productBundle" ? "Product Bundle" : item.type == "volumeBundle" ? "Volume Bundle" :item.type == "productMixMatch" ? "Product Mix & Match" : item.type == "collectionMixMatch" ? "Collection Mix & Match" : "",
+    performance: item.analytics.bundleSold +" "+ "Sold",
   }));
 
   function SearchBox() {
@@ -661,6 +783,7 @@ return check;
         <div>
         <Skeleton style={{marginTop:"1rem"}} loading={loader}   paragraph={{rows:5,width:"100%"}} title={{width:"100%"}}>
 
+
           <Table
           
             
@@ -680,7 +803,8 @@ return check;
             }}
           />
               </Skeleton>
-             
+              {/* <Skeleton style={{marginTop:"1rem"}} loading={loader} active  paragraph={{rows:5,width:"100%"}} title={{width:"100%"}}> </Skeleton>
+              <Skeleton style={{marginTop:"1rem"}} loading={loader} active  paragraph={{rows:3,width:"100%"}} title={{width:"100%"}}> </Skeleton> */}
         </div>
       </div>
     ),
@@ -690,6 +814,7 @@ return check;
 
         <div>
         <Skeleton style={{marginTop:"1rem"}} loading={loader}   paragraph={{rows:5,width:"100%"}} title={{width:"100%"}}>
+
           <Table
            
             rowSelection={{
@@ -706,7 +831,8 @@ return check;
             }}
           />
            </Skeleton>
-       
+           {/* <Skeleton style={{marginTop:"1rem"}} loading={loader} active  paragraph={{rows:5,width:"100%"}} title={{width:"100%"}}> </Skeleton>
+              <Skeleton style={{marginTop:"1rem"}} loading={loader} active  paragraph={{rows:3,width:"100%"}} title={{width:"100%"}}> </Skeleton> */}
         </div>
       </div>
     ),
@@ -716,6 +842,7 @@ return check;
 
         <div>
         <Skeleton style={{marginTop:"1rem"}} loading={loader}   paragraph={{rows:5,width:"100%"}} title={{width:"100%"}}>
+
           <Table
          
             rowSelection={{
@@ -732,6 +859,8 @@ return check;
             }}
           />
               </Skeleton>
+           {/* <Skeleton style={{marginTop:"1rem"}} loading={loader} active  paragraph={{rows:5,width:"100%"}} title={{width:"100%"}}> </Skeleton>
+              <Skeleton style={{marginTop:"1rem"}} loading={loader} active  paragraph={{rows:3,width:"100%"}} title={{width:"100%"}}> </Skeleton> */}
         </div>
       </div>
     ),
@@ -747,7 +876,7 @@ return check;
   return (
     <>
     <LogoHeader/>
-    <div className="sd-bundle-dashboard-container sd-margin-top">
+    <div className="sd-bundle-dashboard-container  sd-margin-top">
       <div className="sd-bundle-dashboard-fixed-header">
         <div className="sd-bundle-dashboard-heading">Bundles</div>
         <div>
@@ -762,7 +891,7 @@ return check;
       > */}
 
       <div className="sd-bundle-card-data-box">
-        <Spin className="sd-hideSpinner" spinning={switchLoading} >
+      <Spin className="sd-hideSpinner" spinning={switchLoading} >
         <Card
           className="sd-bundle-dashboard-tab-box"
           tabList={tabListNoTitle}
@@ -818,11 +947,8 @@ return check;
                 <UnorderedListOutlined />
               </p>
               <p>
-                Offer a discount when a customer buys some fixed products
-                together. (Combo product option is available)
+              Highlight special product combinations with an exclusive discount.
               </p>
-              <br />
-              <p>Example: Buy x + y to get 20% off.</p>
             </Card>
           </div>
           <div
@@ -839,11 +965,9 @@ return check;
                 <PercentageOutlined />
               </p>
               <p>
-                Offer a discount when a customer buys several instances of the
-                same product.
+              Offer a discount when purchasing multiple units of a product.
               </p>
-              <br />
-              <p>Example: BOGO, Buy 3 items of X to get 20% off.</p>
+             
             </Card>
           </div>
           <div
@@ -860,15 +984,74 @@ return check;
                 <TagsOutlined />
               </p>
               <p>
-                Offer a discount when a customer buys specified numbers of
-                products from specified collections.
+              Empower your customers to create personalized bundles by mixing and matching items from different collections.
               </p>
-              <br />
-              <p>
-                Example: Buy 4 items from collection X and 2 from collection Y
-                to get $30 off.
-              </p>
+            
             </Card>
+            
+          </div>
+          <div
+            className="sd-bundle-choose-collectionMixAndMatch"
+            onClick={() => navigate("/buyXgetY/create")}
+          >
+            {/* <Card
+              title="Buy X get Y"
+              style={{
+                width: 300,
+              }}
+            >
+              <p className="sd-bundle-collectionMix-Icon">
+              <GiftOutlined />
+              </p>
+              <p>
+              Provide complimentary gifts or discounted items with specific purchases.
+              </p>
+             
+             
+            </Card> */}
+            
+          </div>
+          <div
+            className="sd-bundle-choose-collectionMixAndMatch"
+            onClick={() => navigate("/productMixMatch/create")}
+          >
+            <Card
+              title="Product mix & match"
+              style={{
+                width: 300,
+              }}
+            >
+              <p className="sd-bundle-collectionMix-Icon">
+                <TagsOutlined />
+              </p>
+              <p>
+              Allow your customers to create their own bundle from a selection of products.
+              </p>
+             
+            </Card>
+            
+          </div>
+          <div
+            className="sd-bundle-choose-collectionMixAndMatch"
+            onClick={() => navigate("/FrequentlyBoughtTogether/create")}
+            // onClick={() => navigate("/collectionMixMatch/create")}
+            
+          >
+            {/* <Card
+              title="Frequently bought together"
+              style={{
+                width: 300,
+              }}
+            >
+              <p className="sd-bundle-collectionMix-Icon">
+                <TagsOutlined />
+              </p>
+              <p>
+              Encourage the purchase of frequently paired products with a special discount.
+              </p>
+              
+            </Card> */}
+            
           </div>
         </div>
       </Modal>

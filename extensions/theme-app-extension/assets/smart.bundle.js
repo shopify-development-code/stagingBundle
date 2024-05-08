@@ -1,25 +1,42 @@
-let server = "https://bundlesgroup.com";
-// let server = 'https://mechanics-ago-contacted-nintendo.trycloudflare.com'
-let smartNoImg = `data:image/png;base64,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`;
-console.log("Smart Bundle Discount app new version ---v2.1");
-let productPageClass = document.getElementsByClassName("sd-bundle-app");
+// let server = "https://bundlesgroup.com";
 
+console.log("Smart Bundle Discount app neeeeeeeeew version ---v2.0999");
+let server = "https://intelligent-journals-bind-ira.trycloudflare.com"
+let smartNoImg = `data:image/png;base64,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`;
+let productPageClass = document.getElementsByClassName("sd-bundle-app");
 if (sdbundlePageType == "product") {
   if (productPageClass.length) {
+    console.log("check if");
     let sdBundleLoader = document.createElement("div");
     sdBundleLoader.id = "sd-bundle-main-container-loader";
     sdBundleLoader.className = "sd-bundle-main-container-loader";
-
-  Array.from({length: 3}).forEach((ele, index) => {
-    let loaderBall = document.createElement("div");
-    loaderBall.className = "LoaderBalls__item";
-    sdBundleLoader.appendChild(loaderBall);
-});
-
+    let Gdiv = document.createElement("div");
+    Gdiv.innerText = "G";
+    sdBundleLoader.appendChild(Gdiv);
+    let Ndiv = document.createElement("div");
+    Ndiv.innerText = "N";
+    sdBundleLoader.appendChild(Ndiv);
+    let Idiv = document.createElement("div");
+    Idiv.innerText = "I";
+    sdBundleLoader.appendChild(Idiv);
+    let Ddiv = document.createElement("div");
+    Ddiv.innerText = "D";
+    sdBundleLoader.appendChild(Ddiv);
+    let Adiv = document.createElement("div");
+    Adiv.innerText = "A";
+    sdBundleLoader.appendChild(Adiv);
+    let Odiv = document.createElement("div");
+    Odiv.innerText = "O";
+    sdBundleLoader.appendChild(Odiv);
+    let Ldiv = document.createElement("div");
+    Ldiv.innerText = "L";
+    sdBundleLoader.appendChild(Ldiv);
 
     productPageClass[0].append(sdBundleLoader);
 
-    
+    document.getElementById("sd-bundle-main-container-loader").style.display =
+      "block";
+
     getData();
   } else {
     console.log("SMART BUNDLE BLOCK is not enabled");
@@ -65,13 +82,19 @@ async function getData() {
           }
         } else if (el.type == "collectionMixMatch") {
           dataArray.push(el);
+        } else if(el.type == "productMixMatch") {
+          dataArray.push(el);
+        } else if(el.type == "fbt") {
+          dataArray.push(el);
+        } else if(el.type == "bxgy") {
+          dataArray.push(el)
         }
       });
 
       if (dataArray.length) {
         createDiscountName(dataArray);
       }
-
+      console.log("hello check the update ----->>>>",dataArray);
       createBundle(dataArray);
       let bundleId = [];
       dataArray.forEach((id) => {
@@ -167,6 +190,7 @@ const gidArray = [];
 let volumeBundleArr = [];
 let volumeBundleSum = [];
 function createBundle(BUNDLE_DATA) {
+  console.log("check foreach working=======**********",BUNDLE_DATA)
   // let bundleMainDiv = `<div id="sd-bundle-main-container" class="sd-bundle-main-container"></div>`;
   let bundleMainDiv = document.createElement("div");
   bundleMainDiv.className = "sd-bundle-main-container";
@@ -179,30 +203,28 @@ function createBundle(BUNDLE_DATA) {
     bundleData.push([]);
     bundleSum.push([]);
     gidArray.push([]);
-
     if (el.type == "productBundle") {
-      //--------------------------------------------------------------------------Product Bundle----------------------------------------------------------------------------
-      // let StoreCurrentTime = new Date().toISOString("en-US", {
-      //   timeZone: el.startdate,
-      // });
-      // let checkDate = el.endDate == "" ? true : sdCurrentDateTime <= el.endDate;
+      let StoreCurrentTime = new Date().toISOString("en-US", {
+        timeZone: el.startdate,
+      });
+      let checkDate = el.endDate == "" ? true : sdCurrentDateTime <= el.endDate;
 
       // if (sdCurrentDateTime >= el.startdate && checkDate) {
         let BUNDLE_DIV = document.createElement("div");
         BUNDLE_DIV.className = "sd-bundle-product-container";
         BUNDLE_DIV.classList.add("sd-bundleProduct" + bundleIndex);
-        BUNDLE_DIV.style.borderColor = el.customization.bundle.box.borderColor;
-        BUNDLE_DIV.style.borderRadius = `${el.customization.bundle.box.borderRadius}px`;
+        BUNDLE_DIV.style.borderColor = el.customization?.bundle.box.borderColor;
+        BUNDLE_DIV.style.borderRadius = `${el.customization?.bundle.box.borderRadius}px`;
         BUNDLE_DIV.style.background =
-          el.customization.bundle.box.backgroundColor;
+          el.customization?.bundle.box.backgroundColor;
         let BUNDLE_TITLE = document.createElement("div");
-        BUNDLE_TITLE.style.textAlign = el.customization.bundle.title.alignment;
+        BUNDLE_TITLE.style.textAlign = el.customization?.bundle.title.alignment;
 
         let bundleTitleText = document.createElement("h2");
         bundleTitleText.className = "sd-bundle-product-title";
         bundleTitleText.innerText = el.title;
-        bundleTitleText.style.color = el.customization.bundle.title.color;
-        bundleTitleText.style.fontSize = `${el.customization.bundle.title.fontSize}px`;
+        bundleTitleText.style.color = el.customization?.bundle.title.color;
+        bundleTitleText.style.fontSize = `${el.customization?.bundle.title.fontSize}px`;
 
         BUNDLE_TITLE.append(bundleTitleText);
         mainDiv.append(BUNDLE_DIV);
@@ -226,8 +248,8 @@ function createBundle(BUNDLE_DATA) {
           DATA_SECTION_IMG.className = "sd-bundle-data-section-image";
           DATA_SECTION_IMG.style.border =
             "1px solid" +
-            el.customization.bundle.productDetails.image.borderColor;
-          DATA_SECTION_IMG.style.borderRadius = `${el.customization.bundle.productDetails.image.borderRadius}px`;
+            el.customization?.bundle.productDetails.image.borderColor;
+          DATA_SECTION_IMG.style.borderRadius = `${el.customization?.bundle.productDetails.image.borderRadius}px`;
           let bundleProductImg = ele.images[0]?.originalSrc ?? smartNoImg;
           DATA_SECTION_IMG.setAttribute("src", bundleProductImg);
           DATA_SECTION_IMAGE_DIV.append(DATA_SECTION_IMG);
@@ -237,14 +259,14 @@ function createBundle(BUNDLE_DATA) {
           let DATA_SECTION_TITLE = document.createElement("div");
           DATA_SECTION_TITLE.className = "sd-bundle-product-variant-title";
           DATA_SECTION_TITLE.style.color =
-            el.customization.bundle.productDetails.title.color;
-          DATA_SECTION_TITLE.style.fontSize = `${el.customization.bundle.productDetails.title.fontSize}px`;
+            el.customization?.bundle.productDetails.title.color;
+          DATA_SECTION_TITLE.style.fontSize = `${el.customization?.bundle.productDetails.title.fontSize}px`;
 
           DATA_SECTION_TITLE.innerText = ele.title;
           let DATA_SECTION_PRICE = document.createElement("div");
           DATA_SECTION_PRICE.style.color =
-            el.customization.bundle.productDetails.price.color;
-          DATA_SECTION_PRICE.style.fontSize = `${el.customization.bundle.productDetails.price.fontSize}px`;
+            el.customization?.bundle.productDetails.price.color;
+          DATA_SECTION_PRICE.style.fontSize = `${el.customization?.bundle.productDetails.price.fontSize}px`;
           DATA_SECTION_PRICE.className = "sd-bundle-datasection-price";
           DATA_SECTION_PRICE.id = `sd-bundle-datasection-price${index}${bundleIndex}`;
           // console.log( ele.variants[0].price)
@@ -271,9 +293,9 @@ function createBundle(BUNDLE_DATA) {
           DATA_SECTION_QUANTITY.className =
             "sd-bundle.product-variant-quantity";
           DATA_SECTION_QUANTITY.style.color =
-            el.customization.bundle.productDetails.quantities.color;
+            el.customization?.bundle.productDetails.quantities.color;
           DATA_SECTION_QUANTITY.style.backgroundColor =
-            el.customization.bundle.productDetails.quantities.backgroundColor;
+            el.customization?.bundle.productDetails.quantities.backgroundColor;
           DATA_SECTION_QUANTITY.innerText = `${ele.minimumOrder}X`;
           DATA_SECTION_QUANTITY_DIV.append(DATA_SECTION_QUANTITY);
           BUNDLE_DATA_SECTION_DIV.append(
@@ -318,9 +340,9 @@ function createBundle(BUNDLE_DATA) {
               selectRow.append(b_p_index);
               BUNDLE_SELECT = document.createElement("select");
               BUNDLE_SELECT.style.color =
-                el.customization.bundle.productDetails.variantSelector.color;
+                el.customization?.bundle.productDetails.variantSelector.color;
               BUNDLE_SELECT.style.background =
-                el.customization.bundle.productDetails.variantSelector.backgroundColor;
+                el.customization?.bundle.productDetails.variantSelector.backgroundColor;
 
               BUNDLE_SELECT.id = `sd-bundle-select-option${i}${bundleIndex}${index}`;
               BUNDLE_SELECT.className = "sd-bundle-select-option";
@@ -459,12 +481,12 @@ function createBundle(BUNDLE_DATA) {
             let BUNDLE_PLUS_BTN_DIV = document.createElement("div");
             BUNDLE_PLUS_BTN_DIV.className = "sd-bundle-plusBtn-box";
             BUNDLE_PLUS_BTN_DIV.style.background =
-              el.customization.bundle.productDetails.plusBackgroundColor;
+              el.customization?.bundle.productDetails.plusBackgroundColor;
             let BUNDLE_PLUS_SPAN_SVG = document.createElement("span");
             BUNDLE_PLUS_SPAN_SVG.className = "sd-bundle-plus";
             BUNDLE_PLUS_SPAN_SVG.innerHTML = `<svg viewBox="64 64 896 896" focusable="false" data-icon="plus" width="1em" height="1em" fill="currentColor" aria-hidden="true"><defs><style></style></defs><path d="M482 152h60q8 0 8 8v704q0 8-8 8h-60q-8 0-8-8V160q0-8 8-8z"></path><path d="M176 474h672q8 0 8 8v60q0 8-8 8H176q-8 0-8-8v-60q0-8 8-8z"></path></svg>`;
             BUNDLE_PLUS_SPAN_SVG.style.color =
-              el.customization.bundle.productDetails.plusColor;
+              el.customization?.bundle.productDetails.plusColor;
             BUNDLE_PLUS_BTN_DIV.append(BUNDLE_PLUS_SPAN_SVG);
             BUNDLE_PRODUCT_DIV.append(BUNDLE_PLUS_BTN_DIV);
           } else {
@@ -525,10 +547,10 @@ function createBundle(BUNDLE_DATA) {
         let TOTAL_DIV = document.createElement("div");
         TOTAL_DIV.className = "sd-bundle-total-conatiner";
         TOTAL_DIV.style.backgroundColor =
-          el.customization.bundle.totalSection.backgroundColor;
-        TOTAL_DIV.style.color = el.customization.bundle.totalSection.color;
+          el.customization?.bundle.totalSection.backgroundColor;
+        TOTAL_DIV.style.color = el.customization?.bundle.totalSection.color;
         TOTAL_DIV.style.fontSize =
-          el.customization.bundle.totalSection.fontSize + "px";
+          el.customization?.bundle.totalSection.fontSize + "px";
         let total_text = document.createElement("div");
         total_text.className = "sd-bundle-totalText-box";
         total_text.innerText = el.translations.translation.total;
@@ -540,9 +562,9 @@ function createBundle(BUNDLE_DATA) {
         discountPrice.className = "sd-bundle-discount-price";
         discountPrice.id = `sd-bundle-discount-price${bundleIndex}`;
         discountPrice.style.color =
-          el.customization.bundle.totalSection.originalPrice.color;
+          el.customization?.bundle.totalSection.originalPrice.color;
         discountPrice.style.fontSize =
-          el.customization.bundle.totalSection.originalPrice.fontSize + "px";
+          el.customization?.bundle.totalSection.originalPrice.fontSize + "px";
         // let newDiscountPrice = sdCurrencySymbolCode.replace(
         //   "{{amount}}",
         //   total.toFixed(2)
@@ -559,9 +581,9 @@ function createBundle(BUNDLE_DATA) {
           finalPrice.className = "sd-bundle-final-price";
           finalPrice.id = "sd-bundle-final-price" + bundleIndex;
           finalPrice.style.color =
-            el.customization.bundle.totalSection.finalPrice.color;
+            el.customization?.bundle.totalSection.finalPrice.color;
           finalPrice.style.fontSize =
-            el.customization.bundle.totalSection.finalPrice.fontSize + "px";
+            el.customization?.bundle.totalSection.finalPrice.fontSize + "px";
 
           // let newfinalPricePrice = sdCurrencySymbolCode.replace(
           //   "{{amount}}",
@@ -578,9 +600,9 @@ function createBundle(BUNDLE_DATA) {
           finalPrice.className = "sd-bundle-final-price";
           finalPrice.id = "sd-bundle-final-price" + bundleIndex;
           finalPrice.style.color =
-            el.customization.bundle.totalSection.finalPrice.color;
+            el.customization?.bundle.totalSection.finalPrice.color;
           finalPrice.style.fontSize =
-            el.customization.bundle.totalSection.finalPrice.fontSize + "px";
+            el.customization?.bundle.totalSection.finalPrice.fontSize + "px";
 
           // let newfinalPricePrice = sdCurrencySymbolCode.replace(
           //   "{{amount}}",
@@ -599,17 +621,21 @@ function createBundle(BUNDLE_DATA) {
         let ADD_TO_CART_BUTTON = document.createElement("button");
 
         ADD_TO_CART_BUTTON.style.background =
-          el.customization.bundle.button.backgroundColor;
-        ADD_TO_CART_BUTTON.style.color = el.customization.bundle.button.color;
-        ADD_TO_CART_BUTTON.style.fontSize = `${el.customization.bundle.button.fontSize}px`;
+          el.customization?.bundle.button.backgroundColor;
+        ADD_TO_CART_BUTTON.style.color = el.customization?.bundle.button.color;
+        ADD_TO_CART_BUTTON.style.fontSize = `${el.customization?.bundle.button.fontSize}px`;
         ADD_TO_CART_BUTTON.className = "sd-bundle-add-to-cart-button";
         ADD_TO_CART_BUTTON.innerText =
           el.translations.translation.addToCartButton;
         // sd-bundle-volume-addtocart-btn
         ADD_TO_CART_BTN_DIV.append(ADD_TO_CART_BUTTON);
         ADD_TO_CART_BUTTON.addEventListener("click", (e) => {
+          console.log("check all array in on click event lets start=====>>>>",bundleData);
+          console.log("now check second check all array in on click event lets start=====>>>>",bundleSum);
+          console.log("now check third check all array in on click event lets start=====>>>>",gidArray);
           let code = JSON.parse(localStorage.getItem("sd_bundle_data"));
           let discountCodeId = code.discountCreateId ?? "";
+          console.log(code,'create rule check discount codeid',discountCodeId);
           ADD_TO_CART_BUTTON.innerText = "";
           let btnSpinner = document.createElement("div");
           btnSpinner.className = "bundleBtnSpinner";
@@ -620,11 +646,14 @@ function createBundle(BUNDLE_DATA) {
             (acc, curr) => acc.concat(curr),
             []
           );
+          console.log("check mergedArray",bundleData[bundleIndex]);
           const mergedGidArray = gidArray[bundleIndex].reduce(
             (acc, curr) => acc.concat(curr),
             []
           );
+          console.log("check mergedGidArray",mergedGidArray);
           let mergedResult = {};
+          
           for (let item of mergedArray) {
             if (mergedResult[item.id]) {
               mergedResult[item.id].quantity += item.quantity;
@@ -633,11 +662,12 @@ function createBundle(BUNDLE_DATA) {
             }
           }
           let mergedArrayResult = Object.values(mergedResult);
-
+          console.log("check mergedArrayResult",mergedArrayResult);
           let formData = {
             items: mergedArrayResult,
             attributes: { SD_BUNDLE_ID: el._id },
           };
+          console.log("formdata check =======>>>>>>>",formData);
           fetch(window.Shopify.routes.root + "cart/add.js", {
             method: "POST",
             headers: {
@@ -646,12 +676,14 @@ function createBundle(BUNDLE_DATA) {
             body: JSON.stringify(formData),
           })
             .then((response) => {
+              console.log("check response",response);
               return response.json();
             })
             .then((response) => {
               let errorDiv = document.getElementsByClassName(
                 "sd-bundle-error-message"
               );
+              console.log("check error div message",errorDiv);
               errorDiv[0]?.remove();
               if (response.status == 422 || response.status == 404) {
                 ADD_TO_CART_BUTTON.innerText =
@@ -669,6 +701,7 @@ function createBundle(BUNDLE_DATA) {
                   },
                 })
                   .then((response) => {
+                    console.log("check response of else condition",response);
                     return response.json();
                   })
                   .then((response) => {
@@ -815,7 +848,7 @@ function createBundle(BUNDLE_DATA) {
               // console.error("Error:", error);
             });
         });
-        if (el.customization.bundle.button.position == "bottom") {
+        if (el.customization?.bundle.button.position == "bottom") {
           BUNDLE_DIV.append(ADD_TO_CART_BTN_DIV);
         } else {
           BUNDLE_DIV.prepend(ADD_TO_CART_BTN_DIV);
@@ -825,9 +858,10 @@ function createBundle(BUNDLE_DATA) {
         }
       // } else {
       // }
-    } else if (el.type == "volumeBundle") {
+    } 
+    else if (el.type == "volumeBundle") {
       //--------------------------------------------------------------------------Volume Bundle----------------------------------------------------------------------------
-      // let checkDate = el.endDate == "" ? true : sdCurrentDateTime <= el.endDate;
+      let checkDate = el.endDate == "" ? true : sdCurrentDateTime <= el.endDate;
 
       // if (sdCurrentDateTime >= el.startdate && checkDate) {
         let optionIndex;
@@ -952,8 +986,7 @@ function createBundle(BUNDLE_DATA) {
                 el.translations.translation.save +
                 " " +
                 showAmountWithCurrency(newPrice) +
-                " " +
-                el.translations.translation.off;
+                " ";
             }
 
             DISCOUNT_OPT_HEADLINE.append(
@@ -1023,7 +1056,7 @@ function createBundle(BUNDLE_DATA) {
               xprice = sdDivivde.toFixed(2);
             } else {
               let toFixedPrice = el.bundleDetail.products[0].variants[0].price;
-              xprice = parseInt(toFixedPrice).toFixed(2);
+              xprice = parseFloat(toFixedPrice).toFixed(2);
             }
             // let newProductPrice = sdCurrencySymbolCode.replace(
             //   "{{amount}}",
@@ -1680,7 +1713,8 @@ function createBundle(BUNDLE_DATA) {
                             el.bundleDetail.discountOptions[optionIndex].value
                           );
                           finalPrice = fixedPart.toFixed(2);
-                          break;
+                        break;
+
                         default:
                           console.log("how are you ?");
                           break;
@@ -1695,13 +1729,13 @@ function createBundle(BUNDLE_DATA) {
                       let sd_bundle_data = {
                         discount_name: el.name,
                         code: el.settings.discountLabel + "-" + code.code,
-                        discountType: "Fix",
+                        discountType: isDiscount,
                         discountValue: finalPrice,
                         variantsId: mergedGidArray,
                         startDate: new Date(),
                         endDate: el.endDate,
                         shop: Shopify.shop,
-                        bundleType: isDiscount,
+                        bundleType: el.bundleDetail.discountOptions[optionIndex].type,
                         totalPrice: xtotalprice,
                         discountCreateId: discountCodeId,
                       };
@@ -1769,11 +1803,14 @@ function createBundle(BUNDLE_DATA) {
         }
       // } else {
       // }
-    } else if (el.type == "collectionMixMatch") {
+    } 
+    else if (el.type == "collectionMixMatch") {
       //--------------------------------------------------------------------------Collection Bundle----------------------------------------------------------------------------
-      // let checkDate = el.endDate == "" ? true : sdCurrentDateTime <= el.endDate;
-
+      let checkDate = el.endDate == "" ? true : sdCurrentDateTime <= el.endDate;
+      console.log("collectionMixMatch*******************");
       // if (sdCurrentDateTime >= el.startdate && checkDate) {
+        
+        console.log("collectionMixMatch**************************************change**************************");
         let collectionDiv = document.createElement("div");
         collectionDiv.className = "sd-bundle-collectionMixMatch-container";
 
@@ -1788,11 +1825,11 @@ function createBundle(BUNDLE_DATA) {
         let VOLUME_HEADER_DIV = document.createElement("div");
         VOLUME_HEADER_DIV.className = "sd-collectionMM-discount-badge";
         VOLUME_HEADER_DIV.style.background =
-          el.customization.collectionMixMatch.saveDiscount.backgroundColor;
+          el.customization.collectionMixMatch.DiscountBadge.backgroundColor;
         VOLUME_HEADER_DIV.style.color =
-          el.customization.collectionMixMatch.saveDiscount.color;
+          el.customization.collectionMixMatch.DiscountBadge.color;
         VOLUME_HEADER_DIV.style.fontSize =
-          el.customization.collectionMixMatch.saveDiscount.fontSize + "px";
+          el.customization.collectionMixMatch.DiscountBadge.fontSize + "px";
         VOLUME_HEADER_DIV.style.borderTopLeftRadius =
           el.customization.collectionMixMatch.box.borderRadius + "px";
         let discountBadge = document.createElement("span");
@@ -2038,6 +2075,1046 @@ function createBundle(BUNDLE_DATA) {
       // } else {
       // }
     }
+    else if (el.type == "fbt") {
+    }
+    else if (el.type == "productMixMatch") {
+      let OriginalPrice = 0;
+      let FinalPrice = 0;
+      let PriceArray = [];
+      let SelectedProducts = [];
+      let SelectedProductsQuantity = 0;
+      let DiscountType;
+      let DiscountValue;
+      
+       let VariantDropDownFun = (productIndex,elements,VariantOptionDiv,TotalQuantity) => {
+          let SelectVariants = document.createElement("SELECT");
+          SelectVariants.id = `SelectVariants${bundleIndex}${productIndex}${TotalQuantity}`;
+          SelectVariants.style.background = el.customization.productMixMatch.productDetails.variantSelector.backgroundColor;
+          SelectVariants.style.color = el.customization.productMixMatch.productDetails.variantSelector.color;
+          SelectVariants.addEventListener("change",VariantOptionFun=(e)=>{
+            let SelectedVariantsId = document.querySelector(`#SelectVariants${bundleIndex}${productIndex}${TotalQuantity}`).value;
+            let SelectVariantPrice = document.getElementById([`variants${TotalQuantity}${bundleIndex}${SelectedVariantsId}`]).getAttribute("price");
+            let variantsIndex = document.getElementById([`variants${TotalQuantity}${bundleIndex}${SelectedVariantsId}`]).getAttribute("variantsId");
+            let indexOfPrice = PriceArray.findIndex((checkProduct)=>checkProduct.productQuantity === `${elements.title}${productIndex}Q${TotalQuantity}`);
+            let indexOfProduct;
+            elements.variants.map((variants,variantIndex)=>{
+              SelectedProducts.map((item,itemIndex)=>{
+                  item.map((itemProducts,indexOfItemProduct)=>{
+                    if(variants.id == itemProducts){
+                      indexOfProduct = SelectedProducts.findIndex((checkPrducts)=> checkPrducts[indexOfItemProduct] == variants.id)
+                    }
+                  })
+              })
+            })
+            if(PriceArray[indexOfPrice].productName === `Copy${elements.title}${productIndex}`){
+              PriceArray.splice(indexOfPrice,1,{productName:`Copy${elements.title}${productIndex}`,productQuantity:`${elements.title}${productIndex}Q${TotalQuantity}`,price:SelectVariantPrice});
+            }else{
+              PriceArray.splice(indexOfPrice,1,{productName:`${elements.title}${productIndex}`,productQuantity:`${elements.title}${productIndex}Q${TotalQuantity}`,price:SelectVariantPrice});
+            }
+            SelectedProducts[indexOfProduct].splice(variantsIndex,1,SelectedVariantsId);
+            calaculateOriginalPrice();
+            calculateFinalPriceFunction();
+            document.getElementById(`ProductPrice${bundleIndex}${productIndex}`).innerText = showAmountWithCurrency(SelectVariantPrice);
+            document.getElementById(`${bundleIndex}OriginalPrice`).innerText = showAmountWithCurrency(OriginalPrice.toFixed(2));
+            document.getElementById(`${bundleIndex}FInalPrice`).innerText = showAmountWithCurrency(FinalPrice.toFixed(2));
+          })
+         if(elements.variants.length > 1){elements.variants.map((items,index)=>{
+            let VariantOptions = document.createElement("option");
+            VariantOptions.value = `${items.id}`;
+            VariantOptions.text =`${items.title}`;
+            VariantOptions.setAttribute("variantsId",TotalQuantity-1);
+            VariantOptions.id = `variants${TotalQuantity}${bundleIndex}${items.id}`;
+            VariantOptions.setAttribute("price",items.price);
+            SelectVariants.add(VariantOptions);
+            VariantOptionDiv.appendChild(SelectVariants);
+          })}
+        }
+
+      let calaculateOriginalPrice = ()  =>{
+        OriginalPrice = 0;
+        PriceArray.map((item)=>{
+          OriginalPrice += parseFloat(item.price);
+          return OriginalPrice.toFixed(2);
+        })
+      }
+
+      let ActiveAppliedDiscount = (index) =>{
+        let ActiveBadge = document.getElementById(`DiscountBadge${bundleIndex}${index}`)
+        let addToCartBTN = document.getElementById(`sd-bundle-add-to-cart-buttonID${bundleIndex}`);
+        if(ActiveBadge !== null){
+          ActiveBadge.setAttribute("class","sd-bundle-mix-match-active-badge-div");
+          addToCartBTN.disabled = false;
+          addToCartBTN.style.cursor = "pointer";
+          addToCartBTN.style.background = `${el.customization.productMixMatch.button.backgroundColor}`
+          if(ActiveBadge.previousSibling !== null){
+            ActiveBadge.previousSibling.setAttribute("class","sd-bundle-mix-match-deactive-badge-div")
+          }
+          if(ActiveBadge.nextSibling !== null){
+            ActiveBadge.nextSibling.setAttribute("class","sd-bundle-mix-match-deactive-badge-div")
+          }
+        }
+      }
+
+      let DeactivateDiscount = (index) => {
+        let ActiveBadge = document.getElementById(`DiscountBadge${bundleIndex}${index}`);
+        let addToCartBTN = document.getElementById(`sd-bundle-add-to-cart-buttonID${bundleIndex}`);
+        if(ActiveBadge !== null){
+          ActiveBadge.setAttribute("class","sd-bundle-mix-match-deactive-badge-div");
+          addToCartBTN.disabled = true
+          addToCartBTN.style.cursor = "not-allowed";
+          addToCartBTN.style.background = "grey";
+          if(ActiveBadge.previousSibling !== null) {
+            ActiveBadge.previousSibling.setAttribute("class","sd-bundle-mix-match-deactive-badge-div")
+          }
+          if(ActiveBadge.nextSibling !== null){
+            ActiveBadge.nextSibling.setAttribute("class","sd-bundle-mix-match-deactive-badge-div")
+          }
+        }
+      }
+      
+      let calculateFinalPriceFunction = () =>{
+         el.bundleDetail.discountOptions.map((item,index)=>{
+          if(SelectedProductsQuantity < el.bundleDetail.discountOptions[0].quantity ){
+            DeactivateDiscount(index);
+            let appliedDiscount = document.getElementById(`${bundleIndex}discountOffer`);
+            let PriceDiv = document.getElementById(`${bundleIndex}OriginalPrice`);
+            if(appliedDiscount !==null && PriceDiv !== null){
+              let selectedItemMsg = el.translations.translation.selectAtLeastItemsToApplyTheDiscount.replace('{{item}}', `${el.bundleDetail.discountOptions[0].quantity}`);
+              appliedDiscount.innerText = selectedItemMsg;
+              PriceDiv.style.display = "none";
+            }
+            FinalPrice = OriginalPrice;
+            return FinalPrice.toFixed(2);
+          }else if( item.quantity < SelectedProductsQuantity && index !== el.bundleDetail.discountOptions.length-1){
+            DeactivateDiscount(index);
+            let appliedDiscount = document.getElementById(`${bundleIndex}discountOffer`);
+            let PriceDiv = document.getElementById(`${bundleIndex}OriginalPrice`);
+            if(appliedDiscount !==null && PriceDiv !== null){
+              appliedDiscount.innerText = el.translations.translation.noDiscountIsApplied;
+              PriceDiv.style.display = "none";
+            }
+            FinalPrice = OriginalPrice;
+            return FinalPrice.toFixed(2);
+          }else{
+            if(el.bundleDetail.discountOptions[index].type === "percent"){
+              if((item.quantity == SelectedProductsQuantity)  || (index === el.bundleDetail.discountOptions.length-1 && SelectedProductsQuantity >= item.quantity)) {
+                ActiveAppliedDiscount(index);
+                DiscountType = "percent";
+                DiscountValue = item.value;
+                let percentage = OriginalPrice*el.bundleDetail.discountOptions[index].value/100;
+                FinalPrice = OriginalPrice-percentage.toFixed(2);
+                let appliedDiscount = document.getElementById(`${bundleIndex}discountOffer`);
+                let PriceDiv = document.getElementById(`${bundleIndex}OriginalPrice`);
+                if(appliedDiscount !==null && PriceDiv !== null){
+                  appliedDiscount.innerText = `${item.value}% ${el.translations.translation.discountIsApplied}.`;
+                  PriceDiv.style.display = "block";
+                }
+                return FinalPrice.toFixed(2);
+              }
+            }else if(el.bundleDetail.discountOptions[index].type === "fixed"){
+              if((item.quantity == SelectedProductsQuantity)  || (index === el.bundleDetail.discountOptions.length-1 && SelectedProductsQuantity >= item.quantity)) {
+                ActiveAppliedDiscount(index);
+                DiscountType = "fixed";
+                DiscountValue = item.value;
+                FinalPrice = OriginalPrice-el.bundleDetail.discountOptions[index].value;
+                let appliedDiscount = document.getElementById(`${bundleIndex}discountOffer`);
+                let PriceDiv = document.getElementById(`${bundleIndex}OriginalPrice`);
+                if(appliedDiscount !==null && PriceDiv !== null){
+                  appliedDiscount.innerText = `-${showAmountWithCurrency(item.value)} ${el.translations.translation.discountIsApplied}.`;
+                  PriceDiv.style.display = "block";
+                }
+                if(FinalPrice <0){
+                  FinalPrice = 0;
+                  return FinalPrice.toFixed(2);
+                }else{
+                  return FinalPrice.toFixed(2);
+                }
+              }
+            }else if(el.bundleDetail.discountOptions[index].type ==="freeShipping"){
+              if((item.quantity == SelectedProductsQuantity)  || (index === el.bundleDetail.discountOptions.length-1 && SelectedProductsQuantity >= item.quantity)) {
+                ActiveAppliedDiscount(index);
+                DiscountType = "freeShipping";
+                DiscountValue = item.value;
+                FinalPrice = OriginalPrice;
+                let appliedDiscount = document.getElementById(`${bundleIndex}discountOffer`);
+                let PriceDiv = document.getElementById(`${bundleIndex}OriginalPrice`);
+                if(appliedDiscount !==null && PriceDiv !== null){
+                  appliedDiscount.innerText = `100% ${el.translations.translation.FreeShipping} ${el.translations.translation.discountIsApplied}.`;
+                  PriceDiv.style.display = "none";
+                }
+                return FinalPrice.toFixed(2)
+              }
+            }else if(el.bundleDetail.discountOptions[index].type === "noDiscount"){
+              if((item.quantity == SelectedProductsQuantity)  || (index === el.bundleDetail.discountOptions.length-1 && SelectedProductsQuantity >= item.quantity)) {
+                ActiveAppliedDiscount(index);
+                DiscountType = "noDiscount";
+                DiscountValue = item.value;
+                FinalPrice = OriginalPrice;
+                let PriceDiv = document.getElementById(`${bundleIndex}OriginalPrice`);
+                let appliedDiscount = document.getElementById(`${bundleIndex}discountOffer`);
+                if(appliedDiscount !==null && PriceDiv !== null){
+                  appliedDiscount.innerText = `${el.translations.translation.discountIsApplied}.`;
+                  PriceDiv.style.display = "none";
+                }
+                return FinalPrice.toFixed(2)
+              }
+            }
+          }
+        })
+      }
+
+      let MixMatchDiv = document.createElement("div");
+      MixMatchDiv.className = "sd-preview-wrapper-common sd-productMixMatch-preview-specific";
+      MixMatchDiv.style.borderColor = el.customization?.productMixMatch.box.borderColor;
+      MixMatchDiv.style.borderRadius = `${el.customization?.productMixMatch.box.borderRadius}px`;
+      MixMatchDiv.style.background = el.customization?.productMixMatch.box.backgroundColor;
+      MixMatchDiv.style.borderWidth = `${el.customization?.productMixMatch.box.thickness}px`;
+
+      let TitleDiv = document.createElement("div");
+      TitleDiv.className = "sd-bundle-mix-match-title-div";
+      TitleDiv.innerText = el.title;
+      TitleDiv.style.color = el.customization.productMixMatch.title.color;
+      TitleDiv.style.textAlign = el.customization.productMixMatch.title.alignment;
+      TitleDiv.style.fontSize = `${el.customization.productMixMatch.title.fontSize}px`;
+      TitleDiv.style.fontWeight = el.customization.productMixMatch.title.titleBold;
+      MixMatchDiv.append(TitleDiv);
+
+      let DescriptionDiv = document.createElement("div");
+      DescriptionDiv.className = "sd-bundle-mix-match-description-div";
+      if(el.description != "" && el.description != null && el.description != undefined){
+        DescriptionDiv.innerText = el.description;
+      }
+      DescriptionDiv.style.color = el.customization.productMixMatch.title.descriptionColor;
+      DescriptionDiv.style.fontSize = `${el.customization.productMixMatch.title.descriptionFontSize}px`;
+      DescriptionDiv.style.fontWeight = el.customization.productMixMatch.title.descriptionBold;
+      MixMatchDiv.append(DescriptionDiv);
+
+      // let HorizontalLine = document.createElement("hr");
+      // MixMatchDiv.append(HorizontalLine);
+
+      let ShowActiveDiscountBadgeDiv = document.createElement("div");
+      ShowActiveDiscountBadgeDiv.id = `ShowActiveDiscountBadgeDiv${bundleIndex}`;
+      ShowActiveDiscountBadgeDiv.className = "sd-bundle-mix-match-activediscount-div";
+      el.bundleDetail.discountOptions.map((items,discountBadgeIndex)=>{
+        let ShowMultiDiscountBadgeDiv = document.createElement("div");
+        ShowMultiDiscountBadgeDiv.id = `DiscountBadge${bundleIndex}${discountBadgeIndex}`;
+        ShowMultiDiscountBadgeDiv.className = "sd-bundle-mix-match-deactive-badge-div";
+        if(items.type === "percent"){
+          ShowMultiDiscountBadgeDiv.innerText = `${items.quantity} items|${items.value}% ${el.translations.translation.off}`;
+        }else if(items.type === "fixed"){
+          ShowMultiDiscountBadgeDiv.innerText = `${items.quantity} items|-${showAmountWithCurrency(items.value)} ${el.translations.translation.off}`;
+        }else if(items.type === "freeShipping"){
+          ShowMultiDiscountBadgeDiv.innerText = `${items.quantity} items|${el.translations.translation.FreeShipping}`;
+        }else if(items.type === "noDiscount"){
+          ShowMultiDiscountBadgeDiv.innerText = `${items.quantity} items|${el.translations.translation.off}`;
+        }
+        ShowActiveDiscountBadgeDiv.append(ShowMultiDiscountBadgeDiv);
+      })
+      MixMatchDiv.append(ShowActiveDiscountBadgeDiv);
+      
+      let ShowSelectedItemDiv = document.createElement("div");
+      ShowSelectedItemDiv.className = "sd-bundle-mix-match-selected-item-div";
+      ShowSelectedItemDiv.id = `${bundleIndex}selectedItems`;
+      let selectedItemMsg = el.translations.translation.youHaveSelectedItems.replace('{{item}}', `${el.bundleDetail.products.length}`);
+      ShowSelectedItemDiv.innerText = selectedItemMsg;
+      MixMatchDiv.append(ShowSelectedItemDiv);
+
+      let DiscountOfferDiv = document.createElement("div");
+      DiscountOfferDiv.className = "sd-bundle-mix-match-discount-offer-div";
+      DiscountOfferDiv.id = `${bundleIndex}discountOffer`;
+      MixMatchDiv.append(DiscountOfferDiv);
+
+      // let HorizontalLine2 = document.createElement("hr");
+      // MixMatchDiv.append(HorizontalLine2);
+      
+      let ImageDiv = document.createElement("div");
+      ImageDiv.className = "sd-bundle-mix-match-image-div";
+      el.bundleDetail.products.map((elements,index)=>{
+        let ProductImagesDiv = document.createElement("div");
+        ProductImagesDiv.className = "sd-bundle-mix-match-products-images-div";
+        ImageDiv.append(ProductImagesDiv);
+
+        let MapProductsImages = document.createElement("div");
+        MapProductsImages.style.border = "2px solid black";
+        MapProductsImages.style.borderColor = el.customization.productMixMatch.productDetails.image.borderColor;
+        MapProductsImages.style.borderRadius = `${el.customization.productMixMatch.productDetails.image.borderRadius}px`;
+        MapProductsImages.className = "sd-bundle-mix-match-images-div";
+        ProductImagesDiv.append(MapProductsImages);
+        let Images = document.createElement("img");
+        Images.src = `${elements?.images[0]?.originalSrc}`;
+        MapProductsImages.append(Images);
+
+        if (index < el.bundleDetail.products.length - 1) {
+            let BUNDLE_PLUS_BTN_DIV = document.createElement("div");
+            BUNDLE_PLUS_BTN_DIV.className = "sd-bundle-plusBtn-box";
+            BUNDLE_PLUS_BTN_DIV.style.background = el.customization?.productMixMatch.productDetails.plusBackgroundColor;
+            BUNDLE_PLUS_BTN_DIV.style.fontSize = el.customization?.productMixMatch.productDetails.plusfontSize;
+            let BUNDLE_PLUS_SPAN_SVG = document.createElement("span");
+            BUNDLE_PLUS_SPAN_SVG.className = "sd-bundle-plus";
+            BUNDLE_PLUS_SPAN_SVG.innerHTML = `<svg viewBox="64 64 896 896" focusable="false" data-icon="plus" width="1em" height="1em" fill="currentColor" aria-hidden="true"><defs><style></style></defs><path d="M482 152h60q8 0 8 8v704q0 8-8 8h-60q-8 0-8-8V160q0-8 8-8z"></path><path d="M176 474h672q8 0 8 8v60q0 8-8 8H176q-8 0-8-8v-60q0-8 8-8z"></path></svg>`;
+            BUNDLE_PLUS_SPAN_SVG.style.color = el.customization?.productMixMatch.productDetails.plusColor;
+            BUNDLE_PLUS_BTN_DIV.append(BUNDLE_PLUS_SPAN_SVG);
+            ProductImagesDiv.append(BUNDLE_PLUS_BTN_DIV);
+          }
+      })
+      MixMatchDiv.append(ImageDiv);
+
+      let SelectAllProducts = document.createElement("div");
+      SelectAllProducts.className = "sd-bundle-mix-match-select-allproduct-div";
+      
+      let ItemCounterDiv = document.createElement("div");
+      ItemCounterDiv.className = "sd-bundle-mix-match-item-counter-div";
+
+      let CheckboxLableDiv = document.createElement("div");
+      ItemCounterDiv.append(CheckboxLableDiv);
+      
+      let AllProductCheckBox = document.createElement("input");
+      AllProductCheckBox.className = "sd-bundle-mix-match-all-product-checkbox-div";
+      AllProductCheckBox.id = `AllProductCheckBox${bundleIndex}`;
+      AllProductCheckBox.setAttribute("type", "checkbox");
+      AllProductCheckBox.setAttribute("checked","checked");
+      AllProductCheckBox.addEventListener("change",handleAllProducts = (e)=>{
+        if(e.target.checked === false){
+          if(el.bundleDetail.requiredItem.enable === false){
+            SelectedProducts = [];
+            PriceArray = [];
+            SelectedProductsQuantity = SelectedProducts.length;
+            calaculateOriginalPrice();
+            calculateFinalPriceFunction();
+            el.bundleDetail.products.map((allProducts,allProductIndex)=>{
+              document.getElementById(`ProductCheckbox${bundleIndex}${allProductIndex}`).checked = false;
+              let variantDiv = document.getElementById(`VariantOptionDiv${bundleIndex}${allProductIndex}`);
+              if(variantDiv !== null){
+                const childNodes = variantDiv.querySelectorAll('*');
+                childNodes.forEach(node => node.remove());
+              }
+              let quantityCounter = document.getElementById(`QuantityCount${bundleIndex}${allProductIndex}`);
+              let plusButton = document.getElementById(`PlusBtn${bundleIndex}${allProductIndex}`); 
+              if(quantityCounter !== null && plusButton !== null){
+                quantityCounter.innerText = 0;
+                plusButton.disabled = true;
+              }
+            })
+            document.getElementById(`${bundleIndex}selectedItems`).innerText = el.translations.translation.youHavenotSelectedanyItemsYet;
+            document.getElementById(`${bundleIndex}QuantityCounter`).innerText = `${SelectedProductsQuantity}X`;
+            document.getElementById(`${bundleIndex}OriginalPrice`).innerText = showAmountWithCurrency(OriginalPrice.toFixed(2));
+            document.getElementById(`${bundleIndex}FInalPrice`).innerText = showAmountWithCurrency(FinalPrice.toFixed(2));
+          }else{
+            el.bundleDetail.products.map((requireItem,requiredItemIndex)=>{
+              if(requireItem.required === false){
+                let TotalQuantity = 1;
+                let i = SelectedProducts.findIndex((items)=>items[0] === requireItem.variants[0].id);
+                SelectedProductsQuantity -= SelectedProducts[i].length;
+                SelectedProducts.splice(i,1);
+                PriceArray.splice(requiredItemIndex,1,{productName:`${requireItem.title}${requiredItemIndex}`,productQuantity:`${requireItem.title}${requiredItemIndex}Q${TotalQuantity}`,price:"0"})
+                document.getElementById(`ProductCheckbox${bundleIndex}${requiredItemIndex}`).checked = false;
+                let variantDiv = document.getElementById(`VariantOptionDiv${bundleIndex}${requiredItemIndex}`);
+                if(variantDiv !== null){
+                  const childNodes = variantDiv.querySelectorAll('*');
+                  childNodes.forEach(node => node.remove());
+                }
+                let quantityCounter = document.getElementById(`QuantityCount${bundleIndex}${requiredItemIndex}`);
+                let plusButton = document.getElementById(`PlusBtn${bundleIndex}${requiredItemIndex}`); 
+                if(quantityCounter !== null && plusButton !== null){
+                  quantityCounter.innerText = 0;
+                  plusButton.disabled = true;
+                }
+              }
+              calaculateOriginalPrice();
+              calculateFinalPriceFunction();
+              let selectedItemMsg = el.translations.translation.youHaveSelectedItems.replace('{{item}}', `${SelectedProductsQuantity}`);
+              document.getElementById(`${bundleIndex}selectedItems`).innerText = selectedItemMsg;
+              document.getElementById(`${bundleIndex}QuantityCounter`).innerText = `${SelectedProductsQuantity}X`;
+              document.getElementById(`${bundleIndex}OriginalPrice`).innerText = showAmountWithCurrency(OriginalPrice.toFixed(2));
+              document.getElementById(`${bundleIndex}FInalPrice`).innerText = showAmountWithCurrency(FinalPrice.toFixed(2));
+            })
+          } 
+        }
+        if(e.target.checked === true){
+          if(SelectedProducts.length === 0){
+            el.bundleDetail.products.map((allProducts,allProductIndex)=>{
+              let TotalQuantity = 1;
+              SelectedProducts.push([allProducts.variants[0].id]);
+              PriceArray.push({productName:`${allProducts.title}${allProductIndex}`,productQuantity:`${allProducts.title}${allProductIndex}Q${TotalQuantity}`,price:allProducts.variants[0].price});
+              SelectedProductsQuantity += SelectedProducts[allProductIndex].length;
+              calaculateOriginalPrice();
+              calculateFinalPriceFunction();
+              let VariantOptionDiv = document.getElementById(`VariantOptionDiv${bundleIndex}${allProductIndex}`);
+              VariantDropDownFun(allProductIndex,allProducts,VariantOptionDiv,TotalQuantity);
+              let quantityCounter = document.getElementById(`QuantityCount${bundleIndex}${allProductIndex}`);
+              let plusButton = document.getElementById(`PlusBtn${bundleIndex}${allProductIndex}`); 
+              if(quantityCounter !== null && plusButton !== null){
+                quantityCounter.innerText = TotalQuantity;
+                plusButton.disabled = false;
+              }
+              let selectedItemMsg = el.translations.translation.youHaveSelectedItems.replace('{{item}}', `${SelectedProductsQuantity}`);
+              document.getElementById(`ProductCheckbox${bundleIndex}${allProductIndex}`).checked = true;
+              document.getElementById(`${bundleIndex}selectedItems`).innerText = selectedItemMsg;
+              document.getElementById(`${bundleIndex}QuantityCounter`).innerText = `${SelectedProductsQuantity}X`;
+              document.getElementById(`${bundleIndex}OriginalPrice`).innerText = showAmountWithCurrency(OriginalPrice.toFixed(2));
+              document.getElementById(`${bundleIndex}FInalPrice`).innerText = showAmountWithCurrency(FinalPrice.toFixed(2));
+            })
+          }else{
+            el.bundleDetail.products.map((elItem,elIndex)=>{
+              let TotalQuantity = 1;
+              let indexof = SelectedProducts.findIndex((items)=> items[0] === elItem.variants[0].id);
+              if(indexof === -1){
+                SelectedProducts.push([elItem.variants[0].id]);
+                PriceArray.splice(elIndex,1,{productName:`${elItem.title}${elIndex}`,productQuantity:`${elItem.title}${elIndex}Q${TotalQuantity}`,price:elItem.variants[0].price})
+                let VariantOptionDiv = document.getElementById(`VariantOptionDiv${bundleIndex}${elIndex}`);
+                VariantDropDownFun(elIndex,elItem,VariantOptionDiv,TotalQuantity);
+                SelectedProductsQuantity += 1;
+                let quantityCounter = document.getElementById(`QuantityCount${bundleIndex}${elIndex}`);
+                let plusButton = document.getElementById(`PlusBtn${bundleIndex}${elIndex}`); 
+                if(quantityCounter !== null && plusButton !== null){
+                  quantityCounter.innerText = TotalQuantity;
+                  plusButton.disabled = false;
+                }
+              }
+              calaculateOriginalPrice();
+              calculateFinalPriceFunction();
+              let selectedItemMsg = el.translations.translation.youHaveSelectedItems.replace('{{item}}', `${SelectedProductsQuantity}`);
+              document.getElementById(`ProductCheckbox${bundleIndex}${elIndex}`).checked = true;
+              document.getElementById(`${bundleIndex}selectedItems`).innerText = selectedItemMsg;
+              document.getElementById(`${bundleIndex}QuantityCounter`).innerText = `${SelectedProductsQuantity}X`;
+              document.getElementById(`${bundleIndex}OriginalPrice`).innerText = showAmountWithCurrency(OriginalPrice.toFixed(2));
+              document.getElementById(`${bundleIndex}FInalPrice`).innerText = showAmountWithCurrency(FinalPrice.toFixed(2));
+            })
+          }
+        }
+      })
+      CheckboxLableDiv.append(AllProductCheckBox);
+
+      let AllCheckBoxLabel = document.createElement("label");
+      AllCheckBoxLabel.className = "sd-bundle-mix-match-all-checkbox-label-div";
+      AllCheckBoxLabel.innerText = el.translations.translation.allProducts;
+      CheckboxLableDiv.append(AllCheckBoxLabel);
+      
+      let QuantityCounterDiv = document.createElement("div");
+      QuantityCounterDiv.className = "sd-bundle-mix-match-quantity-counter-div";
+      QuantityCounterDiv.id = `${bundleIndex}QuantityCounter`;
+      QuantityCounterDiv.style.background = el.customization.productMixMatch.productDetails.quantities.backgroundColor;
+      QuantityCounterDiv.style.color = el.customization.productMixMatch.productDetails.quantities.color;
+      QuantityCounterDiv.innerText = `${el.bundleDetail.products.length}X`;
+      ItemCounterDiv.append(QuantityCounterDiv);
+      
+      SelectAllProducts.append(ItemCounterDiv);
+
+      let ShowSelectedProductDetails = document.createElement("div");
+      ShowSelectedProductDetails.className = "sd-bundle-mix-match-selectedProductDetails-div";
+      el.bundleDetail.products.map((elements,productIndex)=>{
+        SelectedProducts.push([elements.variants[0].id]);
+        let TotalQuantity = 1;
+        SelectedProductsQuantity = SelectedProducts.length;
+        PriceArray.push({productName:`${elements.title}${productIndex}`,productQuantity:`${elements.title}${productIndex}Q${TotalQuantity}`,price:elements.variants[0].price});
+        calaculateOriginalPrice();
+        calculateFinalPriceFunction();
+        let SetProductsDetailsDiv = document.createElement("div");
+        SetProductsDetailsDiv.className = "sd-bundle-mix-match-setProductDetails-div";
+
+        let CheckBoxDiv = document.createElement("div");
+        CheckBoxDiv.className = "sd-bundle-mix-match-checkBox-div";
+        SetProductsDetailsDiv.append(CheckBoxDiv);
+                
+        let ProductsCheckBox = document.createElement("input");
+        ProductsCheckBox.className = "sd-bundle-mix-match-productsCheckbox-input";
+        ProductsCheckBox.id = `ProductCheckbox${bundleIndex}${productIndex}`;
+        ProductsCheckBox.setAttribute("type", "checkbox");
+        ProductsCheckBox.setAttribute("checked","checked");
+        ProductsCheckBox.addEventListener("change",selectProductsFun = (e) =>{
+          if(elements.required === true){
+            document.getElementById(`ProductCheckbox${bundleIndex}${productIndex}`).checked = true; 
+            let PopUpMessageDiv = document.createElement("div");
+            PopUpMessageDiv.id = `PopUpMessageDiv${bundleIndex}${productIndex}`;
+            PopUpMessageDiv.className = "sd-bundle-mix-match-checkBox-popup-div";
+            CheckBoxDiv.append(PopUpMessageDiv);
+            let PopupSpan = document.createElement("span");
+            PopupSpan.className = "sd-bundle-mix-match-checkBox-popup-span";
+            PopupSpan.innerText = "This product is required and can not be deselected";
+            PopUpMessageDiv.append(PopupSpan);
+            setTimeout(()=>{
+              document.getElementById(`PopUpMessageDiv${bundleIndex}${productIndex}`).remove();
+            },2000);
+          }else{
+            if (e.target.checked === true) {
+             OriginalPrice = 0;
+              TotalQuantity = 1;
+              SelectedProducts.push([elements.variants[0].id]);
+              let indexOfPrice = PriceArray.findIndex((checkProduct)=>checkProduct.productName === `${elements.title}${productIndex}`);
+              if(indexOfPrice === -1){
+                PriceArray.push({productName:`${elements.title}${productIndex}`,productQuantity:`${elements.title}${productIndex}Q${TotalQuantity}`,price:elements.variants[0].price});
+              }else{
+                 PriceArray.splice(indexOfPrice,1,{productName:`${elements.title}${productIndex}`,productQuantity:`${elements.title}${productIndex}Q${TotalQuantity}`,price:elements.variants[0].price});
+              }
+              SelectedProductsQuantity += 1;
+              calaculateOriginalPrice();
+              calculateFinalPriceFunction();
+              if(elements.multiItemSelect === true){
+                if(TotalQuantity >= 1){
+                  document.getElementById(`Minusbtn${bundleIndex}${productIndex}`).disabled = true;
+                  document.getElementById(`QuantityCount${bundleIndex}${productIndex}`).innerText = TotalQuantity;
+                }
+              }
+              if(SelectedProductsQuantity >= el.bundleDetail.products.length){
+                document.getElementById(`AllProductCheckBox${bundleIndex}`).checked = true;
+              }
+              let plusButton = document.getElementById(`PlusBtn${bundleIndex}${productIndex}`); 
+              if(plusButton !== null){
+                plusButton.disabled = false;
+              }
+              let selectedItemMsg = el.translations.translation.youHaveSelectedItems.replace('{{item}}', `${SelectedProductsQuantity}`);
+              let VariantOptionDiv = document.getElementById(`VariantOptionDiv${bundleIndex}${productIndex}`);
+              VariantDropDownFun(productIndex,elements,VariantOptionDiv,TotalQuantity);
+              document.getElementById(`${bundleIndex}OriginalPrice`).innerText = showAmountWithCurrency(OriginalPrice.toFixed(2));
+              document.getElementById(`${bundleIndex}selectedItems`).innerText = selectedItemMsg;
+              document.getElementById(`${bundleIndex}QuantityCounter`).innerText = `${SelectedProductsQuantity}X`;
+              document.getElementById(`${bundleIndex}FInalPrice`).innerText = showAmountWithCurrency(FinalPrice.toFixed(2));
+            }
+            if(e.target.checked === false){
+            OriginalPrice = 0;
+            let indexProducts ;
+            for(i=0; i<elements.variants.length; i++){
+              let indexOfProducts = SelectedProducts.findIndex((item)=>item[0] === elements.variants[i].id);
+              if(indexOfProducts !== null && indexOfProducts !== undefined && indexOfProducts !== -1){
+                indexProducts = indexOfProducts;
+                break;
+              }
+            }
+            let plusButton = document.getElementById(`PlusBtn${bundleIndex}${productIndex}`); 
+            if(plusButton !== null){
+              plusButton.disabled = true;
+            }
+            SelectedProductsQuantity -= SelectedProducts[indexProducts].length;
+            SelectedProducts.splice(indexProducts,1);
+              
+            PriceArray = PriceArray.filter((item)=>{
+              return item.productName !== `Copy${elements.title}${productIndex}`;
+            })
+            
+            if(SelectedProductsQuantity !== el.bundleDetail.products.length){
+              document.getElementById(`AllProductCheckBox${bundleIndex}`).checked = false;
+            }
+            let indexOfPrice = PriceArray.findIndex((checkProduct)=>checkProduct.productName === `${elements.title}${productIndex}`);
+            PriceArray.splice(indexOfPrice,1,{productName:`${elements.title}${productIndex}`,productQuantity:`${elements.title}${productIndex}Q${TotalQuantity}`,price:"0"});
+            TotalQuantity = 0;
+              
+            if(elements.multiItemSelect === true){
+              if(TotalQuantity <= 1){
+                document.getElementById(`Minusbtn${bundleIndex}${productIndex}`).disabled = true;
+                document.getElementById(`QuantityCount${bundleIndex}${productIndex}`).innerText = TotalQuantity;
+              }
+            }
+            calaculateOriginalPrice();
+            calculateFinalPriceFunction();
+            let variantDiv = document.getElementById(`VariantOptionDiv${bundleIndex}${productIndex}`);
+            if(variantDiv !== null){
+              const childNodes = variantDiv.querySelectorAll('*');
+              childNodes.forEach(node => node.remove());
+            }
+            let selectedItemMsg = el.translations.translation.youHaveSelectedItems.replace('{{item}}', `${SelectedProductsQuantity}`);
+            document.getElementById(`${bundleIndex}OriginalPrice`).innerText = showAmountWithCurrency(OriginalPrice.toFixed(2));
+            if(SelectedProductsQuantity === 0 ){
+              document.getElementById(`${bundleIndex}selectedItems`).innerText = el.translations.translation.youHavenotSelectedanyItemsYet;
+            }else{
+              document.getElementById(`${bundleIndex}selectedItems`).innerText = selectedItemMsg;
+            }
+            document.getElementById(`${bundleIndex}QuantityCounter`).innerText = `${SelectedProductsQuantity}X`;
+            document.getElementById(`${bundleIndex}FInalPrice`).innerText = showAmountWithCurrency(FinalPrice.toFixed(2));
+            document.getElementById(`ProductPrice${bundleIndex}${productIndex}`).innerText = showAmountWithCurrency(`${elements.variants[0].price}`);
+          }
+         }
+        });
+        CheckBoxDiv.append(ProductsCheckBox);
+
+        let ProductImageAndNameDiv = document.createElement("div");
+        ProductImageAndNameDiv.className = "sd-bundle-mix-match-productImagesAndName-div";
+        SetProductsDetailsDiv.append(ProductImageAndNameDiv);
+
+        let ImageDiv = document.createElement("div");
+        ImageDiv.className = "sd-bundle-mix-match-images-div";
+        ImageDiv.style.border = "2px solid black";
+        ImageDiv.style.borderColor = el.customization.productMixMatch.productDetails.image.borderColor;
+        ImageDiv.style.borderRadius = `${el.customization.productMixMatch.productDetails.image.borderRadius}px`;
+        ProductImageAndNameDiv.append(ImageDiv);
+        
+        let ProductImages = document.createElement("img");
+        ProductImages.className = "sd-bundle-mix-match-imageThumbnails";
+        ProductImages.src = `${elements?.images[0]?.originalSrc}`;
+        ImageDiv.append(ProductImages);
+
+        let ProductNamePriceDiv = document.createElement("div");
+        ProductNamePriceDiv.className = "sd-bundle-mix-match-name-price-div";
+        let ProductName = document.createElement("p");
+        ProductName.innerText = `${elements?.title}`;
+        ProductName.style.color = el.customization.productMixMatch.productDetails.title.color;
+        ProductName.style.fontSize = `${el.customization.productMixMatch.productDetails.title.fontSize}px`;
+        ProductNamePriceDiv.append(ProductName);
+
+        let ProductPrice = document.createElement("p");
+        ProductPrice.id = `ProductPrice${bundleIndex}${productIndex}`;
+        ProductPrice.innerText = showAmountWithCurrency(`${elements?.variants[0]?.price}`);
+        ProductPrice.style.color = el.customization.productMixMatch.productDetails.price.color;
+        ProductPrice.style.fontSize = `${el.customization.productMixMatch.productDetails.price.fontSize}px`;
+        ProductNamePriceDiv.append(ProductPrice);
+        ProductImageAndNameDiv.append(ProductNamePriceDiv);
+
+        if(elements.multiItemSelect === true) {
+          let QuantitySelectorDiv = document.createElement("div");
+          QuantitySelectorDiv.className = "sd-bundle-mix-match-quantityselector-div";
+          QuantitySelectorDiv.id = `QuantitySelectorDiv${bundleIndex}${productIndex}`;
+          ProductNamePriceDiv.append(QuantitySelectorDiv);
+
+          let MinusBtnDiv = document.createElement("div");
+          MinusBtnDiv.className = "sd-bundle-mix-match-minusbtn-div"; 
+          QuantitySelectorDiv.append(MinusBtnDiv);
+
+          let MinusBtn = document.createElement("button");
+          MinusBtn.id = `Minusbtn${bundleIndex}${productIndex}`;
+          MinusBtn.className = "sd-bundle-mix-match-minus-btn";
+          MinusBtn.innerText = "-";
+          MinusBtn.setAttribute("disabled",true);
+          MinusBtn.style.cursor = "pointer";
+          MinusBtn.addEventListener("click",removeProduct = ()=>{
+            let indexOfPrice = PriceArray.findIndex((checkProduct)=>checkProduct.productName === `${elements.title}${productIndex}Q${TotalQuantity}`);
+            let indexofProducts;
+            elements.variants.map((variants,variantsIndex)=>{
+              SelectedProducts.map((item,itemIndex)=>{
+                item.map((itemProducts,indexOfItemProduct)=>{
+                  if(variants.id == itemProducts){
+                    indexofProducts = SelectedProducts.findIndex((checkPrducts)=> checkPrducts[indexOfItemProduct] == variants.id)
+                  }
+                })
+              })
+            })
+            let selectDropdown = document.getElementById(`SelectVariants${bundleIndex}${productIndex}${TotalQuantity}`);
+            if(selectDropdown !==null){
+              selectDropdown.remove();
+            }
+            TotalQuantity = TotalQuantity - 1;
+            SelectedProducts[indexofProducts].pop();
+            PriceArray.splice(indexOfPrice,1);
+            SelectedProductsQuantity -= 1;
+            calaculateOriginalPrice();
+            calculateFinalPriceFunction();
+            if(TotalQuantity <= 1){
+              document.getElementById(`Minusbtn${bundleIndex}${productIndex}`).disabled = true;
+            }
+            document.getElementById(`${bundleIndex}OriginalPrice`).innerText = showAmountWithCurrency(OriginalPrice.toFixed(2));
+            document.getElementById(`${bundleIndex}FInalPrice`).innerText = showAmountWithCurrency(FinalPrice.toFixed(2));
+            document.getElementById(`QuantityCount${bundleIndex}${productIndex}`).innerText = TotalQuantity;
+            let selectedItemMsg = el.translations.translation.youHaveSelectedItems.replace('{{item}}', `${SelectedProductsQuantity}`);
+            document.getElementById(`${bundleIndex}selectedItems`).innerText = selectedItemMsg;
+            document.getElementById(`${bundleIndex}QuantityCounter`).innerText = `${SelectedProductsQuantity}X`;
+          })
+            
+          MinusBtnDiv.append(MinusBtn);
+
+          let QuantitiesDiv = document.createElement("div");
+          QuantitiesDiv.className = "sd-bundle-mix-match-quantities-div";
+          QuantitySelectorDiv.append(QuantitiesDiv);
+
+          let QuantityCount = document.createElement("div");
+          QuantityCount.id = `QuantityCount${bundleIndex}${productIndex}`;
+          QuantityCount.innerText = TotalQuantity;
+          QuantitiesDiv.append(QuantityCount);
+          
+          let PlusBtnDiv = document.createElement("div");
+          PlusBtnDiv.className = "sd-bundle-mix-match-plusBtn-div";
+
+          QuantitySelectorDiv.append(PlusBtnDiv);
+
+          let PlusBtn = document.createElement("button");
+          PlusBtn.className = "sd-bundle-mix-match-plus-btn";
+          PlusBtn.id = `PlusBtn${bundleIndex}${productIndex}`;
+          PlusBtn.innerText = "+";
+          PlusBtn.style.cursor = "pointer"
+          PlusBtn.addEventListener("click",addProduct = ()=>{
+            document.getElementById(`Minusbtn${bundleIndex}${productIndex}`).disabled = false;
+            let indexofProducts;
+            elements.variants.map((variants,variantsIndex)=>{
+              SelectedProducts.map((item,itemIndex)=>{
+                item.map((itemProducts,indexOfItemProduct)=>{
+                  if(variants.id == itemProducts){
+                    indexofProducts = SelectedProducts.findIndex((checkPrducts)=> checkPrducts[indexOfItemProduct] == variants.id)
+                  }
+                })
+              })
+            })
+            let VariantOptionDiv = document.getElementById(`VariantOptionDiv${bundleIndex}${productIndex}`)
+            SelectedProducts[indexofProducts].push(elements.variants[0].id);
+            TotalQuantity =  SelectedProducts[indexofProducts].length;
+            if(VariantOptionDiv !== null){
+              VariantDropDownFun(productIndex,elements,VariantOptionDiv,TotalQuantity);
+            }
+            PriceArray.push({productName:`Copy${elements.title}${productIndex}`,productQuantity:`${elements.title}${productIndex}Q${TotalQuantity}`,price:`${elements?.variants[0]?.price}`})
+            SelectedProductsQuantity += 1;
+            calaculateOriginalPrice();
+            calculateFinalPriceFunction();
+            document.getElementById(`${bundleIndex}OriginalPrice`).innerText = showAmountWithCurrency(OriginalPrice.toFixed(2));
+            document.getElementById(`${bundleIndex}FInalPrice`).innerText = showAmountWithCurrency(FinalPrice.toFixed(2));
+            let selectedItemMsg = el.translations.translation.youHaveSelectedItems.replace('{{item}}', `${SelectedProductsQuantity}`);
+            document.getElementById(`${bundleIndex}selectedItems`).innerText = selectedItemMsg;
+            document.getElementById(`QuantityCount${bundleIndex}${productIndex}`).innerText = TotalQuantity;
+            document.getElementById(`${bundleIndex}QuantityCounter`).innerText = `${SelectedProductsQuantity}X`;
+          })
+          PlusBtnDiv.append(PlusBtn);
+        }
+        ShowSelectedProductDetails.append(SetProductsDetailsDiv);
+  
+        if(elements.variants.length > 1 ){let VariantOptionDiv = document.createElement("div");
+        VariantOptionDiv.className = "sd-bundle-mix-match-variantOptions-div";
+        VariantOptionDiv.id = `VariantOptionDiv${bundleIndex}${productIndex}`;
+        VariantDropDownFun(productIndex,elements,VariantOptionDiv,TotalQuantity);
+        ShowSelectedProductDetails.append(VariantOptionDiv)};
+      });
+      SelectAllProducts.append(ShowSelectedProductDetails);
+       
+      MixMatchDiv.append(SelectAllProducts);
+      
+      let TotalPriceDiv = document.createElement("div");
+      TotalPriceDiv.className = "sd-bundle-total-conatiner";
+      TotalPriceDiv.style.background = el.customization.productMixMatch.totalSection.backgroundColor;
+      MixMatchDiv.append(TotalPriceDiv);
+
+      let PriceTextDiv = document.createElement("div");
+      PriceTextDiv.className = "sd-bundle-totalText-box";
+      PriceTextDiv.innerText = el.translations.translation.total;
+      PriceTextDiv.style.color = el.customization.productMixMatch.totalSection.color;
+      PriceTextDiv.style.fontSize = `${el.customization.productMixMatch.totalSection.fontSize}px`;
+      TotalPriceDiv.append(PriceTextDiv);
+
+      let AllPriceDiv = document.createElement("div");
+      AllPriceDiv.className = "sd-bundle-discounted-price-box";
+
+      let OriginalPriceDiv = document.createElement("div");
+      OriginalPriceDiv.className = "sd-bundle-discount-price";
+      OriginalPriceDiv.id = `${bundleIndex}OriginalPrice`;
+      OriginalPriceDiv.style.color = el.customization.productMixMatch.totalSection.originalPrice.color;
+      OriginalPriceDiv.style.fontSize = `${el.customization.productMixMatch.totalSection.originalPrice.fontSize}px`;
+      OriginalPriceDiv.innerText = showAmountWithCurrency(OriginalPrice.toFixed(2));
+
+      let FinalPriceDiv = document.createElement("div");
+      FinalPriceDiv.id = `${bundleIndex}FInalPrice`;
+      FinalPriceDiv.className = "sd-bundle-final-price";
+      FinalPriceDiv.style.color = el.customization.productMixMatch.totalSection.finalPrice.color;
+      FinalPriceDiv.style.fontSize = `${el.customization.productMixMatch.totalSection.finalPrice.fontSize}px`;
+      FinalPriceDiv.innerText = showAmountWithCurrency(FinalPrice.toFixed(2));
+
+      AllPriceDiv.append(OriginalPriceDiv);
+      AllPriceDiv.append(FinalPriceDiv);
+      TotalPriceDiv.append(AllPriceDiv);
+
+      let AddToCartBtnDiv = document.createElement("div");
+      AddToCartBtnDiv.className = "sd-bundle-add-to-cart-box"
+      let AddToCartBTN = document.createElement("button");
+      AddToCartBTN.disabled = true;
+      AddToCartBTN.className = "sd-bundle-add-to-cart-button";
+      AddToCartBTN.id = `sd-bundle-add-to-cart-buttonID${bundleIndex}`
+      AddToCartBTN.style.background = "grey";
+      AddToCartBTN.style.cursor = "not-allowed";
+      // AddToCartBTN.style.background = `${el.customization.productMixMatch.button.backgroundColor}`;
+      AddToCartBTN.style.color = `${el.customization.productMixMatch.button.color}`;
+      AddToCartBTN.style.fontSize = `${el.customization.productMixMatch.button.fontSize}px`;
+      AddToCartBTN.innerHTML = el.translations.translation.addToCartButton;
+      AddToCartBTN.type = "button";
+      AddToCartBTN.addEventListener("click",addToCartFunc=(e)=>{
+        let bundleDataArray = SelectedProducts.reduce(
+          (acc, curr) => acc.concat(curr),
+          []
+        );
+        bundleDataArray.map((productsId,productsIndex)=>{
+          bundleData[bundleIndex][productsIndex] = [{
+            id: productsId.replace(
+              "gid://shopify/ProductVariant/",
+              ""
+            ),
+            quantity: 1,
+          }];
+        })
+        PriceArray.map((item)=>{
+          bundleSum[bundleIndex].push([item.price]);
+        })
+        let code = JSON.parse(localStorage.getItem("sd_bundle_data"));
+        let discountCodeId = code.discountCreateId ?? "";
+        AddToCartBTN.innerText = "";
+        let btnSpinner = document.createElement("div");
+        btnSpinner.className = "bundleBtnSpinner";
+        AddToCartBTN.append(btnSpinner);
+
+        btnSpinner.style.display = "block";
+        const mergedArray = bundleData[bundleIndex].reduce(
+          (acc, curr) => acc.concat(curr),
+          []
+        );
+        const mergedGidArray = SelectedProducts.reduce(
+          (acc, curr) => acc.concat(curr),
+          []
+        );
+        let mergedResult = {};
+        for (let item of mergedArray) {
+          if (mergedResult[item.id]) {
+            mergedResult[item.id].quantity += item.quantity;
+          } else {
+            mergedResult[item.id] = { ...item };
+          }
+        }
+        let mergedArrayResult = Object.values(mergedResult);
+        let formData = {
+          items: mergedArrayResult,
+          attributes: { SD_BUNDLE_ID: el._id },
+        };
+        fetch(window.Shopify.routes.root + "cart/add.js", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        })
+          .then((response) => {
+            return response.json();
+          })
+          .then((response) => {
+            let errorDiv = document.getElementsByClassName(
+              "sd-bundle-error-message"
+            );
+            errorDiv[0]?.remove();
+            if (response.status == 422 || response.status == 404) {
+              AddToCartBTN.innerText =
+                el.translations.translation.addToCartButton;
+              btnSpinner.remove();
+              let errorMessage = document.createElement("div");
+              errorMessage.className = "sd-bundle-error-message";
+              BUNDLE_DIV.append(errorMessage);
+              errorMessage.innerText = response.description;
+            } else {
+              fetch(window.Shopify.routes.root + "cart.js", {
+                method: "GET",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              })
+                .then((response) => {
+                  return response.json();
+                })
+                .then((response) => {
+                  if (DiscountType == "noDiscount") {
+                    fetch(`${server}/api/storefront/getBundleClick`, {
+                      method: "POST",
+                      headers: {
+                        "Content-Type": "application/json",
+                      },
+                      body: JSON.stringify({
+                        shop: Shopify.shop,
+                        bundleId: el._id,
+                      }),
+                    });
+                    let isDiscount =
+                      DiscountType == "noDiscount"
+                        ? "noDiscount"
+                        : "Fix";
+                    const localData = JSON.parse(
+                      localStorage.getItem("sd_bundle_data")
+                    );
+                    let sd_bundle_data = {
+                      discount_name: el.name,
+                      code: code.code,
+                      bundleId: el._id,
+                      discountType: isDiscount,
+                      variantsId: mergedArrayResult,
+                      discountCreateId: localData.discountCreateId,
+                      prefixCode: el.settings.discountLabel,
+                    };
+                    var jsonString = JSON.stringify(sd_bundle_data);
+                    localStorage.setItem("sd_bundle_data", jsonString);
+
+                    btnSpinner.remove();
+                    window.location.assign(`https://${Shopify.shop}/cart`);
+                  } else {
+                    let finalSumBundle = bundleSum[bundleIndex].reduce(
+                      (acc, curr) => acc.concat(curr),
+                      []
+                    );
+                    let myArray = finalSumBundle.map(parseFloat);
+                    let total = myArray.reduce(
+                      (accumulator, currentValue) =>
+                        accumulator + currentValue,
+                      0
+                    );
+                    let totalPrice = Number(total.toFixed(2));
+                    let finalPrice;
+                    
+                    switch (DiscountType) {
+                      case "percent":
+                        let percentagepart = parseFloat(
+                          DiscountValue
+                        );
+                        let percentage = (totalPrice * percentagepart) / 100;
+                        finalPrice = percentage.toFixed(2);
+                        break;
+                      case "price":
+                        let pricePart = parseFloat(
+                          DiscountValue
+                        );
+                        result = totalPrice - pricePart;
+                        finalPrice = result.toFixed(2);
+                        break;
+                      case "fixed":
+                        let fixedPart = parseFloat(
+                          DiscountValue
+                        );
+                        finalPrice = fixedPart.toFixed(2);
+                        break;
+                      default:
+                        break;
+                    }
+
+                    let isDiscount =
+                      DiscountType == "noDiscount"
+                        ? "noDiscount"
+                        : "Fix";
+                    let sd_bundle_data = {
+                      discount_name: el.name,
+                      code: `${el.settings.discountLabel}-${code.code}`,
+                      discountType: isDiscount,
+                      discountValue: finalPrice,
+                      variantsId: mergedGidArray,
+                      startDate: new Date(),
+                      endDate: el.endDate,
+                      shop: Shopify.shop,
+                      bundleType: DiscountType,
+                      totalPrice: total.toFixed(2),
+                      discountCreateId: discountCodeId,
+                    };
+                    // new Date().toLocaleDateString()
+                    fetch(server + "/api/storefront/createRule", {
+                      method: "POST",
+                      headers: {
+                        "Content-Type": "application/json",
+                      },
+                      body: JSON.stringify(sd_bundle_data),
+                    })
+                      .then((response) => response.json())
+                      .then((data) => {
+                        if (data.status == 200) {
+                          fetch(`${server}/api/storefront/getBundleClick`, {
+                            method: "POST",
+                            headers: {
+                              "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({
+                              shop: Shopify.shop,
+                              bundleId: el._id,
+                            }),
+                          });
+                          AddToCartBTN.innerText =
+                            el.translations.translation.addToCartButton;
+                          btnSpinner.remove();
+
+                          let sd_bundle_data = {
+                            discount_name: el.name,
+                            code: code.code,
+                            bundleId: el._id,
+                            discountType: isDiscount,
+                            variantsId: mergedArrayResult,
+                            discountCreateId: data.response,
+                            prefixCode: el.settings.discountLabel,
+                          };
+                          var jsonString = JSON.stringify(sd_bundle_data);
+                          localStorage.setItem("sd_bundle_data", jsonString);
+                          window.location.assign(
+                            `https://${Shopify.shop}/cart`
+                          );
+                        }
+                      });
+                  }
+                })
+                .catch((error) => {
+                  AddToCartBTN.innerText =
+                    el.translations.translation.addToCartButton;
+                });
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      });
+      AddToCartBtnDiv.append(AddToCartBTN);
+      if (el.customization.productMixMatch.button.position == "bottom") {
+        MixMatchDiv.append(AddToCartBtnDiv);
+      } else {
+        MixMatchDiv.prepend(AddToCartBtnDiv);
+      }
+      if (el.plans.plan == "free") {
+        waterMark(MixMatchDiv);
+      }
+      mainDiv.append(MixMatchDiv)
+
+      let plusIconHandler = (ele,index,activeBadge) =>{
+        if(index ===  el.bundleDetail.discountOptions.length-1){
+          if(el.bundleDetail.discountOptions[index].type === "percent"){
+            activeBadge.innerText = `${ele.quantity}+ items|${ele.value}% ${el.translations.translation.off}`;
+          }
+          if(el.bundleDetail.discountOptions[index].type === "fixed"){
+            activeBadge.innerText = `${ele.quantity}+ items|-${showAmountWithCurrency(ele.value)} ${el.translations.translation.off}`;
+          }
+          if(el.bundleDetail.discountOptions[index].type === "freeShipping"){
+            activeBadge.innerText = `${ele.quantity}+ items|${el.translations.translation.FreeShipping}`;
+          }
+          if(el.bundleDetail.discountOptions[index].type === "noDiscount"){
+            activeBadge.innerText = `${ele.quantity}+ items|${el.translations.translation.off}`;
+          }
+        }
+      }
+
+      el.bundleDetail.discountOptions.map((ele,index)=>{
+        let getDiscountTextDiv = document.getElementById(`${bundleIndex}discountOffer`)
+        let activeBadge = document.getElementById(`DiscountBadge${bundleIndex}${index}`);
+        let addToCartBTN = document.getElementById(`sd-bundle-add-to-cart-buttonID${bundleIndex}`);
+        let PriceDiv = document.getElementById(`${bundleIndex}OriginalPrice`);
+        plusIconHandler(ele,index,activeBadge)
+        if(el.bundleDetail.discountOptions[index].type === "percent"){
+          if((ele.quantity == SelectedProductsQuantity)  || (index === el.bundleDetail.discountOptions.length-1 && SelectedProductsQuantity >= ele.quantity)) {
+            getDiscountTextDiv.innerText = `${ele.value}% ${el.translations.translation.discountIsApplied}.`;
+            activeBadge.className = "sd-bundle-mix-match-active-badge-div";
+            addToCartBTN.disabled = false;
+            addToCartBTN.style.cursor = "pointer";
+            addToCartBTN.style.background = `${el.customization.productMixMatch.button.backgroundColor}`
+          }
+        }
+        if(el.bundleDetail.discountOptions[index].type === "fixed"){
+          if((ele.quantity == SelectedProductsQuantity)  || (index === el.bundleDetail.discountOptions.length-1 && SelectedProductsQuantity >= ele.quantity)) {
+            getDiscountTextDiv.innerText = `-${showAmountWithCurrency(ele.value)} ${el.translations.translation.discountIsApplied}.`;
+            activeBadge.className = "sd-bundle-mix-match-active-badge-div";
+            addToCartBTN.disabled = false;
+            addToCartBTN.style.cursor = "pointer";
+            addToCartBTN.style.background = `${el.customization.productMixMatch.button.backgroundColor}`
+          }
+        }
+        if(el.bundleDetail.discountOptions[index].type === "noDiscount"){
+          if((ele.quantity == SelectedProductsQuantity)  || (index === el.bundleDetail.discountOptions.length-1 && SelectedProductsQuantity >= ele.quantity)) {
+            getDiscountTextDiv.innerText = `${el.translations.translation.discountIsApplied}.`;
+            activeBadge.className = "sd-bundle-mix-match-active-badge-div";
+            PriceDiv.style.display = "none";
+            addToCartBTN.disabled = false;
+            addToCartBTN.style.cursor = "pointer";
+            addToCartBTN.style.background = `${el.customization.productMixMatch.button.backgroundColor}`
+          }
+        }
+        if(el.bundleDetail.discountOptions[index].type === "freeShipping"){
+          if((ele.quantity == SelectedProductsQuantity)  || (index === el.bundleDetail.discountOptions.length-1 && SelectedProductsQuantity >= ele.quantity)) {
+            getDiscountTextDiv.innerText = `100% ${el.translations.translation.FreeShipping} ${el.translations.translation.discountIsApplied}.`;
+            activeBadge.className = "sd-bundle-mix-match-active-badge-div";
+            PriceDiv.style.display = "none";
+            addToCartBTN.disabled = false;
+            addToCartBTN.style.cursor = "pointer";
+            addToCartBTN.style.background = `${el.customization.productMixMatch.button.backgroundColor}`
+          }
+        }
+      })
+    }
+    else if (el.type == "bxgy") {
+      // console.log("Check enter in bxgy.....................")
+    }
   });
 }
 let selectedProducts = [];
@@ -2049,6 +3126,7 @@ async function bundlePageBuilder(data) {
 
   if (data.status == 200) {
     let pageWidth = document.getElementsByClassName("page-width--narrow")[0];
+    console.log("here we check pageWidth>>>>>>>>>>----------",pageWidth);
     pageWidth.style.width = "100%";
     pageWidth.style.left = "0px";
     pageWidth.style.marginRight = "0px";
@@ -3180,6 +4258,7 @@ async function activateRule(localData) {
     });
 }
 async function deactivateRule(localData) {
+  console.log("deactivate run******");
   const data = {
     shop: Shopify.shop,
     discountId: localData.discountCreateId,

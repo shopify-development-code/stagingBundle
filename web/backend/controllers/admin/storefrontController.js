@@ -4,13 +4,15 @@ import shopify from "../../../shopify.js";
 import pageDataModel from "../../models/pageData.js";
 import { ObjectId } from "mongodb";
 import analyticsModel from "../../models/analytics.js";
+import discountIdModel from "../../models/discountIdSchema.js";
 
 export async function getBundleData(req, res) {
   try {
     let shop = req.body.shop;
+    console.log("console shop:::::::::",shop);
     let pId = `gid://shopify/Product/${req.body.id}`;
     let collId = req.body.collId;
-    console.log(collId);
+    // console.log("**********************",pId);
     const response = await bundleModel.aggregate([
       {
         $match: {
@@ -112,6 +114,60 @@ export async function getBundleData(req, res) {
                 },
               ],
             },
+            {
+              $and: [
+                { type: "bxgy" },
+                {
+                  $or: [
+                    { "bundleDetail.display.productPages": false },
+                    {
+                      $and: [
+                        { "bundleDetail.display.productPages": true },
+                        {
+                          "bundleDetail.display.productPagesList": pId,
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              $and: [
+                { type: "productMixMatch" },
+                {
+                  $or: [
+                    { "bundleDetail.display.productPages": false },
+                    {
+                      $and: [
+                        { "bundleDetail.display.productPages": true },
+                        {
+                          "bundleDetail.display.productPagesList": pId,
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              $and: [
+                { type: "fbt" },
+                {
+                  $or: [
+                    { "bundleDetail.display.productPages": false },
+                    {
+                      $and: [
+                        { "bundleDetail.display.productPages": true },
+                        {
+                          "bundleDetail.display.productPagesList": pId,
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            }
           ],
         },
       },
@@ -154,6 +210,7 @@ export async function getBundleData(req, res) {
           type: 1,
           name: 1,
           title: 1,
+          description:1,
           status: 1,
           currencyCode: 1,
           bundleDetail: 1,
@@ -169,6 +226,8 @@ export async function getBundleData(req, res) {
     ]);
 
     if (response) {
+    console.log("check response :::::::::=====::::::::::::::::::::::>>",response);
+
       return res
         .status(200)
         .send({ message: "success", response: response, status: 200 });
@@ -258,7 +317,7 @@ export async function getPage(req, res) {
       }
     }
   }
-}
+} 
 
 export async function getCollectionMixMatchData(req, res) {
   try {
@@ -270,7 +329,7 @@ export async function getCollectionMixMatchData(req, res) {
         {
           $match: {
             shop: shop,
-            _id: ObjectId(id),
+            _id: new ObjectId(id),
           },
         },
         {
@@ -546,7 +605,7 @@ export async function searchCollectionProducts(req, res) {
 
 export async function getBundleViews(req, res) {
   try {
-    const objectIds = req.body.bundleId.map((id) => ObjectId(id));
+    const objectIds = req.body.bundleId.map((id) => new ObjectId(id));
 
     const bundles = await analyticsModel.find({ bundleId: objectIds });
 
@@ -569,7 +628,7 @@ export async function getBundleViews(req, res) {
 
 export async function getBundleClick(req, res) {
   try {
-    const objectId = ObjectId(req.body.bundleId);
+    const objectId = new ObjectId(req.body.bundleId);
 
     const bundles = await analyticsModel.find({ bundleId: objectId });
 
@@ -591,4 +650,144 @@ export async function getBundleClick(req, res) {
   } catch (error) {
     console.log(error.message);
   }
+}
+
+export async function updateAutomaticDiscount(req,res){
+  try {
+    const {shop,type,xproductId,yproductId,discountType,discountValue} = req.body ;
+    let data = {
+    type:type,
+    xproductId:xproductId,
+    yproductId:yproductId,
+    discountType:discountType,
+    discountValue:discountValue
+    }
+   let jsonStringy = JSON.stringify({ "bundleData": JSON.stringify(data) });
+ 
+  const db = await discountIdModel.findOne({shop:shop})
+  const session = await shopInfoModel.findOne({shop:shop})
+  let update ;
+  let discountAutomaticId ;
+  const client = new shopify.api.clients.Graphql({
+    session: {
+      shop: session.shop,
+      accessToken: session.accessToken,
+    },
+  });
+  if(db.discountId){
+    discountAutomaticId = db.discountId
+    const data = await client.query({
+      data: `query {
+        discountNode(id: "${db.discountId}") {
+          id
+      }
+      }`,
+    });
+     console.log(discountAutomaticId)
+     console.log(data?.body?.data?.discountNode.id)
+    if(data?.body?.data?.discountNode.id!== null ){
+     update = true;
+    }else{
+      update = false;
+    }
+  }
+  if(update = true){
+    //update old
+    console.log("updateOld")
+   
+    let Input = {
+      "id": discountAutomaticId,
+      "automaticAppDiscount": {
+        "metafields": [
+          {
+            "key": "function-configuration",
+            "type": "json",
+            "value": `${jsonStringy}`
+          }
+        ]
+      }
+    }
+    
+    let queryString = `mutation discountAutomaticAppUpdate($automaticAppDiscount: DiscountAutomaticAppInput!, $id: ID!) {
+      discountAutomaticAppUpdate(automaticAppDiscount: $automaticAppDiscount, id: $id) {
+        automaticAppDiscount {
+          discountId
+          title
+        }
+        userErrors {
+          field
+          message
+        }
+      }
+    }`
+    const response = await client.query({
+      data: {
+        query: queryString,
+        variables: Input,
+      },
+    });
+    return res.status(200).json({message:"update success",response:response,status:200})
+  }else{
+    //create new
+    console.log("createNew")
+
+    let Input = {
+            "automaticAppDiscount": {
+              "title": "Smart Bundle (DO NOT DELETE)",
+              "functionId": "b96d3230-7a17-4b58-8417-afe9e1504fb7",
+              "combinesWith": {
+                "orderDiscounts": true,
+                "productDiscounts": true,
+                "shippingDiscounts": true
+              },
+              "startsAt": "2021-02-02T17:09:21Z",
+             
+              "metafields": [
+                {
+                  "namespace": "product-discount",
+                  "key": "function-configuration",
+                  "type": "json",
+                  "value": jsonStringy
+                }
+              ]
+            }
+          }
+          
+    
+    let queryString = `mutation discountAutomaticAppCreate($automaticAppDiscount: DiscountAutomaticAppInput!) {
+        discountAutomaticAppCreate(automaticAppDiscount: $automaticAppDiscount) {
+          userErrors {
+            field
+            message
+          }
+          automaticAppDiscount {
+            discountId
+            title
+            startsAt
+            endsAt
+            status
+            appDiscountType {
+              appKey
+              functionId
+            }
+            combinesWith {
+              orderDiscounts
+              productDiscounts
+              shippingDiscounts
+            }
+          }
+        }
+      }
+      `
+      const response = await client.query({
+        data: {
+          query: queryString,
+          variables: Input,
+        },
+      });
+      return res.status(200).json({message: "create success",response : response,status:200})
+  }
+} catch (error) {
+    console.log(error)
+}
 }

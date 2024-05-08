@@ -17,6 +17,15 @@ const customizationSchema = new mongoose.Schema({
   },
   volume:{
     type:Object
+  },
+  buyXgetY:{
+    type:Object
+  },
+  frequentlyBoughtTogether:{
+    type:Object
+  },
+  productMixMatch:{
+    type:Object
   }
 
 },{

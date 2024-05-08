@@ -20,10 +20,7 @@ import {
   saveSetting,
   getSetting,
   getThemeId,
-  getWebHooksData,
-  updateWebhook,
-  deleteWebhook,
-  getWebhooks,
+  createAutomaticDiscount,
  
   
  
@@ -35,7 +32,7 @@ import {
   deactivateRule,
 
 } from "../controllers/admin/bundleController.js";
-import { createPage, getBundleData, getCollectionMixMatchData, getPage ,getCollectionProducts, getMoreCollectionProducts, searchCollectionProducts,getBundleViews, getBundleClick} from "../controllers/admin/storefrontController.js";
+import { createPage, getBundleData, getCollectionMixMatchData, getPage ,getCollectionProducts, getMoreCollectionProducts, searchCollectionProducts,getBundleViews, getBundleClick, updateAutomaticDiscount} from "../controllers/admin/storefrontController.js";
 import contactEmail from "../helper/Email.js";
 import { createPlan, freePlans, getPlans, recurringBiling,recurringBilingSelected } from "../controllers/admin/billingController.js";
 // ---------------------------------------App -Admin Routes  :------------------------------------------------------
@@ -58,10 +55,7 @@ router.post("/admin/fetchVariants",fetchVariants);
 router.post("/admin/saveSetting",saveSetting);
 router.post("/admin/getSetting",getSetting);
 router.post("/admin/getThemeId",getThemeId);
-router.post("/admin/get-customer-data-for-webhooks",getWebHooksData);
-router.post("/admin/store-update-Webhooks",updateWebhook);
-router.post("/admin/store-delete-Webhooks",deleteWebhook);
-router.post("/admin/store-get-Webhooks",getWebhooks);
+router.post("/admin/createAutomaticDiscount",createAutomaticDiscount);
 //---------------------------------- Bundle Product Discount Routes :--------------------------------------------
 
 router.post("/createRule", createRule);
@@ -79,6 +73,8 @@ router.post("/getMoreCollectionProducts",getMoreCollectionProducts)
 router.post("/searchCollectionProducts",searchCollectionProducts)
 router.post("/getBundleViews",getBundleViews)
 router.post("/getBundleClick",getBundleClick)
+router.post("/admin/updateAutomaticDiscount",updateAutomaticDiscount);
+
 //--------------------------------------Pricing Plans :--------------------------------------------------------
 router.post("/admin/getBilling",recurringBiling)
 router.post("/admin/billingSelected",recurringBilingSelected)

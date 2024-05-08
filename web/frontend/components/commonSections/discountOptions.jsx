@@ -30,7 +30,7 @@ const DiscountOptions=(props)=>{
             suffix="%"
             value={props.discountValue}
             autoComplete="off"
-            min="0"
+            min={1}
           />
 
         </div>
@@ -59,14 +59,14 @@ const DiscountOptions=(props)=>{
             suffix={props.currency.replace(/{{.*?}}/g, "") }
             value={props.discountValue}
             autoComplete="off"
-            min="0"
+            min={1}
           />
 
 
               </div>
       )}
     </div>
-    <div className="sd-bundle-item sd-bundle-item-price">
+    {/* <div className="sd-bundle-item sd-bundle-item-price">
       <input
         type="radio"
         name="discount"
@@ -87,7 +87,7 @@ const DiscountOptions=(props)=>{
               suffix={props.currency.replace(/{{.*?}}/g, "")}
               value={props.discountValue}
               autoComplete="off"
-              min="0"
+              min={1}
             />
           
           </div>
@@ -100,7 +100,7 @@ const DiscountOptions=(props)=>{
 }
         </>
       )}
-    </div>
+    </div> */}
 
     <div className="sd-bundle-item">
       <input

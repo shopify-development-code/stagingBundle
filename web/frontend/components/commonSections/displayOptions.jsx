@@ -10,7 +10,7 @@ const DisplayOptions=(props)=>{
         <div  className="sd-bundle-bundleSection-common  sd-bundle-displaySection">
         <div className="sd-bundle-bundleSection-heading-common ">Display Options</div>
         <p className="sd-bundle-plainText-common">
-          check page options where you want to display bundle
+          Check page options where you want to display bundle
         </p>
 
         <div className="sd-bundle-page-selection  ">
@@ -30,7 +30,7 @@ const DisplayOptions=(props)=>{
           
             <br />
 
-{ props.bundleType == "productBundle" || props.bundleType == "collectionMixMatch" ?
+{ props.bundleType == "productBundle" || props.bundleType == "prupductMixMatch" || props.bundleType == "collectionMixMatch" ?
             <div className={props.products.length > 0 ? "sd-bundle-productPage-selection" : null}>
               {props?.products.map((item,ind) => {
                 return (

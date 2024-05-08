@@ -9,7 +9,7 @@ import contactEmail from "../../helper/Email.js";
 import { ObjectId } from 'mongodb'
 import analyticsModel from "../../models/analytics.js";
 import settingModel from "../../models/settings.js";
-import shopInfoModel from "../../models/shopInfoSchema.js";
+import discountIdModel from "../../models/discountIdSchema.js";
 const MAX_RETRIES = 3;
 let retries = 0;
 
@@ -19,13 +19,14 @@ export async function createBundle(req,res){
  
     const session = res.locals.shopify.session;
     let shop = session.shop;
-   const {type,name,title,status,bundleDetail,customization,startdate,endDate,display,currencyCode,timeZone} = req.body
-
+   const {type,name,title,description,status,bundleDetail,customization,startdate,endDate,display,currencyCode,timeZone} = req.body
+  //  console.log("check customization===========>",customization);
    const response = await bundleModel.create({
     shop:shop ,
       type:type,
       name:name,
       title: title,
+      description:description,
       status: status,
       currencyCode:currencyCode,
       bundleDetail:bundleDetail,
@@ -131,15 +132,16 @@ export async function editBundle (req,res){
   
 try {
   const {id}= req.body
-const session = res.locals.shopify.session;
-let shop = session.shop;
+  const session = res.locals.shopify.session;
+  let shop = session.shop;
+  console.log("kkkkdjsdsdksdksk",shop);
 const response = await bundleModel.aggregate([
   {
     $match:
     
       {
         shop: shop,
-        _id: ObjectId(id)
+        _id: new ObjectId(id)
       },
   },
   {
@@ -155,7 +157,7 @@ const response = await bundleModel.aggregate([
 ])
 
 if(response){
-
+console.log("chedjedeeje///////////////////////////////////////////////////////////////=>",response);
 return res.status(200).send({message:"success",response:response[0],status:200})
 
 }
@@ -222,14 +224,26 @@ export async function getBundle (req,res){
           "bundleDetail.discountOptions" : 1,
           "bundleDetail.products.images" : 1,
           "bundleDetail.products.image" : 1,
-          "bundleDetail.discountType":1
+          "bundleDetail.discountType":1,
+          "bundleDetail.xproducts":1,
+          "bundleDetail.yproducts":1
+        }
+      },
+      {
+        $lookup: {
+          from: 'analytics',
+          localField: '_id',
+          foreignField: 'bundleId',
+          as: 'analytics'
+        }
+      },
+      {
+        $addFields: {
+          analytics: { $arrayElemAt: ['$analytics', 0] }
         }
       }
-     
-      
     ]);
-    
-    
+
   
     if(response){
 
@@ -249,7 +263,7 @@ export async function updateStatus (req,res){
     const {id,status} = req.body
     const response =  await bundleModel.findOneAndUpdate({_id:id},{$set: { status:status}})
     if(response){
-    return res.status(200).send({message:"success",status:200})
+    return res.status(200).send({message:"success",response:response,status:200})
     }else{
       return res.status(503).send({message:"something went wrong",status:503})
     }
@@ -377,16 +391,23 @@ return res.status(503).send({message:"something went wrong",status:503})
   export async function updateBundleCustomization (req,res){
     const session = res.locals.shopify.session;
     let shop = session.shop;
+    // let body={product:"njdhjwhdkdkdkk"}
  
     const response = await customizationModel.findOneAndUpdate({shop:shop},{shop:shop,
                                                                             bundle:req.body.bundle,
                                                                             collectionMixMatch:req.body.collection,
                                                                             volume:req.body.volume,
-                                                                          popUp:req.body.popUp},{upsert:true})
+                                                                            buyXgetY:req.body.buyXgetY,
+                                                                            frequentlyBoughtTogether:req.body.frequentlyBoughtTogether,
+                                                                            productMixMatch:req.body.productMixMatch,
+                                                                            popUp:req.body.popUp},
+                                                                            {upsert:true})
+                                                                           
 
-                                                                          
+                                                                
   if(response){
     return res.status(200).send({message :"success",status : 200})
+    // console.log("check response from api update======>>>>>>>>><<<<<<<<<<========",req.body);
   }
   return res.status(400).send({message:"BAD_REQUEST",status:400})
   }
@@ -538,7 +559,7 @@ export async function getSetting(req,res){
 export async function getThemeId(req, res) {
   try {
     const session = res.locals.shopify.session;
-   
+   console.log(session)
     const client = new shopify.api.clients.Rest({session});
 const data = await client.get({
   path: 'themes',
@@ -566,120 +587,140 @@ export function  privacyPolicy  (req,res) {
     res.end();
 }
 
-export async function getWebHooksData (req,res){
-  const response = await shopInfoModel.find()
-  res.send(response)
-  }
-  
-  export async function updateWebhook (req,res){
-    try{
-      const {shop,accessToken} = req.body;
-      let session = {
-        shop:shop,
-        accessToken:accessToken
-      }
+export async function createAutomaticDiscount(req,res){
+
+ 
+  const response = await discountIdModel.findOne({shop:res.locals.shopify.session.shop});
+  console.log(response.discountId)
+  // if(response.body.id){
     
-    const productUpdate = new shopify.api.rest.Webhook({session: session});
-    productUpdate.address = "https://bundlesgroup.com/api/webhooks";
-    productUpdate.topic = "products/update";
-    productUpdate.format = "json";
-    await productUpdate.save({
-      update: true,
-    });
-    
-    const productDelete = new shopify.api.rest.Webhook({session: session});
-    productDelete.address = "https://bundlesgroup.com/api/webhooks";
-    productDelete.topic = "products/delete";
-    productDelete.format = "json";
-    await productDelete.save({
-      update: true,
-    });
-    
-    const orderCreate = new shopify.api.rest.Webhook({session: session});
-    orderCreate.address = "https://bundlesgroup.com/api/webhooks";
-    orderCreate.topic = "orders/create";
-    orderCreate.format = "json";
-    await orderCreate.save({
-      update: true,
-    });
-    
-    const collectionDelete = new shopify.api.rest.Webhook({session: session});
-    collectionDelete.address = "https://bundlesgroup.com/api/webhooks";
-    collectionDelete.topic = "collections/delete";
-    collectionDelete.format = "json";
-    await collectionDelete.save({
-      update: true,
-    });
-    
-    const collectionUpdate = new shopify.api.rest.Webhook({session: session});
-    collectionUpdate.address = "https://bundlesgroup.com/api/webhooks";
-    collectionUpdate.topic = "collections/update";
-    collectionUpdate.format = "json";
-    await collectionUpdate.save({
-      update: true,
-    });
-    
-    const appUninstall = new shopify.api.rest.Webhook({session: session});
-    appUninstall.address = "https://bundlesgroup.com/api/webhooks";
-    appUninstall.topic = "app/uninstalled";
-    appUninstall.format = "json";
-    await appUninstall.save({
-      update: true,
-    });
-    
-    const getResponse = await shopify.api.rest.Webhook.all({
-      session: session,
-    });
+  // }
+  // const client = new shopify.api.clients.Graphql({ session: res.locals.shopify.session});
+  // let Input = 
+  //     {
+  //         "automaticAppDiscount": {
+  //           "title": "Smart Bundle (DO NOT DELETE)",
+  //           "functionId": "b96d3230-7a17-4b58-8417-afe9e1504fb7",
+  //           "combinesWith": {
+  //             "orderDiscounts": true,
+  //             "productDiscounts": true,
+  //             "shippingDiscounts": true
+  //           },
+  //           "startsAt": "2021-02-02T17:09:21Z",
+           
+  //           "metafields": [
+  //             {
+  //               "namespace": "product-discount",
+  //               "key": "function-configuration",
+  //               "type": "json",
+  //               "value": "0"
+  //             }
+  //           ]
+  //         }
+  //       }
+        
   
-    res.json({message:"success",response:getResponse})
-    }catch(err){
-  res.send(err)
-    }
-  
-  }
-  export async function deleteWebhook (req,res){
-    try {
-      const {shop,accessToken} = req.body
-  
-      let session = {
-        shop:shop,
-        accessToken:accessToken
-      }
-     const response = await shopify.api.rest.Webhook.all({
-        session: session,
-      });
-  
-    if(response.data.length > 0){
-       response.data.map(async(ele,index)=>{
-        await shopify.api.rest.Webhook.delete({
-          session: session,
-          id: ele.id,
-        });
-       })
-       return res.send("delete successfully !!!")
-    }else{
-      return res.send("no data found to delete !!!")
-      
-    }
-    } catch (error) {
-     return res.send(error)
-    }
-  }
-  
-  export async function getWebhooks(req,res){
-  try {
-    const {shop,accessToken} = req.body
-    let session = {
-      shop:shop,
-      accessToken:accessToken
-    }
-  
-    const getResponse = await shopify.api.rest.Webhook.all({
-      session: session,
-    });
-  
-    return res.send(getResponse)
-  } catch (error) {
-    res.send(error)
-  }
-  }
+  // let queryString = `mutation discountAutomaticAppCreate($automaticAppDiscount: DiscountAutomaticAppInput!) {
+  //     discountAutomaticAppCreate(automaticAppDiscount: $automaticAppDiscount) {
+  //       userErrors {
+  //         field
+  //         message
+  //       }
+  //       automaticAppDiscount {
+  //         discountId
+  //         title
+  //         startsAt
+  //         endsAt
+  //         status
+  //         appDiscountType {
+  //           appKey
+  //           functionId
+  //         }
+  //         combinesWith {
+  //           orderDiscounts
+  //           productDiscounts
+  //           shippingDiscounts
+  //         }
+  //       }
+  //     }
+  //   }
+  //   `
+  //   const response = await client.query({
+  //     data: {
+  //       query: queryString,
+  //       variables: Input,
+  //     },
+  //   });
+  //   console.log(response.body.data.discountAutomaticAppCreate.automaticAppDiscount.discountId)
+  //   res.send(response)
+}
+
+// export async function checkTest(req,res){
+//   let session = res.locals.shopify.session
+//   console.log(session,"session")
+//   const client = new shopify.api.clients.Graphql({session});
+//   let queryString = `query {
+//     discountNodes(first: 100) {
+//       edges {
+//         node {
+//           id
+//           discount {
+//             ... on DiscountAutomaticApp {
+//               title
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }`
+
+//   const response = await client.query({
+//     data: {
+//       query: queryString,
+//     },
+//   });
+//   res.status(200).send({msg:response});
+// // console.log("heyyyyyy ***** **** -------**** ******",response);
+//   // return res.send(response);
+// }
+
+
+// export async function testMutation(req,res){
+//   let session = res.locals.shopify.session
+//   console.log(session,"session")
+//   const client = new shopify.api.clients.Graphql({session});
+
+//   let Input = {
+//     id:"gid://shopify/DiscountCodeNode/1333065449707",
+//     namespace:"volume-discount",
+//     key:"8a835d62-e158-4212-a40f-43303f59565a",
+//   }
+//   let queryString = `mutation {
+//     discountAutomaticAppUpdate(
+//       id: ${Input.id},
+//       automaticAppDiscount: {
+//         metafields: [
+//           {
+//             namespace: ${Input.namespace}
+//             key: ${Input.key}
+//             value: "{ \"quantity\": 3, \"percentage\": 15.0 }"
+//             type: "json"
+//           }
+//         ]
+//       }
+//   ) {
+//       userErrors {
+//         field
+//         message
+//       }
+//     }
+//   }`
+
+//   const response = await client.query({
+//     data: {
+//       query: queryString,
+//       variables: Input
+//     },
+//   });
+//   res.status(200).send({msg:response});
+// }

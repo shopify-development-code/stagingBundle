@@ -22,6 +22,7 @@ const BundleCustomization = () => {
     volume:defaultData["volume"],
     collection:defaultData["collectionMixMatch"],
     popUp:defaultData["popUp"],
+    productMixMatch:defaultData["productMixMatch"],
     });
 
     async function getCustomizationData(){
@@ -33,6 +34,7 @@ const BundleCustomization = () => {
          setData({bundle:response.data.response.bundle,
                   volume:response.data.response.volume,
                    collection:response.data.response.collectionMixMatch,
+                   productMixMatch:data.response.productMixMatch,
                   popUp:response.data.response.popUp})
       }
     }

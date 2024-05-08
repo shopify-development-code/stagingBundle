@@ -1,11 +1,16 @@
 import React, { useState,useEffect } from 'react'
-import {Skeleton} from 'antd';
-
+import { Card ,Divider,Spin,Skeleton} from 'antd';
+import {Button,Icon,} from "@shopify/polaris";
+import { ArrowLeftOutlined} from "@ant-design/icons";
+import { useNavigate } from "@shopify/app-bridge-react";
 import { useAppBridge } from "@shopify/app-bridge-react";
 import postApi from './postApi';
+// import BoatLoader from './BoatLoader';
 import toastNotification from "./commonSections/Toast.jsx";
+import Watermark from './watermark';
 
 const Translation = () => {
+  const navigate = useNavigate()
   const app = useAppBridge();
 
   const [translateField,setTranslateField] = useState({})
@@ -45,11 +50,24 @@ if(response.data.status == 200){
 }
 
   return (
-  
+    // <Spin spinning={spinner}
+    // indicator={<BoatLoader/>}
+    // size="large"> 
     <div className='sd-bundle-setting-translation'>
-
+     {/* <div className='sd-bundle-MoveToHome-section'>
+        <div className='sd-bundle-MoveToHome-arrow'>
+        <Button 
+         onClick={() => navigate("/settings")}>
+        <ArrowLeftOutlined />
+      </Button>
+        </div>
+        <div className="sd-bundle-commonHeading">Translation</div>
+        <div>
+    
+        </div>
+     </div> */}
      <div className='sd-bundle-translate-content'>
-      <Skeleton active paragraph={{rows:15}} loading={spinner}>
+      <Skeleton active paragraph={{rows:25}} loading={spinner}>
                <div className='sd-bundle-translate-heading-row'>
                <div className='sd-bundle-translate-original-col'>
                <div className='sd-bundle-translate-heading-text'><h3>Original</h3>
@@ -106,6 +124,25 @@ if(response.data.status == 200){
                <div className='sd-bundle-translate-originalText'><h3>Grab the deal</h3>
                <input onChange={handleTranslation} name='grabTheDeal' className='sd-bundle-translate-translate-text' type="text"  value={translateField.grabTheDeal}/>
                </div>
+               <div className='sd-bundle-translate-originalText'><h3>You have not selected any items yet</h3>
+               <input onChange={handleTranslation} name='youHavenotSelectedanyItemsYet' className='sd-bundle-translate-translate-text' type="text"  value={translateField.youHavenotSelectedanyItemsYet}/>
+               </div>
+               <div className='sd-bundle-translate-originalText'><h3>You have selected {"{{item}}"} items</h3>
+               <input onChange={handleTranslation} name='youHaveSelectedItems' className='sd-bundle-translate-translate-text' type="text"  value={translateField.youHaveSelectedItems}/>
+               </div>
+               <div className='sd-bundle-translate-originalText'><h3>No discount is applied on the selected products</h3>
+               <input onChange={handleTranslation} name='noDiscountIsApplied' className='sd-bundle-translate-translate-text' type="text"  value={translateField.noDiscountIsApplied}/>
+               </div>
+               <div className='sd-bundle-translate-originalText'><h3>discount is applied on the selected products</h3>
+               <input onChange={handleTranslation} name='discountIsApplied' className='sd-bundle-translate-translate-text' type="text"  value={translateField.discountIsApplied}/>
+               </div>
+               <div className='sd-bundle-translate-originalText'><h3>Select at least {"{{item}}"} items to apply the discount</h3>
+               <input onChange={handleTranslation} name='selectAtLeastItemsToApplyTheDiscount' className='sd-bundle-translate-translate-text' type="text"  value={translateField.selectAtLeastItemsToApplyTheDiscount}/>
+               </div>
+               <div className='sd-bundle-translate-originalText'><h3>All Products</h3>
+               <input onChange={handleTranslation} name='allProducts' className='sd-bundle-translate-translate-text' type="text"  value={translateField.allProducts}/>
+               </div>
+               
                </div>
              
                </div>
@@ -118,6 +155,7 @@ if(response.data.status == 200){
      </div>
      
     </div>
+    // </Spin>
   )
 }
 
