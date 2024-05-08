@@ -12,7 +12,7 @@ const shopify = shopifyApp({
   api: {
     apiVersion: LATEST_API_VERSION,
     restResources,
-    billing: undefined, // or replace with billingConfig above to enable example billing
+    billing: undefined, 
     apiKey : process.env.SHOPIFY_API_KEY,
     apiSecretKey: process.env.SHOPIFY_API_SECRET,
     hostScheme : "https",
