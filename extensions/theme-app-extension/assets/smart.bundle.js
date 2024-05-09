@@ -2884,7 +2884,7 @@ function createBundle(BUNDLE_DATA) {
               btnSpinner.remove();
               let errorMessage = document.createElement("div");
               errorMessage.className = "sd-bundle-error-message";
-              BUNDLE_DIV.append(errorMessage);
+              MixMatchDiv.append(errorMessage);
               errorMessage.innerText = response.description;
             } else {
               fetch(window.Shopify.routes.root + "cart.js", {
