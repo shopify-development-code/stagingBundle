@@ -1,0 +1,33 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+name = "RobinBundleApp"
+client_id = "4907bbf433e1b6953549dd702efdfe87"
+application_url = "https://serbia-duck-vital-refined.trycloudflare.com"
+embedded = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+use_legacy_install_flow = true
+
+[auth]
+redirect_urls = [
+  "https://serbia-duck-vital-refined.trycloudflare.com/auth/callback",
+  "https://serbia-duck-vital-refined.trycloudflare.com/auth/shopify/callback",
+  "https://serbia-duck-vital-refined.trycloudflare.com/api/auth/callback",
+  "https://serbia-duck-vital-refined.trycloudflare.com/.shopify/graphiql/auth/callback"
+]
+
+[webhooks]
+api_version = "2023-01"
+
+  [webhooks.privacy_compliance]
+  customer_deletion_url = "https://267f-14-99-195-170.ngrok-free.app/api/webhooks"
+  customer_data_request_url = "https://267f-14-99-195-170.ngrok-free.app/api/webhooks"
+  shop_deletion_url = "https://267f-14-99-195-170.ngrok-free.app/api/webhooks"
+
+[pos]
+embedded = false
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "nezuko-komada.myshopify.com"
