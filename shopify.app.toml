@@ -1,33 +1,29 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
-client_id = "4907bbf433e1b6953549dd702efdfe87"
-name = "RobinBundleApp"
-application_url = "https://serbia-duck-vital-refined.trycloudflare.com"
+client_id = "b8c12ad6dd6cca8d5809e99013d4289b"
+name = "akashbundlelive"
+handle = "akashbundlelive"
+application_url = "https://intelligent-journals-bind-ira.trycloudflare.com"
 embedded = true
 
 [build]
-automatically_update_urls_on_dev = true
-dev_store_url = "nezuko-komada.myshopify.com"
+automatically_update_urls_on_dev = false
+dev_store_url = "robins-store1.myshopify.com"
+include_config_on_deploy = true
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-use_legacy_install_flow = true
+scopes = "read_content,read_themes,write_content,write_discounts,write_orders,write_price_rules,write_products"
 
 [auth]
 redirect_urls = [
-  "https://serbia-duck-vital-refined.trycloudflare.com/auth/callback",
-  "https://serbia-duck-vital-refined.trycloudflare.com/auth/shopify/callback",
-  "https://serbia-duck-vital-refined.trycloudflare.com/api/auth/callback",
-  "https://serbia-duck-vital-refined.trycloudflare.com/.shopify/graphiql/auth/callback"
+  "https://intelligent-journals-bind-ira.trycloudflare.com/auth/callback",
+  "https://intelligent-journals-bind-ira.trycloudflare.com/auth/shopify/callback",
+  "https://intelligent-journals-bind-ira.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
-api_version = "2023-01"
-
-  [webhooks.privacy_compliance]
-  customer_deletion_url = "https://267f-14-99-195-170.ngrok-free.app/api/webhooks"
-  customer_data_request_url = "https://267f-14-99-195-170.ngrok-free.app/api/webhooks"
-  shop_deletion_url = "https://267f-14-99-195-170.ngrok-free.app/api/webhooks"
+api_version = "2024-04"
 
 [pos]
 embedded = false
