@@ -3,7 +3,7 @@
 client_id = "e13323374d92132ba17048d14e6ecb0e"
 name = "akashbundlelive"
 handle = "akashbundlelive"
-application_url = "https://intelligent-journals-bind-ira.trycloudflare.com"
+application_url = "https://confidence-stock-reynolds-anne.trycloudflare.com"
 embedded = true
 
 [build]
@@ -16,9 +16,9 @@ scopes = "read_content,read_themes,write_content,write_discounts,write_orders,wr
 
 [auth]
 redirect_urls = [
-  "https://intelligent-journals-bind-ira.trycloudflare.com/auth/callback",
-  "https://intelligent-journals-bind-ira.trycloudflare.com/auth/shopify/callback",
-  "https://intelligent-journals-bind-ira.trycloudflare.com/api/auth/callback"
+  "https://confidence-stock-reynolds-anne.trycloudflare.com/auth/callback",
+  "https://confidence-stock-reynolds-anne.trycloudflare.com/auth/shopify/callback",
+  "https://confidence-stock-reynolds-anne.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
