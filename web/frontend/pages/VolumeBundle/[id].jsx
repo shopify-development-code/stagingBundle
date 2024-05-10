@@ -303,7 +303,9 @@ function getPreviewData(data){
 
 
   const handleDiscountQuantity = (newvalue, index) => {
-   if (newvalue != "" && newvalue != 0){
+    if (newvalue == "" || newvalue <= 1) {
+
+    }else if (newvalue != "" && newvalue != 0){
     
     let update = { ...data };
     update.bundleDetail.discountOptions[index].quantity = newvalue;
