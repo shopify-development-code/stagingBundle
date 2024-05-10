@@ -3,7 +3,7 @@
 client_id = "e13323374d92132ba17048d14e6ecb0e"
 name = "akashbundlelive"
 handle = "akashbundlelive"
-application_url = "https://spectrum-weighted-version-nervous.trycloudflare.com"
+application_url = "https://discharge-fraser-fly-slide.trycloudflare.com"
 embedded = true
 
 [build]
@@ -16,9 +16,9 @@ scopes = "read_content,read_themes,write_content,write_discounts,write_orders,wr
 
 [auth]
 redirect_urls = [
-  "https://spectrum-weighted-version-nervous.trycloudflare.com/auth/callback",
-  "https://spectrum-weighted-version-nervous.trycloudflare.com/auth/shopify/callback",
-  "https://spectrum-weighted-version-nervous.trycloudflare.com/api/auth/callback"
+  "https://discharge-fraser-fly-slide.trycloudflare.com/auth/callback",
+  "https://discharge-fraser-fly-slide.trycloudflare.com/auth/shopify/callback",
+  "https://discharge-fraser-fly-slide.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
