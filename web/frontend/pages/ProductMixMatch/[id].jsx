@@ -41,6 +41,7 @@ const ProductMixMatch = () => {
   const [error, setError] = useState("");
   const [sumData, setSumData] = useState([]);
   const [multiProductArray,setMultiProductArray] = useState([]);
+  const [requiredProductArray,setRequiredProductArray] = useState([]);
   const [data, setData] = useState({
     shop: shop,
     type: "productMixMatch",
@@ -76,6 +77,9 @@ const ProductMixMatch = () => {
       },
       multiProductsArray:{
         multiProductArray: []
+      },
+      requiredProductsArray:{
+        requiredProductArray:[]
       }
     },
     customization: [defaultData] ,
@@ -219,27 +223,13 @@ const ProductMixMatch = () => {
     }
 
     if (data.name == "") {
-      // if (!errorArray.includes("bundleName")) {
-      //   setErrorArray((prev) => [...prev, "bundleName"]);
-      // }
       flag = false;
       alertText.push("Please provide name of bundle");
-    // }else{
-    //   let copy = [...errorArray];
-    //   copy.splice(errorArray.indexOf(`bundleName`), 1);
-    //   setErrorArray([...copy]);
     }
 
     if (data.title == "") {
-      // if (!errorArray.includes("bundleTitle")) {
-      //   setErrorArray((prev) => [...prev, "bundleTitle"]);
-      // }
       flag = false;
       alertText.push("Please provide title of bundle");
-    // }else{
-    //   let copy = [...errorArray];
-    //   copy.splice(errorArray.indexOf(`bundleTitle`), 1);
-    //   setErrorArray([...copy])
     }
       // if (data.startdate == "") {
         //   if (!errorArray.includes("startdate")) {
@@ -257,6 +247,11 @@ const ProductMixMatch = () => {
       console.log("enter in new functions");
       flag = false;
       alertText.push(`You have enabled multi select option but not selected any product, Please select at least one product`);
+    }
+    if(data.bundleDetail.requiredItem.enable == true && data.bundleDetail.requiredProductsArray.requiredProductArray.length == 0){
+      console.log("enter in requiredItem functions");
+      flag = false;
+      alertText.push(`You have enabled required item option but not selected any product, Please select at least one product`);
     }
     if (flag == false) {
       alertCommon(setAlert, alertText, "critical", false);
@@ -392,11 +387,7 @@ const ProductMixMatch = () => {
 
   const removeOptionErrHandler = (deletedIndex) =>{
     let copy = [...errorArray]
-    // if (errorArray.includes(`minimumQuantity${deletedIndex}`) == true) {
-    //   let i = copy.indexOf(`minimumQuantity${deletedIndex}`)
-    //   errorArray.splice(i, 1);
-    //   setErrorArray([...errorArray])
-    // }
+ 
     if (errorArray.includes(`increasingOrder${deletedIndex}`)==true) {
       copy.splice(copy.indexOf(`increasingOrder${deletedIndex}`), 1);
       setErrorArray([...copy])
@@ -449,21 +440,6 @@ const ProductMixMatch = () => {
       let update = { ...data };
       update.bundleDetail.discountOptions[index].quantity = parseInt(newvalue);
 
-      // if(parseInt(newvalue) >= 2){
-      //   let copy = [...errorArray];
-      //   if (errorArray.includes(`minimumQuantity${index}`) == true) {
-      //     let i = copy.indexOf(`minimumQuantity${index}`)
-      //     errorArray.splice(i, 1);
-      //   }
-      //   setErrorArray([...errorArray])
-      // }
-
-      // if (parseInt(newvalue) < 2){
-      //   let copy = [...errorArray];
-      //   if(errorArray.includes(`minimumQuantity${index}`)==false) {
-      //     setErrorArray([...errorArray, `minimumQuantity${index}`]);
-      //   }
-      // }else 
       if ((data.bundleDetail?.discountOptions[index + 1] && parseInt(newvalue) >= parseInt(data.bundleDetail?.discountOptions[index + 1].quantity)) ) {
         if(errorArray.includes(`increasingOrder${index}`)==false){
           setErrorArray([...errorArray, `increasingOrder${index}`]);
@@ -651,9 +627,33 @@ const ProductMixMatch = () => {
     if(e.target.checked){
       bundleProduct[index]= {...bundleProduct[index], required: true}
       setData({...data, bundleDetail:{...data.bundleDetail, [key]:bundleProduct}})
+      let copy = [...requiredProductArray]
+      copy.push(bundleProduct[index])
+      setRequiredProductArray(copy)
+      setData({
+        ...data,bundleDetail:{
+          ...data.bundleDetail,
+          requiredProductsArray:{
+            ...data.bundleDetail.requiredProductsArray,
+            requiredProductArray:[...copy]
+          }
+        }
+      })
     }else{
       bundleProduct[index]= {... bundleProduct[index], required: false}
       setData({...data, bundleDetail:{...data.bundleDetail, [key]:bundleProduct}})
+      let copy = [...requiredProductArray]
+      copy.splice(requiredProductArray.indexOf(bundleProduct[index]),1);
+      setRequiredProductArray(copy)
+      setData({
+        ...data,bundleDetail:{
+          ...data.bundleDetail,
+          requiredProductsArray:{
+            ...data.bundleDetail.requiredProductsArray,
+            requiredProductArray:[...copy]
+          }
+        }
+      })
     }
     // console.log("requiredProducts finally", "bundle product", data.bundleDetail.products)
   };
@@ -697,7 +697,7 @@ const ProductMixMatch = () => {
     }
     // console.log("multiProductsSelectionProducts finally", "bundle product", data.bundleDetail.products)
   };
-console.log("multiProductsSelectionProducts.......",data.bundleDetail.multiProductsArray.multiProductArray.length);
+console.log("multiProductsSelectionProducts.......",data.bundleDetail.requiredItem.enable);
   // const handlePlacementsSelection = (e, type) =>{
   //     if(type==="productPage"){
   //       setSelectedPlacement({...selectedPlacement,productPage:e.target.checked});
