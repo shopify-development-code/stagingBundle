@@ -74,6 +74,9 @@ const ProductMixMatch = () => {
       multiItemSelection:{
         enable: false
       },
+      multiProductsArray:{
+        multiProductArray: []
+      }
     },
     customization: [defaultData] ,
     timeZone:timeZone
@@ -250,7 +253,7 @@ const ProductMixMatch = () => {
       flag = false;
       alertText.push("Options quantities must be in increasing order");
     }
-    if(data.bundleDetail.multiItemSelection.enable == true && multiProductArray.length == 0){
+    if(data.bundleDetail.multiItemSelection.enable == true && data.bundleDetail.multiProductsArray.multiProductArray.length == 0){
       console.log("enter in new functions");
       flag = false;
       alertText.push(`You have enabled multi select option but not selected any product, Please select at least one product`);
@@ -666,6 +669,15 @@ const ProductMixMatch = () => {
       let copy = [...multiProductArray]
       copy.push(bundleProduct[index])
       setMultiProductArray(copy)
+      setData({
+        ...data,bundleDetail:{
+          ...data.bundleDetail,
+          multiProductsArray:{
+            ...data.bundleDetail.multiProductsArray,
+            multiProductArray:[...copy]
+          }
+        }
+      })
       // console.log("push selected products in array.................",bundleProduct[index]);
     }else{
       bundleProduct[index]= {... bundleProduct[index], multiItemSelect: false}
@@ -673,10 +685,19 @@ const ProductMixMatch = () => {
       let copy = [...multiProductArray]
       copy.splice(multiProductArray.indexOf(bundleProduct[index]),1);
       setMultiProductArray(copy)
+      setData({
+        ...data,bundleDetail:{
+          ...data.bundleDetail,
+          multiProductsArray:{
+            ...data.bundleDetail.multiProductsArray,
+            multiProductArray:[...copy]
+          }
+        }
+      })
     }
     // console.log("multiProductsSelectionProducts finally", "bundle product", data.bundleDetail.products)
   };
-console.log("multiProductsSelectionProducts.......",multiProductArray);
+console.log("multiProductsSelectionProducts.......",data.bundleDetail.multiProductsArray.multiProductArray.length);
   // const handlePlacementsSelection = (e, type) =>{
   //     if(type==="productPage"){
   //       setSelectedPlacement({...selectedPlacement,productPage:e.target.checked});
