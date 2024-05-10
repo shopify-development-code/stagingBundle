@@ -13,11 +13,11 @@ const shopify = shopifyApp({
     apiVersion: LATEST_API_VERSION,
     restResources,
     billing: undefined, 
-    apiKey : process.env.SHOPIFY_API_KEY,
-    apiSecretKey: process.env.SHOPIFY_API_SECRET,
-    hostScheme : "https",
-    hostName : process.env.DOMAIN,
-    scopes: scopes
+    // apiKey : process.env.SHOPIFY_API_KEY,
+    // apiSecretKey: process.env.SHOPIFY_API_SECRET,
+    // hostScheme : "https",
+    // hostName : process.env.DOMAIN,
+    // scopes: scopes
   },
   auth: {
     path: "/api/auth",
@@ -26,7 +26,6 @@ const shopify = shopifyApp({
   webhooks: {
     path: "/api/webhooks",
   },
-  // This should be replaced with your preferred storage strategy
   sessionStorage: new SQLiteSessionStorage(DB_PATH),
 });
 
