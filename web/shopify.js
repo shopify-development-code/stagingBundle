@@ -26,7 +26,6 @@ const shopify = shopifyApp({
   webhooks: {
     path: "/api/webhooks",
   },
-  // This should be replaced with your preferred storage strategy
   sessionStorage: new SQLiteSessionStorage(DB_PATH),
 });
 

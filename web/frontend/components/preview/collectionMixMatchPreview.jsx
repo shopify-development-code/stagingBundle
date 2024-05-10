@@ -35,7 +35,7 @@ const CollectionMixMatchPreview=({data,currency})=>{
                   </span> */}
                   <span>
                     {data.bundleDetail.discountType == "fixed"
-                      ?showAmountWithCurrency(data.bundleDetail.discountValue.toFixed(2),currency) 
+                      ?showAmountWithCurrency(parseFloat(data.bundleDetail.discountValue).toFixed(2),currency) 
                 
                       : ""}
                   </span>
