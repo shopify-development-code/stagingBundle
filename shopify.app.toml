@@ -3,7 +3,7 @@
 client_id = "e13323374d92132ba17048d14e6ecb0e"
 name = "akashbundlelive"
 handle = "akashbundlelive"
-application_url = "https://discharge-fraser-fly-slide.trycloudflare.com"
+application_url = "https://surplus-he-competitive-batman.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "read_content,read_themes,write_content,write_discounts,write_orders,wr
 
 [auth]
 redirect_urls = [
-  "https://discharge-fraser-fly-slide.trycloudflare.com/auth/callback",
-  "https://discharge-fraser-fly-slide.trycloudflare.com/auth/shopify/callback",
-  "https://discharge-fraser-fly-slide.trycloudflare.com/api/auth/callback"
+  "https://surplus-he-competitive-batman.trycloudflare.com/auth/callback",
+  "https://surplus-he-competitive-batman.trycloudflare.com/auth/shopify/callback",
+  "https://surplus-he-competitive-batman.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
