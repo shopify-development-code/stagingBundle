@@ -78,11 +78,11 @@ const ProductMixMatchPreview = ({data,mrp,endPrice,currency,discountIndex}) =>{
                 <> 
                 {(item.quantity == data.bundleDetail.products.length)  || (index === data.bundleDetail.discountOptions.length-1 && data.bundleDetail.products.length >= item.quantity)?
                     <div className="productMixMatchHeadBorder centerIntem">
-                      {item.quantity}{index === data.bundleDetail.discountOptions.length-1 && "+"} items|off
+                      {item.quantity}{index === data.bundleDetail.discountOptions.length-1 && "+"} items
                     </div>
                   :
                     <div className="productMixMatchHeadBorderDisable centerIntem">
-                      {item.quantity}{index === data.bundleDetail.discountOptions.length-1 && "+"} items|off
+                      {item.quantity}{index === data.bundleDetail.discountOptions.length-1 && "+"} items
                     </div>
                   }
                 </>
