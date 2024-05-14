@@ -3,7 +3,7 @@
 client_id = "e13323374d92132ba17048d14e6ecb0e"
 name = "akashbundlelive"
 handle = "akashbundlelive"
-application_url = "https://ann-lasting-corpus-columns.trycloudflare.com"
+application_url = "https://gold-satisfaction-tracks-hybrid.trycloudflare.com"
 embedded = true
 
 [build]
@@ -16,9 +16,9 @@ scopes = "read_content,read_themes,write_content,write_discounts,write_orders,wr
 
 [auth]
 redirect_urls = [
-  "https://ann-lasting-corpus-columns.trycloudflare.com/auth/callback",
-  "https://ann-lasting-corpus-columns.trycloudflare.com/auth/shopify/callback",
-  "https://ann-lasting-corpus-columns.trycloudflare.com/api/auth/callback"
+  "https://gold-satisfaction-tracks-hybrid.trycloudflare.com/auth/callback",
+  "https://gold-satisfaction-tracks-hybrid.trycloudflare.com/auth/shopify/callback",
+  "https://gold-satisfaction-tracks-hybrid.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
