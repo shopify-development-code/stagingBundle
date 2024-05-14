@@ -3126,7 +3126,7 @@ async function bundlePageBuilder(data) {
 
   if (data.status == 200) {
     let pageWidth = document.getElementsByClassName("page-width--narrow")[0];
-    console.log("here we check pageWidth>>>>>>>>>>----------",pageWidth);
+    // console.log("here we check pageWidth>>>>>>>>>>----------",pageWidth);
     pageWidth.style.width = "100%";
     pageWidth.style.left = "0px";
     pageWidth.style.marginRight = "0px";
@@ -3315,12 +3315,13 @@ async function bundlePageBuilder(data) {
             searchSpinner.className = "sd-search-spinner";
             searchSpinner.classList.add("sd-loader");
             CollectionProductDiv.append(searchSpinner);
-            document.getElementsByClassName(
-              "sd-builder-seemore-div" + index
-            )[0]?.style.display = "none";
             console.log("hellloooo=======>>>>>>>",document.getElementsByClassName(
               "sd-builder-seemore-div" + index
-            )[0]);
+            ));
+            document.getElementsByClassName(
+              "sd-builder-seemore-div" + index
+            )[0].style.display = "none";
+           
             clearTimeout(delayTimer);
             delayTimer = setTimeout(function () {
               if (e.target.value.length > 0) {
