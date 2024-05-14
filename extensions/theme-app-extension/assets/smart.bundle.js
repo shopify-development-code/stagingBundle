@@ -3317,8 +3317,10 @@ async function bundlePageBuilder(data) {
             CollectionProductDiv.append(searchSpinner);
             document.getElementsByClassName(
               "sd-builder-seemore-div" + index
-            )[0].style.display = "none";
-
+            )[0]?.style.display = "none";
+            console.log("hellloooo=======>>>>>>>",document.getElementsByClassName(
+              "sd-builder-seemore-div" + index
+            )[0]);
             clearTimeout(delayTimer);
             delayTimer = setTimeout(function () {
               if (e.target.value.length > 0) {
