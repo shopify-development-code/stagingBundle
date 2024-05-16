@@ -989,12 +989,12 @@ console.log("multiProductsSelectionProducts.......",data.bundleDetail.requiredIt
                   </Col>
                   }
                 </Row>
-                <br />
+                {/* <br /> */}
                
                 {/* <span className="sd-bundle-Disclaimer-common">
                   Use discount to show the discount value
                 </span> */}
-                <br />
+                {/* <br /> */}
 
                 {/* {data.bundleDetail.discountOptions.length == index + 1 && (
                   <div className="sd-bundle-volumeBundle-allowDiscount">

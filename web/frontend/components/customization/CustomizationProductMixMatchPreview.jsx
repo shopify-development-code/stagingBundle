@@ -13,7 +13,7 @@ const CustomizationProductMixMatchPreview = ({data}) =>{
       style={{"backgroundColor":data.productMixMatch.box.backgroundColor,
       "borderColor": data.productMixMatch.box.borderColor,
       "borderRadius":data.productMixMatch.box.borderRadius+"px",
-      // "border":data.productMixMatch.box.thickness+"px solid"+ data.buyXgetY.box.borderColor
+      "border":data.productMixMatch.box.thickness+"px solid white"
       }}>
       
       {data.productMixMatch.button.position=="top" && 

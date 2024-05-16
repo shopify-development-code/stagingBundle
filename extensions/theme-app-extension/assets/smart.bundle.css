@@ -7,7 +7,7 @@
   border: 1px solid black;
   margin-bottom: 10px;
   padding: 10px;
-  border-radius: 3px !important;
+  /* border-radius: 3px !important; */
 }
 
 .sd-bundle-volume-container {
@@ -15,7 +15,7 @@
   border: 1px solid;
   margin-bottom: 10px;
   padding: 10px;
-  border-radius: 3px !important;
+  /* border-radius: 3px !important; */
 }
 
 .sd-bundle-collectionMixMatch-container {

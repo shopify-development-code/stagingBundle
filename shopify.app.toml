@@ -1,9 +1,16 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
+<<<<<<< HEAD
 client_id = "b8c12ad6dd6cca8d5809e99013d4289b"
 name = "Staging Advanced Bundles"
 handle = "staging-advanced-bundles"
 application_url = "https://bundle.shinedezigninfotech.com/"
+=======
+client_id = "e13323374d92132ba17048d14e6ecb0e"
+name = "akashbundlelive"
+handle = "akashbundlelive"
+application_url = "https://follows-highs-ba-visiting.trycloudflare.com"
+>>>>>>> addcca3af42e994d4d97f85fda990f0c63fd5f23
 embedded = true
 
 [build]
@@ -13,8 +20,14 @@ include_config_on_deploy = true
 
 [auth]
 redirect_urls = [
+<<<<<<< HEAD
   "https://bundle.shinedezigninfotech.com/api/auth",
   "https://bundle.shinedezigninfotech.com/api/auth/callback"
+=======
+  "https://follows-highs-ba-visiting.trycloudflare.com/auth/callback",
+  "https://follows-highs-ba-visiting.trycloudflare.com/auth/shopify/callback",
+  "https://follows-highs-ba-visiting.trycloudflare.com/api/auth/callback"
+>>>>>>> addcca3af42e994d4d97f85fda990f0c63fd5f23
 ]
 
 [webhooks]

@@ -12,10 +12,10 @@ const {currency}=useAPI();
       <div className="sd-collection-customise-preview sd-preview-wrapper-common" style={{backgroundColor:data["collection"]["box"]["backgroundColor"],borderRadius:data["collection"]["box"]["borderRadius"]+"px",borderColor:data["collection"]["box"]["borderColor"]}}>
 
       
-{/* <div className="sd-collection-discount-badge"  style={{color:data["collection"]["DiscountBadge"]["color"],backgroundColor:data["collection"]["DiscountBadge"]["backgroundColor"],fontSize:data["collection"]["DiscountBadge"]["fontSize"]+"px",borderTopLeftRadius:data["collection"]["box"]["borderRadius"]+"px"}} >{data["collection"]["DiscountBadge"]["text"]}</div> */}
+<div className="sd-collection-discount-badge"  style={{color:data["collection"]["DiscountBadge"]["color"],backgroundColor:data["collection"]["DiscountBadge"]["backgroundColor"],fontSize:data["collection"]["DiscountBadge"]["fontSize"]+"px",borderTopLeftRadius:data["collection"]["box"]["borderRadius"]+"px"}} >{data["collection"]["DiscountBadge"]["text"]}</div>
 
 <div className="sd-collection-main-section">
-{data.collection.DiscountBadge.badgeType == "rightBanner" ?
+{/* {data.collection.DiscountBadge.badgeType == "rightBanner" ?
 <div class="bxgy_productDiscount_badges" style={{"background": data.collection.DiscountBadge.backgroundColor}}>
   <h5 style={{"color": data.collection.DiscountBadge.color, "fontSize": data.collection.DiscountBadge.fontSize +"px"}}>{ data.collection.DiscountBadge.text}</h5>
 </div>
@@ -28,7 +28,7 @@ const {currency}=useAPI();
   <span  style={{"background": data.collection.DiscountBadge.backgroundColor,"color": data.collection.DiscountBadge.color, "fontSize": data.collection.DiscountBadge.fontSize +"px"}}>{ data.collection.DiscountBadge.text}</span>
   </div> 
   : null 
-          } 
+          }  */}
 <div className="sd-collection-customise-titleSection" style={{textAlign:data["collection"]["title"]["alignment"]}}>
     <p className="sd-collection-customise-titleNaming" style={{color:data["collection"]["title"]["color"],fontSize : data["collection"]["title"]["fontSize"] +"px",}}>Create Your Bundle & Get Discount</p>
     <p className="sd-collection-customise-description" style={{color:data["collection"]["title"]["description"]["color"],fontSize:data["collection"]["title"]["description"]["fontSize"] +"px",}}>Buy products from these collections and save
