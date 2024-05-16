@@ -34,7 +34,7 @@ const BundleCustomization = () => {
          setData({bundle:response.data.response.bundle,
                   volume:response.data.response.volume,
                    collection:response.data.response.collectionMixMatch,
-                   productMixMatch:data.response.productMixMatch,
+                   productMixMatch:response.data.response.productMixMatch,
                   popUp:response.data.response.popUp})
       }
     }

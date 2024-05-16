@@ -13,7 +13,7 @@ const DiscountBadge=({data,setData,bundleOption,displayOption})=>{
             }
         })
     }
-
+console.log(data);
 return(
 
 
@@ -59,31 +59,33 @@ return(
             autoComplete="off"
             min="0"
           />
+    {bundleOption != "collection" &&
+        <>
+            <div>Select Badges</div>
+                
+            <Radio.Group 
+            onChange={(e)=>handleChangeValueCommon(e.target.value,"DiscountBadge","badgeType",data,setData,bundleOption)} 
+            value={data[bundleOption]["DiscountBadge"]["badgeType"]}
+            
+            >
+        
+            <Space direction="vertical">
+            
+                <Radio value="leftBanner">
+                <img src="https://cdn.shopify.com/s/files/1/0801/7264/6691/files/leftBanner.png?v=1700562806" />
+                </Radio>
+                <Radio value="rightBanner">
+                <img src="https://cdn.shopify.com/s/files/1/0801/7264/6691/files/rightBanner.png?v=1700562892" />
 
-  <div>Select Badges</div>
-    
-    <Radio.Group 
-     onChange={(e)=>handleChangeValueCommon(e.target.value,"DiscountBadge","badgeType",data,setData,bundleOption)} 
-     value={data[bundleOption]["DiscountBadge"]["badgeType"]}
-     
-     >
-   
-      <Space direction="vertical">
-       
-        <Radio value="leftBanner">
-        <img src="https://cdn.shopify.com/s/files/1/0801/7264/6691/files/leftBanner.png?v=1700562806" />
-        </Radio>
-        <Radio value="rightBanner">
-        <img src="https://cdn.shopify.com/s/files/1/0801/7264/6691/files/rightBanner.png?v=1700562892" />
+                </Radio>
+                <Radio value='ribbon'>
+                <img src="https://cdn.shopify.com/s/files/1/0801/7264/6691/files/ribbon.png?v=1700562892" />
 
-        </Radio>
-        <Radio value='ribbon'>
-        <img src="https://cdn.shopify.com/s/files/1/0801/7264/6691/files/ribbon.png?v=1700562892" />
-
-        </Radio>
-      </Space>
-    </Radio.Group>
-
+                </Radio>
+            </Space>
+            </Radio.Group>
+        </>
+    }
 </div>
 
 
