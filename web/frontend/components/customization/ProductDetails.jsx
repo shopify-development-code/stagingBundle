@@ -39,7 +39,8 @@ return(
             onChange={(e)=>handleChangeValueCommon2(e,"productDetails","title","fontSize",data,setData,bundleOption)}
             value={data[bundleOption]["productDetails"]["title"]["fontSize"]}
             autoComplete="off"
-            min="0"
+            min={10}
+            max={30}
           />
 
 
@@ -64,7 +65,8 @@ return(
             onChange={(newvalue)=>handleChangeValueCommon2(newvalue,"productDetails","price","fontSize",data,setData,bundleOption)}
             value={data[bundleOption]["productDetails"]["price"]["fontSize"]}
             autoComplete="off"
-            min="0"
+            min={10}
+            max={30}
           />
 </div>
 
@@ -88,7 +90,8 @@ return(
             onChange={(newvalue)=>handleChangeValueCommon2(newvalue,"productDetails","image","borderRadius",data,setData,bundleOption)}
             value={data[bundleOption]["productDetails"]["image"]["borderRadius"]}
             autoComplete="off"
-            min="0"
+            min={0}
+            max={30}
           />
 
 </div>

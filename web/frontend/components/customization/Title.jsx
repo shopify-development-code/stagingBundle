@@ -26,7 +26,8 @@ return(
             onChange={(e)=>handleChangeValueCommon(e,"title","fontSize",data,setData,bundleOption)}
             value={data[bundleOption]["title"]["fontSize"]}
             autoComplete="off"
-            min="0"
+            min={10}
+            max={30}
           /> 
 </div>
 

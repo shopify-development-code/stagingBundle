@@ -48,7 +48,8 @@ return(
             onChange={(e)=>handleChangeValueCommon(e,"button","fontSize",data,setData,bundleOption)}
             value={data[bundleOption]["button"]["fontSize"]}
             autoComplete="off"
-            min="0"
+            min={10}
+            max={30}
           />
 
 {/* <TextField

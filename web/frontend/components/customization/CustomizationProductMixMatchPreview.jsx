@@ -5,15 +5,15 @@ import {
 } from "@ant-design/icons";
 
 const CustomizationProductMixMatchPreview = ({data}) =>{
-  console.log("check data ****",data);
+  console.log("check data ****",data.productMixMatch.box.borderColor);
   return(
   
       <div 
       className="sd-bundle-bundleSection-common sd-bundle-productBundle-preview" 
-      style={{"backgroundColor":data.productMixMatch.box.backgroundColor,
-      "borderColor": data.productMixMatch.box.borderColor,
-      "borderRadius":data.productMixMatch.box.borderRadius+"px",
-      "border":data.productMixMatch.box.thickness+"px solid white"
+      style={{
+        "backgroundColor": data.productMixMatch.box.backgroundColor,
+        "borderRadius": data.productMixMatch.box.borderRadius + "px",
+        "borderColor": data.productMixMatch.box.borderColor,
       }}>
       
       {data.productMixMatch.button.position=="top" && 
