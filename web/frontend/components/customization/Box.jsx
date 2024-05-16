@@ -53,7 +53,8 @@ const Box=(props)=>{
             onChange={(newvalue)=>handleChangeValueCommon(newvalue,"box","borderRadius",props.bundleOption)}
             value={dataToChange.box.borderRadius}
             autoComplete="off"
-            min="0"
+            min={0}
+            max={30}
           />
 </div> 
 </div> 

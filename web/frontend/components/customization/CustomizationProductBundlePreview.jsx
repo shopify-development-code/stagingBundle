@@ -10,7 +10,12 @@ const discount=40;
 
 return(
 
-  <div className="sd-preview-wrapper-common sd-productCustom-preview"  style={{"backgroundColor":data.bundle.box.backgroundColor,"borderColor": data.bundle.box.borderColor,"borderRadius":data.bundle.box.borderRadius+"px"}} >
+  <div 
+  className="sd-preview-wrapper-common sd-productCustom-preview"  
+  style={{"backgroundColor":data.bundle.box.backgroundColor,
+  "borderColor": data.bundle.box.borderColor,
+  "borderRadius":`${data.bundle.box.borderRadius}px`
+  }}>
   {data.bundle.button.position=="top" && <button type="button" style={{"color":data.bundle.button.color,"fontSize":data.bundle.button.fontSize+"px","backgroundColor":data.bundle.button.backgroundColor}}>
         {data.bundle.button.text_others +" "} </button>
 }

@@ -38,7 +38,8 @@ return(
             onChange={(newvalue)=>handleChangeValueCommon(newvalue,"totalSection","fontSize",data,setData,bundleOption)}
             value={data[bundleOption]["totalSection"]["fontSize"]}
             autoComplete="off"
-            min="0"
+            min={10}
+            max={30}
           />
 </div> 
 
@@ -59,7 +60,8 @@ return(
             onChange={(newvalue)=>handleChangeValueCommon2(newvalue,"totalSection","originalPrice","fontSize",data,setData,bundleOption)}
             value={data[bundleOption]["totalSection"]["originalPrice"]["fontSize"]} 
             autoComplete="off"
-            min="0"
+            min={10}
+            max={30}
           />
 </div> 
 
@@ -80,7 +82,8 @@ return(
             onChange={(e)=>handleChangeValueCommon2(e,"totalSection","finalPrice","fontSize",data,setData,bundleOption)}
             value={data[bundleOption]["totalSection"]["finalPrice"]["fontSize"]}
             autoComplete="off"
-            min="0"
+            min={10}
+            max={30}
           />
 
 </div> 
