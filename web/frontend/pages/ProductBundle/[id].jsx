@@ -554,6 +554,7 @@ function CreateBundle() {
                 setData={setData}
                 temp={temp}
                 errorArray={pickerError}
+                setPickerError={setPickerError}
                 removeProductFromList={removeProductFromList}
               />
             </div>
