@@ -31,7 +31,7 @@ const CustomizationProductMixMatchPreview = ({data}) =>{
           "textAlign":data.productMixMatch.title.alignment,
           "fontWeight":data.productMixMatch.title.titleBold,}}
         >
-         <h2>new product mix and match test test</h2>
+         <h2>Product Mix & Match</h2>
 
         </div>
 

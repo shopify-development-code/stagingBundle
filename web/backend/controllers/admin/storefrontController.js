@@ -543,60 +543,60 @@ export async function searchCollectionProducts(req, res) {
       let queryField = 'first: 8, query:  "*' + search + '*"';
 
       const queryString = `{
-  products(${queryField}) {
-    pageInfo{
-      hasNextPage
-    }
-    edges {
-      cursor
-      node {
-        title
-        handle
-        id
-        images(first:1){
-          edges{
-            node{
-              url
-            }
+        products(${queryField}) {
+          pageInfo{
+            hasNextPage
           }
-        }
-        variants(first:50){
-          edges{
-            node{
-              id
-              price
-              title
-            }
-          }
-        }
-        collections(first: 50) {
           edges {
+            cursor
             node {
-              id
               title
               handle
+              id
+              images(first:1){
+                edges{
+                  node{
+                    url
+                  }
+                }
+              }
+              variants(first:50){
+                edges{
+                  node{
+                    id
+                    price
+                    title
+                  }
+                }
+              }
+              collections(first: 50) {
+                edges {
+                  node {
+                    id
+                    title
+                    handle
+                  }
+                }
+              }
             }
           }
         }
-      }
-    }
-  }
-}`;
+      }`;
+
       const response = await client.query({
         data: queryString,
       });
-
       let arr = [];
 
       response.body.data.products.edges.map((item) => {
         item.node.collections.edges.map((el) => {
           if (collectionGid == el.node.id) {
-            arr = response.body.data.products;
+            arr.push(item);
           }
         });
       });
-
-      return res.json({ message: "success", response: arr });
+      
+      return res.json({ message: "success", response: {edges: arr}});
     }
   } catch (error) {
     console.log("error", error.message);

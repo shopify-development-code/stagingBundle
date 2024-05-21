@@ -69,7 +69,7 @@ const CustomizationVolumeBundlePreview = ({data}) => {
           textAlign: data["volume"]["title"]["alignment"],
         }}
       >
-        Test
+        Volume Discount
       </div>
       <div className="sd-volume-preview-option-section">
         <div className="sd-volume-preview-option-wrapper">
