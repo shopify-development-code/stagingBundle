@@ -423,7 +423,7 @@ return check;
         loading={switchIndex === index ? switchLoading : null }
           defaultChecked
           checked={item.status == "active" ? true : false}
-          onChange={(e) => handleUpdateStatus(e, item._id,index)}
+          onChange={(e) => handleUpdateStatus(e, item._id, index)}
         />
       </div>
     ),
@@ -458,7 +458,7 @@ return check;
     activeMainData = activeDashboard;
   }
   const activeData = activeMainData.map((item, index) => ({
-    key: index,
+    key: item._id,
     bundle:  (
       <div className="sd-bundle-dashboard-img-box">
           {  ( item.bundleDetail.discountedProductType == "all_products"  ?<Thumbnail
@@ -489,7 +489,6 @@ return check;
           );
         }) 
        : item.bundleDetail?.products?.slice(0,3).map((ele,index) => {
-        {/* {console.log('check home items:*******',item)} */}
         return (
           <div key={index} className="sd-bundle-dashboard-img">
             {/* <img src={ele?.images ? ele.images[0].originalSrc : ele?.image ? ele.image.originalSrc:""} alt="" /> */}
@@ -588,7 +587,7 @@ return check;
         <Switch
           defaultChecked
           checked={item.status == "active" ? true : false}
-          onChange={(e) => handleUpdateStatus(e, item._id)}
+          onChange={(e) => handleUpdateStatus(e, item._id, index)}
         />
       </div>
     ),
@@ -607,7 +606,7 @@ return check;
     DraftMainData = draftDashboard;
   }
   const draftData = DraftMainData.map((item, index) => ({
-    key: index,
+    key: item._id,
     bundle:  (
       <div className="sd-bundle-dashboard-img-box">
         {  ( item.bundleDetail.discountedProductType == "all_products"  ?<Thumbnail
@@ -725,7 +724,7 @@ return check;
         <Switch
           defaultChecked
           checked={item.status == "active" ? true : false}
-          onChange={(e) => handleUpdateStatus(e, item._id)}
+          onChange={(e) => handleUpdateStatus(e, item._id, index)}
         />
       </div>
     ),

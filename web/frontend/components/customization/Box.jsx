@@ -10,10 +10,11 @@ const Box=(props)=>{
      }
         const handleChangeValueCommon=(newvalue,key1,key2,bundleOption)=>{
     
-
         if (newvalue == "" || newvalue < 0) {
         props.setData({...props.data,[bundleOption]:{...(props["data"][props.bundleOption]),[key1]:{...(props["data"][props.bundleOption][key1]),[key2]:0}}})  
-        } 
+        } else if (newvalue > 30){
+        props.setData({...props.data,[bundleOption]:{...(props["data"][props.bundleOption]),[key1]:{...(props["data"][props.bundleOption][key1]),[key2]:30}}})  
+        }
         else {  
             newvalue = String(newvalue);
             {

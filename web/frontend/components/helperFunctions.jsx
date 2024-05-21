@@ -64,7 +64,10 @@ export const handleChangeValueCommon=(newvalue,key1,key2,data,setData,bundleOpti
  if (newvalue == "" || newvalue < 0) {
  setData({...data,[key1]:{...(data[key1]),[key2]:0}})  
  setData({...data,[bundleOption]:{...(data[bundleOption]) ,[key1]:{...(data[bundleOption][key1]),[key2]:0}}})  
- } 
+ } else if(newvalue > 30){
+  setData({...data,[key1]:{...(data[key1]),[key2]:30}})  
+  setData({...data,[bundleOption]:{...(data[bundleOption]) ,[key1]:{...(data[bundleOption][key1]),[key2]:30}}})
+ }
  else {  
      newvalue = String(newvalue);
      {
@@ -82,7 +85,10 @@ export const handleChangeCommon2=(e,key1,key2,key3,data,setData,bundleOption)=>{
     
        if (newvalue == "" || newvalue < 0) {
         setData({...data,[bundleOption]:{...(data[bundleOption]),[key1]:{...(data[bundleOption][key1]),[key2]:{...(data[bundleOption][key1][key2]),[key3]:0}}}})    
-       } 
+       } else if(newvalue > 30){
+        setData({...data,[bundleOption]:{...(data[bundleOption]),[key1]:{...(data[bundleOption][key1]),[key2]:{...(data[bundleOption][key1][key2]),[key3]:30}}}})    
+
+       }
        else {  
            newvalue = String(newvalue);
            {

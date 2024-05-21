@@ -19,7 +19,7 @@ return(
   {data.bundle.button.position=="top" && <button type="button" style={{"color":data.bundle.button.color,"fontSize":data.bundle.button.fontSize+"px","backgroundColor":data.bundle.button.backgroundColor}}>
         {data.bundle.button.text_others +" "} </button>
 }
-<div className="sd-preview-title-common" style={{"color":data.bundle.title.color,"fontSize":data.bundle.title.fontSize +"px","textAlign":data.bundle.title.alignment}}>Build Demo Bundle</div>
+<div className="sd-preview-title-common" style={{"color":data.bundle.title.color,"fontSize":data.bundle.title.fontSize +"px","textAlign":data.bundle.title.alignment}}>Bundle</div>
                   <div className="sd-preview-data-section-common">
             <div className="sd-bundle-custom-center-imgTitlePrice-wrapper">
           <div className="sd-custom-image-container">
