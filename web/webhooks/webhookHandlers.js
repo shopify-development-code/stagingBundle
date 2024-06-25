@@ -31,7 +31,7 @@ export async function verifyWebhooks(req, res) {
 
             const filter = {
               shop: shop,
-              type: { $in: ["productBundle", "volumeBundle"] },
+              type: { $in: ["productBundle", "volumeBundle","productMixMatch"] },
               "bundleDetail.products.id": id,
             };
 
@@ -122,7 +122,7 @@ export async function verifyWebhooks(req, res) {
             await bundleModel.updateMany(
               {
                 shop: shop,
-                type: { $in: ["productBundle", "volumeBundle"] },
+                type: { $in: ["productBundle", "volumeBundle","productMixMatch"] },
                 "bundleDetail.products.id": id,
               },
               {
@@ -195,7 +195,7 @@ export async function verifyWebhooks(req, res) {
             await bundleModel.updateMany(
               {
                 shop: shop,
-                type: "collectionMixMatch",
+                type: { $in: ["collectionMixMatch", "volumeBundle"] },
                 "bundleDetail.products.id": id,
               },
               {
@@ -230,6 +230,7 @@ export async function verifyWebhooks(req, res) {
               {
                 shop: shop,
                 type: "collectionMixMatch",
+                type: { $in: ["collectionMixMatch", "volumeBundle"] },
                 "bundleDetail.products.id": id,
               },
               {

@@ -1,12 +1,10 @@
 let server = "https://bundle.shinedezigninfotech.com";
-
-console.log("Smart Bundle Discount app neeew version ---v2.0999 21 may");
-// let server = "https://stuff-must-cache-words.trycloudflare.com"
+console.log("Smart Bundle Discount app neeew version ---v2.0999 25 june");
+// let server = "https://biological-reaction-tions-senators.trycloudflare.com"
 let smartNoImg = `data:image/png;base64,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`;
 let productPageClass = document.getElementsByClassName("sd-bundle-app");
 if (sdbundlePageType == "product") {
   if (productPageClass.length) {
-    console.log("check if");
     let sdBundleLoader = document.createElement("div");
     sdBundleLoader.id = "sd-bundle-main-container-loader";
     sdBundleLoader.className = "sd-bundle-main-container-loader";
@@ -94,7 +92,6 @@ async function getData() {
       if (dataArray.length) {
         createDiscountName(dataArray);
       }
-      console.log("hello check the update ----->>>>",dataArray);
       createBundle(dataArray);
       let bundleId = [];
       dataArray.forEach((id) => {
@@ -174,11 +171,10 @@ if (sdbundlePageType == "page") {
     })
       .then((response) => response.json())
       .then((data) => {
-        // console.log("data", data);
         bundlePageBuilder(data);
       })
       .catch((error) => {
-        // // console.log(error.message);
+        console.log(error.message);
       });
   }
 }
@@ -190,7 +186,6 @@ const gidArray = [];
 let volumeBundleArr = [];
 let volumeBundleSum = [];
 function createBundle(BUNDLE_DATA) {
-  console.log("check foreach working=======**********",BUNDLE_DATA)
   // let bundleMainDiv = `<div id="sd-bundle-main-container" class="sd-bundle-main-container"></div>`;
   let bundleMainDiv = document.createElement("div");
   bundleMainDiv.className = "sd-bundle-main-container";
@@ -204,7 +199,6 @@ function createBundle(BUNDLE_DATA) {
     bundleSum.push([]);
     gidArray.push([]);
     if (el.type == "productBundle") {
-      console.log("el.customization?",el.customization?.bundle.box.borderRadius)
       let StoreCurrentTime = new Date().toISOString("en-US", {
         timeZone: el.startdate,
       });
@@ -270,7 +264,6 @@ function createBundle(BUNDLE_DATA) {
           DATA_SECTION_PRICE.style.fontSize = `${el.customization?.bundle.productDetails.price.fontSize}px`;
           DATA_SECTION_PRICE.className = "sd-bundle-datasection-price";
           DATA_SECTION_PRICE.id = `sd-bundle-datasection-price${index}${bundleIndex}`;
-          // console.log( ele.variants[0].price)
           let covertedPrice = ele.variants[0].price;
 
           // var newDataSectionPrice = sdCurrencySymbolCode.replace(
@@ -318,8 +311,6 @@ function createBundle(BUNDLE_DATA) {
           show_less.innerText = el.translations.translation.seeLess;
           seeLessDiv.classList.add("sd-bundle-hide-click");
           for (let i = 1; i <= ele.minimumOrder; i++) {
-            console.log("product v", ele.variants.length);
-
             if (ele.minimumOrder <= 2 || ele.variants.length <= 1) {
               seeMoreDiv.style.display = "none";
             }
@@ -631,12 +622,8 @@ function createBundle(BUNDLE_DATA) {
         // sd-bundle-volume-addtocart-btn
         ADD_TO_CART_BTN_DIV.append(ADD_TO_CART_BUTTON);
         ADD_TO_CART_BUTTON.addEventListener("click", (e) => {
-          console.log("check all array in on click event lets start=====>>>>",bundleData);
-          console.log("now check second check all array in on click event lets start=====>>>>",bundleSum);
-          console.log("now check third check all array in on click event lets start=====>>>>",gidArray);
           let code = JSON.parse(localStorage.getItem("sd_bundle_data"));
           let discountCodeId = code.discountCreateId ?? "";
-          console.log(code,'create rule check discount codeid',discountCodeId);
           ADD_TO_CART_BUTTON.innerText = "";
           let btnSpinner = document.createElement("div");
           btnSpinner.className = "bundleBtnSpinner";
@@ -647,12 +634,10 @@ function createBundle(BUNDLE_DATA) {
             (acc, curr) => acc.concat(curr),
             []
           );
-          console.log("check mergedArray",bundleData[bundleIndex]);
           const mergedGidArray = gidArray[bundleIndex].reduce(
             (acc, curr) => acc.concat(curr),
             []
           );
-          console.log("check mergedGidArray",mergedGidArray);
           let mergedResult = {};
           
           for (let item of mergedArray) {
@@ -663,12 +648,10 @@ function createBundle(BUNDLE_DATA) {
             }
           }
           let mergedArrayResult = Object.values(mergedResult);
-          console.log("check mergedArrayResult",mergedArrayResult);
           let formData = {
             items: mergedArrayResult,
             attributes: { SD_BUNDLE_ID: el._id },
           };
-          console.log("formdata check =======>>>>>>>",formData);
           fetch(window.Shopify.routes.root + "cart/add.js", {
             method: "POST",
             headers: {
@@ -677,14 +660,12 @@ function createBundle(BUNDLE_DATA) {
             body: JSON.stringify(formData),
           })
             .then((response) => {
-              console.log("check response",response);
               return response.json();
             })
             .then((response) => {
               let errorDiv = document.getElementsByClassName(
                 "sd-bundle-error-message"
               );
-              console.log("check error div message",errorDiv);
               errorDiv[0]?.remove();
               if (response.status == 422 || response.status == 404) {
                 ADD_TO_CART_BUTTON.innerText =
@@ -702,7 +683,6 @@ function createBundle(BUNDLE_DATA) {
                   },
                 })
                   .then((response) => {
-                    console.log("check response of else condition",response);
                     return response.json();
                   })
                   .then((response) => {
@@ -775,7 +755,7 @@ function createBundle(BUNDLE_DATA) {
                           finalPrice = fixedPart.toFixed(2);
                           break;
                         default:
-                          // // console.log("how are you ?");
+                          console.log("how are you ?");
                           break;
                       }
 
@@ -1808,10 +1788,8 @@ function createBundle(BUNDLE_DATA) {
     else if (el.type == "collectionMixMatch") {
       //--------------------------------------------------------------------------Collection Bundle----------------------------------------------------------------------------
       let checkDate = el.endDate == "" ? true : sdCurrentDateTime <= el.endDate;
-      console.log("collectionMixMatch*******************");
       // if (sdCurrentDateTime >= el.startdate && checkDate) {
         
-        console.log("collectionMixMatch**************************************change**************************");
         let collectionDiv = document.createElement("div");
         collectionDiv.className = "sd-bundle-collectionMixMatch-container";
 
@@ -3127,7 +3105,6 @@ async function bundlePageBuilder(data) {
 
   if (data.status == 200) {
     let pageWidth = document.getElementsByClassName("page-width--narrow")[0];
-    // console.log("here we check pageWidth>>>>>>>>>>----------",pageWidth);
     pageWidth.style.width = "100%";
     pageWidth.style.left = "0px";
     pageWidth.style.marginRight = "0px";
@@ -4052,7 +4029,6 @@ function addselectedProductList(selectedProducts, mainIndex, extra, data) {
       selectedProductTitleDiv.append(ProductTitle);
       let productVariantTitle = document.createElement("div");
       productVariantTitle.className = "sd-builder-info-variant-title";
-      console.log(el.variantTitle);
       productVariantTitle.innerText = el.variantTitle;
       if (el.variantTitle == "Default Title") {
         productVariantTitle.style.display = "none";
@@ -4264,7 +4240,6 @@ async function activateRule(localData) {
     });
 }
 async function deactivateRule(localData) {
-  console.log("deactivate run******");
   const data = {
     shop: Shopify.shop,
     discountId: localData.discountCreateId,

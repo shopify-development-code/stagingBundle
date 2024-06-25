@@ -223,13 +223,24 @@ function CreateBundle() {
   };
 
   const handleDiscountType = (e) => {
-    setData({
-      ...data,
-      bundleDetail: {
-        ...data.bundleDetail,
-        discountType: e.target.value,
-      },
-    });
+    if(e.target.value == "percent" && data.bundleDetail.discountValue > 100){
+      setData({
+        ...data,
+        bundleDetail: {
+          ...data.bundleDetail,
+          discountType: e.target.value,
+          discountValue: 100
+        },
+      });
+    }else{
+      setData({
+        ...data,
+        bundleDetail: {
+          ...data.bundleDetail,
+          discountType: e.target.value,
+        },
+      });
+    }
   };
 
   const handleDiscountValue = (newvalue) => {
@@ -238,22 +249,30 @@ function CreateBundle() {
         ...data,
         bundleDetail: {
           ...data.bundleDetail,
-          discountValue: 0,
+          discountValue: 1,
         },
       });
     } else {
       newvalue = String(newvalue);
  
-      newvalue = newvalue.replace(/^0/, "");
-  
-
-      setData({
-        ...data,
-        bundleDetail: {
-          ...data.bundleDetail,
-          discountValue: newvalue,
-        },
-      });
+      newvalue = newvalue.replace(/^0/, 1);
+      if(data.bundleDetail.discountType == "percent" && newvalue > 100){
+        setData({
+          ...data,
+          bundleDetail: {
+            ...data.bundleDetail,
+            discountValue: 100,
+          },
+        });
+      }else{
+        setData({
+          ...data,
+          bundleDetail: {
+            ...data.bundleDetail,
+            discountValue: newvalue,
+          },
+        });
+      }
     }
   };
 
@@ -435,6 +454,11 @@ function CreateBundle() {
       }
     });
 
+    if(data.bundleDetail.display.productPagesList.length <= 0){
+      flag= false;
+      alertText.push("Please select at least one product from display options");
+    }
+
     if (search2.length > 0 || data.bundleDetail.products.length < 2) {
       flag = false;
       setPickerError(search2);
@@ -606,6 +630,7 @@ function CreateBundle() {
               displayPageOptions={data.bundleDetail.display.productPages}
               handleDisplayPageOptions={handleDisplayPageOptions}
               products={data.bundleDetail.products}
+              data= {data}
             />
             <ProductBundlePreview
               data={data}

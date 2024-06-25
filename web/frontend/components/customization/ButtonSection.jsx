@@ -73,7 +73,9 @@ return(
           /> */}
  
 </div>
-{bundleOption != "collection" &&
+
+{/* functionality: Adjust position of Add to cart button (TOP OR BOTTOM) */}
+{/* {bundleOption != "collection" &&
 <div className="sd-bundle-custom-item-common">
 <p className="sd-bundle-custom-item-heading-common">Position</p>
 <div className="sd-bundle-item-custom-radio-common">
@@ -86,7 +88,7 @@ return(
 </div>
 
 
-</div> }
+</div> } */}
 
 </div>
 

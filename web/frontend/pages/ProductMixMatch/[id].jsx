@@ -222,6 +222,11 @@ const ProductMixMatch = () => {
       alertText.push(`Please select number of products which is equal to or greater than ${data.bundleDetail.discountOptions[data.bundleDetail.discountOptions.length-1].quantity}, Otherwise enable multi select option`);
     }
 
+    if(data.bundleDetail.display.productPagesList.length <= 0){
+      flag= false;
+      alertText.push("Please select at least one product from display options");
+    }
+
     if (data.name == "") {
       flag = false;
       alertText.push("Please provide name of bundle");
@@ -462,9 +467,18 @@ const ProductMixMatch = () => {
     update.bundleDetail.discountOptions[index].type = value;
     setData(update);
 
-    let newUpdate = [...endPriceData];
-    newUpdate.splice(index, 1, calculateFinalPrice(index, sumData));
-    setEndPriceData(newUpdate);
+    if(value == "percent" && data.bundleDetail.discountOptions[index].value > 100){
+      update.bundleDetail.discountOptions[index].value = 100;
+      setData(update);
+      let newUpdate = [...endPriceData];
+      newUpdate.splice(index, 1, calculateFinalPrice(index, sumData));
+      setEndPriceData(newUpdate);
+    }else{
+      let newUpdate = [...endPriceData];
+      newUpdate.splice(index, 1, calculateFinalPrice(index, sumData));
+      setEndPriceData(newUpdate);
+    }
+
   };
 
   const handleDiscountValue = (newvalue, index) => {
@@ -498,6 +512,11 @@ const ProductMixMatch = () => {
     update.bundleDetail.discountOptions[index].description = e.target.value;
     setData(update);
   };
+
+  // useEffect(()=>{
+  //   let update;
+  //   update = data.bundleDetail
+  // })
 
   function calculateMrp() {
     if(arr.length>0){
@@ -982,7 +1001,8 @@ console.log("multiProductsSelectionProducts.......",data.bundleDetail.requiredIt
                         }
                         value={item.value}
                         autoComplete="off"
-                        min="1"
+                        min={1}
+                        // max={100}
                       />
                       
                     </div>
@@ -1173,6 +1193,7 @@ console.log("multiProductsSelectionProducts.......",data.bundleDetail.requiredIt
               displayPageOptions={data.bundleDetail.display.productPages}
               handleDisplayPageOptions={handleDisplayPageOptions}
               products={data.bundleDetail.products}
+              data= {data}
             />
 
             <ProductMixMatchPreview

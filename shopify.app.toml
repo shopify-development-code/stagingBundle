@@ -3,12 +3,13 @@
 client_id = "e13323374d92132ba17048d14e6ecb0e"
 name = "akashbundlelive"
 handle = "akashbundlelive"
-application_url = "https://forms-silly-reflects-recruitment.trycloudflare.com"
+application_url = "https://bluetooth-day-smile-stripes.trycloudflare.com"
 embedded = true
 
 [build]
 automatically_update_urls_on_dev = true
 dev_store_url = "robins-store1.myshopify.com"
+include_config_on_deploy = true
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
@@ -16,9 +17,9 @@ scopes = "read_content,read_themes,write_content,write_discounts,write_orders,wr
 
 [auth]
 redirect_urls = [
-  "https://forms-silly-reflects-recruitment.trycloudflare.com/auth/callback",
-  "https://forms-silly-reflects-recruitment.trycloudflare.com/auth/shopify/callback",
-  "https://forms-silly-reflects-recruitment.trycloudflare.com/api/auth/callback"
+  "https://bluetooth-day-smile-stripes.trycloudflare.com/auth/callback",
+  "https://bluetooth-day-smile-stripes.trycloudflare.com/auth/shopify/callback",
+  "https://bluetooth-day-smile-stripes.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]

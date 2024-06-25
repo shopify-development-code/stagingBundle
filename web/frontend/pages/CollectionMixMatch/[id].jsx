@@ -20,9 +20,8 @@ import defaultData from "../../components/customization/defaultData.json";
 import postApi from "../../components/postApi";
 import { useNavigate,useParams } from "react-router-dom";
 import toastNotification from "../../components/commonSections/Toast";
-import noImg from "../../assets/no-Image.png" 
+import noImg from "../../assets/no-Image.png";
 import General from '../../components/bxgy/General';
-
 
 const  CollectionMixMatch=()=>{
   const param = useParams()
@@ -37,7 +36,6 @@ const[alert,setAlert]=useState(false)
 const [spinner,setSpinner] = useState(false) 
 
 const {shop,timeZone,currencyCode}=useAPI()
-
 
 const [data, setData] = useState({
   name :"",
@@ -135,6 +133,9 @@ const handleDiscountType = (e) => {
     let update = { ...data };
     if(data.bundleDetail.discountType == "percent"){
       update.bundleDetail.description = "Buy products from below collections,Save {discount}"
+      if(data.bundleDetail.discountValue > 100){
+        update.bundleDetail.discountValue = 100
+      }
       setData(update);
     }else if(data.bundleDetail.discountType == "fixed"){ 
       update.bundleDetail.description = "Buy products from below collections,Save {discount}"
@@ -152,22 +153,32 @@ const handleDiscountType = (e) => {
       setData({ ...data,
         bundleDetail:{
            ...(data.bundleDetail),
-           discountValue: 0 
+           discountValue: 1 
            }
           });
     } else {
       setError("");
       newvalue = String(newvalue);
       // if (String(newvalue).length > 1) {
-      newvalue = newvalue.replace(/^0/, "");
+      newvalue = newvalue.replace(/^0/, 1);
       // }
-      setData({
-        ...data,
-        bundleDetail:{
-          ...(data.bundleDetail),
-          discountValue:newvalue,
-          }
-      });
+      if(data.bundleDetail.discountType == "percent" && newvalue > 100){
+        setData({
+          ...data,
+          bundleDetail: {
+            ...data.bundleDetail,
+            discountValue: 100,
+          },
+        });
+      }else{
+        setData({
+          ...data,
+          bundleDetail: {
+            ...data.bundleDetail,
+            discountValue: newvalue,
+          },
+        });
+      }
     }
   };
 
@@ -321,6 +332,11 @@ const handleDiscountType = (e) => {
     alertText.push("Please provide name of bundle")
 }
 
+if(data.bundleDetail.display.productPagesList.length <= 0){
+  flag= false;
+  alertText.push("Please select at least one collection from display options");
+}
+
 if (data.title == "") {
   if(!errorArray.includes("bundleTitle")){
          setErrorArray((prev)=>[...prev,"bundleTitle"])
@@ -456,7 +472,7 @@ if(flag==true){
                         onChange={(newvalue) => {
                           if (newvalue == "" || newvalue < 0 ) {
                             let update = [...data.bundleDetail.products];
-                          update[index].quantity =0;
+                          update[index].quantity =1;
                           setData({
                             ...data,
                             bundleDetail:{...data.bundleDetail,products:update}
@@ -467,7 +483,7 @@ if(flag==true){
                           if(String(newvalue).includes(".")==false){
                           newvalue = String(newvalue);
                           // if (String(newvalue).length > 1) {
-                          newvalue = newvalue.replace(/^0/, "");
+                          newvalue = newvalue.replace(/^0/, 1);
                           // }
                           let update=[...data.bundleDetail.products];
                           update[index].quantity=newvalue;
@@ -533,7 +549,15 @@ type= "collectonMix&Match"
             setData={setData}
           />
 
-<DisplayOptions bundleType="collectionMixMatch"  display={data.bundleDetail.display}  handleDisplayOptions={handleDisplayOptions} displayPageOptions={data.bundleDetail.display.productPages}  handleDisplayPageOptions={handleDisplayPageOptions} products={data.bundleDetail.products} />
+      <DisplayOptions 
+        bundleType="collectionMixMatch"  
+        display={data.bundleDetail.display}  
+        handleDisplayOptions={handleDisplayOptions} 
+        displayPageOptions={data.bundleDetail.display.productPages}  
+        handleDisplayPageOptions={handleDisplayPageOptions} 
+        products={data.bundleDetail.products} 
+        data= {data} 
+      />
  
 <CollectionMixMatchPreview  data={data}  currency={currencyCode}   />
 
