@@ -431,6 +431,10 @@ function getPreviewData(data){
       update.bundleDetail.discountOptions[index].description = `Buy ${update.bundleDetail.discountOptions[index].quantity} items`;
       setData(update); 
     }else{
+      if(value == "percent" && update.bundleDetail.discountOptions[index].value > 100){
+        update.bundleDetail.discountOptions[index].value = 100;
+        setData(update);
+      }
       update.bundleDetail.discountOptions[index].description = `Buy ${update.bundleDetail.discountOptions[index].quantity} & Save {discount}`;
       setData(update); 
     }
@@ -702,6 +706,7 @@ function getPreviewData(data){
   const handleSave = async() => {
     let alertText=[]
     let flag=true;
+    // const validNameAndTitle = new RegExp("^[^\s][A-Za-z0-9]*(?:\s*[A-Za-z0-9]+)*$");
 
     if ((data.bundleDetail.products.length < 1) && (data.bundleDetail.discountedProductType == "specific_product")) {
       flag = false;
@@ -709,7 +714,25 @@ function getPreviewData(data){
         "Please select product for bundle."
       );
     }
-
+    if(data.bundleDetail.display.productPages == false){
+      flag = false;
+      alertText.push("Please enable product page from display options");
+    }
+    // if(validNameAndTitle.test(data.name) == false){
+    //   console.log("name if regex",validNameAndTitle.test(data.name))
+    //   flag = false;
+    //   alertText.push("Please Provide product name (blank name is not allowed)");
+    // }
+    // if(validNameAndTitle.test(data.title)==false){
+    //   console.log("title if regex",validNameAndTitle.test(data.title))
+    //   flag = false;
+    //   alertText.push("Please Provide product title (blank title is not allowed)");
+    // }
+    // console.log("name regex",validNameAndTitle.test(data.name))
+    // console.log("title regex",validNameAndTitle.test(data.title))
+    console.log("name regex",data.name.trim(),"77777")
+    console.log("title regex",data.title.trim())
+    // setData(data.name{})
     if ((data.bundleDetail.products.length < 1) && (data.bundleDetail.discountedProductType == "collection")) {
       flag = false;
       alertText.push(
@@ -720,11 +743,19 @@ function getPreviewData(data){
     if (data.name == "") {
       flag = false;
       alertText.push("Please provide name of bundle");
+    }else{
+      // setData({}) data.name.trim()
+      // setData({})
+      let updateData = {
+        ...data,
+      }
     }
 
     if (data.title == "") {
       flag = false;
       alertText.push("Please provide title of bundle");
+    }else{
+      data.title.trim()
     }
       // if (data.startdate == "") {
         //   if (!errorArray.includes("startdate")) {
@@ -1096,6 +1127,7 @@ function getPreviewData(data){
             display={data.bundleDetail.display}
             handleDisplayOptions={handleDisplayOptions}
             products={data.bundleDetail.products}
+            data = {data}
           />
      
       

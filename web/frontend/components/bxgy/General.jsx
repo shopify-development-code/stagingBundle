@@ -19,6 +19,14 @@ const General = (props) => {
             name: e.target.value,
           })
         }
+        onBlur={(e) =>{
+          let E = e.target.value.replace(/\s+/g, ' ')
+            props.setData({
+              ...(props.data),
+              name: E.trim()
+            })
+          }
+        }
       />
       <p className="sd-bundle-createBundleSectionDisclaimer">
         This name is used for you to identify this bundle.Your
@@ -37,6 +45,14 @@ const General = (props) => {
             ...(props.data),
             title: e.target.value,
           })
+        }
+        onBlur={(e) =>{
+          let E = e.target.value.replace(/\s+/g, ' ')
+            props.setData({
+              ...(props.data),
+              title: E.trim()
+            })
+          }
         }
       />
       <p className="sd-bundle-createBundleSectionDisclaimer">

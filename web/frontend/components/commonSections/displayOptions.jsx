@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { Checkbox} from "antd";
 
 const DisplayOptions=(props)=>{
+  console.log(props.data);
+  const discountProducts = props.data.bundleDetail.discountedProductType
+  let [productPage,setProductPage] = useState("Product Page")
 
+  useEffect(()=>{
+    if(discountProducts == "collection"){
+      setProductPage("Collection Page")
+    }else{
+      setProductPage("Product Page")
+    }
+  },[discountProducts])
  
     return(
 
@@ -22,13 +32,12 @@ const DisplayOptions=(props)=>{
               className="sd-bundle-set-checkbox"
               checked={props.display.productPages}
             >
-               {props.bundleType=="volume" ?
-            
-             <div className="sd-bundle-product-pages">Product Page({props.discountedProductType == "all_products" ? "all" : props.title})</div>:props.bundleType == "collectionMixMatch" ? <div className="sd-bundle-product-pages">product pages of below collections </div>: <div className="sd-bundle-product-pages">Product pages</div>
-}
+              {props.bundleType=="volume" ?
+                <div className="sd-bundle-product-pages">{`${productPage}`}({props.discountedProductType == "all_products" ? "all" : props.title})</div>:props.bundleType == "collectionMixMatch" ? <div className="sd-bundle-product-pages">product pages of below collections </div>: <div className="sd-bundle-product-pages">Product pages</div>
+              }
             </Checkbox>
           
-            <br />
+            <br/>
 
 { props.bundleType == "productBundle" || props.bundleType == "prupductMixMatch" || props.bundleType == "collectionMixMatch" ?
             <div className={props.products.length > 0 ? "sd-bundle-productPage-selection" : null}>

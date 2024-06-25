@@ -18,7 +18,7 @@ const DiscountOptions=(props)=>{
         checked={props.discountType == "percent" ? true : false}
         onChange={props.handleDiscountType}
       />
-              <label htmlFor="percent">Percentage Discount</label>
+        <label htmlFor="percent">Percentage Discount</label>
 
       {props.discountType == "percent" && (
         <div className="sd-bundle-discount-value">
@@ -31,6 +31,7 @@ const DiscountOptions=(props)=>{
             value={props.discountValue}
             autoComplete="off"
             min={1}
+            max={100}
           />
 
         </div>
