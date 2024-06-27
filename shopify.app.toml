@@ -4,7 +4,7 @@ client_id = "e13323374d92132ba17048d14e6ecb0e"
 name = "akashbundlelive"
 handle = "akashbundlelive"
 application_url = "https://bluetooth-day-smile-stripes.trycloudflare.com"
-embedded = true
+embedded = true 
 
 [build]
 automatically_update_urls_on_dev = true
