@@ -3,7 +3,7 @@
 client_id = "b8c12ad6dd6cca8d5809e99013d4289b"
 name = "Staging Advanced Bundles"
 handle = "staging-advanced-bundles"
-application_url = "https://madagascar-stars-tue-polo.trycloudflare.com"
+application_url = "https://bundle.shinedezigninfotech.com"
 embedded = true
 
 [build]
@@ -12,9 +12,9 @@ dev_store_url = "robins-store1.myshopify.com"
 
 [auth]
 redirect_urls = [
-  "https://madagascar-stars-tue-polo.trycloudflare.com/auth/callback",
-  "https://madagascar-stars-tue-polo.trycloudflare.com/auth/shopify/callback",
-  "https://madagascar-stars-tue-polo.trycloudflare.com/api/auth/callback"
+  "https://bundle.shinedezigninfotech.com/auth/callback",
+  "https://bundle.shinedezigninfotech.com/auth/shopify/callback",
+  "https://bundle.shinedezigninfotech.com/api/auth/callback"
 ]
 
 [webhooks]
