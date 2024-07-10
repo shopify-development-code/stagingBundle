@@ -8,12 +8,12 @@ import { useAppBridge } from "@shopify/app-bridge-react";
 import { useLocation } from "react-router-dom";
 import { Spin } from "antd";
 import postApi from "../components/postApi";
+
 const BundleCustomization = () => {
   const app = useAppBridge();
- const params = useLocation()
+  const params = useLocation()
   const fullscreen = Fullscreen.create(app);
   // const [fullScreen, setFullScreen] = useState(false);
-
   const [bundleOption, setBundleOption] = useState("bundle");
   const [spinner,setSpinner] = useState(false)
   // const [data, setData] = useState(defaultData["bundle"]);
@@ -23,6 +23,7 @@ const BundleCustomization = () => {
     collection:defaultData["collectionMixMatch"],
     popUp:defaultData["popUp"],
     productMixMatch:defaultData["productMixMatch"],
+    buyXgetY:defaultData["buyXgetY"],
     });
 
     async function getCustomizationData(){
@@ -30,35 +31,34 @@ const BundleCustomization = () => {
       const response = await postApi("/api/admin/getCustomization",{},app)
       if(response.data.status == 200){
         setSpinner(false)
-        
-         setData({bundle:response.data.response.bundle,
-                  volume:response.data.response.volume,
-                   collection:response.data.response.collectionMixMatch,
-                   productMixMatch:response.data.response.productMixMatch,
-                  popUp:response.data.response.popUp})
+        console.log("check response=====>>>>",response.data.response.buyXgetY);
+        setData({bundle:response.data.response.bundle,
+          volume:response.data.response.volume,
+          collection:response.data.response.collectionMixMatch,
+          productMixMatch:response.data.response.productMixMatch,
+          popUp:response.data.response.popUp,
+          buyXgetY:response.data.response.buyXgetY
+        })
       }
     }
-useEffect(()=>{
-getCustomizationData()
-},[])
+    useEffect(()=>{
+    getCustomizationData()
+    },[])
 
-useEffect(() => {
-  if(params.pathname == "/bundleCustomization"){
-
-    fullscreen.dispatch(Fullscreen.Action.ENTER);
-  }
+    useEffect(() => {
+      if(params.pathname == "/bundleCustomization"){
+        fullscreen.dispatch(Fullscreen.Action.ENTER);
+    }
   // setFullScreen(true);
-
 }, [])
 
   return (
     <>
-    <Suspense fallback={<Spin className="sd-lazy-loader"  spinning/>}>
-    <Spin
-    spinning={spinner}
-    size="large"
-    >
-
+      <Suspense fallback={<Spin className="sd-lazy-loader"  spinning/>}>
+        <Spin
+          spinning={spinner}
+          size="large"
+        >
         <CustomizationEditor
           data={data}
           setData={setData}
@@ -66,8 +66,8 @@ useEffect(() => {
           setBundleOption={setBundleOption}
           />
         </Spin>
-          </Suspense>
-         </>
+      </Suspense>
+    </>
   );
 };
 export default BundleCustomization;

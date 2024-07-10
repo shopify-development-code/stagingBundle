@@ -5,7 +5,7 @@ import {PlusOutlined} from '@ant-design/icons';
 import pic from "../../assets/image2.png"
 const CustomizationCollectionBundlePreview=({data})=>{
 const {currency}=useAPI();
-
+console.log("check preview ****************",data["collection"]["DiscountBadge"]["text"]);
 
     return (
 

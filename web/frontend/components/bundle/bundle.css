@@ -1,9 +1,9 @@
 
 .sd-bundle-select-bundle {
+    justify-content: center;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-gap: 1rem;
-    justify-items: center;
+    grid-template-columns: repeat(3, 1fr);
 }
   .ant-modal-body .ant-card {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;

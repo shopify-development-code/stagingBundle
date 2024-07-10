@@ -16,9 +16,9 @@ return(
   "borderColor": data.bundle.box.borderColor,
   "borderRadius":`${data.bundle.box.borderRadius}px`
   }}>
-  {data.bundle.button.position=="top" && <button type="button" style={{"color":data.bundle.button.color,"fontSize":data.bundle.button.fontSize+"px","backgroundColor":data.bundle.button.backgroundColor}}>
+  {/* {data.bundle.button.position=="top" && <button type="button" style={{"color":data.bundle.button.color,"fontSize":data.bundle.button.fontSize+"px","backgroundColor":data.bundle.button.backgroundColor}}>
         {data.bundle.button.text_others +" "} </button>
-}
+} */}
 <div className="sd-preview-title-common" style={{"color":data.bundle.title.color,"fontSize":data.bundle.title.fontSize +"px","textAlign":data.bundle.title.alignment}}>Bundle</div>
                   <div className="sd-preview-data-section-common">
             <div className="sd-bundle-custom-center-imgTitlePrice-wrapper">
@@ -143,9 +143,10 @@ return(
 <span className="sd-bundle-real-price"  style={{"color":data.bundle.totalSection.finalPrice.color,"fontSize":data.bundle.totalSection.finalPrice.fontSize +"px"}}>{currency} 600</span>
 </div>
       </div>
-     {data.bundle.button.position=="bottom" && <button type="button" className="sd-addToCart-button" style={{"color":data.bundle.button.color,"fontSize":data.bundle.button.fontSize+"px","backgroundColor":data.bundle.button.backgroundColor}}>
+     {/* {data.bundle.button.position=="bottom" &&  */}
+     <button type="button" className="sd-addToCart-button" style={{"color":data.bundle.button.color,"fontSize":data.bundle.button.fontSize+"px","backgroundColor":data.bundle.button.backgroundColor}}>
         {data.bundle.button.text_others }</button>
-}
+{/* } */}
   </div>
 
 )
