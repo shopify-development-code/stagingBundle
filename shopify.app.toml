@@ -3,7 +3,7 @@
 client_id = "e13323374d92132ba17048d14e6ecb0e"
 name = "akashbundlelive"
 handle = "akashbundlelive"
-application_url = "https://two-specialty-calling-cfr.trycloudflare.com"
+application_url = "https://nothing-betty-rca-committees.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "read_content,read_themes,write_content,write_discounts,write_orders,wr
 
 [auth]
 redirect_urls = [
-  "https://two-specialty-calling-cfr.trycloudflare.com/auth/callback",
-  "https://two-specialty-calling-cfr.trycloudflare.com/auth/shopify/callback",
-  "https://two-specialty-calling-cfr.trycloudflare.com/api/auth/callback"
+  "https://nothing-betty-rca-committees.trycloudflare.com/auth/callback",
+  "https://nothing-betty-rca-committees.trycloudflare.com/auth/shopify/callback",
+  "https://nothing-betty-rca-committees.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
