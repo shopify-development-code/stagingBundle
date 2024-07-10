@@ -451,6 +451,7 @@ export async function getCollectionProducts(req, res) {
 
 export async function getMoreCollectionProducts(req, res) {
   try {
+    console.log("check data from collection mix match",req.body);
     const { shop, hasNextPage, gid, nextPageCursor } = req.body;
     if (hasNextPage == true) {
       const shopInfos = await shopInfoModel.findOne({ shop: shop });

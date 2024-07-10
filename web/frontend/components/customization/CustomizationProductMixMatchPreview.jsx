@@ -16,14 +16,14 @@ const CustomizationProductMixMatchPreview = ({data}) =>{
         "borderColor": data.productMixMatch.box.borderColor,
       }}>
       
-      {data.productMixMatch.button.position=="top" && 
+      {/* {data.productMixMatch.button.position=="top" && 
         <button
           disabled  
           style={{"color":data.productMixMatch.button.color,
           "fontSize":data.productMixMatch.button.fontSize+"px",
           "backgroundColor":data.productMixMatch.button.backgroundColor}}
-        >Add selected to cart
-        </button>}
+        >Add to cart
+        </button>} */}
 
         <div className="sd-bundlematch_heading"
           style={{"color":data.productMixMatch.title.color,
@@ -172,7 +172,9 @@ const CustomizationProductMixMatchPreview = ({data}) =>{
               </div>
             </div>
             <div>
-              {data.productMixMatch.button.position=="bottom" && <button className="add_select_cartbtn" disabled  style={{"color":data.productMixMatch.button.color,"fontSize":data.productMixMatch.button.fontSize+"px","backgroundColor":data.productMixMatch.button.backgroundColor}}>Add selected to cart</button>}
+              {/* {data.productMixMatch.button.position=="bottom" &&  */}
+              <button className="add_select_cartbtn" disabled  style={{"color":data.productMixMatch.button.color,"fontSize":data.productMixMatch.button.fontSize+"px","backgroundColor":data.productMixMatch.button.backgroundColor}}>Add to cart</button>
+              {/* } */}
             </div>
         </div>
       </div>

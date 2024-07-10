@@ -1,6 +1,6 @@
-let server = "https://bundle.shinedezigninfotech.com";
-console.log("Smart Bundle Discount app neeew version ---v2.0999 25 june");
-// let server = "https://biological-reaction-tions-senators.trycloudflare.com"
+// let server = "https://bundle.shinedezigninfotech.com";
+console.log("Smart Bundle Discount app neeew version ---v2.0999 09 july");
+let server = "https://no-katrina-summer-upon.trycloudflare.com"
 let smartNoImg = `data:image/png;base64,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`;
 let productPageClass = document.getElementsByClassName("sd-bundle-app");
 if (sdbundlePageType == "product") {
@@ -820,13 +820,14 @@ function createBundle(BUNDLE_DATA) {
                     }
                   })
                   .catch((error) => {
+                    console.log("check errors",el.translations.translation.addToCartButton);
                     ADD_TO_CART_BUTTON.innerText =
                       el.translations.translation.addToCartButton;
                   });
               }
             })
             .catch((error) => {
-              // console.error("Error:", error);
+              console.error("Error:", error);
             });
         });
         if (el.customization?.bundle.button.position == "bottom") {
@@ -1813,7 +1814,7 @@ function createBundle(BUNDLE_DATA) {
           el.customization.collectionMixMatch.box.borderRadius + "px";
         let discountBadge = document.createElement("span");
         discountBadge.className = "sd-collectionMM-badge";
-        discountBadge.innerText = el.translations.translation.grabTheDeal;
+        discountBadge.innerText = el.customization.collectionMixMatch.DiscountBadge.text;
         VOLUME_HEADER_DIV.append(discountBadge);
         collectionDiv.append(VOLUME_HEADER_DIV);
 
@@ -3008,6 +3009,7 @@ function createBundle(BUNDLE_DATA) {
                   }
                 })
                 .catch((error) => {
+                  console.log("check error",el.translations.translation.addToCartButton);
                   AddToCartBTN.innerText =
                     el.translations.translation.addToCartButton;
                 });
@@ -3092,7 +3094,550 @@ function createBundle(BUNDLE_DATA) {
       })
     }
     else if (el.type == "bxgy") {
-      // console.log("Check enter in bxgy.....................")
+      let XproductsPriceArray = [];
+      let YproductsPriceArray = [];
+      let OriginalPrice = 0;
+      let FinalPrice = 0;
+      
+      let BXGY_DIV = document.createElement("div");
+      BXGY_DIV.className = "sd-bundle-product-container";
+      BXGY_DIV.style.borderRadius = `${el.customization?.buyXgetY.box.borderRadius}px`;
+      BXGY_DIV.style.borderColor = el.customization?.buyXgetY.box.borderColor;
+      BXGY_DIV.style.background = el.customization.buyXgetY.box.backgroundColor;
+      BXGY_DIV.style.borderWidth = `${el.customization.buyXgetY.box.thickness}px`;
+      BXGY_DIV.id = `BXGY_DIV${bundleIndex}`;
+      mainDiv.append(BXGY_DIV);
+
+      let BXGY_TITLE_DIV = document.createElement("div");
+      BXGY_TITLE_DIV.className = "sd-bundle-bxgy-title-div";
+      BXGY_TITLE_DIV.style.color = el.customization.buyXgetY.title.color;
+      BXGY_TITLE_DIV.style.textAlign = el.customization.buyXgetY.title.alignment;
+      BXGY_TITLE_DIV.style.fontSize = `${el.customization.buyXgetY.title.fontSize}px`;
+      BXGY_TITLE_DIV.style.fontWeight = el.customization.buyXgetY.title.titleBold;
+      BXGY_TITLE_DIV.innerText = el.title;
+      BXGY_DIV.append(BXGY_TITLE_DIV);
+
+      let BXGY_DESCRIPTION_DIV = document.createElement("div");
+      BXGY_DESCRIPTION_DIV.className = "sd-bxgy-description-div";
+      BXGY_DESCRIPTION_DIV.style.color = el.customization.buyXgetY.title.descriptionColor;
+      BXGY_DESCRIPTION_DIV.style.textAlign = el.customization.buyXgetY.title.alignment;
+      BXGY_DESCRIPTION_DIV.style.fontSize = `${el.customization.buyXgetY.title.descriptionFontSize}px`;
+      BXGY_DESCRIPTION_DIV.style.fontWeight = el.customization.buyXgetY.title.descriptionBold;
+      BXGY_DESCRIPTION_DIV.innerText = el.description;
+      BXGY_DIV.append(BXGY_DESCRIPTION_DIV);
+      
+//..............................................BUY products details div............................................................//
+      let BUY_PRODUCT_DETAILS_DIV = document.createElement("div");
+      BUY_PRODUCT_DETAILS_DIV.className = "sd-bxgy-buy-product-details-div";
+      // BUY_PRODUCT_DETAILS_DIV.style.borderRadius = `${el.customization?.buyXgetY.box.borderRadius}px`;
+      BUY_PRODUCT_DETAILS_DIV.style.borderColor = el.customization?.buyXgetY.box.borderColor;
+      BXGY_DIV.append(BUY_PRODUCT_DETAILS_DIV);
+
+      el.bundleDetail.xproducts.map((Xitems,Xindex)=>{
+        let MAIN_BUY_PRODUCT_NAME_IMAGE_DIV = document.createElement("div");
+        MAIN_BUY_PRODUCT_NAME_IMAGE_DIV.className = "sd-bxgy-main-buy-products-name-image-div";
+        BUY_PRODUCT_DETAILS_DIV.append(MAIN_BUY_PRODUCT_NAME_IMAGE_DIV);
+        
+        let BUY_PRODUCT_IMAGE_DIV = document.createElement("div");
+        BUY_PRODUCT_IMAGE_DIV.className = "sd-bxgy-buy-products-images-div"
+        BUY_PRODUCT_IMAGE_DIV.id = `BUY_PRODUCT_IMAGE_DIV${bundleIndex}${Xindex}`;
+        BUY_PRODUCT_IMAGE_DIV.style.border = "2px solid black";
+        BUY_PRODUCT_IMAGE_DIV.style.borderColor = el.customization.buyXgetY.productDetails.image.borderColor;
+        BUY_PRODUCT_IMAGE_DIV.style.borderRadius = `${el.customization.buyXgetY.productDetails.image.borderRadius}px`;
+        MAIN_BUY_PRODUCT_NAME_IMAGE_DIV.append(BUY_PRODUCT_IMAGE_DIV);
+
+        let BUY_PRODUCTS_IMAGE = document.createElement("img");
+        BUY_PRODUCTS_IMAGE.className = "sd-bundle-mix-match-imageThumbnails";
+        
+        BUY_PRODUCTS_IMAGE.src = `${Xitems?.images[0]?.originalSrc}`;
+        BUY_PRODUCT_IMAGE_DIV.append(BUY_PRODUCTS_IMAGE);
+
+        let BUY_PRODUCTS_NAME_PRICE_DIV = document.createElement("div");
+        // BUY_PRODUCTS_NAME_PRICE_DIV.className = "sd-bundle-mix-match-name-price-div";
+        MAIN_BUY_PRODUCT_NAME_IMAGE_DIV.append(BUY_PRODUCTS_NAME_PRICE_DIV);
+
+        let BUY_PRODUCTS_NAME = document.createElement("p");
+        BUY_PRODUCTS_NAME.className = "sd-buy-products-name";
+        BUY_PRODUCTS_NAME.style.fontSize = `${el.customization.buyXgetY.productDetails.title.fontSize}px`;
+        BUY_PRODUCTS_NAME.style.color = el.customization.buyXgetY.productDetails.title.color;
+        BUY_PRODUCTS_NAME.innerText = Xitems.title;
+        BUY_PRODUCTS_NAME_PRICE_DIV.append(BUY_PRODUCTS_NAME);
+
+        let BUY_PRODUCTS_PRICE = document.createElement("p");
+        BUY_PRODUCTS_PRICE.className = "sd-buy-products-name";
+        BUY_PRODUCTS_PRICE.id = `XproductsPriceDiv${Xindex}`;
+        BUY_PRODUCTS_PRICE.style.fontSize = `${el.customization.buyXgetY.productDetails.price.fontSize}px`;
+        BUY_PRODUCTS_PRICE.style.color = el.customization.buyXgetY.productDetails.price.color;
+        BUY_PRODUCTS_PRICE.innerText = showAmountWithCurrency(`${Xitems?.variants[0]?.price}`);
+        BUY_PRODUCTS_NAME_PRICE_DIV.append(BUY_PRODUCTS_PRICE);
+
+        if(Xitems.minimumOrder>1){
+          let QuantityCounterDiv = document.createElement("div");
+          QuantityCounterDiv.className = "sd-bundle-mix-match-quantity-counter-div";
+          QuantityCounterDiv.id = `QuantityCounter${bundleIndex}${Xindex}`;
+          QuantityCounterDiv.style.borderColor = el.customization.buyXgetY.productDetails.quantities.borderColor;
+          QuantityCounterDiv.style.background = el.customization.buyXgetY.productDetails.quantities.backgroundColor;
+          QuantityCounterDiv.style.color = el.customization.buyXgetY.productDetails.quantities.color;
+          QuantityCounterDiv.innerText = `${Xitems.minimumOrder}X`;
+          MAIN_BUY_PRODUCT_NAME_IMAGE_DIV.append(QuantityCounterDiv);
+        }
+
+        let MAIN_DROPDOWN_LIST_DIV = document.createElement("div");
+        MAIN_DROPDOWN_LIST_DIV.className = "sd-bundle-mix-match-variantOptions-div";
+        BUY_PRODUCT_DETAILS_DIV.append(MAIN_DROPDOWN_LIST_DIV);
+        
+        Array.from({ length: Xitems.minimumOrder }).map((_, i) => {
+          XproductsPriceArray.push({
+            price:`${Xitems.variants[0].price}`,
+            xProductId:`${Xitems.variants[0].id}`,
+            uniqueId: `Xproduct${Xindex}${i}`
+          })
+          calaculateOriginalPrice();
+          CalculateFinalPrice();
+          if (Xitems.variants.length > 1) {
+            let BUY_PRODUCTS_SELECT_VARIANT = document.createElement("SELECT");
+            BUY_PRODUCTS_SELECT_VARIANT.className = "sd-bundle-mix-match";
+            BUY_PRODUCTS_SELECT_VARIANT.id = `XvariantsSelect${Xindex}${i + 1}`;
+            MAIN_DROPDOWN_LIST_DIV.appendChild(BUY_PRODUCTS_SELECT_VARIANT);
+        
+            let optionsHTML = Xitems.variants.map((Xvariants, XvariantsIndex) => `
+              <option value="${Xvariants.id}" id="Xvariants${Xindex}${i + 1}${XvariantsIndex}" price="${Xvariants.price}">
+                ${Xvariants.title}
+              </option>
+            `).join('');
+        
+            BUY_PRODUCTS_SELECT_VARIANT.innerHTML = optionsHTML;
+        
+            BUY_PRODUCTS_SELECT_VARIANT.addEventListener("change", (e) => {
+              let selectedOption = e.target.options[e.target.selectedIndex];
+              let selectedVariantPrice = selectedOption.getAttribute("price");
+              let selectedVariantID = selectedOption.getAttribute("value");
+  
+              let XproductsPriceArrayIndex = XproductsPriceArray.findIndex((checkProduct)=>checkProduct.uniqueId === `Xproduct${Xindex}${i}`);
+              XproductsPriceArray.splice(XproductsPriceArrayIndex,1,{price:selectedVariantPrice,xProductId:selectedVariantID,uniqueId: `Xproduct${Xindex}${i}`});
+              document.getElementById(`XproductsPriceDiv${Xindex}`).innerText = showAmountWithCurrency(selectedVariantPrice);
+              let originalPrice = calaculateOriginalPrice();
+              let finalPrice = CalculateFinalPrice();
+              document.getElementById("sd-bxgy-original-price").innerText = originalPrice;
+              document.getElementById("sd-bxgy-final-price").innerText = finalPrice;
+              // console.log("Selected variant price:",XproductsPriceArray);
+            });
+          }
+        });
+      });
+
+      let BUNDLE_PLUS_BTN_DIV = document.createElement("div");
+      BUNDLE_PLUS_BTN_DIV.className = "sd-bundle-plusBtn-box";
+      BUNDLE_PLUS_BTN_DIV.style.background = el.customization?.buyXgetY.productDetails.plusBackgroundColor;
+      BUNDLE_PLUS_BTN_DIV.style.fontSize = el.customization?.buyXgetY.productDetails.plusfontSize;
+      let BUNDLE_PLUS_SPAN_SVG = document.createElement("span");
+      BUNDLE_PLUS_SPAN_SVG.className = "sd-bundle-plus";
+      BUNDLE_PLUS_SPAN_SVG.innerHTML = `<svg viewBox="64 64 896 896" focusable="false" data-icon="plus" width="1em" height="1em" fill="currentColor" aria-hidden="true"><defs><style></style></defs><path d="M482 152h60q8 0 8 8v704q0 8-8 8h-60q-8 0-8-8V160q0-8 8-8z"></path><path d="M176 474h672q8 0 8 8v60q0 8-8 8H176q-8 0-8-8v-60q0-8 8-8z"></path></svg>`;
+      BUNDLE_PLUS_SPAN_SVG.style.color = el.customization?.buyXgetY.productDetails.plusColor;
+      BUNDLE_PLUS_BTN_DIV.append(BUNDLE_PLUS_SPAN_SVG);
+      BXGY_DIV.append(BUNDLE_PLUS_BTN_DIV);
+
+      //.............................Get Products code............................................................
+      let GET_PRODUCT_DETAILS_DIV = document.createElement("div");
+      GET_PRODUCT_DETAILS_DIV.className = "sd-bxgy-buy-product-details-div";
+      // GET_PRODUCT_DIV.style.borderRadius = `${el.customization?.buyXgetY.box.borderRadius}px`;
+      GET_PRODUCT_DETAILS_DIV.style.borderColor = el.customization?.buyXgetY.box.borderColor;
+      BXGY_DIV.append(GET_PRODUCT_DETAILS_DIV);
+
+      let DISCOUNT_BADGE_DIV = document.createElement("div");
+        if(el.customization.buyXgetY.DiscountBadge.badgeType == "rightBanner"){
+          DISCOUNT_BADGE_DIV.className = "bxgy_productDiscount_badges_right";
+        }else if(el.customization.buyXgetY.DiscountBadge.badgeType == "leftBanner"){
+          DISCOUNT_BADGE_DIV.className = "bxgy_productDiscount_badges_left";
+        }else if(el.customization.buyXgetY.DiscountBadge.badgeType == "ribbon"){
+          DISCOUNT_BADGE_DIV.className = "bxgy_productDiscount_badges_ribbon";
+        }
+        if(el.bundleDetail.discountType == "percent"){
+          DISCOUNT_BADGE_DIV.innerText = `${el.bundleDetail.discountValue}% Off On Each`;
+        }else if(el.bundleDetail.discountType == "fixed"){
+          DISCOUNT_BADGE_DIV.innerText = `${showAmountWithCurrency(el.bundleDetail.discountValue)} Off On Each`;
+        }else{
+          DISCOUNT_BADGE_DIV.innerText = `Free`;
+        }
+        DISCOUNT_BADGE_DIV.style.background = el.customization.buyXgetY.DiscountBadge.backgroundColor;
+        DISCOUNT_BADGE_DIV.style.color = el.customization.buyXgetY.DiscountBadge.color;
+        DISCOUNT_BADGE_DIV.style.fontSize = `${el.customization.buyXgetY.DiscountBadge.fontSize}px`;
+        GET_PRODUCT_DETAILS_DIV.append(DISCOUNT_BADGE_DIV);
+
+      el.bundleDetail.yproducts.map((Yitems,Yindex)=>{
+        let MAIN_GET_PRODUCT_NAME_IMAGE_DIV = document.createElement("div");
+        MAIN_GET_PRODUCT_NAME_IMAGE_DIV.className = "sd-bxgy-main-buy-products-name-image-div";
+        GET_PRODUCT_DETAILS_DIV.append(MAIN_GET_PRODUCT_NAME_IMAGE_DIV);
+        
+        let GET_PRODUCT_IMAGE_DIV = document.createElement("div");
+        GET_PRODUCT_IMAGE_DIV.className = "sd-bxgy-buy-products-images-div";
+        GET_PRODUCT_IMAGE_DIV.style.border = "2px solid black";
+        GET_PRODUCT_IMAGE_DIV.style.borderColor = el.customization.buyXgetY.productDetails.image.borderColor;
+        GET_PRODUCT_IMAGE_DIV.style.borderRadius = `${el.customization.buyXgetY.productDetails.image.borderRadius}px`;
+        GET_PRODUCT_IMAGE_DIV.id = `GET_PRODUCT_IMAGE_DIV${bundleIndex}${Yindex}`;
+        MAIN_GET_PRODUCT_NAME_IMAGE_DIV.append(GET_PRODUCT_IMAGE_DIV);
+
+        let GET_PRODUCTS_IMAGE = document.createElement("img");
+        GET_PRODUCTS_IMAGE.className = "sd-bundle-mix-match-imageThumbnails";
+        GET_PRODUCTS_IMAGE.src = `${Yitems?.images[0]?.originalSrc}`;
+        GET_PRODUCT_IMAGE_DIV.append(GET_PRODUCTS_IMAGE);
+
+        let GET_PRODUCTS_NAME_PRICE_DIV = document.createElement("div");
+        GET_PRODUCTS_NAME_PRICE_DIV.className = "sd-buy-name-price-div";
+        MAIN_GET_PRODUCT_NAME_IMAGE_DIV.append(GET_PRODUCTS_NAME_PRICE_DIV);
+
+        let GET_PRODUCTS_NAME = document.createElement("p");
+        GET_PRODUCTS_NAME.className = "sd-buy-products-name";
+        GET_PRODUCTS_NAME.style.fontSize = `${el.customization.buyXgetY.productDetails.title.fontSize}px`;
+        GET_PRODUCTS_NAME.style.color = el.customization.buyXgetY.productDetails.title.color;
+        GET_PRODUCTS_NAME.innerText = Yitems.title;
+        GET_PRODUCTS_NAME_PRICE_DIV.append(GET_PRODUCTS_NAME);
+
+        let GET_PRODUCTS_PRICE = document.createElement("p");
+        GET_PRODUCTS_PRICE.className = "sd-buy-products-name";
+        GET_PRODUCTS_PRICE.id = `YproductsPriceDiv${Yindex}`;
+        GET_PRODUCTS_PRICE.style.fontSize = `${el.customization.buyXgetY.productDetails.price.fontSize}px`;
+        GET_PRODUCTS_PRICE.style.color = el.customization.buyXgetY.productDetails.price.color;
+        GET_PRODUCTS_PRICE.innerText = showAmountWithCurrency(`${Yitems?.variants[0]?.price}`);
+        GET_PRODUCTS_NAME_PRICE_DIV.append(GET_PRODUCTS_PRICE);
+
+        if(Yitems.minimumOrder>1){
+          let QuantityCounterDiv = document.createElement("div");
+          QuantityCounterDiv.className = "sd-bundle-mix-match-quantity-counter-div";
+          QuantityCounterDiv.id = `QuantityCounter${bundleIndex}${Yindex}`;
+          QuantityCounterDiv.style.borderColor = el.customization.buyXgetY.productDetails.quantities.borderColor;
+          QuantityCounterDiv.style.background = el.customization.buyXgetY.productDetails.quantities.backgroundColor;
+          QuantityCounterDiv.style.color = el.customization.buyXgetY.productDetails.quantities.color;
+          QuantityCounterDiv.innerText = `${Yitems.minimumOrder}X`;
+          MAIN_GET_PRODUCT_NAME_IMAGE_DIV.append(QuantityCounterDiv);
+        }
+
+        let MAIN_DROPDOWN_LIST_DIV = document.createElement("div");
+        MAIN_DROPDOWN_LIST_DIV.className = "sd-bundle-mix-match-variantOptions-div";
+        GET_PRODUCT_DETAILS_DIV.append(MAIN_DROPDOWN_LIST_DIV);
+        
+        Array.from({ length: Yitems.minimumOrder }).map((_, i) => {
+          YproductsPriceArray.push({
+            price:`${Yitems.variants[0].price}`,
+            yProductId:`${Yitems.variants[0].id}`,
+            uniqueId: `Yproduct${Yindex}${i}`
+          })
+          calaculateOriginalPrice();
+          CalculateFinalPrice();
+          if (Yitems.variants.length > 1) {
+            let GET_PRODUCTS_SELECT_VARIANT = document.createElement("SELECT");
+            GET_PRODUCTS_SELECT_VARIANT.className = "sd-bundle-mix-match-variantOptions-div";
+            GET_PRODUCTS_SELECT_VARIANT.id = `YvariantsSelect${Yindex}${i + 1}`;
+            MAIN_DROPDOWN_LIST_DIV.appendChild(GET_PRODUCTS_SELECT_VARIANT);
+        
+            let optionsHTML = Yitems.variants.map((Yvariants, YvariantsIndex) => `
+              <option value="${Yvariants.id}" id="Yvariants${Yindex}${i + 1}${YvariantsIndex}" price="${Yvariants.price}">
+                ${Yvariants.title}
+              </option>
+            `).join('');
+        
+            GET_PRODUCTS_SELECT_VARIANT.innerHTML = optionsHTML;
+        
+            GET_PRODUCTS_SELECT_VARIANT.addEventListener("change", (e) => {
+              let selectedOption = e.target.options[e.target.selectedIndex];
+              let selectedVariantPrice = selectedOption.getAttribute("price");
+              let selectedVariantID = selectedOption.getAttribute("value");
+  
+              let YproductsPriceArrayIndex = YproductsPriceArray.findIndex((checkProduct)=>checkProduct.uniqueId === `Yproduct${Yindex}${i}`);
+              YproductsPriceArray.splice(YproductsPriceArrayIndex,1,{price:selectedVariantPrice,yProductId:selectedVariantID,uniqueId: `Yproduct${Yindex}${i}`});
+              document.getElementById(`YproductsPriceDiv${Yindex}`).innerText = showAmountWithCurrency(selectedVariantPrice);
+              // console.log("Selected variant price:",YproductsPriceArray);
+              let originalPrice = calaculateOriginalPrice();
+              let finalPrice = CalculateFinalPrice();
+              document.getElementById("sd-bxgy-original-price").innerText = originalPrice;
+              document.getElementById("sd-bxgy-final-price").innerText = finalPrice;
+              // console.log(originalPrice,"hellloooooo------*****",finalPrice)
+            });
+          }
+        });
+        // console.log("check Y product map items and index",YproductsPriceArray)  
+      });
+
+      let TOTAL_SECTION_DIV = document.createElement("div");
+      TOTAL_SECTION_DIV.className = "sd-bundle-total-conatiner";
+      TOTAL_SECTION_DIV.style.background = el.customization.buyXgetY.totalSection.backgroundColor;
+      BXGY_DIV.append(TOTAL_SECTION_DIV);
+
+      let TOTAL_TITLE_DIV = document.createElement("div");
+      TOTAL_TITLE_DIV.className = "sd-bundle-totalText-box";
+      TOTAL_TITLE_DIV.innerText = el.translations.translation.total;
+      TOTAL_TITLE_DIV.style.fontSize = `${el.customization.buyXgetY.totalSection.fontSize}px`;
+      TOTAL_TITLE_DIV.style.color = el.customization.buyXgetY.totalSection.color;
+      TOTAL_SECTION_DIV.append(TOTAL_TITLE_DIV);
+
+      let MAIN_PRICE_DIV = document.createElement("div");
+      MAIN_PRICE_DIV.className = "sd-bundle-discounted-price-box";
+      TOTAL_SECTION_DIV.append(MAIN_PRICE_DIV);
+
+      let ORIGINAL_PRICE_DIV = document.createElement("div");
+      ORIGINAL_PRICE_DIV.className = "sd-bundle-discount-price";
+      ORIGINAL_PRICE_DIV.id = "sd-bxgy-original-price";
+      ORIGINAL_PRICE_DIV.innerText = showAmountWithCurrency(`${OriginalPrice}`);
+      ORIGINAL_PRICE_DIV.style.fontSize = `${el.customization.buyXgetY.totalSection.originalPrice.fontSize}px`;
+      ORIGINAL_PRICE_DIV.style.color = el.customization.buyXgetY.totalSection.originalPrice.color;
+      MAIN_PRICE_DIV.append(ORIGINAL_PRICE_DIV);
+
+      let FINAL_PRICE_DIV = document.createElement("div");
+      FINAL_PRICE_DIV.className = "sd-bundle-final-price";
+      FINAL_PRICE_DIV.id = "sd-bxgy-final-price";
+      FINAL_PRICE_DIV.innerText = showAmountWithCurrency(`${FinalPrice}`);
+      FINAL_PRICE_DIV.style.fontSize = `${el.customization.buyXgetY.totalSection.finalPrice.fontSize}px`;
+      FINAL_PRICE_DIV.style.color = el.customization.buyXgetY.totalSection.finalPrice.color;
+      MAIN_PRICE_DIV.append(FINAL_PRICE_DIV);
+
+      let ADD_TO_CART_DIV = document.createElement("div");
+      ADD_TO_CART_DIV.className = "sd-bundle-add-to-cart-box";
+      // ADD_TO_CART_DIV.style.background = el.customization.buyXgetY.button.backgroundColor;
+      BXGY_DIV.append(ADD_TO_CART_DIV);
+
+      let ADD_TO_CART_BUTTON = document.createElement("button");
+      ADD_TO_CART_BUTTON.className = "sd-bundle-add-to-cart-button";
+      ADD_TO_CART_BUTTON.style.background = el.customization.buyXgetY.button.backgroundColor;
+      ADD_TO_CART_BUTTON.style.fontSize = `${el.customization.buyXgetY.button.fontSize}px`;
+      ADD_TO_CART_BUTTON.style.color = el.customization.buyXgetY.button.color;
+      ADD_TO_CART_BUTTON.innerText = el.translations.translation.addToCartButton;
+      ADD_TO_CART_BUTTON.addEventListener("click", (e) => {
+          let code = JSON.parse(localStorage.getItem("sd_bundle_data"));
+          let discountCodeId = code.discountCreateId ?? "";
+          // console.log(code,'create rule check discount codeid',discountCodeId);
+          ADD_TO_CART_BUTTON.innerText = "";
+          let btnSpinner = document.createElement("div");
+          btnSpinner.className = "bundleBtnSpinner";
+          ADD_TO_CART_BUTTON.append(btnSpinner);
+
+          btnSpinner.style.display = "block";         
+          
+          const XmergedGidArray = [];
+          const YmergedGidArray = [];
+          
+          XproductsPriceArray.map((items)=>{
+            XmergedGidArray.push(items.xProductId);
+          })
+          YproductsPriceArray.map((items)=>{
+            YmergedGidArray.push(items.yProductId);
+            bundleSum[bundleIndex].push(items.price);
+          })
+        let lengthOfYProducts = YmergedGidArray.length
+          let XYmergedArray =  XmergedGidArray.concat(YmergedGidArray);
+          const mergedResult = {};
+  
+         XYmergedArray.forEach(fullId => {
+          const numericId = fullId.split('/').pop();
+          if (mergedResult[numericId]) {
+              mergedResult[numericId]++;
+          } else {
+              mergedResult[numericId] = 1;
+          }
+        });
+      
+        const result = Object.keys(mergedResult).map(numericId => ({
+          id: numericId,
+          quantity: mergedResult[numericId]
+        }));
+        console.log("check merged array **********><*********",result);
+          let mergedArrayResult = Object.values(result);
+          // console.log("check mergedArrayResult",mergedArrayResult);
+          let formData = {
+            items: mergedArrayResult,
+            attributes: { SD_BUNDLE_ID: el._id },
+          };
+          // console.log("formdata check =======>>>>>>>",formData);
+          fetch(window.Shopify.routes.root + "cart/add.js", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          })
+            .then((response) => {
+              // console.log("check response",response);
+              return response.json();
+            })
+            .then((response) => {
+              let errorDiv = document.getElementsByClassName(
+                "sd-bundle-error-message"
+              );
+              // console.log("check error div message",errorDiv);
+              errorDiv[0]?.remove();
+              if (response.status == 422 || response.status == 404) {
+                ADD_TO_CART_BUTTON.innerText =
+                  el.translations.translation.addToCartButton;
+                btnSpinner.remove();
+                let errorMessage = document.createElement("div");
+                errorMessage.className = "sd-bundle-error-message";
+                BXGY_DIV.append(errorMessage);
+                errorMessage.innerText = response.description;
+              } else {
+                fetch(window.Shopify.routes.root + "cart.js", {
+                  method: "GET",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                })
+                  .then((response) => {
+                    // console.log("check response of else condition",response);
+                    return response.json();
+                  })
+                  .then((response) => {
+                    // console.log("check backend response ------------",response)
+                      let finalSumBundle = bundleSum[bundleIndex].reduce(
+                        (acc, curr) => acc.concat(curr),
+                        []
+                      );
+                      let myArray = finalSumBundle.map(parseFloat);
+                      let total = myArray.reduce(
+                        (accumulator, currentValue) =>
+                          accumulator + currentValue,
+                        0
+                      );
+
+                      let totalPrice = Number(total.toFixed(2));
+                      let finalPrice;
+                      switch (el.bundleDetail.discountType) {
+                        case "percent":
+                          let percentagepart = parseFloat(
+                            el.bundleDetail.discountValue
+                          );
+                          let percentage = (totalPrice * percentagepart) / 100;
+                          // result = total - percentage;
+                          finalPrice = percentage.toFixed(2)/lengthOfYProducts;
+                          // console.log("percent finalPrice",finalPrice);
+                          break;
+                        case "free":
+                          finalPrice = totalPrice.toFixed(2);
+                          // console.log("free finalPrice",finalPrice);
+                          break;
+                        case "fixed":
+                          let fixedPart = parseFloat(
+                            el.bundleDetail.discountValue
+                          );
+                          finalPrice = fixedPart.toFixed(2);
+                          // console.log("fixed finalPrice",finalPrice);
+                          break;
+                        default:
+                          console.log("how are you ?");
+                          break;
+                      }
+
+                      let isDiscount = "Fix";
+                      let sd_bundle_data = {
+                        discount_name: el.name,
+                        code: `${el.settings.discountLabel}-${code.code}`,
+                        discountType: isDiscount,
+                        discountValue: finalPrice,
+                        XvariantsId: XmergedGidArray,
+                        YvariantsId: YmergedGidArray,
+                        startDate: new Date(),
+                        endDate: el.endDate,
+                        shop: Shopify.shop,
+                        type : el.type,
+                        bundleType: el.bundleDetail.discountType,
+                        totalPrice: total.toFixed(2),
+                        discountCreateId: discountCodeId,
+                      };
+
+                      fetch(server + "/api/storefront/createRule", {
+                        method: "POST",
+                        headers: {
+                          "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(sd_bundle_data),
+                      })
+                        .then((response) => response.json())
+                        .then((data) => {
+                          // console.log("200 data check ************",data)
+                          if (data.status == 200) {
+                            fetch(`${server}/api/storefront/getBundleClick`, {
+                              method: "POST",
+                              headers: {
+                                "Content-Type": "application/json",
+                              },
+                              body: JSON.stringify({
+                                shop: Shopify.shop,
+                                bundleId: el._id,
+                              }),
+                            });
+                            
+                            let sd_bundle_data = {
+                              discount_name: el.name,
+                              bundle_type: el.type,
+                              code: code.code,
+                              bundleId: el._id,
+                              discountType: isDiscount,
+                              variantsId: mergedArrayResult,
+                              discountCreateId: data.response,
+                              prefixCode: el.settings.discountLabel,
+                            };
+                            // console.log("hello this is our sd_bundle_data----->",sd_bundle_data)
+                            var jsonString = JSON.stringify(sd_bundle_data);
+                            localStorage.setItem("sd_bundle_data", jsonString);
+                            window.location.assign(
+                              `https://${Shopify.shop}/cart`
+                            );
+                          }
+                        });
+                  })
+                  .catch((error) => {
+                    ADD_TO_CART_BUTTON.innerText =
+                      el.translations.translation.addToCartButton;
+                  });
+              }
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+            });
+        })
+      ADD_TO_CART_DIV.append(ADD_TO_CART_BUTTON);
+
+      function calaculateOriginalPrice(){
+        let XproductsPrice = XproductPriceCalculate();
+        let YproductsPrice = YproductPriceCalculate();
+        OriginalPrice = XproductsPrice + YproductsPrice;
+        return parseFloat(OriginalPrice).toFixed(2);
+      }
+
+      function XproductPriceCalculate() {
+        let XproductsPrice = 0;
+        XproductsPriceArray.map((item)=>{
+          XproductsPrice += parseFloat(item.price);
+        })
+        return XproductsPrice;
+      }
+
+      function YproductPriceCalculate(params) {
+        let YproductsPrice = 0;
+        YproductsPriceArray.map((item)=>{
+          YproductsPrice += parseFloat(item.price);
+        })
+        return YproductsPrice;
+      }
+
+      function CalculateFinalPrice() {
+        let XproductsPrice = XproductPriceCalculate();
+        let YproductsPrice = YproductPriceCalculate();
+
+        if(el.bundleDetail.discountType == "fixed"){
+          console.log("check array of y products,",YproductsPriceArray.length)
+          YproductsPrice = YproductsPrice-el.bundleDetail.discountValue*YproductsPriceArray.length;
+          FinalPrice = parseFloat(XproductsPrice + YproductsPrice);
+          return parseFloat(FinalPrice).toFixed(2);
+          
+        }else if(el.bundleDetail.discountType == "percent"){
+          let percentage = YproductsPrice*el.bundleDetail.discountValue/100;
+          YproductsPrice = YproductsPrice - percentage;
+          FinalPrice = XproductsPrice + YproductsPrice;
+          return FinalPrice;
+          
+        }else if(el.bundleDetail.discountType == "free"){
+          FinalPrice = XproductsPrice
+          return FinalPrice;
+        }
+      }
     }
   });
 }
@@ -3848,6 +4393,7 @@ async function bundlePageBuilder(data) {
             errorMessage.className = "sd-bundle-error-message";
             CART_INFO_ADD_BTN_div.append(errorMessage);
             errorMessage.innerText = response.description;
+            console.log("check error for",response.description);
           } else {
             fetch(window.Shopify.routes.root + "cart.js", {
               method: "GET",

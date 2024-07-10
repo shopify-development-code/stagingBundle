@@ -45,7 +45,7 @@ const CustomizationVolumeBundlePreview = ({data}) => {
       }}
     >
 
- {data["volume"]["button"]["position"] == "top" && (
+ {/* {data["volume"]["button"]["position"] == "top" && (
           <button
             type="button"
             className="sd-addToCart-button"
@@ -58,7 +58,7 @@ const CustomizationVolumeBundlePreview = ({data}) => {
             {data["volume"]["button"]["text_others"] + " "}
             {"discount"}%{" "}
           </button>
-        )} 
+        )}  */}
 
      
       <div
@@ -378,7 +378,7 @@ const CustomizationVolumeBundlePreview = ({data}) => {
           </div>
         </div>
 
-        {data["volume"]["button"]["position"] == "bottom" && (
+        {/* {data["volume"]["button"]["position"] == "bottom" && ( */}
           <button
             type="button"
             className="sd-addToCart-button"
@@ -389,9 +389,8 @@ const CustomizationVolumeBundlePreview = ({data}) => {
             }}
           >
             {data["volume"]["button"]["text_others"] + " "}
-            {"discount"}%{" "}
           </button>
-        )}
+        {/* )} */}
       </div>
     </div>
   );

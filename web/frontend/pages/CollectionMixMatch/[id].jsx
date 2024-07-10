@@ -415,7 +415,7 @@ if(flag==true){
     <div className="sd-bundle-wrapper-common">
     <div className="sd-bundle-left-section-common">
     <div className="sd-bundle-bundleSection-common sd-bundle-collectionMixMatchSearchSection">
-    <div className="sd-bundle-bundleSection-heading-common">Product Bundle </div>
+    <div className="sd-bundle-bundleSection-heading-common">Collection Mix & Match Bundle</div>
     <div className="sd-bundle-plainText-common">
     Add collections you want your customers to buy from
             </div>
