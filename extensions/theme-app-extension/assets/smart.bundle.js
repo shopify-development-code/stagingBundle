@@ -1,6 +1,7 @@
-// let server = "https://bundle.shinedezigninfotech.com";
-console.log("Smart Bundle Discount app neeew version ---v2.0999 09 july");
-let server = "https://no-katrina-summer-upon.trycloudflare.com"
+let server = "https://bundle.shinedezigninfotech.com";
+
+console.log("Smart Bundle Discount app new version ---v2.0999 101 July");
+// let server = "https://villa-warcraft-desktops-holders.trycloudflare.com";
 let smartNoImg = `data:image/png;base64,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`;
 let productPageClass = document.getElementsByClassName("sd-bundle-app");
 if (sdbundlePageType == "product") {
@@ -174,7 +175,7 @@ if (sdbundlePageType == "page") {
         bundlePageBuilder(data);
       })
       .catch((error) => {
-        console.log(error.message);
+        // // console.log(error.message);
       });
   }
 }
@@ -186,6 +187,7 @@ const gidArray = [];
 let volumeBundleArr = [];
 let volumeBundleSum = [];
 function createBundle(BUNDLE_DATA) {
+  console.log("check foreach working=======**********",BUNDLE_DATA)
   // let bundleMainDiv = `<div id="sd-bundle-main-container" class="sd-bundle-main-container"></div>`;
   let bundleMainDiv = document.createElement("div");
   bundleMainDiv.className = "sd-bundle-main-container";
@@ -311,6 +313,7 @@ function createBundle(BUNDLE_DATA) {
           show_less.innerText = el.translations.translation.seeLess;
           seeLessDiv.classList.add("sd-bundle-hide-click");
           for (let i = 1; i <= ele.minimumOrder; i++) {
+
             if (ele.minimumOrder <= 2 || ele.variants.length <= 1) {
               seeMoreDiv.style.display = "none";
             }
@@ -710,7 +713,7 @@ function createBundle(BUNDLE_DATA) {
                         bundleId: el._id,
                         discountType: isDiscount,
                         variantsId: mergedArrayResult,
-                        discountCreateId: localData.discountCreateId,
+                        discountCreateId: response.discountCreateId,
                         prefixCode: el.settings.discountLabel,
                       };
                       var jsonString = JSON.stringify(sd_bundle_data);
@@ -755,7 +758,7 @@ function createBundle(BUNDLE_DATA) {
                           finalPrice = fixedPart.toFixed(2);
                           break;
                         default:
-                          console.log("how are you ?");
+                          // // console.log("how are you ?");
                           break;
                       }
 
@@ -820,14 +823,13 @@ function createBundle(BUNDLE_DATA) {
                     }
                   })
                   .catch((error) => {
-                    console.log("check errors",el.translations.translation.addToCartButton);
                     ADD_TO_CART_BUTTON.innerText =
                       el.translations.translation.addToCartButton;
                   });
               }
             })
             .catch((error) => {
-              console.error("Error:", error);
+              // console.error("Error:", error);
             });
         });
         if (el.customization?.bundle.button.position == "bottom") {
@@ -835,9 +837,9 @@ function createBundle(BUNDLE_DATA) {
         } else {
           BUNDLE_DIV.prepend(ADD_TO_CART_BTN_DIV);
         }
-        if (el.plans.plan == "free") {
-        waterMark(BUNDLE_DIV);
-        }
+        // if (el.plans.plan == "free") {
+        // waterMark(BUNDLE_DIV);
+        // }
       // } else {
       // }
     } 
@@ -1814,7 +1816,7 @@ function createBundle(BUNDLE_DATA) {
           el.customization.collectionMixMatch.box.borderRadius + "px";
         let discountBadge = document.createElement("span");
         discountBadge.className = "sd-collectionMM-badge";
-        discountBadge.innerText = el.customization.collectionMixMatch.DiscountBadge.text;
+        discountBadge.innerText = el.translations.translation.grabTheDeal;
         VOLUME_HEADER_DIV.append(discountBadge);
         collectionDiv.append(VOLUME_HEADER_DIV);
 
@@ -2066,7 +2068,7 @@ function createBundle(BUNDLE_DATA) {
       let DiscountType;
       let DiscountValue;
       
-       let VariantDropDownFun = (productIndex,elements,VariantOptionDiv,TotalQuantity) => {
+      let VariantDropDownFun = (productIndex,elements,VariantOptionDiv,TotalQuantity) => {
           let SelectVariants = document.createElement("SELECT");
           SelectVariants.id = `SelectVariants${bundleIndex}${productIndex}${TotalQuantity}`;
           SelectVariants.style.background = el.customization.productMixMatch.productDetails.variantSelector.backgroundColor;
@@ -2079,11 +2081,11 @@ function createBundle(BUNDLE_DATA) {
             let indexOfProduct;
             elements.variants.map((variants,variantIndex)=>{
               SelectedProducts.map((item,itemIndex)=>{
-                  item.map((itemProducts,indexOfItemProduct)=>{
-                    if(variants.id == itemProducts){
-                      indexOfProduct = SelectedProducts.findIndex((checkPrducts)=> checkPrducts[indexOfItemProduct] == variants.id)
-                    }
-                  })
+                item.map((itemProducts,indexOfItemProduct)=>{
+                  if(variants.id == itemProducts){
+                    indexOfProduct = SelectedProducts.findIndex((checkPrducts)=> checkPrducts[indexOfItemProduct] == variants.id)
+                  }
+                })
               })
             })
             if(PriceArray[indexOfPrice].productName === `Copy${elements.title}${productIndex}`){
@@ -2707,7 +2709,7 @@ function createBundle(BUNDLE_DATA) {
           PlusBtn.className = "sd-bundle-mix-match-plus-btn";
           PlusBtn.id = `PlusBtn${bundleIndex}${productIndex}`;
           PlusBtn.innerText = "+";
-          PlusBtn.style.cursor = "pointer"
+          PlusBtn.style.cursor = "pointer";
           PlusBtn.addEventListener("click",addProduct = ()=>{
             document.getElementById(`Minusbtn${bundleIndex}${productIndex}`).disabled = false;
             let indexofProducts;
@@ -2719,8 +2721,8 @@ function createBundle(BUNDLE_DATA) {
                   }
                 })
               })
-            })
-            let VariantOptionDiv = document.getElementById(`VariantOptionDiv${bundleIndex}${productIndex}`)
+            });
+            let VariantOptionDiv = document.getElementById(`VariantOptionDiv${bundleIndex}${productIndex}`);
             SelectedProducts[indexofProducts].push(elements.variants[0].id);
             TotalQuantity =  SelectedProducts[indexofProducts].length;
             if(VariantOptionDiv !== null){
@@ -3009,7 +3011,6 @@ function createBundle(BUNDLE_DATA) {
                   }
                 })
                 .catch((error) => {
-                  console.log("check error",el.translations.translation.addToCartButton);
                   AddToCartBTN.innerText =
                     el.translations.translation.addToCartButton;
                 });
@@ -3025,9 +3026,9 @@ function createBundle(BUNDLE_DATA) {
       } else {
         MixMatchDiv.prepend(AddToCartBtnDiv);
       }
-      if (el.plans.plan == "free") {
-        waterMark(MixMatchDiv);
-      }
+      // if (el.plans.plan == "free") {
+      //   waterMark(MixMatchDiv);
+      // }
       mainDiv.append(MixMatchDiv)
 
       let plusIconHandler = (ele,index,activeBadge) =>{
@@ -3218,9 +3219,8 @@ function createBundle(BUNDLE_DATA) {
               document.getElementById(`XproductsPriceDiv${Xindex}`).innerText = showAmountWithCurrency(selectedVariantPrice);
               let originalPrice = calaculateOriginalPrice();
               let finalPrice = CalculateFinalPrice();
-              document.getElementById("sd-bxgy-original-price").innerText = originalPrice;
-              document.getElementById("sd-bxgy-final-price").innerText = finalPrice;
-              // console.log("Selected variant price:",XproductsPriceArray);
+              document.getElementById("sd-bxgy-original-price").innerText = originalPrice.toFixed(2);
+              document.getElementById("sd-bxgy-final-price").innerText = finalPrice.toFixed(2);
             });
           }
         });
@@ -3253,9 +3253,9 @@ function createBundle(BUNDLE_DATA) {
           DISCOUNT_BADGE_DIV.className = "bxgy_productDiscount_badges_ribbon";
         }
         if(el.bundleDetail.discountType == "percent"){
-          DISCOUNT_BADGE_DIV.innerText = `${el.bundleDetail.discountValue}% Off On Each`;
+          DISCOUNT_BADGE_DIV.innerText = `${el.bundleDetail.discountValue}% Off`;
         }else if(el.bundleDetail.discountType == "fixed"){
-          DISCOUNT_BADGE_DIV.innerText = `${showAmountWithCurrency(el.bundleDetail.discountValue)} Off On Each`;
+          DISCOUNT_BADGE_DIV.innerText = `${showAmountWithCurrency(el.bundleDetail.discountValue)} Off`;
         }else{
           DISCOUNT_BADGE_DIV.innerText = `Free`;
         }
@@ -3324,6 +3324,23 @@ function createBundle(BUNDLE_DATA) {
           })
           calaculateOriginalPrice();
           CalculateFinalPrice();
+          if(YproductsPriceArray.length > 1){
+            let bannerClass;
+            if(el.customization.buyXgetY.DiscountBadge.badgeType == "rightBanner"){
+              bannerClass = document.getElementsByClassName("bxgy_productDiscount_badges_right");
+            }else if(el.customization.buyXgetY.DiscountBadge.badgeType == "leftBanner"){
+              bannerClass = document.getElementsByClassName("bxgy_productDiscount_badges_left");
+            }else if(el.customization.buyXgetY.DiscountBadge.badgeType == "ribbon"){
+              bannerClass = document.getElementsByClassName("bxgy_productDiscount_badges_ribbon");
+            }
+            if(el.bundleDetail.discountType == "percent"){
+              bannerClass[bundleIndex].innerText = `${el.bundleDetail.discountValue}% Off On Each`;
+            }else if(el.bundleDetail.discountType == "fixed"){
+              bannerClass[bundleIndex].innerText = `${showAmountWithCurrency(el.bundleDetail.discountValue)} Off On Each`;
+            }else{
+              bannerClass[bundleIndex].innerText = `Free`;
+            }
+          }
           if (Yitems.variants.length > 1) {
             let GET_PRODUCTS_SELECT_VARIANT = document.createElement("SELECT");
             GET_PRODUCTS_SELECT_VARIANT.className = "sd-bundle-mix-match-variantOptions-div";
@@ -3346,16 +3363,13 @@ function createBundle(BUNDLE_DATA) {
               let YproductsPriceArrayIndex = YproductsPriceArray.findIndex((checkProduct)=>checkProduct.uniqueId === `Yproduct${Yindex}${i}`);
               YproductsPriceArray.splice(YproductsPriceArrayIndex,1,{price:selectedVariantPrice,yProductId:selectedVariantID,uniqueId: `Yproduct${Yindex}${i}`});
               document.getElementById(`YproductsPriceDiv${Yindex}`).innerText = showAmountWithCurrency(selectedVariantPrice);
-              // console.log("Selected variant price:",YproductsPriceArray);
               let originalPrice = calaculateOriginalPrice();
               let finalPrice = CalculateFinalPrice();
-              document.getElementById("sd-bxgy-original-price").innerText = originalPrice;
-              document.getElementById("sd-bxgy-final-price").innerText = finalPrice;
-              // console.log(originalPrice,"hellloooooo------*****",finalPrice)
+              document.getElementById("sd-bxgy-original-price").innerText = originalPrice.toFixed(2);
+              document.getElementById("sd-bxgy-final-price").innerText = finalPrice.toFixed(2);
             });
           }
         });
-        // console.log("check Y product map items and index",YproductsPriceArray)  
       });
 
       let TOTAL_SECTION_DIV = document.createElement("div");
@@ -3377,7 +3391,7 @@ function createBundle(BUNDLE_DATA) {
       let ORIGINAL_PRICE_DIV = document.createElement("div");
       ORIGINAL_PRICE_DIV.className = "sd-bundle-discount-price";
       ORIGINAL_PRICE_DIV.id = "sd-bxgy-original-price";
-      ORIGINAL_PRICE_DIV.innerText = showAmountWithCurrency(`${OriginalPrice}`);
+      ORIGINAL_PRICE_DIV.innerText = showAmountWithCurrency(`${OriginalPrice.toFixed(2)}`);
       ORIGINAL_PRICE_DIV.style.fontSize = `${el.customization.buyXgetY.totalSection.originalPrice.fontSize}px`;
       ORIGINAL_PRICE_DIV.style.color = el.customization.buyXgetY.totalSection.originalPrice.color;
       MAIN_PRICE_DIV.append(ORIGINAL_PRICE_DIV);
@@ -3385,7 +3399,7 @@ function createBundle(BUNDLE_DATA) {
       let FINAL_PRICE_DIV = document.createElement("div");
       FINAL_PRICE_DIV.className = "sd-bundle-final-price";
       FINAL_PRICE_DIV.id = "sd-bxgy-final-price";
-      FINAL_PRICE_DIV.innerText = showAmountWithCurrency(`${FinalPrice}`);
+      FINAL_PRICE_DIV.innerText = showAmountWithCurrency(`${FinalPrice.toFixed(2)}`);
       FINAL_PRICE_DIV.style.fontSize = `${el.customization.buyXgetY.totalSection.finalPrice.fontSize}px`;
       FINAL_PRICE_DIV.style.color = el.customization.buyXgetY.totalSection.finalPrice.color;
       MAIN_PRICE_DIV.append(FINAL_PRICE_DIV);
@@ -3404,7 +3418,6 @@ function createBundle(BUNDLE_DATA) {
       ADD_TO_CART_BUTTON.addEventListener("click", (e) => {
           let code = JSON.parse(localStorage.getItem("sd_bundle_data"));
           let discountCodeId = code.discountCreateId ?? "";
-          // console.log(code,'create rule check discount codeid',discountCodeId);
           ADD_TO_CART_BUTTON.innerText = "";
           let btnSpinner = document.createElement("div");
           btnSpinner.className = "bundleBtnSpinner";
@@ -3439,14 +3452,11 @@ function createBundle(BUNDLE_DATA) {
           id: numericId,
           quantity: mergedResult[numericId]
         }));
-        console.log("check merged array **********><*********",result);
           let mergedArrayResult = Object.values(result);
-          // console.log("check mergedArrayResult",mergedArrayResult);
           let formData = {
             items: mergedArrayResult,
             attributes: { SD_BUNDLE_ID: el._id },
           };
-          // console.log("formdata check =======>>>>>>>",formData);
           fetch(window.Shopify.routes.root + "cart/add.js", {
             method: "POST",
             headers: {
@@ -3455,14 +3465,12 @@ function createBundle(BUNDLE_DATA) {
             body: JSON.stringify(formData),
           })
             .then((response) => {
-              // console.log("check response",response);
               return response.json();
             })
             .then((response) => {
               let errorDiv = document.getElementsByClassName(
                 "sd-bundle-error-message"
               );
-              // console.log("check error div message",errorDiv);
               errorDiv[0]?.remove();
               if (response.status == 422 || response.status == 404) {
                 ADD_TO_CART_BUTTON.innerText =
@@ -3480,11 +3488,9 @@ function createBundle(BUNDLE_DATA) {
                   },
                 })
                   .then((response) => {
-                    // console.log("check response of else condition",response);
                     return response.json();
                   })
                   .then((response) => {
-                    // console.log("check backend response ------------",response)
                       let finalSumBundle = bundleSum[bundleIndex].reduce(
                         (acc, curr) => acc.concat(curr),
                         []
@@ -3505,19 +3511,17 @@ function createBundle(BUNDLE_DATA) {
                           );
                           let percentage = (totalPrice * percentagepart) / 100;
                           // result = total - percentage;
-                          finalPrice = percentage.toFixed(2)/lengthOfYProducts;
-                          // console.log("percent finalPrice",finalPrice);
+                          let Price = percentage/lengthOfYProducts;
+                          finalPrice = Price.toFixed(2);
                           break;
                         case "free":
                           finalPrice = totalPrice.toFixed(2);
-                          // console.log("free finalPrice",finalPrice);
                           break;
                         case "fixed":
                           let fixedPart = parseFloat(
                             el.bundleDetail.discountValue
                           );
                           finalPrice = fixedPart.toFixed(2);
-                          // console.log("fixed finalPrice",finalPrice);
                           break;
                         default:
                           console.log("how are you ?");
@@ -3550,7 +3554,6 @@ function createBundle(BUNDLE_DATA) {
                       })
                         .then((response) => response.json())
                         .then((data) => {
-                          // console.log("200 data check ************",data)
                           if (data.status == 200) {
                             fetch(`${server}/api/storefront/getBundleClick`, {
                               method: "POST",
@@ -3573,7 +3576,6 @@ function createBundle(BUNDLE_DATA) {
                               discountCreateId: data.response,
                               prefixCode: el.settings.discountLabel,
                             };
-                            // console.log("hello this is our sd_bundle_data----->",sd_bundle_data)
                             var jsonString = JSON.stringify(sd_bundle_data);
                             localStorage.setItem("sd_bundle_data", jsonString);
                             window.location.assign(
@@ -3622,7 +3624,6 @@ function createBundle(BUNDLE_DATA) {
         let YproductsPrice = YproductPriceCalculate();
 
         if(el.bundleDetail.discountType == "fixed"){
-          console.log("check array of y products,",YproductsPriceArray.length)
           YproductsPrice = YproductsPrice-el.bundleDetail.discountValue*YproductsPriceArray.length;
           FinalPrice = parseFloat(XproductsPrice + YproductsPrice);
           return parseFloat(FinalPrice).toFixed(2);
@@ -3631,11 +3632,11 @@ function createBundle(BUNDLE_DATA) {
           let percentage = YproductsPrice*el.bundleDetail.discountValue/100;
           YproductsPrice = YproductsPrice - percentage;
           FinalPrice = XproductsPrice + YproductsPrice;
-          return FinalPrice;
+          return parseFloat(FinalPrice).toFixed(2);
           
         }else if(el.bundleDetail.discountType == "free"){
           FinalPrice = XproductsPrice
-          return FinalPrice;
+          return parseFloat(FinalPrice).toFixed(2);
         }
       }
     }
@@ -4393,7 +4394,6 @@ async function bundlePageBuilder(data) {
             errorMessage.className = "sd-bundle-error-message";
             CART_INFO_ADD_BTN_div.append(errorMessage);
             errorMessage.innerText = response.description;
-            console.log("check error for",response.description);
           } else {
             fetch(window.Shopify.routes.root + "cart.js", {
               method: "GET",
@@ -4575,6 +4575,7 @@ function addselectedProductList(selectedProducts, mainIndex, extra, data) {
       selectedProductTitleDiv.append(ProductTitle);
       let productVariantTitle = document.createElement("div");
       productVariantTitle.className = "sd-builder-info-variant-title";
+      console.log(el.variantTitle);
       productVariantTitle.innerText = el.variantTitle;
       if (el.variantTitle == "Default Title") {
         productVariantTitle.style.display = "none";
@@ -4753,6 +4754,7 @@ async function activateRule(localData) {
   const data = {
     shop: Shopify.shop,
     discountId: localData.discountCreateId,
+    bundle_type: localData.bundle_type
   };
   await fetch(server + "/api/storefront/activateRule", {
     method: "POST",

@@ -3,7 +3,7 @@
 client_id = "e13323374d92132ba17048d14e6ecb0e"
 name = "akashbundlelive"
 handle = "akashbundlelive"
-application_url = "https://bald-little-lying-innovative.trycloudflare.com"
+application_url = "https://villa-warcraft-desktops-holders.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "read_content,read_themes,write_content,write_discounts,write_orders,wr
 
 [auth]
 redirect_urls = [
-  "https://bald-little-lying-innovative.trycloudflare.com/auth/callback",
-  "https://bald-little-lying-innovative.trycloudflare.com/auth/shopify/callback",
-  "https://bald-little-lying-innovative.trycloudflare.com/api/auth/callback"
+  "https://villa-warcraft-desktops-holders.trycloudflare.com/auth/callback",
+  "https://villa-warcraft-desktops-holders.trycloudflare.com/auth/shopify/callback",
+  "https://villa-warcraft-desktops-holders.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]

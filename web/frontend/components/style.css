@@ -374,13 +374,22 @@ input[type="radio"] {
     z-index: 1;
     cursor: pointer;
 }
-.sd-bundle-productBundle-preview {
+/* .sd-bundle-productBundle-preview {
     padding: 10px 20px;
-    /* max-height: 500px; */
+    max-height: 700px;
     scrollbar-width: none;
     padding-bottom: 50px;
     width: 40%;
-    height: 656px;
+    height: 500px;
+    overflow-y: auto;
+} */
+.sd-bundle-productBundle-preview {
+    padding: 10px 20px;
+    max-height: 650px;
+    scrollbar-width: none;
+    padding-bottom: 50px;
+    width: 40%;
+    min-height: 300px;
     overflow-y: auto;
 }
 
