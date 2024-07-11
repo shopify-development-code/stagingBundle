@@ -3328,10 +3328,13 @@ function createBundle(BUNDLE_DATA) {
             let bannerClass;
             if(el.customization.buyXgetY.DiscountBadge.badgeType == "rightBanner"){
               bannerClass = document.getElementsByClassName("bxgy_productDiscount_badges_right");
+              console.log(" Check bannerClass******************",bannerClass[bundleIndex]);
             }else if(el.customization.buyXgetY.DiscountBadge.badgeType == "leftBanner"){
               bannerClass = document.getElementsByClassName("bxgy_productDiscount_badges_left");
+              console.log(" Check bannerClass******************",bannerClass[bundleIndex]);
             }else if(el.customization.buyXgetY.DiscountBadge.badgeType == "ribbon"){
               bannerClass = document.getElementsByClassName("bxgy_productDiscount_badges_ribbon");
+              console.log(" Check bannerClass******************",bannerClass[bundleIndex]);
             }
             if(el.bundleDetail.discountType == "percent"){
               bannerClass[bundleIndex].innerText = `${el.bundleDetail.discountValue}% Off On Each`;
