@@ -74,36 +74,28 @@ const {app}=useAPI()
                            type="number"
                            label="Minimum order"
                            onChange={(newvalue) => {
-                            
-   
-                             if (newvalue == "" || newvalue < 0) {
-                               let update = [...data.bundleDetail.yproducts];
-                            
-   
-                               update[update?.indexOf(item)].minimumOrder = 0;
-                             
-                               // setSelectedProducts(update);
-                               setData({...data,bundleDetail:{...data.bundleDetail,yproducts:[...update]}});
-                               
-                             } else {
-                               if (String(newvalue).length > 1) {
-                                 newvalue = newvalue.replace(/^0/, "");
-                               }
-   
-                               let update = [...data.bundleDetail.yproducts];
-                             
-   
-                               update[update?.indexOf(item)].minimumOrder =
-                                 newvalue;
-   
-                               setData({...data,bundleDetail:{...data.bundleDetail,yproducts:[...update]}});
-   
-   
-                             }
+                            if (newvalue == "" || newvalue < 0) {
+                              let update = [...data.bundleDetail.yproducts];
+                              update[update?.indexOf(item)].minimumOrder = 1;
+                              // setSelectedProducts(update);
+                              setData({...data,bundleDetail:{...data.bundleDetail,yproducts:[...update]}});
+                            } else {
+                              if (String(newvalue).length > 1) {
+                                newvalue = newvalue.replace(/^0/, "");
+                              }
+                              let update = [...data.bundleDetail.yproducts];
+                              if(newvalue > 20){
+                                update[update?.indexOf(item)].minimumOrder = 20
+                              }else{
+                                update[update?.indexOf(item)].minimumOrder = newvalue;
+                              }
+                              setData({...data,bundleDetail:{...data.bundleDetail,yproducts:[...update]}});
+                            }
                            }}
                            value={item.minimumOrder}
                            autoComplete="off"
-                           min="0"
+                           min={1}
+                           max={20}
                          />
     
                     

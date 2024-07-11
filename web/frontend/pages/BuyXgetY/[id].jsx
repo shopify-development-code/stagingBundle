@@ -78,7 +78,7 @@ const BuyXgetY = () => {
   }, []); 
   
   useEffect(() => {
-    console.log("customizationdata", customizationData);
+    // console.log("customizationdata", customizationData);
     setData((prevData) => ({
       ...prevData,
       customization: [
@@ -294,7 +294,7 @@ const BuyXgetY = () => {
   useEffect(() => {
     let MergedArray = []
     arrY.map((item,index)=>{
-      console.log("iiii",item);
+      // console.log("iiii",item);
       MergedArray = [...MergedArray,...item]
     });
     if(MergedArray.length > 1){
@@ -302,7 +302,7 @@ const BuyXgetY = () => {
     }else{
       setBadgeText("")
     }
-    console.log("array y",MergedArray);
+    // console.log("array y",MergedArray);
     setEndPrice(parseFloat(calculateFinalPrice(arrX, arrY,MergedArray.length)).toFixed(2));
     
   }, [arrY,arrX, data.bundleDetail.discountType, data.bundleDetail.discountValue]);
@@ -310,7 +310,7 @@ const BuyXgetY = () => {
   //function to calculate final EndPrice
   function calculateFinalPrice(arrX, arrY,lengthOfYProducts) {
     let finalPrice = 0;
-    console.log("test",lengthOfYProducts,data.bundleDetail.yproducts.length);
+    // console.log("test",lengthOfYProducts,data.bundleDetail.yproducts.length);
     const totalMrp = calculateMrp(arrX) + calculateMrp(arrY);
     setMrp(parseFloat(totalMrp).toFixed(2));
 
@@ -422,6 +422,11 @@ const BuyXgetY = () => {
       alertText.push("Please provide title of bundle");
     }
 
+    if(data.bundleDetail.display.productPagesList.length <= 0){
+      flag= false;
+      alertText.push("Please select at least one product from display options");
+    }
+
     if (data.description == "") {
       if (!errorArray.includes("bundleDescription")) {
         setErrorArray((prev) => [...prev, "bundleDescription"]);
@@ -447,7 +452,7 @@ const BuyXgetY = () => {
       setPickerError([]);
       if (param.id == "create") {
         try {
-          console.log(" in the try");
+          // console.log(" in the try");
           const response = await postApi("/api/admin/createBundle", data, app);
           if (response.data.status === 200) {
             return (
