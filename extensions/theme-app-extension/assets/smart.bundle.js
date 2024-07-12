@@ -3327,25 +3327,11 @@ function createBundle(BUNDLE_DATA) {
           CalculateFinalPrice();
           if(YproductsPriceArray.length > 1){
             let bannerClass = document.getElementById(`discount_badge_id${bundleIndex}`);
-            // if(el.customization.buyXgetY.DiscountBadge.badgeType == "rightBanner"){
-            //   bannerClass = document.getElementsByClassName("bxgy_productDiscount_badges_right");
-            //   console.log(" Check bannerClass******************",bannerClass);
-            // }else if(el.customization.buyXgetY.DiscountBadge.badgeType == "leftBanner"){
-            //   bannerClass = document.getElementsByClassName("bxgy_productDiscount_badges_left");
-            //   console.log(" Check bannerClass******************",bannerClass);
-            // }else if(el.customization.buyXgetY.DiscountBadge.badgeType == "ribbon"){
-            //   bannerClass = document.getElementsByClassName("bxgy_productDiscount_badges_ribbon");
-            //   console.log(" Check bannerClass******************",bannerClass);
-            // }
-
             if(el.bundleDetail.discountType == "percent"){
-              console.log(" Check bannerClass******************",bannerClass,bundleIndex);
               bannerClass.innerText = `${el.bundleDetail.discountValue}% Off On Each`;
             }else if(el.bundleDetail.discountType == "fixed"){
-              console.log(" Check bannerClass******************",bannerClass,bundleIndex);
               bannerClass.innerText = `${showAmountWithCurrency(el.bundleDetail.discountValue)} Off On Each`;
             }else{
-              console.log(" Check bannerClass******************",bannerClass,bundleIndex);
               bannerClass.innerText = `Free`;
             }
           }
