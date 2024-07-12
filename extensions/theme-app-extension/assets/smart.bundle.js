@@ -3337,14 +3337,14 @@ function createBundle(BUNDLE_DATA) {
               console.log(" Check bannerClass******************",bannerClass);
             }
             if(el.bundleDetail.discountType == "percent"){
-              console.log(" Check bannerClass******************",bannerClass[bundleIndex]);
-              bannerClass[bundleIndex].innerText = `${el.bundleDetail.discountValue}% Off On Each`;
+              console.log(" Check bannerClass******************",bannerClass[bundleIndex],bundleIndex);
+              // bannerClass[bundleIndex].innerText = `${el.bundleDetail.discountValue}% Off On Each`;
             }else if(el.bundleDetail.discountType == "fixed"){
-              console.log(" Check bannerClass******************",bannerClass[bundleIndex]);
-              bannerClass[bundleIndex].innerText = `${showAmountWithCurrency(el.bundleDetail.discountValue)} Off On Each`;
+              console.log(" Check bannerClass******************",bannerClass[bundleIndex],bundleIndex);
+              // bannerClass[bundleIndex].innerText = `${showAmountWithCurrency(el.bundleDetail.discountValue)} Off On Each`;
             }else{
-              console.log(" Check bannerClass******************",bannerClass[bundleIndex]);
-              bannerClass[bundleIndex].innerText = `Free`;
+              console.log(" Check bannerClass******************",bannerClass[bundleIndex],bundleIndex);
+              // bannerClass[bundleIndex].innerText = `Free`;
             }
           }
           if (Yitems.variants.length > 1) {
