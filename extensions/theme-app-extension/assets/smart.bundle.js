@@ -3259,6 +3259,7 @@ function createBundle(BUNDLE_DATA) {
         }else{
           DISCOUNT_BADGE_DIV.innerText = `Free`;
         }
+        DISCOUNT_BADGE_DIV.id = `discount_badge_id${bundleIndex}`;
         DISCOUNT_BADGE_DIV.style.background = el.customization.buyXgetY.DiscountBadge.backgroundColor;
         DISCOUNT_BADGE_DIV.style.color = el.customization.buyXgetY.DiscountBadge.color;
         DISCOUNT_BADGE_DIV.style.fontSize = `${el.customization.buyXgetY.DiscountBadge.fontSize}px`;
@@ -3325,25 +3326,26 @@ function createBundle(BUNDLE_DATA) {
           calaculateOriginalPrice();
           CalculateFinalPrice();
           if(YproductsPriceArray.length > 1){
-            let bannerClass;
-            if(el.customization.buyXgetY.DiscountBadge.badgeType == "rightBanner"){
-              bannerClass = document.getElementsByClassName("bxgy_productDiscount_badges_right");
-              console.log(" Check bannerClass******************",bannerClass);
-            }else if(el.customization.buyXgetY.DiscountBadge.badgeType == "leftBanner"){
-              bannerClass = document.getElementsByClassName("bxgy_productDiscount_badges_left");
-              console.log(" Check bannerClass******************",bannerClass);
-            }else if(el.customization.buyXgetY.DiscountBadge.badgeType == "ribbon"){
-              bannerClass = document.getElementsByClassName("bxgy_productDiscount_badges_ribbon");
-              console.log(" Check bannerClass******************",bannerClass);
-            }
+            let bannerClass = document.getElementById(`discount_badge_id${bundleIndex}`);
+            // if(el.customization.buyXgetY.DiscountBadge.badgeType == "rightBanner"){
+            //   bannerClass = document.getElementsByClassName("bxgy_productDiscount_badges_right");
+            //   console.log(" Check bannerClass******************",bannerClass);
+            // }else if(el.customization.buyXgetY.DiscountBadge.badgeType == "leftBanner"){
+            //   bannerClass = document.getElementsByClassName("bxgy_productDiscount_badges_left");
+            //   console.log(" Check bannerClass******************",bannerClass);
+            // }else if(el.customization.buyXgetY.DiscountBadge.badgeType == "ribbon"){
+            //   bannerClass = document.getElementsByClassName("bxgy_productDiscount_badges_ribbon");
+            //   console.log(" Check bannerClass******************",bannerClass);
+            // }
+
             if(el.bundleDetail.discountType == "percent"){
-              console.log(" Check bannerClass******************",bannerClass[bundleIndex],bundleIndex);
+              console.log(" Check bannerClass******************",bannerClass,bundleIndex);
               // bannerClass[bundleIndex].innerText = `${el.bundleDetail.discountValue}% Off On Each`;
             }else if(el.bundleDetail.discountType == "fixed"){
-              console.log(" Check bannerClass******************",bannerClass[bundleIndex],bundleIndex);
+              console.log(" Check bannerClass******************",bannerClass,bundleIndex);
               // bannerClass[bundleIndex].innerText = `${showAmountWithCurrency(el.bundleDetail.discountValue)} Off On Each`;
             }else{
-              console.log(" Check bannerClass******************",bannerClass[bundleIndex],bundleIndex);
+              console.log(" Check bannerClass******************",bannerClass,bundleIndex);
               // bannerClass[bundleIndex].innerText = `Free`;
             }
           }
