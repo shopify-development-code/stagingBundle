@@ -33,6 +33,7 @@ async function getBundleAnalyticsData(){
   setBtnDisabled(false)
 
   let data = response.data.response
+  console.log("data",data)
   bundleclickSum(data)
   bundleViewSum(data)
   bundleSalesSum(data)
@@ -90,7 +91,7 @@ const handleAnalyticsReload = ()=>{
       const data = analyticsData.map((item, index) => ({
         
         bundle:( <div key={index} className="sd-bundle-dashboard-img-box">
-        {item.bundleDetail.products.map((ele,index) => {
+        {(item.type== 'bxgy' ? [...item.bundleDetail.xproducts,...item.bundleDetail.yproducts] : item.bundleDetail.products).map((ele,index) => {
           return (
             <div key={index} className="sd-bundle-dashboard-img">
               {/* <img src={ele?.images ? ele.images[0].originalSrc : ele?.image ? ele.image.originalSrc:""} alt="" /> */}

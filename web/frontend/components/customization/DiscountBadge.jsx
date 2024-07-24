@@ -66,7 +66,7 @@ const DiscountBadge=({data,setData,bundleOption,displayOption})=>{
           min="0"
         />
 
-        <div>Select Badges</div>
+      { bundleOption =='buyXgetY' && <> <div>Select Badges</div>
           
         <Radio.Group 
         onChange={(e)=>handleChangeValueCommon(e.target.value,"DiscountBadge","badgeType",data,setData,bundleOption,sizeValue)} 
@@ -89,6 +89,8 @@ const DiscountBadge=({data,setData,bundleOption,displayOption})=>{
             </Radio>
           </Space>
         </Radio.Group>
+        </> 
+        }
       </div>
     </div>
   )

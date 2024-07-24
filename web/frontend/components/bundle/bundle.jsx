@@ -1038,13 +1038,13 @@ return check;
             </Card>
             
           </div>
-          <div
+          {/* <div
             className="sd-bundle-choose-collectionMixAndMatch"
             onClick={() => navigate("/FrequentlyBoughtTogether/create")}
             // onClick={() => navigate("/collectionMixMatch/create")}
             
           >
-            {/* <Card
+            <Card
               title="Frequently bought together"
               style={{
                 width: 300,
@@ -1057,9 +1057,9 @@ return check;
               Encourage the purchase of frequently paired products with a special discount.
               </p>
               
-            </Card> */}
+            </Card>
             
-          </div>
+          </div> */}
         </div>
       </Modal>
     </div>

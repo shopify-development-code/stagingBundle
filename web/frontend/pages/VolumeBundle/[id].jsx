@@ -53,6 +53,7 @@ const VolumeBundle = () => {
   const [data, setData] = useState({
     name: "",
     title: "",
+    description:'',
     shop: "",
     type: "volumeBundle",
     status: "active",
@@ -740,7 +741,7 @@ function getPreviewData(data){
       );
     }
     
-    if (data.name == "") {
+    if (data.name.trim() == "") {
       flag = false;
       alertText.push("Please provide name of bundle");
     }else{
@@ -751,7 +752,7 @@ function getPreviewData(data){
       }
     }
 
-    if (data.title == "") {
+    if (data.title.trim() == "") {
       flag = false;
       alertText.push("Please provide title of bundle");
     }else{

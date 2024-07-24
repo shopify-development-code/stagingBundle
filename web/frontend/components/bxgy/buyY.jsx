@@ -135,7 +135,7 @@ const BuyY = (props) => {
   return (
     <div className="sd-bundle-bundleSection-common sd-bundle-productBundleSearchSection">
         <div className="sd-bundle-bundleSection-heading-common">
-        Products customer gets (Buy Y)
+        Products customer gets (Get Y)
               </div>
               <div className="sd-bundle-plainText-common">
               Add products that customer get them with discount or free.
