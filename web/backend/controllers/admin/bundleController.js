@@ -516,7 +516,8 @@ export async function createRule(req,res){
               }
             }
       
-            let queryString =  `  mutation discountCodeBasicCreate($basicCodeDiscount: DiscountCodeBasicInput!) {
+            let queryString =  `  mutation 
+            ($basicCodeDiscount: DiscountCodeBasicInput!) {
               discountCodeBasicCreate(basicCodeDiscount: $basicCodeDiscount) {
                 codeDiscountNode {
                   id
