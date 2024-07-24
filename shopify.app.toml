@@ -3,7 +3,7 @@
 client_id = "e13323374d92132ba17048d14e6ecb0e"
 name = "akashbundlelive"
 handle = "akashbundlelive"
-application_url = "https://aside-floral-medicare-shame.trycloudflare.com"
+application_url = "https://dsl-nylon-ships-some.trycloudflare.com"
 embedded = true
 
 [build]
@@ -16,9 +16,9 @@ scopes = "read_content,read_themes,write_content,write_discounts,write_orders,wr
 
 [auth]
 redirect_urls = [
-  "https://aside-floral-medicare-shame.trycloudflare.com/auth/callback",
-  "https://aside-floral-medicare-shame.trycloudflare.com/auth/shopify/callback",
-  "https://aside-floral-medicare-shame.trycloudflare.com/api/auth/callback"
+  "https://dsl-nylon-ships-some.trycloudflare.com/auth/callback",
+  "https://dsl-nylon-ships-some.trycloudflare.com/auth/shopify/callback",
+  "https://dsl-nylon-ships-some.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
