@@ -49,6 +49,7 @@ function CreateBundle() {
     type: "productBundle",
     name: "",
     title: "",
+    description: "",
     status: "active",
     startdate: "",
     endDate: "",
@@ -467,7 +468,7 @@ function CreateBundle() {
       );
     }
 
-    if (data.name == "") {
+    if (data.name.trim() == "") {
       if (!errorArray.includes("bundleName")) {
         setErrorArray((prev) => [...prev, "bundleName"]);
       }
@@ -475,7 +476,7 @@ function CreateBundle() {
       flag = false;
       alertText.push("Please provide name of bundle");
     }
-    if (data.title == "") {
+    if (data.title.trim() == "") {
       if (!errorArray.includes("bundleTitle")) {
         setErrorArray((prev) => [...prev, "bundleTitle"]);
       }

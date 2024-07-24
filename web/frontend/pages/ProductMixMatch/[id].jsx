@@ -47,6 +47,7 @@ const ProductMixMatch = () => {
     type: "productMixMatch",
     name: "",
     title: "",
+    description: "",
     status: "active",
     startdate: "",
     endDate: "",
@@ -227,12 +228,12 @@ const ProductMixMatch = () => {
       alertText.push("Please select at least one product from display options");
     }
 
-    if (data.name == "") {
+    if (data.name.trim() == "") {
       flag = false;
       alertText.push("Please provide name of bundle");
     }
 
-    if (data.title == "") {
+    if (data.title.trim() == "") {
       flag = false;
       alertText.push("Please provide title of bundle");
     }

@@ -5,25 +5,25 @@ import {
 } from "@ant-design/icons";
 
 const CustomizationProductMixMatchPreview = ({data}) =>{
-  console.log("check data ****",data.productMixMatch.box.borderColor);
+  console.log("check data ****",data);
   return(
   
       <div 
       className="sd-bundle-bundleSection-common sd-bundle-productBundle-preview" 
-      style={{
-        "backgroundColor": data.productMixMatch.box.backgroundColor,
-        "borderRadius": data.productMixMatch.box.borderRadius + "px",
-        "borderColor": data.productMixMatch.box.borderColor,
+      style={{"backgroundColor":data.productMixMatch.box.backgroundColor,
+      "borderColor": data.productMixMatch.box.borderColor,
+      "borderRadius":data.productMixMatch.box.borderRadius+"px",
+      "border":data.productMixMatch.box.thickness+"px solid"+ data.buyXgetY.box.borderColor
       }}>
       
-      {/* {data.productMixMatch.button.position=="top" && 
+      {data.productMixMatch.button.position=="top" && 
         <button
           disabled  
           style={{"color":data.productMixMatch.button.color,
           "fontSize":data.productMixMatch.button.fontSize+"px",
           "backgroundColor":data.productMixMatch.button.backgroundColor}}
-        >Add to cart
-        </button>} */}
+        >Add selected to cart
+        </button>}
 
         <div className="sd-bundlematch_heading"
           style={{"color":data.productMixMatch.title.color,
@@ -31,7 +31,7 @@ const CustomizationProductMixMatchPreview = ({data}) =>{
           "textAlign":data.productMixMatch.title.alignment,
           "fontWeight":data.productMixMatch.title.titleBold,}}
         >
-         <h2>Product Mix & Match</h2>
+         <h2>new product mix and match test test</h2>
 
         </div>
 
@@ -172,9 +172,7 @@ const CustomizationProductMixMatchPreview = ({data}) =>{
               </div>
             </div>
             <div>
-              {/* {data.productMixMatch.button.position=="bottom" &&  */}
-              <button className="add_select_cartbtn" disabled  style={{"color":data.productMixMatch.button.color,"fontSize":data.productMixMatch.button.fontSize+"px","backgroundColor":data.productMixMatch.button.backgroundColor}}>Add to cart</button>
-              {/* } */}
+              {data.productMixMatch.button.position=="bottom" && <button className="add_select_cartbtn" disabled  style={{"color":data.productMixMatch.button.color,"fontSize":data.productMixMatch.button.fontSize+"px","backgroundColor":data.productMixMatch.button.backgroundColor}}>Add selected to cart</button>}
             </div>
         </div>
       </div>

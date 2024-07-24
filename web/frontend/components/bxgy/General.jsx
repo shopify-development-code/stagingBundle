@@ -109,9 +109,24 @@
 // }
 
 // export default General
-import React from 'react'
+import React from 'react' ;
 
 const General = (props) => {
+
+
+  const handleInputChange=(e,element) =>{
+ 
+    if ((e.target.value[0]==" ") ||  (e.target.value.length >1 &&  e.target.value.at(-2) == " " && e.target.value.at(-1)== " ")){
+      return ;
+    }
+
+    props.setData({
+      ...(props.data),
+      [element]:e.target.value,
+    })
+  }
+
+
   return (
 <div className="sd-bundle-bundleSection-common sd-bundle-createBundleNamingSection">
 <div className="sd-bundle-bundleSection-heading-common">
@@ -124,12 +139,7 @@ const General = (props) => {
         className="sd-bundle-name"
         placeholder=""
         value={props.data.name}
-        onChange={(e) =>
-          props.setData({
-            ...(props.data),
-            name: e.target.value,
-          })
-        }
+        onChange={(e)=>handleInputChange(e,"name")}
       />
       <p className="sd-bundle-createBundleSectionDisclaimer">
         *This name is used for you to identify this bundle.Your
@@ -143,12 +153,7 @@ const General = (props) => {
         className="sd-bundle-name"
         placeholder=""
         value={props.data.title}
-        onChange={(e) =>
-          props.setData({
-            ...(props.data),
-            title: e.target.value,
-          })
-        }
+        onChange={(e)=>handleInputChange(e,"title")}
       />
       <p className="sd-bundle-createBundleSectionDisclaimer">
       *Customers will see this as the name of the bundle displayed .
@@ -162,12 +167,7 @@ const General = (props) => {
             className="sd-bundle-name"
             placeholder=""
             value={props.data.description}
-            onChange={(e) =>
-              props.setData({
-                ...(props.data),
-                description: e.target.value,
-              })
-            }
+            onChange={(e)=>handleInputChange(e,"description")}
           />
           <p className="sd-bundle-createBundleSectionDisclaimer">
             *Provide an explanation of the selection limit within this bundle to ensure user awareness..

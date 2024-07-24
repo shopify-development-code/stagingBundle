@@ -162,7 +162,9 @@ const BuyXgetY = () => {
         data.bundleDetail.xproducts.map((item) => {
           arr.push(item.id);
         });
-
+        data.bundleDetail.yproducts.map((item) => {
+          arr.push(item.id);
+        });
         setData({
           ...data,
           bundleDetail: {
@@ -406,7 +408,7 @@ const BuyXgetY = () => {
       );
     }
 
-    if (data.name == "") {
+    if (data.name.trim() == "") {
       if (!errorArray.includes("bundleName")) {
         setErrorArray((prev) => [...prev, "bundleName"]);
       }
@@ -414,7 +416,7 @@ const BuyXgetY = () => {
       flag = false;
       alertText.push("Please provide name of bundle");
     }
-    if (data.title == "") {
+    if (data.title.trim() == "") {
       if (!errorArray.includes("bundleTitle")) {
         setErrorArray((prev) => [...prev, "bundleTitle"]);
       }

@@ -7,7 +7,7 @@ import pic from "../../assets/image2.png";
 const CustomizationProductBundlePreview=({data})=>{
 const {currency}=useAPI();
 const discount=40;
-
+console.log("datata",data)
 return(
 
   <div 

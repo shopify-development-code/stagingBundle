@@ -40,6 +40,7 @@ const {shop,timeZone,currencyCode}=useAPI()
 const [data, setData] = useState({
   name :"",
   title :"Create Your Bundle & Get Discount",
+  description: "",
   shop : "",
   type:"collectionMixMatch",
   status:"active",
@@ -321,7 +322,7 @@ const handleDiscountType = (e) => {
         }      
  
 
-  if (data.name == "") {
+  if (data.name.trim() == "") {
      
     if(!errorArray.includes("bundleName"))
     {
@@ -337,7 +338,7 @@ if(data.bundleDetail.display.productPagesList.length <= 0){
   alertText.push("Please select at least one collection from display options");
 }
 
-if (data.title == "") {
+if (data.title.trim() == "") {
   if(!errorArray.includes("bundleTitle")){
          setErrorArray((prev)=>[...prev,"bundleTitle"])
 }
