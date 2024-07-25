@@ -3241,8 +3241,8 @@ function createBundle(BUNDLE_DATA) {
               document.getElementById(`XproductsPriceDiv${Xindex}`).innerText = showAmountWithCurrency(selectedVariantPrice);
               let originalPrice = calaculateOriginalPrice();
               let finalPrice = CalculateFinalPrice();
-              document.getElementById("sd-bxgy-original-price").innerText = originalPrice;
-              document.getElementById("sd-bxgy-final-price").innerText = finalPrice;
+              document.getElementById("sd-bxgy-original-price").innerText = showAmountWithCurrency(parseFloat(originalPrice).toFixed(2));
+              document.getElementById("sd-bxgy-final-price").innerText = showAmountWithCurrency(parseFloat(finalPrice).toFixed(2));
               // console.log("Selected variant price:",XproductsPriceArray);
             });
           }
@@ -3372,8 +3372,8 @@ function createBundle(BUNDLE_DATA) {
               // console.log("Selected variant price:",YproductsPriceArray);
               let originalPrice = calaculateOriginalPrice();
               let finalPrice = CalculateFinalPrice();
-              document.getElementById("sd-bxgy-original-price").innerText = originalPrice;
-              document.getElementById("sd-bxgy-final-price").innerText = finalPrice;
+              document.getElementById("sd-bxgy-original-price").innerText = showAmountWithCurrency(parseFloat(originalPrice).toFixed(2));
+              document.getElementById("sd-bxgy-final-price").innerText = showAmountWithCurrency(parseFloat(finalPrice).toFixed(2));
               // console.log(originalPrice,"hellloooooo------*****",finalPrice)
             });
           }
@@ -3400,7 +3400,7 @@ function createBundle(BUNDLE_DATA) {
       let ORIGINAL_PRICE_DIV = document.createElement("div");
       ORIGINAL_PRICE_DIV.className = "sd-bundle-discount-price";
       ORIGINAL_PRICE_DIV.id = "sd-bxgy-original-price";
-      ORIGINAL_PRICE_DIV.innerText = showAmountWithCurrency(`${OriginalPrice}`);
+      ORIGINAL_PRICE_DIV.innerText = showAmountWithCurrency(parseFloat(OriginalPrice).toFixed(2));
       ORIGINAL_PRICE_DIV.style.fontSize = `${el.customization.buyXgetY.totalSection.originalPrice.fontSize}px`;
       ORIGINAL_PRICE_DIV.style.color = el.customization.buyXgetY.totalSection.originalPrice.color;
       MAIN_PRICE_DIV.append(ORIGINAL_PRICE_DIV);
@@ -3408,7 +3408,7 @@ function createBundle(BUNDLE_DATA) {
       let FINAL_PRICE_DIV = document.createElement("div");
       FINAL_PRICE_DIV.className = "sd-bundle-final-price";
       FINAL_PRICE_DIV.id = "sd-bxgy-final-price";
-      FINAL_PRICE_DIV.innerText = showAmountWithCurrency(`${FinalPrice}`);
+      FINAL_PRICE_DIV.innerText = showAmountWithCurrency(parseFloat(FinalPrice).toFixed(2));
       FINAL_PRICE_DIV.style.fontSize = `${el.customization.buyXgetY.totalSection.finalPrice.fontSize}px`;
       FINAL_PRICE_DIV.style.color = el.customization.buyXgetY.totalSection.finalPrice.color;
       MAIN_PRICE_DIV.append(FINAL_PRICE_DIV);
