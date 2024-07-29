@@ -189,10 +189,10 @@ const arr = [];
 const bundleData = [];
 const bundleSum = [];
 const gidArray = [];
-let volumeBundleArr = [];
+let volumeBundleArr = []; 
 let volumeBundleSum = [];
 function createBundle(BUNDLE_DATA) {
-  // console.log("check foreach working=======**********",BUNDLE_DATA)
+  console.log("check foreach working=======**********",BUNDLE_DATA)
   // let bundleMainDiv = `<div id="sd-bundle-main-container" class="sd-bundle-main-container"></div>`;
   let bundleMainDiv = document.createElement("div");
   bundleMainDiv.className = "sd-bundle-main-container";
@@ -857,11 +857,9 @@ function createBundle(BUNDLE_DATA) {
         } else {
           BUNDLE_DIV.prepend(ADD_TO_CART_BTN_DIV);
         }
-        if (el.plans.plan == "free") {
-        waterMark(BUNDLE_DIV);
-        }
-      // } else {
-      // }
+        // if (el?.plans?.plan == "free") {
+        // waterMark(BUNDLE_DIV);
+        // }
     } 
     else if (el.type == "volumeBundle") {
       //--------------------------------------------------------------------------Volume Bundle----------------------------------------------------------------------------
@@ -1816,11 +1814,9 @@ function createBundle(BUNDLE_DATA) {
             });
         });
 
-        if (el.plans.plan == "free") {
-        waterMark(VOLUME_DIV);
-        }
-      // } else {
-      // }
+        // if (el?.plans?.plan == "free") {
+        // waterMark(VOLUME_DIV);
+        // }
     } 
     else if (el.type == "collectionMixMatch") {
       //--------------------------------------------------------------------------Collection Bundle----------------------------------------------------------------------------
@@ -2088,11 +2084,9 @@ function createBundle(BUNDLE_DATA) {
             });
         });
         
-        if (el.plans.plan == "free") {
-        waterMark(collectionDiv);
-        }
-      // } else {
-      // }
+        // if (el?.plans?.plan == "free") {
+        // waterMark(collectionDiv);
+        // }
     }
     else if (el.type == "fbt") {
     }
@@ -3078,9 +3072,9 @@ function createBundle(BUNDLE_DATA) {
         MixMatchDiv.prepend(AddToCartBtnDiv);
       }
 
-      if (el.plans.plan == "free") {
-        waterMark(MixMatchDiv);
-      }
+      // if (el?.plans?.plan == "free") {
+      //   waterMark(MixMatchDiv);
+      // }
       mainDiv.append(MixMatchDiv)
 
       let plusIconHandler = (ele,index,activeBadge) =>{
@@ -3705,9 +3699,9 @@ function createBundle(BUNDLE_DATA) {
         }
       }
     
-      if (el.plans.plan == "free") {
-        waterMark(BXGY_DIV);
-      }
+      // if (el.plans.plan == "free") {
+      //   waterMark(BXGY_DIV);
+      // }
     }
   });
   
