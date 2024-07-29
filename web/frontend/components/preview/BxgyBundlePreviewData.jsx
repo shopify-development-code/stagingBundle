@@ -15,7 +15,7 @@ const BxgyBundlePreviewData = ({
   console.log("bxgypreviewdta", data);
 
   return (
-    <div className="sd-bundle-bundleSection-common sd-bundle-productBundle-preview first-previewCard">
+    <div className="sd-bundle-bundleSection-common sd-bundle-productMixMatchBundle-preview first-previewCard">
       <div className="sd-bundle-bundleSection-heading-common">Preview</div>
 
       {data.bundleDetail.xproducts.length &&
