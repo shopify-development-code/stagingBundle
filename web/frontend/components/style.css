@@ -3239,3 +3239,12 @@ svg.sd-bundle-premium1 {
 .sd-bundle-plans-list{
     margin: 2px;
 }
+.sd-bundle-BuyPlanAlert-section-common {
+    margin: auto;
+    margin-top: 180px;
+    width: 430px;
+    text-align: center;
+}
+.sd-bundle-upgrade-btn {
+    margin: 20px;    
+}
