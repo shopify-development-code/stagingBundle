@@ -117,6 +117,11 @@ const [loader,setLoader] = useState(false)
                     <Icon source={CircleTickMajor} tone="base" /> 3 types of
                     bundles
                   </p>
+                  <ul className="sd-bundle-plans-list">
+                    <li>Product Bundle</li>
+                    <li>Volume Bundle</li>
+                    <li>Collection mix & match Bundle</li>
+                  </ul>
                   <p>
                     <Icon source={CircleTickMajor} tone="base" />
                     Design customizations
@@ -150,6 +155,11 @@ const [loader,setLoader] = useState(false)
                     <Icon source={CircleTickMajor} tone="base" />
                     3 types of bundles
                   </p>
+                  <ul className="sd-bundle-plans-list">
+                    <li>Product Bundle</li>
+                    <li>Volume Bundle</li>
+                    <li>Collection mix & match Bundle</li>
+                  </ul>
                   <p>
                     <Icon source={CircleTickMajor} tone="base" />
                     Design customizations
@@ -186,6 +196,13 @@ const [loader,setLoader] = useState(false)
                     <Icon source={CircleTickMajor} tone="base" />
                     All 5 types of bundles
                   </p>
+                  <ul className="sd-bundle-plans-list">
+                    <li>Product Bundle</li>
+                    <li>Volume Bundle</li>
+                    <li>Collection mix & match Bundle</li>
+                    <li>Buy X Get Y Bundle</li>
+                    <li>Product mix & match Bundle</li>
+                  </ul>
                   <p>
                     <Icon source={CircleTickMajor} tone="base" />
                     Design customizations
