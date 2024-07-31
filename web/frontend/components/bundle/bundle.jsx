@@ -134,11 +134,20 @@ const CreateBundle = () => {
     } else if (type == "volumeBundle") {
       navigate(`/VolumeBundle/${id}`);
     } else if(type == "bxgy"){
-      navigate(`/buyxgety/${id}`);
+      if(plan == "standard"){
+        navigate(`/buyxgety/${id}`);
+      }else{
+        navigate("/plans")
+      }
+     
     // }else if(type==='fbt'){
     //   navigate(`/FrequentlyBoughtTogether/${id}`);
     } else if(type == "productMixMatch"){
-      navigate(`/ProductMixMatch/${id}`);
+      if(plan == "standard"){
+        navigate(`/ProductMixMatch/${id}`);
+      }else{
+        navigate("/plans")
+      }
     } else{
       navigate(`/CollectionMixMatch/${id}`);
     }

@@ -43,7 +43,6 @@ const ProductMixMatch = () => {
   const [sumData, setSumData] = useState([]);
   const [multiProductArray,setMultiProductArray] = useState([]);
   const [requiredProductArray,setRequiredProductArray] = useState([]);
-  const [plans,setPlans] = useState("");
   const [data, setData] = useState({
     shop: shop,
     type: "productMixMatch",
@@ -133,13 +132,6 @@ const ProductMixMatch = () => {
       }
     })
   },[data]);
-  const getPlans = async () =>{
-    const response = await postApi("/api/admin/getPlans",{},app)
-    console.log("ghfdewueyrxvdgfw hg t  f ",response?.data?.data?.plan);
-    if(response?.data?.status == 200){
-      setPlans(response?.data?.data?.plan)
-    }
-  }
   
   const removeProductFromList = (item, index) => {
     let update = [...data.bundleDetail.products];
@@ -523,10 +515,6 @@ const ProductMixMatch = () => {
     setData(update);
   };
 
-  useEffect(()=>{
-    getPlans();
-  },[])
-
   function calculateMrp() {
     if(arr.length>0){
       let sum = 0;
@@ -853,407 +841,394 @@ console.log("multiProductsSelectionProducts.......",data.bundleDetail.requiredIt
   }, []);
    
   return (
-    <>
-      {plans == "standard" ? 
-        <Spin spinning={spinner}
-        size="large">
-          <div className="Polaris-Page Polaris-Page--fullWidth">
-            <MoveToHomePage data={headerkey} />
+    <Spin spinning={spinner}
+    size="large">
+      <div className="Polaris-Page Polaris-Page--fullWidth">
+        <MoveToHomePage data={headerkey} />
 
-            {alert.state == true && (
-              <AlertSection
-                message={alert.message}
-                setAlert={setAlert}
-                status={alert.status}
+        {alert.state == true && (
+          <AlertSection
+            message={alert.message}
+            setAlert={setAlert}
+            status={alert.status}
+          />
+        )}
+
+        <div className="sd-bundle-wrapper-common">
+          <div className="sd-bundle-left-section-common">
+            <div className="sd-bundle-bundleSection-common sd-bundle-productBundleSearchSection">
+              <div className="sd-bundle-bundleSection-heading-common">
+                Product Mix & Match Bundle{" "}
+              </div>
+
+                <div className="sd-bundle-plainText-common">
+                  Add product you want to sell
+                </div>
+                <div className="sd-bundle-search">
+                  <input
+                    type="text"
+                    placeholder="Search products"
+                    onChange={handleSearchInput}
+                    className="sd-bundle-search-box-common"
+                    value={searchValue}
+                  />
+                  <button
+                    type="button"
+                    onClick={handleBrowseProducts}
+                    className="sd-bundle-search-button-common"
+                  >
+                    Browse
+                  </button>
+                </div>
+                <BundlePickerData
+                  page="productMixMatch"
+                  modalType=""
+                  data={data}
+                  setData={setData}
+                  temp={temp}
+                  errorArray={pickerError}
+                  removeProductFromList={removeProductFromList}
+                />
+            </div>
+
+            {myModal && (
+              <CreateBundleModal
+                open={myModal}
+                setOpen={setMyModal}
+                searchValue={searchValue}
+                setSearchValue={setSearchValue}
+                page={"productMixMatch"}
+                modalType="Product"
+                setData={setData}
+                data={data}
               />
             )}
 
-            <div className="sd-bundle-wrapper-common">
-              <div className="sd-bundle-left-section-common">
-                <div className="sd-bundle-bundleSection-common sd-bundle-productBundleSearchSection">
-                  <div className="sd-bundle-bundleSection-heading-common">
-                    Product Mix & Match Bundle{" "}
-                  </div>
-
-                    <div className="sd-bundle-plainText-common">
-                      Add product you want to sell
-                    </div>
-                    <div className="sd-bundle-search">
-                      <input
-                        type="text"
-                        placeholder="Search products"
-                        onChange={handleSearchInput}
-                        className="sd-bundle-search-box-common"
-                        value={searchValue}
-                      />
-                      <button
-                        type="button"
-                        onClick={handleBrowseProducts}
-                        className="sd-bundle-search-button-common"
-                      >
-                        Browse
-                      </button>
-                    </div>
-                    <BundlePickerData
-                      page="productMixMatch"
-                      modalType=""
-                      data={data}
-                      setData={setData}
-                      temp={temp}
-                      errorArray={pickerError}
-                      removeProductFromList={removeProductFromList}
-                    />
-                </div>
-
-                {myModal && (
-                  <CreateBundleModal
-                    open={myModal}
-                    setOpen={setMyModal}
-                    searchValue={searchValue}
-                    setSearchValue={setSearchValue}
-                    page={"productMixMatch"}
-                    modalType="Product"
-                    setData={setData}
-                    data={data}
-                  />
-                )}
-
-              <div className="sd-bundle-bundleSection-common sd-bundle-volumeBundle-discountOptions">
-                <div className="sd-bundle-bundleSection-heading-common">
-                  {" "}
-                  Discount Options{" "}
-                </div>
-                {data.bundleDetail.discountOptions.map((item, index) => (
-                  <div key={index} className="sd-volume-discount-option">
-                    <div
-                      className="sd-bundle-volume-discount-option-topbar"
-                      style={{ display: "flex", justifyContent: "space-between" }}
+          <div className="sd-bundle-bundleSection-common sd-bundle-volumeBundle-discountOptions">
+            <div className="sd-bundle-bundleSection-heading-common">
+              {" "}
+              Discount Options{" "}
+            </div>
+            {data.bundleDetail.discountOptions.map((item, index) => (
+              <div key={index} className="sd-volume-discount-option">
+                <div
+                  className="sd-bundle-volume-discount-option-topbar"
+                  style={{ display: "flex", justifyContent: "space-between" }}
+                >
+                  <p>Option {index + 1}</p>
+                  {data.bundleDetail.discountOptions.length > 1 && (
+                    <Button
+                      danger
+                      onClick={() => handleDeleteDiscountOption(index)}
                     >
-                      <p>Option {index + 1}</p>
-                      {data.bundleDetail.discountOptions.length > 1 && (
-                        <Button
-                          danger
-                          onClick={() => handleDeleteDiscountOption(index)}
-                        >
-                          DELETE
-                        </Button>
+                      DELETE
+                    </Button>
+                  )}
+                </div>
+                <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+                  <Col className="gutter-row" span={8}>
+                    <div>
+                      <p>Required items</p>
+                      <TextField
+                        type="number"
+                        // label="Minimum order"
+                        // placeholder="set minimum order  for item"
+                        onChange={(newvalue) =>
+                          handleDiscountQuantity(newvalue, index)
+                        }
+                        
+                        value={item.quantity}
+                        // min={item.quantity}
+                        autoComplete="off"
+                        min={2}
+                      />
+                      {errorArray.includes(`minimumQuantity${index}`) && (
+                        <InlineError message="Minimum quantity must be 2 " />
+                      )}
+                      {errorArray.includes(`increasingOrder${index}`) && (
+                        <InlineError message="Options quantities must be in increasing order " />
                       )}
                     </div>
-                    <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-                      <Col className="gutter-row" span={8}>
-                        <div>
-                          <p>Required items</p>
-                          <TextField
-                            type="number"
-                            // label="Minimum order"
-                            // placeholder="set minimum order  for item"
-                            onChange={(newvalue) =>
-                              handleDiscountQuantity(newvalue, index)
-                            }
-                            
-                            value={item.quantity}
-                            // min={item.quantity}
-                            autoComplete="off"
-                            min={2}
-                          />
-                          {errorArray.includes(`minimumQuantity${index}`) && (
-                            <InlineError message="Minimum quantity must be 2 " />
-                          )}
-                          {errorArray.includes(`increasingOrder${index}`) && (
-                            <InlineError message="Options quantities must be in increasing order " />
-                          )}
-                        </div>
-                      </Col>
-                      <Col className="gutter-row" span={8}>
-                        <div>
-                          <p>Discount Type</p>
-                          <Select
-                            value={data.bundleDetail.discountOptions[index].type}
-                            style={{
-                              width: "100%",
-                            }}
-                            onChange={(value) => handleDiscountType(value, index)}
-                            options={[
-                              {
-                                value: "fixed",
-                                label: "Fixed Discount",
-                              },
-                              {
-                                value: "percent",
-                                label: "Percentage Discount",
-                              },
-                              // {
-                              //   value: "price",
-                              //   label: "Set Price",
-                              // },
-                              {
-                                value: "freeShipping",
-                                label: "Free Shipping",
-                              },
-                              {
-                                value: "noDiscount",
-                                label: "No Discount",
-                              },
-                            ]}
-                          />
-                        </div>
-                      </Col>
-                      {(data.bundleDetail.discountOptions[index].type === "percent" || data.bundleDetail.discountOptions[index].type === "fixed") && 
-                      
-                      <Col className="gutter-row" span={8}>
-                        <div>
-                          <p>Discount value</p>
-                          <TextField
-                            type="number"
-                            // label="Minimum order"
-                            // placeholder="set minimum order  for item"
-                            onChange={(newvalue) =>
-                              handleDiscountValue(newvalue, index)
-                            }
-                            value={item.value}
-                            autoComplete="off"
-                            min={1}
-                            // max={100}
-                          />
-                          
-                        </div>
-                      </Col>
-                      }
-                    </Row>
-                    {/* <br /> */}
+                  </Col>
+                  <Col className="gutter-row" span={8}>
+                    <div>
+                      <p>Discount Type</p>
+                      <Select
+                        value={data.bundleDetail.discountOptions[index].type}
+                        style={{
+                          width: "100%",
+                        }}
+                        onChange={(value) => handleDiscountType(value, index)}
+                        options={[
+                          {
+                            value: "fixed",
+                            label: "Fixed Discount",
+                          },
+                          {
+                            value: "percent",
+                            label: "Percentage Discount",
+                          },
+                          // {
+                          //   value: "price",
+                          //   label: "Set Price",
+                          // },
+                          {
+                            value: "freeShipping",
+                            label: "Free Shipping",
+                          },
+                          {
+                            value: "noDiscount",
+                            label: "No Discount",
+                          },
+                        ]}
+                      />
+                    </div>
+                  </Col>
+                  {(data.bundleDetail.discountOptions[index].type === "percent" || data.bundleDetail.discountOptions[index].type === "fixed") && 
                   
-                    {/* <span className="sd-bundle-Disclaimer-common">
-                      Use discount to show the discount value
-                    </span> */}
-                    {/* <br /> */}
-
-                    {/* {data.bundleDetail.discountOptions.length == index + 1 && (
-                      <div className="sd-bundle-volumeBundle-allowDiscount">
-                        <input
-                          type="checkbox"
-                          id="discountOptionCheckbox"
-                          name=""
-                          value={data.bundleDetail.allowDiscount}
-                          onChange={handleAllowDiscount}
-                        />
-                        <label htmlFor="discountOptionCheckbox">
-                          Allow this discount to be applied on more items than the
-                          required numbers
-                        </label>
-                      </div>
-                    )} */}
-                    <Divider />
-                  </div>
-                ))}
-                {data.bundleDetail.discountOptions.length >=3 ? 
-                  <Button size="large" disabled={true} onClick={handleAddDiscountOption}>
-                    Add Another Option
-                  </Button>
-                  :
-                  <Button size="large" disabled={false} onClick={handleAddDiscountOption}>
-                    Add Another Option
-                  </Button>
-                }
-                {/* <Button size="large" disabled={disableAddOptions} onClick={handleAddDiscountOption}>
-                  Add Another Option
-                </Button> */}
-              </div>
-    
-                <General 
-                  data={data}
-                  setData={setData}
-                  errorArray={errorArray}
-                />
-
-                {/* <div className="sd-bundle-bundleSection-common sd-bundle-createBundleNamingSection">
-                  <div className="sd-bundle-bundleSection-heading-common">
-                    Placements
-                  </div>
-                  <div className="sd-bundle-plainText-common">
-                    Choose where to display this bundle and preview the options to see which one you prefer.
-                  </div>
-                  <div>
+                  <Col className="gutter-row" span={8}>
                     <div>
-                      <input 
-                        type="checkbox" 
-                        onChange={(e)=>{handlePlacementsSelection(e,"productPage")}}
-                        checked={selectedPlacement.productPage===true}
+                      <p>Discount value</p>
+                      <TextField
+                        type="number"
+                        // label="Minimum order"
+                        // placeholder="set minimum order  for item"
+                        onChange={(newvalue) =>
+                          handleDiscountValue(newvalue, index)
+                        }
+                        value={item.value}
+                        autoComplete="off"
+                        min={1}
+                        // max={100}
                       />
-                      <label>Included products page</label>
+                      
                     </div>
-                    <div>
-                      <input 
-                        type="checkbox" 
-                        onChange={(e)=>{handlePlacementsSelection(e,"bundlePage")}}
-                        checked={selectedPlacement.bundlePage===true}
-                      />
-                      <label>Bundles page</label>
-                    </div>
-                  </div>
-                  {selectedPlacement.productPage===true && 
-                    <div>
-                      <hr/>
-                      <div>Included products page</div>
-                      <div>Select the included products page on which the bundle will be displayed.</div>
-                      {data?.bundleDetail?.products?.map((item,index)=>{
-                        return(
-                          <div><input type="checkbox" />{item.title}</div>
-                        )
-                      })
-                      }
-                    </div>
+                  </Col>
                   }
-                </div> */}
+                </Row>
+                {/* <br /> */}
+              
+                {/* <span className="sd-bundle-Disclaimer-common">
+                  Use discount to show the discount value
+                </span> */}
+                {/* <br /> */}
 
-                {/* <DiscountOptions
-                  discountType={data.bundleDetail.discountType}
-                  discountValue={data.bundleDetail.discountValue}
-                  handleDiscountType={handleDiscountType}
-                  handleDiscountValue={handleDiscountValue}
-                  currency={currencyCode}
-                /> */}
+                {/* {data.bundleDetail.discountOptions.length == index + 1 && (
+                  <div className="sd-bundle-volumeBundle-allowDiscount">
+                    <input
+                      type="checkbox"
+                      id="discountOptionCheckbox"
+                      name=""
+                      value={data.bundleDetail.allowDiscount}
+                      onChange={handleAllowDiscount}
+                    />
+                    <label htmlFor="discountOptionCheckbox">
+                      Allow this discount to be applied on more items than the
+                      required numbers
+                    </label>
+                  </div>
+                )} */}
+                <Divider />
+              </div>
+            ))}
+            {data.bundleDetail.discountOptions.length >=3 ? 
+              <Button size="large" disabled={true} onClick={handleAddDiscountOption}>
+                Add Another Option
+              </Button>
+              :
+              <Button size="large" disabled={false} onClick={handleAddDiscountOption}>
+                Add Another Option
+              </Button>
+            }
+            {/* <Button size="large" disabled={disableAddOptions} onClick={handleAddDiscountOption}>
+              Add Another Option
+            </Button> */}
+          </div>
 
-              <div  className="sd-bundle-bundleSection-common">
-                  <p className='sd-bundle-bundleSection-heading-common'>Required products</p>
-                  <p className='sd-bundle-plainText-common'>If you need to force some products of the bundle to be selected, activate this option and then check the products that should be considered as required in this bundle.</p>
-                  <div className="sd-bundle-toggle-end-time">
-                  <input type="checkbox" checked={data.bundleDetail.requiredItem.enable} id="requiredItem" onChange={(e)=>{handleCheck(e)}}/>
-                  <label for="requiredItem">Enable required products</label>
-                    {data.bundleDetail.requiredItem.enable  &&
-                        <div className="sd-bundle-ProductListMain">
-                        {data.bundleDetail.products.map((item, index) => {
-                        return (
-                          <>
-                            <div key={index} className="sd-bundle-selectedProductList">
-                              <div className="sd-bundle-image-title">
-                                <div>
-                                    <input type="checkbox" checked={item.required}  onChange={(e)=>{handleRequiredProducts(e, item)}}/>
-                                </div>
-                                <div>
-                                  <Thumbnail
-                                        source={ item?.image ? item?.image?.originalSrc : item?.images ? item?.images[0]?.originalSrc : item ?.src ? item ?.src : pic }
-                                        alt=""
-                                        size="small"
-                                      />
-                                </div>
-                                          
-                                <div key={index} className="sd-bundle-title-section">
-                                  <div className="sd-bundle-title">{item.title}</div>
-                                </div>
-                              </div>
-                              </div>
-                          
-                                {index !== data.bundleDetail.products.length-1  ? <Divider /> : ""}
-                          </>
-                        );
-                      })}
-                      </div>
-                    }
-                
+            <General 
+              data={data}
+              setData={setData}
+              errorArray={errorArray}
+            />
+
+            {/* <div className="sd-bundle-bundleSection-common sd-bundle-createBundleNamingSection">
+              <div className="sd-bundle-bundleSection-heading-common">
+                Placements
+              </div>
+              <div className="sd-bundle-plainText-common">
+                Choose where to display this bundle and preview the options to see which one you prefer.
+              </div>
+              <div>
+                <div>
+                  <input 
+                    type="checkbox" 
+                    onChange={(e)=>{handlePlacementsSelection(e,"productPage")}}
+                    checked={selectedPlacement.productPage===true}
+                  />
+                  <label>Included products page</label>
                 </div>
+                <div>
+                  <input 
+                    type="checkbox" 
+                    onChange={(e)=>{handlePlacementsSelection(e,"bundlePage")}}
+                    checked={selectedPlacement.bundlePage===true}
+                  />
+                  <label>Bundles page</label>
                 </div>
-              <div  className="sd-bundle-bundleSection-common">
-                  <p className='sd-bundle-bundleSection-heading-common'>Multi selection options</p>
-                  <p className='sd-bundle-plainText-common'>If you need to allow some products to be selected multiple time in the bundle, activate this option and then check the products that multiple items of them can be selected in this bundle.</p>
-                  <div className="sd-bundle-toggle-end-time">
-                  <input type="checkbox" checked={data.bundleDetail.multiItemSelection.enable}  id="multiItemSelection" onChange={(e)=>{handleCheck(e)}} />
-                  <label for="multiItemSelection">Enable selecting multiple items</label>
-                  {data.bundleDetail.multiItemSelection.enable  &&
-                        <div className="sd-bundle-ProductListMain">
-                        {data.bundleDetail.products.map((item, index) => {
-                        return (
-                          <>
-                            <div key={index} className="sd-bundle-selectedProductList">
-                              <div className="sd-bundle-image-title">
-                                <div>
-                                    <input type="checkbox" checked={item.multiItemSelect} onChange={(e)=>{handleMultiProductsSelection(e, item)}}/>
-                                </div>
-                                <div>
-                                  <Thumbnail
+              </div>
+              {selectedPlacement.productPage===true && 
+                <div>
+                  <hr/>
+                  <div>Included products page</div>
+                  <div>Select the included products page on which the bundle will be displayed.</div>
+                  {data?.bundleDetail?.products?.map((item,index)=>{
+                    return(
+                      <div><input type="checkbox" />{item.title}</div>
+                    )
+                  })
+                  }
+                </div>
+              }
+            </div> */}
+
+            {/* <DiscountOptions
+              discountType={data.bundleDetail.discountType}
+              discountValue={data.bundleDetail.discountValue}
+              handleDiscountType={handleDiscountType}
+              handleDiscountValue={handleDiscountValue}
+              currency={currencyCode}
+            /> */}
+
+          <div  className="sd-bundle-bundleSection-common">
+              <p className='sd-bundle-bundleSection-heading-common'>Required products</p>
+              <p className='sd-bundle-plainText-common'>If you need to force some products of the bundle to be selected, activate this option and then check the products that should be considered as required in this bundle.</p>
+              <div className="sd-bundle-toggle-end-time">
+              <input type="checkbox" checked={data.bundleDetail.requiredItem.enable} id="requiredItem" onChange={(e)=>{handleCheck(e)}}/>
+              <label for="requiredItem">Enable required products</label>
+                {data.bundleDetail.requiredItem.enable  &&
+                    <div className="sd-bundle-ProductListMain">
+                    {data.bundleDetail.products.map((item, index) => {
+                    return (
+                      <>
+                        <div key={index} className="sd-bundle-selectedProductList">
+                          <div className="sd-bundle-image-title">
+                            <div>
+                                <input type="checkbox" checked={item.required}  onChange={(e)=>{handleRequiredProducts(e, item)}}/>
+                            </div>
+                            <div>
+                              <Thumbnail
                                     source={ item?.image ? item?.image?.originalSrc : item?.images ? item?.images[0]?.originalSrc : item ?.src ? item ?.src : pic }
                                     alt=""
                                     size="small"
                                   />
-                                </div>
-                                  
-                                <div key={index} className="sd-bundle-title-section">
-                                  <div className="sd-bundle-title">{item.title}</div>
-                                </div>
-                              </div>
+                            </div>
+                                      
+                            <div key={index} className="sd-bundle-title-section">
+                              <div className="sd-bundle-title">{item.title}</div>
+                            </div>
                           </div>
-                          
-                                {index !== data.bundleDetail.products.length-1  ? <Divider /> : ""}
-                          </>
-                        );
-                      })}
-                      </div>
-                    }
-                </div>
-                </div>
-                {/* <DateTime data={data} setData={setData} errorArray={errorArray} /> */}
-                <DeleteSave handleSave={handleSave} />
-              </div>
-
-              <div className="sd-bundle-productBundle-rightSection Polaris-Layout__Section Polaris-Layout__Section--secondary">
-                <BundleStatus data={data} setData={setData} />
-
-                <DisplayOptions
-                  bundleType="prupductMixMatch"
-                  display={data.bundleDetail.display}
-                  handleDisplayOptions={handleDisplayOptions}
-                  displayPageOptions={data.bundleDetail.display.productPages}
-                  handleDisplayPageOptions={handleDisplayPageOptions}
-                  products={data.bundleDetail.products}
-                  data= {data}
-                />
-
-                <ProductMixMatchPreview
-                  data={data}
-                  currency={currencyCode}
-                  mrp={mrp}
-                  endPrice={endPrice}
-                  showPrice={showPrice}
-                  // handleVariantChoice={handleVariantChoice}
-                  bundleType={"productMixMatch"}
-                  errorArray={errorArray}
-                  discountIndex={selectedDiscountIndex}
-                />
-                
-              </div>
-            </div> 
-
-            {/* below code is for the modal opening on click of Edit Further  */}
-            {antModal && (
-              <Modal
-                title="Select Variant Options  for Bundle Modal"
-                open={antModal}
-                onOk={setOk}
-                onCancel={setCancel}
-                className="sd-bundle-modal sd-bundle-modal-variant"
-                // width={1000}
-              >
-                <ProductVariantData
-                  checkedIds={checkedIds}
-                  setCheckedIds={setCheckedIds}
-                  variantData={variantData}
-                  loader={loader}
-                  errorArray={errorArray}
-                />
-              </Modal>
-            )} 
-          </div>
-        </Spin>
-        :
-        <div>
-          <MoveToHomePage/>
-          <div className="sd-bundle-wrapper-common">
-            <div className="sd-bundle-BuyPlanAlert-section-common">
-              <BuyPlanAlert/>
+                          </div>
+                      
+                            {index !== data.bundleDetail.products.length-1  ? <Divider /> : ""}
+                      </>
+                    );
+                  })}
+                  </div>
+                }
+            
             </div>
+            </div>
+          <div  className="sd-bundle-bundleSection-common">
+              <p className='sd-bundle-bundleSection-heading-common'>Multi selection options</p>
+              <p className='sd-bundle-plainText-common'>If you need to allow some products to be selected multiple time in the bundle, activate this option and then check the products that multiple items of them can be selected in this bundle.</p>
+              <div className="sd-bundle-toggle-end-time">
+              <input type="checkbox" checked={data.bundleDetail.multiItemSelection.enable}  id="multiItemSelection" onChange={(e)=>{handleCheck(e)}} />
+              <label for="multiItemSelection">Enable selecting multiple items</label>
+              {data.bundleDetail.multiItemSelection.enable  &&
+                    <div className="sd-bundle-ProductListMain">
+                    {data.bundleDetail.products.map((item, index) => {
+                    return (
+                      <>
+                        <div key={index} className="sd-bundle-selectedProductList">
+                          <div className="sd-bundle-image-title">
+                            <div>
+                                <input type="checkbox" checked={item.multiItemSelect} onChange={(e)=>{handleMultiProductsSelection(e, item)}}/>
+                            </div>
+                            <div>
+                              <Thumbnail
+                                source={ item?.image ? item?.image?.originalSrc : item?.images ? item?.images[0]?.originalSrc : item ?.src ? item ?.src : pic }
+                                alt=""
+                                size="small"
+                              />
+                            </div>
+                              
+                            <div key={index} className="sd-bundle-title-section">
+                              <div className="sd-bundle-title">{item.title}</div>
+                            </div>
+                          </div>
+                      </div>
+                      
+                            {index !== data.bundleDetail.products.length-1  ? <Divider /> : ""}
+                      </>
+                    );
+                  })}
+                  </div>
+                }
+            </div>
+            </div>
+            {/* <DateTime data={data} setData={setData} errorArray={errorArray} /> */}
+            <DeleteSave handleSave={handleSave} />
           </div>
-        </div>
-      }
-    </>
+
+          <div className="sd-bundle-productBundle-rightSection Polaris-Layout__Section Polaris-Layout__Section--secondary">
+            <BundleStatus data={data} setData={setData} />
+
+            <DisplayOptions
+              bundleType="prupductMixMatch"
+              display={data.bundleDetail.display}
+              handleDisplayOptions={handleDisplayOptions}
+              displayPageOptions={data.bundleDetail.display.productPages}
+              handleDisplayPageOptions={handleDisplayPageOptions}
+              products={data.bundleDetail.products}
+              data= {data}
+            />
+
+            <ProductMixMatchPreview
+              data={data}
+              currency={currencyCode}
+              mrp={mrp}
+              endPrice={endPrice}
+              showPrice={showPrice}
+              // handleVariantChoice={handleVariantChoice}
+              bundleType={"productMixMatch"}
+              errorArray={errorArray}
+              discountIndex={selectedDiscountIndex}
+            />
+            
+          </div>
+        </div> 
+
+        {/* below code is for the modal opening on click of Edit Further  */}
+        {antModal && (
+          <Modal
+            title="Select Variant Options  for Bundle Modal"
+            open={antModal}
+            onOk={setOk}
+            onCancel={setCancel}
+            className="sd-bundle-modal sd-bundle-modal-variant"
+            // width={1000}
+          >
+            <ProductVariantData
+              checkedIds={checkedIds}
+              setCheckedIds={setCheckedIds}
+              variantData={variantData}
+              loader={loader}
+              errorArray={errorArray}
+            />
+          </Modal>
+        )} 
+      </div>
+    </Spin>
   )
 }
 

@@ -18,7 +18,6 @@ import toastNotification from "../../components/commonSections/Toast";
 import { Card, Spin } from "antd";
 import { alertCommon } from "../../components/helperFunctions";
 import AlertSection from "../../components/commonSections/AlertSection";
-import { BuyPlanAlert } from "../../components/commonSections/buyPlansAlert";
 
 const BuyXgetY = () => {
   const navigate = useNavigate();
@@ -39,7 +38,6 @@ const BuyXgetY = () => {
   const [alert, setAlert] = useState({ state: false, message: [], status: "" });
   const [pickerError, setPickerError] = useState([]);
   const [badgeText,setBadgeText] = useState("");
-  const [plans,setPlans] = useState("");
   const [data, setData] = useState({
     shop: shop,
     type: "bxgy",
@@ -75,17 +73,9 @@ const BuyXgetY = () => {
       console.log(error);
     }
   }
-  const getPlans = async () =>{
-    const response = await postApi("/api/admin/getPlans",{},app)
-    console.log("ghfdewueyrxvdgfw hg t  f ",response?.data?.data?.plan);
-    if(response?.data?.status == 200){
-      setPlans(response?.data?.data?.plan)
-    }
-  }
   
   useEffect(() => {
     getCustomization();
-    getPlans();
   }, []); 
   // console.log("ghfdewueyrxvdgfw hg t  f ",plans);
   useEffect(() => {
@@ -503,73 +493,60 @@ const BuyXgetY = () => {
   };
 
   return (
-    <>
-      {plans == "standar" ?
-        <Spin spinning={spinner}>
-          <div className="Polaris-Page Polaris-Page--fullWidth">
-            <MoveToHomePage data={headerkey} />
+    <Spin spinning={spinner}>
+      <div className="Polaris-Page Polaris-Page--fullWidth">
+        <MoveToHomePage data={headerkey} />
 
-            {alert.state == true && (
-              <AlertSection
-                message={alert.message}
-                setAlert={setAlert}
-                status={alert.status}
-              />
-            )}
+        {alert.state == true && (
+          <AlertSection
+            message={alert.message}
+            setAlert={setAlert}
+            status={alert.status}
+          />
+        )}
 
-            <div className="sd-bundle-wrapper-common">
-              <div className="sd-bundle-left-section-common">
-                <BuyX data={data} setData={setData} />
-                <BuyY data={data} setData={setData} />
-                <DiscountSet 
-                  discountType={data.bundleDetail.discountType}
-                  discountValue={data.bundleDetail.discountValue} 
-                  data={data} 
-                  setData={setData} 
-                />
-                <General data={data} setData={setData} errorArray={errorArray} />
-                {/* <DateTime data={data} setData={setData} errorArray={errorArray} /> */}
-              </div>
-              <div className="sd-bundle-productBundle-rightSection Polaris-Layout__Section Polaris-Layout__Section--secondary">
-                <BundleStatus data={data} setData={setData} />
-                <DisplayOptions
-                  bundleType="bxgy"
-                  display={data.bundleDetail.display}
-                  handleDisplayOptions={handleDisplayOptions}
-                  displayPageOptions={data.bundleDetail.display.productPages}
-                  handleDisplayPageOptions={handleDisplayPageOptions}
-                  xproducts={data.bundleDetail.xproducts}
-                  yproducts={data.bundleDetail.yproducts}
-                />
-                <BxgyBundlePreviewData
-                  data={data}
-                  currency={currencyCode}
-                  mrp={mrp}
-                  endPrice={endPrice}
-                  showPrice={showPrice}
-                  badgeText={badgeText}
-                  //handleVariantChoice={handleVariantChoice}
-                  bundleType={"productBundle"}
-                  errorArray={errorArray}
-                />
-              </div>
-            </div>
-            <div className="sd-bundle-wrapper-common">
-              <DeleteSave handleSave={handleSave} />
-            </div>
+        <div className="sd-bundle-wrapper-common">
+          <div className="sd-bundle-left-section-common">
+            <BuyX data={data} setData={setData} />
+            <BuyY data={data} setData={setData} />
+            <DiscountSet 
+              discountType={data.bundleDetail.discountType}
+              discountValue={data.bundleDetail.discountValue} 
+              data={data} 
+              setData={setData} 
+            />
+            <General data={data} setData={setData} errorArray={errorArray} />
+            {/* <DateTime data={data} setData={setData} errorArray={errorArray} /> */}
           </div>
-        </Spin>
-        :
-        <div>
-          <MoveToHomePage/>
-          <div className="sd-bundle-wrapper-common">
-            <div className="sd-bundle-BuyPlanAlert-section-common">
-              <BuyPlanAlert/>
-            </div>
+          <div className="sd-bundle-productBundle-rightSection Polaris-Layout__Section Polaris-Layout__Section--secondary">
+            <BundleStatus data={data} setData={setData} />
+            <DisplayOptions
+              bundleType="bxgy"
+              display={data.bundleDetail.display}
+              handleDisplayOptions={handleDisplayOptions}
+              displayPageOptions={data.bundleDetail.display.productPages}
+              handleDisplayPageOptions={handleDisplayPageOptions}
+              xproducts={data.bundleDetail.xproducts}
+              yproducts={data.bundleDetail.yproducts}
+            />
+            <BxgyBundlePreviewData
+              data={data}
+              currency={currencyCode}
+              mrp={mrp}
+              endPrice={endPrice}
+              showPrice={showPrice}
+              badgeText={badgeText}
+              //handleVariantChoice={handleVariantChoice}
+              bundleType={"productBundle"}
+              errorArray={errorArray}
+            />
           </div>
         </div>
-      }
-    </>
+        <div className="sd-bundle-wrapper-common">
+          <DeleteSave handleSave={handleSave} />
+        </div>
+      </div>
+    </Spin>
   );
 };
 

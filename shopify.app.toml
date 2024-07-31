@@ -3,7 +3,7 @@
 client_id = "e13323374d92132ba17048d14e6ecb0e"
 name = "akashbundlelive"
 handle = "akashbundlelive"
-application_url = "https://buyers-omissions-markers-panic.trycloudflare.com"
+application_url = "https://competitive-stages-newbie-cr.trycloudflare.com"
 embedded = true
 
 [build]
@@ -16,9 +16,9 @@ scopes = "read_content,read_themes,write_content,write_discounts,write_orders,wr
 
 [auth]
 redirect_urls = [
-  "https://buyers-omissions-markers-panic.trycloudflare.com/auth/callback",
-  "https://buyers-omissions-markers-panic.trycloudflare.com/auth/shopify/callback",
-  "https://buyers-omissions-markers-panic.trycloudflare.com/api/auth/callback"
+  "https://competitive-stages-newbie-cr.trycloudflare.com/auth/callback",
+  "https://competitive-stages-newbie-cr.trycloudflare.com/auth/shopify/callback",
+  "https://competitive-stages-newbie-cr.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
