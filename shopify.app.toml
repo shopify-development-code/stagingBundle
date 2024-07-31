@@ -1,19 +1,24 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
-client_id = "b8c12ad6dd6cca8d5809e99013d4289b"
-name = "Staging Advanced Bundles"
-handle = "staging-advanced-bundles"
-application_url = "https://bundle.shinedezigninfotech.com/"
+client_id = "e13323374d92132ba17048d14e6ecb0e"
+name = "akashbundlelive"
+handle = "akashbundlelive"
+application_url = "https://arbor-cruises-debate-industrial.trycloudflare.com"
 embedded = true
 
 [build]
-automatically_update_urls_on_dev = false
+automatically_update_urls_on_dev = true
 dev_store_url = "robins-store1.myshopify.com"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_content,read_themes,write_content,write_discounts,write_orders,write_price_rules,write_products"
 
 [auth]
 redirect_urls = [
-  "https://bundle.shinedezigninfotech.com/api/auth",
-  "https://bundle.shinedezigninfotech.com/api/auth/callback"
+  "https://arbor-cruises-debate-industrial.trycloudflare.com/auth/callback",
+  "https://arbor-cruises-debate-industrial.trycloudflare.com/auth/shopify/callback",
+  "https://arbor-cruises-debate-industrial.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]

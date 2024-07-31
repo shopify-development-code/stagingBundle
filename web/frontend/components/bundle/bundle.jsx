@@ -38,11 +38,13 @@ import noProductImg from "../../assets/NoProductImage.png"
 import LogoHeader from "../logoHeader";
 import Watermark from "../watermark";
 import ContactUs from "../contactUs";
+import { LockFilledMajor, LockMajor } from "@shopify/polaris-icons";
 const CreateBundle = () => {
   const { shop } = useAPI();
   const app = useAppBridge();
   const [dashboardData, setDashboardData] = useState([]);
   const [allSearchTerm, setAllSearchTerm] = useState("");
+  const [plan,setPlan] = useState();
   const navigate = useNavigate();
   const [activeTabKey2, setActiveTabKey2] = useState("all");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -88,9 +90,15 @@ const CreateBundle = () => {
   }
 
 
-
+  const getBundleData = async () =>{
+    const response = await postApi("api/admin/getPlans", data, app);
+    if(response?.data?.status == 200){
+      setPlan(response?.data?.data?.plan)
+    }
+  }
   useEffect(() => {
     getBundle("onLoad");
+    getBundleData()
   }, []);
 
   const handleUpdateStatus = async (e, id,index) => {
@@ -997,47 +1005,81 @@ return check;
             </Card>
             
           </div>
-          <div
-            className="sd-bundle-choose-collectionMixAndMatch"
-            onClick={() => navigate("/buyXgetY/create")}
-          >
-            <Card
-              title="Buy X get Y"
-              style={{
-                width: 300,
-              }}
+          {plan == "standard"? 
+            <div
+              className="sd-bundle-choose-collectionMixAndMatch"
+              onClick={() => navigate("/buyXgetY/create")}
             >
-              <p className="sd-bundle-collectionMix-Icon">
-              <GiftOutlined />
-              </p>
-              <p>
-              Provide complimentary gifts or discounted items with specific purchases.
-              </p>
-             
-             
-            </Card>
-            
-          </div>
-          <div
-            className="sd-bundle-choose-collectionMixAndMatch"
-            onClick={() => navigate("/productMixMatch/create")}
-          >
-            <Card
-              title="Product mix & match"
-              style={{
-                width: 300,
-              }}
+              <Card
+                title="Buy X get Y"
+                style={{
+                  width: 300,
+                }}
+              >
+                <p className="sd-bundle-collectionMix-Icon">
+                <GiftOutlined />
+                </p>
+                <p>
+                Provide complimentary gifts or discounted items with specific purchases.
+                </p>
+              
+              
+              </Card>
+              
+            </div>
+            :
+            <div className="sd-bundle-choose-collectionMixAndMatch" onClick={() => navigate("/plans")}>
+              <Card
+                title={<div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>Buy X get Y <LockMajor className="sd-bundle-premium1"/></div>}
+                style={{
+                  width: 300,
+                }}
+              >
+                <p className="sd-bundle-collectionMix-Icon">
+                  <GiftOutlined />
+                </p>
+                <p>
+                  Provide complimentary gifts or discounted items with specific purchases. 
+                </p>
+              </Card>
+            </div>
+          }
+          {plan == "standard"? 
+            <div
+              className="sd-bundle-choose-collectionMixAndMatch"
+              onClick={() => navigate("/productMixMatch/create")}
             >
-              <p className="sd-bundle-collectionMix-Icon">
-                <TagsOutlined />
-              </p>
-              <p>
-              Allow your customers to create their own bundle from a selection of products.
-              </p>
-             
-            </Card>
-            
-          </div>
+              <Card
+                title="Product mix & match"
+                style={{
+                  width: 300,
+                }}
+              >
+                <p className="sd-bundle-collectionMix-Icon">
+                  <TagsOutlined />
+                </p>
+                <p>
+                Allow your customers to create their own bundle from a selection of products.
+                </p>
+              </Card>
+            </div>
+            :
+            <div className="sd-bundle-choose-collectionMixAndMatch" onClick={() => navigate("/plans")}>
+              <Card
+                title={<div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>Product mix & match <LockMajor className="sd-bundle-premium1"/></div>}
+                style={{
+                  width: 300,
+                }}
+              >
+                <p className="sd-bundle-collectionMix-Icon">
+                  <TagsOutlined />
+                </p>
+                <p>
+                Allow your customers to create their own bundle from a selection of products.
+                </p>
+              </Card>
+            </div>
+          }
           {/* <div
             className="sd-bundle-choose-collectionMixAndMatch"
             onClick={() => navigate("/FrequentlyBoughtTogether/create")}

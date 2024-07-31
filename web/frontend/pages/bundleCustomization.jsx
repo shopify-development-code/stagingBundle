@@ -16,6 +16,7 @@ const BundleCustomization = () => {
   // const [fullScreen, setFullScreen] = useState(false);
   const [bundleOption, setBundleOption] = useState("bundle");
   const [spinner,setSpinner] = useState(false)
+  const [plansData,setPlanData] = useState();
   // const [data, setData] = useState(defaultData["bundle"]);
   const [data, setData] = useState({
     bundle:defaultData["bundle"],
@@ -29,6 +30,10 @@ const BundleCustomization = () => {
     async function getCustomizationData(){
       setSpinner(true)
       const response = await postApi("/api/admin/getCustomization",{},app)
+      const plans = await postApi("/api/admin/getPlans",{},app)
+      if(plans.data.status == 200){
+        setPlanData(plans)
+      }
       if(response.data.status == 200){
         setSpinner(false)
         console.log("check response=====>>>>",response.data.response.buyXgetY);
@@ -63,6 +68,7 @@ const BundleCustomization = () => {
           data={data}
           setData={setData}
           bundleOption={bundleOption}
+          plansData = {plansData}
           setBundleOption={setBundleOption}
           />
         </Spin>

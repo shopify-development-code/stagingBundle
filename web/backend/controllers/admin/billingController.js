@@ -91,15 +91,16 @@ export async function recurringBiling(req, res) {
   }
 
   export async function getPlans(req,res){
-try {
-  const shop = res.locals.shopify.session.shop
-    const response = await planModel.findOne({shop:shop})
-    if(response){
-      res.status(200).json({message:"success",data:response,status:"200"})
+    try {
+      const shop = res.locals.shopify.session.shop
+      const response = await planModel.findOne({shop:shop})
+      console.log("check getplans response",response);
+      if(response){
+        res.status(200).json({message:"success",data:response,status:"200"})
+      }
+    } catch (error) {
+      console.log(error)
     }
-} catch (error) {
-  console.log(error)
-}
   }
 
   export async function freePlans (req,res){

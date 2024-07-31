@@ -47,39 +47,48 @@ const [loader,setLoader] = useState(false)
     }
   },[])
 
-async function handleChoosePlan(e,key){
-if(key == "basic"){
-    setLoader(true)
-    const body = {
-        plan:"basic",
+  async function handleChoosePlan(e,key){
+    if(key == "basic"){
+        setLoader(true)
+        const body = {
+          plan:"basic",
+          interval:"monthly",
+          price:"2.99"
+        }
+        const response = await postApi("/api/admin/getBilling",body,app)
+        if(response.status == 200){
+          setLoader(false)
+          let confirmationUrl = response.data.body.data.appSubscriptionCreate.confirmationUrl
+          window.top.location.href = confirmationUrl  
+        }
+    }else if(key == "standard"){
+      setLoader(true)
+      const body = {
+        plan:"standard",
         interval:"monthly",
-        price:"2.99"
-    }
-    const response = await postApi("/api/admin/getBilling",body,app)
-    if(response.status == 200){
+        price:"10.99"
+      }
+      const response = await postApi("/api/admin/getBilling",body,app)
+      if(response.status == 200){
         setLoader(false)
         let confirmationUrl = response.data.body.data.appSubscriptionCreate.confirmationUrl
-        window.top.location.href = confirmationUrl
-       
-    }
-}else{
-    setLoader(true)
-    const body = {
-        plan:"free",
-        interval:"monthly",
-        price:"0"
-    }
+        window.top.location.href = confirmationUrl  
+      }
+    }else{
+        setLoader(true)
+        const body = {
+            plan:"free",
+            interval:"monthly",
+            price:"0"
+        }
 
-    const response = await postApi("/api/admin/freePlans",body,app)
-    if(response.status == 200){
-        setLoader(false)
-   setSelectedPlan(response.data.data.plan)  
-    
-       
+        const response = await postApi("/api/admin/freePlans",body,app)
+        if(response.status == 200){
+            setLoader(false)
+      setSelectedPlan(response.data.data.plan)  
+        }
     }
-}
-
-}
+  }
 
   return (
 
@@ -105,7 +114,7 @@ if(key == "basic"){
                   
                   <strong>Includes:</strong>
                   <p>
-                    <Icon source={CircleTickMajor} tone="base" /> All 3 types of
+                    <Icon source={CircleTickMajor} tone="base" /> 3 types of
                     bundles
                   </p>
                   <p>
@@ -139,7 +148,7 @@ if(key == "basic"){
                   <strong>All Free features, plus:</strong>
                   <p>
                     <Icon source={CircleTickMajor} tone="base" />
-                    All 3 types of bundles
+                    3 types of bundles
                   </p>
                   <p>
                     <Icon source={CircleTickMajor} tone="base" />
@@ -161,6 +170,42 @@ if(key == "basic"){
                   </div>
                   <div className="sd-plan-pricing-btn">
                     <Button disabled={selectedPlan == "basic" ? true : false} onClick={(e)=>handleChoosePlan(e,"basic")} className="sd-plan-btn"> {selectedPlan == "basic" ? "Current Plan" : "Choose Plan"}</Button>
+                  </div>
+                </Card>
+                </Skeleton>
+              </Card>
+            </Col>
+            <Col >
+              <Card className="sd-plan" title="Standard" bordered={false}>
+              <Skeleton  loading={loader} paragraph={{rows:7}}>
+
+                <Card className="sd-plan-inner sd-plan-inner-box">
+                {selectedPlan == "standard" ? (<div className="sd-plan-active-plan">Active</div>) : ""}
+                  <strong>All Free features, plus:</strong> 
+                  <p>
+                    <Icon source={CircleTickMajor} tone="base" />
+                    All 5 types of bundles
+                  </p>
+                  <p>
+                    <Icon source={CircleTickMajor} tone="base" />
+                    Design customizations
+                  </p>
+                  {/* <p>
+                    <Icon source={CircleTickMajor} tone="base" />
+                    24/7 support
+                  </p> */}
+                  <p>
+                    <Icon source={CircleTickMajor} tone="base" />
+                    Remove watermark
+                  </p>
+                </Card>
+               
+                <Card className="sd-plan-second-inner sd-plan-inner-box">
+                  <div className="sd-plan-pricing-text">
+                    $10.99<span>/mo</span>
+                  </div>
+                  <div className="sd-plan-pricing-btn">
+                    <Button disabled={selectedPlan == "standard" ? true : false} onClick={(e)=>handleChoosePlan(e,"standard")} className="sd-plan-btn"> {selectedPlan == "standard" ? "Current Plan" : "Choose Plan"}</Button>
                   </div>
                 </Card>
                 </Skeleton>

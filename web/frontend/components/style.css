@@ -865,6 +865,7 @@ input[type="radio"] {
     font-size: 15px;
     cursor: pointer;
     margin-bottom: 4px;
+    position: relative;
 }
 
 .sd-bundle-listItem-common.sd-bundle-listItem:hover {
@@ -3222,4 +3223,16 @@ nav.Polaris-Navigation {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+}
+svg.sd-bundle-premium1 {
+    fill: white;
+    width: 20px;
+}
+.sd-bundle-premium1 {
+    margin: -4px;
+}
+.sd-bundle-premium2 {
+    margin: -4px;
+    width: 20px;
+    margin-left: 4px;
 }

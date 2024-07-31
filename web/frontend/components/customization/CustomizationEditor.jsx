@@ -36,15 +36,19 @@ import defaultData from "./defaultData.json";
 import postApi from "../postApi";
 import { useAppBridge } from "@shopify/app-bridge-react";
 import toastNotification from "../commonSections/Toast";
+import { Text } from "@shopify/polaris";
+import { LockMajor } from "@shopify/polaris-icons";
 const CustomizationEditor = (props) => {
   const app = useAppBridge();
   const navigate = useNavigate();
   const [displayOption, setDisplayOption] = useState("productPages");
   const [spinner, setSpinner] = useState(false);
+  const [tooltipStatus,setTooltipStatus] = useState(false);
 
   // const [bundleOption, setBundleOption] = useState("bundle");
   const [customOption, setCustomOption] = useState("Box");
   const [onLoad, setOnload] = useState(false);
+  const [bundleType,setBundleType] = useState("");
 
   const handleCustomizeSave = async () => {
     setSpinner(true);
@@ -285,37 +289,59 @@ const CustomizationEditor = (props) => {
                 {props.bundleOption == "collection"
                   ? leftSideSectionCommon()
                   : ""}
+                {props?.plansData?.data?.data?.plan == "standard" ?
                   <div
-                  className={`sd-bundle-listItem-common sd-bundle-listItem  ${
-                    props.bundleOption == "buyXgetY" ? "sd-active" : ""
-                  }`}
-                  onClick={() => handleBundleOption("buyXgetY")}
-                >
-                  {props.bundleOption == "buyXgetY" ? (
-                    <CaretDownOutlined />
-                  ) : (
-                    <CaretRightOutlined />
-                  )}
-                  <AppstoreAddOutlined />
-                  <p>Buy X get Y</p>
-                </div>
-                {props.bundleOption == "buyXgetY"
+                    className={`sd-bundle-listItem-common sd-bundle-listItem  ${
+                      props.bundleOption == "buyXgetY" ? "sd-active" : ""
+                    }`}
+                    onClick={() => handleBundleOption("buyXgetY")}
+                  >
+                    {props.bundleOption == "buyXgetY" ? (
+                      <CaretDownOutlined />
+                    ) : (
+                      <CaretRightOutlined />
+                    )}
+                    <AppstoreAddOutlined />
+                    <p>Buy X get Y</p>
+                  </div>
+                  :
+                  <div className={`sd-bundle-listItem-common sd-bundle-listItem`} onClick={()=>navigate("/plans")}>
+                      <CaretRightOutlined />
+                      <AppstoreAddOutlined />
+                      <Text>Buy X get Y <LockMajor className="sd-bundle-premium2"/></Text>
+                      
+                  </div>
+                }
+
+                  {props.bundleOption == "buyXgetY"
                   ? leftSideSectionCommon()
                   : ""}
-                  <div
-                  className={`sd-bundle-listItem-common sd-bundle-listItem  ${
-                    props.bundleOption == "productMixMatch" ? "sd-active" : ""
-                  }`}
-                  onClick={() => handleBundleOption("productMixMatch")}
-                >
-                  {props.bundleOption == "productMixMatch" ? (
-                    <CaretDownOutlined />
-                  ) : (
-                    <CaretRightOutlined />
-                  )}
-                  <AppstoreAddOutlined />
-                  <p>Product Mix & Match</p>
-                </div>
+
+                  {props?.plansData?.data?.data?.plan == "standard" ?
+                    <div
+                      className={`sd-bundle-listItem-common sd-bundle-listItem  ${
+                        props.bundleOption == "productMixMatch" ? "sd-active" : ""
+                      }`}
+                      onClick={() => handleBundleOption("productMixMatch")}
+                    >
+                      {props.bundleOption == "productMixMatch" ? (
+                        <CaretDownOutlined />
+                      ) : (
+                        <CaretRightOutlined />
+                      )}
+                      <AppstoreAddOutlined />
+                      <p>Product Mix & Match</p>
+                    </div>
+                    :
+                    <>
+                      <div className={`sd-bundle-listItem-common sd-bundle-listItem`} onClick={()=>navigate("/plans")}>
+                        <CaretRightOutlined />
+                        <AppstoreAddOutlined />
+                        <Text>Product Mix & Match <LockMajor className="sd-bundle-premium2"/></Text>
+                      </div>
+                    </>
+                  }
+                  
                 {props.bundleOption == "productMixMatch"
                   ? leftSideSectionCommon()
                   : ""}
