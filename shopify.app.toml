@@ -3,7 +3,7 @@
 client_id = "e13323374d92132ba17048d14e6ecb0e"
 name = "akashbundlelive"
 handle = "akashbundlelive"
-application_url = "https://competitive-stages-newbie-cr.trycloudflare.com"
+application_url = "https://clouds-compatibility-rolls-curves.trycloudflare.com"
 embedded = true
 
 [build]
@@ -16,9 +16,9 @@ scopes = "read_content,read_themes,write_content,write_discounts,write_orders,wr
 
 [auth]
 redirect_urls = [
-  "https://competitive-stages-newbie-cr.trycloudflare.com/auth/callback",
-  "https://competitive-stages-newbie-cr.trycloudflare.com/auth/shopify/callback",
-  "https://competitive-stages-newbie-cr.trycloudflare.com/api/auth/callback"
+  "https://clouds-compatibility-rolls-curves.trycloudflare.com/auth/callback",
+  "https://clouds-compatibility-rolls-curves.trycloudflare.com/auth/shopify/callback",
+  "https://clouds-compatibility-rolls-curves.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]

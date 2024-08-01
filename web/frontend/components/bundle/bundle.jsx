@@ -105,6 +105,8 @@ const CreateBundle = () => {
     // setLoader(true);
     setSwitchLoading(true)
     setSwitchIndex(index)
+    console.log("test",id);
+    
     let data = {
       id: id,
       status: e === true ? "active" : "draft",
@@ -444,12 +446,25 @@ return check;
         : null,
     status: (
       <div>
-        <Switch
-        loading={switchIndex === index ? switchLoading : null }
-          defaultChecked
-          checked={item.status == "active" ? true : false}
-          onChange={(e) => handleUpdateStatus(e, item._id, index)}
-        />
+        {/* {(plan == "standard") && (item.type == "bxgy" || item.type == "productMixMatch") ? 
+          <> */}
+            <Switch
+              loading={switchIndex === index ? switchLoading : null }
+              defaultChecked
+              checked={item.status == "active" ? true : false}
+              onChange={(e) => handleUpdateStatus(e, item._id, index)}
+            />
+          {/* </>
+          :
+          <>
+            <Switch
+              loading={switchIndex === index ? switchLoading : null }
+              defaultChecked
+              checked={item.status == "active" ? true : false}
+              onChange={() => navigate('/plans')}
+            />
+          </>
+        } */}
       </div>
     ),
     // :<div>
@@ -606,6 +621,14 @@ return check;
       : item.bundleDetail.discountType == "noDiscount"
       ? "No Discount"
       :null
+      : item.type == "bxgy"
+      ? item.bundleDetail.discountType == "percent"
+        ? `${item.bundleDetail.discountValue}% off`
+        : item.bundleDetail.discountType == "fixed"
+        ? `Rs.${item.bundleDetail.discountValue} off`
+        : item.bundleDetail.discountType == "free"
+        ? "Free Gift"
+        :null
     : null,
     status: (
       <div>
@@ -616,7 +639,7 @@ return check;
         />
       </div>
     ),
-    type: item.type == "productBundle" ? "Product Bundle" : item.type == "volumeBundle" ? "Volume Bundle" : item.type == "collectionMixMatch" ? "Collection Mix & Match" :item.type == "productMixMatch" ? "Product Mix & Match" : item.type == "fbt"? "Frequently Baught Together" :"",
+    type: item.type == "productBundle" ? "Product Bundle" : item.type == "volumeBundle" ? "Volume Bundle" : item.type == "collectionMixMatch" ? "Collection Mix & Match" :item.type == "productMixMatch" ? "Product Mix & Match" : item.type == "bxgy" ? "BUY X GET Y" :"",
     performance: item.analytics.bundleSold +" "+ "Sold",
   }));
 
@@ -743,9 +766,18 @@ return check;
       : item.bundleDetail.discountType == "noDiscount"
       ? "No Discount"
       : null
+      : item.type == "bxgy"
+        ? item.bundleDetail.discountType == "percent"
+          ? `${item.bundleDetail.discountValue}% off`
+          : item.bundleDetail.discountType == "fixed"
+          ? `Rs.${item.bundleDetail.discountValue} off`
+          : item.bundleDetail.discountType == "free"
+          ? "Free Gift"
+          :null
     : null,
     status: (
       <div>
+        {/* {plan == "standard" && ((item.type == "productMixMatch") || () )} */}
         <Switch
           defaultChecked
           checked={item.status == "active" ? true : false}
@@ -753,7 +785,7 @@ return check;
         />
       </div>
     ),
-    type: item.type == "productBundle" ? "Product Bundle" : item.type == "volumeBundle" ? "Volume Bundle" :item.type == "productMixMatch" ? "Product Mix & Match" : item.type == "collectionMixMatch" ? "Collection Mix & Match" : "",
+    type: item.type == "productBundle" ? "Product Bundle" : item.type == "volumeBundle" ? "Volume Bundle" :item.type == "productMixMatch" ? "Product Mix & Match" : item.type == "collectionMixMatch" ? "Collection Mix & Match" : item.type == "bxgy" ? "BUY X GET Y" :"",
     performance: item.analytics.bundleSold +" "+ "Sold",
   }));
 

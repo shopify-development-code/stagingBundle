@@ -1,7 +1,7 @@
 # Environment Configuration
 .env
 .env.*
-.toml
+
 # Dependency directory
 node_modules
 
@@ -29,6 +29,7 @@ extensions/*/build
 web/database.sqlite
 
 # TOML File
+.toml
 shopify.app.toml
 
 
