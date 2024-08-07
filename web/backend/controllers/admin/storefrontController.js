@@ -9,10 +9,9 @@ import discountIdModel from "../../models/discountIdSchema.js";
 export async function getBundleData(req, res) {
   try {
     let shop = req.body.shop;
-    console.log("console shop:::::::::",shop);
     let pId = `gid://shopify/Product/${req.body.id}`;
     let collId = req.body.collId;
-    // console.log("**********************",pId);
+    console.log("**********************",pId);
     const response = await bundleModel.aggregate([
       {
         $match: {
@@ -152,18 +151,12 @@ export async function getBundleData(req, res) {
             },
             {
               $and: [
-                { type: "fbt" },
+                { type: "fbt"},
                 {
                   $or: [
-                    { "bundleDetail.display.productPages": false },
-                    {
-                      $and: [
-                        { "bundleDetail.display.productPages": true },
-                        {
-                          "bundleDetail.display.productPagesList": pId,
-                        },
-                      ],
-                    },
+                    { "bundleDetail.mainProducts":{ $elemMatch: { id: pId }}},                    
+                    { "bundleDetail.offeredProducts":{ $elemMatch: { id: pId }}}, 
+                    {"bundleDetail.discountedProductType": "all_products"}               
                   ],
                 },
               ],
@@ -329,7 +322,7 @@ export async function getCollectionMixMatchData(req, res) {
         {
           $match: {
             shop: shop,
-            _id: new ObjectId(id),
+            _id: ObjectId(id),
           },
         },
         {
@@ -451,7 +444,6 @@ export async function getCollectionProducts(req, res) {
 
 export async function getMoreCollectionProducts(req, res) {
   try {
-    console.log("check data from collection mix match",req.body);
     const { shop, hasNextPage, gid, nextPageCursor } = req.body;
     if (hasNextPage == true) {
       const shopInfos = await shopInfoModel.findOne({ shop: shop });
@@ -544,60 +536,60 @@ export async function searchCollectionProducts(req, res) {
       let queryField = 'first: 8, query:  "*' + search + '*"';
 
       const queryString = `{
-        products(${queryField}) {
-          pageInfo{
-            hasNextPage
-          }
-          edges {
-            cursor
-            node {
-              title
-              handle
-              id
-              images(first:1){
-                edges{
-                  node{
-                    url
-                  }
-                }
-              }
-              variants(first:50){
-                edges{
-                  node{
-                    id
-                    price
-                    title
-                  }
-                }
-              }
-              collections(first: 50) {
-                edges {
-                  node {
-                    id
-                    title
-                    handle
-                  }
-                }
-              }
+  products(${queryField}) {
+    pageInfo{
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        title
+        handle
+        id
+        images(first:1){
+          edges{
+            node{
+              url
             }
           }
         }
-      }`;
-
+        variants(first:50){
+          edges{
+            node{
+              id
+              price
+              title
+            }
+          }
+        }
+        collections(first: 50) {
+          edges {
+            node {
+              id
+              title
+              handle
+            }
+          }
+        }
+      }
+    }
+  }
+}`;
       const response = await client.query({
         data: queryString,
       });
+
       let arr = [];
 
       response.body.data.products.edges.map((item) => {
         item.node.collections.edges.map((el) => {
           if (collectionGid == el.node.id) {
-            arr.push(item);
+            arr = response.body.data.products;
           }
         });
       });
-      
-      return res.json({ message: "success", response: {edges: arr}});
+
+      return res.json({ message: "success", response: arr });
     }
   } catch (error) {
     console.log("error", error.message);
@@ -606,7 +598,7 @@ export async function searchCollectionProducts(req, res) {
 
 export async function getBundleViews(req, res) {
   try {
-    const objectIds = req.body.bundleId.map((id) => new ObjectId(id));
+    const objectIds = req.body.bundleId.map((id) => ObjectId(id));
 
     const bundles = await analyticsModel.find({ bundleId: objectIds });
 
@@ -649,7 +641,7 @@ export async function getBundleClick(req, res) {
       res.status(200).send("success");
     }
   } catch (error) {
-    console.log(error.message);
+    console.log("error",error.message);
   }
 }
 

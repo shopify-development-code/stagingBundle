@@ -1590,3 +1590,114 @@ p.sd-buy-products-name {
     top: 18px;
     right: -30px;
 }
+
+/* fbt css  */
+
+.sd-bundle-fbt-container {
+    border: 1px solid rgb(229, 229, 229);
+    border-radius: 15px;
+    background: white;
+}
+
+.sd-fbt-product-details-div .sd-bundle-fbt-productItem-div {
+
+border: 1px solid #000;
+ border-radius: 10px;
+}
+.sd-fbt-products-images-classic-div img,.sd-fbt-products-images-modern-div img{
+width:  50px;
+height: 50px;
+}
+
+.sd-fbt-product-details-modern-div{
+margin:10px
+}
+
+.sd-bundle-fbt-productItem-div {
+/* position: relative; */
+display:flex;
+align-items:center;
+gap:5px
+}
+
+.sd-fbt-products-image-div {
+display: flex;
+align-items: center;
+gap: 6px;
+flex-wrap: wrap;
+justify-content: center;
+}
+
+.sd-bundle-fbt-productItem-classic-div{
+display:flex;
+align-items:baseline;
+gap:5px
+}
+.sd-bundle-fbt-checkbox-container-div{
+position:relative
+}
+
+.sd-fbt-addtocart-total-details--modern-div button,.sd-fbt-addtocart-total-details-classic-div button{
+background: rgb(0, 0, 0);
+color: rgb(255, 255, 255);
+font-size: 15px;
+ padding: 12px !important;
+border: 1px solid;
+font-weight: 700;
+width: 100%;
+cursor: pointer;
+}
+.sd-fbt-total-div{
+ display: flex;
+justify-content: space-around;
+padding: 4px !important;
+border: 1px solid;
+font-weight: 700;
+position: relative;
+z-index: 1;
+width: 100%;
+margin: 0 auto;
+align-items: center;
+margin-bottom:7px;
+}
+.sd-fbt-total-div del{
+color:red;
+font-size: 18px;
+}
+
+.sd-fbt-total-div span:nth-of-type(2) {
+color:#008061;
+font-size: 18px;
+}
+.sd-bundle-fbt-select-modern-variant ,.sd-bundle-fbt-select-classic-variant {
+width: 100%;
+margin-bottom: 10px;
+padding: 7px;
+}
+.sd-bundle-fbt-container {
+  padding: 10px;
+  margin-top: 10px;
+}
+p.sd-fbt-products-name{
+margin:0
+}
+.sd-bundle-fbt-productItem-classic-container{
+margin:5px
+}
+
+.sd-fbt-bundle-details-div{
+margin:5px;
+}
+.sd-fbt-product-details-classic-div{
+ border: 1px solid #e5e5e5
+}
+
+.sd-bundle-fbt-title-div{
+
+font-weight: bold;
+font-size: 18px;
+
+}
+.sd-bundle-fbt-title-description{
+font-size:15px;
+}
