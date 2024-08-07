@@ -5,14 +5,12 @@ import { fileURLToPath } from 'url';
 import bundleModel from "../../models/bundleSchema.js";
 import customizationModel from "../../models/customizationSchema.js";
 import translationModel from "../../models/translationSchema.js";
-import contactEmail from "../../helper/Email.js";
 import { ObjectId } from 'mongodb'
 import analyticsModel from "../../models/analytics.js";
 import settingModel from "../../models/settings.js";
 import discountIdModel from "../../models/discountIdSchema.js";
 const MAX_RETRIES = 3;
 let retries = 0;
-
 
 export async function createBundle(req,res){
   try{
@@ -132,9 +130,9 @@ export async function editBundle (req,res){
   
 try {
   const {id}= req.body
-  const session = res.locals.shopify.session;
-  let shop = session.shop;
-  console.log("kkkkdjsdsdksdksk",shop);
+
+const session = res.locals.shopify.session;
+let shop = session.shop;
 const response = await bundleModel.aggregate([
   {
     $match:
@@ -170,11 +168,77 @@ return res.status(503).send({message:"something went wrong",status:503})
 
 
 
-
+export async function createProduct(session) {
+  // let shop = res.locals.shopify.session.shop;
+  // let session = res.locals.shopify.session;
+  // const client = new shopify.api.clients.Graphql({ session });
+  // let {name, price, check, quantity } = req.body;
+// console.log("name, price, check, quantity ",name, price, check, quantity )
+  const product = new shopify.api.rest.Product({
+    session
+  });
+ 
+  product.title = "testpro";
+  product.status = "active";
+  product.variants = [
+    {
+      price: "10",
+      taxable: true,
+      requires_shipping: true,
+      inventory_quantity: 2,
+    },
+  ];
+  try {
+    let result = await product.save({
+      update: true,
+    });
+    console.log("result10june==>",product)
+    // if (req.body.check2 == "createProductSubscriptionEdit") {
+    //   console.log("iniffff10june")
+    //   let pid = product?.admin_graphql_api_id;
+ 
+    //   let vid = product?.variants[0].admin_graphql_api_id;
+ 
+    //   let lines = [];
+ 
+    //   lines.push({
+    //     product_id: pid,
+ 
+    //     product_name: product?.title,
+ 
+    //     product_image:
+    //       product?.images.length > 0 ? product.images[0].originalSrc : "",
+ 
+    //     hasOnlyDefaultVariant: true,
+    //     requiresShipping: product.variants[0].requires_shipping,
+    //     id: vid,
+    //     image: "",
+    //     price: product.variants[0].price,
+ 
+    //     title: product.variants[0].title,
+    //     quantity: 1,
+    //     // quantity: product.variants[0].inventory_quantity,
+    //   });  
+ 
+    //   req.createProductData = {
+    //     data: lines,
+    //   };
+ 
+    //   next();
+    // } else {
+    //   console.log("first in createProduct");
+    //   res.send({ message: "success", data: product });
+    // }
+  } catch (error) {
+    console.log("error",error)
+    res.send({ message: "error", data: "Something went wrong" });
+  }
+}
 export async function getBundle (req,res){
    try {
     const session = res.locals.shopify.session;
     let shop = session.shop;
+    createProduct(session);
     // const response = await bundleModel.aggregate(
     //   [
     //     {
@@ -226,7 +290,10 @@ export async function getBundle (req,res){
           "bundleDetail.products.image" : 1,
           "bundleDetail.discountType":1,
           "bundleDetail.xproducts":1,
-          "bundleDetail.yproducts":1
+          "bundleDetail.yproducts":1,
+          "bundleDetail.mainProducts":1,
+          "bundleDetail.offeredProducts":1,
+          "bundleDetail.discountedProductType":1          
         }
       },
       {

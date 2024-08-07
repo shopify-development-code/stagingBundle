@@ -5,7 +5,7 @@ import { Divider } from 'antd';
 import { useAPI } from "../shop";
 import pic from "../../assets/image2.png";
 import {Thumbnail} from '@shopify/polaris';
-const YpickerData = ({page,modalType,data,setData,errorArray,removeProductFromList,temp}) => {
+const FBTOfferedProductPickerData = ({page,modalType,data,setData,errorArray,removeProductFromList,temp}) => {
 
 const {app}=useAPI()
 
@@ -24,9 +24,9 @@ const {app}=useAPI()
   }
   return (
     <div className="sd-bundle-ProductListMain">
-    {data.bundleDetail.yproducts.map((item, index) => {
+    {data.bundleDetail.offeredProducts.map((item, index) => {
                  return (
-                   <div key={index}>
+                   <div key={index} >
                      <div  className="sd-bundle-selectedProductList">
                        <div className="sd-bundle-image-title">
                          
@@ -46,15 +46,15 @@ const {app}=useAPI()
                          <div key={index} className="sd-bundle-title-section">
                            <div className="sd-bundle-title">{item.title}</div>
                            {
-                             (page=="yproduct" ) && item.hasOnlyDefaultVariant == false && (
+                             (page=="fbtOfferedProducts" ) && item.hasOnlyDefaultVariant == false && (
                                <div className="sd-bundle-variant">
                                  
                                   <span>
                                    <Button
                                       plain
-                                     onClick={() => handleEditFurther(item.id,temp.setPid,temp.setAntModal,temp.setLoader,data.bundleDetail.yproducts,temp.setCheckedIds,temp.setVariantData,app)}
+                                     onClick={() => handleEditFurther(item.id,temp.setPid,temp.setAntModal,temp.setLoader,data.bundleDetail.offeredProducts,temp.setCheckedIds,temp.setVariantData,app)}
                                    >
-                                     See Selected Variants
+                                     Edit Further
                                    </Button>
                                  </span>   
                                  {showOutOfStockError(item)  && (
@@ -68,7 +68,7 @@ const {app}=useAPI()
                          </div>
                        </div>
                        
-                      { page=="yproduct" &&
+                      {/* { page=="fbtOfferedProducts" &&
                        <div className="sd-bundle-quantity">
                          <TextField
                            type="number"
@@ -77,26 +77,26 @@ const {app}=useAPI()
                             
    
                              if (newvalue == "" || newvalue < 0) {
-                               let update = [...data.bundleDetail.yproducts];
+                               let update = [...data.bundleDetail.offeredProducts];
                             
    
                                update[update?.indexOf(item)].minimumOrder = 0;
                              
                                // setSelectedProducts(update);
-                               setData({...data,bundleDetail:{...data.bundleDetail,yproducts:[...update]}});
+                               setData({...data,bundleDetail:{...data.bundleDetail,offeredProducts:[...update]}});
                                
                              } else {
                                if (String(newvalue).length > 1) {
                                  newvalue = newvalue.replace(/^0/, "");
                                }
    
-                               let update = [...data.bundleDetail.yproducts];
+                               let update = [...data.bundleDetail.offeredProducts];
                              
    
                                update[update?.indexOf(item)].minimumOrder =
                                  newvalue;
    
-                               setData({...data,bundleDetail:{...data.bundleDetail,yproducts:[...update]}});
+                               setData({...data,bundleDetail:{...data.bundleDetail,offeredProducts:[...update]}});
    
    
                              }
@@ -108,7 +108,7 @@ const {app}=useAPI()
     
                     
                        </div>
-                     }
+                     } */}
                        <button
                          className="Polaris-Button Polaris-Button--plain Polaris-Button--iconOnly"
                          type="button"
@@ -125,12 +125,12 @@ const {app}=useAPI()
                          </span>
                        </button>
                      </div>
-                     {page == "yproduct" && errorArray?.includes(index) ? (
+                     {/* {page == "fbtOfferedProducts" && errorArray?.includes(index) ? (
                        <InlineError message=" Minimum Order can't be empty or zero   " />
                        ) : (
                          ""
-                         )}
-                         {index !== data.bundleDetail.yproducts.length-1  ? <Divider /> : ""}
+                         )} */}
+                         {index !== data.bundleDetail.offeredProducts.length-1  ? <Divider /> : ""}
                    </div>
                  );
                })}
@@ -138,4 +138,4 @@ const {app}=useAPI()
   )
 }
 
-export default YpickerData
+export default FBTOfferedProductPickerData

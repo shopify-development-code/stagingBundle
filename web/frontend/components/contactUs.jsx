@@ -8,16 +8,17 @@ const ContactUs = () => {
   const app = useAppBridge();
   const [open, setOpen] = useState(false);
   const [form] = Form.useForm();
- const [send,setSend] = useState("on")
-  async function handleSubmit(value){
+  const [send,setSend] = useState("on")
+
+  async function handleSubmit(value){   
     setSend("start")
     const data = {
-      uname: value.user.name,
-      umail: value.user.email,
-      message: value.user.message,
-      storePassword: value.user.storePassword,
+      uname: value.user.name.trim(),
+      umail: value.user.email.trim(),
+      message: value.user.message.trim(),
+      storePassword: value.user.storePassword?.trim(),
     };
-    console.log(data)
+   
   const response = await postApi("/api/admin/contactUs",data,app)
   if(response.status == 201){
     setSend("done")
@@ -28,11 +29,9 @@ const ContactUs = () => {
       placement: "bottom",
     });
     toastNotification("success","successfully sent","bottom")
-  }else{
-  
+  }else{  
     toastNotification("success","something went wrong ! Please try again","bottom")
-    setSend("on")
-  
+    setSend("on")  
   }
     }
 
@@ -46,15 +45,25 @@ const ContactUs = () => {
     form.resetFields();
   };
 
- 
+  const validateNoEmptySpaces = (data, value) => {
+    
+    if (!value || value.trim() === '') {
+      if(data.field=='user.name'){
+      return Promise.reject(new Error('Please fill the Name field.!'));
+    }
+    else{
+      return Promise.reject(new Error('Please fill the Message field.!'));
+    }
+  }
+    return Promise.resolve();
+  }; 
 
   return (
     <div className='sd-fixed-contactUs-btn'>
-<FloatButton className='sd-fixed-float-btn' icon={<CommentOutlined />}   style={{ right: 80 }} onClick={showModal} />
+<FloatButton className='sd-fixed-float-btn' icon={<CommentOutlined />} tooltip='Contact us'  style={{ right: 80 }} onClick={showModal} />
 
 <Modal
         title="Contact Us"
-        className="contact-box-modal-title"
         open={open}
         onCancel={handleCancel}
         footer={[
@@ -68,7 +77,7 @@ const ContactUs = () => {
       >
          <div className='sd-bundle-contact-main-container'>
     <Card
-        className="sd-bundle-contact-modal"
+        className="sd-bundle-contact-box"
         title="For any query mail us"
         headStyle={{ textAlign: "center" }}
       >
@@ -86,8 +95,9 @@ const ContactUs = () => {
             rules={[
               {
                 required: true,
-                message: 'Please fill the Name field.'
+                message: ''
               },
+              { validator: validateNoEmptySpaces },
             ]}
           >
             <Input type="text" placeholder="Enter Your Name Here" />
@@ -123,9 +133,10 @@ const ContactUs = () => {
             rules={[
               {
                 required: true,
-                message: 'Please fill the message field.'
+                message: ''
 
               },
+              { validator: validateNoEmptySpaces },
             ]}
           >
             <Input.TextArea placeholder="Enter Your Message Here" />

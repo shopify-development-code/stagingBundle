@@ -73,17 +73,16 @@ const ProductBundlePreview = ({
 
   const handleSeeMore = (mainindex) => {
     // setSeeMoreIndex(mainindex)
-    if(showMore == true && seeMoreIndex == mainindex){
+    if (showMore == true && seeMoreIndex == mainindex) {
       setShowMore(false);
       setSeeMoreIndex(mainindex);
-    }else{
+    } else {
       setShowMore(true);
       setSeeMoreIndex(mainindex);
-      
+
     }
- 
+
   };
-  
 
   return (
     <div className="sd-bundle-bundleSection-common">
@@ -174,10 +173,11 @@ const ProductBundlePreview = ({
                           {item.title}
                         </div>
                         <div>
-                          {item.variants.length == 1 &&
+                          {/* {item.variants.length == 1 &&
                           item.hasOnlyDefaultVariant == false
                             ? item.variants[0].title
-                            : ""}
+                            : ""} */}
+                          {item.hasOnlyDefaultVariant == false ? item.variants[0].title : ""}
                         </div>
                         <div
                           style={{
@@ -193,13 +193,13 @@ const ProductBundlePreview = ({
                           {showPrice[mainindex]
                             ? showPrice[mainindex]
                             : item.variants[0]?.price} */}
-                            
-                           {
-                           showPrice[mainindex]?
-                           showAmountWithCurrency(showPrice[mainindex],currency)
-                           :
-                           showAmountWithCurrency(item.variants[0]?.price,currency)
-            }
+
+                          {
+                            showPrice[mainindex] ?
+                              showAmountWithCurrency(showPrice[mainindex], currency)
+                              :
+                              showAmountWithCurrency(item.variants[0]?.price, currency)
+                          }
                         </div>
                       </div>
                     </div>
@@ -226,7 +226,7 @@ const ProductBundlePreview = ({
                             (
                               index <= 1 ||
                               (
-                                showMore && 
+                                showMore &&
                                 mainindex == seeMoreIndex)) && (
                               <div
                                 key={index}
@@ -298,8 +298,8 @@ const ProductBundlePreview = ({
                     ""
                   )}
                   {data.bundleDetail.products.indexOf(item) !=
-                  data.bundleDetail.products.length - 1 ? (
-                    <div className="sd-bundle-svg-common" style={{background: data.customization[0].bundle.productDetails.plusBackgroundColor}}>
+                    data.bundleDetail.products.length - 1 ? (
+                    <div className="sd-bundle-svg-common" style={{ background: data.customization[0].bundle.productDetails.plusBackgroundColor }}>
                       {/* <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -364,7 +364,7 @@ const ProductBundlePreview = ({
                     >
                       <del>
                         {/* {currency} {mrp}{" "} */}
-                        {showAmountWithCurrency(mrp,currency)}
+                        {showAmountWithCurrency(mrp, currency)}
                       </del>
                     </span>
                   )}
@@ -380,7 +380,7 @@ const ProductBundlePreview = ({
                     }}
                   >
                     {/* {currency} {endPrice} */}
-                   { showAmountWithCurrency(endPrice,currency)}
+                    {showAmountWithCurrency(endPrice, currency)}
                   </span>
                 </div>
               </div>
@@ -475,7 +475,7 @@ const ProductBundlePreview = ({
 
                           <p>
                             {item.variants.length == 1 &&
-                            item.hasOnlyDefaultVariant == false
+                              item.hasOnlyDefaultVariant == false
                               ? item?.variants[0]?.title
                               : ""}
                           </p>
