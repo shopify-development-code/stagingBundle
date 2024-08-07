@@ -3,7 +3,7 @@
 client_id = "e13323374d92132ba17048d14e6ecb0e"
 name = "akashbundlelive"
 handle = "akashbundlelive"
-application_url = "https://picture-shall-suffer-bits.trycloudflare.com"
+application_url = "https://battle-emperor-calculation-egypt.trycloudflare.com"
 embedded = true
 
 [build]
@@ -16,9 +16,9 @@ scopes = "read_content,read_themes,write_content,write_discounts,write_orders,wr
 
 [auth]
 redirect_urls = [
-  "https://picture-shall-suffer-bits.trycloudflare.com/auth/callback",
-  "https://picture-shall-suffer-bits.trycloudflare.com/auth/shopify/callback",
-  "https://picture-shall-suffer-bits.trycloudflare.com/api/auth/callback"
+  "https://battle-emperor-calculation-egypt.trycloudflare.com/auth/callback",
+  "https://battle-emperor-calculation-egypt.trycloudflare.com/auth/shopify/callback",
+  "https://battle-emperor-calculation-egypt.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
