@@ -322,7 +322,7 @@ export async function getCollectionMixMatchData(req, res) {
         {
           $match: {
             shop: shop,
-            _id: ObjectId(id),
+            _id: ObjectId.createFromHexString(id),
           },
         },
         {
@@ -598,7 +598,7 @@ export async function searchCollectionProducts(req, res) {
 
 export async function getBundleViews(req, res) {
   try {
-    const objectIds = req.body.bundleId.map((id) => ObjectId(id));
+    const objectIds = req.body.bundleId.map((id) => ObjectId.createFromHexString(id));
 
     const bundles = await analyticsModel.find({ bundleId: objectIds });
 
@@ -621,7 +621,7 @@ export async function getBundleViews(req, res) {
 
 export async function getBundleClick(req, res) {
   try {
-    const objectId = new ObjectId(req.body.bundleId);
+    const objectId = ObjectId.createFromHexString(req.body.bundleId);
 
     const bundles = await analyticsModel.find({ bundleId: objectId });
 

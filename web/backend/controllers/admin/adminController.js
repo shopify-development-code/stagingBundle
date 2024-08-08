@@ -139,7 +139,7 @@ const response = await bundleModel.aggregate([
     
       {
         shop: shop,
-        _id: new ObjectId(id)
+        _id: ObjectId.createFromHexString(id)
       },
   },
   {
