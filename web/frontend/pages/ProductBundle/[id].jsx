@@ -21,6 +21,7 @@ import defaultData from "../../components/customization/defaultData.json";
 import postApi from "../../components/postApi";
 import { useNavigate, useParams } from "react-router-dom";
 function CreateBundle() {
+  let headerkey = "Create Product Bundle";
   const navigate = useNavigate();
   const param = useParams();
   const [myModal, setMyModal] = useState(false);
@@ -536,7 +537,7 @@ function CreateBundle() {
     <Spin spinning={spinner}
      size="large">
       <div className="Polaris-Page Polaris-Page--fullWidth">
-        <MoveToHomePage data={data} />
+        <MoveToHomePage data={headerkey} />
 
         {alert.state == true && (
           <AlertSection
