@@ -344,22 +344,31 @@ const CustomizationEditor = (props) => {
                 {props.bundleOption == "productMixMatch"
                   ? leftSideSectionCommon()
                   : ""}
-                <div
-                  className={`sd-bundle-listItem-common sd-bundle-listItem  ${props.bundleOption == "frequentlyBoughtTogether" ? "sd-active" : ""
-                    }`}
-                  onClick={() => {
-                    handleBundleOption("frequentlyBoughtTogether")
-                    setCustomOption("Design")
-                  }}
-                >
-                  {props.bundleOption == "frequentlyBoughtTogether" ? (
-                    <CaretDownOutlined />
-                  ) : (
+
+                {props?.plansData?.data?.data?.plan == "standard" ?
+                  <div
+                    className={`sd-bundle-listItem-common sd-bundle-listItem  ${props.bundleOption == "frequentlyBoughtTogether" ? "sd-active" : ""
+                      }`}
+                    onClick={() => {
+                      handleBundleOption("frequentlyBoughtTogether")
+                      setCustomOption("Design")
+                    }}
+                  >
+                    {props.bundleOption == "frequentlyBoughtTogether" ? (
+                      <CaretDownOutlined />
+                    ) : (
+                      <CaretRightOutlined />
+                    )}
+                    <AppstoreAddOutlined />
+                    <p>Frequently Bought Together</p>
+                  </div>
+                  :
+                  <div className={`sd-bundle-listItem-common sd-bundle-listItem`} onClick={() => navigate("/plans")}>
                     <CaretRightOutlined />
-                  )}
-                  <AppstoreAddOutlined />
-                  <p>Frequently Bought Together</p>
-                </div>
+                    <AppstoreAddOutlined />
+                    <Text>Frequently Bought Together <LockMajor className="sd-bundle-premium2" /></Text>
+                  </div>
+                }
                 {props.bundleOption == "frequentlyBoughtTogether"
                   ? leftSideSectionCommon("frequentlyBoughtTogether")
                   : ""}

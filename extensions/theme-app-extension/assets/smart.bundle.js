@@ -1,7 +1,7 @@
 let server = "https://bundle.shinedezigninfotech.com";
 
-console.log("Smart Bundle Discount app new version 3.0 24 AUG 2024");
-// let server = "https://battle-emperor-calculation-egypt.trycloudflare.com";
+console.log("Smart Bundle Discount app new version 3.0 08 AUG 2024");
+// let server = "https://suspected-yes-swing-glen.trycloudflare.com";
 let smartNoImg = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAHYUlEQVR4nO2da0wUVxTHb/xSk/qxNbXCzsyyvGYWFhF51Qeo0IeAjxRba/1kW9MiVA1FGkGbippabWJsVBDQVjuNbEF5iCBoLWw1ltqaan01NmlD6wdi+sAvTWtOcy67I4/VXXF3587s/Scnk50Pyzn3t+eec2fDWUK4uLi4uLi4zCtBlF2CKPdZrYmT9faFawjIt4KkgCAqlzgUBmSzJT0piPIPCMUiyVctlrgpevsU9uJQGBSHwqA4FAbFoTAoDoVBcSgMikNhUBwKg+JQGBSHwqA4FINAiYpSIi2SvNoiKSfwniDJd+gDS0OafIfGJSntFkkummpLiCAGg/KHIMr/6r+QSrDsriApDaIYLxCWZRGVFYIoo7MgWBXIy38ZNm3aCbX7neBs6IaW5h5DmrOhm8aAsSxesgKstkQKxiIqf0dKSj5hURZRLnZ/ciAufjp1ODV9Lhw+1Kr7grYE2OrrG6Fg4XItW3BrJiwpUpQL0DHRaoeStytB/awdMjJzTA2lpbkHSkoqAGPG2JnJlIgIx1RMXVx8hOFxFqGkZcyjUGyxSRAdn6z3vg/+WOrsZ8F16/ZI+20Aztzsh+4L16Ct/esxUNzb119MfJEniHItOoQpPNzRLR9Vg+LIAHtSBnU4fc5z0HbpxthgDWa9/QPQ0XtxRKz597aval1hYGsrSPJ/WOTq65pGwJiWlg1qz3k4cfUmzJqfTx3OyHreFFBct26PgFJX1whSVCJgZ4k7hm5AsJjhQmPn4XHu8yMdYE/KpDA8zpsRSm//ALQeP6vFvWjRCk+WvKUjEKUdncB20ONY0Tvvwar1G8cEYEYoXReuaXFXbtwxBESU2/QDIio30Ina2i80x3DRPznl8hqA2aCcudmvxY3nFPeh+JpuQARRGUQnnM4uzbFYOQW6f+6/bxBmgtLbP6DFjWswlCHKoH5A3K3i8I4DX/sKxExQWkbFjmY4IKxAOfrdZVi5phRSUjPBGp1AryvXltL7YQdEbyh7m09A0vRU2LklF37qK4Q7vy6n1x1VueBIToW9zR3hB0QvKEcvXKYwzp9cDP/8/uoYO3dyMYVy7Psfww+IHlBWrimlmeENhsc+rMqF19aVhieQUENJSc2k29ODgNzoK4SU9JnhCySUUKKiE2nNeBCQwV9eAVuMI7yBuEIEJSXtGZ8Zcv2bQpiREeYZ4goRFGxtsZt6EJDtm7GGlHEgrhBAwXMGdlHYTXmDcbZzqMtqvniFA3GFKFPwnIGLjt0UFnCsKXjFzBg6h3T6fA/8MisstixXiKDgOQNbW+ymsNDjFbcpfzIDzVvshgdy+Mw5mFnwEkQnptErvg4llEcx02XI/uOnINqRDpPKK2BCXT294mu8bxQopgFS1/kl2BzpMLFqKxBV1eyxbR/Q+9VtXYaAYgog94NBDAbFFFuWLxjEQFAMX9T9hUEMAsXQQGo7Tj8UDGIAKIYFMl4YJIhQsL3OWrgU4hxpkL1oqdd225Q15FFhkCBAwbY6LikdsreVw8LWffSKr721277MUEACBYMEEArWMVz8nD3vw5LTBzXLra6i9729tymABBoGCQCU+8EYLxTDbFnBgkEeAYovGOOBYpiiHkwYZBxQdjUc8wvGw0IxDJCJVduCCoO4Df+OzY9nX6ItAbK3v+sXjIeBYhggoYBB/MiU3Y2tIEUlUJ9iM2dBftPHAYXCgaj+Q/HUjLk7N0DcrDlBgcKBqP5lyugCXtC8NyhQOBDV9/ZlTUiFmIQZYwp4MKBwIKp/NUWwp3jtqAINhQNR/S/0gpcsCTQUDkRlCwoHorIDJWfPZg6EMAaFZ4jKFhQORGULCgeisgWFOSCeoTPD/y1akOwwoaYmIM+pCMNQ8pt201g9cTcc6dSG0OgJ5Dr9/qPWqTlmjZ0Gk9aV6b7wxMdTYpFC2TxuKLM3rQNbfLIW9/4abXDAFd1Ha2wcNlpj3gsvQkTmPN0XnQQZSvzMLMjJW6rFXVnJwmgNSS4aPXym7kATCFY7PF5eYVooWVvLaIy1BxvHDp+xKm/qBgSnc+JIIjqeqf6ec6+vXk8nrZkRStbWMpCi7LBqdbkWL856YWI8E0qQlBpvA8wQCn6KIjLnwqS1ZUwX+ok+oCAM+s1jdCKN6Y2iezCaj30FefnL3PVD2Uf0VmRk7NPaiL+SihFQMKXnLyiEqLhkEBkY3yeM2+ye2YqQPGPOiBmSxSUb3N2V/KcgyE8RFoQDILUhmKOgmMXUUYM9D33aAsXFG7QhmBarfQFhSe7pcnRMLM4gxLF3ZoYSE5c8fExsEWFRFknJw4MROopFDjsPnLSGPfrww6PRzOnsgpqaBtra5uUtG7b9yndxeDRhWVNiYp4QJHmXqUeNiwrGdttQv/OI7R/25BZROY6nV8/0OUOaqAwOxSC3YUwYG/9VCAbFoTAoDoVBcSgMikNhUBwKg+JQGBSHwqA4FAbFoTAoDoVBcSgMikNhUFZr4mRBVC4NPbCU+/T2h4t4oMh9gqj08AXh4uLi4uIi5tX/Fms2vZkCm94AAAAASUVORK5CYII=`;
 let productPageClass = document.getElementsByClassName("sd-bundle-app");
 
@@ -212,7 +212,6 @@ let volumeBundleArr = [];
 let volumeBundleSum = [];
 function createBundle(BUNDLE_DATA) {
   console.log("check foreach working=======**********",BUNDLE_DATA)
-  // let bundleMainDiv = `<div id="sd-bundle-main-container" class="sd-bundle-main-container"></div>`;
   let bundleMainDiv = document.createElement("div");
   bundleMainDiv.className = "sd-bundle-main-container";
   bundleMainDiv.id = "sd-bundle-main-container";
@@ -2109,109 +2108,545 @@ function createBundle(BUNDLE_DATA) {
         }
     }
     else if (el.type == "fbt") {
+      if(el.plans.plan == "standard"){
+        let totalProducts =[];
+    
+        function execFbtModern(){
+          let  originalPriceArray=[];
+          let originalPrice ;
+          let sellingPrice ;
+          let selectedOfferedProductCount = 0;
+          let calculateOriginalPrice = () => {
+            total = 0;
+            originalPriceArray.map((item) => {
+              if(item.selected==true){
+                total += parseFloat(item.price);        
+              }
+              });
+              originalPrice=total
+              document.querySelector(`.sd-fbt-mrp-span${bundleIndex}`).innerText=showAmountWithCurrency(total.toFixed(2))
+            return total ; 
+          };  
+            
+          function calculateSellingPrice() {
+            let finalPrice = 0;      
+            if (el.bundleDetail.discountType == "percent") {
+              if (el.bundleDetail.discountValue > 100) {
+                finalPrice = 0;
+              } else {
+                finalPrice =
+                  originalPrice -
+                originalPrice * (el.bundleDetail.discountValue / 100);
+              }
+            } else if (el.bundleDetail.discountType == "fixed") {
+                if (parseFloat(el.bundleDetail.discountValue) > originalPrice) {
+                  finalPrice = 0;
+                } else {
+                  finalPrice = originalPrice - el.bundleDetail.discountValue;
+                }
+            } else if (el.bundleDetail.discountType == "freeShipping" || el.bundleDetail.discountType == "noDiscount") {
+                finalPrice = originalPrice;
+            }
+            sellingPrice=finalPrice;
+            document.querySelector(`.sd-fbt-sellingPrice-span${bundleIndex}`).innerText=showAmountWithCurrency(finalPrice.toFixed(2))
+            return finalPrice;
+          }
+      
+          let FBT_DIV = document.createElement("div");
+          FBT_DIV.className = "sd-bundle-fbt-container";     
+          FBT_DIV.id = `FBT_DIV${bundleIndex}`;
+          mainDiv.append(FBT_DIV);
 
-      let totalProducts =[];
+          let FBT_TITLE_DIV = document.createElement("div");
+          FBT_TITLE_DIV.className = "sd-bundle-fbt-title-div";
+          FBT_TITLE_DIV.innerText = el.title;
+          FBT_DIV.append(FBT_TITLE_DIV);
+            
+          let FBT_BUNDLE_DETAILS_DIV = document.createElement("div");
+          FBT_BUNDLE_DETAILS_DIV.className = "sd-fbt-bundle-details-div";
+          FBT_DIV.append(FBT_BUNDLE_DETAILS_DIV);
+
+          let FBT_ADDTOCART_TOTAL_DIV = document.createElement("div");
+          FBT_ADDTOCART_TOTAL_DIV.className = "sd-fbt-addtocart-total-details--modern-div";
+          FBT_DIV.append(FBT_ADDTOCART_TOTAL_DIV);
+      
+          totalProducts.map((item, index) => {         
+            originalPriceArray.push({price: el.bundleDetail.discountedProductType != 'all_products'  ? item.variants[0].price  : item.variants[0].price/100 ,id: el.bundleDetail.discountedProductType != 'all_products'  ? item.variants[0].id : ('gid://shopify/ProductVariant/' + item.variants[0].id) , selected:true ,quantity:1});
+            let FBT_PRODUCT_DETAILS_DIV = document.createElement("div");
+            FBT_PRODUCT_DETAILS_DIV.className = "sd-fbt-product-details-modern-div";
+            FBT_BUNDLE_DETAILS_DIV.append(FBT_PRODUCT_DETAILS_DIV);
+              
+            let SINGLE_PRODUCT_DIV = document.createElement("div");
+            SINGLE_PRODUCT_DIV.className = "sd-bundle-fbt-productItem-div";
+            FBT_PRODUCT_DETAILS_DIV.append(SINGLE_PRODUCT_DIV);  
+      
+            if (index == 0) {
+              let FBT_PRODUCT_CHECKBOX_DIV=document.createElement("div");
+              FBT_PRODUCT_CHECKBOX_DIV.className="sd-bundle-fbt-checkbox-container-div";
+              SINGLE_PRODUCT_DIV.append(FBT_PRODUCT_CHECKBOX_DIV);
+              let FBT_PRODUCT_CHECKBOX = document.createElement("input");
+              FBT_PRODUCT_CHECKBOX.setAttribute("type", "checkbox");
+              FBT_PRODUCT_CHECKBOX.setAttribute("checked", "checked");
+              FBT_PRODUCT_CHECKBOX.className ="sd-bundle-fbt-product-checkbox-input";
+              FBT_PRODUCT_CHECKBOX.id =`FBT_PRODUCT_CHECKBOX${bundleIndex}${index}`;
+              FBT_PRODUCT_CHECKBOX_DIV.append(FBT_PRODUCT_CHECKBOX);
+              document.getElementById(`FBT_PRODUCT_CHECKBOX${bundleIndex}${index}`).addEventListener('click',(e)=>{   
+                e.preventDefault();        
+                let PopUpMessageDiv = document.createElement("div");
+                PopUpMessageDiv.id = `PopUpMessageDiv${bundleIndex}${index}`;
+                PopUpMessageDiv.className = "sd-bundle-mix-match-checkBox-popup-div";
+                FBT_PRODUCT_CHECKBOX_DIV.append(PopUpMessageDiv);
+                let PopupSpan = document.createElement("span");
+                PopupSpan.className = "sd-bundle-mix-match-checkBox-popup-span";
+                PopupSpan.innerText = "This product is required and can not be deselected";
+                PopUpMessageDiv.append(PopupSpan);
+                setTimeout(()=>{
+                  document.getElementById(`PopUpMessageDiv${bundleIndex}${index}`).remove();
+                },2000);  
+              }) 
+            }
+            if (index != 0) {
+              let FBT_PRODUCT_CHECKBOX = document.createElement("input");
+              FBT_PRODUCT_CHECKBOX.className = "sd-bundle-fbt-product-checkbox-input";
+              FBT_PRODUCT_CHECKBOX.id =`FBT_PRODUCT_CHECKBOX${bundleIndex}${index}`;
+              FBT_PRODUCT_CHECKBOX.setAttribute("type", "checkbox");
+              FBT_PRODUCT_CHECKBOX.setAttribute("checked", "checked");
+              FBT_PRODUCT_CHECKBOX.dataset.bundleindex=bundleIndex;
+              if(totalProducts.length <3){
+              FBT_PRODUCT_CHECKBOX.disabled=true;
+              }
+              FBT_PRODUCT_CHECKBOX.dataset.selectedvariantprice =el.bundleDetail.discountedProductType != 'all_products'  ? item.variants[0].price  : item.variants[0].price/100 ;
+              FBT_PRODUCT_CHECKBOX.dataset.selectedvariantid = item.variants[0].id ;
+              SINGLE_PRODUCT_DIV.append(FBT_PRODUCT_CHECKBOX);
+              selectedOfferedProductCount += 1
+              document.getElementById(`FBT_PRODUCT_CHECKBOX${bundleIndex}${index}`).addEventListener('change',(e)=>{
+                if(e.target.checked){
+                  originalPriceArray[index].selected=true;
+                  document.querySelectorAll(`[data-bundleindex="${bundleIndex}"]`).forEach(item=>{
+                    if(item.checked==true && selectedOfferedProductCount == 1){ 
+                      item.disabled=false
+                    }                  
+                  })                                   
+                  selectedOfferedProductCount += 1 ;                     
+                }else{
+                  originalPriceArray[index].selected=false;                                 
+                  document.querySelectorAll(`[data-bundleindex="${bundleIndex}"]`).forEach(item=>{
+                    if(item.checked==true && selectedOfferedProductCount == 2){ 
+                      item.disabled=true
+                    }                  
+                  })                     
+                  selectedOfferedProductCount -= 1 ;
+                }
+                calculateOriginalPrice()
+                calculateSellingPrice()
+              })
+            }
+            
+            let GET_PRODUCT_IMAGE_DIV = document.createElement("div");
+            GET_PRODUCT_IMAGE_DIV.className = "sd-fbt-products-images-modern-div";       
+            GET_PRODUCT_IMAGE_DIV.id = `GET_PRODUCT_IMAGE_DIV${bundleIndex}${index}`;
+            SINGLE_PRODUCT_DIV.append(GET_PRODUCT_IMAGE_DIV);
+      
+            let GET_PRODUCTS_IMAGE = document.createElement("img");
+            GET_PRODUCTS_IMAGE.className = "sd-bundle-fbt-imageThumbnails";
+            GET_PRODUCTS_IMAGE.src = el.bundleDetail.discountedProductType != 'all_products' ? `${item?.images[0]?.originalSrc}` : ('https:' +`${item?.images[0]}`)  ;
+            GET_PRODUCT_IMAGE_DIV.append(GET_PRODUCTS_IMAGE);
+
+            let GET_PRODUCTS_NAME_PRICE_DIV = document.createElement("div");
+            GET_PRODUCTS_NAME_PRICE_DIV.className = "sd-fbt-name-price-div";
+            SINGLE_PRODUCT_DIV.append(GET_PRODUCTS_NAME_PRICE_DIV);
+
+            let GET_PRODUCTS_NAME = document.createElement("p");
+            GET_PRODUCTS_NAME.className = "sd-fbt-products-name";       
+            GET_PRODUCTS_NAME.innerText = item.title;
+            GET_PRODUCTS_NAME_PRICE_DIV.append(GET_PRODUCTS_NAME);
+
+            let GET_PRODUCTS_PRICE = document.createElement("p");
+            GET_PRODUCTS_PRICE.className = "sd-fbt-products-name";
+            GET_PRODUCTS_PRICE.id = `productsPriceDiv${bundleIndex}${index}`;       
+            GET_PRODUCTS_PRICE.innerText = el.bundleDetail.discountedProductType != 'all_products'  ? showAmountWithCurrency(item.variants[0].price)  : showAmountWithCurrency(item.variants[0].price/100);
+            GET_PRODUCTS_NAME_PRICE_DIV.append(GET_PRODUCTS_PRICE);
+      
+            if (item.variants.length > 1) {
+              const select = document.createElement("select");
+              select.className = "sd-bundle-fbt-select-modern-variant";
+              select.id=`fbtSelect${bundleIndex}${index}` 
+            
+              item.variants.forEach((optionData) => {
+                const option = document.createElement("option");
+                option.value = el.bundleDetail.discountedProductType != 'all_products'  ? optionData.price  : (optionData.price)/100;
+                option.text = optionData.title;
+                option.dataset.id= el.bundleDetail.discountedProductType != 'all_products'  ? optionData.id  : ( 'gid://shopify/ProductVariant/'+ optionData.id ); 
+                select.appendChild(option);
+              });
+              FBT_PRODUCT_DETAILS_DIV.append(select);
+              document.getElementById(`fbtSelect${bundleIndex}${index}`).addEventListener('change',(e)=>{
+                originalPriceArray[index].price=e.target.value;
+                originalPriceArray[index].id=e.target.selectedOptions[0].dataset.id;
+                document.querySelector(`#productsPriceDiv${bundleIndex}${index}`).innerText= showAmountWithCurrency(e.target.value);
+                if(index != 0) {
+                  document.querySelector(`#FBT_PRODUCT_CHECKBOX${bundleIndex}${index}`).dataset.selectedvariantprice= e.target.value;
+                  document.querySelector(`#FBT_PRODUCT_CHECKBOX${bundleIndex}${index}`).dataset.selectedvariantid=e.target.selectedOptions[0].dataset.id;
+                }
+                document.querySelector(`.sd-fbt-mrp-span${bundleIndex}`).innerText=showAmountWithCurrency(parseFloat(calculateOriginalPrice()).toFixed(2))
+                document.querySelector(`.sd-fbt-sellingPrice-span${bundleIndex}`).innerText=showAmountWithCurrency(parseFloat(calculateSellingPrice()).toFixed(2))
+              })
+            }
+          });
+      
+          if(el.bundleDetail.discountType == "freeShipping" ||
+            el.bundleDetail.discountType == "noDiscount") {
+                // no changes
+          } else {
+            let discountAppliedText = document.createElement("div");
+            discountAppliedText.innerText = el.translations.translation.discountApplied;
+            discountAppliedText.className = "sd-bundle-discount-applied-text";
+            FBT_ADDTOCART_TOTAL_DIV.append(discountAppliedText);
+          }
+            
+          let FBT_TOTAL_DIV = document.createElement("div");
+          FBT_TOTAL_DIV.className = "sd-fbt-total-div";
+          FBT_ADDTOCART_TOTAL_DIV.append(FBT_TOTAL_DIV);
+
+          let FBT_TOTAL_LABEL = document.createElement("span");
+          FBT_TOTAL_LABEL.className = "sd-fbt-total-label";
+          FBT_TOTAL_LABEL.innerText = "TOTAL ";
+          FBT_TOTAL_DIV.append(FBT_TOTAL_LABEL);
+
+          let FBT_MRP_PRICE = document.createElement("del");
+          FBT_MRP_PRICE.className = `sd-fbt-mrp-span${bundleIndex}`;
+          FBT_TOTAL_DIV.append(FBT_MRP_PRICE);
+
+          let FBT_SELLING_PRICE = document.createElement("span");
+          FBT_SELLING_PRICE.className = `sd-fbt-sellingPrice-span${bundleIndex}`;
+          FBT_TOTAL_DIV.append(FBT_SELLING_PRICE);  
+          
+          calculateOriginalPrice()  
+          calculateSellingPrice()
+            
+          let ADD_TO_CART_BUTTON = document.createElement("button");
+          ADD_TO_CART_BUTTON.className = `sd-bundle-fbt-add-to-cart-button${bundleIndex}`;
+          ADD_TO_CART_BUTTON.innerHTML = el.translations.translation.addToCartButton;
+          ADD_TO_CART_BUTTON.type = "button";
+          FBT_ADDTOCART_TOTAL_DIV.append(ADD_TO_CART_BUTTON);    
+          
+          ADD_TO_CART_BUTTON.addEventListener("click", (e) => {
+            let count=0;         
+            let addToCartArray=[];
+            let itemsVariantIdArray=[];
+            let copyArray=JSON.parse(JSON.stringify(originalPriceArray))
+            copyArray.map(item=>{
+              if(item.selected){ 
+                count +=1 ;
+                delete item.selected ;
+                delete item.price ;
+                itemsVariantIdArray.push(item.id);
+                item.id=item.id.split('/').pop()
+                addToCartArray.push(item)                      
+              }
+            })
         
-       function execFbtModern(){
-       let  originalPriceArray=[];
-        // let  addToCartArray=[];
+            if(count<2){
+              return ;
+            }
+            let code = JSON.parse(localStorage.getItem("sd_bundle_data"));
+            let discountCodeId = code.discountCreateId ?? "";
+          
+            ADD_TO_CART_BUTTON.innerText = "";
+            let btnSpinner = document.createElement("div");
+            btnSpinner.className = "bundleBtnSpinner";
+            ADD_TO_CART_BUTTON.append(btnSpinner);
+            btnSpinner.style.display = "block";         
+          
+            let formData = {
+              items: addToCartArray,
+              attributes: { SD_BUNDLE_ID: el._id },
+            };
+              
+              fetch(window.Shopify.routes.root + "cart/add.js", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+              })
+              .then((response) => {
+                return response.json();
+              })
+              .then((response) => {
+                let errorDiv = document.getElementsByClassName(
+                  "sd-bundle-error-message"
+                );
+                errorDiv[0]?.remove();
+                if (response.status == 422 || response.status == 404) {
+                  ADD_TO_CART_BUTTON.innerText =
+                    el.translations.translation.addToCartButton;
+                  btnSpinner.remove();
+                  let errorMessage = document.createElement("div");
+                  errorMessage.className = "sd-bundle-error-message";
+                  FBT_DIV.append(errorMessage);
+                  errorMessage.innerText = response.description;
+                } else {
+                  fetch(window.Shopify.routes.root + "cart.js", {
+                    method: "GET",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                  })
+                    .then((response) => {
+                      // console.log("check response of else condition", response);
+                      return response.json();
+                    })
+                    .then((response) => {
+                      if (el.bundleDetail.discountType == "noDiscount") {
+                        fetch(`${server}/api/storefront/getBundleClick`, {
+                          method: "POST",
+                          headers: {
+                            "Content-Type": "application/json",
+                          },
+                          body: JSON.stringify({
+                            shop: Shopify.shop,
+                            bundleId: el._id,
+                          }),
+                        });
+                        let isDiscount =
+                          el.bundleDetail.discountType == "noDiscount"
+                            ? "noDiscount"
+                            : "Fix";
+                        const localData = JSON.parse(
+                          localStorage.getItem("sd_bundle_data")
+                        );
+
+                        
+                        let sd_bundle_data = {
+                          discount_name: el.name,
+                          code: code.code,
+                          bundleId: el._id,
+                          discountType: isDiscount,
+                          variantsId: addToCartArray,
+                          discountCreateId: localData.discountCreateId,
+                          prefixCode: el.settings.discountLabel,
+                        };
+                        var jsonString = JSON.stringify(sd_bundle_data);
+                        localStorage.setItem("sd_bundle_data", jsonString);
+
+                        btnSpinner.remove();
+                        window.location.assign(`https://${Shopify.shop}/cart`);
+                      } else {
+                        // console.log("15july==>")
+                      
+                        let finalPrice;
+                        switch (el.bundleDetail.discountType) {
+                          case "percent":
+                            let percentagepart = parseFloat(
+                              el.bundleDetail.discountValue
+                            );
+                            let percentage = (originalPrice * percentagepart) / 100;
+                            // result = total - percentage;
+                            finalPrice = percentage.toFixed(2);
+                            break;
+                          case "price":
+                            let pricePart = parseFloat(
+                              el.bundleDetail.discountValue
+                            );
+                            result = originalPrice - pricePart;
+                            finalPrice = result.toFixed(2);
+                            break;
+                          case "fixed":
+                            let fixedPart = parseFloat(
+                              el.bundleDetail.discountValue
+                            );
+                            finalPrice = fixedPart.toFixed(2);
+                            break;
+                          default:
+                            // // console.log("how are you ?");
+                            break;
+                        }
+                            
+                        // return ;
+                        let isDiscount =
+                          el.bundleDetail.discountType == "noDiscount"
+                            ? "noDiscount"
+                            : "Fix";
+                        let sd_bundle_data = {
+                          discount_name: el.name,
+                          code: `${el.settings.discountLabel}-${code.code}`,
+                          discountType: isDiscount,
+                          discountValue: finalPrice,                        
+                          variantsId: itemsVariantIdArray,
+                          // startDate: el.startdate,
+                          startDate: new Date(),
+                          // endDate: el.endDate,
+                          shop: Shopify.shop,
+                          bundleType: el.bundleDetail.discountType,
+                          totalPrice: originalPrice.toFixed(2),
+                          discountCreateId: discountCodeId,
+                        };
+                          // console.log("sd_bundle_data==>23july",sd_bundle_data)   
+                        // return ;
+                        fetch(server + "/api/storefront/createRule", {
+                          method: "POST",
+                          headers: {
+                            "Content-Type": "application/json",
+                          },
+                          body: JSON.stringify(sd_bundle_data),
+                        })
+                          .then((response) => response.json())
+                          .then((data) => {
+                            // console.log("data==>",data)
+                            if (data.status == 200) {
+                              fetch(`${server}/api/storefront/getBundleClick`, {
+                                method: "POST",
+                                headers: {
+                                  "Content-Type": "application/json",
+                                },
+                                body: JSON.stringify({
+                                  shop: Shopify.shop,
+                                  bundleId: el._id,
+                                }),
+                              });
+                              ADD_TO_CART_BUTTON.innerText =
+                                el.translations.translation.addToCartButton;
+                              btnSpinner.remove();
+
+                              let sd_bundle_data = {
+                                discount_name: el.name,
+                                code: code.code,
+                                bundleId: el._id,
+                                discountType: isDiscount,
+                                variantsId: addToCartArray,
+                                discountCreateId: data.response,
+                                prefixCode: el.settings.discountLabel,
+                              };
+                              var jsonString = JSON.stringify(sd_bundle_data);
+                              localStorage.setItem("sd_bundle_data", jsonString);
+                              window.location.assign(
+                                `https://${Shopify.shop}/cart`
+                              );
+                            }
+                          });
+                      }
+                    })
+                    .catch((error) => {
+                      ADD_TO_CART_BUTTON.innerText =
+                        el.translations.translation.addToCartButton;
+                    });
+                }
+              })
+              .catch((error) => {
+                console.error("Error:", error);
+              });
+          });          
+        }
+    
+        function execFbtClassic(){
+        let  originalPriceArray=[];
         let originalPrice ;
         let sellingPrice ;
-       let selectedOfferedProductCount = 0;
-       let calculateOriginalPrice = () => {
+        let selectedOfferedProductCount = 0;
+        let calculateOriginalPrice = () => {
           total = 0;
           originalPriceArray.map((item) => {
             if(item.selected==true){
               total += parseFloat(item.price);        
             }
             });
-           originalPrice=total
-           document.querySelector(`.sd-fbt-mrp-span${bundleIndex}`).innerText=showAmountWithCurrency(total.toFixed(2))
-         return total ; 
+          originalPrice=total
+          document.querySelector(`.sd-fbt-mrp-span${bundleIndex}`).innerText=showAmountWithCurrency(total.toFixed(2))
+          return total ; 
         };  
         
-          function calculateSellingPrice() {
-        let finalPrice = 0;      
-        if (el.bundleDetail.discountType == "percent") {
-          if (el.bundleDetail.discountValue > 100) {
-            finalPrice = 0;
-          } else {
-            finalPrice =
-              originalPrice -
-            originalPrice * (el.bundleDetail.discountValue / 100);
+        function calculateSellingPrice() {
+          let finalPrice = 0;      
+          if(el.bundleDetail.discountType == "percent") {
+            if (el.bundleDetail.discountValue > 100) {
+              finalPrice = 0;
+            } else {
+              finalPrice =
+                originalPrice -
+              originalPrice * (el.bundleDetail.discountValue / 100);
+            }
+          } else
+          if (el.bundleDetail.discountType == "fixed") {
+            if (parseFloat(el.bundleDetail.discountValue) > originalPrice) {
+              finalPrice = 0;
+            } else {
+              finalPrice = originalPrice - el.bundleDetail.discountValue;
+            }
+          }  else if (
+            el.bundleDetail.discountType == "freeShipping" ||
+            el.bundleDetail.discountType == "noDiscount"
+          ) {
+            finalPrice = originalPrice;
           }
-        } else
-         if (el.bundleDetail.discountType == "fixed") {
-          if (parseFloat(el.bundleDetail.discountValue) > originalPrice) {
-            finalPrice = 0;
-          } else {
-            finalPrice = originalPrice - el.bundleDetail.discountValue;
-          }
-        }  else if (
-          el.bundleDetail.discountType == "freeShipping" ||
-          el.bundleDetail.discountType == "noDiscount"
-        ) {
-          finalPrice = originalPrice;
+          sellingPrice=finalPrice;
+          document.querySelector(`.sd-fbt-sellingPrice-span${bundleIndex}`).innerText=showAmountWithCurrency(finalPrice.toFixed(2))
+          return finalPrice;
         }
-      
-      // console.log('hello check final price****',finalPrice);
-      sellingPrice=finalPrice;
-      document.querySelector(`.sd-fbt-sellingPrice-span${bundleIndex}`).innerText=showAmountWithCurrency(finalPrice.toFixed(2))
-      return finalPrice;
-    }
-  
-        // console.log("infbt", totalProducts);
+    
         let FBT_DIV = document.createElement("div");
         FBT_DIV.className = "sd-bundle-fbt-container";     
         FBT_DIV.id = `FBT_DIV${bundleIndex}`;
         mainDiv.append(FBT_DIV);
-  
+
         let FBT_TITLE_DIV = document.createElement("div");
         FBT_TITLE_DIV.className = "sd-bundle-fbt-title-div";
         FBT_TITLE_DIV.innerText = el.title;
         FBT_DIV.append(FBT_TITLE_DIV);
-  
-         
-        //  let FBT_DESCRIPTION_DIV = document.createElement("div");
-        // FBT_DESCRIPTION_DIV.className = "sd-bundle-fbt-title-description";
-        // FBT_DESCRIPTION_DIV.innerText = el.description;
-        // FBT_DIV.append(FBT_DESCRIPTION_DIV);
-  
+    
         let FBT_BUNDLE_DETAILS_DIV = document.createElement("div");
         FBT_BUNDLE_DETAILS_DIV.className = "sd-fbt-bundle-details-div";
         FBT_DIV.append(FBT_BUNDLE_DETAILS_DIV);
-  
-        // let FBT_PRODUCT_DETAILS_DIV = document.createElement("div");
-        // FBT_PRODUCT_DETAILS_DIV.className = "sd-fbt-product-details-modern-div";
-        // FBT_BUNDLE_DETAILS_DIV.append(FBT_PRODUCT_DETAILS_DIV);
-  
-        let FBT_ADDTOCART_TOTAL_DIV = document.createElement("div");
-        FBT_ADDTOCART_TOTAL_DIV.className = "sd-fbt-addtocart-total-details--modern-div";
-        FBT_DIV.append(FBT_ADDTOCART_TOTAL_DIV);
-  
+
+        let FBT_PRODUCTS_IMAGE_DIV = document.createElement("div");
+        FBT_PRODUCTS_IMAGE_DIV.className = "sd-fbt-products-image-div";
+        FBT_BUNDLE_DETAILS_DIV.append(FBT_PRODUCTS_IMAGE_DIV);
+
+        let FBT_PRODUCT_DETAILS_DIV = document.createElement("div");
+        FBT_PRODUCT_DETAILS_DIV.className = "sd-fbt-product-details-classic-div";
+        FBT_DIV.append(FBT_PRODUCT_DETAILS_DIV);
+
         totalProducts.map((item, index) => {         
           originalPriceArray.push({price: el.bundleDetail.discountedProductType != 'all_products'  ? item.variants[0].price  : item.variants[0].price/100 ,id: el.bundleDetail.discountedProductType != 'all_products'  ? item.variants[0].id : ('gid://shopify/ProductVariant/' + item.variants[0].id) , selected:true ,quantity:1});
-          // console.log("originalPriceArray166",originalPriceArray)
-          // addToCartArray.push({id : item.variants[0].id ,quantity :1 })
-          let FBT_PRODUCT_DETAILS_DIV = document.createElement("div");
-        FBT_PRODUCT_DETAILS_DIV.className = "sd-fbt-product-details-modern-div";
-        FBT_BUNDLE_DETAILS_DIV.append(FBT_PRODUCT_DETAILS_DIV);
-          
+          let GET_PRODUCT_IMAGE_DIV = document.createElement("div");
+          GET_PRODUCT_IMAGE_DIV.className = "sd-fbt-products-images-classic-div";       
+          GET_PRODUCT_IMAGE_DIV.id = `GET_PRODUCT_IMAGE_DIV${bundleIndex}${index}`;
+          FBT_PRODUCTS_IMAGE_DIV.append(GET_PRODUCT_IMAGE_DIV);
+
+          let GET_PRODUCTS_IMAGE = document.createElement("img");
+          GET_PRODUCTS_IMAGE.className = "sd-bundle-fbt-imageThumbnails";
+          GET_PRODUCTS_IMAGE.src = el.bundleDetail.discountedProductType != 'all_products' ? `${item?.images[0]?.originalSrc}` : ('https:' +`${item?.images[0]}`)  ;
+          GET_PRODUCT_IMAGE_DIV.append(GET_PRODUCTS_IMAGE);
+
+          if (index < totalProducts.length - 1) {
+            let BUNDLE_PLUS_BTN_DIV = document.createElement("div");
+            BUNDLE_PLUS_BTN_DIV.className = "sd-bundle-fbt-plusBtn-box";
+            let BUNDLE_PLUS_SPAN_SVG = document.createElement("span");
+            BUNDLE_PLUS_SPAN_SVG.className = "sd-bundle-plus";
+            BUNDLE_PLUS_SPAN_SVG.innerHTML = `<svg viewBox="64 64 896 896" focusable="false" data-icon="plus" width="1em" height="1em" fill="currentColor" aria-hidden="true"><defs><style></style></defs><path d="M482 152h60q8 0 8 8v704q0 8-8 8h-60q-8 0-8-8V160q0-8 8-8z"></path><path d="M176 474h672q8 0 8 8v60q0 8-8 8H176q-8 0-8-8v-60q0-8 8-8z"></path></svg>`;
+            BUNDLE_PLUS_BTN_DIV.append(BUNDLE_PLUS_SPAN_SVG);
+            FBT_PRODUCTS_IMAGE_DIV.append(BUNDLE_PLUS_BTN_DIV);
+          }  
+
+          let SINGLE_PRODUCT_DIV_CONTAINER=document.createElement("div");
+          SINGLE_PRODUCT_DIV_CONTAINER.className = "sd-bundle-fbt-productItem-classic-container";
+          FBT_PRODUCT_DETAILS_DIV.append(SINGLE_PRODUCT_DIV_CONTAINER);
+
           let SINGLE_PRODUCT_DIV = document.createElement("div");
-          SINGLE_PRODUCT_DIV.className = "sd-bundle-fbt-productItem-div";
-          FBT_PRODUCT_DETAILS_DIV.append(SINGLE_PRODUCT_DIV);  
-  
-           if (index == 0) {
-         let FBT_PRODUCT_CHECKBOX_DIV=document.createElement("div");
-         FBT_PRODUCT_CHECKBOX_DIV.className="sd-bundle-fbt-checkbox-container-div";
-         SINGLE_PRODUCT_DIV.append(FBT_PRODUCT_CHECKBOX_DIV);
-         let FBT_PRODUCT_CHECKBOX = document.createElement("input");
-         FBT_PRODUCT_CHECKBOX.setAttribute("type", "checkbox");
-         FBT_PRODUCT_CHECKBOX.setAttribute("checked", "checked");
-         FBT_PRODUCT_CHECKBOX.className ="sd-bundle-fbt-product-checkbox-input";
-         FBT_PRODUCT_CHECKBOX.id =`FBT_PRODUCT_CHECKBOX${bundleIndex}${index}`;
-         FBT_PRODUCT_CHECKBOX_DIV.append(FBT_PRODUCT_CHECKBOX);
-         document.getElementById(`FBT_PRODUCT_CHECKBOX${bundleIndex}${index}`).addEventListener('click',(e)=>{   
+          SINGLE_PRODUCT_DIV.className = "sd-bundle-fbt-productItem-classic-div";
+          SINGLE_PRODUCT_DIV_CONTAINER.append(SINGLE_PRODUCT_DIV);
+
+          if (index == 0) {
+            let FBT_PRODUCT_CHECKBOX_DIV=document.createElement("div");
+            FBT_PRODUCT_CHECKBOX_DIV.className='sd-bundle-fbt-checkbox-container-div';
+            SINGLE_PRODUCT_DIV.append(FBT_PRODUCT_CHECKBOX_DIV);
+            let FBT_PRODUCT_CHECKBOX = document.createElement("input");
+            FBT_PRODUCT_CHECKBOX.setAttribute("type", "checkbox");
+            FBT_PRODUCT_CHECKBOX.setAttribute("checked", "checked");
+            FBT_PRODUCT_CHECKBOX.className ="sd-bundle-fbt-product-checkbox-input";
+            FBT_PRODUCT_CHECKBOX.id =`FBT_PRODUCT_CHECKBOX${bundleIndex}${index}`;
+            FBT_PRODUCT_CHECKBOX_DIV.append(FBT_PRODUCT_CHECKBOX);
+            document.getElementById(`FBT_PRODUCT_CHECKBOX${bundleIndex}${index}`).addEventListener('click',(e)=>{   
               e.preventDefault();        
               let PopUpMessageDiv = document.createElement("div");
               PopUpMessageDiv.id = `PopUpMessageDiv${bundleIndex}${index}`;
@@ -2224,9 +2659,8 @@ function createBundle(BUNDLE_DATA) {
               setTimeout(()=>{
                 document.getElementById(`PopUpMessageDiv${bundleIndex}${index}`).remove();
               },2000);  
-           
-           }) 
-           }
+            }) 
+          }
           if (index != 0) {
             let FBT_PRODUCT_CHECKBOX = document.createElement("input");
             FBT_PRODUCT_CHECKBOX.className = "sd-bundle-fbt-product-checkbox-input";
@@ -2242,647 +2676,98 @@ function createBundle(BUNDLE_DATA) {
             SINGLE_PRODUCT_DIV.append(FBT_PRODUCT_CHECKBOX);
             selectedOfferedProductCount += 1
             document.getElementById(`FBT_PRODUCT_CHECKBOX${bundleIndex}${index}`).addEventListener('change',(e)=>{
-             // console.log("incheckboxeventlsietener",e.target.checked,index)
-                     if(e.target.checked){
-                       originalPriceArray[index].selected=true;
-                       // originalPriceArray.splice(index,0,document.getElementById(`FBT_PRODUCT_CHECKBOX${bundleIndex}${index}`).dataset.selectedvariantprice)
-                        // addToCartArray.splice(index,0,{id:document.getElementById(`FBT_PRODUCT_CHECKBOX${bundleIndex}${index}`).dataset.selectedvariantid})                     
-                       
-              document.querySelectorAll(`[data-bundleindex="${bundleIndex}"]`).forEach(item=>{
-                    if(item.checked==true && selectedOfferedProductCount == 1){ 
-                    item.disabled=false
-                    }                  
-                })                                   
-                       selectedOfferedProductCount += 1 ;                     
-                     }else{
-                       // console.log("originalPriceArray[index].selected",originalPriceArray[index].selected)
-                       originalPriceArray[index].selected=false;                                 
-                  document.querySelectorAll(`[data-bundleindex="${bundleIndex}"]`).forEach(item=>{
-                    if(item.checked==true && selectedOfferedProductCount == 2){ 
-                    item.disabled=true
-                    }                  
-                })                     
-                        selectedOfferedProductCount -= 1 ;
-                     }
-              // console.log("originapricearray11",originalPriceArray)
-                       calculateOriginalPrice()
-                       calculateSellingPrice()
-               // console.log("selectedOfferedProductCount",selectedOfferedProductCount)
-            
-          })
-          }
-         
-          let GET_PRODUCT_IMAGE_DIV = document.createElement("div");
-          GET_PRODUCT_IMAGE_DIV.className = "sd-fbt-products-images-modern-div";       
-          GET_PRODUCT_IMAGE_DIV.id = `GET_PRODUCT_IMAGE_DIV${bundleIndex}${index}`;
-          SINGLE_PRODUCT_DIV.append(GET_PRODUCT_IMAGE_DIV);
-  
-          let GET_PRODUCTS_IMAGE = document.createElement("img");
-          GET_PRODUCTS_IMAGE.className = "sd-bundle-fbt-imageThumbnails";
-          GET_PRODUCTS_IMAGE.src = el.bundleDetail.discountedProductType != 'all_products' ? `${item?.images[0]?.originalSrc}` : ('https:' +`${item?.images[0]}`)  ;
-          GET_PRODUCT_IMAGE_DIV.append(GET_PRODUCTS_IMAGE);
-  
-          let GET_PRODUCTS_NAME_PRICE_DIV = document.createElement("div");
-          GET_PRODUCTS_NAME_PRICE_DIV.className = "sd-fbt-name-price-div";
-          SINGLE_PRODUCT_DIV.append(GET_PRODUCTS_NAME_PRICE_DIV);
-  
-          let GET_PRODUCTS_NAME = document.createElement("p");
-          GET_PRODUCTS_NAME.className = "sd-fbt-products-name";       
-          GET_PRODUCTS_NAME.innerText = item.title;
-          GET_PRODUCTS_NAME_PRICE_DIV.append(GET_PRODUCTS_NAME);
-  
-          let GET_PRODUCTS_PRICE = document.createElement("p");
-          GET_PRODUCTS_PRICE.className = "sd-fbt-products-name";
-          GET_PRODUCTS_PRICE.id = `productsPriceDiv${bundleIndex}${index}`;       
-          GET_PRODUCTS_PRICE.innerText = el.bundleDetail.discountedProductType != 'all_products'  ? showAmountWithCurrency(item.variants[0].price)  : showAmountWithCurrency(item.variants[0].price/100);
-          GET_PRODUCTS_NAME_PRICE_DIV.append(GET_PRODUCTS_PRICE);
-  
-  if (item.variants.length > 1) {
-          const select = document.createElement("select");
-          select.className = "sd-bundle-fbt-select-modern-variant";
-          select.id=`fbtSelect${bundleIndex}${index}` 
-         
-          // Create and append the option elements
-          item.variants.forEach((optionData) => {
-            const option = document.createElement("option");
-            option.value = el.bundleDetail.discountedProductType != 'all_products'  ? optionData.price  : (optionData.price)/100;
-            option.text = optionData.title;
-            option.dataset.id= el.bundleDetail.discountedProductType != 'all_products'  ? optionData.id  : ( 'gid://shopify/ProductVariant/'+ optionData.id ); 
-            select.appendChild(option);
-            
-          });
-  
-          // Append the select element to the container
-          FBT_PRODUCT_DETAILS_DIV.append(select);
-     document.getElementById(`fbtSelect${bundleIndex}${index}`).addEventListener('change',(e)=>{
-     // console.log("e.target", e.target.value, e.target.selectedOptions[0].dataset.id,index,bundleIndex);
-     // originalPriceArray[index]=e.target.value;
-     originalPriceArray[index].price=e.target.value;
-     originalPriceArray[index].id=e.target.selectedOptions[0].dataset.id;
-     // console.log("before",addToCartArray)
-     // addToCartArray[index]={id:e.target.selectedOptions[0].dataset.id,quantity:1};
-     document.querySelector(`#productsPriceDiv${bundleIndex}${index}`).innerText= showAmountWithCurrency(e.target.value);
-       if(index != 0) {
-     document.querySelector(`#FBT_PRODUCT_CHECKBOX${bundleIndex}${index}`).dataset.selectedvariantprice= e.target.value;
-     document.querySelector(`#FBT_PRODUCT_CHECKBOX${bundleIndex}${index}`).dataset.selectedvariantid=e.target.selectedOptions[0].dataset.id;
-       }
-     document.querySelector(`.sd-fbt-mrp-span${bundleIndex}`).innerText=showAmountWithCurrency(parseFloat(calculateOriginalPrice()).toFixed(2))
-     document.querySelector(`.sd-fbt-sellingPrice-span${bundleIndex}`).innerText=showAmountWithCurrency(parseFloat(calculateSellingPrice()).toFixed(2))
-      // console.log("after",addToCartArray)      
-          })
-    
-        }
-        // if (index < totalProducts.length - 1) {
-        //    // console.log("indexxxx",index)
-        //     let BUNDLE_PLUS_BTN_DIV = document.createElement("div");
-        //     BUNDLE_PLUS_BTN_DIV.className = "sd-bundle-fbt-plusBtn-box";
-        //     let BUNDLE_PLUS_SPAN_SVG = document.createElement("span");
-        //     BUNDLE_PLUS_SPAN_SVG.className = "sd-bundle-plus";
-        //     BUNDLE_PLUS_SPAN_SVG.innerHTML = `<svg viewBox="64 64 896 896" focusable="false" data-icon="plus" width="1em" height="1em" fill="currentColor" aria-hidden="true"><defs><style></style></defs><path d="M482 152h60q8 0 8 8v704q0 8-8 8h-60q-8 0-8-8V160q0-8 8-8z"></path><path d="M176 474h672q8 0 8 8v60q0 8-8 8H176q-8 0-8-8v-60q0-8 8-8z"></path></svg>`;
-        //     BUNDLE_PLUS_BTN_DIV.append(BUNDLE_PLUS_SPAN_SVG);
-        //     FBT_PRODUCT_DETAILS_DIV.append(BUNDLE_PLUS_BTN_DIV);
-        //   }         
-        });
-  
-         
-     if (
-            el.bundleDetail.discountType == "freeShipping" ||
-            el.bundleDetail.discountType == "noDiscount"
-          ) {
-            // no changes
-          } else {
-            let discountAppliedText = document.createElement("div");
-  
-            discountAppliedText.innerText = el.translations.translation.discountApplied;
-            discountAppliedText.className = "sd-bundle-discount-applied-text";
-            FBT_ADDTOCART_TOTAL_DIV.append(discountAppliedText);
-          }
-        
-  
-        let FBT_TOTAL_DIV = document.createElement("div");
-        FBT_TOTAL_DIV.className = "sd-fbt-total-div";
-        FBT_ADDTOCART_TOTAL_DIV.append(FBT_TOTAL_DIV);
-  
-        let FBT_TOTAL_LABEL = document.createElement("span");
-        FBT_TOTAL_LABEL.className = "sd-fbt-total-label";
-        FBT_TOTAL_LABEL.innerText = "TOTAL ";
-        FBT_TOTAL_DIV.append(FBT_TOTAL_LABEL);
-  
-        let FBT_MRP_PRICE = document.createElement("del");
-        FBT_MRP_PRICE.className = `sd-fbt-mrp-span${bundleIndex}`;
-        FBT_TOTAL_DIV.append(FBT_MRP_PRICE);
-  
-        let FBT_SELLING_PRICE = document.createElement("span");
-        FBT_SELLING_PRICE.className = `sd-fbt-sellingPrice-span${bundleIndex}`;
-        FBT_TOTAL_DIV.append(FBT_SELLING_PRICE);  
-        
-        calculateOriginalPrice()  
-        calculateSellingPrice()
-        
-        let ADD_TO_CART_BUTTON = document.createElement("button");
-        ADD_TO_CART_BUTTON.className = `sd-bundle-fbt-add-to-cart-button${bundleIndex}`;
-        ADD_TO_CART_BUTTON.innerHTML = el.translations.translation.addToCartButton;
-        ADD_TO_CART_BUTTON.type = "button";
-        FBT_ADDTOCART_TOTAL_DIV.append(ADD_TO_CART_BUTTON);    
-        
-          // console.log("outside fbt click",originalPriceArray)           
-        
-        ADD_TO_CART_BUTTON.addEventListener("click", (e) => {
-          // console.log("inaddtocart fbt click",originalPriceArray)           
-           let count=0;         
-           let addToCartArray=[];
-          let itemsVariantIdArray=[];
-          let copyArray=JSON.parse(JSON.stringify(originalPriceArray))
-          // console.log("copyarray",copyArray)
-              copyArray.map(item=>{
-                      if(item.selected){ 
-                        count +=1 ;
-                        delete item.selected ;
-                        delete item.price ;
-                        itemsVariantIdArray.push(item.id);
-                        item.id=item.id.split('/').pop()
-                        addToCartArray.push(item)                      
-                    }
-                    })
-     
-             if(count<2){
-               return ;
-             }
-          
-  // console.log("itemvariantsarray",itemsVariantIdArray)
-  
-            let code = JSON.parse(localStorage.getItem("sd_bundle_data"));
-            let discountCodeId = code.discountCreateId ?? "";
-            // console.log(code,"create rule check discount codeid",discountCodeId);
-          
-            ADD_TO_CART_BUTTON.innerText = "";
-            let btnSpinner = document.createElement("div");
-            btnSpinner.className = "bundleBtnSpinner";
-            ADD_TO_CART_BUTTON.append(btnSpinner);
-  
-            btnSpinner.style.display = "block";         
-          
-            let formData = {
-              items: addToCartArray,
-              attributes: { SD_BUNDLE_ID: el._id },
-            };
-            // console.log(window.Shopify.routes.root,"formdata check =======>>>>>>>", formData);
-           
-            fetch(window.Shopify.routes.root + "cart/add.js", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(formData),
-            })
-              .then((response) => {
-                // console.log("check response", response);
-                return response.json();
-              })
-              .then((response) => {
-                let errorDiv = document.getElementsByClassName(
-                  "sd-bundle-error-message"
-                );
-                // console.log("check error div message", errorDiv);
-                errorDiv[0]?.remove();
-                if (response.status == 422 || response.status == 404) {
-                  ADD_TO_CART_BUTTON.innerText =
-                    el.translations.translation.addToCartButton;
-                  btnSpinner.remove();
-                  let errorMessage = document.createElement("div");
-                  errorMessage.className = "sd-bundle-error-message";
-                  FBT_DIV.append(errorMessage);
-                  errorMessage.innerText = response.description;
-                } else {
-                  fetch(window.Shopify.routes.root + "cart.js", {
-                    method: "GET",
-                    headers: {
-                      "Content-Type": "application/json",
-                    },
-                  })
-                    .then((response) => {
-                      // console.log("check response of else condition", response);
-                      return response.json();
-                    })
-                    .then((response) => {
-                      if (el.bundleDetail.discountType == "noDiscount") {
-                        fetch(`${server}/api/storefront/getBundleClick`, {
-                          method: "POST",
-                          headers: {
-                            "Content-Type": "application/json",
-                          },
-                          body: JSON.stringify({
-                            shop: Shopify.shop,
-                            bundleId: el._id,
-                          }),
-                        });
-                        let isDiscount =
-                          el.bundleDetail.discountType == "noDiscount"
-                            ? "noDiscount"
-                            : "Fix";
-                        const localData = JSON.parse(
-                          localStorage.getItem("sd_bundle_data")
-                        );
-  
-                        
-                        let sd_bundle_data = {
-                          discount_name: el.name,
-                          code: code.code,
-                          bundleId: el._id,
-                          discountType: isDiscount,
-                          variantsId: addToCartArray,
-                          discountCreateId: localData.discountCreateId,
-                          prefixCode: el.settings.discountLabel,
-                        };
-                        var jsonString = JSON.stringify(sd_bundle_data);
-                        localStorage.setItem("sd_bundle_data", jsonString);
-  
-                        btnSpinner.remove();
-                        window.location.assign(`https://${Shopify.shop}/cart`);
-                      } else {
-                        // console.log("15july==>")
-                      
-                        let finalPrice;
-                        switch (el.bundleDetail.discountType) {
-                          case "percent":
-                            let percentagepart = parseFloat(
-                              el.bundleDetail.discountValue
-                            );
-                            let percentage = (originalPrice * percentagepart) / 100;
-                            // result = total - percentage;
-                            finalPrice = percentage.toFixed(2);
-                            break;
-                          case "price":
-                            let pricePart = parseFloat(
-                              el.bundleDetail.discountValue
-                            );
-                            result = originalPrice - pricePart;
-                            finalPrice = result.toFixed(2);
-                            break;
-                          case "fixed":
-                            let fixedPart = parseFloat(
-                              el.bundleDetail.discountValue
-                            );
-                            finalPrice = fixedPart.toFixed(2);
-                            break;
-                          default:
-                            // // console.log("how are you ?");
-                            break;
-                        }
-                            
-                        // return ;
-                        let isDiscount =
-                          el.bundleDetail.discountType == "noDiscount"
-                            ? "noDiscount"
-                            : "Fix";
-                        let sd_bundle_data = {
-                          discount_name: el.name,
-                          code: `${el.settings.discountLabel}-${code.code}`,
-                          discountType: isDiscount,
-                          discountValue: finalPrice,                        
-                          variantsId: itemsVariantIdArray,
-                          // startDate: el.startdate,
-                          startDate: new Date(),
-                          // endDate: el.endDate,
-                          shop: Shopify.shop,
-                          bundleType: el.bundleDetail.discountType,
-                          totalPrice: originalPrice.toFixed(2),
-                          discountCreateId: discountCodeId,
-                        };
-                         // console.log("sd_bundle_data==>23july",sd_bundle_data)   
-                        // return ;
-                        fetch(server + "/api/storefront/createRule", {
-                          method: "POST",
-                          headers: {
-                            "Content-Type": "application/json",
-                          },
-                          body: JSON.stringify(sd_bundle_data),
-                        })
-                          .then((response) => response.json())
-                          .then((data) => {
-                            // console.log("data==>",data)
-                            if (data.status == 200) {
-                              fetch(`${server}/api/storefront/getBundleClick`, {
-                                method: "POST",
-                                headers: {
-                                  "Content-Type": "application/json",
-                                },
-                                body: JSON.stringify({
-                                  shop: Shopify.shop,
-                                  bundleId: el._id,
-                                }),
-                              });
-                              ADD_TO_CART_BUTTON.innerText =
-                                el.translations.translation.addToCartButton;
-                              btnSpinner.remove();
-  
-                              let sd_bundle_data = {
-                                discount_name: el.name,
-                                code: code.code,
-                                bundleId: el._id,
-                                discountType: isDiscount,
-                                variantsId: addToCartArray,
-                                discountCreateId: data.response,
-                                prefixCode: el.settings.discountLabel,
-                              };
-                              var jsonString = JSON.stringify(sd_bundle_data);
-                              localStorage.setItem("sd_bundle_data", jsonString);
-                              window.location.assign(
-                                `https://${Shopify.shop}/cart`
-                              );
-                            }
-                          });
-                      }
-                    })
-                    .catch((error) => {
-                      ADD_TO_CART_BUTTON.innerText =
-                        el.translations.translation.addToCartButton;
-                    });
-                }
-              })
-              .catch((error) => {
-                console.error("Error:", error);
-              });
-           });          
-    
-  }
-  
-       function execFbtClassic(){
-       let  originalPriceArray=[];
-        // let  addToCartArray=[];
-        let originalPrice ;
-        let sellingPrice ;
-       let selectedOfferedProductCount = 0;
-       let calculateOriginalPrice = () => {
-          total = 0;
-          originalPriceArray.map((item) => {
-            if(item.selected==true){
-              total += parseFloat(item.price);        
-            }
-            });
-           originalPrice=total
-           document.querySelector(`.sd-fbt-mrp-span${bundleIndex}`).innerText=showAmountWithCurrency(total.toFixed(2))
-         return total ; 
-        };  
-      
-         function calculateSellingPrice() {
-        let finalPrice = 0;      
-        if (el.bundleDetail.discountType == "percent") {
-          if (el.bundleDetail.discountValue > 100) {
-            finalPrice = 0;
-          } else {
-            finalPrice =
-              originalPrice -
-            originalPrice * (el.bundleDetail.discountValue / 100);
-          }
-        } else
-         if (el.bundleDetail.discountType == "fixed") {
-          if (parseFloat(el.bundleDetail.discountValue) > originalPrice) {
-            finalPrice = 0;
-          } else {
-            finalPrice = originalPrice - el.bundleDetail.discountValue;
-          }
-        }  else if (
-          el.bundleDetail.discountType == "freeShipping" ||
-          el.bundleDetail.discountType == "noDiscount"
-        ) {
-          finalPrice = originalPrice;
-        }
-      
-      // console.log('hello check final price****',finalPrice);
-      sellingPrice=finalPrice;
-      document.querySelector(`.sd-fbt-sellingPrice-span${bundleIndex}`).innerText=showAmountWithCurrency(finalPrice.toFixed(2))
-      return finalPrice;
-    }
-  
-        // console.log("infbt", totalProducts);
-        let FBT_DIV = document.createElement("div");
-        FBT_DIV.className = "sd-bundle-fbt-container";     
-        FBT_DIV.id = `FBT_DIV${bundleIndex}`;
-        mainDiv.append(FBT_DIV);
-  
-        let FBT_TITLE_DIV = document.createElement("div");
-        FBT_TITLE_DIV.className = "sd-bundle-fbt-title-div";
-        FBT_TITLE_DIV.innerText = el.title;
-        FBT_DIV.append(FBT_TITLE_DIV);
-  
-        //  let FBT_DESCRIPTION_DIV = document.createElement("div");
-        // FBT_DESCRIPTION_DIV.className = "sd-bundle-fbt-title-description";
-        // FBT_DESCRIPTION_DIV.innerText = el.description;
-        // FBT_DIV.append(FBT_DESCRIPTION_DIV);
-  
-        //..............................................fbt products details div............................................................//
-  
-        let FBT_BUNDLE_DETAILS_DIV = document.createElement("div");
-        FBT_BUNDLE_DETAILS_DIV.className = "sd-fbt-bundle-details-div";
-        FBT_DIV.append(FBT_BUNDLE_DETAILS_DIV);
-  
-        let FBT_PRODUCTS_IMAGE_DIV = document.createElement("div");
-        FBT_PRODUCTS_IMAGE_DIV.className = "sd-fbt-products-image-div";
-        FBT_BUNDLE_DETAILS_DIV.append(FBT_PRODUCTS_IMAGE_DIV);
-  
-       
-  
-         // return;
-  
-         
-        let FBT_PRODUCT_DETAILS_DIV = document.createElement("div");
-        FBT_PRODUCT_DETAILS_DIV.className = "sd-fbt-product-details-classic-div";
-        FBT_DIV.append(FBT_PRODUCT_DETAILS_DIV);
-  
-        totalProducts.map((item, index) => {         
-          originalPriceArray.push({price: el.bundleDetail.discountedProductType != 'all_products'  ? item.variants[0].price  : item.variants[0].price/100 ,id: el.bundleDetail.discountedProductType != 'all_products'  ? item.variants[0].id : ('gid://shopify/ProductVariant/' + item.variants[0].id) , selected:true ,quantity:1});
-          // console.log("originalPriceArray166",originalPriceArray)
-          // addToCartArray.push({id : item.variants[0].id ,quantity :1 })
-  
-              let GET_PRODUCT_IMAGE_DIV = document.createElement("div");
-          GET_PRODUCT_IMAGE_DIV.className = "sd-fbt-products-images-classic-div";       
-          GET_PRODUCT_IMAGE_DIV.id = `GET_PRODUCT_IMAGE_DIV${bundleIndex}${index}`;
-          FBT_PRODUCTS_IMAGE_DIV.append(GET_PRODUCT_IMAGE_DIV);
-  
-          let GET_PRODUCTS_IMAGE = document.createElement("img");
-          GET_PRODUCTS_IMAGE.className = "sd-bundle-fbt-imageThumbnails";
-          GET_PRODUCTS_IMAGE.src = el.bundleDetail.discountedProductType != 'all_products' ? `${item?.images[0]?.originalSrc}` : ('https:' +`${item?.images[0]}`)  ;
-          GET_PRODUCT_IMAGE_DIV.append(GET_PRODUCTS_IMAGE);
-  
-           if (index < totalProducts.length - 1) {
-           // console.log("indexxxx",index)
-            let BUNDLE_PLUS_BTN_DIV = document.createElement("div");
-            BUNDLE_PLUS_BTN_DIV.className = "sd-bundle-fbt-plusBtn-box";
-            let BUNDLE_PLUS_SPAN_SVG = document.createElement("span");
-            BUNDLE_PLUS_SPAN_SVG.className = "sd-bundle-plus";
-            BUNDLE_PLUS_SPAN_SVG.innerHTML = `<svg viewBox="64 64 896 896" focusable="false" data-icon="plus" width="1em" height="1em" fill="currentColor" aria-hidden="true"><defs><style></style></defs><path d="M482 152h60q8 0 8 8v704q0 8-8 8h-60q-8 0-8-8V160q0-8 8-8z"></path><path d="M176 474h672q8 0 8 8v60q0 8-8 8H176q-8 0-8-8v-60q0-8 8-8z"></path></svg>`;
-            BUNDLE_PLUS_BTN_DIV.append(BUNDLE_PLUS_SPAN_SVG);
-            FBT_PRODUCTS_IMAGE_DIV.append(BUNDLE_PLUS_BTN_DIV);
-          }  
-  
-         let SINGLE_PRODUCT_DIV_CONTAINER=document.createElement("div");
-          SINGLE_PRODUCT_DIV_CONTAINER.className = "sd-bundle-fbt-productItem-classic-container";
-          FBT_PRODUCT_DETAILS_DIV.append(SINGLE_PRODUCT_DIV_CONTAINER);
-  
-           let SINGLE_PRODUCT_DIV = document.createElement("div");
-          SINGLE_PRODUCT_DIV.className = "sd-bundle-fbt-productItem-classic-div";
-          SINGLE_PRODUCT_DIV_CONTAINER.append(SINGLE_PRODUCT_DIV);
-  
-                   if (index == 0) {
-         let FBT_PRODUCT_CHECKBOX_DIV=document.createElement("div");
-         FBT_PRODUCT_CHECKBOX_DIV.className='sd-bundle-fbt-checkbox-container-div';
-         SINGLE_PRODUCT_DIV.append(FBT_PRODUCT_CHECKBOX_DIV);
-         let FBT_PRODUCT_CHECKBOX = document.createElement("input");
-         FBT_PRODUCT_CHECKBOX.setAttribute("type", "checkbox");
-         FBT_PRODUCT_CHECKBOX.setAttribute("checked", "checked");
-         FBT_PRODUCT_CHECKBOX.className ="sd-bundle-fbt-product-checkbox-input";
-         FBT_PRODUCT_CHECKBOX.id =`FBT_PRODUCT_CHECKBOX${bundleIndex}${index}`;
-         FBT_PRODUCT_CHECKBOX_DIV.append(FBT_PRODUCT_CHECKBOX);
-         document.getElementById(`FBT_PRODUCT_CHECKBOX${bundleIndex}${index}`).addEventListener('click',(e)=>{   
-             e.preventDefault();        
-              let PopUpMessageDiv = document.createElement("div");
-              PopUpMessageDiv.id = `PopUpMessageDiv${bundleIndex}${index}`;
-              PopUpMessageDiv.className = "sd-bundle-mix-match-checkBox-popup-div";
-              FBT_PRODUCT_CHECKBOX_DIV.append(PopUpMessageDiv);
-              let PopupSpan = document.createElement("span");
-              PopupSpan.className = "sd-bundle-mix-match-checkBox-popup-span";
-              PopupSpan.innerText = "This product is required and can not be deselected";
-              PopUpMessageDiv.append(PopupSpan);
-              setTimeout(()=>{
-                document.getElementById(`PopUpMessageDiv${bundleIndex}${index}`).remove();
-              },2000);  
-           
-           }) 
-           }
-          if (index != 0) {
-            let FBT_PRODUCT_CHECKBOX = document.createElement("input");
-            FBT_PRODUCT_CHECKBOX.className =
-              "sd-bundle-fbt-product-checkbox-input";
-            FBT_PRODUCT_CHECKBOX.id =`FBT_PRODUCT_CHECKBOX${bundleIndex}${index}`;
-            FBT_PRODUCT_CHECKBOX.setAttribute("type", "checkbox");
-            FBT_PRODUCT_CHECKBOX.setAttribute("checked", "checked");
-            FBT_PRODUCT_CHECKBOX.dataset.bundleindex=bundleIndex;
-            if(totalProducts.length <3){
-            FBT_PRODUCT_CHECKBOX.disabled=true;
-            }
-            FBT_PRODUCT_CHECKBOX.dataset.selectedvariantprice =el.bundleDetail.discountedProductType != 'all_products'  ? item.variants[0].price  : item.variants[0].price/100 ;
-            FBT_PRODUCT_CHECKBOX.dataset.selectedvariantid = item.variants[0].id ;
-            SINGLE_PRODUCT_DIV.append(FBT_PRODUCT_CHECKBOX);
-            selectedOfferedProductCount += 1
-            document.getElementById(`FBT_PRODUCT_CHECKBOX${bundleIndex}${index}`).addEventListener('change',(e)=>{
-          // console.log("incheckboxeventlsietener",e.target.checked,index)
-                     if(e.target.checked){
-                       originalPriceArray[index].selected=true;
-                       // originalPriceArray.splice(index,0,document.getElementById(`FBT_PRODUCT_CHECKBOX${bundleIndex}${index}`).dataset.selectedvariantprice)
-                        // addToCartArray.splice(index,0,{id:document.getElementById(`FBT_PRODUCT_CHECKBOX${bundleIndex}${index}`).dataset.selectedvariantid})
-                       
-                       
-              document.querySelectorAll(`[data-bundleindex="${bundleIndex}"]`).forEach(item=>{
-                    if(item.checked==true && selectedOfferedProductCount == 1){ 
-                    item.disabled=false
-                    }
-                    
-                })
-                                     
-                       selectedOfferedProductCount += 1 ;
-                       
-                     }else{
-                       // console.log("originalPriceArray[index].selected",originalPriceArray[index].selected)
-                       originalPriceArray[index].selected=false;                                 
+              if(e.target.checked){
+                originalPriceArray[index].selected=true;
                 document.querySelectorAll(`[data-bundleindex="${bundleIndex}"]`).forEach(item=>{
-                    if(item.checked==true && selectedOfferedProductCount == 2){ 
+                  if(item.checked==true && selectedOfferedProductCount == 1){ 
+                    item.disabled=false
+                  }
+                })
+                selectedOfferedProductCount += 1 ;
+              }else{
+                originalPriceArray[index].selected=false;                                 
+                document.querySelectorAll(`[data-bundleindex="${bundleIndex}"]`).forEach(item=>{
+                  if(item.checked==true && selectedOfferedProductCount == 2){ 
                     item.disabled=true
-                    }                  
+                  }                  
                 })                     
-                        selectedOfferedProductCount -= 1 ;
-                     }
-              // console.log("originapricearray11",originalPriceArray)
-                       calculateOriginalPrice()
-                       calculateSellingPrice()
-              // console.log("selectedOfferedProductCount",selectedOfferedProductCount)
-            
-          })
+                selectedOfferedProductCount -= 1 ;
+              }
+              calculateOriginalPrice()
+              calculateSellingPrice()
+            })
           }
           
           let GET_PRODUCTS_NAME_PRICE_DIV = document.createElement("div");
           GET_PRODUCTS_NAME_PRICE_DIV.className = "sd-fbt-name-price-classic-div";
           SINGLE_PRODUCT_DIV.append(GET_PRODUCTS_NAME_PRICE_DIV);
-     
+      
           let GET_PRODUCTS_NAME = document.createElement("p");
           GET_PRODUCTS_NAME.className = "sd-fbt-products-name";       
           GET_PRODUCTS_NAME.innerText = item.title;
           GET_PRODUCTS_NAME_PRICE_DIV.append(GET_PRODUCTS_NAME);
-  
+
           let GET_PRODUCTS_PRICE = document.createElement("p");
           GET_PRODUCTS_PRICE.className = "sd-fbt-products-name";
           GET_PRODUCTS_PRICE.id = `productsPriceDiv${bundleIndex}${index}`;       
           GET_PRODUCTS_PRICE.innerText = el.bundleDetail.discountedProductType != 'all_products'  ? showAmountWithCurrency(item.variants[0].price)  : showAmountWithCurrency(item.variants[0].price/100);
           GET_PRODUCTS_NAME_PRICE_DIV.append(GET_PRODUCTS_PRICE);
-  
+
           if (item.variants.length > 1) {
-          const select = document.createElement("select");
-          select.className = "sd-bundle-fbt-select-classic-variant";
-          select.id=`fbtSelect${bundleIndex}${index}` 
-         
-          // Create and append the option elements
-          item.variants.forEach((optionData) => {
-            const option = document.createElement("option");
-            option.value = el.bundleDetail.discountedProductType != 'all_products'  ? optionData.price  : (optionData.price)/100;
-            option.text = optionData.title;
-            option.dataset.id= el.bundleDetail.discountedProductType != 'all_products'  ? optionData.id  : ( 'gid://shopify/ProductVariant/'+ optionData.id ); 
-            select.appendChild(option);
-            
-          });
-  
-          // Append the select element to the container
-          SINGLE_PRODUCT_DIV_CONTAINER.append(select);
-     document.getElementById(`fbtSelect${bundleIndex}${index}`).addEventListener('change',(e)=>{
-     // console.log("e.target", e.target.value, e.target.selectedOptions[0].dataset.id,index,bundleIndex);
-     // originalPriceArray[index]=e.target.value;
-     originalPriceArray[index].price=e.target.value;
-     originalPriceArray[index].id=e.target.selectedOptions[0].dataset.id;
-     // console.log("before",addToCartArray)
-     // addToCartArray[index]={id:e.target.selectedOptions[0].dataset.id,quantity:1};
-     document.querySelector(`#productsPriceDiv${bundleIndex}${index}`).innerText= showAmountWithCurrency(e.target.value);
-       if(index != 0) {
-     document.querySelector(`#FBT_PRODUCT_CHECKBOX${bundleIndex}${index}`).dataset.selectedvariantprice= e.target.value;
-     document.querySelector(`#FBT_PRODUCT_CHECKBOX${bundleIndex}${index}`).dataset.selectedvariantid=e.target.selectedOptions[0].dataset.id;
-       }
-     document.querySelector(`.sd-fbt-mrp-span${bundleIndex}`).innerText=showAmountWithCurrency(parseFloat(calculateOriginalPrice()).toFixed(2))
-     document.querySelector(`.sd-fbt-sellingPrice-span${bundleIndex}`).innerText=showAmountWithCurrency(parseFloat(calculateSellingPrice()).toFixed(2))
-      // console.log("after",addToCartArray)      
-          })
-    
-        }
+            const select = document.createElement("select");
+            select.className = "sd-bundle-fbt-select-classic-variant";
+            select.id=`fbtSelect${bundleIndex}${index}` 
           
+            item.variants.forEach((optionData) => {
+              const option = document.createElement("option");
+              option.value = el.bundleDetail.discountedProductType != 'all_products'  ? optionData.price  : (optionData.price)/100;
+              option.text = optionData.title;
+              option.dataset.id= el.bundleDetail.discountedProductType != 'all_products'  ? optionData.id  : ( 'gid://shopify/ProductVariant/'+ optionData.id ); 
+              select.appendChild(option);
+            });
+    
+            SINGLE_PRODUCT_DIV_CONTAINER.append(select);
+            document.getElementById(`fbtSelect${bundleIndex}${index}`).addEventListener('change',(e)=>{
+              originalPriceArray[index].price=e.target.value;
+              originalPriceArray[index].id=e.target.selectedOptions[0].dataset.id;
+              document.querySelector(`#productsPriceDiv${bundleIndex}${index}`).innerText= showAmountWithCurrency(e.target.value);
+                if(index != 0) {
+                  document.querySelector(`#FBT_PRODUCT_CHECKBOX${bundleIndex}${index}`).dataset.selectedvariantprice= e.target.value;
+                  document.querySelector(`#FBT_PRODUCT_CHECKBOX${bundleIndex}${index}`).dataset.selectedvariantid=e.target.selectedOptions[0].dataset.id;
+                }
+              document.querySelector(`.sd-fbt-mrp-span${bundleIndex}`).innerText=showAmountWithCurrency(parseFloat(calculateOriginalPrice()).toFixed(2))
+              document.querySelector(`.sd-fbt-sellingPrice-span${bundleIndex}`).innerText=showAmountWithCurrency(parseFloat(calculateSellingPrice()).toFixed(2))
+            })
+          }
         });      
-  
-  
+
         let FBT_ADDTOCART_TOTAL_DIV = document.createElement("div");
         FBT_ADDTOCART_TOTAL_DIV.className = "sd-fbt-addtocart-total-details-classic-div";
         FBT_DIV.append(FBT_ADDTOCART_TOTAL_DIV);
-         
-           if (
-            el.bundleDetail.discountType == "freeShipping" ||
-            el.bundleDetail.discountType == "noDiscount"
-          ) {
-            // no changes
-          } else {
-            let discountAppliedText = document.createElement("div");
-  
-            discountAppliedText.innerText = el.translations.translation.discountApplied;
-            discountAppliedText.className = "sd-bundle-discount-applied-text";
-            FBT_ADDTOCART_TOTAL_DIV.append(discountAppliedText);
-          }
+        if (
+        el.bundleDetail.discountType == "freeShipping" ||
+        el.bundleDetail.discountType == "noDiscount"
+        ) {
+          // no changes
+        } else {
+          let discountAppliedText = document.createElement("div");
+          discountAppliedText.innerText = el.translations.translation.discountApplied;
+          discountAppliedText.className = "sd-bundle-discount-applied-text";
+          FBT_ADDTOCART_TOTAL_DIV.append(discountAppliedText);
+        }
         let FBT_TOTAL_DIV = document.createElement("div");
         FBT_TOTAL_DIV.className = "sd-fbt-total-div";
         FBT_ADDTOCART_TOTAL_DIV.append(FBT_TOTAL_DIV);
-  
+
         let FBT_TOTAL_LABEL = document.createElement("span");
         FBT_TOTAL_LABEL.className = "sd-fbt-total-label";
         FBT_TOTAL_LABEL.innerText = "TOTAL ";
         FBT_TOTAL_DIV.append(FBT_TOTAL_LABEL);
-  
+
         let FBT_MRP_PRICE = document.createElement("del");
         FBT_MRP_PRICE.className = `sd-fbt-mrp-span${bundleIndex}`;
         FBT_TOTAL_DIV.append(FBT_MRP_PRICE);
-  
+
         let FBT_SELLING_PRICE = document.createElement("span");
         FBT_SELLING_PRICE.className = `sd-fbt-sellingPrice-span${bundleIndex}`;
         FBT_TOTAL_DIV.append(FBT_SELLING_PRICE);  
@@ -2896,254 +2781,240 @@ function createBundle(BUNDLE_DATA) {
         ADD_TO_CART_BUTTON.type = "button";
         FBT_ADDTOCART_TOTAL_DIV.append(ADD_TO_CART_BUTTON);    
         
-          // console.log("outside fbt click",originalPriceArray)           
-        // return ;
         ADD_TO_CART_BUTTON.addEventListener("click", (e) => {
-          // console.log("inaddtocart fbt click",originalPriceArray)           
-           let count=0;         
-           let addToCartArray=[];
+          let count=0;         
+          let addToCartArray=[];
           let itemsVariantIdArray=[];
           let copyArray=JSON.parse(JSON.stringify(originalPriceArray))
-          // console.log("copyarray",copyArray)
-              copyArray.map(item=>{
-                      if(item.selected){ 
-                        count +=1 ;
-                        delete item.selected ;
-                        delete item.price ;
-                        itemsVariantIdArray.push(item.id);
-                        item.id=item.id.split('/').pop()
-                        addToCartArray.push(item)                      
-                    }
-                    })
-     
-             if(count<2){
-               return ;
-             }
-          
-  // console.log("itemvariantsarray",itemsVariantIdArray)
-  
-            let code = JSON.parse(localStorage.getItem("sd_bundle_data"));
-            let discountCodeId = code.discountCreateId ?? "";
-            // console.log(code,"create rule check discount codeid",discountCodeId);
-          
-            ADD_TO_CART_BUTTON.innerText = "";
-            let btnSpinner = document.createElement("div");
-            btnSpinner.className = "bundleBtnSpinner";
-            ADD_TO_CART_BUTTON.append(btnSpinner);
-  
-            btnSpinner.style.display = "block";         
-          
-            let formData = {
-              items: addToCartArray,
-              attributes: { SD_BUNDLE_ID: el._id },
-            };
-            // console.log(window.Shopify.routes.root,"formdata check =======>>>>>>>", formData);
-           
-            fetch(window.Shopify.routes.root + "cart/add.js", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(formData),
-            })
-              .then((response) => {
-                // console.log("check response", response);
-                return response.json();
+          copyArray.map(item=>{
+            if(item.selected){ 
+              count +=1 ;
+              delete item.selected ;
+              delete item.price ;
+              itemsVariantIdArray.push(item.id);
+              item.id=item.id.split('/').pop()
+              addToCartArray.push(item)                      
+            }
+          })
+      
+          if(count<2){
+            return ;
+          }
+
+          let code = JSON.parse(localStorage.getItem("sd_bundle_data"));
+          let discountCodeId = code.discountCreateId ?? "";
+        
+          ADD_TO_CART_BUTTON.innerText = "";
+          let btnSpinner = document.createElement("div");
+          btnSpinner.className = "bundleBtnSpinner";
+          ADD_TO_CART_BUTTON.append(btnSpinner);
+          btnSpinner.style.display = "block";         
+          let formData = {
+            items: addToCartArray,
+            attributes: { SD_BUNDLE_ID: el._id },
+          };
+            
+          fetch(window.Shopify.routes.root + "cart/add.js", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          })
+          .then((response) => {
+            // console.log("check response", response);
+            return response.json();
+          })
+          .then((response) => {
+            let errorDiv = document.getElementsByClassName(
+              "sd-bundle-error-message"
+            );
+            // console.log("check error div message", errorDiv);
+            errorDiv[0]?.remove();
+            if (response.status == 422 || response.status == 404) {
+              ADD_TO_CART_BUTTON.innerText =
+                el.translations.translation.addToCartButton;
+              btnSpinner.remove();
+              let errorMessage = document.createElement("div");
+              errorMessage.className = "sd-bundle-error-message";
+              FBT_DIV.append(errorMessage);
+              errorMessage.innerText = response.description;
+            } else {
+              fetch(window.Shopify.routes.root + "cart.js", {
+                method: "GET",
+                headers: {
+                  "Content-Type": "application/json",
+                },
               })
-              .then((response) => {
-                let errorDiv = document.getElementsByClassName(
-                  "sd-bundle-error-message"
-                );
-                // console.log("check error div message", errorDiv);
-                errorDiv[0]?.remove();
-                if (response.status == 422 || response.status == 404) {
+                .then((response) => {
+                  // console.log("check response of else condition", response);
+                  return response.json();
+                })
+                .then((response) => {
+                  if (el.bundleDetail.discountType == "noDiscount") {
+                    fetch(`${server}/api/storefront/getBundleClick`, {
+                      method: "POST",
+                      headers: {
+                        "Content-Type": "application/json",
+                      },
+                      body: JSON.stringify({
+                        shop: Shopify.shop,
+                        bundleId: el._id,
+                      }),
+                    });
+                    let isDiscount =
+                      el.bundleDetail.discountType == "noDiscount"
+                        ? "noDiscount"
+                        : "Fix";
+                    const localData = JSON.parse(
+                      localStorage.getItem("sd_bundle_data")
+                    );
+
+                    
+                    let sd_bundle_data = {
+                      discount_name: el.name,
+                      code: code.code,
+                      bundleId: el._id,
+                      discountType: isDiscount,
+                      variantsId: addToCartArray,
+                      discountCreateId: localData.discountCreateId,
+                      prefixCode: el.settings.discountLabel,
+                    };
+                    var jsonString = JSON.stringify(sd_bundle_data);
+                    localStorage.setItem("sd_bundle_data", jsonString);
+
+                    btnSpinner.remove();
+                    window.location.assign(`https://${Shopify.shop}/cart`);
+                  } else {
+                    // console.log("15july==>")
+                  
+                    let finalPrice;
+                    switch (el.bundleDetail.discountType) {
+                      case "percent":
+                        let percentagepart = parseFloat(
+                          el.bundleDetail.discountValue
+                        );
+                        let percentage = (originalPrice * percentagepart) / 100;
+                        // result = total - percentage;
+                        finalPrice = percentage.toFixed(2);
+                        break;
+                      case "price":
+                        let pricePart = parseFloat(
+                          el.bundleDetail.discountValue
+                        );
+                        result = originalPrice - pricePart;
+                        finalPrice = result.toFixed(2);
+                        break;
+                      case "fixed":
+                        let fixedPart = parseFloat(
+                          el.bundleDetail.discountValue
+                        );
+                        finalPrice = fixedPart.toFixed(2);
+                        break;
+                      default:
+                        // // console.log("how are you ?");
+                        break;
+                    }
+                        
+                    // return ;
+                    let isDiscount =
+                      el.bundleDetail.discountType == "noDiscount"
+                        ? "noDiscount"
+                        : "Fix";
+                    let sd_bundle_data = {
+                      discount_name: el.name,
+                      code: `${el.settings.discountLabel}-${code.code}`,
+                      discountType: isDiscount,
+                      discountValue: finalPrice,                        
+                      variantsId: itemsVariantIdArray,
+                      // startDate: el.startdate,
+                      startDate: new Date(),
+                      // endDate: el.endDate,
+                      shop: Shopify.shop,
+                      bundleType: el.bundleDetail.discountType,
+                      totalPrice: originalPrice.toFixed(2),
+                      discountCreateId: discountCodeId,
+                    };
+                      // console.log("sd_bundle_data==>23july",sd_bundle_data)   
+                    // return ;
+                    fetch(server + "/api/storefront/createRule", {
+                      method: "POST",
+                      headers: {
+                        "Content-Type": "application/json",
+                      },
+                      body: JSON.stringify(sd_bundle_data),
+                    })
+                      .then((response) => response.json())
+                      .then((data) => {
+                        // console.log("data==>",data)
+                        if (data.status == 200) {
+                          fetch(`${server}/api/storefront/getBundleClick`, {
+                            method: "POST",
+                            headers: {
+                              "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({
+                              shop: Shopify.shop,
+                              bundleId: el._id,
+                            }),
+                          });
+                          ADD_TO_CART_BUTTON.innerText =
+                            el.translations.translation.addToCartButton;
+                          btnSpinner.remove();
+
+                          let sd_bundle_data = {
+                            discount_name: el.name,
+                            code: code.code,
+                            bundleId: el._id,
+                            discountType: isDiscount,
+                            variantsId: addToCartArray,
+                            discountCreateId: data.response,
+                            prefixCode: el.settings.discountLabel,
+                          };
+                          var jsonString = JSON.stringify(sd_bundle_data);
+                          localStorage.setItem("sd_bundle_data", jsonString);
+                          window.location.assign(
+                            `https://${Shopify.shop}/cart`
+                          );
+                        }
+                      });
+                  }
+                })
+                .catch((error) => {
                   ADD_TO_CART_BUTTON.innerText =
                     el.translations.translation.addToCartButton;
-                  btnSpinner.remove();
-                  let errorMessage = document.createElement("div");
-                  errorMessage.className = "sd-bundle-error-message";
-                  FBT_DIV.append(errorMessage);
-                  errorMessage.innerText = response.description;
-                } else {
-                  fetch(window.Shopify.routes.root + "cart.js", {
-                    method: "GET",
-                    headers: {
-                      "Content-Type": "application/json",
-                    },
-                  })
-                    .then((response) => {
-                      // console.log("check response of else condition", response);
-                      return response.json();
-                    })
-                    .then((response) => {
-                      if (el.bundleDetail.discountType == "noDiscount") {
-                        fetch(`${server}/api/storefront/getBundleClick`, {
-                          method: "POST",
-                          headers: {
-                            "Content-Type": "application/json",
-                          },
-                          body: JSON.stringify({
-                            shop: Shopify.shop,
-                            bundleId: el._id,
-                          }),
-                        });
-                        let isDiscount =
-                          el.bundleDetail.discountType == "noDiscount"
-                            ? "noDiscount"
-                            : "Fix";
-                        const localData = JSON.parse(
-                          localStorage.getItem("sd_bundle_data")
-                        );
+                });
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+        });          
+        }
   
-                        
-                        let sd_bundle_data = {
-                          discount_name: el.name,
-                          code: code.code,
-                          bundleId: el._id,
-                          discountType: isDiscount,
-                          variantsId: addToCartArray,
-                          discountCreateId: localData.discountCreateId,
-                          prefixCode: el.settings.discountLabel,
-                        };
-                        var jsonString = JSON.stringify(sd_bundle_data);
-                        localStorage.setItem("sd_bundle_data", jsonString);
-  
-                        btnSpinner.remove();
-                        window.location.assign(`https://${Shopify.shop}/cart`);
-                      } else {
-                        // console.log("15july==>")
-                      
-                        let finalPrice;
-                        switch (el.bundleDetail.discountType) {
-                          case "percent":
-                            let percentagepart = parseFloat(
-                              el.bundleDetail.discountValue
-                            );
-                            let percentage = (originalPrice * percentagepart) / 100;
-                            // result = total - percentage;
-                            finalPrice = percentage.toFixed(2);
-                            break;
-                          case "price":
-                            let pricePart = parseFloat(
-                              el.bundleDetail.discountValue
-                            );
-                            result = originalPrice - pricePart;
-                            finalPrice = result.toFixed(2);
-                            break;
-                          case "fixed":
-                            let fixedPart = parseFloat(
-                              el.bundleDetail.discountValue
-                            );
-                            finalPrice = fixedPart.toFixed(2);
-                            break;
-                          default:
-                            // // console.log("how are you ?");
-                            break;
-                        }
-                            
-                        // return ;
-                        let isDiscount =
-                          el.bundleDetail.discountType == "noDiscount"
-                            ? "noDiscount"
-                            : "Fix";
-                        let sd_bundle_data = {
-                          discount_name: el.name,
-                          code: `${el.settings.discountLabel}-${code.code}`,
-                          discountType: isDiscount,
-                          discountValue: finalPrice,                        
-                          variantsId: itemsVariantIdArray,
-                          // startDate: el.startdate,
-                          startDate: new Date(),
-                          // endDate: el.endDate,
-                          shop: Shopify.shop,
-                          bundleType: el.bundleDetail.discountType,
-                          totalPrice: originalPrice.toFixed(2),
-                          discountCreateId: discountCodeId,
-                        };
-                         // console.log("sd_bundle_data==>23july",sd_bundle_data)   
-                        // return ;
-                        fetch(server + "/api/storefront/createRule", {
-                          method: "POST",
-                          headers: {
-                            "Content-Type": "application/json",
-                          },
-                          body: JSON.stringify(sd_bundle_data),
-                        })
-                          .then((response) => response.json())
-                          .then((data) => {
-                            // console.log("data==>",data)
-                            if (data.status == 200) {
-                              fetch(`${server}/api/storefront/getBundleClick`, {
-                                method: "POST",
-                                headers: {
-                                  "Content-Type": "application/json",
-                                },
-                                body: JSON.stringify({
-                                  shop: Shopify.shop,
-                                  bundleId: el._id,
-                                }),
-                              });
-                              ADD_TO_CART_BUTTON.innerText =
-                                el.translations.translation.addToCartButton;
-                              btnSpinner.remove();
-  
-                              let sd_bundle_data = {
-                                discount_name: el.name,
-                                code: code.code,
-                                bundleId: el._id,
-                                discountType: isDiscount,
-                                variantsId: addToCartArray,
-                                discountCreateId: data.response,
-                                prefixCode: el.settings.discountLabel,
-                              };
-                              var jsonString = JSON.stringify(sd_bundle_data);
-                              localStorage.setItem("sd_bundle_data", jsonString);
-                              window.location.assign(
-                                `https://${Shopify.shop}/cart`
-                              );
-                            }
-                          });
-                      }
-                    })
-                    .catch((error) => {
-                      ADD_TO_CART_BUTTON.innerText =
-                        el.translations.translation.addToCartButton;
-                    });
-                }
-              })
-              .catch((error) => {
-                console.error("Error:", error);
-              });
-           });          
-    
-  }
-  
-        //------------------------------------------------------------------------------------------------ 
         if(el.bundleDetail.discountedProductType=='all_products'){
-         fetch(window.Shopify.routes.root + `recommendations/products.json?product_id=${sdBundleProductId}&limit=15&intent=related`)
-    .then(response => response.json())
-    .then(({ products }) => {
-      if (products.length > 0) {
-    let suggestedProducts=getRandomItems(products,3);
-        console.log("suggestedproducts",sdProductJson)
-        totalProducts=[sdProductJson,...suggestedProducts]
-        el.customization.frequentlyBoughtTogether.design =='modern' ?  execFbtModern() : execFbtClassic() ;      
-      }    
-    }
-  );
-          
+          fetch(window.Shopify.routes.root + `recommendations/products.json?product_id=${sdBundleProductId}&limit=15&intent=related`)
+            .then(response => response.json())
+            .then(({ products }) => {
+              if (products.length > 0) {
+            let suggestedProducts=getRandomItems(products,3);
+                console.log("suggestedproducts",sdProductJson)
+                totalProducts=[sdProductJson,...suggestedProducts]
+                el.customization.frequentlyBoughtTogether.design =='modern' ?  execFbtModern() : execFbtClassic() ;      
+              }    
+            }
+          );
         }
          
         if(el.bundleDetail.discountedProductType !='all_products'){
-         totalProducts = [
-          ...el.bundleDetail.mainProducts,
-          ...el.bundleDetail.offeredProducts,
-        ];
+          totalProducts = [
+            ...el.bundleDetail.mainProducts,
+            ...el.bundleDetail.offeredProducts,
+          ];
           el.customization.frequentlyBoughtTogether.design =='modern'?  execFbtModern() : execFbtClassic() ;  
-         }
-        
-        
+        }
       }
+    }
     else if (el.type == "productMixMatch") {
       if(el.plans.plan == "standard"){
         let OriginalPrice = 0;
