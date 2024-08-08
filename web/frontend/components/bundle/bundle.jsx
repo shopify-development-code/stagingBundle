@@ -88,8 +88,6 @@ const CreateBundle = () => {
       setSwitchLoading(false)
     }
   }
-  console.log("check krna hai data sahi aara hai ya nahi ....... ...... ", dashboardData);
-
 
   const getBundleData = async () => {
     const response = await postApi("api/admin/getPlans", data, app);
