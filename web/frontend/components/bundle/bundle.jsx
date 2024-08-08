@@ -88,7 +88,7 @@ const CreateBundle = () => {
       setSwitchLoading(false)
     }
   }
-console.log("check krna hai data sahi aara hai ya nahi ....... ...... ",dashboardData);
+  console.log("check krna hai data sahi aara hai ya nahi ....... ...... ", dashboardData);
 
 
   const getBundleData = async () => {
@@ -144,7 +144,11 @@ console.log("check krna hai data sahi aara hai ya nahi ....... ...... ",dashboar
       }
 
     } else if (type === 'fbt') {
-      navigate(`/FrequentlyBoughtTogether/${id}`);
+      if (plan == "standard") {
+        navigate(`/FrequentlyBoughtTogether/${id}`);
+      } else {
+        navigate("/plans")
+      }
     } else if (type == "productMixMatch") {
       if (plan == "standard") {
         navigate(`/ProductMixMatch/${id}`);
@@ -319,9 +323,9 @@ console.log("check krna hai data sahi aara hai ya nahi ....... ...... ",dashboar
           size="small"
           alt="products thumbnails"
         /> : null)}
-        
+
         {item.type == "bxgy" ?
-          [...item.bundleDetail?.xproducts,...item.bundleDetail?.yproducts]?.slice(0,3).map((ele,index) => {
+          [...item.bundleDetail?.xproducts, ...item.bundleDetail?.yproducts]?.slice(0, 3).map((ele, index) => {
             return (
               <div key={index} className="sd-bundle-dashboard-img">
                 {/* <img src={ele?.images ? ele.images[0].originalSrc : ele?.image ? ele.image.originalSrc:""} alt="" /> */}
@@ -340,7 +344,7 @@ console.log("check krna hai data sahi aara hai ya nahi ....... ...... ",dashboar
               </div>
             );
           })
-          : (item.type == "fbt" && item.bundleDetail.discountedProductType == "specific_product" ?  [...item.bundleDetail?.mainProducts,...item.bundleDetail?.offeredProducts] :item.bundleDetail?.products)?.slice(0,3).map((ele,index) => {
+          : (item.type == "fbt" && item.bundleDetail.discountedProductType == "specific_product" ? [...item.bundleDetail?.mainProducts, ...item.bundleDetail?.offeredProducts] : item.bundleDetail?.products)?.slice(0, 3).map((ele, index) => {
             return (
               <div key={index} className="sd-bundle-dashboard-img">
                 {/* <img src={ele?.images ? ele.images[0].originalSrc : ele?.image ? ele.image.originalSrc:""} alt="" /> */}
@@ -448,43 +452,14 @@ console.log("check krna hai data sahi aara hai ya nahi ....... ...... ",dashboar
                   : null,
     status: (
       <div>
-        {/* {(plan == "standard") && (item.type == "bxgy" || item.type == "productMixMatch") ? 
-          <> */}
         <Switch
           loading={switchIndex === index ? switchLoading : null}
           defaultChecked
           checked={item.status == "active" ? true : false}
           onChange={(e) => handleUpdateStatus(e, item._id, index)}
         />
-        {/* </>
-          :
-          <>
-            <Switch
-              loading={switchIndex === index ? switchLoading : null }
-              defaultChecked
-              checked={item.status == "active" ? true : false}
-              onChange={() => navigate('/plans')}
-            />
-          </>
-        } */}
       </div>
     ),
-    // :<div>
-    //     <Select
-    //   value={item.status}
-    //   style={{ width: 120 }}
-    //   bordered={false}
-    //   className="sd-dashboard-status"
-    //   options={[
-    //     { value: 'active', label: 'Active' },
-    //     { value: 'draft', label: 'Draft' },
-
-    //   ]}
-    //   onChange={(e)=>handleUpdateStatus(e,item._id)}
-    // />
-    // </div>,
-
-    // type: item.type == "productBundle" ? "Product Bundle" : item.type == "volumeBundle" ? "Volume Bundle" : item.type == "collectionMixMatch" ? "Collection Mix & Match" : "",
     type: item.type == "productBundle" ? "Product Bundle" : item.type == "volumeBundle" ? "Volume Bundle" : item.type == "collectionMixMatch" ? "Collection Mix & Match" : item.type == "productMixMatch" ? "Product Mix & Match" : item.type == "fbt" ? "Frequently Bought Together" : item.type == "bxgy" ? "BUY X GET Y" : "",
     performance: item.analytics.bundleSold + " " + "Sold",
   }));
@@ -511,7 +486,7 @@ console.log("check krna hai data sahi aara hai ya nahi ....... ...... ",dashboar
           alt="products thumbnails"
         /> : null)}
         {item.type == "bxgy" ?
-          [...item.bundleDetail?.xproducts,...item.bundleDetail?.yproducts]?.slice(0,3).map((ele, index) => {
+          [...item.bundleDetail?.xproducts, ...item.bundleDetail?.yproducts]?.slice(0, 3).map((ele, index) => {
             return (
               <div key={index} className="sd-bundle-dashboard-img">
                 {/* <img src={ele?.images ? ele.images[0].originalSrc : ele?.image ? ele.image.originalSrc:""} alt="" /> */}
@@ -530,7 +505,7 @@ console.log("check krna hai data sahi aara hai ya nahi ....... ...... ",dashboar
               </div>
             );
           })
-          : (item.type == "fbt" && item.bundleDetail.discountedProductType == "specific_product" ?  [...item.bundleDetail?.mainProducts,...item.bundleDetail?.offeredProducts] :item.bundleDetail?.products)?.slice(0,3).map((ele,index) => {
+          : (item.type == "fbt" && item.bundleDetail.discountedProductType == "specific_product" ? [...item.bundleDetail?.mainProducts, ...item.bundleDetail?.offeredProducts] : item.bundleDetail?.products)?.slice(0, 3).map((ele, index) => {
             return (
               <div key={index} className="sd-bundle-dashboard-img">
                 {/* <img src={ele?.images ? ele.images[0].originalSrc : ele?.image ? ele.image.originalSrc:""} alt="" /> */}
@@ -667,7 +642,7 @@ console.log("check krna hai data sahi aara hai ya nahi ....... ...... ",dashboar
           alt="products thumbnails"
         /> : null)}
         {item.type == "bxgy" ?
-          [...item.bundleDetail?.xproducts,...item.bundleDetail?.yproducts]?.slice(0,3).map((ele, index) => {
+          [...item.bundleDetail?.xproducts, ...item.bundleDetail?.yproducts]?.slice(0, 3).map((ele, index) => {
             return (
               <div key={index} className="sd-bundle-dashboard-img">
                 {/* <img src={ele?.images ? ele.images[0].originalSrc : ele?.image ? ele.image.originalSrc:""} alt="" /> */}
@@ -686,7 +661,7 @@ console.log("check krna hai data sahi aara hai ya nahi ....... ...... ",dashboar
               </div>
             );
           })
-          : (item.type == "fbt" && item.bundleDetail.discountedProductType == "specific_product" ?  [...item.bundleDetail?.mainProducts,...item.bundleDetail?.offeredProducts] :item.bundleDetail?.products)?.slice(0,3).map((ele,index) => {
+          : (item.type == "fbt" && item.bundleDetail.discountedProductType == "specific_product" ? [...item.bundleDetail?.mainProducts, ...item.bundleDetail?.offeredProducts] : item.bundleDetail?.products)?.slice(0, 3).map((ele, index) => {
             return (
               <div key={index} className="sd-bundle-dashboard-img">
                 {/* <img src={ele?.images ? ele.images[0].originalSrc : ele?.image ? ele.image.originalSrc:""} alt="" /> */}
@@ -768,7 +743,7 @@ console.log("check krna hai data sahi aara hai ya nahi ....... ...... ",dashboar
                     : item.bundleDetail.discountType == "noDiscount"
                       ? "No Discount"
                       : null
-                      : item.type == "fbt"
+            : item.type == "fbt"
               ? item.bundleDetail.discountType == "percent"
                 ? `${item.bundleDetail.discountValue}% off`
                 : item.bundleDetail.discountType == "fixed"
@@ -780,18 +755,17 @@ console.log("check krna hai data sahi aara hai ya nahi ....... ...... ",dashboar
                       : item.bundleDetail.discountType == "noDiscount"
                         ? "No Discount"
                         : null
-            : item.type == "bxgy"
-              ? item.bundleDetail.discountType == "percent"
-                ? `${item.bundleDetail.discountValue}% off`
-                : item.bundleDetail.discountType == "fixed"
-                  ? `Rs.${item.bundleDetail.discountValue} off`
-                  : item.bundleDetail.discountType == "free"
-                    ? "Free Gift"
-                    : null
-              : null,
+              : item.type == "bxgy"
+                ? item.bundleDetail.discountType == "percent"
+                  ? `${item.bundleDetail.discountValue}% off`
+                  : item.bundleDetail.discountType == "fixed"
+                    ? `Rs.${item.bundleDetail.discountValue} off`
+                    : item.bundleDetail.discountType == "free"
+                      ? "Free Gift"
+                      : null
+                : null,
     status: (
       <div>
-        {/* {plan == "standard" && ((item.type == "productMixMatch") || () )} */}
         <Switch
           defaultChecked
           checked={item.status == "active" ? true : false}
@@ -1116,25 +1090,39 @@ console.log("check krna hai data sahi aara hai ya nahi ....... ...... ",dashboar
                 </Card>
               </div>
             }
-            <div
-              className="sd-bundle-choose-collectionMixAndMatch"
-              onClick={() => navigate("/FrequentlyBoughtTogether/create")}
-            >
-              <Card
-                title="Frequently bought together"
-                style={{
-                  width: 300,
-                }}
+            {plan == "standard" ?
+              <div
+                className="sd-bundle-choose-collectionMixAndMatch"
+                onClick={() => navigate("/FrequentlyBoughtTogether/create")}
               >
-                <p className="sd-bundle-collectionMix-Icon">
-                  <TagsOutlined />
-                </p>
-                <p>
-                  Encourage the purchase of frequently paired products with a special discount.
-                </p>
-              </Card>
-
-            </div>
+                <Card
+                  title="Frequently bought together"
+                  style={{
+                    width: 300,
+                  }}
+                >
+                  <p className="sd-bundle-collectionMix-Icon">
+                    <TagsOutlined />
+                  </p>
+                  <p>
+                    Encourage the purchase of frequently paired products with a special discount.
+                  </p>
+                </Card>
+              </div>
+              :
+              <div className="sd-bundle-choose-collectionMixAndMatch" onClick={() => navigate("/plans")}>
+                <Card title={<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>Frequently bought together <LockMajor className="sd-bundle-premium1" /></div>}
+                  style={{width: 300}}
+                >
+                  <p className="sd-bundle-collectionMix-Icon">
+                    <TagsOutlined />
+                  </p>
+                  <p>
+                    Encourage the purchase of frequently paired products with a special discount.
+                  </p>
+                </Card>
+              </div>
+            }
           </div>
         </Modal>
       </div>
