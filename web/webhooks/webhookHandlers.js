@@ -159,7 +159,7 @@ export async function verifyWebhooks(req, res) {
             if (bundleId[0].value !== "") {
               let price = parseInt(bodyData.current_total_price);
               const filter = {
-                bundleId: new ObjectId(bundleId[0].value),
+                bundleId: ObjectId.createFromHexString(bundleId[0].value),
               };
               console.log("updateupdateupdate........",filter)
               const update = {
