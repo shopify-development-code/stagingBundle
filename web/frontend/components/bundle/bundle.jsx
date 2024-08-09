@@ -63,6 +63,7 @@ const CreateBundle = () => {
     const response = await postApi("/api/admin/getBundle", { shop: shop }, app);
     if (response.data.status === 200) {
       setDashboardData(response.data.response);
+      // setDraftPaidBundles(response.data.response)
       if (key == "onLoad") {
 
         setLoader(false);
@@ -90,16 +91,18 @@ const CreateBundle = () => {
   }
 
   const getBundleData = async () => {
-    const response = await postApi("api/admin/getPlans", data, app);
+    const response = await postApi("api/admin/getPlans", {}, app);
     if (response?.data?.status == 200) {
       setPlan(response?.data?.data?.plan)
+      setDraftPaidBundles()
     }
   };
   useEffect(() => {
     getBundle("onLoad");
-    getBundleData()
   }, []);
-
+  useEffect(()=>{
+    getBundleData()
+  },[plan])
   const setDraftPaidBundles = async() =>{
     if(plan != "standard"){
       let paidBundles = [] 
@@ -117,10 +120,6 @@ const CreateBundle = () => {
       }
     }
   }
-
-  useEffect(()=>{
-    setDraftPaidBundles()
-  },[dashboardData])
   
   const handleUpdateStatus = async (e, id, type, index) => {
     if((plan != "standard") && (type == "productMixMatch" || type == "bxgy" || type == "fbt")){
@@ -128,8 +127,6 @@ const CreateBundle = () => {
     }else{
       setSwitchLoading(true)
       setSwitchIndex(index)
-      console.log("test", id);
-  
       let data = {
         id: id,
         status: e === true ? "active" : "draft",
@@ -496,15 +493,14 @@ const CreateBundle = () => {
                   : null,
     status: (
       <div>
-       {(plan != "standard") && (item.type == "bxgy" || item.type == "fbt" || item.type == "productMixMatch")? <Tooltip title="Upgrade to 'Standard' plan">
+       {(plan != "standard") && ((item.type == "bxgy") || (item.type == "fbt") || (item.type == "productMixMatch"))? <Tooltip title="Upgrade to 'Standard' plan">
           <Switch
             loading={switchIndex === index ? switchLoading : null}
             defaultChecked
-            checked={item.status == "active" ? true : false}
+            checked={false }
             onChange={(e) => handleUpdateStatus(e, item._id,item.type, index)}
           />
         </Tooltip>
-
         :
           <Switch
             loading={switchIndex === index ? switchLoading : null}
@@ -664,11 +660,22 @@ const CreateBundle = () => {
                 : null,
     status: (
       <div>
-        <Switch
-          defaultChecked
-          checked={item.status == "active" ? true : false}
-          onChange={(e) => handleUpdateStatus(e, item._id, item.type, index)}
-        />
+        {(plan != "standard") && ((item.type == "bxgy") || (item.type == "fbt") || (item.type == "productMixMatch"))? <Tooltip title="Upgrade to 'Standard' plan">
+          <Switch
+            loading={switchIndex === index ? switchLoading : null}
+            defaultChecked
+            checked={false }
+            onChange={(e) => handleUpdateStatus(e, item._id,item.type, index)}
+          />
+        </Tooltip>
+        :
+          <Switch
+            loading={switchIndex === index ? switchLoading : null}
+            defaultChecked
+            checked={item.status == "active" ? true : false}
+            onChange={(e) => handleUpdateStatus(e, item._id,item.type, index)}
+          />
+       }
       </div>
     ),
     type: item.type == "productBundle" ? "Product Bundle" : item.type == "volumeBundle" ? "Volume Bundle" : item.type == "collectionMixMatch" ? "Collection Mix & Match" : item.type == "productMixMatch" ? "Product Mix & Match" : item.type == "fbt" ? "Frequently Bought Together" : item.type == "bxgy" ? "BUY X GET Y" : "",
@@ -821,11 +828,22 @@ const CreateBundle = () => {
                 : null,
     status: (
       <div>
-        <Switch
-          defaultChecked
-          checked={item.status == "active" ? true : false}
-          onChange={(e) => handleUpdateStatus(e, item._id, item.type, index)}
-        />
+        {(plan != "standard") && ((item.type == "bxgy") || (item.type == "fbt") || (item.type == "productMixMatch"))? <Tooltip title="Upgrade to 'Standard' plan">
+          <Switch
+            loading={switchIndex === index ? switchLoading : null}
+            defaultChecked
+            checked={false }
+            onChange={(e) => handleUpdateStatus(e, item._id,item.type, index)}
+          />
+        </Tooltip>
+        :
+          <Switch
+            loading={switchIndex === index ? switchLoading : null}
+            defaultChecked
+            checked={item.status == "active" ? true : false}
+            onChange={(e) => handleUpdateStatus(e, item._id,item.type, index)}
+          />
+       }
       </div>
     ),
     type: item.type == "productBundle" ? "Product Bundle" : item.type == "volumeBundle" ? "Volume Bundle" : item.type == "collectionMixMatch" ? "Collection Mix & Match" : item.type == "productMixMatch" ? "Product Mix & Match" : item.type == "fbt" ? "Frequently Bought Together" : item.type == "bxgy" ? "BUY X GET Y" : "",
@@ -867,16 +885,7 @@ const CreateBundle = () => {
   ];
 
   const handleSelected = (e) => {
-    if(plan != "standard"){
       setActionId(e);
-      dashboardData.filter((data,index)=>{
-        if(data._id == e){
-          console.log("data check",data);
-        }
-      })
-    }else{
-      setActionId(e);
-    }
     //   if(e.length){
     //  setShowAction(true)
     //   }else{
