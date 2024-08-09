@@ -38,6 +38,7 @@ const BuyXgetY = () => {
   const [alert, setAlert] = useState({ state: false, message: [], status: "" });
   const [pickerError, setPickerError] = useState([]);
   const [badgeText,setBadgeText] = useState("");
+  const [plan,setPlan] = useState("");
   const [data, setData] = useState({
     shop: shop,
     type: "bxgy",
@@ -67,8 +68,18 @@ const BuyXgetY = () => {
   // function to fetch  customization data from customization api and updating existing
   async function getCustomization() {
     try {
-      const response = await postApi("/api/admin/getCustomization", { shop: shop }, app);
-      setCustomizationData(response.data.response);
+      const planResponse = await postApi("/api/admin/getPlans", data, app);
+      if(planResponse?.data?.data?.plan != "standard"){
+        navigate('/plans')
+      }else{
+        const response = await postApi("/api/admin/getCustomization", { shop: shop }, app);
+        setCustomizationData(response.data.response);
+      }
+      // if (planResponse?.data?.status == 200) {
+      //   setPlan(planResponse?.data?.data?.plan)
+      // }
+      // console.log("dfcadf chsx h ",planResponse);
+      
     } catch (error) {
       console.log(error);
     }

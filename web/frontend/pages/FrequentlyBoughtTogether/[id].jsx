@@ -59,17 +59,22 @@ const FrequentlyBoughtTogether = () => {
   let [customizeData,setCustomizeData] =useState([]);
 
   let getCustomizeData = async() =>{
-    const response = await postApi("/api/admin/getCustomization",{},app)
-    setCustomizeData(response.data.response.frequentlyBoughtTogether);
+    const planResponse = await postApi("/api/admin/getPlans", data, app);
+    if(planResponse?.data?.data?.plan != "standard"){
+      navigate('/plans')
+    }else{
+      const response = await postApi("/api/admin/getCustomization",{},app)
+      setCustomizeData(response.data.response.frequentlyBoughtTogether);
+    }
   }
-
+  useEffect(()=>{
+    getCustomizeData();
+  },[]);
   useEffect(()=>{
     setSelectedProducts([...data.bundleDetail.mainProducts,...data.bundleDetail.offeredProducts])
   },[data]);
 
-  useEffect(()=>{
-    getCustomizeData();
-  },[]);
+ 
   // [item.variants[0].price]
   useEffect(()=>{
     let newArray = [];

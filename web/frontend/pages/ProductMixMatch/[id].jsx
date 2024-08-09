@@ -111,6 +111,15 @@ const ProductMixMatch = () => {
   };
   const [disableAddOptions,setDisableAddOptions] = useState(false);
 
+  const getPlans = async() =>{
+    const planResponse = await postApi("/api/admin/getPlans", data, app);
+      if(planResponse?.data?.data?.plan != "standard"){
+        navigate('/plans')
+      }
+  }
+  useEffect(()=>{
+    getPlans();
+  },[]);
   useEffect(()=>{
     data.bundleDetail.discountOptions.map((item,index)=>{
       {item.type==="freeShipping"?
@@ -713,7 +722,6 @@ const ProductMixMatch = () => {
     }
     // console.log("multiProductsSelectionProducts finally", "bundle product", data.bundleDetail.products)
   };
-console.log("multiProductsSelectionProducts.......",data.bundleDetail.requiredItem.enable);
   // const handlePlacementsSelection = (e, type) =>{
   //     if(type==="productPage"){
   //       setSelectedPlacement({...selectedPlacement,productPage:e.target.checked});

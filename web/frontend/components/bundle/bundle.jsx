@@ -9,8 +9,8 @@ import {
   Space,
   Switch,
   Skeleton,
-  Spin
-
+  Spin,
+  Tooltip 
 } from "antd";
 import {
   SearchOutlined,
@@ -44,7 +44,7 @@ const CreateBundle = () => {
   const app = useAppBridge();
   const [dashboardData, setDashboardData] = useState([]);
   const [allSearchTerm, setAllSearchTerm] = useState("");
-  const [plan, setPlan] = useState();
+  const [plan, setPlan] = useState("");
   const navigate = useNavigate();
   const [activeTabKey2, setActiveTabKey2] = useState("all");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -94,29 +94,54 @@ const CreateBundle = () => {
     if (response?.data?.status == 200) {
       setPlan(response?.data?.data?.plan)
     }
-  }
+  };
   useEffect(() => {
     getBundle("onLoad");
     getBundleData()
   }, []);
 
-  const handleUpdateStatus = async (e, id, index) => {
-    // setLoader(true);
-    setSwitchLoading(true)
-    setSwitchIndex(index)
-    console.log("test", id);
+  const setDraftPaidBundles = async() =>{
+    if(plan != "standard"){
+      let paidBundles = [] 
+      dashboardData.filter((data)=>{
+        if(data.type == "fbt" || data.type == "bxgy" || data.type == "productMixMatch"){
+          paidBundles.push(data._id);
+        }
+      })
+      if(paidBundles.length > 0){
+        let data = {
+          id: paidBundles,
+          status: "draft",
+        };
+        let response = await postApi("/api/admin/actionStatus", data, app);
+      }
+    }
+  }
 
-    let data = {
-      id: id,
-      status: e === true ? "active" : "draft",
-    };
-    const response = await postApi("api/admin/updateStatus", data, app);
-
-    if (response.data.status === 200) {
-      await getBundle("onSwitch");
-      setSwitchLoading(false)
-
-      toastNotification("success", "status updated successfully", "bottom");
+  useEffect(()=>{
+    setDraftPaidBundles()
+  },[dashboardData])
+  
+  const handleUpdateStatus = async (e, id, type, index) => {
+    if((plan != "standard") && (type == "productMixMatch" || type == "bxgy" || type == "fbt")){
+        navigate("/plans")
+    }else{
+      setSwitchLoading(true)
+      setSwitchIndex(index)
+      console.log("test", id);
+  
+      let data = {
+        id: id,
+        status: e === true ? "active" : "draft",
+      };
+      const response = await postApi("api/admin/updateStatus", data, app);
+  
+      if (response.data.status === 200) {
+        await getBundle("onSwitch");
+        setSwitchLoading(false)
+  
+        toastNotification("success", "status updated successfully", "bottom");
+      }
     }
   };
 
@@ -186,33 +211,54 @@ const CreateBundle = () => {
     }
   }
   async function handleActionActive() {
-    setSwitchLoading(true)
-    if (actionId.length) {
-      let data = {
-        id: actionId,
-        status: "active",
-      };
-      let response = await postApi("/api/admin/actionStatus", data, app);
-      if (response.data.status == 200) {
-        return (
-          setSwitchLoading(false),
-          await getBundle(),
-          toastNotification("success", "Successfully Active !", "bottom"),
-          setActionId([])
-        );
-      } else if (response.data.status == 503) {
-        return (
-          setSwitchLoading(false),
-          await getBundle(),
-          toastNotification(
-            "warning",
-            "Something went wrong ! please try again",
-            "bottom"
-          )
-        );
+    try {
+      setSwitchLoading(true);
+      let paidBundles = [];
+      if (plan !== "standard") {
+        paidBundles = dashboardData
+          .filter(data => actionId.includes(data._id) && 
+                         (data.type === "productBundle" || 
+                          data.type === "collectionMixMatch" || 
+                          data.type === "volumeBundle"))
+          .map(data => data._id);
+  
+        if (paidBundles.length > 0) {
+          const data = {
+            id: paidBundles,
+            status: "active",
+          };
+          const response = await postApi("/api/admin/actionStatus", data, app);
+          if (response.data.status === 200) {
+            toastNotification("success", "Successfully Active!", "bottom");
+          } else if (response.data.status === 503) {
+            toastNotification("warning", "Something went wrong! Please try again", "bottom");
+          }
+          await getBundle();
+          setActionId([]);
+        }
+      } else {
+        if (actionId.length > 0) {
+          const data = {
+            id: actionId,
+            status: "active",
+          };
+          const response = await postApi("/api/admin/actionStatus", data, app);
+          if (response.data.status === 200) {
+            toastNotification("success", "Successfully Active!", "bottom");
+          } else if (response.data.status === 503) {
+            toastNotification("warning", "Something went wrong! Please try again", "bottom");
+          }
+          await getBundle();
+          setActionId([]);
+        }
       }
+    } catch (error) {
+      toastNotification("error", "An error occurred. Please try again later", "bottom");
+    } finally {
+      setSwitchLoading(false);
     }
   }
+  
   async function handleActionDraft() {
     setSwitchLoading(true)
     if (actionId.length) {
@@ -450,12 +496,23 @@ const CreateBundle = () => {
                   : null,
     status: (
       <div>
-        <Switch
-          loading={switchIndex === index ? switchLoading : null}
-          defaultChecked
-          checked={item.status == "active" ? true : false}
-          onChange={(e) => handleUpdateStatus(e, item._id, index)}
-        />
+       {(plan != "standard") && (item.type == "bxgy" || item.type == "fbt" || item.type == "productMixMatch")? <Tooltip title="Upgrade to 'Standard' plan">
+          <Switch
+            loading={switchIndex === index ? switchLoading : null}
+            defaultChecked
+            checked={item.status == "active" ? true : false}
+            onChange={(e) => handleUpdateStatus(e, item._id,item.type, index)}
+          />
+        </Tooltip>
+
+        :
+          <Switch
+            loading={switchIndex === index ? switchLoading : null}
+            defaultChecked
+            checked={item.status == "active" ? true : false}
+            onChange={(e) => handleUpdateStatus(e, item._id,item.type, index)}
+          />
+       }
       </div>
     ),
     type: item.type == "productBundle" ? "Product Bundle" : item.type == "volumeBundle" ? "Volume Bundle" : item.type == "collectionMixMatch" ? "Collection Mix & Match" : item.type == "productMixMatch" ? "Product Mix & Match" : item.type == "fbt" ? "Frequently Bought Together" : item.type == "bxgy" ? "BUY X GET Y" : "",
@@ -610,7 +667,7 @@ const CreateBundle = () => {
         <Switch
           defaultChecked
           checked={item.status == "active" ? true : false}
-          onChange={(e) => handleUpdateStatus(e, item._id, index)}
+          onChange={(e) => handleUpdateStatus(e, item._id, item.type, index)}
         />
       </div>
     ),
@@ -767,7 +824,7 @@ const CreateBundle = () => {
         <Switch
           defaultChecked
           checked={item.status == "active" ? true : false}
-          onChange={(e) => handleUpdateStatus(e, item._id, index)}
+          onChange={(e) => handleUpdateStatus(e, item._id, item.type, index)}
         />
       </div>
     ),
@@ -810,7 +867,16 @@ const CreateBundle = () => {
   ];
 
   const handleSelected = (e) => {
-    setActionId(e);
+    if(plan != "standard"){
+      setActionId(e);
+      dashboardData.filter((data,index)=>{
+        if(data._id == e){
+          console.log("data check",data);
+        }
+      })
+    }else{
+      setActionId(e);
+    }
     //   if(e.length){
     //  setShowAction(true)
     //   }else{

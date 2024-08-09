@@ -231,7 +231,7 @@ export async function createProduct(session) {
     // }
   } catch (error) {
     console.log("error",error)
-    res.send({ message: "error", data: "Something went wrong" });
+    // res.send({ message: "error", data: "Something went wrong" });
   }
 }
 export async function getBundle (req,res){
