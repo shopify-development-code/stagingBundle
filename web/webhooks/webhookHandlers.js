@@ -291,8 +291,8 @@ export async function verifyWebhooks(req, res) {
             .update(req.body)
             .digest("base64");
           if (calculated_hmac == hmac_header) {
-            await shopInfoModel.deleteOne({ shop: shop });
-            await planModel.deleteOne({ shop: shop });
+            // await shopInfoModel.deleteOne({ shop: shop });
+            // await planModel.deleteOne({ shop: shop });
             shopify.config.sessionStorage.deleteSession("offline_robins-store1.myshopify");
             console.log(`Session cleared for shop: ${shop}`);
 
