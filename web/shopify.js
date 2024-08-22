@@ -3,11 +3,13 @@ import { shopifyApp } from "@shopify/shopify-app-express";
 import { SQLiteSessionStorage } from "@shopify/shopify-app-session-storage-sqlite";
 let { restResources } = await import(`@shopify/shopify-api/rest/admin/${LATEST_API_VERSION}`);
 import dotenv from "dotenv";
+import sqlite3 from 'sqlite3';
+
 dotenv.config();
-
-const DB_PATH = `${process.cwd()}/database.sqlite`;
+// console.log(LATEST_API_VERSION,"lop")
+// console.log("enter in ...........",SQLiteSessionStorage);
+const database = new sqlite3.Database(`${process.cwd()}/database.sqlite`);
 let scopes = process.env.SCOPES.split(",");
-
 const shopify = shopifyApp({
   api: {
     apiVersion: LATEST_API_VERSION,
@@ -26,7 +28,7 @@ const shopify = shopifyApp({
   webhooks: {
     path: "/api/webhooks",
   },
-  sessionStorage: new SQLiteSessionStorage(DB_PATH),
+  sessionStorage: new SQLiteSessionStorage(database),
 });
 
 export default shopify;

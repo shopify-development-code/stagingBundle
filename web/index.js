@@ -1,10 +1,8 @@
-
 import { join } from "path";
 import { readFileSync } from "fs";
 import express from "express";
 import serveStatic from "serve-static";
 import shopify from "./shopify.js";
-import productCreator from "./product-creator.js";
 import GDPRWebhookHandlers from "./gdpr.js";
 import cors from"cors";
 import api from "./backend/routes/api.js"
@@ -20,16 +18,16 @@ import { privacyPolicy } from "./backend/controllers/admin/adminController.js";
 
 import dotenv from "dotenv";
 import planModel from "./backend/models/plan.js";
-import discountIdModel from "./backend/models/discountIdSchema.js";
- 
- 
+
+
+
+console.log("inside index")
 dotenv.config();
 const app=express();
 const PORT = parseInt(process.env.BACKEND_PORT || process.env.PORT, 10);
 // app.use(express.static(`${process.cwd()}/../uploads`))
 
 app.post(shopify.config.webhooks.path, express.text({type: '*/*'}), verifyWebhooks);
-
 
 app.use(express.static(path.join(`${process.cwd()}`, '../uploads')))
 app.use(cors());
@@ -38,16 +36,21 @@ process.env.NODE_ENV === "production"
 ? `${process.cwd()}/web/frontend/dist`
 : `${process.cwd()}/frontend/`;
 
+
 db()
 
 console.log(process.env.HOST);
 app.get(shopify.config.auth.path, shopify.auth.begin());
+
+console.log("1 run",shopify.config.auth.path,shopify.auth.begin({
+  scope: ['read_products', 'write_orders'],
+}));
 app.get(
   shopify.config.auth.callbackPath,
   shopify.auth.callback(), async(req, res, next) => {
     const session = res.locals.shopify.session;
-    console.log(session, "session")
-  
+    console.log("fghf fhghg  ",session.accessToken.Session);
+    
     const customizationData =  await customizationModel.findOneAndUpdate({shop : session.shop}, {shop : session.shop, bundle:Customizations['bundle'],collectionMixMatch :Customizations['collectionMixMatch'],popUp :Customizations["popUp"],
        volume:Customizations["volume"],buyXgetY:Customizations["buyXgetY"],productMixMatch:Customizations["productMixMatch"],frequentlyBoughtTogether:Customizations["frequentlyBoughtTogether"]}, {upsert:true, new : true},)
        if(customizationData){
@@ -100,7 +103,7 @@ app.get(
       })
 
 
-     const page =  new shopify.api.rest.Page({session:session});
+    const page =  new shopify.api.rest.Page({session:session});
     page.title = "Collection Mix & Match";
     page.handle = "sd-Collection-Mix-&-Match"
     page.body_html = `<div id="sd-bundle-container"></div>`;
@@ -182,6 +185,7 @@ app.get(
     },
     shopify.redirectToShopifyOrAppRoot()
 );
+
 app.post(
   shopify.config.webhooks.path,
   shopify.processWebhooks({ webhookHandlers: GDPRWebhookHandlers })
@@ -193,6 +197,8 @@ app.use("/api/storefront",api)
 app.get("/api/privacy-policy", privacyPolicy)
 
 app.use("/api/*", shopify.validateAuthenticatedSession());
+console.log("dzfdhgfhdghfghedfhdfgdjsfhg");
+
 app.use("/api",api)
 
 app.use(serveStatic(STATIC_PATH, { index: false }));
