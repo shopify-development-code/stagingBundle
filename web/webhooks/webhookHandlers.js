@@ -8,15 +8,18 @@ import pageDataModel from "../backend/models/pageData.js";
 import settingModel from "../backend/models/settings.js";
 import translationModel from "../backend/models/translationSchema.js";
 import planModel from "../backend/models/plan.js";
+import shopify from "../shopify.js";
 
 export async function verifyWebhooks(req, res) {
   try {
-    console.log("verify webhooks");
+    console.log("verify webhooks",res.locals);
     const topic = req.headers["x-shopify-topic"];
     let shop = req.headers["x-shopify-shop-domain"];
     let hmac_header = req.headers["x-shopify-hmac-sha256"];
     const secretKey = process.env.SHOPIFY_API_SECRET;
     console.log("topic and shpop:-",topic,shop)
+    const session = await shopify.config.sessionStorage.findSessionsByShop(shop)
+
     switch (topic) {
       case "products/update":
         try {
@@ -290,6 +293,8 @@ export async function verifyWebhooks(req, res) {
           if (calculated_hmac == hmac_header) {
             await shopInfoModel.deleteOne({ shop: shop });
             await planModel.deleteOne({ shop: shop });
+            shopify.config.sessionStorage.deleteSession(session[0].id);
+            console.log(`Session cleared for shop: ${shop}`);
 
             res.status(200).send("success");
           } else {
