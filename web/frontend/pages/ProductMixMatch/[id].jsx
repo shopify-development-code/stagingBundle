@@ -113,15 +113,13 @@ const ProductMixMatch = () => {
   };
   const [disableAddOptions,setDisableAddOptions] = useState(false);
 
-  // const getPlans = async() =>{
-  //   const planResponse = await postApi("/api/admin/getPlans", data, app);
-  //     if(planResponse?.data?.data?.plan != "standard"){
-  //       navigate('/plans')
-  //     }
-  // }
-  // useEffect(()=>{
-  //   getPlans();
-  // },[]);
+  const getPlans = async() =>{
+    const planResponse = await postApi("/api/admin/getPlans", data, app);
+    setPlan(planResponse?.data?.data?.plan)
+  }
+  useEffect(()=>{
+    getPlans();
+  },[]);
   useEffect(()=>{
     data.bundleDetail.discountOptions.map((item,index)=>{
       {item.type==="freeShipping"?
@@ -215,9 +213,7 @@ const ProductMixMatch = () => {
     let body = { id: param.id };
     setSpinner(true);
     const response = await postApi("/api/admin/editBundle", body, app);
-    const planResponse = await postApi("/api/admin/getPlans", data, app); 
     if (response.status === 200) {
-      setPlan(planResponse?.data?.data?.plan)
       setData(response.data.response);
       setSpinner(false);
     }
