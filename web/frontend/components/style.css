@@ -2671,6 +2671,7 @@ nav.Polaris-Navigation {
 
 .ant-card.sd-plan {
     min-height: 470px;
+    height: 100%;
 }
 
 .sd-plan-inner {
@@ -2732,6 +2733,7 @@ nav.Polaris-Navigation {
 .sd-plan-inner .ant-card-body {
     position: relative;
     overflow: hidden;
+    min-height: 290px;
 }
 
 .sd-plan-active-plan {

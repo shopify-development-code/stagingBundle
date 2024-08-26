@@ -39,6 +39,8 @@ import toastNotification from "../commonSections/Toast";
 import { Text } from "@shopify/polaris";
 import { LockMajor } from "@shopify/polaris-icons";
 import CustomizationFBt from "./CustomizationFBTPreview";
+import Swal from 'sweetalert2'
+
 const CustomizationEditor = (props) => {
   const app = useAppBridge();
   const navigate = useNavigate();
@@ -53,7 +55,6 @@ const CustomizationEditor = (props) => {
 
   const handleCustomizeSave = async () => {
     setSpinner(true);
-
     const response = await postApi(
       "/api/admin/updateCustomization",
       props.data,
@@ -73,6 +74,21 @@ const CustomizationEditor = (props) => {
   };
   console.log("jfehedjfjkdhfjhdhfjdshfjk", props.data);
 
+  const popUpAlertFun = () => {
+    Swal.fire({
+      title: 'Upgrade to "Standard" Plan',
+      text: 'Do you want to continue',
+      icon: 'info',
+      showCancelButton: true,
+      confirmButtonText: 'Get Plan',
+      cancelButtonText: 'Cancel',
+      confirmButtonColor: "#59da7c"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        navigate('/plans')
+      }
+    });
+  }
   const handleDisplayOption = (e) => {
     if (e.target.value == "productPages") {
       setDisplayOption(e.target.value);
@@ -305,7 +321,7 @@ const CustomizationEditor = (props) => {
                     <p>Buy X get Y</p>
                   </div>
                   :
-                  <div className={`sd-bundle-listItem-common sd-bundle-listItem`} onClick={() => navigate("/plans")}>
+                  <div className={`sd-bundle-listItem-common sd-bundle-listItem`} onClick={popUpAlertFun}>
                     <CaretRightOutlined />
                     <AppstoreAddOutlined />
                     <Text>Buy X get Y <LockMajor className="sd-bundle-premium2" /></Text>
@@ -333,7 +349,7 @@ const CustomizationEditor = (props) => {
                   </div>
                   :
                   <>
-                    <div className={`sd-bundle-listItem-common sd-bundle-listItem`} onClick={() => navigate("/plans")}>
+                    <div className={`sd-bundle-listItem-common sd-bundle-listItem`} onClick={popUpAlertFun}>
                       <CaretRightOutlined />
                       <AppstoreAddOutlined />
                       <Text>Product Mix & Match <LockMajor className="sd-bundle-premium2" /></Text>
@@ -363,7 +379,7 @@ const CustomizationEditor = (props) => {
                     <p>Frequently Bought Together</p>
                   </div>
                   :
-                  <div className={`sd-bundle-listItem-common sd-bundle-listItem`} onClick={() => navigate("/plans")}>
+                  <div className={`sd-bundle-listItem-common sd-bundle-listItem`} onClick={popUpAlertFun}>
                     <CaretRightOutlined />
                     <AppstoreAddOutlined />
                     <Text>Frequently Bought Together <LockMajor className="sd-bundle-premium2" /></Text>
