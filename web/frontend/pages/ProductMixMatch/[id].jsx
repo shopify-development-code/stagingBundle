@@ -24,6 +24,7 @@ import ProductMixMatchPreview from "../../components/preview/ProductMixMatchPrev
 import DisplayOptions from "../../components/commonSections/displayOptions";
 import e from "cors";
 import { BuyPlanAlert } from "../../components/commonSections/buyPlansAlert";
+import Swal from 'sweetalert2'
 
 const ProductMixMatch = () => {
   let headerkey = "Create Product Mix & Match Bundle";
@@ -32,7 +33,7 @@ const ProductMixMatch = () => {
   const [alert, setAlert] = useState({ state: false, message: [], status: "" });
   const [spinner, setSpinner] = useState(false);
   const { shop, timeZone, currencyCode } = useAPI();
-  const[errorArray,setErrorArray]=useState([])
+  const[errorArray,setErrorArray]=useState([]);
   const [endPrice, setEndPrice] = useState(0);
   const [mrp, setMrp] = useState(0);
   const [showPrice, setShowPrice] = useState({});
@@ -223,7 +224,19 @@ const ProductMixMatch = () => {
   };
   const handleSave = async () => {
     if(plan != "standard"){
-      navigate('/plans')
+      Swal.fire({
+        title: 'Upgrade to "Standard" Plan',
+        text: 'Do you want to continue',
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonText: 'Get Plan',
+        cancelButtonText: 'Cancel',
+        confirmButtonColor: "#59da7c"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate('/plans')
+        }
+      });
     }else{
       console.log("enter in save function")
       let alertText = [];

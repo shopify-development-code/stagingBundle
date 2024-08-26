@@ -16,11 +16,13 @@ import { Spin } from 'antd';
 import FBTBundlePreview from '../../components/preview/fbtBundlePreview';
 import { alertCommon } from '../../components/helperFunctions';
 import AlertSection from '../../components/commonSections/AlertSection';
+import Swal from 'sweetalert2'
+
 const FrequentlyBoughtTogether = () => {
   const navigate = useNavigate();
   const param = useParams();
   const app = useAppBridge();
-
+  const [swalProps, setSwalProps] = useState({});
   let headerkey = "Frequently Bought Together"
   const { shop, timeZone, currencyCode } = useAPI();
   const [errorArray, setErrorArray] = useState([]);
@@ -185,7 +187,25 @@ const FrequentlyBoughtTogether = () => {
 
   const handleSave = async () => {
     if(plan != "standard"){
-      navigate('/plans')
+      // let alertText = [];
+      // alertText.push(
+      //   `Get Plan `
+      // );
+      // alertCommon(setAlert, alertText, "critical", false);
+      // navigate('/plans')
+      Swal.fire({
+        title: 'Upgrade to "Standard" Plan',
+        text: 'Do you want to continue',
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonText: 'Get Plan',
+        cancelButtonText: 'Cancel',
+        confirmButtonColor: "#59da7c"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate('/plans')
+        }
+      });
     }else{
       let alertText = [];
       let flag = true;   
