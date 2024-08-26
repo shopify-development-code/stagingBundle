@@ -301,6 +301,30 @@ const CreateBundle = () => {
     return check;
   }
 
+  const titleBXGY = plan === "standard" 
+    ? "Buy X get Y" 
+    : (
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        Buy X get Y <LockMajor className="sd-bundle-premium1" />
+      </div>
+    );
+
+    const titlePMM = plan === "standard" 
+    ? "Product mix & match" 
+    : (
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        Product mix & match <LockMajor className="sd-bundle-premium1" />
+      </div>
+    );
+
+    const titleFBT = plan === "standard" 
+    ? "Frequently bought together" 
+    : (
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        Frequently bought together <LockMajor className="sd-bundle-premium1" />
+      </div>
+    );
+
   const items = [
     {
       label: <a onClick={handleActionDelete}>Delete</a>,
@@ -1090,17 +1114,17 @@ const CreateBundle = () => {
                 </p>
               </Card>
             </div>
-            {plan == "standard" ?
+            {/* {plan == "standard" ? */}
               <div
                 className="sd-bundle-choose-collectionMixAndMatch"
                 onClick={() => navigate("/buyXgetY/create")}
               >
-                <Card
-                  title="Buy X get Y"
-                  style={{
-                    width: 300,
-                  }}
-                >
+                  <Card
+                    title = {titleBXGY}
+                    style={{
+                      width: 300,
+                    }}
+                  >
                   <p className="sd-bundle-collectionMix-Icon">
                     <GiftOutlined />
                   </p>
@@ -1110,7 +1134,7 @@ const CreateBundle = () => {
                 </Card>
 
               </div>
-              :
+              {/* :
               <div className="sd-bundle-choose-collectionMixAndMatch" onClick={() => navigate("/plans")}>
                 <Card
                   title={<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>Buy X get Y <LockMajor className="sd-bundle-premium1" /></div>}
@@ -1126,14 +1150,14 @@ const CreateBundle = () => {
                   </p>
                 </Card>
               </div>
-            }
-            {plan == "standard" ?
+            } */}
+            {/* {plan == "standard" ? */}
               <div
                 className="sd-bundle-choose-collectionMixAndMatch"
                 onClick={() => navigate("/productMixMatch/create")}
               >
                 <Card
-                  title="Product mix & match"
+                  title={titlePMM}
                   style={{
                     width: 300,
                   }}
@@ -1146,7 +1170,7 @@ const CreateBundle = () => {
                   </p>
                 </Card>
               </div>
-              :
+              {/* :
               <div className="sd-bundle-choose-collectionMixAndMatch" onClick={() => navigate("/plans")}>
                 <Card
                   title={<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>Product mix & match <LockMajor className="sd-bundle-premium1" /></div>}
@@ -1162,14 +1186,14 @@ const CreateBundle = () => {
                   </p>
                 </Card>
               </div>
-            }
-            {plan == "standard" ?
+            } */}
+            {/* {plan == "standard" ? */}
               <div
                 className="sd-bundle-choose-collectionMixAndMatch"
                 onClick={() => navigate("/FrequentlyBoughtTogether/create")}
               >
                 <Card
-                  title="Frequently bought together"
+                  title={titleFBT}
                   style={{
                     width: 300,
                   }}
@@ -1182,7 +1206,7 @@ const CreateBundle = () => {
                   </p>
                 </Card>
               </div>
-              :
+              {/* :
               <div className="sd-bundle-choose-collectionMixAndMatch" onClick={() => navigate("/plans")}>
                 <Card title={<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>Frequently bought together <LockMajor className="sd-bundle-premium1" /></div>}
                   style={{width: 300}}
@@ -1195,7 +1219,7 @@ const CreateBundle = () => {
                   </p>
                 </Card>
               </div>
-            }
+            } */}
           </div>
         </Modal>
       </div>

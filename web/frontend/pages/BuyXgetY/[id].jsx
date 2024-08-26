@@ -69,12 +69,13 @@ const BuyXgetY = () => {
   async function getCustomization() {
     try {
       const planResponse = await postApi("/api/admin/getPlans", data, app);
-      if(planResponse?.data?.data?.plan != "standard"){
-        navigate('/plans')
-      }else{
+      // if(planResponse?.data?.data?.plan != "standard"){
+        // navigate('/plans')
+        setPlan(planResponse?.data?.data?.plan)
+      // }else{
         const response = await postApi("/api/admin/getCustomization", { shop: shop }, app);
         setCustomizationData(response.data.response);
-      }
+      // }
       // if (planResponse?.data?.status == 200) {
       //   setPlan(planResponse?.data?.data?.plan)
       // }
@@ -388,89 +389,110 @@ const BuyXgetY = () => {
   }, []);
 
   const handleSave = async () => {
-    let alertText = [];
-    let flag = true;
-
-    let search1 = [];
-    data.bundleDetail.xproducts.map((item, index) => {
-      if (item.minimumOrder < 1 || item.minimumOrder == "") {
-        search1.push(index);
+    if(plan != "standard"){
+      navigate("/plans")
+    }else{
+      let alertText = [];
+      let flag = true;
+  
+      let search1 = [];
+      data.bundleDetail.xproducts.map((item, index) => {
+        if (item.minimumOrder < 1 || item.minimumOrder == "") {
+          search1.push(index);
+        }
+      });
+  
+      if (search1.length > 0 || data.bundleDetail.xproducts.length < 1) {
+        flag = false;
+        setPickerError(search1);
+        alertText.push(
+          "Minimum  products for bundle  is 1  & Minimum Order for each X product   can not be empty  or less than 1 ."
+        );
       }
-    });
-
-    if (search1.length > 0 || data.bundleDetail.xproducts.length < 1) {
-      flag = false;
-      setPickerError(search1);
-      alertText.push(
-        "Minimum  products for bundle  is 1  & Minimum Order for each X product   can not be empty  or less than 1 ."
-      );
-    }
-
-    let search2 = [];
-    data.bundleDetail.yproducts.map((item, index) => {
-      if (item.minimumOrder < 1 || item.minimumOrder == "") {
-        search2.push(index);
+  
+      let search2 = [];
+      data.bundleDetail.yproducts.map((item, index) => {
+        if (item.minimumOrder < 1 || item.minimumOrder == "") {
+          search2.push(index);
+        }
+      });
+      if (search2.length > 0 || data.bundleDetail.yproducts.length < 1) {
+        flag = false;
+        setPickerError(search2);
+        alertText.push(
+          "Minimum  products for bundle  is 1  & Minimum Order for each Y product  can not be empty  or less than 1 ."
+        );
       }
-    });
-    if (search2.length > 0 || data.bundleDetail.yproducts.length < 1) {
-      flag = false;
-      setPickerError(search2);
-      alertText.push(
-        "Minimum  products for bundle  is 1  & Minimum Order for each Y product  can not be empty  or less than 1 ."
-      );
-    }
-
-    if (data.name.trim() == "") {
-      if (!errorArray.includes("bundleName")) {
-        setErrorArray((prev) => [...prev, "bundleName"]);
+  
+      if (data.name.trim() == "") {
+        if (!errorArray.includes("bundleName")) {
+          setErrorArray((prev) => [...prev, "bundleName"]);
+        }
+  
+        flag = false;
+        alertText.push("Please provide name of bundle");
       }
-
-      flag = false;
-      alertText.push("Please provide name of bundle");
-    }
-    if (data.title.trim() == "") {
-      if (!errorArray.includes("bundleTitle")) {
-        setErrorArray((prev) => [...prev, "bundleTitle"]);
+      if (data.title.trim() == "") {
+        if (!errorArray.includes("bundleTitle")) {
+          setErrorArray((prev) => [...prev, "bundleTitle"]);
+        }
+        flag = false;
+        alertText.push("Please provide title of bundle");
       }
-      flag = false;
-      alertText.push("Please provide title of bundle");
-    }
-
-    if(data.bundleDetail.display.productPagesList.length <= 0){
-      flag= false;
-      alertText.push("Please select at least one product from display options");
-    }
-
-    if (data.description == "") {
-      if (!errorArray.includes("bundleDescription")) {
-        setErrorArray((prev) => [...prev, "bundleDescription"]);
+  
+      if(data.bundleDetail.display.productPagesList.length <= 0){
+        flag= false;
+        alertText.push("Please select at least one product from display options");
       }
-      flag = false;
-      alertText.push("Please provide description of bundle");
-    }
-
-    // if (data.startdate == "") {
-    //   if (!errorArray.includes("startdate")) {
-    //     setErrorArray((prev) => [...prev, "startdate"]);
-    //   }
-    //   flag = false;
-    //   alertText.push("Please select start date & time");
-    // }
-    if (flag == false) {
-      alertCommon(setAlert, alertText, "critical", false);
-    }
-
-    if (flag == true) {
-      setSpinner(true);
-      setErrorArray("");
-      setPickerError([]);
-      if (param.id == "create") {
-        try {
-          // console.log(" in the try");
-          const response = await postApi("/api/admin/createBundle", data, app);
+  
+      if (data.description == "") {
+        if (!errorArray.includes("bundleDescription")) {
+          setErrorArray((prev) => [...prev, "bundleDescription"]);
+        }
+        flag = false;
+        alertText.push("Please provide description of bundle");
+      }
+  
+      // if (data.startdate == "") {
+      //   if (!errorArray.includes("startdate")) {
+      //     setErrorArray((prev) => [...prev, "startdate"]);
+      //   }
+      //   flag = false;
+      //   alertText.push("Please select start date & time");
+      // }
+      if (flag == false) {
+        alertCommon(setAlert, alertText, "critical", false);
+      }
+  
+      if (flag == true) {
+        setSpinner(true);
+        setErrorArray("");
+        setPickerError([]);
+        if (param.id == "create") {
+          try {
+            // console.log(" in the try");
+            const response = await postApi("/api/admin/createBundle", data, app);
+            if (response.data.status === 200) {
+              return (
+                toastNotification("success", "Saved", "bottom"),
+                navigate("/bundle")
+              );
+            } else {
+              return alertCommon(
+                setAlert,
+                ["Something went wrong"],
+                "warning",
+                false
+              );
+            }
+          } catch (err) {
+            console.log(err);
+          }
+        } else {
+          const response = await postApi("/api/admin/updateBundle", data, app);
           if (response.data.status === 200) {
             return (
-              toastNotification("success", "Saved", "bottom"),
+              toastNotification("success", "Update successfully", "bottom"),
               navigate("/bundle")
             );
           } else {
@@ -481,23 +503,6 @@ const BuyXgetY = () => {
               false
             );
           }
-        } catch (err) {
-          console.log(err);
-        }
-      } else {
-        const response = await postApi("/api/admin/updateBundle", data, app);
-        if (response.data.status === 200) {
-          return (
-            toastNotification("success", "Update successfully", "bottom"),
-            navigate("/bundle")
-          );
-        } else {
-          return alertCommon(
-            setAlert,
-            ["Something went wrong"],
-            "warning",
-            false
-          );
         }
       }
     }

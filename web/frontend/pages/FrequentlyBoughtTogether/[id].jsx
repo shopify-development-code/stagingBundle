@@ -57,15 +57,17 @@ const FrequentlyBoughtTogether = () => {
   let [mainProductLength, setMainProductLength] = useState(0);
   let [selectedProducts,setSelectedProducts] = useState([]);
   let [customizeData,setCustomizeData] =useState([]);
+  const [plan,setPlan] = useState("");
 
   let getCustomizeData = async() =>{
     const planResponse = await postApi("/api/admin/getPlans", data, app);
-    if(planResponse?.data?.data?.plan != "standard"){
-      navigate('/plans')
-    }else{
+    // if(planResponse?.data?.data?.plan != "standard"){
+    //   navigate('/plans')
+    // }else{
+      setPlan(planResponse?.data?.data?.plan)
       const response = await postApi("/api/admin/getCustomization",{},app)
       setCustomizeData(response.data.response.frequentlyBoughtTogether);
-    }
+    // }
   }
   useEffect(()=>{
     getCustomizeData();
@@ -182,60 +184,81 @@ const FrequentlyBoughtTogether = () => {
 
 
   const handleSave = async () => {
-    let alertText = [];
-    let flag = true;   
-
-if(data.bundleDetail.discountedProductType=='specific_product'){
-    if ( data.bundleDetail.mainProducts.length < 1) {
-      flag = false;
-     alertText.push(
-        "Add a product to Main product."
-      );
-    }
-    if(data.bundleDetail.offeredProducts.length > 3){
-      flag = false;
-      alertText.push(
-         "Maximum number of offered products  allowed is 3."
-       );
-    }
-    if(data.bundleDetail.offeredProducts.length < 1){
-      flag = false;
-      alertText.push(
-         "Add at least 1 offered product"
-       );
-    }
-  }
-    if (data.name.trim() == "") {
-      if (!errorArray.includes("bundleName")) {
-        setErrorArray((prev) => [...prev, "bundleName"]);
+    if(plan != "standard"){
+      navigate('/plans')
+    }else{
+      let alertText = [];
+      let flag = true;   
+  
+      if(data.bundleDetail.discountedProductType=='specific_product'){
+        if ( data.bundleDetail.mainProducts.length < 1) {
+          flag = false;
+        alertText.push(
+            "Add a product to Main product."
+          );
+        }
+        if(data.bundleDetail.offeredProducts.length > 3){
+          flag = false;
+          alertText.push(
+            "Maximum number of offered products  allowed is 3."
+          );
+        }
+        if(data.bundleDetail.offeredProducts.length < 1){
+          flag = false;
+          alertText.push(
+            "Add at least 1 offered product"
+          );
+        }
       }
-
-      flag = false;
-      alertText.push("Please provide name of bundle");
-    }
-    if (data.title.trim() == "") {
-      if (!errorArray.includes("bundleTitle")) {
-        setErrorArray((prev) => [...prev, "bundleTitle"]);
+      if (data.name.trim() == "") {
+        if (!errorArray.includes("bundleName")) {
+          setErrorArray((prev) => [...prev, "bundleName"]);
+        }
+  
+        flag = false;
+        alertText.push("Please provide name of bundle");
       }
-      flag = false;
-      alertText.push("Please provide title of bundle");
-    }
-
-    if (flag == false) {      
-      alertCommon(setAlert, alertText, "critical", false);
-    }
-
-    if (flag == true) {
-      setSpinner(true);
-      setErrorArray("");
-
-      if (param.id == "create") {
-        try {
-          
-          const response = await postApi("/api/admin/createBundle", data, app);
+      if (data.title.trim() == "") {
+        if (!errorArray.includes("bundleTitle")) {
+          setErrorArray((prev) => [...prev, "bundleTitle"]);
+        }
+        flag = false;
+        alertText.push("Please provide title of bundle");
+      }
+  
+      if (flag == false) {      
+        alertCommon(setAlert, alertText, "critical", false);
+      }
+  
+      if (flag == true) {
+        setSpinner(true);
+        setErrorArray("");
+  
+        if (param.id == "create") {
+          try {
+            
+            const response = await postApi("/api/admin/createBundle", data, app);
+            if (response.data.status === 200) {
+              return (
+                toastNotification("success", "Saved", "bottom"),
+                navigate("/bundle")
+              );
+            } else {
+              return alertCommon(
+                setAlert,
+                ["Something went wrong"],
+                "warning",
+                false
+              );
+            }
+          } catch (err) {
+            console.log(err);
+          }
+        } else {
+          const response = await postApi("/api/admin/updateBundle", data, app);
           if (response.data.status === 200) {
             return (
-              toastNotification("success", "Saved", "bottom"),
+              toastNotification("success", "Update successfully", "bottom"),
               navigate("/bundle")
             );
           } else {
@@ -246,23 +269,6 @@ if(data.bundleDetail.discountedProductType=='specific_product'){
               false
             );
           }
-        } catch (err) {
-          console.log(err);
-        }
-      } else {
-        const response = await postApi("/api/admin/updateBundle", data, app);
-        if (response.data.status === 200) {
-          return (
-            toastNotification("success", "Update successfully", "bottom"),
-            navigate("/bundle")
-          );
-        } else {
-          return alertCommon(
-            setAlert,
-            ["Something went wrong"],
-            "warning",
-            false
-          );
         }
       }
     }
