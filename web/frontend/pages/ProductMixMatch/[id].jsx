@@ -102,6 +102,7 @@ const ProductMixMatch = () => {
     productPage:true,
     bundlePage:false
   });
+  const [plan,setPlan] = useState("");
   const temp = {
     setPid,
     setAntModal,
@@ -111,15 +112,15 @@ const ProductMixMatch = () => {
   };
   const [disableAddOptions,setDisableAddOptions] = useState(false);
 
-  const getPlans = async() =>{
-    const planResponse = await postApi("/api/admin/getPlans", data, app);
-      if(planResponse?.data?.data?.plan != "standard"){
-        navigate('/plans')
-      }
-  }
-  useEffect(()=>{
-    getPlans();
-  },[]);
+  // const getPlans = async() =>{
+  //   const planResponse = await postApi("/api/admin/getPlans", data, app);
+  //     if(planResponse?.data?.data?.plan != "standard"){
+  //       navigate('/plans')
+  //     }
+  // }
+  // useEffect(()=>{
+  //   getPlans();
+  // },[]);
   useEffect(()=>{
     data.bundleDetail.discountOptions.map((item,index)=>{
       {item.type==="freeShipping"?
@@ -213,77 +214,100 @@ const ProductMixMatch = () => {
     let body = { id: param.id };
     setSpinner(true);
     const response = await postApi("/api/admin/editBundle", body, app);
+    const planResponse = await postApi("/api/admin/getPlans", data, app); 
     if (response.status === 200) {
+      setPlan(planResponse?.data?.data?.plan)
       setData(response.data.response);
       setSpinner(false);
     }
   };
   const handleSave = async () => {
-    console.log("enter in save function")
-    let alertText = [];
-    let flag = true;
-
-    if (data.bundleDetail.products.length < 2) {
-      flag = false;
-      alertText.push(
-        "Minimum  products for bundle  is 2."
-      );
-    }else if((data.bundleDetail.products.length<data.bundleDetail.discountOptions[data.bundleDetail.discountOptions.length-1].quantity) && (data.bundleDetail.multiItemSelection.enable === false)){
-      flag = false;
-      alertText.push(`Please select number of products which is equal to or greater than ${data.bundleDetail.discountOptions[data.bundleDetail.discountOptions.length-1].quantity}, Otherwise enable multi select option`);
-    }
-
-    if(data.bundleDetail.display.productPagesList.length <= 0){
-      flag= false;
-      alertText.push("Please select at least one product from display options");
-    }
-
-    if (data.name.trim() == "") {
-      flag = false;
-      alertText.push("Please provide name of bundle");
-    }
-
-    if (data.title.trim() == "") {
-      flag = false;
-      alertText.push("Please provide title of bundle");
-    }
-      // if (data.startdate == "") {
-        //   if (!errorArray.includes("startdate")) {
-          //     setErrorArray((prev) => [...prev, "startdate"]);
-          //   }
-          //   flag = false;
-          //   alertText.push("Please select start date & time");
-          // }
-    if(errorArray.length != 0){
-      console.log("enter in flag false section------->>>>>>------>>>>>");
-      flag = false;
-      alertText.push("Options quantities must be in increasing order");
-    }
-    if(data.bundleDetail.multiItemSelection.enable == true && data.bundleDetail.multiProductsArray.multiProductArray.length == 0){
-      console.log("enter in new functions");
-      flag = false;
-      alertText.push(`You have enabled multi select option but not selected any product, Please select at least one product`);
-    }
-    if(data.bundleDetail.requiredItem.enable == true && data.bundleDetail.requiredProductsArray.requiredProductArray.length == 0){
-      console.log("enter in requiredItem functions");
-      flag = false;
-      alertText.push(`You have enabled required item option but not selected any product, Please select at least one product`);
-    }
-    if (flag == false) {
-      alertCommon(setAlert, alertText, "critical", false);
-    }
-
-
-    if (flag == true) {
-      setSpinner(true);
-      setErrorArray("");
-      setPickerError([]);
-      console.log("enter in else section=====-----=====------=====>>>>>>>>>")
-      if (param.id == "create") {
-        try{
-          const response = await postApi("/api/admin/createBundle", data, app);
+    if(plan != "standard"){
+      navigate('/plans')
+    }else{
+      console.log("enter in save function")
+      let alertText = [];
+      let flag = true;
+  
+      if (data.bundleDetail.products.length < 2) {
+        flag = false;
+        alertText.push(
+          "Minimum  products for bundle  is 2."
+        );
+      }else if((data.bundleDetail.products.length<data.bundleDetail.discountOptions[data.bundleDetail.discountOptions.length-1].quantity) && (data.bundleDetail.multiItemSelection.enable === false)){
+        flag = false;
+        alertText.push(`Please select number of products which is equal to or greater than ${data.bundleDetail.discountOptions[data.bundleDetail.discountOptions.length-1].quantity}, Otherwise enable multi select option`);
+      }
+  
+      if(data.bundleDetail.display.productPagesList.length <= 0){
+        flag= false;
+        alertText.push("Please select at least one product from display options");
+      }
+  
+      if (data.name.trim() == "") {
+        flag = false;
+        alertText.push("Please provide name of bundle");
+      }
+  
+      if (data.title.trim() == "") {
+        flag = false;
+        alertText.push("Please provide title of bundle");
+      }
+        // if (data.startdate == "") {
+          //   if (!errorArray.includes("startdate")) {
+            //     setErrorArray((prev) => [...prev, "startdate"]);
+            //   }
+            //   flag = false;
+            //   alertText.push("Please select start date & time");
+            // }
+      if(errorArray.length != 0){
+        console.log("enter in flag false section------->>>>>>------>>>>>");
+        flag = false;
+        alertText.push("Options quantities must be in increasing order");
+      }
+      if(data.bundleDetail.multiItemSelection.enable == true && data.bundleDetail.multiProductsArray.multiProductArray.length == 0){
+        console.log("enter in new functions");
+        flag = false;
+        alertText.push(`You have enabled multi select option but not selected any product, Please select at least one product`);
+      }
+      if(data.bundleDetail.requiredItem.enable == true && data.bundleDetail.requiredProductsArray.requiredProductArray.length == 0){
+        console.log("enter in requiredItem functions");
+        flag = false;
+        alertText.push(`You have enabled required item option but not selected any product, Please select at least one product`);
+      }
+      if (flag == false) {
+        alertCommon(setAlert, alertText, "critical", false);
+      }
+  
+  
+      if (flag == true) {
+        setSpinner(true);
+        setErrorArray("");
+        setPickerError([]);
+        console.log("enter in else section=====-----=====------=====>>>>>>>>>")
+        if (param.id == "create") {
+          try{
+            const response = await postApi("/api/admin/createBundle", data, app);
+            if (response.data.status === 200) {
+              return toastNotification("success", "Saved", "bottom"), navigate("/bundle");
+            } else {
+              return alertCommon(
+                setAlert,
+                ["Something went wrong"],
+                "warning",
+                false
+              );
+            }
+          }catch(err){
+            console.log(err)
+          }
+        } else {
+          const response = await postApi("/api/admin/updateBundle", data, app);
           if (response.data.status === 200) {
-            return toastNotification("success", "Saved", "bottom"), navigate("/bundle");
+            return (
+              toastNotification("success", "Update successfully", "bottom"),
+              navigate("/bundle")
+            );
           } else {
             return alertCommon(
               setAlert,
@@ -292,23 +316,6 @@ const ProductMixMatch = () => {
               false
             );
           }
-        }catch(err){
-          console.log(err)
-        }
-      } else {
-        const response = await postApi("/api/admin/updateBundle", data, app);
-        if (response.data.status === 200) {
-          return (
-            toastNotification("success", "Update successfully", "bottom"),
-            navigate("/bundle")
-          );
-        } else {
-          return alertCommon(
-            setAlert,
-            ["Something went wrong"],
-            "warning",
-            false
-          );
         }
       }
     }
