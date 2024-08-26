@@ -18,7 +18,7 @@ import toastNotification from "../../components/commonSections/Toast";
 import { Card, Spin } from "antd";
 import { alertCommon } from "../../components/helperFunctions";
 import AlertSection from "../../components/commonSections/AlertSection";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 const BuyXgetY = () => {
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ const BuyXgetY = () => {
   const app = useAppBridge();
 
   let headerkey = "Create Buy X get Y";
-  let back = "Back to Dashboard"
+  let back = "Back to Dashboard";
   const { shop, timeZone, currencyCode } = useAPI();
   const [customizationData, setCustomizationData] = useState([]);
   const [errorArray, setErrorArray] = useState([]);
@@ -38,8 +38,8 @@ const BuyXgetY = () => {
   const [spinner, setSpinner] = useState(false);
   const [alert, setAlert] = useState({ state: false, message: [], status: "" });
   const [pickerError, setPickerError] = useState([]);
-  const [badgeText,setBadgeText] = useState("");
-  const [plan,setPlan] = useState("");
+  const [badgeText, setBadgeText] = useState("");
+  const [plan, setPlan] = useState("");
   const [data, setData] = useState({
     shop: shop,
     type: "bxgy",
@@ -66,33 +66,25 @@ const BuyXgetY = () => {
     timeZone: timeZone,
   });
 
-  // function to fetch  customization data from customization api and updating existing
   async function getCustomization() {
     try {
       const planResponse = await postApi("/api/admin/getPlans", data, app);
-      // if(planResponse?.data?.data?.plan != "standard"){
-        // navigate('/plans')
-        setPlan(planResponse?.data?.data?.plan)
-      // }else{
-        const response = await postApi("/api/admin/getCustomization", { shop: shop }, app);
-        setCustomizationData(response.data.response);
-      // }
-      // if (planResponse?.data?.status == 200) {
-      //   setPlan(planResponse?.data?.data?.plan)
-      // }
-      // console.log("dfcadf chsx h ",planResponse);
-      
+      setPlan(planResponse?.data?.data?.plan);
+      const response = await postApi(
+        "/api/admin/getCustomization",
+        { shop: shop },
+        app
+      );
+      setCustomizationData(response.data.response);
     } catch (error) {
       console.log(error);
     }
   }
-  
+
   useEffect(() => {
     getCustomization();
-  }, []); 
-  // console.log("ghfdewueyrxvdgfw hg t  f ",plans);
+  }, []);
   useEffect(() => {
-    // console.log("customizationdata", customizationData);
     setData((prevData) => ({
       ...prevData,
       customization: [
@@ -108,7 +100,7 @@ const BuyXgetY = () => {
       ],
     }));
   }, [customizationData]);
-  
+
   //----------------------------------------------------------
 
   // const handleDisplayOptions = (e) => {
@@ -226,7 +218,6 @@ const BuyXgetY = () => {
 
   const handleDisplayPageOptions = (e) => {
     if (e.target.checked) {
-      // setData([...data,e.target.value])
       let update = { ...data };
 
       if (update.bundleDetail.display?.productPagesList.length < 1) {
@@ -308,25 +299,27 @@ const BuyXgetY = () => {
   }, [data.bundleDetail.xproducts, data.bundleDetail.yproducts]);
 
   useEffect(() => {
-    let MergedArray = []
-    arrY.map((item,index)=>{
-      // console.log("iiii",item);
-      MergedArray = [...MergedArray,...item]
+    let MergedArray = [];
+    arrY.map((item, index) => {
+      MergedArray = [...MergedArray, ...item];
     });
-    if(MergedArray.length > 1){
-      setBadgeText("On Each")
-    }else{
-      setBadgeText("")
+    if (MergedArray.length > 1) {
+      setBadgeText("On Each");
+    } else {
+      setBadgeText("");
     }
-    // console.log("array y",MergedArray);
-    setEndPrice(parseFloat(calculateFinalPrice(arrX, arrY,MergedArray.length)).toFixed(2));
-    
-  }, [arrY,arrX, data.bundleDetail.discountType, data.bundleDetail.discountValue]);
+    setEndPrice(
+      parseFloat(calculateFinalPrice(arrX, arrY, MergedArray.length)).toFixed(2)
+    );
+  }, [
+    arrY,
+    arrX,
+    data.bundleDetail.discountType,
+    data.bundleDetail.discountValue,
+  ]);
 
-  //function to calculate final EndPrice
-  function calculateFinalPrice(arrX, arrY,lengthOfYProducts) {
+  function calculateFinalPrice(arrX, arrY, lengthOfYProducts) {
     let finalPrice = 0;
-    // console.log("test",lengthOfYProducts,data.bundleDetail.yproducts.length);
     const totalMrp = calculateMrp(arrX) + calculateMrp(arrY);
     setMrp(parseFloat(totalMrp).toFixed(2));
 
@@ -341,7 +334,7 @@ const BuyXgetY = () => {
       }
     } else if (data.bundleDetail.discountType == "fixed") {
       if (
-        parseFloat(data.bundleDetail.discountValue*lengthOfYProducts) >
+        parseFloat(data.bundleDetail.discountValue * lengthOfYProducts) >
         calculateMrp(arrY) + calculateMrp(arrX)
       ) {
         finalPrice = 0;
@@ -349,15 +342,13 @@ const BuyXgetY = () => {
         finalPrice =
           calculateMrp(arrX) +
           calculateMrp(arrY) -
-          (data.bundleDetail.discountValue*lengthOfYProducts);
+          data.bundleDetail.discountValue * lengthOfYProducts;
       }
     } else {
       finalPrice = calculateMrp(arrX);
     }
     return finalPrice;
   }
-
-  //function to calculate Mrp
 
   function calculateMrp(arr) {
     let sum = 0;
@@ -366,18 +357,14 @@ const BuyXgetY = () => {
         sum += parseFloat(sub);
       });
     });
-    // setMrp(parseFloat(sum).toFixed(2));
     return parseFloat(sum.toFixed(2));
   }
 
-  //----------------------------------------------------------------------
-
- const getBundleData = async () => {
+  const getBundleData = async () => {
     let body = { id: param.id };
     setSpinner(true);
     const response = await postApi("/api/admin/editBundle", body, app);
     if (response.status === 200) {
-      
       setData(response.data.response);
       setSpinner(false);
     }
@@ -390,31 +377,31 @@ const BuyXgetY = () => {
   }, []);
 
   const handleSave = async () => {
-    if(plan != "standard"){
+    if (plan != "standard") {
       Swal.fire({
         title: 'Upgrade to "Standard" Plan',
-        text: 'Do you want to continue',
-        icon: 'info',
+        text: "Do you want to continue",
+        icon: "info",
         showCancelButton: true,
-        confirmButtonText: 'Get Plan',
-        cancelButtonText: 'Cancel',
-        confirmButtonColor: "#59da7c"
+        confirmButtonText: "Get Plan",
+        cancelButtonText: "Cancel",
+        confirmButtonColor: "#59da7c",
       }).then((result) => {
         if (result.isConfirmed) {
-          navigate('/plans')
+          navigate("/plans");
         }
       });
-    }else{
+    } else {
       let alertText = [];
       let flag = true;
-  
+
       let search1 = [];
       data.bundleDetail.xproducts.map((item, index) => {
         if (item.minimumOrder < 1 || item.minimumOrder == "") {
           search1.push(index);
         }
       });
-  
+
       if (search1.length > 0 || data.bundleDetail.xproducts.length < 1) {
         flag = false;
         setPickerError(search1);
@@ -422,7 +409,7 @@ const BuyXgetY = () => {
           "Minimum  products for bundle  is 1  & Minimum Order for each X product   can not be empty  or less than 1 ."
         );
       }
-  
+
       let search2 = [];
       data.bundleDetail.yproducts.map((item, index) => {
         if (item.minimumOrder < 1 || item.minimumOrder == "") {
@@ -436,12 +423,12 @@ const BuyXgetY = () => {
           "Minimum  products for bundle  is 1  & Minimum Order for each Y product  can not be empty  or less than 1 ."
         );
       }
-  
+
       if (data.name.trim() == "") {
         if (!errorArray.includes("bundleName")) {
           setErrorArray((prev) => [...prev, "bundleName"]);
         }
-  
+
         flag = false;
         alertText.push("Please provide name of bundle");
       }
@@ -452,12 +439,14 @@ const BuyXgetY = () => {
         flag = false;
         alertText.push("Please provide title of bundle");
       }
-  
-      if(data.bundleDetail.display.productPagesList.length <= 0){
-        flag= false;
-        alertText.push("Please select at least one product from display options");
+
+      if (data.bundleDetail.display.productPagesList.length <= 0) {
+        flag = false;
+        alertText.push(
+          "Please select at least one product from display options"
+        );
       }
-  
+
       if (data.description == "") {
         if (!errorArray.includes("bundleDescription")) {
           setErrorArray((prev) => [...prev, "bundleDescription"]);
@@ -465,26 +454,22 @@ const BuyXgetY = () => {
         flag = false;
         alertText.push("Please provide description of bundle");
       }
-  
-      // if (data.startdate == "") {
-      //   if (!errorArray.includes("startdate")) {
-      //     setErrorArray((prev) => [...prev, "startdate"]);
-      //   }
-      //   flag = false;
-      //   alertText.push("Please select start date & time");
-      // }
+
       if (flag == false) {
         alertCommon(setAlert, alertText, "critical", false);
       }
-  
+
       if (flag == true) {
         setSpinner(true);
         setErrorArray("");
         setPickerError([]);
         if (param.id == "create") {
           try {
-            // console.log(" in the try");
-            const response = await postApi("/api/admin/createBundle", data, app);
+            const response = await postApi(
+              "/api/admin/createBundle",
+              data,
+              app
+            );
             if (response.data.status === 200) {
               return (
                 toastNotification("success", "Saved", "bottom"),
@@ -538,14 +523,13 @@ const BuyXgetY = () => {
           <div className="sd-bundle-left-section-common">
             <BuyX data={data} setData={setData} />
             <BuyY data={data} setData={setData} />
-            <DiscountSet 
+            <DiscountSet
               discountType={data.bundleDetail.discountType}
-              discountValue={data.bundleDetail.discountValue} 
-              data={data} 
-              setData={setData} 
+              discountValue={data.bundleDetail.discountValue}
+              data={data}
+              setData={setData}
             />
             <General data={data} setData={setData} errorArray={errorArray} />
-            {/* <DateTime data={data} setData={setData} errorArray={errorArray} /> */}
           </div>
           <div className="sd-bundle-productBundle-rightSection Polaris-Layout__Section Polaris-Layout__Section--secondary">
             <BundleStatus data={data} setData={setData} />
@@ -565,7 +549,6 @@ const BuyXgetY = () => {
               endPrice={endPrice}
               showPrice={showPrice}
               badgeText={badgeText}
-              //handleVariantChoice={handleVariantChoice}
               bundleType={"productBundle"}
               errorArray={errorArray}
             />
