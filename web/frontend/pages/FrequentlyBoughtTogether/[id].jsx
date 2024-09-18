@@ -13,10 +13,10 @@ import postApi from "../../components/postApi";
 import { useAppBridge } from "@shopify/app-bridge-react";
 import toastNotification from "../../components/commonSections/Toast";
 import { Spin } from "antd";
-import FBTBundlePreview from "../../components/preview/fbtBundlePreview";
 import { alertCommon } from "../../components/helperFunctions";
 import AlertSection from "../../components/commonSections/AlertSection";
 import Swal from "sweetalert2";
+import FBTBundlePreview from "../../components/bundles preview/fbtBundlePreview";
 
 const FrequentlyBoughtTogether = () => {
   const navigate = useNavigate();
@@ -119,6 +119,12 @@ const FrequentlyBoughtTogether = () => {
   };
 
   const handleDiscountType = (e) => {
+    let update = { ...data };
+
+    if (e.target.value == "percent" && data.bundleDetail.discountValue > 100) {
+      update.bundleDetail.discountValue = 100;
+      setData(update);
+    }
     setData({
       ...data,
       bundleDetail: {
