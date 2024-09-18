@@ -14,7 +14,7 @@ import {
   EditOutlined,
   TransactionOutlined,
 } from "@ant-design/icons";
-import { Button, Divider, Spin } from "antd";
+import { Button, Divider, Modal, Spin } from "antd";
 import { useNavigate } from "react-router-dom";
 import Design from "./Design";
 import Box from "./Box";
@@ -47,7 +47,7 @@ const CustomizationEditor = (props) => {
   const [displayOption, setDisplayOption] = useState("productPages");
   const [spinner, setSpinner] = useState(false);
   const [tooltipStatus, setTooltipStatus] = useState(false);
-
+  const [isModalOpen,setIsModalOpen] = useState(false);
   // const [bundleOption, setBundleOption] = useState("bundle");
   const [customOption, setCustomOption] = useState("Box");
   const [onLoad, setOnload] = useState(false);
@@ -72,7 +72,6 @@ const CustomizationEditor = (props) => {
       );
     }
   };
-  console.log("jfehedjfjkdhfjhdhfjdshfjk", props.data);
 
   const popUpAlertFun = () => {
     Swal.fire({
@@ -116,6 +115,10 @@ const CustomizationEditor = (props) => {
         : "";
     }
   };
+
+  const openModalFun = () =>{
+    setIsModalOpen(true);
+  }
 
   const handleCustomOption = (clickedOption) => {
     setOnload(false);
@@ -230,10 +233,20 @@ const CustomizationEditor = (props) => {
           <div>
             <Button
               className="sd-bundle-backArrow"
-              onClick={() => navigate("/customization")}
+              onClick={openModalFun}
             >
               <ArrowLeftOutlined />
             </Button>
+            <Modal
+              title="Going Back?"
+              open={isModalOpen}
+              onOk={() => navigate('/customization')}
+              onCancel={() => setIsModalOpen(false)}
+            >
+              <h1>
+                Are you sure you want to go back? All unsaved changes will be lost.
+              </h1>
+            </Modal>
           </div>
           {/* <div className="sd-bundle-backArrow" onClick={()=>navigate('/')}><ArrowLeftOutlined/></div> */}
           <div className="sd-bundle-selectSection">

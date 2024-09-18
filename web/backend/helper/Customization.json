@@ -7,37 +7,61 @@
       "borderRadius": 14
     },
     "button": {
-      "backgroundColor": "#000000",
-      "color": "#FFFFFF",
-      "fontSize": 15,
+      "backgroundColor": "#ffffff",
+      "color": "#000000",
+      "fontSize": 30,
       "text_others": "Add to cart ",
       "text_noDiscount": "Add to cart ",
       "position": "bottom"
     },
-    "title": { "color": "#000000", "fontSize": 18, "alignment": "left" },
+    "title": {
+      "color": "#000000",
+      "fontSize": 18,
+      "alignment": "left",
+      "titleBold" : "600",
+      "descriptionColor": "#000000",
+      "descriptionFontSize": 12,
+      "descriptionBold": "300"
+    },
     "productDetails": {
-      "title": { "color": "#000000", "fontSize": 18 },
-      "price": { "color": "#000000", "fontSize": 18 },
-      "image": { "borderColor": "#FFFFFF", "borderRadius": 5 },
-      "quantities": { "color": "#000000", "backgroundColor": "#FFFFFF" },
+      "title": {
+        "color": "#000000",
+        "fontSize": 18
+      },
+      "price": {
+        "color": "#000000",
+        "fontSize": 18
+      },
+      "image": {
+        "borderColor": "#FFFFFF",
+        "borderRadius": 5
+      },
+      "quantities": {
+        "color": "#000000",
+        "backgroundColor": "#FFFFFF"
+      },
       "variantSelector": {
         "color": "#000000",
         "backgroundColor": "#FFFFFF"
       },
       "plusColor": "#5e5e5e",
-      "plusBackgroundColor" :"#ffffff"
+      "plusBackgroundColor": "#ffffff"
     },
-
     "totalSection": {
       "backgroundColor": "#FFFFFF",
       "color": "#000000",
       "fontSize": 18,
       "text": "Total",
-      "originalPrice": { "color": "#FF0000", "fontSize": 18 },
-      "finalPrice": { "color": "#008061", "fontSize": 18 }
+      "originalPrice": {
+        "color": "#FF0000",
+        "fontSize": 18
+      },
+      "finalPrice": {
+        "color": "#008061",
+        "fontSize": 18
+      }
     }
   },
-
   "volume": {
     "theme": "light",
     "box": {
@@ -46,19 +70,39 @@
       "borderRadius": 14
     },
     "button": {
-      "backgroundColor": "#000000",
-      "color": "#FFFFFF",
-      "fontSize": 15,
+      "backgroundColor": "#ffffff",
+      "color": "#000000",
+      "fontSize": 30,
       "text_others": "Add to cart",
       "text_noDiscount": "Add to cart ",
       "position": "bottom"
     },
-    "title": { "color": "#000000", "fontSize": 18, "alignment": "left" },
+    "title": {
+      "color": "#000000",
+      "fontSize": 18,
+      "titleBold" : "600",
+      "alignment": "left",
+      "descriptionColor": "#000000",
+      "descriptionFontSize": 12,
+      "descriptionBold": "300"
+    },
     "productDetails": {
-      "title": { "color": "#000000", "fontSize": 18 },
-      "price": { "color": "#000000", "fontSize": 18 },
-      "image": { "borderColor": "#FFFFFF", "borderRadius": 5 },
-      "quantities": { "color": "#000000", "backgroundColor": "#FFFFFF" },
+      "title": {
+        "color": "#000000",
+        "fontSize": 18
+      },
+      "price": {
+        "color": "#000000",
+        "fontSize": 18
+      },
+      "image": {
+        "borderColor": "#FFFFFF",
+        "borderRadius": 5
+      },
+      "quantities": {
+        "color": "#000000",
+        "backgroundColor": "#FFFFFF"
+      },
       "quantitiesSelector": {
         "color": "#000000",
         "backgroundColor": "#FFFFFF",
@@ -69,26 +113,30 @@
         "backgroundColor": "#FFFFFF"
       }
     },
-
     "options": {
       "iconColor": "#000000",
       "color": "#000000",
       "fontSize": 16,
-      "saveDiscount":{
-          "color":"#FFFFFF",
-            "backgroundColor":"#ff0000",
-            "fontSize":16,
-            "borderRadius":15
+      "saveDiscount": {
+        "color": "#FFFFFF",
+        "backgroundColor": "#ff0000",
+        "fontSize": 16,
+        "borderRadius": 15
       }
     },
-
     "totalSection": {
       "backgroundColor": "#FFFFFF",
       "color": "#000000",
       "fontSize": 18,
       "text": "Total",
-      "originalPrice": { "color": "#FF0000", "fontSize": 18 },
-      "finalPrice": { "color": "#008061", "fontSize": 18 }
+      "originalPrice": {
+        "color": "#FF0000",
+        "fontSize": 18
+      },
+      "finalPrice": {
+        "color": "#008061",
+        "fontSize": 18
+      }
     }
   },
   "collectionMixMatch": {
@@ -99,27 +147,48 @@
       "borderRadius": 14
     },
     "button": {
-      "backgroundColor": "#000000",
-      "color": "#FFFFFF",
-      "fontSize": 15,
+      "backgroundColor": "#ffffff",
+      "color": "#000000",
+      "fontSize": 30,
       "text_others": "Go To Bundle Builder",
       "text_noDiscount": "Add to cart",
       "position": "bottom"
     },
-    "title": { "color": "#000000", "fontSize": 18, "alignment": "left","description":{"color":"#000000","fontSize":15} },
+    "title": {
+      "color": "#000000",
+      "fontSize": 18,
+      "alignment": "left",
+      "titleBold" : "600",
+      "description": {
+        "color": "#000000",
+        "fontSize": 15
+      },
+      "descriptionBold": "300",
+      "descriptionColor": "#ff0000",
+      "descriptionFontSize": "16"
+    },
     "collectionDetails": {
-      "title": { "color": "#000000", "fontSize": 17 },
-       "description":{"color":"#000000","fontSize":15},
-       "plus":{"backgroundColor":"#e5e5e5" ,"color":"#5e5e5e"},
-       "imageBorderColor":"#ffffff"
-     },
-     "DiscountBadge":{
-      "color":"#FFFFFF",
-      "backgroundColor":"#ff0000",
-      "fontSize":16,
-      "text":"Grab The Deal !!",
-      "badgeType":"leftBanner"
-     }
+      "title": {
+        "color": "#000000",
+        "fontSize": 17
+      },
+      "description": {
+        "color": "#000000",
+        "fontSize": 15
+      },
+      "plus": {
+        "backgroundColor": "#e5e5e5",
+        "color": "#5e5e5e"
+      },
+      "imageBorderColor": "#ffffff"
+    },
+    "DiscountBadge": {
+      "color": "#FFFFFF",
+      "backgroundColor": "#ff0000",
+      "fontSize": 16,
+      "text": "Grab The Deal !!",
+      "badgeType": "leftBanner"
+    }
   },
   "buyXgetY": {
     "theme": "light",
@@ -127,45 +196,71 @@
       "backgroundColor": "#FFFFFF",
       "borderColor": "#e5e5e5",
       "borderRadius": 14,
-      "thickness" : 1
+      "thickness": 1
     },
     "button": {
-      "backgroundColor": "#000000",
-      "color": "#FFFFFF",
-      "fontSize": 15,
+      "backgroundColor": "#ffffff",
+      "color": "#000000",
+      "fontSize": 30,
       "text_others": "Add to cart ",
       "text_noDiscount": "Add to cart ",
       "position": "bottom"
     },
-    "title": { "color": "#000000", "fontSize": 18, "alignment": "left","titleBold":"300", "descriptionColor" : "#000000", "descriptionFontSize" : 12 ,"descriptionBold":"300"},
+    "title": {
+      "color": "#000000",
+      "fontSize": 18,
+      "alignment": "left",
+      "titleBold" : "600",
+      "descriptionColor": "#000000",
+      "descriptionFontSize": 12,
+      "descriptionBold": "300"
+    },
     "productDetails": {
-      "title": { "color": "#000000", "fontSize": 18 },
-      "price": { "color": "#000000", "fontSize": 18 },
-      "image": { "borderColor": "#FFFFFF", "borderRadius": 5 },
-      "quantities": { "color": "#000000", "backgroundColor": "#FFFFFF","borderColor":"#e8dede" },
+      "title": {
+        "color": "#000000",
+        "fontSize": 18
+      },
+      "price": {
+        "color": "#000000",
+        "fontSize": 18
+      },
+      "image": {
+        "borderColor": "#FFFFFF",
+        "borderRadius": 5
+      },
+      "quantities": {
+        "color": "#000000",
+        "backgroundColor": "#FFFFFF",
+        "borderColor": "#e8dede"
+      },
       "variantSelector": {
         "color": "#000000",
         "backgroundColor": "#FFFFFF",
         "borderColor": "#FFFFFF"
       },
       "plusColor": "#5e5e5e",
-      "plusBackgroundColor" :"#ffffff"
+      "plusBackgroundColor": "#ffffff"
     },
-
     "totalSection": {
       "background": "#d4d3d3",
       "color": "#000000",
       "fontSize": 18,
       "text": "Total",
-      "originalPrice": { "color": "#FF0000", "fontSize": 18 },
-      "finalPrice": { "color": "#008061", "fontSize": 18 }
+      "originalPrice": {
+        "color": "#FF0000",
+        "fontSize": 18
+      },
+      "finalPrice": {
+        "color": "#008061",
+        "fontSize": 18
+      }
     },
-    "DiscountBadge":{
-      "color":"#FFFFFF",
-      "backgroundColor":"#ff0000",
-      "fontSize":16,
-      "text":"50% OFF",
-      "badgeType":"leftBanner"
+    "DiscountBadge": {
+      "color": "#FFFFFF",
+      "backgroundColor": "#ff0000",
+      "fontSize": 16,
+      "text": "50% OFF",
+      "badgeType": "leftBanner"
     }
   },
   "productMixMatch": {
@@ -174,48 +269,66 @@
       "backgroundColor": "#FFFFFF",
       "borderColor": "#e5e5e5",
       "borderRadius": 14,
-      "thickness" : 1
+      "thickness": 1
     },
     "button": {
-      "backgroundColor": "#000000",
-      "color": "#FFFFFF",
-      "fontSize": 15,
+      "backgroundColor": "#ffffff",
+      "color": "#000000",
+      "fontSize": 30,
       "text_others": "Add to cart ",
       "text_noDiscount": "Add to cart ",
       "position": "bottom"
     },
-    "title": { "color": "#000000", 
-      "fontSize": 18, 
+    "title": {
+      "color": "#000000",
+      "fontSize": 18,
       "alignment": "left",
-      "titleBold":"300", 
-      "descriptionColor" : "#000000", 
-      "descriptionFontSize" : 12 ,
-      "descriptionBold":"300"
+      "titleBold" : "600",
+      "descriptionColor": "#000000",
+      "descriptionFontSize": 12,
+      "descriptionBold": "300"
     },
     "productDetails": {
-      "title": { "color": "#000000", "fontSize": 18 },
-      "price": { "color": "#000000", "fontSize": 18 },
-      "image": { "borderColor": "#FFFFFF", "borderRadius": 5 },
-      "quantities": { "color": "#000000", "backgroundColor": "#FFFFFF" },
+      "title": {
+        "color": "#000000",
+        "fontSize": 18
+      },
+      "price": {
+        "color": "#000000",
+        "fontSize": 18
+      },
+      "image": {
+        "borderColor": "#FFFFFF",
+        "borderRadius": 5
+      },
+      "quantities": {
+        "color": "#000000",
+        "backgroundColor": "#FFFFFF"
+      },
       "variantSelector": {
         "color": "#000000",
         "backgroundColor": "#FFFFFF"
       },
       "plusColor": "#5e5e5e",
-      "plusBackgroundColor" :"#ffffff",
+      "plusBackgroundColor": "#ffffff",
       "plusfontSize": 15
     },
-
     "totalSection": {
       "backgroundColor": "#FFFFFF",
       "color": "#000000",
       "fontSize": 18,
       "text": "Total",
-      "originalPrice": { "color": "#FF0000", "fontSize": 18 },
-      "finalPrice": { "color": "#008061", "fontSize": 18 }
+      "originalPrice": {
+        "color": "#FF0000",
+        "fontSize": 18
+      },
+      "finalPrice": {
+        "color": "#008061",
+        "fontSize": 18
+      }
     }
   },
-  "popUp":{    
+  "popUp": {
     "box": {
       "backgroundColor": "#FFFFFF"
     },
@@ -227,12 +340,28 @@
       "text_noDiscount": "Add to cart",
       "position": "bottom"
     },
-    "title": { "color": "#000000", "fontSize": 25, "alignment": "left" },
+    "title": {
+      "color": "#000000",
+      "fontSize": 25,
+      "alignment": "left"
+    },
     "productDetails": {
-      "title": { "color": "#000000", "fontSize": 18 },
-      "price": { "color": "#000000", "fontSize": 18 },
-      "image": { "borderColor": "#FFFFFF", "borderRadius": 5 },
-      "quantities": { "color": "#000000", "backgroundColor": "#FFFFFF" },
+      "title": {
+        "color": "#000000",
+        "fontSize": 18
+      },
+      "price": {
+        "color": "#000000",
+        "fontSize": 18
+      },
+      "image": {
+        "borderColor": "#FFFFFF",
+        "borderRadius": 5
+      },
+      "quantities": {
+        "color": "#000000",
+        "backgroundColor": "#FFFFFF"
+      },
       "variantSelector": {
         "color": "#000000",
         "backgroundColor": "#FFFFFF"
@@ -244,14 +373,17 @@
       "color": "#000000",
       "fontSize": 18,
       "text": "Total",
-      "originalPrice": { "color": "#FF0000", "fontSize": 18 },
-      "finalPrice": { "color": "#008061", "fontSize": 18 }
+      "originalPrice": {
+        "color": "#FF0000",
+        "fontSize": 18
+      },
+      "finalPrice": {
+        "color": "#008061",
+        "fontSize": 18
+      }
     }
   },
   "frequentlyBoughtTogether": {
     "design": "modern"
   }
-  
-    }
-
-
+}

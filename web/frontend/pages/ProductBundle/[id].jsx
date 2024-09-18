@@ -8,7 +8,6 @@ import BundleNameTitle from "../../components/commonSections/bundleNameTitle";
 import General from "../../components/bxgy/General";
 // import DateTime from "../../components/commonSections/dateTime";
 import BundleStatus from "../../components/commonSections/bundleStatus";
-import ProductBundlePreview from "../../components/preview/productBundlePreview";
 import MoveToHomePage from "../../components/commonSections/MoveToHomePage";
 import DisplayOptions from "../../components/commonSections/displayOptions";
 import DiscountOptions from "../../components/commonSections/discountOptions";
@@ -20,6 +19,8 @@ import { alertCommon } from "../../components/helperFunctions";
 import defaultData from "../../components/customization/defaultData.json";
 import postApi from "../../components/postApi";
 import { useNavigate, useParams } from "react-router-dom";
+import ProductBundlePreview from "../../components/bundles preview/productBundlePreview";
+
 function CreateBundle() {
   let headerkey = "Create Product Bundle";
   const navigate = useNavigate();
@@ -634,7 +635,8 @@ function CreateBundle() {
               products={data.bundleDetail.products}
               data= {data}
             />
-            <ProductBundlePreview
+
+            <ProductBundlePreview 
               data={data}
               currency={currencyCode}
               mrp={mrp}
@@ -644,6 +646,7 @@ function CreateBundle() {
               bundleType={"productBundle"}
               errorArray={errorArray}
             />
+
           </div>
         </div>
  

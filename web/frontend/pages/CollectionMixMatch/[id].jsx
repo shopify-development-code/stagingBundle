@@ -14,18 +14,19 @@ import { TextField, InlineError, Thumbnail } from "@shopify/polaris";
 import AlertSection from "../../components/commonSections/AlertSection";
 import { Button, Spin } from "antd";
 import { alertCommon } from "../../components/helperFunctions";
-import CollectionMixMatchPreview from "../../components/preview/collectionMixMatchPreview";
 import defaultData from "../../components/customization/defaultData.json";
 import postApi from "../../components/postApi";
 import { useNavigate, useParams } from "react-router-dom";
 import toastNotification from "../../components/commonSections/Toast";
 import noImg from "../../assets/no-Image.png";
 import General from "../../components/bxgy/General";
+import CollectionBundlePreview from "../../components/bundles preview/collectionBundlePreview";
 
 const CollectionMixMatch = () => {
   const param = useParams();
   const navigate = useNavigate();
   const app = useAppBridge();
+  let headerkey = "Create Collection Mix & Match";
 
   const [myModal, setMyModal] = useState(false);
   const [error, setError] = useState("");
@@ -411,7 +412,7 @@ const CollectionMixMatch = () => {
   return (
     <Spin spinning={spinner} size="large">
       <div className="Polaris-Page Polaris-Page--fullWidth">
-        <MoveToHomePage />
+        <MoveToHomePage data={headerkey}/>
         {alert.state == true && (
           <AlertSection
             message={alert.message}
@@ -568,7 +569,7 @@ const CollectionMixMatch = () => {
               data={data}
             />
 
-            <CollectionMixMatchPreview data={data} currency={currencyCode} />
+            <CollectionBundlePreview data={data} currency={currencyCode} />
           </div>
         </div>
       </div>

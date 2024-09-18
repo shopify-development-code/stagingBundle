@@ -10,7 +10,6 @@ import DateTime from "../../components/commonSections/dateTime";
 import BundleStatus from "../../components/commonSections/bundleStatus";
 import DisplayOptions from "../../components/commonSections/displayOptions";
 import DeleteSave from "../../components/commonSections/deleteSave";
-import BxgyBundlePreviewData from "../../components/preview/BxgyBundlePreviewData";
 import { useNavigate, useParams } from "react-router-dom";
 import postApi from "../../components/postApi";
 import { useAppBridge } from "@shopify/app-bridge-react";
@@ -19,6 +18,7 @@ import { Card, Spin } from "antd";
 import { alertCommon } from "../../components/helperFunctions";
 import AlertSection from "../../components/commonSections/AlertSection";
 import Swal from "sweetalert2";
+import BXGYBundlePreview from "../../components/bundles preview/bxgyBundlePreview";
 
 const BuyXgetY = () => {
   const navigate = useNavigate();
@@ -542,7 +542,8 @@ const BuyXgetY = () => {
               xproducts={data.bundleDetail.xproducts}
               yproducts={data.bundleDetail.yproducts}
             />
-            <BxgyBundlePreviewData
+
+            <BXGYBundlePreview
               data={data}
               currency={currencyCode}
               mrp={mrp}

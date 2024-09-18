@@ -13,7 +13,7 @@ import { useAPI } from "../../components/shop";
 import AlertSection from "../../components/commonSections/AlertSection";
 import { alertCommon } from "../../components/helperFunctions";
 import General from "../../components/bxgy/General";
-import VolumePreview from "../../components/preview/VolumePreview";
+// import VolumePreview from "../../components/preview/VolumePreview";
 import defaultData from "../../components/customization/defaultData.json";
 import { Col, Row, Button, Input, Divider, Modal, Select,Spin } from "antd";
 import { TextField, InlineError } from "@shopify/polaris";
@@ -21,6 +21,7 @@ import { useAppBridge } from "@shopify/app-bridge-react";
 import postApi from "../../components/postApi";
 import { useNavigate,useParams } from "react-router-dom";
 import toastNotification from "../../components/commonSections/Toast";
+import VolumeBundlePreview from "../../components/bundles preview/volumeBundlePreview";
 const VolumeBundle = () => {
  const navigate = useNavigate()
  const app = useAppBridge()
@@ -46,9 +47,10 @@ const VolumeBundle = () => {
   const [alert, setAlert] = useState({ state: false, message: [], status: "" });
   const [spinner,setSpinner] = useState(false) 
   const [previewSpinner,setPreviewSpinner] = useState(false) 
-
+  const [discountType, setDiscountType] = useState("percent")
   const { timeZone,currencyCode } = useAPI();
   const [error, setError] = useState("");
+  let headerkey = "Create Volume Bundle";
 
   const [data, setData] = useState({
     name: "",
@@ -424,7 +426,7 @@ function getPreviewData(data){
     let update = { ...data };
     update.bundleDetail.discountOptions[index].type = value;
     setData(update);
-    
+    setDiscountType(value)
     if(value == "freeShipping"){
       update.bundleDetail.discountOptions[index].description = `Buy ${update.bundleDetail.discountOptions[index].quantity} & Get Free Shipping`;
       setData(update); 
@@ -541,7 +543,7 @@ function getPreviewData(data){
       if(index > 0){
         removeValidationHandler(update.bundleDetail.discountOptions[index-1].quantity,update.bundleDetail.discountOptions,index-1);
       }else if(index == 0){
-        removeValidationHandler(update.bundleDetail.discountOptions[index+1].quantity,update.bundleDetail.discountOptions,index+1);
+        removeValidationHandler(update.bundleDetail.discountOptions[index].quantity,update.bundleDetail.discountOptions,index+1);
       }
     }else{
       setErrorArray([]);
@@ -853,7 +855,7 @@ function getPreviewData(data){
     <Spin spinning={spinner}
     size="large"> 
     <div className="Polaris-Page Polaris-Page--fullWidth">
-      <MoveToHomePage />
+      <MoveToHomePage data={headerkey}/>
       {alert.state == true && (
         <AlertSection
           message={alert.message}
@@ -1133,7 +1135,7 @@ function getPreviewData(data){
      
       
 
-          <VolumePreview
+          {/* <VolumePreview
             data={data}
             setData={setData}
             currency={currencyCode}
@@ -1143,8 +1145,19 @@ function getPreviewData(data){
             endPriceData={endPriceData}
             handleVariantChoice={handleVariantChoice}
             showPrice={showPrice}
-          />
+          /> */}
 
+          <VolumeBundlePreview
+            data={data}
+            setData={setData}
+            currency={currencyCode}
+            discountTypes={discountType}
+            sumData={sumData}
+            allowDiscountOnIncrease={data.bundleDetail.allowDiscountOnIncrease}
+            endPriceData={endPriceData}
+            handleVariantChoice={handleVariantChoice}
+            showPrice={showPrice}
+          />
         </div>
       </div>
       {antModal && (

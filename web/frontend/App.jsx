@@ -2,8 +2,8 @@
 import { BrowserRouter } from "react-router-dom";
 import { NavigationMenu } from "@shopify/app-bridge-react";
 import Routes from "./Routes";
-import "./components/responsive.css"
 import "./components/style.css"
+import "./components/responsive.css"
 import ContextProvider from "./components/shop"
 import {
   AppBridgeProvider,

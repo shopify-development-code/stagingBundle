@@ -159,7 +159,7 @@ const General = (props) => {
       *Customers will see this as the name of the bundle displayed .
       </p>
     </div>
-    {props.type !=='FrequentlyBoughtTogether' &&
+    {/* {props.type !=='FrequentlyBoughtTogether' && */}
       <div className="sd-bundle-nameBlock">
         <label className="sd-bundle-plainText-common">Bundle description</label>
         <input
@@ -173,7 +173,7 @@ const General = (props) => {
             *Provide an explanation of the selection limit within this bundle to ensure user awareness..
           </p>
       </div>
-    }
+    {/* } */}
     
 
 </div>
