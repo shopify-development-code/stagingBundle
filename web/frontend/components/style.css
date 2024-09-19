@@ -3589,6 +3589,7 @@ svg.sd-bundle-premium1 {
     display: flex;
     justify-content: space-between;
     background: #F9F9F9;
+    position: relative;
   }
   .sd-bundle-product-img {
     border: 1px solid #CFCFCF;
@@ -3861,7 +3862,7 @@ svg.sd-bundle-premium1 {
     gap: 10px;
   }
   .sd-show-items span {
-    display: inline-flex;
+    /* display: inline-flex; */
     align-items: center;
     border: 1px solid #C9C9C9;
     font-size: 14px;
@@ -3902,11 +3903,11 @@ svg.sd-bundle-premium1 {
   }
   .sd-show-selected-product-item {
     display: flex;
-    gap: 8px;
+    gap: 2px;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-  }
+}
   .sd-selected-product-itemImg {
     width: 80px;
     height: 80px;
@@ -3978,4 +3979,35 @@ svg.sd-bundle-premium1 {
   /* .sd-checkbox-wrapper-21 .sd-control--checkbox input:disabled ~ .sd-control-indicator:after {
     border-color: #7b7b7b;
   } */
-  
+  .sd-bundle-product-badge {
+    position: absolute;
+    top: -11px;
+    right: 12px;
+}
+.sd-bundle-product-badge h4 {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 100%;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 25px;
+    color: #fff;
+    text-align: center;
+}
+.sd-bundle-product-badge.left-badge {
+    right: auto;
+    left: 0;
+    top: 7px;
+    overflow: hidden;
+    border-radius: 0 5px 5px 0;
+}
+.open-badge {
+    width: 74px;
+    height: 24px;
+    background: #ea3535;
+}
+img.BADGE {
+    padding-left: 8px;
+}

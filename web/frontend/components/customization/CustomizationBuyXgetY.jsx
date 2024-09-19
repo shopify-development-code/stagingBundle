@@ -775,7 +775,49 @@ const CustomizationBuyXgetY = ({ data }) => {
             />
           </svg>
         </div>
+
         <div class="sd-bundle-product-detail">
+          {data.buyXgetY.DiscountBadge.badgeType == "leftBanner" ? (
+            <div className="sd-bundle-product-badge left-badge ">
+              <div className="open-badge" 
+              style={{
+                background: data.buyXgetY.DiscountBadge.backgroundColor,
+              }}></div>
+              <h4 style={{
+                  color: data.buyXgetY.DiscountBadge.color,
+                  fontSize: data.buyXgetY.DiscountBadge.fontSize + "px",
+                }}>50% Off</h4>
+            </div>
+          ) : (
+            <div className="sd-bundle-product-badge ">
+              <svg
+                width="91"
+                height="24"
+                viewBox="0 0 91 24"
+                fill="none"
+                xmlns="
+          http://www.w3.org/2000/svg"
+              >
+                <path d="M0 10L8.63148 0H83.3261L91 10H0Z" fill={data.buyXgetY.DiscountBadge.backgroundColor} />
+                <path
+                  d="M9 0H83V19C83 21.7614 80.7614 24 78 24H14C11.2386 24 9 21.7614 9 19V0Z"
+                  fill={data.buyXgetY.DiscountBadge.backgroundColor}
+                />
+              </svg>
+              <h4 style={{
+                  color: data.buyXgetY.DiscountBadge.color,
+                  fontSize: data.buyXgetY.DiscountBadge.fontSize + "px",
+                }}>50% Off</h4>
+            </div>
+          )}
+          {/* <div className="sd-bundle-product-badge left-badge ">
+        <svg width="75" height="30" viewBox="0 0 75 30" fill="none" xmlns="
+          http://www.w3.org/2000/svg">
+          <path d="M0 30H75V5C75 2.23858 72.7614 0 70 0H5C2.23858 0 0 2.23858 0 5V30Z" fill="#F4383B"/>
+          </svg>
+          <h4>50% Off</h4>
+        </div> */}
+
           <div class="sd-bundle-product-inner">
             <div
               class="sd-bundle-product-img"

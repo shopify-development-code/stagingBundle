@@ -257,8 +257,8 @@
     },
     "DiscountBadge": {
       "color": "#FFFFFF",
-      "backgroundColor": "#ff0000",
-      "fontSize": 16,
+      "backgroundColor": "#ea3535",
+      "fontSize": 15,
       "text": "50% OFF",
       "badgeType": "leftBanner"
     }
