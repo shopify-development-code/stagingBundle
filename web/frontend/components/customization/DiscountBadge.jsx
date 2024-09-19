@@ -6,6 +6,8 @@ import {
   handleChangeCommon,
   handleChangeValueCommon,
 } from "../helperFunctions";
+import RightBanner from "../../assets/Right_Banner.png";
+import LeftBanner from "../../assets/Left_Banner.png";
 const DiscountBadge = ({ data, setData, bundleOption, displayOption }) => {
   console.log(data);
   const [sizeValue, setSizeValue] = useState(15);
@@ -128,15 +130,15 @@ const DiscountBadge = ({ data, setData, bundleOption, displayOption }) => {
               value={data[bundleOption]["DiscountBadge"]["badgeType"]}
             >
               <Space direction="vertical">
-                <Radio value="leftBanner">
-                  <img src="https://cdn.shopify.com/s/files/1/0801/7264/6691/files/leftBanner.png?v=1700562806" />
-                </Radio>
                 <Radio value="rightBanner">
-                  <img src="https://cdn.shopify.com/s/files/1/0801/7264/6691/files/rightBanner.png?v=1700562892" />
+                  <img src={RightBanner} />
                 </Radio>
-                <Radio value="ribbon">
+                <Radio value="leftBanner">
+                  <img src={LeftBanner}  className="BADGE"/>
+                </Radio>
+                {/* <Radio value="ribbon">
                   <img src="https://cdn.shopify.com/s/files/1/0801/7264/6691/files/ribbon.png?v=1700562892" />
-                </Radio>
+                </Radio> */}
               </Space>
             </Radio.Group>
           </>

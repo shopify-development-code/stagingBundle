@@ -173,6 +173,82 @@ const BXGYBundlePreview = ({
           {data.bundleDetail.yproducts.map((item, index) => {
             return (
               <div className="sd-bundle-product-detail">
+                {data.customization[0].buyXgetY.DiscountBadge.badgeType ==
+                "leftBanner" ? (
+                  <div className="sd-bundle-product-badge left-badge ">
+                    <div
+                      className="open-badge"
+                      style={{
+                        background:
+                          data.customization[0].buyXgetY.DiscountBadge
+                            .backgroundColor,
+                      }}
+                    ></div>
+                    <h4
+                      style={{
+                        color:
+                          data.customization[0].buyXgetY.DiscountBadge.color,
+                        fontSize:
+                          data.customization[0].buyXgetY.DiscountBadge
+                            .fontSize + "px",
+                      }}
+                    >
+                      {data.bundleDetail.discountType === "free"
+                        ? "Free"
+                        : data.bundleDetail.discountType === "fixed"
+                          ? currencyCode.replace(/{{.*?}}/g, "") +
+                            data.bundleDetail.discountValue +
+                            " off"
+                          : data.bundleDetail.discountType === "percent"
+                            ? data.bundleDetail.discountValue + "% off"
+                            : null}
+                    </h4>
+                  </div>
+                ) : (
+                  <div className="sd-bundle-product-badge ">
+                    <svg
+                      width="91"
+                      height="24"
+                      viewBox="0 0 91 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M0 10L8.63148 0H83.3261L91 10H0Z"
+                        fill={
+                          data.customization[0].buyXgetY.DiscountBadge
+                            .backgroundColor
+                        }
+                      />
+                      <path
+                        d="M9 0H83V19C83 21.7614 80.7614 24 78 24H14C11.2386 24 9 21.7614 9 19V0Z"
+                        fill={
+                          data.customization[0].buyXgetY.DiscountBadge
+                            .backgroundColor
+                        }
+                      />
+                    </svg>
+                    <h4
+                      style={{
+                        color:
+                          data.customization[0].buyXgetY.DiscountBadge.color,
+                        fontSize:
+                          data.customization[0].buyXgetY.DiscountBadge
+                            .fontSize + "px",
+                      }}
+                    >
+                      {data.bundleDetail.discountType === "free"
+                        ? "Free"
+                        : data.bundleDetail.discountType === "fixed"
+                          ? currencyCode.replace(/{{.*?}}/g, "") +
+                            data.bundleDetail.discountValue +
+                            " off"
+                          : data.bundleDetail.discountType === "percent"
+                            ? data.bundleDetail.discountValue + "% off"
+                            : null}
+                    </h4>
+                  </div>
+                )}
                 <div className="sd-bundle-product-inner">
                   <div
                     className="sd-bundle-product-img"
@@ -279,8 +355,13 @@ const BXGYBundlePreview = ({
               >
                 Total
               </h4>
-              <p style={{
-                color: data.customization[0].buyXgetY.title.descriptionColor,}}>Discount will be applied at checkout</p>
+              <p
+                style={{
+                  color: data.customization[0].buyXgetY.title.descriptionColor,
+                }}
+              >
+                Discount will be applied at checkout
+              </p>
             </div>
             <div className="sd-total-amount">
               <h4
