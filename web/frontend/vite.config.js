@@ -32,7 +32,6 @@ if (host === "localhost") {
     host: "localhost",
     port: 64999,
     clientPort: 64999,
-    open: false
   };
 } else {
   hmrConfig = {
@@ -40,7 +39,6 @@ if (host === "localhost") {
     host: host,
     port: process.env.FRONTEND_PORT,
     clientPort: 443,
-    open: false
   };
 }
 
@@ -57,6 +55,7 @@ export default defineConfig({
     host: "localhost",
     port: process.env.FRONTEND_PORT,
     hmr: hmrConfig,
+    open: false,
     proxy: {
       "^/(\\?.*)?$": proxyOptions,
       "^/api(/|(\\?.*)?$)": proxyOptions,
