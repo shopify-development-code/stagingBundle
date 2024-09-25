@@ -24,6 +24,9 @@
       "descriptionBold": "300"
     },
     "productDetails": {
+      "productDetailsBox": {
+        "backgroundColor":"#F9F9F9"
+      },
       "title": {
         "color": "#000000",
         "fontSize": 18
@@ -38,11 +41,12 @@
       },
       "quantities": {
         "color": "#000000",
-        "backgroundColor": "#FFFFFF"
+        "size": 17
       },
       "variantSelector": {
         "color": "#000000",
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#FFFFFF",
+        "width":200
       },
       "plusColor": "#5e5e5e",
       "plusBackgroundColor": "#ffffff"
@@ -52,6 +56,10 @@
       "color": "#000000",
       "fontSize": 18,
       "text": "Total",
+      "discountMessage":{
+        "color":"#000000",
+        "size": 14
+      },
       "originalPrice": {
         "color": "#FF0000",
         "fontSize": 18
@@ -87,6 +95,9 @@
       "descriptionBold": "300"
     },
     "productDetails": {
+      "productDetailsBox": {
+        "backgroundColor":"#F9F9F9"
+      },
       "title": {
         "color": "#000000",
         "fontSize": 18
@@ -101,7 +112,7 @@
       },
       "quantities": {
         "color": "#000000",
-        "backgroundColor": "#FFFFFF"
+        "size": 17
       },
       "quantitiesSelector": {
         "color": "#000000",
@@ -110,17 +121,23 @@
       },
       "variantSelector": {
         "color": "#000000",
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#FFFFFF",
+        "width":200
       }
     },
     "options": {
       "iconColor": "#000000",
       "color": "#000000",
       "fontSize": 16,
+      "DiscountBadge": {
+          "text": "50% OFF",
+          "badgeType": "leftBanner"
+        },
       "saveDiscount": {
         "color": "#FFFFFF",
         "backgroundColor": "#ff0000",
         "fontSize": 16,
+        "size": 16,
         "borderRadius": 15
       }
     },
@@ -129,6 +146,10 @@
       "color": "#000000",
       "fontSize": 18,
       "text": "Total",
+      "discountMessage":{
+        "color":"#000000",
+        "size": 14
+      },
       "originalPrice": {
         "color": "#FF0000",
         "fontSize": 18
@@ -159,15 +180,14 @@
       "fontSize": 18,
       "alignment": "left",
       "titleBold" : "600",
-      "description": {
-        "color": "#000000",
-        "fontSize": 15
-      },
       "descriptionBold": "300",
-      "descriptionColor": "#ff0000",
+      "descriptionColor": "#000000",
       "descriptionFontSize": "16"
     },
     "collectionDetails": {
+      "collectionDetailsBox": {
+        "backgroundColor":"#F9F9F9"
+      },
       "title": {
         "color": "#000000",
         "fontSize": 17
@@ -216,6 +236,9 @@
       "descriptionBold": "300"
     },
     "productDetails": {
+      "productDetailsBox": {
+        "backgroundColor":"#F9F9F9"
+      },
       "title": {
         "color": "#000000",
         "fontSize": 18
@@ -230,13 +253,13 @@
       },
       "quantities": {
         "color": "#000000",
-        "backgroundColor": "#FFFFFF",
-        "borderColor": "#e8dede"
+        "size": 17
       },
       "variantSelector": {
         "color": "#000000",
         "backgroundColor": "#FFFFFF",
-        "borderColor": "#FFFFFF"
+        "borderColor": "#FFFFFF",
+        "width":200
       },
       "plusColor": "#5e5e5e",
       "plusBackgroundColor": "#ffffff"
@@ -246,6 +269,10 @@
       "color": "#000000",
       "fontSize": 18,
       "text": "Total",
+      "discountMessage":{
+        "color":"#000000",
+        "size": 14
+      },
       "originalPrice": {
         "color": "#FF0000",
         "fontSize": 18
@@ -257,8 +284,8 @@
     },
     "DiscountBadge": {
       "color": "#FFFFFF",
-      "backgroundColor": "#ea3535",
-      "fontSize": 15,
+      "backgroundColor": "#ff0000",
+      "fontSize": 16,
       "text": "50% OFF",
       "badgeType": "leftBanner"
     }
@@ -289,6 +316,9 @@
       "descriptionBold": "300"
     },
     "productDetails": {
+      "productDetailsBox": {
+        "backgroundColor":"#F9F9F9"
+      },
       "title": {
         "color": "#000000",
         "fontSize": 18
@@ -303,11 +333,12 @@
       },
       "quantities": {
         "color": "#000000",
-        "backgroundColor": "#FFFFFF"
+        "size": 17
       },
       "variantSelector": {
         "color": "#000000",
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#FFFFFF",
+        "width":200
       },
       "plusColor": "#5e5e5e",
       "plusBackgroundColor": "#ffffff",
@@ -318,6 +349,10 @@
       "color": "#000000",
       "fontSize": 18,
       "text": "Total",
+      "discountMessage":{
+        "color":"#000000",
+        "size": 14
+      },
       "originalPrice": {
         "color": "#FF0000",
         "fontSize": 18

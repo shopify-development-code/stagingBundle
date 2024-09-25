@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   ArrowLeftOutlined,
   CaretRightOutlined,
@@ -14,6 +14,7 @@ import {
   EditOutlined,
   TransactionOutlined,
 } from "@ant-design/icons";
+import { LegacyCard, Select, Tabs,Grid } from "@shopify/polaris";
 import { Button, Divider, Modal, Spin } from "antd";
 import { useNavigate } from "react-router-dom";
 import Design from "./Design";
@@ -39,7 +40,7 @@ import toastNotification from "../commonSections/Toast";
 import { Text } from "@shopify/polaris";
 import { LockMajor } from "@shopify/polaris-icons";
 import CustomizationFBt from "./CustomizationFBTPreview";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 const CustomizationEditor = (props) => {
   const app = useAppBridge();
@@ -47,11 +48,103 @@ const CustomizationEditor = (props) => {
   const [displayOption, setDisplayOption] = useState("productPages");
   const [spinner, setSpinner] = useState(false);
   const [tooltipStatus, setTooltipStatus] = useState(false);
-  const [isModalOpen,setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   // const [bundleOption, setBundleOption] = useState("bundle");
   const [customOption, setCustomOption] = useState("Box");
   const [onLoad, setOnload] = useState(false);
   const [bundleType, setBundleType] = useState("");
+
+  const [selected, setSelected] = useState("bundle");
+  const [selectedTab, setSelectedTab] = useState(0);
+  
+  const tabs = [
+    ...(props.bundleOption == "frequentlyBoughtTogether"
+      ? 
+         [ {
+            id: "design-1",
+            content: "Design",
+            panelID: "Design",
+          }
+        ]: [
+          {
+            id: "box-1",
+            content: "Box",
+            panelID: "Box",
+          },
+          {
+            id: "title-1",
+            content: "Title",
+            panelID: "Title",
+          },
+          ...(props.bundleOption === "collection"
+            ? [
+                {
+                  id: "collectionDetails-1",
+                  content: "Collection Details",
+                  panelID: "collectionDetails",
+                },
+                {
+                  id: "discountBadge-1",
+                  content: "Discount Badge",
+                  panelID: "DiscountBadge",
+                },
+              ]
+            : [
+                {
+                  id: "productDetails-1",
+                  content: "Product Details",
+                  panelID: "productDetails",
+                },
+              ]),
+          {
+            id: "button-1",
+            content: "Button",
+            panelID: "Button",
+          },
+          ...(props.bundleOption !== "collection"
+            ? [
+                {
+                  id: "totalSection-1",
+                  content: "Total Section",
+                  panelID: "Total_section",
+                },
+              ]
+            : []),
+          ...(props.bundleOption === "buyXgetY"
+            ? [
+                {
+                  id: "discountBadge-2",
+                  content: "Discount Badge",
+                  panelID: "DiscountBadge",
+                },
+              ]
+            : []),
+          ...(props.bundleOption === "volume"
+            ? [
+                {
+                  id: "options-1",
+                  content: "Options & Badges",
+                  panelID: "Options",
+                },
+              ]
+            : []),
+        ]),
+  ];
+
+  const handleSelectChange = (value) => {
+    setSelectedTab(0);
+    setSelected(value);
+    handleBundleOption(value);
+  };
+
+  const options = [
+    { label: "Product Bundle", value: "bundle" },
+    { label: "Volume Bundle", value: "volume" },
+    { label: "Collection mix & match Bundle", value: "collection" },
+    { label: "Product mix & match Bundle", value: "productMixMatch" },
+    { label: "Buy X Get Y Bundle", value: "buyXgetY" },
+    { label: "Frequently Bought Together", value: "frequentlyBoughtTogether" },
+  ];
 
   const handleCustomizeSave = async () => {
     setSpinner(true);
@@ -76,199 +169,213 @@ const CustomizationEditor = (props) => {
   const popUpAlertFun = () => {
     Swal.fire({
       title: 'Upgrade to "Standard" Plan',
-      text: 'Do you want to continue',
-      icon: 'info',
+      text: "Do you want to continue",
+      icon: "info",
       showCancelButton: true,
-      confirmButtonText: 'Get Plan',
-      cancelButtonText: 'Cancel',
-      confirmButtonColor: "#59da7c"
+      confirmButtonText: "Get Plan",
+      cancelButtonText: "Cancel",
+      confirmButtonColor: "#59da7c",
     }).then((result) => {
       if (result.isConfirmed) {
-        navigate('/plans')
+        navigate("/plans");
       }
     });
-  }
-  const handleDisplayOption = (e) => {
-    if (e.target.value == "productPages") {
-      setDisplayOption(e.target.value);
-      props.setBundleOption("bundle");
-      // props.setData(defaultData["bundle"])   1
-    } else if (e.target.value == "popUp") {
-      setDisplayOption(e.target.value);
-      props.setBundleOption("popUp");
-      setCustomOption("Box");
-      // props.setData(defaultData["popUp"]) 2
-    }
   };
+
+  // const handleDisplayOption = (e) => {
+  //   if (e.target.value == "productPages") {
+  //     setDisplayOption(e.target.value);
+  //     props.setBundleOption("bundle");
+  //   } else if (e.target.value == "popUp") {
+  //     setDisplayOption(e.target.value);
+  //     props.setBundleOption("popUp");
+  //     setCustomOption("Box");
+  //   }
+  // };
 
   const handleBundleOption = (bundleName) => {
     if (props.bundleOption != bundleName) {
       props.setBundleOption(bundleName);
-      // props.setData(defaultData[bundleName]);
       bundleName == "collection" ||
-        bundleName == "bundle" ||
-        bundleName == "volume" ||
-        bundleName == "buyXgetY" ||
-        bundleName == "productMixMatch" ||
-        bundleName == "frequentlyBoughtTogether"
+      bundleName == "bundle" ||
+      bundleName == "volume" ||
+      bundleName == "buyXgetY" ||
+      bundleName == "productMixMatch"
         ? setCustomOption("Box")
         : "";
+      if(bundleName == "frequentlyBoughtTogether"){
+        setCustomOption("Design")
+      }
     }
   };
 
-  const openModalFun = () =>{
+  const openModalFun = () => {
     setIsModalOpen(true);
-  }
+  };
 
-  const handleCustomOption = (clickedOption) => {
+  const handleCustomOption = (selectedTabIndex, clickedOption) => {
+    setSelectedTab(selectedTabIndex);
     setOnload(false);
-    customOption != clickedOption ? setCustomOption(clickedOption) : "";
+    if(props.bundleOption !== "frequentlyBoughtTogether"){
+      setCustomOption((prevCustomOption) => {
+        return prevCustomOption !== clickedOption
+          ? clickedOption
+          : prevCustomOption;
+      });
+    }else{
+      setCustomOption("Design");
+    }
   };
 
-  const leftSideSectionCommon = (type) => {
-    return (
-      <div className="sd-bundle-listItem-wrapper">
-        {/* {bundleOption != "collection" &&<div className="sd-bundle-listItem-common sd-bundle-listItem-sub" onClick={()=>handleCustomOption("Design")}><AntDesignOutlined /><p>Design</p></div> } */}
-        {/* { displayOption !="popUp" && <div
-          className={`sd-bundle-listItem-common sd-bundle-listItem-sub ${customOption == "Theme"?"sd-option-active":""}`}
-          onClick={() => handleCustomOption("Theme")}
-        >
-          <PicCenterOutlined />
-          <p>Theme</p>
-        </div>} */}
-        {type === 'frequentlyBoughtTogether' ?
-          <div className="sd-bundle-listItem-common sd-bundle-listItem-sub sd-option-active">
-            <AntDesignOutlined />
-            <p>Design</p>
-          </div>
-          :
-          <>
-            <div
-              className={`sd-bundle-listItem-common sd-bundle-listItem-sub ${customOption == "Box" ? "sd-option-active" : ""
-                }`}
-              onClick={() => handleCustomOption("Box")}
-            >
-              <BoxPlotOutlined />
-              <p>Box</p>
-            </div>
-            <div
-              className={`sd-bundle-listItem-common sd-bundle-listItem-sub ${customOption == "Title" ? "sd-option-active" : ""
-                }`}
-              onClick={() => handleCustomOption("Title")}
-            >
-              <FileTextOutlined />
-              <p>Title</p>
-            </div>
-            <div
-              className={`sd-bundle-listItem-common sd-bundle-listItem-sub ${customOption == "Button" ? "sd-option-active" : ""
-                }`}
-              onClick={() => handleCustomOption("Button")}
-            >
-              <LinkOutlined />
-              <p>Button</p>
-            </div>
+  // const leftSideSectionCommon = (type) => {
+  //   return (
+  //     <div className="sd-bundle-listItem-wrapper">
+  //       {type === "frequentlyBoughtTogether" ? (
+  //         <div className="sd-bundle-listItem-common sd-bundle-listItem-sub sd-option-active">
+  //           <AntDesignOutlined />
+  //           <p>Design</p>
+  //         </div>
+  //       ) : (
+  //         <>
+  //           <div
+  //             className={`sd-bundle-listItem-common sd-bundle-listItem-sub ${
+  //               customOption == "Box" ? "sd-option-active" : ""
+  //             }`}
+  //             onClick={() => handleCustomOption("Box")}
+  //           >
+  //             <BoxPlotOutlined />
+  //             <p>Box</p>
+  //           </div>
+  //           <div
+  //             className={`sd-bundle-listItem-common sd-bundle-listItem-sub ${
+  //               customOption == "Title" ? "sd-option-active" : ""
+  //             }`}
+  //             onClick={() => handleCustomOption("Title")}
+  //           >
+  //             <FileTextOutlined />
+  //             <p>Title</p>
+  //           </div>
+  //           <div
+  //             className={`sd-bundle-listItem-common sd-bundle-listItem-sub ${
+  //               customOption == "Button" ? "sd-option-active" : ""
+  //             }`}
+  //             onClick={() => handleCustomOption("Button")}
+  //           >
+  //             <LinkOutlined />
+  //             <p>Button</p>
+  //           </div>
 
-            {props.bundleOption != "collection" && (
-              <div
-                className={`sd-bundle-listItem-common sd-bundle-listItem-sub ${customOption == "productDetails" ? "sd-option-active" : ""
-                  }`}
-                onClick={() => handleCustomOption("productDetails")}
-              >
-                <DatabaseOutlined />
-                <p>Product Details</p>
-              </div>
-            )}
+  //           {props.bundleOption != "collection" && (
+  //             <div
+  //               className={`sd-bundle-listItem-common sd-bundle-listItem-sub ${
+  //                 customOption == "productDetails" ? "sd-option-active" : ""
+  //               }`}
+  //               onClick={() => handleCustomOption("productDetails")}
+  //             >
+  //               <DatabaseOutlined />
+  //               <p>Product Details</p>
+  //             </div>
+  //           )}
 
-            {props.bundleOption == "collection" && (
-              <div
-                className={`sd-bundle-listItem-common sd-bundle-listItem-sub ${customOption == "collectionDetails" ? "sd-option-active" : ""
-                  }`}
-                onClick={() => handleCustomOption("collectionDetails")}
-              >
-                <DatabaseOutlined />
-                <p>Collection Details</p>
-              </div>
-            )}
+  //           {props.bundleOption == "collection" && (
+  //             <div
+  //               className={`sd-bundle-listItem-common sd-bundle-listItem-sub ${
+  //                 customOption == "collectionDetails" ? "sd-option-active" : ""
+  //               }`}
+  //               onClick={() => handleCustomOption("collectionDetails")}
+  //             >
+  //               <DatabaseOutlined />
+  //               <p>Collection Details</p>
+  //             </div>
+  //           )}
 
-            {props.bundleOption == "volume" && (
-              <div
-                className={`sd-bundle-listItem-common sd-bundle-listItem-sub ${customOption == "Options" ? "sd-option-active" : ""
-                  }`}
-                onClick={() => handleCustomOption("Options")}
-              >
-                <DatabaseOutlined />
-                <p>Options</p>
-              </div>
-            )}
-            {props.bundleOption != "collection" && (
-              <div
-                className={`sd-bundle-listItem-common sd-bundle-listItem-sub ${customOption == "Total_section" ? "sd-option-active" : ""
-                  }`}
-                onClick={() => handleCustomOption("Total_section")}
-              >
-                <CalculatorOutlined />
-                <p>Total Section</p>
-              </div>
-            )}
+  //           {props.bundleOption == "volume" && (
+  //             <div
+  //               className={`sd-bundle-listItem-common sd-bundle-listItem-sub ${
+  //                 customOption == "Options" ? "sd-option-active" : ""
+  //               }`}
+  //               onClick={() => handleCustomOption("Options")}
+  //             >
+  //               <DatabaseOutlined />
+  //               <p>Options</p>
+  //             </div>
+  //           )}
+  //           {props.bundleOption != "collection" && (
+  //             <div
+  //               className={`sd-bundle-listItem-common sd-bundle-listItem-sub ${
+  //                 customOption == "Total_section" ? "sd-option-active" : ""
+  //               }`}
+  //               onClick={() => handleCustomOption("Total_section")}
+  //             >
+  //               <CalculatorOutlined />
+  //               <p>Total Section</p>
+  //             </div>
+  //           )}
 
-            {(props.bundleOption == "collection" || props.bundleOption == "buyXgetY") && (
-              <div
-                className={`sd-bundle-listItem-common sd-bundle-listItem-sub ${customOption == "DiscountBadge" ? "sd-option-active" : ""
-                  }`}
-                onClick={() => handleCustomOption("DiscountBadge")}
-              >
-                <TransactionOutlined />
-                <p>Discount Badge</p>
-              </div>
-            )}
-          </>
-        }
-      </div>
-    );
-  };
+  //           {(props.bundleOption == "collection" ||
+  //             props.bundleOption == "buyXgetY") && (
+  //             <div
+  //               className={`sd-bundle-listItem-common sd-bundle-listItem-sub ${
+  //                 customOption == "DiscountBadge" ? "sd-option-active" : ""
+  //               }`}
+  //               onClick={() => handleCustomOption("DiscountBadge")}
+  //             >
+  //               <TransactionOutlined />
+  //               <p>Discount Badge</p>
+  //             </div>
+  //           )}
+  //         </>
+  //       )}
+  //     </div>
+  //   );
+  // };
   return (
     <Spin spinning={spinner} size="large">
       <div className="sd-bundle-customizationBundle-wrapper">
         <div className="sd-bundle-customizationBundle-topbar">
           <div>
-            <Button
-              className="sd-bundle-backArrow"
-              onClick={openModalFun}
-            >
+            <Button className="sd-bundle-backArrow" onClick={openModalFun}>
               <ArrowLeftOutlined />
             </Button>
+
             <Modal
               title="Going Back?"
               open={isModalOpen}
-              onOk={() => navigate('/customization')}
+              onOk={() => navigate("/customization")}
               onCancel={() => setIsModalOpen(false)}
             >
               <h1>
-                Are you sure you want to go back? All unsaved changes will be lost.
+                Are you sure you want to go back? All unsaved changes will be
+                lost.
               </h1>
             </Modal>
           </div>
           {/* <div className="sd-bundle-backArrow" onClick={()=>navigate('/')}><ArrowLeftOutlined/></div> */}
           <div className="sd-bundle-selectSection">
-            <p>Displays:</p>
+            <Select
+              options={options}
+              onChange={(e) => handleSelectChange(e)}
+              value={selected}
+            />
+            {/* <p>Displays:</p>
             <select value={displayOption} onChange={handleDisplayOption}>
               <option className="option" value="productPages">
                 Product Pages
-              </option>
-              {/* <option className="option" value="popUp">
+              </option> */}
+            {/* <option className="option" value="popUp">
               Pop Up
             </option> */}
-
-            </select>
+            {/* </select> */}
           </div>
-          <Button className="sd-bundle-backArrow" onClick={handleCustomizeSave}>Save</Button>
+          <Button className="sd-bundle-backArrow" onClick={handleCustomizeSave}>
+            Save
+          </Button>
         </div>
         {/* <Divider /> */}
         <div className="sd-bundle-mainContent-wrapper">
-          <div className="sd-bundle-leftSider">
+          {/* <div className="sd-bundle-leftSider">
             <p className="sd-bundle-displayOption-section">
               {displayOption.replace(/([a-z])([A-Z])/g, "$1 $2")}
-              {/* {displayOption} */}
             </p>
             <Divider />
 
@@ -416,7 +523,7 @@ const CustomizationEditor = (props) => {
             ) : (
               ""
             )}
-          </div>
+          </div> */}
 
           {displayOption == "productPages" ? (
             <div className="sd-bundle-centerContent">
@@ -454,10 +561,19 @@ const CustomizationEditor = (props) => {
   <p className="sd-bundle-text">Select a section in the  sidebar  to start.</p>
 </div>
 : */}
+            <Tabs
+              tabs={tabs}
+              selected={selectedTab}
+              onSelect={(e) => handleCustomOption(e, tabs[e].panelID)}
+            />
+{/* 
             <p className="sd-bundle-customOption-title-section">
-
-              {customOption == "productDetails" ? "Product Details" : customOption == "Total_section" ? "Total Section" : customOption}
-            </p>
+              {customOption == "productDetails"
+                ? "Product Details"
+                : customOption == "Total_section"
+                  ? "Total Section"
+                  : customOption}
+            </p> */}
             <Divider />
 
             {/* <div className="sd-bundle-editSection-wrappper">
@@ -528,10 +644,11 @@ const CustomizationEditor = (props) => {
               />
             )}
           </div> */}
-
+          
             {displayOption == "productPages" ? (
               <div className="sd-bundle-editSection-wrappper">
-                {customOption == "Design" && props.bundleOption == "frequentlyBoughtTogether" ? (
+                {customOption === "Design" &&
+                props.bundleOption === "frequentlyBoughtTogether" ? (
                   <Design
                     bundleOption={props.bundleOption}
                     data={props.data}
@@ -604,8 +721,9 @@ const CustomizationEditor = (props) => {
                     setData={props.setData}
                     displayOption={displayOption}
                   />
-                ) : customOption == "DiscountBadge" &&
-                  props.bundleOption == "collection" || props.bundleOption == "buyXgetY" ? (
+                ) : (customOption == "DiscountBadge" &&
+                    props.bundleOption == "collection") ||
+                  props.bundleOption == "buyXgetY" ? (
                   <DiscountBadge
                     bundleOption={props.bundleOption}
                     data={props.data}

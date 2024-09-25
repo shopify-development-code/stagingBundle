@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Divider } from "antd";
-import { TextField, Select } from "@shopify/polaris";
+import { TextField, Select, RangeSlider, Grid } from "@shopify/polaris";
 import { Radio, Space, Avatar } from "antd";
 import {
   handleChangeCommon,
@@ -33,117 +33,142 @@ const DiscountBadge = ({ data, setData, bundleOption, displayOption }) => {
 
   return (
     <div className="sd-bundle-titleCustom">
-      <div className="sd-bundle-custom-item-common">
-        <p className="sd-bundle-custom-item-heading-common">Discount Badge </p>
-        <div className="sd-bundle-custom-item-inputSection">
-          <input
-            type="color"
-            value={data[bundleOption]["DiscountBadge"]["color"]}
+      <Grid>
+        <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
+          <div className="sd-bundle-custom-item-common">
+            <p className="sd-bundle-custom-item-heading-common">
+              Discount Badge{" "}
+            </p>
+            <div className="sd-bundle-custom-item-inputSection">
+              <input
+                type="color"
+                value={data[bundleOption]["DiscountBadge"]["color"]}
+                onChange={(e) =>
+                  handleChangeCommon(
+                    e,
+                    "DiscountBadge",
+                    "color",
+                    data,
+                    setData,
+                    bundleOption
+                  )
+                }
+              />
+
+              <div className="sd-bundle-custom-fieldColorCode-common">
+                <p>Text Color </p>
+                <p> {data[bundleOption]["DiscountBadge"]["color"]} </p>
+              </div>
+            </div>
+
+            <div className="sd-bundle-custom-item-inputSection">
+              <input
+                type="color"
+                value={data[bundleOption]["DiscountBadge"]["backgroundColor"]}
+                onChange={(e) =>
+                  handleChangeCommon(
+                    e,
+                    "DiscountBadge",
+                    "backgroundColor",
+                    data,
+                    setData,
+                    bundleOption
+                  )
+                }
+              />
+
+              <div className="sd-bundle-custom-fieldColorCode-common">
+                <p>Background Color </p>
+                <p>
+                  {" "}
+                  {data[bundleOption]["DiscountBadge"]["backgroundColor"]}{" "}
+                </p>
+              </div>
+            </div>
+
+            {/* <TextField
+            type="number"
+            label="Size"
+            inputMode="none"
+            // placeholder="set minimum order  for item"
             onChange={(e) =>
-              handleChangeCommon(
+              handleChangeValueCommon(
                 e,
                 "DiscountBadge",
-                "color",
+                "fontSize",
                 data,
                 setData,
-                bundleOption
+                bundleOption,
+                sizeValue
               )
             }
-          />
-
-          <div className="sd-bundle-custom-fieldColorCode-common">
-            <p>Text Color </p>
-            <p> {data[bundleOption]["DiscountBadge"]["color"]} </p>
-          </div>
-        </div>
-
-        <div className="sd-bundle-custom-item-inputSection">
-          <input
-            type="color"
-            value={data[bundleOption]["DiscountBadge"]["backgroundColor"]}
-            onChange={(e) =>
-              handleChangeCommon(
-                e,
-                "DiscountBadge",
-                "backgroundColor",
-                data,
-                setData,
-                bundleOption
-              )
-            }
-          />
-
-          <div className="sd-bundle-custom-fieldColorCode-common">
-            <p>Background Color </p>
-            <p> {data[bundleOption]["DiscountBadge"]["backgroundColor"]} </p>
-          </div>
-        </div>
-
-        <TextField
-          type="number"
-          label="Size"
-          inputMode="none"
-          // placeholder="set minimum order  for item"
-          onChange={(e) =>
-            handleChangeValueCommon(
-              e,
-              "DiscountBadge",
-              "fontSize",
-              data,
-              setData,
-              bundleOption,
-              sizeValue
-            )
-          }
-          value={data[bundleOption]["DiscountBadge"]["fontSize"]}
-          autoComplete="off"
-          min={1}
-          max={sizeValue}
-        />
-        {/* 
-        <TextField
-          type="texts"
-          label="Text"
-          // placeholder="set minimum order  for item"
-          onChange={handleText}
-          value={data[bundleOption]["DiscountBadge"]["text"]}
-          autoComplete="off"
-          min="0"
-        /> */}
-
-        {bundleOption == "buyXgetY" && (
-          <>
-            {" "}
-            <div>Select Badges</div>
-            <Radio.Group
+            value={data[bundleOption]["DiscountBadge"]["fontSize"]}
+            autoComplete="off"
+            min={1}
+            max={sizeValue}
+          /> */}
+            <RangeSlider
+              label="Size"
               onChange={(e) =>
                 handleChangeValueCommon(
-                  e.target.value,
+                  e,
                   "DiscountBadge",
-                  "badgeType",
+                  "fontSize",
                   data,
                   setData,
                   bundleOption,
                   sizeValue
                 )
               }
-              value={data[bundleOption]["DiscountBadge"]["badgeType"]}
-            >
-              <Space direction="vertical">
-                <Radio value="rightBanner">
-                  <img src={RightBanner} />
-                </Radio>
-                <Radio value="leftBanner">
-                  <img src={LeftBanner}  className="BADGE"/>
-                </Radio>
-                {/* <Radio value="ribbon">
-                  <img src="https://cdn.shopify.com/s/files/1/0801/7264/6691/files/ribbon.png?v=1700562892" />
-                </Radio> */}
-              </Space>
-            </Radio.Group>
-          </>
+              value={data[bundleOption]["DiscountBadge"]["fontSize"]}
+              min={10}
+              max={15}
+              output
+            />
+            {/* 
+          <TextField
+            type="texts"
+            label="Text"
+            // placeholder="set minimum order  for item"
+            onChange={handleText}
+            value={data[bundleOption]["DiscountBadge"]["text"]}
+            autoComplete="off"
+            min="0"
+          /> */}
+          </div>
+        </Grid.Cell>
+        {bundleOption == "buyXgetY" && (
+          <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
+            <div className="sd-bundle-custom-item-common">
+              {" "}
+              <div className="sd-bundle-custom-item-heading-common">Select Badges</div>
+              <Radio.Group
+                onChange={(e) =>
+                  handleChangeValueCommon(
+                    e.target.value,
+                    "DiscountBadge",
+                    "badgeType",
+                    data,
+                    setData,
+                    bundleOption,
+                    sizeValue
+                  )
+                }
+                value={data[bundleOption]["DiscountBadge"]["badgeType"]}
+              >
+                <Space direction="vertical">
+                  <Radio value="rightBanner">
+                    <img src={RightBanner} />
+                  </Radio>
+                  <Radio value="leftBanner">
+                    <img src={LeftBanner} className="BADGE" />
+                  </Radio>
+                </Space>
+              </Radio.Group>
+            </div>
+          </Grid.Cell>
         )}
-      </div>
+      </Grid>
     </div>
   );
 };

@@ -223,7 +223,14 @@ const CustomizationCollectionBundlePreview = ({ data }) => {
           </p>
         </div>
 
-        <div class="sd-bundle-product-detail create-bundle-discount">
+        <div
+          class="sd-bundle-product-detail create-bundle-discount"
+          style={{
+            backgroundColor:
+              data.collection.collectionDetails.collectionDetailsBox
+                .backgroundColor,
+          }}
+        >
           <div class="sd-bundle-product-inner">
             <div
               class="sd-bundle-product-img"
@@ -278,24 +285,39 @@ const CustomizationCollectionBundlePreview = ({ data }) => {
             />
           </svg>
         </div>
-        <div class="sd-bundle-product-detail create-bundle-discount">
+        <div
+          class="sd-bundle-product-detail create-bundle-discount"
+          style={{
+            backgroundColor:
+              data.collection.collectionDetails.collectionDetailsBox
+                .backgroundColor,
+          }}
+        >
           <div class="sd-bundle-product-inner">
-            <div class="sd-bundle-product-img" style={{
+            <div
+              class="sd-bundle-product-img"
+              style={{
                 borderColor:
                   data["collection"]["collectionDetails"]["imageBorderColor"],
-              }}>
+              }}
+            >
               <img src={productImg} width="80" height="80" />
             </div>
             <div class="sd-bundle-product-name">
-              <h5 style={{
+              <h5
+                style={{
                   color:
                     data["collection"]["collectionDetails"]["title"]["color"],
                   fontSize:
                     data["collection"]["collectionDetails"]["title"][
                       "fontSize"
                     ] + "px",
-                }}>Wireless collection</h5>
-              <p style={{
+                }}
+              >
+                Wireless collection
+              </h5>
+              <p
+                style={{
                   color:
                     data["collection"]["collectionDetails"]["description"][
                       "color"
@@ -304,7 +326,10 @@ const CustomizationCollectionBundlePreview = ({ data }) => {
                     data["collection"]["collectionDetails"]["description"][
                       "fontSize"
                     ] + "px",
-                }}>Add 1 items from wireless collection</p>
+                }}
+              >
+                Add 1 items from wireless collection
+              </p>
             </div>
           </div>
         </div>
