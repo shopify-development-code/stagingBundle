@@ -4,7 +4,8 @@
     "box": {
       "backgroundColor": "#FFFFFF",
       "borderColor": "#e5e5e5",
-      "borderRadius": 14
+      "borderRadius": 14,
+      "fontFamily": "sans-serif"
     },
     "button": {
       "backgroundColor": "#ffffff",
@@ -75,7 +76,8 @@
     "box": {
       "backgroundColor": "#FFFFFF",
       "borderColor": "#e5e5e5",
-      "borderRadius": 14
+      "borderRadius": 14,
+      "fontFamily": "sans-serif"
     },
     "button": {
       "backgroundColor": "#ffffff",
@@ -130,8 +132,8 @@
       "color": "#000000",
       "fontSize": 16,
       "DiscountBadge": {
-          "text": "50% OFF",
-          "badgeType": "leftBanner"
+          "text": "50% off",
+          "badgeType": "rightBanner"
         },
       "saveDiscount": {
         "color": "#FFFFFF",
@@ -165,7 +167,8 @@
     "box": {
       "backgroundColor": "#FFFFFF",
       "borderColor": "#e5e5e5",
-      "borderRadius": 14
+      "borderRadius": 14,
+      "fontFamily": "sans-serif"
     },
     "button": {
       "backgroundColor": "#ffffff",
@@ -200,7 +203,8 @@
         "backgroundColor": "#e5e5e5",
         "color": "#5e5e5e"
       },
-      "imageBorderColor": "#ffffff"
+      "imageBorderColor": "#ffffff",
+      "imageBorderRadius": 10
     },
     "DiscountBadge": {
       "color": "#FFFFFF",
@@ -216,7 +220,8 @@
       "backgroundColor": "#FFFFFF",
       "borderColor": "#e5e5e5",
       "borderRadius": 14,
-      "thickness": 1
+      "thickness": 1,
+      "fontFamily": "sans-serif"
     },
     "button": {
       "backgroundColor": "#ffffff",
@@ -296,7 +301,8 @@
       "backgroundColor": "#FFFFFF",
       "borderColor": "#e5e5e5",
       "borderRadius": 14,
-      "thickness": 1
+      "thickness": 1,
+      "fontFamily": "sans-serif"
     },
     "button": {
       "backgroundColor": "#ffffff",
@@ -315,10 +321,22 @@
       "descriptionFontSize": 12,
       "descriptionBold": "300"
     },
+    "orderOverview":{
+      "selectedText":{
+        "color":"#000000",
+        "fontSize": 17
+      },
+      "discountText":{
+        "color":"#000000",
+        "fontSize": 15
+      },
+      "alignment":"center"
+    },
     "productDetails": {
       "productDetailsBox": {
         "backgroundColor":"#F9F9F9"
       },
+      "allProductColor":"#000000",
       "title": {
         "color": "#000000",
         "fontSize": 18
@@ -419,6 +437,76 @@
     }
   },
   "frequentlyBoughtTogether": {
-    "design": "modern"
+    "design": "modern",
+    "theme": "light",
+    "box": {
+      "backgroundColor": "#FFFFFF",
+      "borderColor": "#e5e5e5",
+      "borderRadius": 14,
+      "fontFamily": "sans-serif"
+    },
+    "button": {
+      "backgroundColor": "#ffffff",
+      "color": "#000000",
+      "fontSize": 30,
+      "text_others": "Add to cart ",
+      "text_noDiscount": "Add to cart ",
+      "position": "bottom"
+    },
+    "title": {
+      "color": "#000000",
+      "fontSize": 18,
+      "alignment": "left",
+      "titleBold" : "600",
+      "descriptionColor": "#000000",
+      "descriptionFontSize": 12,
+      "descriptionBold": "300"
+    },
+    "productDetails": {
+      "productDetailsBox": {
+        "backgroundColor":"#F9F9F9"
+      },
+      "title": {
+        "color": "#000000",
+        "fontSize": 18
+      },
+      "price": {
+        "color": "#000000",
+        "fontSize": 18
+      },
+      "image": {
+        "borderColor": "#FFFFFF",
+        "borderRadius": 5
+      },
+      "quantities": {
+        "color": "#000000",
+        "size": 17
+      },
+      "variantSelector": {
+        "color": "#000000",
+        "backgroundColor": "#FFFFFF",
+        "width":200
+      },
+      "plusColor": "#5e5e5e",
+      "plusBackgroundColor": "#ffffff"
+    },
+    "totalSection": {
+      "backgroundColor": "#FFFFFF",
+      "color": "#000000",
+      "fontSize": 18,
+      "text": "Total",
+      "discountMessage":{
+        "color":"#000000",
+        "size": 14
+      },
+      "originalPrice": {
+        "color": "#FF0000",
+        "fontSize": 18
+      },
+      "finalPrice": {
+        "color": "#008061",
+        "fontSize": 18
+      }
+    }
   }
 }

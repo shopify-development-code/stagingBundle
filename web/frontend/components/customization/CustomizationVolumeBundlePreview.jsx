@@ -30,6 +30,10 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
     quantity > 2 && setQuantity((prev) => prev - 1);
   };
 
+  const textStyle = {
+    fontFamily:  `${data.volume.box.fontFamily}`
+  };
+
   useEffect(() => {
     quantity == 2 && setShowMore(false);
   }, [quantity]);
@@ -47,6 +51,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
         <div class="sd-bundle-text-detail">
           <h4
             style={{
+              ...textStyle,
               color: data["volume"]["title"]["color"],
               fontSize: data["volume"]["title"]["fontSize"] + "px",
               textAlign: data["volume"]["title"]["alignment"],
@@ -57,6 +62,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
           </h4>
           <p
             style={{
+              ...textStyle,
               color: data["volume"]["title"]["descriptionColor"],
               fontSize: data["volume"]["title"]["descriptionFontSize"] + "px",
               textAlign: data["volume"]["title"]["alignment"],
@@ -91,7 +97,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
               </h4>
             </div>} */}
           {data.volume.options.DiscountBadge.badgeType == "rightBanner" && (
-            <div className="sd-bundle-product-badge ">
+            <div className="sd-bundle-product-badgeOptions ">
               <svg
                 width="91"
                 height="24"
@@ -102,20 +108,27 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
               >
                 <path
                   d="M0 10L8.63148 0H83.3261L91 10H0Z"
-                  fill={data.buyXgetY.DiscountBadge.backgroundColor}
+                  fill={
+                    data["volume"]["options"]["saveDiscount"]["backgroundColor"]
+                  }
                 />
                 <path
                   d="M9 0H83V19C83 21.7614 80.7614 24 78 24H14C11.2386 24 9 21.7614 9 19V0Z"
-                  fill={data.buyXgetY.DiscountBadge.backgroundColor}
+                  fill={
+                    data["volume"]["options"]["saveDiscount"]["backgroundColor"]
+                  }
                 />
               </svg>
               <h4
                 style={{
-                  color: data.buyXgetY.DiscountBadge.color,
-                  fontSize: data.buyXgetY.DiscountBadge.fontSize + "px",
+                  ...textStyle,
+                  color: data["volume"]["options"]["saveDiscount"]["color"],
+                  fontSize:
+                    data["volume"]["options"]["saveDiscount"]["fontSize"] +
+                    "px",
                 }}
               >
-                50% Off
+                {data.volume.options.DiscountBadge.text}
               </h4>
             </div>
           )}
@@ -126,6 +139,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
                 for="radio-1"
                 class="sd-radio-label"
                 style={{
+                  ...textStyle,
                   color: data["volume"]["options"]["color"],
                   fontSize: data["volume"]["options"]["fontSize"] + "px",
                 }}
@@ -134,24 +148,28 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
               </label>
             </div>
             {data.volume.options.DiscountBadge.badgeType == "options" && (
-              <div class="sd-percent-badge">
+              <div
+                class="sd-percent-badge"
+                style={{
+                  backgroundColor:
+                    data["volume"]["options"]["saveDiscount"][
+                      "backgroundColor"
+                    ],
+                  borderRadius:
+                    data["volume"]["options"]["saveDiscount"]["borderRadius"] +
+                    "px",
+                }}
+              >
                 <span
                   style={{
-                    backgroundColor:
-                      data["volume"]["options"]["saveDiscount"][
-                        "backgroundColor"
-                      ],
+                    ...textStyle,
                     color: data["volume"]["options"]["saveDiscount"]["color"],
-                    borderRadius:
-                      data["volume"]["options"]["saveDiscount"][
-                        "borderRadius"
-                      ] + "px",
                     fontSize:
                       data["volume"]["options"]["saveDiscount"]["fontSize"] +
                       "px",
                   }}
                 >
-                  50% off
+                  {data.volume.options.DiscountBadge.text}
                 </span>
               </div>
             )}
@@ -164,6 +182,42 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
               data.volume.productDetails.productDetailsBox.backgroundColor,
           }}
         >
+          {data.volume.options.DiscountBadge.badgeType == "rightBanner" && (
+            <div className="sd-bundle-product-badgeOptions1">
+              <svg
+                width="91"
+                height="24"
+                viewBox="0 0 91 24"
+                fill="none"
+                xmlns="
+          http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 10L8.63148 0H83.3261L91 10H0Z"
+                  fill={
+                    data["volume"]["options"]["saveDiscount"]["backgroundColor"]
+                  }
+                />
+                <path
+                  d="M9 0H83V19C83 21.7614 80.7614 24 78 24H14C11.2386 24 9 21.7614 9 19V0Z"
+                  fill={
+                    data["volume"]["options"]["saveDiscount"]["backgroundColor"]
+                  }
+                />
+              </svg>
+              <h4
+                style={{
+                  ...textStyle,
+                  color: data["volume"]["options"]["saveDiscount"]["color"],
+                  fontSize:
+                    data["volume"]["options"]["saveDiscount"]["fontSize"] +
+                    "px",
+                }}
+              >
+                {data.volume.options.DiscountBadge.text}
+              </h4>
+            </div>
+          )}
           <div class="sd-select-radio-with-text">
             <div class="radio">
               <input id="radio-2" name="radio" type="radio" checked />
@@ -171,6 +225,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
                 for="radio-2"
                 class="sd-radio-label"
                 style={{
+                  ...textStyle,
                   color: data["volume"]["options"]["color"],
                   fontSize: data["volume"]["options"]["fontSize"] + "px",
                 }}
@@ -179,24 +234,28 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
               </label>
             </div>
             {data.volume.options.DiscountBadge.badgeType == "options" && (
-              <div class="sd-percent-badge">
+              <div
+                class="sd-percent-badge"
+                style={{
+                  backgroundColor:
+                    data["volume"]["options"]["saveDiscount"][
+                      "backgroundColor"
+                    ],
+                  borderRadius:
+                    data["volume"]["options"]["saveDiscount"]["borderRadius"] +
+                    "px",
+                }}
+              >
                 <span
                   style={{
-                    backgroundColor:
-                      data["volume"]["options"]["saveDiscount"][
-                        "backgroundColor"
-                      ],
+                    ...textStyle,
                     color: data["volume"]["options"]["saveDiscount"]["color"],
-                    borderRadius:
-                      data["volume"]["options"]["saveDiscount"][
-                        "borderRadius"
-                      ] + "px",
                     fontSize:
                       data["volume"]["options"]["saveDiscount"]["fontSize"] +
                       "px",
                   }}
                 >
-                  50% off
+                  {data.volume.options.DiscountBadge.text}
                 </span>
               </div>
             )}
@@ -224,6 +283,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
               <div class="sd-bundle-product-name">
                 <h5
                   style={{
+                    ...textStyle,
                     color: data["volume"]["productDetails"]["title"]["color"],
                     fontSize:
                       data["volume"]["productDetails"]["title"]["fontSize"] +
@@ -234,6 +294,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
                 </h5>
                 <h4
                   style={{
+                    ...textStyle,
                     color: data["volume"]["productDetails"]["price"]["color"],
                     fontSize:
                       data["volume"]["productDetails"]["price"]["fontSize"] +
@@ -245,6 +306,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
                 <div class="sd-bundle-product-select-main">
                   <select
                     style={{
+                      ...textStyle,
                       backgroundColor:
                         data["volume"]["productDetails"]["variantSelector"][
                           "backgroundColor"
@@ -257,8 +319,8 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
                         data.volume.productDetails.variantSelector.width + "px",
                     }}
                   >
-                    <option>Medium</option>
-                    <option>Small</option>
+                    <option style={{...textStyle,}}>Medium</option>
+                    <option style={{...textStyle,}}>Small</option>
                   </select>
                 </div>
               </div>
@@ -266,6 +328,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
             <div class="sd-bundle-product-quantity">
               <h6
                 style={{
+                  ...textStyle,
                   color: data.volume.productDetails.quantities.color,
                   fontSize: data.volume.productDetails.quantities.size + "px",
                 }}
@@ -273,6 +336,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
                 Qty:{" "}
                 <span
                   style={{
+                    ...textStyle,
                     fontSize: data.volume.productDetails.quantities.size + "px",
                   }}
                 >
@@ -287,6 +351,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
           <div class="sd-total-desc">
             <h4
               style={{
+                ...textStyle,
                 color: data["volume"]["totalSection"]["color"],
                 fontSize: data["volume"]["totalSection"]["fontSize"] + "px",
               }}
@@ -295,6 +360,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
             </h4>
             <p
               style={{
+                ...textStyle,
                 color: data.volume.totalSection.discountMessage.color,
                 fontSize: data.volume.totalSection.discountMessage.size + "px",
               }}
@@ -305,6 +371,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
           <div class="sd-total-amount">
             <h4
               style={{
+                ...textStyle,
                 color: data["volume"]["totalSection"]["finalPrice"]["color"],
                 fontSize:
                   data["volume"]["totalSection"]["finalPrice"]["fontSize"] +
@@ -315,6 +382,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
             </h4>
             <h6
               style={{
+                ...textStyle,
                 color: data["volume"]["totalSection"]["originalPrice"]["color"],
                 fontSize:
                   data["volume"]["totalSection"]["originalPrice"]["fontSize"] +
@@ -329,6 +397,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
           <button
             type="button"
             style={{
+              ...textStyle,
               color: data["volume"]["button"]["color"],
               fontSize: data["volume"]["button"]["fontSize"] + "px",
               backgroundColor: data["volume"]["button"]["backgroundColor"],

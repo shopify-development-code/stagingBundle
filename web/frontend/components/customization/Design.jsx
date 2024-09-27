@@ -1,44 +1,46 @@
-import React, { useState } from "react" ;
-const Design=(props)=>{
-    let designOption = props.data.frequentlyBoughtTogether.design;
-    let [checkedOption,setChecked] = useState(designOption);
-    const handleChange=(e)=>{
-        if(e.target.value === "classic"){
-            setChecked(e.target.value);
-        }else{
-            setChecked(e.target.value);
-        }
-        props.setData({...props.data,frequentlyBoughtTogether:{design:e.target.value}});
-    }
-   
-    return(
-    <div className="sd-bundle-designCustom">
-        <div className="sd-bundle-item-custom-radio-common">
-        <input  
-            id="classic"   
-            type="radio" 
-            name="theme"  
-            value={"classic"} 
-            onChange={handleChange} 
-            checked={checkedOption=="classic"}
+import { RadioButton } from "@shopify/polaris";
+import React, { useState } from "react";
+const Design = (props) => {
+  let designOption = props.data.frequentlyBoughtTogether.design;
+  let [checkedOption, setChecked] = useState(designOption);
+  const handleChange = (e, id) => {
+    setChecked(id);
+    props.setData({
+      ...props.data,
+      frequentlyBoughtTogether: {
+        ...props.data.frequentlyBoughtTogether, // Spread the existing frequentlyBoughtTogether object
+        design: id, // Set the design property to the new id
+      },
+    });
+  };
+  
+  
+  console.log("fdehfh feydfye",props.data,checkedOption);
+  
+  return (
+    <>
+      <div className="sd-bundle-designCustom">
+        <RadioButton
+          id="classic"
+          label="Classic"
+          name="theme"
+          value={"classic"}
+          onChange={(e, id) => handleChange(e, id)}
+          checked={checkedOption == "classic"}
         />
-    <label htmlFor="classic" >classic</label>
-    </div>
-    <div className="sd-bundle-item-custom-radio-common">
-        <input  
-            id="modern"  
-            type="radio" 
-            name="theme"  
-            value={"modern"} 
-            onChange={handleChange} 
-            checked={checkedOption=="modern"}
+      </div>
+      <div className="sd-bundle-designCustom">
+        <RadioButton
+          id="modern"
+          label="Modern"
+          name="theme"
+          value={"modern"}
+          onChange={(e, id) => handleChange(e, id)}
+          checked={checkedOption == "modern"}
         />
-        <label htmlFor="modern">modern</label>
-        </div>
-    </div>
+      </div>
+    </>
+  );
+};
 
-    )
-
-    }
-
-export default  Design;
+export default Design;

@@ -9,7 +9,9 @@ import productImg from "../../assets/product.png";
 const CustomizationBuyXgetY = ({ data }) => {
   const { currency } = useAPI();
   const discount = 40;
-  console.log("hello check bxgy", data);
+  const textStyle = {
+    fontFamily:  `${data.buyXgetY.box.fontFamily}`
+  };
   return (
     <>
       <div
@@ -26,6 +28,7 @@ const CustomizationBuyXgetY = ({ data }) => {
         <div class="sd-bundle-text-detail">
           <h4
             style={{
+              ...textStyle,
               color: data?.buyXgetY?.title?.color,
               fontSize: data?.buyXgetY?.title?.fontSize + "px",
               fontWeight: data?.buyXgetY?.title?.titleBold,
@@ -36,6 +39,7 @@ const CustomizationBuyXgetY = ({ data }) => {
           </h4>
           <p
             style={{
+              ...textStyle,
               color: data.buyXgetY.title.descriptionColor,
               fontSize: data.buyXgetY.title.descriptionFontSize + "px",
               fontWeight: data.buyXgetY.title.descriptionBold,
@@ -67,6 +71,7 @@ const CustomizationBuyXgetY = ({ data }) => {
             <div class="sd-bundle-product-name">
               <h5
                 style={{
+                  ...textStyle,
                   color: data.buyXgetY.productDetails.title.color,
                   fontSize: data.buyXgetY.productDetails.title.fontSize + "px",
                 }}
@@ -75,6 +80,7 @@ const CustomizationBuyXgetY = ({ data }) => {
               </h5>
               <h4
                 style={{
+                  ...textStyle,
                   color: data.buyXgetY.productDetails.price.color,
                   fontSize: data.buyXgetY.productDetails.price.fontSize + "px",
                 }}
@@ -83,6 +89,7 @@ const CustomizationBuyXgetY = ({ data }) => {
               </h4>
               <select
                 style={{
+                  ...textStyle,
                   backgroundColor:
                     data.buyXgetY.productDetails.variantSelector
                       .backgroundColor,
@@ -91,19 +98,20 @@ const CustomizationBuyXgetY = ({ data }) => {
                     data.buyXgetY.productDetails.variantSelector.width + "px",
                 }}
               >
-                <option>Medium</option>
-                <option>Small</option>
+                <option style={{...textStyle,}}>Medium</option>
+                <option style={{...textStyle,}}>Small</option>
               </select>
             </div>
           </div>
           <div class="sd-bundle-product-quantity">
             <h6
               style={{
+                ...textStyle,
                 color: data.buyXgetY.productDetails.quantities.color,
                 fontSize: data.buyXgetY.productDetails.quantities.size + "px"
               }}
             >
-              Qty: <span style={{fontSize: data.buyXgetY.productDetails.quantities.size + "px"}}>1</span>
+              Qty: <span style={{...textStyle,fontSize: data.buyXgetY.productDetails.quantities.size + "px"}}>1</span>
             </h6>
           </div>
         </div>
@@ -129,6 +137,7 @@ const CustomizationBuyXgetY = ({ data }) => {
             <div class="sd-bundle-product-name">
               <h5
                 style={{
+                  ...textStyle,
                   color: data.buyXgetY.productDetails.title.color,
                   fontSize: data.buyXgetY.productDetails.title.fontSize + "px",
                 }}
@@ -137,6 +146,7 @@ const CustomizationBuyXgetY = ({ data }) => {
               </h5>
               <h4
                 style={{
+                  ...textStyle,
                   color: data.buyXgetY.productDetails.price.color,
                   fontSize: data.buyXgetY.productDetails.price.fontSize + "px",
                 }}
@@ -145,6 +155,7 @@ const CustomizationBuyXgetY = ({ data }) => {
               </h4>
               <select
                 style={{
+                  ...textStyle,
                   backgroundColor:
                     data.buyXgetY.productDetails.variantSelector
                       .backgroundColor,
@@ -153,19 +164,20 @@ const CustomizationBuyXgetY = ({ data }) => {
                     data.buyXgetY.productDetails.variantSelector.width + "px",
                 }}
               >
-                <option>Medium</option>
-                <option>Small</option>
+                <option style={{...textStyle,}}>Medium</option>
+                <option style={{...textStyle,}}>Small</option>
               </select>
             </div>
           </div>
           <div class="sd-bundle-product-quantity">
             <h6
               style={{
+                ...textStyle,
                 color: data.buyXgetY.productDetails.quantities.color,
                 fontSize: data.buyXgetY.productDetails.quantities.size + "px"
               }}
             >
-              Qty: <span style={{fontSize: data.buyXgetY.productDetails.quantities.size + "px"}}>1</span>
+              Qty: <span style={{...textStyle,fontSize: data.buyXgetY.productDetails.quantities.size + "px"}}>1</span>
             </h6>
           </div>
         </div>
@@ -201,11 +213,12 @@ const CustomizationBuyXgetY = ({ data }) => {
               ></div>
               <h4
                 style={{
+                  ...textStyle,
                   color: data.buyXgetY.DiscountBadge.color,
                   fontSize: data.buyXgetY.DiscountBadge.fontSize + "px",
                 }}
               >
-                50% Off
+                {data.buyXgetY.DiscountBadge.text}
               </h4>
             </div>
           ) : (
@@ -229,11 +242,12 @@ const CustomizationBuyXgetY = ({ data }) => {
               </svg>
               <h4
                 style={{
+                  ...textStyle,
                   color: data.buyXgetY.DiscountBadge.color,
                   fontSize: data.buyXgetY.DiscountBadge.fontSize + "px",
                 }}
               >
-                50% Off
+                {data.buyXgetY.DiscountBadge.text}
               </h4>
             </div>
           )}
@@ -259,6 +273,7 @@ const CustomizationBuyXgetY = ({ data }) => {
             <div class="sd-bundle-product-name">
               <h5
                 style={{
+                  ...textStyle,
                   color: data.buyXgetY.productDetails.title.color,
                   fontSize: data.buyXgetY.productDetails.title.fontSize + "px",
                 }}
@@ -267,6 +282,7 @@ const CustomizationBuyXgetY = ({ data }) => {
               </h5>
               <h4
                 style={{
+                  ...textStyle,
                   color: data.buyXgetY.productDetails.price.color,
                   fontSize: data.buyXgetY.productDetails.price.fontSize + "px",
                 }}
@@ -275,6 +291,7 @@ const CustomizationBuyXgetY = ({ data }) => {
               </h4>
               <select
                 style={{
+                  ...textStyle,
                   backgroundColor:
                     data.buyXgetY.productDetails.variantSelector
                       .backgroundColor,
@@ -283,19 +300,20 @@ const CustomizationBuyXgetY = ({ data }) => {
                     data.buyXgetY.productDetails.variantSelector.width + "px",
                 }}
               >
-                <option>Medium</option>
-                <option>Small</option>
+                <option style={{...textStyle,}}>Medium</option>
+                <option style={{...textStyle,}}>Small</option>
               </select>
             </div>
           </div>
           <div class="sd-bundle-product-quantity">
             <h6
               style={{
+                ...textStyle,
                 color: data.buyXgetY.productDetails.quantities.color,
                 fontSize: data.buyXgetY.productDetails.quantities.size + "px"
               }}
             >
-              Qty: <span style={{fontSize: data.buyXgetY.productDetails.quantities.size + "px"}}>1</span>
+              Qty: <span style={{...textStyle,fontSize: data.buyXgetY.productDetails.quantities.size + "px"}}>1</span>
             </h6>
           </div>
         </div>
@@ -303,6 +321,7 @@ const CustomizationBuyXgetY = ({ data }) => {
           <div class="sd-total-desc">
             <h4
               style={{
+                ...textStyle,
                 color: data.buyXgetY.totalSection.color,
                 fontSize: data.buyXgetY.totalSection.fontSize + "px",
               }}
@@ -311,6 +330,7 @@ const CustomizationBuyXgetY = ({ data }) => {
             </h4>
             <p
               style={{
+                ...textStyle,
                 color: data.buyXgetY.totalSection.discountMessage.color,
                 fontSize: data.buyXgetY.totalSection.discountMessage.size + "px"
               }}
@@ -321,6 +341,7 @@ const CustomizationBuyXgetY = ({ data }) => {
           <div class="sd-total-amount">
             <h4
               style={{
+                ...textStyle,
                 color: data.buyXgetY.totalSection.finalPrice.color,
                 fontSize: data.buyXgetY.totalSection.finalPrice.fontSize + "px",
               }}
@@ -329,6 +350,7 @@ const CustomizationBuyXgetY = ({ data }) => {
             </h4>
             <h6
               style={{
+                ...textStyle,
                 color: data.buyXgetY.totalSection.originalPrice.color,
                 fontSize:
                   data.buyXgetY.totalSection.originalPrice.fontSize + "px",
@@ -341,6 +363,7 @@ const CustomizationBuyXgetY = ({ data }) => {
         <div class="sd-bundle-addto-cart">
           <button
             style={{
+              ...textStyle,
               color: data.buyXgetY.button.color,
               fontSize: data.buyXgetY.button.fontSize + "px",
               backgroundColor: data.buyXgetY.button.backgroundColor,

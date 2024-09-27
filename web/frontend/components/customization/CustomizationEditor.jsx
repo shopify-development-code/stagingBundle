@@ -14,7 +14,7 @@ import {
   EditOutlined,
   TransactionOutlined,
 } from "@ant-design/icons";
-import { LegacyCard, Select, Tabs,Grid } from "@shopify/polaris";
+import { LegacyCard, Select, Tabs, Grid } from "@shopify/polaris";
 import { Button, Divider, Modal, Spin } from "antd";
 import { useNavigate } from "react-router-dom";
 import Design from "./Design";
@@ -41,6 +41,7 @@ import { Text } from "@shopify/polaris";
 import { LockMajor } from "@shopify/polaris-icons";
 import CustomizationFBt from "./CustomizationFBTPreview";
 import Swal from "sweetalert2";
+import OrderOverview from "./OrderOverview";
 
 const CustomizationEditor = (props) => {
   const app = useAppBridge();
@@ -56,79 +57,88 @@ const CustomizationEditor = (props) => {
 
   const [selected, setSelected] = useState("bundle");
   const [selectedTab, setSelectedTab] = useState(0);
-  
+
   const tabs = [
-    ...(props.bundleOption == "frequentlyBoughtTogether"
-      ? 
-         [ {
+    ...(props.bundleOption === "frequentlyBoughtTogether"
+      ? [
+          {
             id: "design-1",
             content: "Design",
             panelID: "Design",
-          }
-        ]: [
+          },
+        ]
+      : []),
+    {
+      id: "box-1",
+      content: "Box",
+      panelID: "Box",
+    },
+    {
+      id: "title-1",
+      content: "Title",
+      panelID: "Title",
+    },
+    ...(props.bundleOption === "collection"
+      ? [
           {
-            id: "box-1",
-            content: "Box",
-            panelID: "Box",
+            id: "collectionDetails-1",
+            content: "Collection Details",
+            panelID: "collectionDetails",
           },
           {
-            id: "title-1",
-            content: "Title",
-            panelID: "Title",
+            id: "discountBadge-1",
+            content: "Discount Badge",
+            panelID: "DiscountBadge",
           },
-          ...(props.bundleOption === "collection"
-            ? [
-                {
-                  id: "collectionDetails-1",
-                  content: "Collection Details",
-                  panelID: "collectionDetails",
-                },
-                {
-                  id: "discountBadge-1",
-                  content: "Discount Badge",
-                  panelID: "DiscountBadge",
-                },
-              ]
-            : [
-                {
-                  id: "productDetails-1",
-                  content: "Product Details",
-                  panelID: "productDetails",
-                },
-              ]),
+        ]
+      : [
           {
-            id: "button-1",
-            content: "Button",
-            panelID: "Button",
+            id: "productDetails-1",
+            content: "Product Details",
+            panelID: "productDetails",
           },
-          ...(props.bundleOption !== "collection"
-            ? [
-                {
-                  id: "totalSection-1",
-                  content: "Total Section",
-                  panelID: "Total_section",
-                },
-              ]
-            : []),
-          ...(props.bundleOption === "buyXgetY"
-            ? [
-                {
-                  id: "discountBadge-2",
-                  content: "Discount Badge",
-                  panelID: "DiscountBadge",
-                },
-              ]
-            : []),
-          ...(props.bundleOption === "volume"
-            ? [
-                {
-                  id: "options-1",
-                  content: "Options & Badges",
-                  panelID: "Options",
-                },
-              ]
-            : []),
         ]),
+    {
+      id: "button-1",
+      content: "Button",
+      panelID: "Button",
+    },
+    ...(props.bundleOption === "productMixMatch"
+      ? [
+          {
+            id: "order-1",
+            content: "Order Overview",
+            panelID: "OrderOverview",
+          },
+        ]
+      : []),
+    ...(props.bundleOption !== "collection"
+      ? [
+          {
+            id: "totalSection-1",
+            content: "Total Section",
+            panelID: "Total_section",
+          },
+        ]
+      : []),
+    ...(props.bundleOption === "buyXgetY"
+      ? [
+          {
+            id: "discountBadge-2",
+            content: "Discount Badge",
+            panelID: "DiscountBadge",
+          },
+        ]
+      : []),
+    ...(props.bundleOption === "volume"
+      ? [
+          {
+            id: "options-1",
+            content: "Options & Badges",
+            panelID: "Options",
+          },
+        ]
+      : []),
   ];
 
   const handleSelectChange = (value) => {
@@ -147,6 +157,8 @@ const CustomizationEditor = (props) => {
   ];
 
   const handleCustomizeSave = async () => {
+    console.log("k,jf hedgfed ", props.bundleOption);
+
     setSpinner(true);
     const response = await postApi(
       "/api/admin/updateCustomization",
@@ -199,12 +211,11 @@ const CustomizationEditor = (props) => {
       bundleName == "collection" ||
       bundleName == "bundle" ||
       bundleName == "volume" ||
-      bundleName == "buyXgetY" ||
-      bundleName == "productMixMatch"
+      bundleName == "buyXgetY"
         ? setCustomOption("Box")
         : "";
-      if(bundleName == "frequentlyBoughtTogether"){
-        setCustomOption("Design")
+      if (bundleName == "frequentlyBoughtTogether") {
+        setCustomOption("Design");
       }
     }
   };
@@ -216,15 +227,15 @@ const CustomizationEditor = (props) => {
   const handleCustomOption = (selectedTabIndex, clickedOption) => {
     setSelectedTab(selectedTabIndex);
     setOnload(false);
-    if(props.bundleOption !== "frequentlyBoughtTogether"){
-      setCustomOption((prevCustomOption) => {
-        return prevCustomOption !== clickedOption
-          ? clickedOption
-          : prevCustomOption;
-      });
-    }else{
-      setCustomOption("Design");
-    }
+    // if (props.bundleOption !== "frequentlyBoughtTogether") {
+    setCustomOption((prevCustomOption) => {
+      return prevCustomOption !== clickedOption
+        ? clickedOption
+        : prevCustomOption;
+    });
+    // } else {
+    //   setCustomOption("Box");
+    // }
   };
 
   // const leftSideSectionCommon = (type) => {
@@ -566,7 +577,7 @@ const CustomizationEditor = (props) => {
               selected={selectedTab}
               onSelect={(e) => handleCustomOption(e, tabs[e].panelID)}
             />
-{/* 
+            {/* 
             <p className="sd-bundle-customOption-title-section">
               {customOption == "productDetails"
                 ? "Product Details"
@@ -644,11 +655,10 @@ const CustomizationEditor = (props) => {
               />
             )}
           </div> */}
-          
+
             {displayOption == "productPages" ? (
               <div className="sd-bundle-editSection-wrappper">
-                {customOption === "Design" &&
-                props.bundleOption === "frequentlyBoughtTogether" ? (
+                {customOption === "Design" ? (
                   <Design
                     bundleOption={props.bundleOption}
                     data={props.data}
@@ -680,7 +690,8 @@ const CustomizationEditor = (props) => {
                   (props.bundleOption == "bundle" ||
                     props.bundleOption == "volume" ||
                     props.bundleOption == "buyXgetY" ||
-                    props.bundleOption == "productMixMatch") ? (
+                    props.bundleOption == "productMixMatch" ||
+                    props.bundleOption == "frequentlyBoughtTogether") ? (
                   <ProductDetails
                     bundleOption={props.bundleOption}
                     data={props.data}
@@ -699,7 +710,8 @@ const CustomizationEditor = (props) => {
                   (props.bundleOption == "bundle" ||
                     props.bundleOption == "volume" ||
                     props.bundleOption == "buyXgetY" ||
-                    props.bundleOption == "productMixMatch") ? (
+                    props.bundleOption == "productMixMatch" ||
+                    props.bundleOption == "frequentlyBoughtTogether") ? (
                   <TotalSection
                     bundleOption={props.bundleOption}
                     data={props.data}
@@ -725,6 +737,14 @@ const CustomizationEditor = (props) => {
                     props.bundleOption == "collection") ||
                   props.bundleOption == "buyXgetY" ? (
                   <DiscountBadge
+                    bundleOption={props.bundleOption}
+                    data={props.data}
+                    setData={props.setData}
+                    displayOption={displayOption}
+                  />
+                ) : customOption == "OrderOverview" &&
+                  props.bundleOption == "productMixMatch" ? (
+                  <OrderOverview
                     bundleOption={props.bundleOption}
                     data={props.data}
                     setData={props.setData}

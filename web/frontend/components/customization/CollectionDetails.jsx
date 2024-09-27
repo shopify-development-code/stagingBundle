@@ -53,6 +53,68 @@ const CollectionDetails = ({ data, setData, bundleOption, displayOption }) => {
         </Grid.Cell>
         <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
           <div className="sd-bundle-custom-item-common">
+            <p className="sd-bundle-custom-item-heading-common">Plus</p>
+            {/* <div className="sd-bundle-custom-item-inputSection">
+          <input
+            type="color"
+            value={
+              data[bundleOption]["collectionDetails"]["plus"]["backgroundColor"]
+            }
+            onChange={(e) =>
+              handleChangeCommon2(
+                e,
+                "collectionDetails",
+                "plus",
+                "backgroundColor",
+                data,
+                setData,
+                bundleOption
+              )
+            }
+          />
+          <div className="sd-bundle-custom-fieldColorCode-common">
+            <p>Background Color </p>
+            <p>
+              {" "}
+              {
+                data[bundleOption]["collectionDetails"]["plus"][
+                  "backgroundColor"
+                ]
+              }{" "}
+            </p>
+          </div>
+        </div> */}
+
+            <div className="sd-bundle-custom-item-inputSection">
+              <input
+                type="color"
+                value={data[bundleOption]["collectionDetails"]["plus"]["color"]}
+                onChange={(e) =>
+                  handleChangeCommon2(
+                    e,
+                    "collectionDetails",
+                    "plus",
+                    "color",
+                    data,
+                    setData,
+                    bundleOption
+                  )
+                }
+              />
+              <div className="sd-bundle-custom-fieldColorCode-common">
+                <p>Color </p>
+                <p>
+                  {" "}
+                  {
+                    data[bundleOption]["collectionDetails"]["plus"]["color"]
+                  }{" "}
+                </p>
+              </div>
+            </div>
+          </div>
+        </Grid.Cell>
+        <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
+          <div className="sd-bundle-custom-item-common">
             <p className="sd-bundle-custom-item-heading-common">Title</p>
             <div className="sd-bundle-custom-item-inputSection">
               <input
@@ -194,70 +256,28 @@ const CollectionDetails = ({ data, setData, bundleOption, displayOption }) => {
                 </p>
               </div>
             </div>
+            <RangeSlider
+              label="Border Radius"
+              onChange={(newvalue) =>
+                handleChangeValueCommon(
+                  newvalue,
+                  "collectionDetails",
+                  "imageBorderRadius",
+                  data,
+                  setData,
+                  bundleOption
+                )
+              }
+              value={
+                data[bundleOption]["collectionDetails"]["imageBorderRadius"]
+              }
+              min={10}
+              max={40}
+              output
+            />
           </div>
         </Grid.Cell>
-        <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
-          <div className="sd-bundle-custom-item-common">
-            <p className="sd-bundle-custom-item-heading-common">Plus</p>
-            {/* <div className="sd-bundle-custom-item-inputSection">
-          <input
-            type="color"
-            value={
-              data[bundleOption]["collectionDetails"]["plus"]["backgroundColor"]
-            }
-            onChange={(e) =>
-              handleChangeCommon2(
-                e,
-                "collectionDetails",
-                "plus",
-                "backgroundColor",
-                data,
-                setData,
-                bundleOption
-              )
-            }
-          />
-          <div className="sd-bundle-custom-fieldColorCode-common">
-            <p>Background Color </p>
-            <p>
-              {" "}
-              {
-                data[bundleOption]["collectionDetails"]["plus"][
-                  "backgroundColor"
-                ]
-              }{" "}
-            </p>
-          </div>
-        </div> */}
-
-            <div className="sd-bundle-custom-item-inputSection">
-              <input
-                type="color"
-                value={data[bundleOption]["collectionDetails"]["plus"]["color"]}
-                onChange={(e) =>
-                  handleChangeCommon2(
-                    e,
-                    "collectionDetails",
-                    "plus",
-                    "color",
-                    data,
-                    setData,
-                    bundleOption
-                  )
-                }
-              />
-              <div className="sd-bundle-custom-fieldColorCode-common">
-                <p>Color </p>
-                <p>
-                  {" "}
-                  {
-                    data[bundleOption]["collectionDetails"]["plus"]["color"]
-                  }{" "}
-                </p>
-              </div>
-            </div>
-          </div>
-        </Grid.Cell>
+        
       </Grid>
     </div>
   );

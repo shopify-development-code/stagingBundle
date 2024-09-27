@@ -1,7 +1,18 @@
 import React from "react";
-import { Divider
- } from "antd";
-import { TextField, Select, RangeSlider, RadioButton, Grid } from "@shopify/polaris";
+import { Divider } from "antd";
+import {
+  TextField,
+  Select,
+  RangeSlider,
+  RadioButton,
+  Grid,
+  Icon,
+} from "@shopify/polaris";
+import {
+  TextAlignmentCenterMajor,
+  TextAlignmentLeftMajor,
+  TextAlignmentRightMajor
+} from '@shopify/polaris-icons';  
 import {
   handleChangeCommon,
   handleChangeValueCommon,
@@ -160,7 +171,7 @@ const Title = ({ bundleOption, displayOption, data, setData }) => {
                   )
                 }
               />
-              <label htmlFor="left">Left</label>
+              <Icon className="icon" source={TextAlignmentLeftMajor} tone="base" />
               {/* <RadioButton
             label="Left"
             id="left"
@@ -197,7 +208,7 @@ const Title = ({ bundleOption, displayOption, data, setData }) => {
                   )
                 }
               />
-              <label htmlFor="center">Center</label>
+              <Icon className="icon" source={TextAlignmentCenterMajor} tone="base" />
               {/* <RadioButton
             label="Center"
             id="center"
@@ -234,7 +245,7 @@ const Title = ({ bundleOption, displayOption, data, setData }) => {
                   )
                 }
               />
-              <label htmlFor="right">Right</label>
+              <Icon className="icon" source={TextAlignmentRightMajor} tone="base" />
               {/* <RadioButton
             label="Right"
             id="right"

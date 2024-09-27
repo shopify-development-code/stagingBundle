@@ -11,9 +11,33 @@ import RightBanner from "../../assets/Right_Banner.png";
 import LeftBanner from "../../assets/Left_Banner.png";
 import BadgeOption from "../../assets/BadgeOption.png";
 const Options = ({ bundleOption, data, setData, displayOption }) => {
-
-  console.log("teste",data);
+  console.log(
+    "teste",
+    data[bundleOption]["options"]["DiscountBadge"]["badgeType"]
+  );
+  const handleText = (newValue) => {
+    setData((prevData) => {
+      const currentBundle = prevData[bundleOption] || {};
+      const currentOptions = currentBundle.options || {};
+      const currentDiscountBadge = currentOptions.DiscountBadge || {};
   
+      return {
+        ...prevData,
+        [bundleOption]: {
+          ...currentBundle,
+          options: {
+            ...currentOptions,
+            DiscountBadge: {
+              ...currentDiscountBadge,
+              text: newValue,
+            },
+          },
+        },
+      };
+    });
+  };
+  
+
   return (
     <div className="sd-bundle-optionsCustom">
       {/* <div className="sd-bundle-custom-item-common">
@@ -31,7 +55,7 @@ const Options = ({ bundleOption, data, setData, displayOption }) => {
       <Grid>
         <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
           <div className="sd-bundle-custom-item-common">
-            <p className="sd-bundle-custom-item-heading-common">Text</p>
+            <p className="sd-bundle-custom-item-heading-common">Options Text</p>
             <div className="sd-bundle-custom-item-inputSection">
               <input
                 type="color"
@@ -52,25 +76,7 @@ const Options = ({ bundleOption, data, setData, displayOption }) => {
                 <p>{data[bundleOption]["options"]["color"]} </p>
               </div>
             </div>
-            {/* 
-        <TextField
-          type="number"
-          label="Font Size"
-          // placeholder="set minimum order  for item"
-          onChange={(newvalue) =>
-            handleChangeValueCommon(
-              newvalue,
-              "options",
-              "fontSize",
-              data,
-              setData,
-              bundleOption
-            )
-          }
-          value={data[bundleOption]["options"]["fontSize"]}
-          autoComplete="off"
-          min="0"
-        /> */}
+            
             <RangeSlider
               label="Font Size"
               onChange={(newvalue) =>
@@ -90,6 +96,7 @@ const Options = ({ bundleOption, data, setData, displayOption }) => {
             />
           </div>
         </Grid.Cell>
+        
         <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
           <div className="sd-bundle-custom-item-common">
             {" "}
@@ -105,7 +112,7 @@ const Options = ({ bundleOption, data, setData, displayOption }) => {
                   "badgeType",
                   data,
                   setData,
-                  bundleOption,
+                  bundleOption
                 )
               }
               value={
@@ -116,9 +123,7 @@ const Options = ({ bundleOption, data, setData, displayOption }) => {
                 <Radio value="rightBanner">
                   <img src={RightBanner} />
                 </Radio>
-                {/* <Radio value="leftBanner">
-                  <img src={LeftBanner} className="BADGE" />
-                </Radio> */}
+
                 <Radio value="options">
                   <img src={BadgeOption} className="BADGE" />
                 </Radio>
@@ -126,10 +131,11 @@ const Options = ({ bundleOption, data, setData, displayOption }) => {
             </Radio.Group>
           </div>
         </Grid.Cell>
+        
         <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
           <div className="sd-bundle-custom-item-common">
             <p className="sd-bundle-custom-item-heading-common">
-              Save Discount Badge{" "}
+              Discount Badge{" "}
             </p>
 
             <div className="sd-bundle-custom-item-inputSection">
@@ -189,25 +195,9 @@ const Options = ({ bundleOption, data, setData, displayOption }) => {
                 </p>
               </div>
             </div>
-            <RangeSlider
-              label="Font Size"
-              onChange={(newvalue) =>
-                handleChangeValueCommon2(
-                  newvalue,
-                  "options",
-                  "saveDiscount",
-                  "fontSize",
-                  data,
-                  setData,
-                  bundleOption
-                )
-              }
-              value={data[bundleOption]["options"]["saveDiscount"]["fontSize"]}
-              min={10}
-              max={30}
-              output
-            />
-            {/* {data[bundleOption]["options"]["DiscountBadge"]["badgeType"] == "options" && 
+            
+            {data[bundleOption]["options"]["DiscountBadge"]["badgeType"] ==
+              "options" && (
               <RangeSlider
                 label="Border Radius"
                 onChange={(newvalue) =>
@@ -224,11 +214,44 @@ const Options = ({ bundleOption, data, setData, displayOption }) => {
                 value={
                   data[bundleOption]["options"]["saveDiscount"]["borderRadius"]
                 }
-                min={10}
-                max={20}
+                min={1}
+                max={15}
                 output
               />
-            } */}
+            )}
+          </div>
+        </Grid.Cell>
+        <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
+          <div className="sd-bundle-custom-item-common">
+          <div className="sd-bundle-custom-item-heading-common">
+            Edit Badge Text
+          </div>
+            <TextField
+              type="text"
+              // placeholder="set minimum order  for item"
+              onChange={(e)=>handleText(e)}
+              value={data[bundleOption]["options"]["DiscountBadge"]["text"]}
+              // autoComplete="off"
+              // min="0"
+            />
+            <RangeSlider
+              label="Font Size"
+              onChange={(newvalue) =>
+                handleChangeValueCommon2(
+                  newvalue,
+                  "options",
+                  "saveDiscount",
+                  "fontSize",
+                  data,
+                  setData,
+                  bundleOption
+                )
+              }
+              value={data[bundleOption]["options"]["saveDiscount"]["fontSize"]}
+              min={10}
+              max={16}
+              output
+            />
           </div>
         </Grid.Cell>
       </Grid>
