@@ -15,29 +15,32 @@ import {
 } from "@shopify/polaris-icons";
 import {
   handleChangeCommon,
+  handleChangeCommon2,
   handleChangeValueCommon,
+  handleChangeValueCommon2,
 } from "../helperFunctions";
-const Title = ({ bundleOption, displayOption, data, setData }) => {
-  console.log("................................",`sd-bundle-item-custom-radio-common ${data[bundleOption]["title"]["alignment"] === "left" ? "active" : "" } `);
-  
+const OrderOverview = ({ bundleOption, displayOption, data, setData }) => {
   return (
     <div className="sd-bundle-titleCustom">
       <Grid>
         <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
           <div className="sd-bundle-custom-item-common">
             <p className="sd-bundle-custom-item-heading-common">
-              Title styling
+              Selected Item Text
             </p>
             <div className="sd-bundle-custom-item-inputSection">
               <input
                 type="color"
                 min={10}
                 max={30}
-                value={data[bundleOption]["title"]["color"]}
+                value={
+                  data[bundleOption]["orderOverview"]["selectedText"]["color"]
+                }
                 onChange={(e) =>
-                  handleChangeCommon(
+                  handleChangeCommon2(
                     e,
-                    "title",
+                    "orderOverview",
+                    "selectedText",
                     "color",
                     data,
                     setData,
@@ -47,41 +50,32 @@ const Title = ({ bundleOption, displayOption, data, setData }) => {
               />
               <div className="sd-bundle-custom-fieldColorCode-common">
                 <p>Title Color </p>
-                <p> {data[bundleOption]["title"]["color"]} </p>
+                <p>
+                  {" "}
+                  {
+                    data[bundleOption]["orderOverview"]["selectedText"]["color"]
+                  }{" "}
+                </p>
               </div>
             </div>
 
             <RangeSlider
               output
               label="Font Size"
-              min={1}
+              min={10}
               max={30}
-              suffix ={data[bundleOption]["title"]["fontSize"]}
-              value={data[bundleOption]["title"]["fontSize"]}
-              onChange={(e) =>
-                handleChangeValueCommon(
-                  e,
-                  "title",
-                  "fontSize",
-                  data,
-                  setData,
-                  bundleOption
-                )
+              suffix={
+                data[bundleOption]["orderOverview"]["selectedText"]["fontSize"]
               }
-            />
-            <RangeSlider
-              output
-              label="Boldness"
-              min={100}
-              max={900}
-              step={100}
-              suffix = {data[bundleOption]["title"]["titleBold"]}
-              value={data[bundleOption]["title"]["titleBold"]}
+              value={
+                data[bundleOption]["orderOverview"]["selectedText"]["fontSize"]
+              }
               onChange={(e) =>
-                handleChangeValueCommon(
+                handleChangeValueCommon2(
                   e,
-                  "title",
-                  "titleBold",
+                  "orderOverview",
+                  "selectedText",
+                  "fontSize",
                   data,
                   setData,
                   bundleOption
@@ -93,17 +87,20 @@ const Title = ({ bundleOption, displayOption, data, setData }) => {
         <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
           <div className="sd-bundle-custom-item-common">
             <p className="sd-bundle-custom-item-heading-common">
-              Description styling
+              Discount Details Text
             </p>
             <div className="sd-bundle-custom-item-inputSection">
               <input
                 type="color"
-                value={data[bundleOption]["title"]["descriptionColor"]}
+                value={
+                  data[bundleOption]["orderOverview"]["discountText"]["color"]
+                }
                 onChange={(e) =>
-                  handleChangeCommon(
+                  handleChangeCommon2(
                     e,
-                    "title",
-                    "descriptionColor",
+                    "orderOverview",
+                    "discountText",
+                    "color",
                     data,
                     setData,
                     bundleOption
@@ -119,35 +116,20 @@ const Title = ({ bundleOption, displayOption, data, setData }) => {
             <RangeSlider
               output
               label="Font Size"
-              min={1}
+              min={10}
               max={30}
-              suffix = {data[bundleOption]["title"]["descriptionFontSize"]}
-              value={data[bundleOption]["title"]["descriptionFontSize"]}
-              onChange={(e) =>
-                handleChangeValueCommon(
-                  e,
-                  "title",
-                  "descriptionFontSize",
-                  data,
-                  setData,
-                  bundleOption
-                )
+              suffix={
+                data[bundleOption]["orderOverview"]["discountText"]["fontSize"]
               }
-            />
-
-            <RangeSlider
-              output
-              label="Boldness"
-              min={100}
-              max={900}
-              step={100}
-              suffix= {data[bundleOption]["title"]["descriptionBold"]}
-              value={data[bundleOption]["title"]["descriptionBold"]}
+              value={
+                data[bundleOption]["orderOverview"]["discountText"]["fontSize"]
+              }
               onChange={(e) =>
-                handleChangeValueCommon(
+                handleChangeValueCommon2(
                   e,
-                  "title",
-                  "descriptionBold",
+                  "orderOverview",
+                  "discountText",
+                  "fontSize",
                   data,
                   setData,
                   bundleOption
@@ -161,11 +143,11 @@ const Title = ({ bundleOption, displayOption, data, setData }) => {
             <p className="sd-bundle-custom-item-heading-common">Alignment</p>
             <div className="sd-bundle-item-custom-radio-main">
               <div
-                className={`sd-bundle-item-custom-radio-common ${data[bundleOption]["title"]["alignment"] === "left" ? "active" : "" } `}
+                className={`sd-bundle-item-custom-radio-common ${data[bundleOption]["orderOverview"]["alignment"] === "left" ? "active" : ""} `}
                 onClick={() => {
                   handleChangeCommon(
                     "left",
-                    "title",
+                    "orderOverview",
                     "alignment",
                     data,
                     setData,
@@ -182,11 +164,11 @@ const Title = ({ bundleOption, displayOption, data, setData }) => {
                 />
               </div>
               <div
-                className={`sd-bundle-item-custom-radio-common ${data[bundleOption]["title"]["alignment"] === "center" ? "active" : "" } `}
+                className={`sd-bundle-item-custom-radio-common ${data[bundleOption]["orderOverview"]["alignment"] === "center" ? "active" : ""} `}
                 onClick={(e) =>
                   handleChangeCommon(
                     "center",
-                    "title",
+                    "orderOverview",
                     "alignment",
                     data,
                     setData,
@@ -203,11 +185,11 @@ const Title = ({ bundleOption, displayOption, data, setData }) => {
                 />
               </div>
               <div
-                className={`sd-bundle-item-custom-radio-common ${data[bundleOption]["title"]["alignment"] === "right" ? "active" : "" } `}
+                className={`sd-bundle-item-custom-radio-common ${data[bundleOption]["orderOverview"]["alignment"] === "right" ? "active" : ""} `}
                 onClick={(e) =>
                   handleChangeCommon(
                     "right",
-                    "title",
+                    "orderOverview",
                     "alignment",
                     data,
                     setData,
@@ -231,4 +213,4 @@ const Title = ({ bundleOption, displayOption, data, setData }) => {
   );
 };
 
-export default Title;
+export default OrderOverview;

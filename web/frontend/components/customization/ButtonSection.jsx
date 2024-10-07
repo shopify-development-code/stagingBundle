@@ -1,100 +1,151 @@
-import React from "react" ;
-import { TextField } from "@shopify/polaris";
-import { handleChangeCommon,handleChangeValueCommon } from "../helperFunctions";
-const ButtonSection=({bundleOption,data,setData})=>{
+import React from "react";
+import { Grid, RangeSlider, TextField } from "@shopify/polaris";
+import {
+  handleChangeCommon,
+  handleChangeValueCommon,
+} from "../helperFunctions";
+const ButtonSection = ({ bundleOption, data, setData }) => {
+  const handleNoDiscountText = (newvalue) => {
+    setData({
+      ...data,
+      [bundleOption]: {
+        ...data[bundleOption],
+        button: { ...data[bundleOption]["button"], text_noDiscount: newvalue },
+      },
+    });
+  };
 
-const handleNoDiscountText=(newvalue)=>{
-setData({...data,[bundleOption]:{...data[bundleOption],button:{...data[bundleOption]["button"],text_noDiscount:newvalue}}})
+  console.log("jfkeje kekekrke", data[bundleOption]["button"]["borderColor"]);
 
-}
+  const handleText = (newvalue) => {
+    setData({
+      ...data,
+      [bundleOption]: {
+        ...data[bundleOption],
+        button: { ...data[bundleOption]["button"], text_others: newvalue },
+      },
+    });
+  };
 
-const handleText=(newvalue)=>{
-    setData({...data,[bundleOption]:{...data[bundleOption],button:{...data[bundleOption]["button"],text_others:newvalue}}})
-}
+  return (
+    <div className="sd-bundle-buttonCustom">
+      <Grid>
+        <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
+          <div className="sd-bundle-custom-item-common">
+            <p className="sd-bundle-custom-item-heading-common">Border</p>
+            <div className="sd-bundle-custom-item-inputSection">
+              <input
+                type="color"
+                value={data[bundleOption]["button"]["borderColor"]}
+                onChange={(e) =>
+                  handleChangeCommon(
+                    e,
+                    "button",
+                    "borderColor",
+                    data,
+                    setData,
+                    bundleOption
+                  )
+                }
+              />
+              <div className="sd-bundle-custom-fieldColorCode-common">
+                <p>Border Color </p>
+                <p>{data[bundleOption]["button"]["borderColor"]}</p>
+              </div>
+            </div>
+            <RangeSlider
+              output
+              label="Border Radius"
+              min={1}
+              max={30}
+              suffix={data[bundleOption]["button"]["borderRadius"]}
+              value={data[bundleOption]["button"]["borderRadius"]}
+              onChange={(newvalue) =>
+                handleChangeValueCommon(
+                  newvalue,
+                  "button",
+                  "borderRadius",
+                  data,
+                  setData,
+                  bundleOption
+                )
+              }
+            />
+          </div>
+        </Grid.Cell>
 
+        <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
+          <div className="sd-bundle-custom-item-common">
+            <p className="sd-bundle-custom-item-heading-common">Background</p>
+            <div className="sd-bundle-custom-item-inputSection">
+              <input
+                type="color"
+                value={data[bundleOption]["button"]["backgroundColor"]}
+                onChange={(e) =>
+                  handleChangeCommon(
+                    e,
+                    "button",
+                    "backgroundColor",
+                    data,
+                    setData,
+                    bundleOption
+                  )
+                }
+              />
+              <div className="sd-bundle-custom-fieldColorCode-common">
+                <p>Background Color</p>
+                <p> {data[bundleOption]["button"]["backgroundColor"]} </p>
+              </div>
+            </div>
+          </div>
+        </Grid.Cell>
+        <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
+          <div className="sd-bundle-custom-item-common">
+            <p className="sd-bundle-custom-item-heading-common">Button Text</p>
+            <div className="sd-bundle-custom-item-inputSection">
+              <input
+                type="color"
+                value={data[bundleOption]["button"]["color"]}
+                onChange={(e) =>
+                  handleChangeCommon(
+                    e,
+                    "button",
+                    "color",
+                    data,
+                    setData,
+                    bundleOption
+                  )
+                }
+              />
+              <div className="sd-bundle-custom-fieldColorCode-common">
+                <p>Text Color</p>
+                <p> {data[bundleOption]["button"]["color"]} </p>
+              </div>
+            </div>
 
-return(
-
-<div className="sd-bundle-buttonCustom">
-
-<div className="sd-bundle-custom-item-common">
-    <p className="sd-bundle-custom-item-heading-common">Background</p>
-    <div className="sd-bundle-custom-item-inputSection">
-<input type="color" value={data[bundleOption]["button"]["backgroundColor"]}  onChange={(e)=>handleChangeCommon(e,"button","backgroundColor",data,setData,bundleOption)}/>
-<div className="sd-bundle-custom-fieldColorCode-common">
-    <p>Background Color</p>
-<p> {data[bundleOption]["button"]["backgroundColor"]} </p>
-
-</div>
-</div>
-
-</div>
-
-<div className="sd-bundle-custom-item-common">
-    <p className="sd-bundle-custom-item-heading-common">Button Text</p>
-    <div className="sd-bundle-custom-item-inputSection">
-<input type="color" value={data[bundleOption]["button"]["color"]}  onChange={(e)=>handleChangeCommon(e,"button","color",data,setData,bundleOption)}/>
-<div className="sd-bundle-custom-fieldColorCode-common">
-    <p>Text Color</p>
-<p> {data[bundleOption]["button"]["color"]} </p>
-
-</div>
-</div>
-
-<TextField
-            type="number"
-            label="Size"
-            // placeholder="set minimum order  for item"
-            onChange={(e)=>handleChangeValueCommon(e,"button","fontSize",data,setData,bundleOption)}
-            value={data[bundleOption]["button"]["fontSize"]}
-            autoComplete="off"
-            min={10}
-            max={30}
-          />
-
-{/* <TextField
-           
-            label="text"
-            // placeholder="set minimum order  for item"
-            onChange={handleText}
-            value={data[bundleOption]["button"]["text_others"]}
-            autoComplete="off"
-        
-          />
-
-<TextField
-           
-            label="text(for 'No Discount' option)"
-            // placeholder="set minimum order  for item"
-            onChange={handleNoDiscountText}
-            value={data[bundleOption]["button"]["text_noDiscount"]}
-            autoComplete="off"
-            
-          /> */}
- 
-</div>
-
-{/* functionality: Adjust position of Add to cart button (TOP OR BOTTOM) */}
-{/* {bundleOption != "collection" &&
-<div className="sd-bundle-custom-item-common">
-<p className="sd-bundle-custom-item-heading-common">Position</p>
-<div className="sd-bundle-item-custom-radio-common">
-    <input  id="top"   type="radio" name="position"  value="top" checked={data[bundleOption]["button"]["position"]=="top"} onChange={(e)=>handleChangeCommon(e,"button","position",data,setData,bundleOption)}/>
-<label htmlFor="top" >top</label>
-</div>
-<div className="sd-bundle-item-custom-radio-common">
-    <input  id="bottom"   type="radio" name="position"  value="bottom" checked={data[bundleOption]["button"]["position"]=="bottom"} onChange={(e)=>handleChangeCommon(e,"button","position",data,setData,bundleOption)}/>
-<label htmlFor="bottom" >bottom</label>
-</div>
-
-
-</div> } */}
-
-</div>
-
-)
-
-
-}
+            <RangeSlider
+              label="Font Size"
+              onChange={(e) =>
+                handleChangeValueCommon(
+                  e,
+                  "button",
+                  "fontSize",
+                  data,
+                  setData,
+                  bundleOption
+                )
+              }
+              suffix={data[bundleOption]["button"]["fontSize"]}
+              value={data[bundleOption]["button"]["fontSize"]}
+              min={10}
+              max={30}
+              output
+            />
+          </div>
+        </Grid.Cell>
+      </Grid>
+    </div>
+  );
+};
 
 export default ButtonSection;

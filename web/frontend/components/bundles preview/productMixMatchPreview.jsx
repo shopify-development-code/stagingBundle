@@ -13,7 +13,9 @@ const ProductMixMatchPreview = ({
 }) => {
   let freeShipping = "Free Shipping";
   console.log("cfdh", data);
-
+  const fontSize = {
+    fontFamily: data.customization[0]?.productMixMatch.box.fontFamily,
+  };
   return (
     <div className="sd-bundle-bundleSection-common">
       <div className="sd-bundle-bundleSection-heading-common">Preview</div>
@@ -35,6 +37,7 @@ const ProductMixMatchPreview = ({
           <div className="sd-bundle-text-detail">
             <h4
               style={{
+                ...fontSize,
                 color: data.customization[0]?.productMixMatch.title.color,
                 fontSize:
                   data.customization[0]?.productMixMatch.title.fontSize + "px",
@@ -48,6 +51,7 @@ const ProductMixMatchPreview = ({
             </h4>
             <p
               style={{
+                ...fontSize,
                 color:
                   data.customization[0]?.productMixMatch.title.descriptionColor,
                 fontSize:
@@ -73,7 +77,7 @@ const ProductMixMatchPreview = ({
                           data.bundleDetail.discountOptions.length - 1 &&
                           data.bundleDetail.products.length >=
                             item.quantity) ? (
-                          <span className="active">
+                          <span style={{ ...fontSize }} className="active">
                             {item.quantity}
                             {index ===
                               data.bundleDetail.discountOptions.length - 1 &&
@@ -81,7 +85,7 @@ const ProductMixMatchPreview = ({
                             items|{freeShipping}
                           </span>
                         ) : (
-                          <span>
+                          <span style={{ ...fontSize }}>
                             {item.quantity}
                             {index ===
                               data.bundleDetail.discountOptions.length - 1 &&
@@ -97,7 +101,7 @@ const ProductMixMatchPreview = ({
                           data.bundleDetail.discountOptions.length - 1 &&
                           data.bundleDetail.products.length >=
                             item.quantity) ? (
-                          <span className="active">
+                          <span style={{ ...fontSize }} className="active">
                             {item.quantity}
                             {index ===
                               data.bundleDetail.discountOptions.length - 1 &&
@@ -106,7 +110,7 @@ const ProductMixMatchPreview = ({
                             {showAmountWithCurrency(item.value, currency)} off
                           </span>
                         ) : (
-                          <span>
+                          <span style={{ ...fontSize }}>
                             {item.quantity}
                             {index ===
                               data.bundleDetail.discountOptions.length - 1 &&
@@ -123,7 +127,7 @@ const ProductMixMatchPreview = ({
                           data.bundleDetail.discountOptions.length - 1 &&
                           data.bundleDetail.products.length >=
                             item.quantity) ? (
-                          <span className="active">
+                          <span style={{ ...fontSize }} className="active">
                             {item.quantity}
                             {index ===
                               data.bundleDetail.discountOptions.length - 1 &&
@@ -131,7 +135,7 @@ const ProductMixMatchPreview = ({
                             items
                           </span>
                         ) : (
-                          <span>
+                          <span style={{ ...fontSize }}>
                             {item.quantity}
                             {index ===
                               data.bundleDetail.discountOptions.length - 1 &&
@@ -147,7 +151,7 @@ const ProductMixMatchPreview = ({
                           data.bundleDetail.discountOptions.length - 1 &&
                           data.bundleDetail.products.length >=
                             item.quantity) ? (
-                          <span className="active">
+                          <span style={{ ...fontSize }} className="active">
                             {item.quantity}
                             {index ===
                               data.bundleDetail.discountOptions.length - 1 &&
@@ -155,7 +159,7 @@ const ProductMixMatchPreview = ({
                             items|{item.value}% off
                           </span>
                         ) : (
-                          <span>
+                          <span style={{ ...fontSize }}>
                             {item.quantity}
                             {index ===
                               data.bundleDetail.discountOptions.length - 1 &&
@@ -173,7 +177,20 @@ const ProductMixMatchPreview = ({
               {data?.bundleDetail?.products?.length >=
               data.bundleDetail.discountOptions[0]?.quantity ? (
                 <>
-                  <h5>
+                  <h5
+                    style={{
+                      ...fontSize,
+                      fontSize:
+                        data.customization[0].productMixMatch.orderOverview
+                          .selectedText.fontSize + "px",
+                      color:
+                        data.customization[0].productMixMatch.orderOverview
+                          .selectedText.color,
+                      textAlign:
+                        data.customization[0].productMixMatch.orderOverview
+                          .alignment,
+                    }}
+                  >
                     You have selected {data?.bundleDetail?.products?.length}{" "}
                     items
                   </h5>
@@ -189,7 +206,18 @@ const ProductMixMatchPreview = ({
                                 data.bundleDetail.discountOptions.length - 1 &&
                                 data.bundleDetail.products.length >=
                                   item.quantity) ? (
-                                <p>
+                                <p style={{
+                                  ...fontSize,
+                                  fontSize:
+                                    data.customization[0].productMixMatch.orderOverview
+                                      .discountText.fontSize + "px",
+                                  color:
+                                    data.customization[0].productMixMatch.orderOverview
+                                      .discountText.color,
+                                  textAlign:
+                                    data.customization[0].productMixMatch.orderOverview
+                                      .alignment,
+                                }}>
                                   100% {freeShipping} discount is applied on the
                                   selected products.
                                 </p>
@@ -205,7 +233,18 @@ const ProductMixMatchPreview = ({
                                 data.bundleDetail.discountOptions.length - 1 &&
                                 data.bundleDetail.products.length >=
                                   item.quantity) ? (
-                                <p>
+                                <p style={{
+                                  ...fontSize,
+                                  fontSize:
+                                    data.customization[0].productMixMatch.orderOverview
+                                      .discountText.fontSize + "px",
+                                  color:
+                                    data.customization[0].productMixMatch.orderOverview
+                                      .discountText.color,
+                                  textAlign:
+                                    data.customization[0].productMixMatch.orderOverview
+                                      .alignment,
+                                }}>
                                   -
                                   {showAmountWithCurrency(item.value, currency)}{" "}
                                   discount is applied on the selected products.
@@ -222,7 +261,18 @@ const ProductMixMatchPreview = ({
                                 data.bundleDetail.discountOptions.length - 1 &&
                                 data.bundleDetail.products.length >=
                                   item.quantity) ? (
-                                <p>
+                                <p style={{
+                                  ...fontSize,
+                                  fontSize:
+                                    data.customization[0].productMixMatch.orderOverview
+                                      .discountText.fontSize + "px",
+                                  color:
+                                    data.customization[0].productMixMatch.orderOverview
+                                      .discountText.color,
+                                  textAlign:
+                                    data.customization[0].productMixMatch.orderOverview
+                                      .alignment,
+                                }}>
                                   discount is applied on the selected products.
                                 </p>
                               ) : (
@@ -237,7 +287,18 @@ const ProductMixMatchPreview = ({
                                 data.bundleDetail.discountOptions.length - 1 &&
                                 data.bundleDetail.products.length >=
                                   item.quantity) ? (
-                                <p>
+                                <p style={{
+                                  ...fontSize,
+                                  fontSize:
+                                    data.customization[0].productMixMatch.orderOverview
+                                      .discountText.fontSize + "px",
+                                  color:
+                                    data.customization[0].productMixMatch.orderOverview
+                                      .discountText.color,
+                                  textAlign:
+                                    data.customization[0].productMixMatch.orderOverview
+                                      .alignment,
+                                }}>
                                   {item?.value}% discount is applied on the
                                   selected products.
                                 </p>
@@ -253,11 +314,37 @@ const ProductMixMatchPreview = ({
                 </>
               ) : (
                 <div>
-                  <p>
+                  <p
+                    style={{
+                      ...fontSize,
+                      fontSize:
+                        data.customization[0].productMixMatch.orderOverview
+                          .selectedText.fontSize + "px",
+                      color:
+                        data.customization[0].productMixMatch.orderOverview
+                          .selectedText.color,
+                      textAlign:
+                        data.customization[0].productMixMatch.orderOverview
+                          .alignment,
+                    }}
+                  >
                     You have selected {data?.bundleDetail?.products?.length}{" "}
                     items
                   </p>
-                  <p>
+                  <p
+                    style={{
+                      ...fontSize,
+                      fontSize:
+                        data.customization[0].productMixMatch.orderOverview
+                          .discountText.fontSize + "px",
+                      color:
+                        data.customization[0].productMixMatch.orderOverview
+                          .discountText.color,
+                      textAlign:
+                        data.customization[0].productMixMatch.orderOverview
+                          .alignment,
+                    }}
+                  >
                     Select at least{" "}
                     {data.bundleDetail.discountOptions[discountIndex].quantity}{" "}
                     items to apply the discount.
@@ -318,7 +405,15 @@ const ProductMixMatchPreview = ({
 
           <div className="sd-select-all-product">
             <div className="sd-checkbox-wrapper-21">
-              <label className="sd-control sd-control--checkbox">
+              <label
+                className="sd-control sd-control--checkbox"
+                style={{
+                  ...fontSize,
+                  color:
+                    data.customization[0]?.productMixMatch.productDetails
+                      .productDetailsBox.allProductColor,
+                }}
+              >
                 All Product
                 <input type="checkbox" checked />
                 <div className="sd-control-indicator"></div>
@@ -327,12 +422,26 @@ const ProductMixMatchPreview = ({
             <div className="sd-bundle-product-quantity">
               <h6
                 style={{
+                  ...fontSize,
                   color:
                     data.customization[0]?.productMixMatch.productDetails
                       .quantities.color,
+                  fontSize:
+                    data.customization[0]?.productMixMatch.productDetails
+                      .quantities.size + "px",
                 }}
               >
-                Qty: <span>{data?.bundleDetail?.products?.length}</span>
+                Qty:{" "}
+                <span
+                  style={{
+                    ...fontSize,
+                    fontSize:
+                      data.customization[0]?.productMixMatch.productDetails
+                        .quantities.size + "px",
+                  }}
+                >
+                  {data?.bundleDetail?.products?.length}
+                </span>
               </h6>
             </div>
           </div>
@@ -340,7 +449,14 @@ const ProductMixMatchPreview = ({
           {data?.bundleDetail?.products?.length > 0 &&
             data?.bundleDetail?.products?.map((item) => {
               return (
-                <div className="sd-bundle-product-detail">
+                <div
+                  className="sd-bundle-product-detail"
+                  style={{
+                    backgroundColor:
+                      data.customization[0]?.productMixMatch.productDetails
+                        .productDetailsBox.backgroundColor,
+                  }}
+                >
                   <div className="sd-bundle-product-inner">
                     <div className="checkbox-wrapper-18">
                       <div className="round">
@@ -372,6 +488,7 @@ const ProductMixMatchPreview = ({
                     <div className="sd-bundle-product-name">
                       <h5
                         style={{
+                          ...fontSize,
                           color:
                             data.customization[0]?.productMixMatch
                               .productDetails.title.color,
@@ -384,6 +501,7 @@ const ProductMixMatchPreview = ({
                       </h5>
                       <h4
                         style={{
+                          ...fontSize,
                           color:
                             data.customization[0]?.productMixMatch
                               .productDetails.price.color,
@@ -399,6 +517,7 @@ const ProductMixMatchPreview = ({
                       </h4>
                       <select
                         style={{
+                          ...fontSize,
                           backgroundColor:
                             data.customization[0]?.productMixMatch
                               .productDetails.variantSelector.backgroundColor,
@@ -408,22 +527,39 @@ const ProductMixMatchPreview = ({
                           borderColor:
                             data.customization[0]?.productMixMatch
                               .productDetails.variantSelector.borderColor,
+                          width:
+                            data.customization[0]?.productMixMatch
+                              .productDetails.variantSelector.width + "px",
                         }}
                       >
-                        <option>Medium</option>
-                        <option>Small</option>
+                        <option style={{ ...fontSize }}>Medium</option>
+                        <option style={{ ...fontSize }}>Small</option>
                       </select>
                     </div>
                   </div>
                   <div className="sd-bundle-product-quantity">
                     <h6
                       style={{
+                        ...fontSize,
                         color:
                           data.customization[0]?.productMixMatch.productDetails
                             .quantities.color,
+                        fontSize:
+                          data.customization[0]?.productMixMatch.productDetails
+                            .quantities.size + "px",
                       }}
                     >
-                      Qty: <span>1</span>
+                      Qty:{" "}
+                      <span
+                        style={{
+                          ...fontSize,
+                          fontSize:
+                            data.customization[0]?.productMixMatch
+                              .productDetails.quantities.size + "px",
+                        }}
+                      >
+                        1
+                      </span>
                     </h6>
                   </div>
                 </div>
@@ -434,6 +570,7 @@ const ProductMixMatchPreview = ({
             <div className="sd-total-desc">
               <h4
                 style={{
+                  ...fontSize,
                   color:
                     data.customization[0]?.productMixMatch.totalSection.color,
                   fontSize:
@@ -443,9 +580,22 @@ const ProductMixMatchPreview = ({
               >
                 Total
               </h4>
-              <p style={{
-                color:
-                  data.customization[0]?.productMixMatch.title.descriptionColor,}}>Discount will be applied at checkout</p>
+              <p
+                style={{
+                  ...fontSize,
+                  color:
+                    data.customization[0]?.productMixMatch.title
+                      .descriptionColor,
+                  color:
+                    data.customization[0]?.productMixMatch.totalSection
+                      .discountMessage.color,
+                  fontSize:
+                    data.customization[0]?.productMixMatch.totalSection
+                      .discountMessage.size + "px",
+                }}
+              >
+                Discount will be applied at checkout
+              </p>
             </div>
             <div className="sd-total-amount">
               {data.bundleDetail.discountOptions[discountIndex].type ===
@@ -455,6 +605,7 @@ const ProductMixMatchPreview = ({
               data.bundleDetail.products.length < 2 ? (
                 <h4
                   style={{
+                    ...fontSize,
                     color:
                       data.customization[0]?.productMixMatch.totalSection
                         .finalPrice.color,
@@ -469,6 +620,7 @@ const ProductMixMatchPreview = ({
                 <>
                   <h4
                     style={{
+                      ...fontSize,
                       color:
                         data.customization[0]?.productMixMatch.totalSection
                           .finalPrice.color,
@@ -481,6 +633,7 @@ const ProductMixMatchPreview = ({
                   </h4>
                   <h6
                     style={{
+                      ...fontSize,
                       color:
                         data.customization[0]?.productMixMatch.totalSection
                           .originalPrice.color,
@@ -496,15 +649,23 @@ const ProductMixMatchPreview = ({
             </div>
           </div>
           <div className="sd-bundle-addto-cart">
-            <button style={{
-                    color: data.customization[0]?.productMixMatch.button.color,
-                    fontSize:
-                      data.customization[0]?.productMixMatch.button.fontSize +
-                      "px",
-                    backgroundColor:
-                      data.customization[0]?.productMixMatch.button
-                        .backgroundColor,
-                  }}>Add to Cart</button>
+            <button
+              style={{
+                ...fontSize,
+                color: data.customization[0]?.productMixMatch.button.color,
+                fontSize:
+                  data.customization[0]?.productMixMatch.button.fontSize + "px",
+                backgroundColor:
+                  data.customization[0]?.productMixMatch.button.backgroundColor,
+                borderColor:
+                  data.customization[0]?.productMixMatch.button.borderColor,
+                borderRadius:
+                  data.customization[0]?.productMixMatch.button.borderRadius +
+                  "px",
+              }}
+            >
+              Add to Cart
+            </button>
           </div>
         </div>
       ) : (

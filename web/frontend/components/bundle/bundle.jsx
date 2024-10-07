@@ -10,7 +10,7 @@ import {
   Switch,
   Skeleton,
   Spin,
-  Tooltip 
+  Tooltip,
 } from "antd";
 import {
   SearchOutlined,
@@ -19,7 +19,7 @@ import {
   PercentageOutlined,
   DownOutlined,
   EllipsisOutlined,
-  GiftOutlined
+  GiftOutlined,
 } from "@ant-design/icons";
 import { useNavigate } from "@shopify/app-bridge-react";
 import { useAppBridge } from "@shopify/app-bridge-react";
@@ -27,14 +27,10 @@ import { useAPI } from "../shop";
 import postApi from "../postApi";
 import { Thumbnail } from "@shopify/polaris";
 import toastNotification from "../commonSections/Toast";
-// import { Icon } from "@shopify/polaris";
-// import {
-//   AlertCircleIcon
-// } from '@shopify/polaris-icons';
 import "./bundle.css";
 // import {Tooltip } from '@shopify/polaris';
-import allProductsImg from "../../assets/all_products.png"
-import noProductImg from "../../assets/NoProductImage.png"
+import allProductsImg from "../../assets/all_products.png";
+import noProductImg from "../../assets/NoProductImage.png";
 import LogoHeader from "../logoHeader";
 import Watermark from "../watermark";
 import ContactUs from "../contactUs";
@@ -51,24 +47,22 @@ const CreateBundle = () => {
   const [loader, setLoader] = useState(false);
   // const [showAction, setShowAction] = useState(false);
   const [actionId, setActionId] = useState([]);
-  const [switchIndex, setSwitchIndex] = useState('')
-  const [switchLoading, setSwitchLoading] = useState(false)
+  const [switchIndex, setSwitchIndex] = useState("");
+  const [switchLoading, setSwitchLoading] = useState(false);
   async function getBundle(key) {
     if (key == "onLoad") {
-
       setLoader(true);
     } else {
-      setSwitchLoading(true)
+      setSwitchLoading(true);
     }
     const response = await postApi("/api/admin/getBundle", { shop: shop }, app);
     if (response.data.status === 200) {
       setDashboardData(response.data.response);
       // setDraftPaidBundles(response.data.response)
       if (key == "onLoad") {
-
         setLoader(false);
       } else {
-        setSwitchLoading(false)
+        setSwitchLoading(false);
       }
     } else if (response.data.status === 503) {
       toastNotification(
@@ -77,41 +71,45 @@ const CreateBundle = () => {
         "bottom"
       );
       if (key == "onLoad") {
-
         setLoader(false);
       } else {
-        setSwitchLoading(false)
+        setSwitchLoading(false);
       }
     }
     if (key == "onLoad") {
       setLoader(false);
     } else {
-      setSwitchLoading(false)
+      setSwitchLoading(false);
     }
   }
 
   const getBundleData = async () => {
     const response = await postApi("api/admin/getPlans", {}, app);
     if (response?.data?.status == 200) {
-      setPlan(response?.data?.data?.plan)
-      setDraftPaidBundles()
+      setPlan(response?.data?.data?.plan);
+      setDraftPaidBundles();
     }
   };
   useEffect(() => {
     getBundle("onLoad");
   }, []);
-  useEffect(()=>{
-    getBundleData()
-  },[plan])
-  const setDraftPaidBundles = async() =>{
-    if(plan != "standard"){
-      let paidBundles = [] 
-      dashboardData.filter((data)=>{
-        if(data.type == "fbt" || data.type == "bxgy" || data.type == "productMixMatch"){
+  useEffect(() => {
+    getBundleData();
+  }, [plan]);
+  const setDraftPaidBundles = async () => {
+    if ((plan !== "standard" && ( data.type === "bxgy" ||  data.type === "fbt")) ||
+    (plan === "free" &&  data.type === "productMixMatch")) {
+      let paidBundles = [];
+      dashboardData.filter((data) => {
+        if (
+          data.type == "fbt" ||
+          data.type == "bxgy" ||
+          data.type == "productMixMatch"
+        ) {
           paidBundles.push(data._id);
         }
-      })
-      if(paidBundles.length > 0){
+      });
+      if (paidBundles.length > 0) {
         let data = {
           id: paidBundles,
           status: "draft",
@@ -119,24 +117,27 @@ const CreateBundle = () => {
         let response = await postApi("/api/admin/actionStatus", data, app);
       }
     }
-  }
-  
+  };
+
   const handleUpdateStatus = async (e, id, type, index) => {
-    if((plan != "standard") && (type == "productMixMatch" || type == "bxgy" || type == "fbt")){
-        navigate("/plans")
-    }else{
-      setSwitchLoading(true)
-      setSwitchIndex(index)
+    if (
+      (plan !== "standard" && (type === "bxgy" || type === "fbt")) ||
+      (plan === "free" && type === "productMixMatch")
+    ) {
+      navigate("/plans");
+    } else {
+      setSwitchLoading(true);
+      setSwitchIndex(index);
       let data = {
         id: id,
         status: e === true ? "active" : "draft",
       };
       const response = await postApi("api/admin/updateStatus", data, app);
-  
+
       if (response.data.status === 200) {
         await getBundle("onSwitch");
-        setSwitchLoading(false)
-  
+        setSwitchLoading(false);
+
         toastNotification("success", "status updated successfully", "bottom");
       }
     }
@@ -160,20 +161,19 @@ const CreateBundle = () => {
       if (plan == "standard") {
         navigate(`/buyxgety/${id}`);
       } else {
-        navigate("/plans")
+        navigate("/plans");
       }
-
-    } else if (type === 'fbt') {
+    } else if (type === "fbt") {
       if (plan == "standard") {
         navigate(`/FrequentlyBoughtTogether/${id}`);
       } else {
-        navigate("/plans")
+        navigate("/plans");
       }
     } else if (type == "productMixMatch") {
-      if (plan == "standard") {
+      if (plan != "free") {
         navigate(`/ProductMixMatch/${id}`);
       } else {
-        navigate("/plans")
+        navigate("/plans");
       }
     } else {
       navigate(`/CollectionMixMatch/${id}`);
@@ -181,7 +181,7 @@ const CreateBundle = () => {
   };
 
   async function handleActionDelete() {
-    setSwitchLoading(true)
+    setSwitchLoading(true);
     if (actionId.length) {
       let data = {
         id: actionId,
@@ -211,14 +211,18 @@ const CreateBundle = () => {
     try {
       setSwitchLoading(true);
       let paidBundles = [];
-      if (plan !== "standard") {
+      if ((plan !== "standard" && (data.type === "bxgy" || data.type === "fbt")) ||
+      (plan === "free" && data.type === "productMixMatch")) {
         paidBundles = dashboardData
-          .filter(data => actionId.includes(data._id) && 
-                         (data.type === "productBundle" || 
-                          data.type === "collectionMixMatch" || 
-                          data.type === "volumeBundle"))
-          .map(data => data._id);
-  
+          .filter(
+            (data) =>
+              actionId.includes(data._id) &&
+              (data.type === "productBundle" ||
+                data.type === "collectionMixMatch" ||
+                data.type === "volumeBundle")
+          )
+          .map((data) => data._id);
+
         if (paidBundles.length > 0) {
           const data = {
             id: paidBundles,
@@ -228,7 +232,11 @@ const CreateBundle = () => {
           if (response.data.status === 200) {
             toastNotification("success", "Successfully Active!", "bottom");
           } else if (response.data.status === 503) {
-            toastNotification("warning", "Something went wrong! Please try again", "bottom");
+            toastNotification(
+              "warning",
+              "Something went wrong! Please try again",
+              "bottom"
+            );
           }
           await getBundle();
           setActionId([]);
@@ -243,21 +251,29 @@ const CreateBundle = () => {
           if (response.data.status === 200) {
             toastNotification("success", "Successfully Active!", "bottom");
           } else if (response.data.status === 503) {
-            toastNotification("warning", "Something went wrong! Please try again", "bottom");
+            toastNotification(
+              "warning",
+              "Something went wrong! Please try again",
+              "bottom"
+            );
           }
           await getBundle();
           setActionId([]);
         }
       }
     } catch (error) {
-      toastNotification("error", "An error occurred. Please try again later", "bottom");
+      toastNotification(
+        "error",
+        "An error occurred. Please try again later",
+        "bottom"
+      );
     } finally {
       setSwitchLoading(false);
     }
   }
-  
+
   async function handleActionDraft() {
-    setSwitchLoading(true)
+    setSwitchLoading(true);
     if (actionId.length) {
       let data = {
         id: actionId,
@@ -268,7 +284,7 @@ const CreateBundle = () => {
         return (
           setSwitchLoading(false),
           await getBundle(),
-          toastNotification("success", "Successfully Draft !", 'bottom'),
+          toastNotification("success", "Successfully Draft !", "bottom"),
           setActionId([])
         );
       } else if (response.data.status == 503) {
@@ -278,7 +294,7 @@ const CreateBundle = () => {
           toastNotification(
             "warning",
             "Something went wrong ! please try again",
-            'bottom'
+            "bottom"
           )
         );
       }
@@ -289,38 +305,63 @@ const CreateBundle = () => {
     let check;
 
     for (let index = 0; index < item.bundleDetail.products.length; index++) {
-      for (let i = 0; i < item.bundleDetail.products[index].variants.length; i++) {
-        if (item.bundleDetail.products[index].variants[i].inventoryQuantity <= 0) {
+      for (
+        let i = 0;
+        i < item.bundleDetail.products[index].variants.length;
+        i++
+      ) {
+        if (
+          item.bundleDetail.products[index].variants[i].inventoryQuantity <= 0
+        ) {
           check = true;
           break;
         }
-
       }
-
     }
     return check;
   }
 
-  const titleBXGY = plan === "standard" 
-    ? "Buy X get Y" 
-    : (
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+  const titleBXGY =
+    plan === "standard" ? (
+      "Buy X get Y"
+    ) : (
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
         Buy X get Y <LockMajor className="sd-bundle-premium1" />
       </div>
     );
 
-    const titlePMM = plan === "standard" 
-    ? "Product mix & match" 
-    : (
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+  const titlePMM =
+    plan != "free" ? (
+      "Product mix & match"
+    ) : (
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
         Product mix & match <LockMajor className="sd-bundle-premium1" />
       </div>
     );
 
-    const titleFBT = plan === "standard" 
-    ? "Frequently bought together" 
-    : (
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+  const titleFBT =
+    plan === "standard" ? (
+      "Frequently bought together"
+    ) : (
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
         Frequently bought together <LockMajor className="sd-bundle-premium1" />
       </div>
     );
@@ -375,67 +416,85 @@ const CreateBundle = () => {
     mainData = dashboardData;
   }
   const data = mainData.map((item, index) => ({
-
     key: item._id,
 
     bundle: (
-
       <div className="sd-bundle-dashboard-img-box">
-        {(item.bundleDetail.discountedProductType == "all_products" ? <Thumbnail
-          source={
-            allProductsImg
-          }
-          size="small"
-          alt="products thumbnails"
-        /> : null)}
+        {item.bundleDetail.discountedProductType == "all_products" ? (
+          <Thumbnail
+            source={allProductsImg}
+            size="small"
+            alt="products thumbnails"
+          />
+        ) : null}
 
-        {item.type == "bxgy" ?
-          [...item.bundleDetail?.xproducts, ...item.bundleDetail?.yproducts]?.slice(0, 3).map((ele, index) => {
-            return (
-              <div key={index} className="sd-bundle-dashboard-img">
-                {/* <img src={ele?.images ? ele.images[0].originalSrc : ele?.image ? ele.image.originalSrc:""} alt="" /> */}
-                <Thumbnail
-                  source={
-                    ele.images
-                      ? ele?.images[0]?.originalSrc !== "" ? ele?.images[0]?.originalSrc : noProductImg
-                      : ele?.image
-                        ? ele?.image?.originalSrc !== "" ? ele?.image?.originalSrc : noProductImg
-                        : noProductImg
-                  }
-                  size="small"
-                  alt="products thumbnails"
-                />
+        {item.type == "bxgy"
+          ? [...item.bundleDetail?.xproducts, ...item.bundleDetail?.yproducts]
+              ?.slice(0, 3)
+              .map((ele, index) => {
+                return (
+                  <div key={index} className="sd-bundle-dashboard-img">
+                    {/* <img src={ele?.images ? ele.images[0].originalSrc : ele?.image ? ele.image.originalSrc:""} alt="" /> */}
+                    <Thumbnail
+                      source={
+                        ele.images
+                          ? ele?.images[0]?.originalSrc !== ""
+                            ? ele?.images[0]?.originalSrc
+                            : noProductImg
+                          : ele?.image
+                            ? ele?.image?.originalSrc !== ""
+                              ? ele?.image?.originalSrc
+                              : noProductImg
+                            : noProductImg
+                      }
+                      size="small"
+                      alt="products thumbnails"
+                    />
+                  </div>
+                );
+              })
+          : (item.type == "fbt" &&
+            item.bundleDetail.discountedProductType == "specific_product"
+              ? [
+                  ...item.bundleDetail?.mainProducts,
+                  ...item.bundleDetail?.offeredProducts,
+                ]
+              : item.bundleDetail?.products
+            )
+              ?.slice(0, 3)
+              .map((ele, index) => {
+                return (
+                  <div key={index} className="sd-bundle-dashboard-img">
+                    {/* <img src={ele?.images ? ele.images[0].originalSrc : ele?.image ? ele.image.originalSrc:""} alt="" /> */}
+                    <Thumbnail
+                      source={
+                        ele.images
+                          ? ele?.images[0]?.originalSrc !== ""
+                            ? ele?.images[0]?.originalSrc
+                            : noProductImg
+                          : ele?.image
+                            ? ele?.image?.originalSrc !== ""
+                              ? ele?.image?.originalSrc
+                              : noProductImg
+                            : noProductImg
+                      }
+                      size="small"
+                      alt="products thumbnails"
+                    />
+                  </div>
+                );
+              })}
 
-              </div>
-            );
-          })
-          : (item.type == "fbt" && item.bundleDetail.discountedProductType == "specific_product" ? [...item.bundleDetail?.mainProducts, ...item.bundleDetail?.offeredProducts] : item.bundleDetail?.products)?.slice(0, 3).map((ele, index) => {
-            return (
-              <div key={index} className="sd-bundle-dashboard-img">
-                {/* <img src={ele?.images ? ele.images[0].originalSrc : ele?.image ? ele.image.originalSrc:""} alt="" /> */}
-                <Thumbnail
-                  source={
-                    ele.images
-                      ? ele?.images[0]?.originalSrc !== "" ? ele?.images[0]?.originalSrc : noProductImg
-                      : ele?.image
-                        ? ele?.image?.originalSrc !== "" ? ele?.image?.originalSrc : noProductImg
-                        : noProductImg
-                  }
-                  size="small"
-                  alt="products thumbnails"
-                />
-
-              </div>
-            );
-          })}
-
-        {
-          item.bundleDetail.products?.length > 3 ? <div className="sd-bundle-more-item"><EllipsisOutlined /></div> : null
-        }
+        {item.bundleDetail.products?.length > 3 ? (
+          <div className="sd-bundle-more-item">
+            <EllipsisOutlined />
+          </div>
+        ) : null}
       </div>
     ),
     name: (
-      <span className="sd-bundle-list-name"
+      <span
+        className="sd-bundle-list-name"
         onClick={() => {
           handleEditBundle(item._id, item.type);
         }}
@@ -461,7 +520,6 @@ const CreateBundle = () => {
 
         :""} */}
       </span>
-
     ),
 
     // discount:item.type == "productBundle" ? item.bundleDetail.discountType == "percent" : `${item.bundleDetail.discountValue}% off` : item.bundleDetail.discountType == "fixed" ? `${item.bundleDetail.discountValue}% off` ,
@@ -517,25 +575,43 @@ const CreateBundle = () => {
                   : null,
     status: (
       <div>
-       {(plan != "standard") && ((item.type == "bxgy") || (item.type == "fbt") || (item.type == "productMixMatch"))? <Tooltip title="Upgrade to 'Standard' plan">
+        {(plan !== "standard" &&
+          (item.type === "bxgy" || item.type === "fbt")) ||
+        (plan === "free" && item.type === "productMixMatch") ? (
+          <Tooltip title="Upgrade Your Plan">
+            <Switch
+              loading={switchIndex === index ? switchLoading : null}
+              defaultChecked
+              checked={false}
+              onChange={(e) =>
+                handleUpdateStatus(e, item._id, item.type, index)
+              }
+            />
+          </Tooltip>
+        ) : (
           <Switch
             loading={switchIndex === index ? switchLoading : null}
             defaultChecked
-            checked={false }
-            onChange={(e) => handleUpdateStatus(e, item._id,item.type, index)}
+            checked={item.status === "active"}
+            onChange={(e) => handleUpdateStatus(e, item._id, item.type, index)}
           />
-        </Tooltip>
-        :
-          <Switch
-            loading={switchIndex === index ? switchLoading : null}
-            defaultChecked
-            checked={item.status == "active" ? true : false}
-            onChange={(e) => handleUpdateStatus(e, item._id,item.type, index)}
-          />
-       }
+        )}
       </div>
     ),
-    type: item.type == "productBundle" ? "Product Bundle" : item.type == "volumeBundle" ? "Volume Bundle" : item.type == "collectionMixMatch" ? "Collection Mix & Match" : item.type == "productMixMatch" ? "Product Mix & Match" : item.type == "fbt" ? "Frequently Bought Together" : item.type == "bxgy" ? "BUY X GET Y" : "",
+    type:
+      item.type == "productBundle"
+        ? "Product Bundle"
+        : item.type == "volumeBundle"
+          ? "Volume Bundle"
+          : item.type == "collectionMixMatch"
+            ? "Collection Mix & Match"
+            : item.type == "productMixMatch"
+              ? "Product Mix & Match"
+              : item.type == "fbt"
+                ? "Frequently Bought Together"
+                : item.type == "bxgy"
+                  ? "BUY X GET Y"
+                  : "",
     performance: item.analytics.bundleSold + " " + "Sold",
   }));
 
@@ -553,55 +629,74 @@ const CreateBundle = () => {
     key: item._id,
     bundle: (
       <div className="sd-bundle-dashboard-img-box">
-        {(item.bundleDetail.discountedProductType == "all_products" ? <Thumbnail
-          source={
-            allProductsImg
-          }
-          size="small"
-          alt="products thumbnails"
-        /> : null)}
-        {item.type == "bxgy" ?
-          [...item.bundleDetail?.xproducts, ...item.bundleDetail?.yproducts]?.slice(0, 3).map((ele, index) => {
-            return (
-              <div key={index} className="sd-bundle-dashboard-img">
-                {/* <img src={ele?.images ? ele.images[0].originalSrc : ele?.image ? ele.image.originalSrc:""} alt="" /> */}
-                <Thumbnail
-                  source={
-                    ele.images
-                      ? ele?.images[0]?.originalSrc !== "" ? ele?.images[0]?.originalSrc : noProductImg
-                      : ele?.image
-                        ? ele?.image?.originalSrc !== "" ? ele?.image?.originalSrc : noProductImg
-                        : noProductImg
-                  }
-                  size="small"
-                  alt="products thumbnails"
-                />
-
-              </div>
-            );
-          })
-          : (item.type == "fbt" && item.bundleDetail.discountedProductType == "specific_product" ? [...item.bundleDetail?.mainProducts, ...item.bundleDetail?.offeredProducts] : item.bundleDetail?.products)?.slice(0, 3).map((ele, index) => {
-            return (
-              <div key={index} className="sd-bundle-dashboard-img">
-                {/* <img src={ele?.images ? ele.images[0].originalSrc : ele?.image ? ele.image.originalSrc:""} alt="" /> */}
-                <Thumbnail
-                  source={
-                    ele.images
-                      ? ele?.images[0]?.originalSrc !== "" ? ele?.images[0]?.originalSrc : noProductImg
-                      : ele?.image
-                        ? ele?.image?.originalSrc !== "" ? ele?.image?.originalSrc : noProductImg
-                        : noProductImg
-                  }
-                  size="small"
-                  alt="products thumbnails"
-                />
-
-              </div>
-            );
-          })}
-        {
-          item.bundleDetail.products?.length > 3 ? <div className="sd-bundle-more-item"><EllipsisOutlined /></div> : null
-        }
+        {item.bundleDetail.discountedProductType == "all_products" ? (
+          <Thumbnail
+            source={allProductsImg}
+            size="small"
+            alt="products thumbnails"
+          />
+        ) : null}
+        {item.type == "bxgy"
+          ? [...item.bundleDetail?.xproducts, ...item.bundleDetail?.yproducts]
+              ?.slice(0, 3)
+              .map((ele, index) => {
+                return (
+                  <div key={index} className="sd-bundle-dashboard-img">
+                    {/* <img src={ele?.images ? ele.images[0].originalSrc : ele?.image ? ele.image.originalSrc:""} alt="" /> */}
+                    <Thumbnail
+                      source={
+                        ele.images
+                          ? ele?.images[0]?.originalSrc !== ""
+                            ? ele?.images[0]?.originalSrc
+                            : noProductImg
+                          : ele?.image
+                            ? ele?.image?.originalSrc !== ""
+                              ? ele?.image?.originalSrc
+                              : noProductImg
+                            : noProductImg
+                      }
+                      size="small"
+                      alt="products thumbnails"
+                    />
+                  </div>
+                );
+              })
+          : (item.type == "fbt" &&
+            item.bundleDetail.discountedProductType == "specific_product"
+              ? [
+                  ...item.bundleDetail?.mainProducts,
+                  ...item.bundleDetail?.offeredProducts,
+                ]
+              : item.bundleDetail?.products
+            )
+              ?.slice(0, 3)
+              .map((ele, index) => {
+                return (
+                  <div key={index} className="sd-bundle-dashboard-img">
+                    {/* <img src={ele?.images ? ele.images[0].originalSrc : ele?.image ? ele.image.originalSrc:""} alt="" /> */}
+                    <Thumbnail
+                      source={
+                        ele.images
+                          ? ele?.images[0]?.originalSrc !== ""
+                            ? ele?.images[0]?.originalSrc
+                            : noProductImg
+                          : ele?.image
+                            ? ele?.image?.originalSrc !== ""
+                              ? ele?.image?.originalSrc
+                              : noProductImg
+                            : noProductImg
+                      }
+                      size="small"
+                      alt="products thumbnails"
+                    />
+                  </div>
+                );
+              })}
+        {item.bundleDetail.products?.length > 3 ? (
+          <div className="sd-bundle-more-item">
+            <EllipsisOutlined />
+          </div>
+        ) : null}
       </div>
     ),
     name: (
@@ -633,35 +728,24 @@ const CreateBundle = () => {
        :""} */}
       </a>
     ),
-    discount: item.type == "productBundle"
-      ? item.bundleDetail.discountType == "percent"
-        ? `${item.bundleDetail.discountValue}% off`
-        : item.bundleDetail.discountType == "fixed"
-          ? `Rs.${item.bundleDetail.discountValue} off`
-          : item.bundleDetail.discountType == "price"
-            ? `Fixed Rs.${item.bundleDetail.discountValue} `
-            : item.bundleDetail.discountType == "freeShipping"
-              ? "Free Shipping"
-              : item.bundleDetail.discountType == "noDiscount"
-                ? "No Discount"
-                : null
-      : item.type == "volumeBundle"
-        ? `${item.bundleDetail.discountOptions.length} Options`
-        : item.type == "productMixMatch"
+    discount:
+      item.type == "productBundle"
+        ? item.bundleDetail.discountType == "percent"
+          ? `${item.bundleDetail.discountValue}% off`
+          : item.bundleDetail.discountType == "fixed"
+            ? `Rs.${item.bundleDetail.discountValue} off`
+            : item.bundleDetail.discountType == "price"
+              ? `Fixed Rs.${item.bundleDetail.discountValue} `
+              : item.bundleDetail.discountType == "freeShipping"
+                ? "Free Shipping"
+                : item.bundleDetail.discountType == "noDiscount"
+                  ? "No Discount"
+                  : null
+        : item.type == "volumeBundle"
           ? `${item.bundleDetail.discountOptions.length} Options`
-          : item.type == "collectionMixMatch"
-            ? item.bundleDetail.discountType == "percent"
-              ? `${item.bundleDetail.discountValue}% off`
-              : item.bundleDetail.discountType == "fixed"
-                ? `Rs.${item.bundleDetail.discountValue} off`
-                : item.bundleDetail.discountType == "price"
-                  ? `Fixed Rs.${item.bundleDetail.discountValue} `
-                  : item.bundleDetail.discountType == "freeShipping"
-                    ? "Free Shipping"
-                    : item.bundleDetail.discountType == "noDiscount"
-                      ? "No Discount"
-                      : null
-            : item.type == "fbt"
+          : item.type == "productMixMatch"
+            ? `${item.bundleDetail.discountOptions.length} Options`
+            : item.type == "collectionMixMatch"
               ? item.bundleDetail.discountType == "percent"
                 ? `${item.bundleDetail.discountValue}% off`
                 : item.bundleDetail.discountType == "fixed"
@@ -673,36 +757,67 @@ const CreateBundle = () => {
                       : item.bundleDetail.discountType == "noDiscount"
                         ? "No Discount"
                         : null
-              : item.type == "bxgy"
+              : item.type == "fbt"
                 ? item.bundleDetail.discountType == "percent"
                   ? `${item.bundleDetail.discountValue}% off`
                   : item.bundleDetail.discountType == "fixed"
                     ? `Rs.${item.bundleDetail.discountValue} off`
-                    : item.bundleDetail.discountType == "free"
-                      ? "Free Gift"
-                      : null
-                : null,
+                    : item.bundleDetail.discountType == "price"
+                      ? `Fixed Rs.${item.bundleDetail.discountValue} `
+                      : item.bundleDetail.discountType == "freeShipping"
+                        ? "Free Shipping"
+                        : item.bundleDetail.discountType == "noDiscount"
+                          ? "No Discount"
+                          : null
+                : item.type == "bxgy"
+                  ? item.bundleDetail.discountType == "percent"
+                    ? `${item.bundleDetail.discountValue}% off`
+                    : item.bundleDetail.discountType == "fixed"
+                      ? `Rs.${item.bundleDetail.discountValue} off`
+                      : item.bundleDetail.discountType == "free"
+                        ? "Free Gift"
+                        : null
+                  : null,
     status: (
       <div>
-        {(plan != "standard") && ((item.type == "bxgy") || (item.type == "fbt") || (item.type == "productMixMatch"))? <Tooltip title="Upgrade to 'Standard' plan">
-          <Switch
-            loading={switchIndex === index ? switchLoading : null}
-            defaultChecked
-            checked={false }
-            onChange={(e) => handleUpdateStatus(e, item._id,item.type, index)}
-          />
-        </Tooltip>
-        :
+        {plan != "standard" &&
+        (item.type == "bxgy" ||
+          item.type == "fbt" ||
+          item.type == "productMixMatch") ? (
+          <Tooltip title="Upgrade to 'Standard' plan">
+            <Switch
+              loading={switchIndex === index ? switchLoading : null}
+              defaultChecked
+              checked={false}
+              onChange={(e) =>
+                handleUpdateStatus(e, item._id, item.type, index)
+              }
+            />
+          </Tooltip>
+        ) : (
           <Switch
             loading={switchIndex === index ? switchLoading : null}
             defaultChecked
             checked={item.status == "active" ? true : false}
-            onChange={(e) => handleUpdateStatus(e, item._id,item.type, index)}
+            onChange={(e) => handleUpdateStatus(e, item._id, item.type, index)}
           />
-       }
+        )}
       </div>
     ),
-    type: item.type == "productBundle" ? "Product Bundle" : item.type == "volumeBundle" ? "Volume Bundle" : item.type == "collectionMixMatch" ? "Collection Mix & Match" : item.type == "productMixMatch" ? "Product Mix & Match" : item.type == "fbt" ? "Frequently Bought Together" : item.type == "bxgy" ? "BUY X GET Y" : "",
+    type:
+      item.type == "productBundle"
+        ? "Product Bundle"
+        : item.type == "volumeBundle"
+          ? "Volume Bundle"
+          : item.type == "collectionMixMatch"
+            ? "Collection Mix & Match"
+            : item.type == "productMixMatch"
+              ? "Product Mix & Match"
+              : item.type == "fbt"
+                ? "Frequently Bought Together"
+                : item.type == "bxgy"
+                  ? "BUY X GET Y"
+                  : "",
     performance: item.analytics.bundleSold + " " + "Sold",
   }));
 
@@ -720,61 +835,79 @@ const CreateBundle = () => {
     key: item._id,
     bundle: (
       <div className="sd-bundle-dashboard-img-box">
-        {(item.bundleDetail.discountedProductType == "all_products" ? <Thumbnail
-          source={
-            allProductsImg
-          }
-          size="small"
-          alt="products thumbnails"
-        /> : null)}
-        {item.type == "bxgy" ?
-          [...item.bundleDetail?.xproducts, ...item.bundleDetail?.yproducts]?.slice(0, 3).map((ele, index) => {
-            return (
-              <div key={index} className="sd-bundle-dashboard-img">
-                {/* <img src={ele?.images ? ele.images[0].originalSrc : ele?.image ? ele.image.originalSrc:""} alt="" /> */}
-                <Thumbnail
-                  source={
-                    ele.images
-                      ? ele?.images[0]?.originalSrc !== "" ? ele?.images[0]?.originalSrc : noProductImg
-                      : ele?.image
-                        ? ele?.image?.originalSrc !== "" ? ele?.image?.originalSrc : noProductImg
-                        : noProductImg
-                  }
-                  size="small"
-                  alt="products thumbnails"
-                />
-
-              </div>
-            );
-          })
-          : (item.type == "fbt" && item.bundleDetail.discountedProductType == "specific_product" ? [...item.bundleDetail?.mainProducts, ...item.bundleDetail?.offeredProducts] : item.bundleDetail?.products)?.slice(0, 3).map((ele, index) => {
-            return (
-              <div key={index} className="sd-bundle-dashboard-img">
-                {/* <img src={ele?.images ? ele.images[0].originalSrc : ele?.image ? ele.image.originalSrc:""} alt="" /> */}
-                <Thumbnail
-                  source={
-                    ele.images
-                      ? ele?.images[0]?.originalSrc !== "" ? ele?.images[0]?.originalSrc : noProductImg
-                      : ele?.image
-                        ? ele?.image?.originalSrc !== "" ? ele?.image?.originalSrc : noProductImg
-                        : noProductImg
-                  }
-                  size="small"
-                  alt="products thumbnails"
-                />
-
-              </div>
-            );
-          })}
-        {
-          (item.bundleDetail.products?.length > 3 ? <div className="sd-bundle-more-item"><EllipsisOutlined /></div> : null)
-
-
-        }
+        {item.bundleDetail.discountedProductType == "all_products" ? (
+          <Thumbnail
+            source={allProductsImg}
+            size="small"
+            alt="products thumbnails"
+          />
+        ) : null}
+        {item.type == "bxgy"
+          ? [...item.bundleDetail?.xproducts, ...item.bundleDetail?.yproducts]
+              ?.slice(0, 3)
+              .map((ele, index) => {
+                return (
+                  <div key={index} className="sd-bundle-dashboard-img">
+                    {/* <img src={ele?.images ? ele.images[0].originalSrc : ele?.image ? ele.image.originalSrc:""} alt="" /> */}
+                    <Thumbnail
+                      source={
+                        ele.images
+                          ? ele?.images[0]?.originalSrc !== ""
+                            ? ele?.images[0]?.originalSrc
+                            : noProductImg
+                          : ele?.image
+                            ? ele?.image?.originalSrc !== ""
+                              ? ele?.image?.originalSrc
+                              : noProductImg
+                            : noProductImg
+                      }
+                      size="small"
+                      alt="products thumbnails"
+                    />
+                  </div>
+                );
+              })
+          : (item.type == "fbt" &&
+            item.bundleDetail.discountedProductType == "specific_product"
+              ? [
+                  ...item.bundleDetail?.mainProducts,
+                  ...item.bundleDetail?.offeredProducts,
+                ]
+              : item.bundleDetail?.products
+            )
+              ?.slice(0, 3)
+              .map((ele, index) => {
+                return (
+                  <div key={index} className="sd-bundle-dashboard-img">
+                    {/* <img src={ele?.images ? ele.images[0].originalSrc : ele?.image ? ele.image.originalSrc:""} alt="" /> */}
+                    <Thumbnail
+                      source={
+                        ele.images
+                          ? ele?.images[0]?.originalSrc !== ""
+                            ? ele?.images[0]?.originalSrc
+                            : noProductImg
+                          : ele?.image
+                            ? ele?.image?.originalSrc !== ""
+                              ? ele?.image?.originalSrc
+                              : noProductImg
+                            : noProductImg
+                      }
+                      size="small"
+                      alt="products thumbnails"
+                    />
+                  </div>
+                );
+              })}
+        {item.bundleDetail.products?.length > 3 ? (
+          <div className="sd-bundle-more-item">
+            <EllipsisOutlined />
+          </div>
+        ) : null}
       </div>
     ),
     name: (
-      <a className="sd-bundle-list-name"
+      <a
+        className="sd-bundle-list-name"
         onClick={() => {
           handleEditBundle(item._id, item.type);
         }}
@@ -801,35 +934,24 @@ const CreateBundle = () => {
        :""} */}
       </a>
     ),
-    discount: item.type == "productBundle"
-      ? item.bundleDetail.discountType == "percent"
-        ? `${item.bundleDetail.discountValue}% off`
-        : item.bundleDetail.discountType == "fixed"
-          ? `Rs.${item.bundleDetail.discountValue} off`
-          : item.bundleDetail.discountType == "price"
-            ? `Fixed Rs.${item.bundleDetail.discountValue} `
-            : item.bundleDetail.discountType == "freeShipping"
-              ? "Free Shipping"
-              : item.bundleDetail.discountType == "noDiscount"
-                ? "No Discount"
-                : null
-      : item.type == "volumeBundle"
-        ? `${item.bundleDetail.discountOptions.length} Options`
-        : item.type == "productMixMatch"
+    discount:
+      item.type == "productBundle"
+        ? item.bundleDetail.discountType == "percent"
+          ? `${item.bundleDetail.discountValue}% off`
+          : item.bundleDetail.discountType == "fixed"
+            ? `Rs.${item.bundleDetail.discountValue} off`
+            : item.bundleDetail.discountType == "price"
+              ? `Fixed Rs.${item.bundleDetail.discountValue} `
+              : item.bundleDetail.discountType == "freeShipping"
+                ? "Free Shipping"
+                : item.bundleDetail.discountType == "noDiscount"
+                  ? "No Discount"
+                  : null
+        : item.type == "volumeBundle"
           ? `${item.bundleDetail.discountOptions.length} Options`
-          : item.type == "collectionMixMatch"
-            ? item.bundleDetail.discountType == "percent"
-              ? `${item.bundleDetail.discountValue}% off`
-              : item.bundleDetail.discountType == "fixed"
-                ? `Rs.${item.bundleDetail.discountValue} off`
-                : item.bundleDetail.discountType == "price"
-                  ? `Fixed Rs.${item.bundleDetail.discountValue} `
-                  : item.bundleDetail.discountType == "freeShipping"
-                    ? "Free Shipping"
-                    : item.bundleDetail.discountType == "noDiscount"
-                      ? "No Discount"
-                      : null
-            : item.type == "fbt"
+          : item.type == "productMixMatch"
+            ? `${item.bundleDetail.discountOptions.length} Options`
+            : item.type == "collectionMixMatch"
               ? item.bundleDetail.discountType == "percent"
                 ? `${item.bundleDetail.discountValue}% off`
                 : item.bundleDetail.discountType == "fixed"
@@ -841,36 +963,67 @@ const CreateBundle = () => {
                       : item.bundleDetail.discountType == "noDiscount"
                         ? "No Discount"
                         : null
-              : item.type == "bxgy"
+              : item.type == "fbt"
                 ? item.bundleDetail.discountType == "percent"
                   ? `${item.bundleDetail.discountValue}% off`
                   : item.bundleDetail.discountType == "fixed"
                     ? `Rs.${item.bundleDetail.discountValue} off`
-                    : item.bundleDetail.discountType == "free"
-                      ? "Free Gift"
-                      : null
-                : null,
+                    : item.bundleDetail.discountType == "price"
+                      ? `Fixed Rs.${item.bundleDetail.discountValue} `
+                      : item.bundleDetail.discountType == "freeShipping"
+                        ? "Free Shipping"
+                        : item.bundleDetail.discountType == "noDiscount"
+                          ? "No Discount"
+                          : null
+                : item.type == "bxgy"
+                  ? item.bundleDetail.discountType == "percent"
+                    ? `${item.bundleDetail.discountValue}% off`
+                    : item.bundleDetail.discountType == "fixed"
+                      ? `Rs.${item.bundleDetail.discountValue} off`
+                      : item.bundleDetail.discountType == "free"
+                        ? "Free Gift"
+                        : null
+                  : null,
     status: (
       <div>
-        {(plan != "standard") && ((item.type == "bxgy") || (item.type == "fbt") || (item.type == "productMixMatch"))? <Tooltip title="Upgrade to 'Standard' plan">
-          <Switch
-            loading={switchIndex === index ? switchLoading : null}
-            defaultChecked
-            checked={false }
-            onChange={(e) => handleUpdateStatus(e, item._id,item.type, index)}
-          />
-        </Tooltip>
-        :
+        {plan != "standard" &&
+        (item.type == "bxgy" ||
+          item.type == "fbt" ||
+          item.type == "productMixMatch") ? (
+          <Tooltip title="Upgrade to 'Standard' plan">
+            <Switch
+              loading={switchIndex === index ? switchLoading : null}
+              defaultChecked
+              checked={false}
+              onChange={(e) =>
+                handleUpdateStatus(e, item._id, item.type, index)
+              }
+            />
+          </Tooltip>
+        ) : (
           <Switch
             loading={switchIndex === index ? switchLoading : null}
             defaultChecked
             checked={item.status == "active" ? true : false}
-            onChange={(e) => handleUpdateStatus(e, item._id,item.type, index)}
+            onChange={(e) => handleUpdateStatus(e, item._id, item.type, index)}
           />
-       }
+        )}
       </div>
     ),
-    type: item.type == "productBundle" ? "Product Bundle" : item.type == "volumeBundle" ? "Volume Bundle" : item.type == "collectionMixMatch" ? "Collection Mix & Match" : item.type == "productMixMatch" ? "Product Mix & Match" : item.type == "fbt" ? "Frequently Bought Together" : item.type == "bxgy" ? "BUY X GET Y" : "",
+    type:
+      item.type == "productBundle"
+        ? "Product Bundle"
+        : item.type == "volumeBundle"
+          ? "Volume Bundle"
+          : item.type == "collectionMixMatch"
+            ? "Collection Mix & Match"
+            : item.type == "productMixMatch"
+              ? "Product Mix & Match"
+              : item.type == "fbt"
+                ? "Frequently Bought Together"
+                : item.type == "bxgy"
+                  ? "BUY X GET Y"
+                  : "",
     performance: item.analytics.bundleSold + " " + "Sold",
   }));
 
@@ -909,7 +1062,7 @@ const CreateBundle = () => {
   ];
 
   const handleSelected = (e) => {
-      setActionId(e);
+    setActionId(e);
     //   if(e.length){
     //  setShowAction(true)
     //   }else{
@@ -919,15 +1072,15 @@ const CreateBundle = () => {
   const contentListNoTitle = {
     all: (
       <div>
-
         {SearchBox()}
         <div>
-          <Skeleton style={{ marginTop: "1rem" }} loading={loader} paragraph={{ rows: 5, width: "100%" }} title={{ width: "100%" }}>
-
-
+          <Skeleton
+            style={{ marginTop: "1rem" }}
+            loading={loader}
+            paragraph={{ rows: 5, width: "100%" }}
+            title={{ width: "100%" }}
+          >
             <Table
-
-
               rowSelection={{
                 type: "checkbox",
                 selectedRowKeys: actionId,
@@ -940,7 +1093,6 @@ const CreateBundle = () => {
               pagination={{
                 defaultPageSize: 6,
                 hideOnSinglePage: true,
-
               }}
             />
           </Skeleton>
@@ -954,10 +1106,13 @@ const CreateBundle = () => {
         {SearchBox()}
 
         <div>
-          <Skeleton style={{ marginTop: "1rem" }} loading={loader} paragraph={{ rows: 5, width: "100%" }} title={{ width: "100%" }}>
-
+          <Skeleton
+            style={{ marginTop: "1rem" }}
+            loading={loader}
+            paragraph={{ rows: 5, width: "100%" }}
+            title={{ width: "100%" }}
+          >
             <Table
-
               rowSelection={{
                 type: "checkbox",
                 selectedRowKeys: actionId,
@@ -968,7 +1123,6 @@ const CreateBundle = () => {
               pagination={{
                 defaultPageSize: 6,
                 hideOnSinglePage: true,
-
               }}
             />
           </Skeleton>
@@ -980,7 +1134,12 @@ const CreateBundle = () => {
         {SearchBox()}
 
         <div>
-          <Skeleton style={{ marginTop: "1rem" }} loading={loader} paragraph={{ rows: 5, width: "100%" }} title={{ width: "100%" }}>
+          <Skeleton
+            style={{ marginTop: "1rem" }}
+            loading={loader}
+            paragraph={{ rows: 5, width: "100%" }}
+            title={{ width: "100%" }}
+          >
             <Table
               rowSelection={{
                 type: "checkbox",
@@ -1019,7 +1178,7 @@ const CreateBundle = () => {
         </div>
 
         <div className="sd-bundle-card-data-box">
-          <Spin className="sd-hideSpinner" spinning={switchLoading} >
+          <Spin className="sd-hideSpinner" spinning={switchLoading}>
             <Card
               className="sd-bundle-dashboard-tab-box"
               tabList={tabListNoTitle}
@@ -1074,7 +1233,8 @@ const CreateBundle = () => {
                   <UnorderedListOutlined />
                 </p>
                 <p>
-                  Highlight special product combinations with an exclusive discount.
+                  Highlight special product combinations with an exclusive
+                  discount.
                 </p>
               </Card>
             </div>
@@ -1110,31 +1270,32 @@ const CreateBundle = () => {
                   <TagsOutlined />
                 </p>
                 <p>
-                  Empower your customers to create personalized bundles by mixing and matching items from different collections.
+                  Empower your customers to create personalized bundles by
+                  mixing and matching items from different collections.
                 </p>
               </Card>
             </div>
             {/* {plan == "standard" ? */}
-              <div
-                className="sd-bundle-choose-collectionMixAndMatch"
-                onClick={() => navigate("/buyXgetY/create")}
+            <div
+              className="sd-bundle-choose-collectionMixAndMatch"
+              onClick={() => navigate("/buyXgetY/create")}
+            >
+              <Card
+                title={titleBXGY}
+                style={{
+                  width: 300,
+                }}
               >
-                  <Card
-                    title = {titleBXGY}
-                    style={{
-                      width: 300,
-                    }}
-                  >
-                  <p className="sd-bundle-collectionMix-Icon">
-                    <GiftOutlined />
-                  </p>
-                  <p>
-                    Provide complimentary gifts or discounted items with specific purchases.
-                  </p>
-                </Card>
-
-              </div>
-              {/* :
+                <p className="sd-bundle-collectionMix-Icon">
+                  <GiftOutlined />
+                </p>
+                <p>
+                  Provide complimentary gifts or discounted items with specific
+                  purchases.
+                </p>
+              </Card>
+            </div>
+            {/* :
               <div className="sd-bundle-choose-collectionMixAndMatch" onClick={() => navigate("/plans")}>
                 <Card
                   title={<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>Buy X get Y <LockMajor className="sd-bundle-premium1" /></div>}
@@ -1152,25 +1313,26 @@ const CreateBundle = () => {
               </div>
             } */}
             {/* {plan == "standard" ? */}
-              <div
-                className="sd-bundle-choose-collectionMixAndMatch"
-                onClick={() => navigate("/productMixMatch/create")}
+            <div
+              className="sd-bundle-choose-collectionMixAndMatch"
+              onClick={() => navigate("/productMixMatch/create")}
+            >
+              <Card
+                title={titlePMM}
+                style={{
+                  width: 300,
+                }}
               >
-                <Card
-                  title={titlePMM}
-                  style={{
-                    width: 300,
-                  }}
-                >
-                  <p className="sd-bundle-collectionMix-Icon">
-                    <TagsOutlined />
-                  </p>
-                  <p>
-                    Allow your customers to create their own bundle from a selection of products.
-                  </p>
-                </Card>
-              </div>
-              {/* :
+                <p className="sd-bundle-collectionMix-Icon">
+                  <TagsOutlined />
+                </p>
+                <p>
+                  Allow your customers to create their own bundle from a
+                  selection of products.
+                </p>
+              </Card>
+            </div>
+            {/* :
               <div className="sd-bundle-choose-collectionMixAndMatch" onClick={() => navigate("/plans")}>
                 <Card
                   title={<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>Product mix & match <LockMajor className="sd-bundle-premium1" /></div>}
@@ -1188,25 +1350,26 @@ const CreateBundle = () => {
               </div>
             } */}
             {/* {plan == "standard" ? */}
-              <div
-                className="sd-bundle-choose-collectionMixAndMatch"
-                onClick={() => navigate("/FrequentlyBoughtTogether/create")}
+            <div
+              className="sd-bundle-choose-collectionMixAndMatch"
+              onClick={() => navigate("/FrequentlyBoughtTogether/create")}
+            >
+              <Card
+                title={titleFBT}
+                style={{
+                  width: 300,
+                }}
               >
-                <Card
-                  title={titleFBT}
-                  style={{
-                    width: 300,
-                  }}
-                >
-                  <p className="sd-bundle-collectionMix-Icon">
-                    <TagsOutlined />
-                  </p>
-                  <p>
-                    Encourage the purchase of frequently paired products with a special discount.
-                  </p>
-                </Card>
-              </div>
-              {/* :
+                <p className="sd-bundle-collectionMix-Icon">
+                  <TagsOutlined />
+                </p>
+                <p>
+                  Encourage the purchase of frequently paired products with a
+                  special discount.
+                </p>
+              </Card>
+            </div>
+            {/* :
               <div className="sd-bundle-choose-collectionMixAndMatch" onClick={() => navigate("/plans")}>
                 <Card title={<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>Frequently bought together <LockMajor className="sd-bundle-premium1" /></div>}
                   style={{width: 300}}

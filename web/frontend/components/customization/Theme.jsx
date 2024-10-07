@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { themeData } from "./themeData";
+import { Grid } from "@shopify/polaris";
 const Theme = ({ bundleOption, data, setData, displayOption }) => {
   //        useEffect(() => {
   //         themeData(data,setData,bundleOption)
@@ -13,28 +14,30 @@ const Theme = ({ bundleOption, data, setData, displayOption }) => {
   };
   return (
     <div className="sd-bundle-themeCustom">
-      <div className="sd-bundle-item-custom-radio-common">
-        <input
-          id="light"
-          type="radio"
-          name="theme"
-          value={"light"}
-          onChange={(e) => handleChange(e, "light")}
-          checked={data[bundleOption]["theme"] == "light"}
-        />
-        <label htmlFor="light">light</label>
-      </div>
-      <div className="sd-bundle-item-custom-radio-common">
-        <input
-          id="dark"
-          type="radio"
-          name="theme"
-          value={"dark"}
-          onChange={(e) => handleChange(e, "dark")}
-          checked={data[bundleOption]["theme"] == "dark"}
-        />
-        <label htmlFor="dark">dark</label>
-      </div>
+      <Grid columns={2}>
+        <div className="sd-bundle-item-custom-radio-common">
+          <input
+            id="light"
+            type="radio"
+            name="theme"
+            value={"light"}
+            onChange={(e) => handleChange(e, "light")}
+            checked={data[bundleOption]["theme"] == "light"}
+          />
+          <label htmlFor="light">light</label>
+        </div>
+        <div className="sd-bundle-item-custom-radio-common">
+          <input
+            id="dark"
+            type="radio"
+            name="theme"
+            value={"dark"}
+            onChange={(e) => handleChange(e, "dark")}
+            checked={data[bundleOption]["theme"] == "dark"}
+          />
+          <label htmlFor="dark">dark</label>
+        </div>
+      </Grid>
     </div>
   );
 };
