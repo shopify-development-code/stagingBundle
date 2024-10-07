@@ -184,7 +184,7 @@ const VolumeBundlePreview = ({
                       >
                         {item.type == "fixed"
                           ? showAmountWithCurrency(
-                              (sumData[index] - endPriceData[index]).toFixed(2),
+                              (sumData[index] - endPriceData[index]),
                               currency
                             )
                           : data.bundleDetail.discountOptions[index].value}
@@ -233,14 +233,14 @@ const VolumeBundlePreview = ({
                       >
                         {item.type == "fixed"
                           ? showAmountWithCurrency(
-                              (sumData[index] - endPriceData[index]).toFixed(2),
+                              (sumData[index] - endPriceData[index]),
                               currency
                             )
                           : data.bundleDetail.discountOptions[index].value}
                         {item.type == "percent"
-                          ? "% off"
+                          ? "% Off"
                           : item.type == "fixed"
-                            ? " off"
+                            ? " Off"
                             : ""}
                       </h4>
                     </div>
