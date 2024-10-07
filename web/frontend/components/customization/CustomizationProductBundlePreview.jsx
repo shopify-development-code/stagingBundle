@@ -10,7 +10,7 @@ const CustomizationProductBundlePreview = ({ data }) => {
   const { currency } = useAPI();
   const discount = 40;
   const textStyle = {
-    fontFamily:  `${data.bundle.box.fontFamily}`
+    fontFamily: `${data.bundle.box.fontFamily}`,
   };
   return (
     <>
@@ -22,7 +22,26 @@ const CustomizationProductBundlePreview = ({ data }) => {
           borderRadius: `${data.bundle.box.borderRadius}px`,
         }}
       >
-        <div class="sd-bundle-text-detail">
+        {data.bundle.optionalBadge.enable == true && (
+          <div
+            className="sd-badges-part"
+            style={{
+              backgroundColor:
+                data["bundle"]["optionalBadge"]["background"]
+            }}
+          >
+            <span
+              style={{
+                ...textStyle,
+                color: data["bundle"]["optionalBadge"]["color"],
+                fontSize: data["bundle"]["optionalBadge"]["fontSize"] + "px",
+              }}
+            >
+              {data.bundle.optionalBadge.text}
+            </span>
+          </div>
+        )}
+        <div className={`sd-bundle-text-detail ${data.bundle.optionalBadge.enable == true ? 'extra-padding' : ''}`}>
           <h4
             style={{
               ...textStyle,
@@ -89,12 +108,13 @@ const CustomizationProductBundlePreview = ({ data }) => {
                   ...textStyle,
                   backgroundColor:
                     data.bundle.productDetails.variantSelector.backgroundColor,
-                    color: data.bundle.productDetails.variantSelector.color,
-                    width: data.bundle.productDetails.variantSelector.width + "px",
+                  color: data.bundle.productDetails.variantSelector.color,
+                  width:
+                    data.bundle.productDetails.variantSelector.width + "px",
                 }}
               >
-                <option style={{...textStyle,}}>Medium</option>
-                <option style={{...textStyle,}}>Small</option>
+                <option style={{ ...textStyle }}>Medium</option>
+                <option style={{ ...textStyle }}>Small</option>
               </select>
             </div>
           </div>
@@ -103,10 +123,18 @@ const CustomizationProductBundlePreview = ({ data }) => {
               style={{
                 ...textStyle,
                 color: data.bundle.productDetails.quantities.color,
-                fontSize: data.bundle.productDetails.quantities.size + "px"
+                fontSize: data.bundle.productDetails.quantities.size + "px",
               }}
             >
-              Qty: <span style={{...textStyle,fontSize: data.bundle.productDetails.quantities.size + "px"}}>1</span>
+              Qty:{" "}
+              <span
+                style={{
+                  ...textStyle,
+                  fontSize: data.bundle.productDetails.quantities.size + "px",
+                }}
+              >
+                1
+              </span>
             </h6>
           </div>
         </div>
@@ -166,12 +194,13 @@ const CustomizationProductBundlePreview = ({ data }) => {
                   ...textStyle,
                   backgroundColor:
                     data.bundle.productDetails.variantSelector.backgroundColor,
-                    color: data.bundle.productDetails.variantSelector.color,
-                    width: data.bundle.productDetails.variantSelector.width + "px",
+                  color: data.bundle.productDetails.variantSelector.color,
+                  width:
+                    data.bundle.productDetails.variantSelector.width + "px",
                 }}
               >
-                <option style={{...textStyle,}}>Medium</option>
-                <option style={{...textStyle,}}>Small</option>
+                <option style={{ ...textStyle }}>Medium</option>
+                <option style={{ ...textStyle }}>Small</option>
               </select>
             </div>
           </div>
@@ -180,10 +209,18 @@ const CustomizationProductBundlePreview = ({ data }) => {
               style={{
                 ...textStyle,
                 color: data.bundle.productDetails.quantities.color,
-                fontSize: data.bundle.productDetails.quantities.size + "px"
+                fontSize: data.bundle.productDetails.quantities.size + "px",
               }}
             >
-              Qty: <span style={{...textStyle,fontSize: data.bundle.productDetails.quantities.size + "px"}}>1</span>
+              Qty:{" "}
+              <span
+                style={{
+                  ...textStyle,
+                  fontSize: data.bundle.productDetails.quantities.size + "px",
+                }}
+              >
+                1
+              </span>
             </h6>
           </div>
         </div>
@@ -202,7 +239,7 @@ const CustomizationProductBundlePreview = ({ data }) => {
               style={{
                 ...textStyle,
                 color: data.bundle.totalSection.discountMessage.color,
-                fontSize: data.bundle.totalSection.discountMessage.size + "px"
+                fontSize: data.bundle.totalSection.discountMessage.size + "px",
               }}
             >
               Discount will be applied at checkout
@@ -238,6 +275,8 @@ const CustomizationProductBundlePreview = ({ data }) => {
               color: data.bundle.button.color,
               fontSize: data.bundle.button.fontSize + "px",
               backgroundColor: data.bundle.button.backgroundColor,
+              borderColor: data.bundle.button.borderColor,
+              borderRadius: data.bundle.button.borderRadius + "px",
             }}
           >
             {data.bundle.button.text_others}

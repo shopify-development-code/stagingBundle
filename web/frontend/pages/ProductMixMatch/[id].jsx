@@ -44,6 +44,7 @@ const ProductMixMatch = () => {
   const [sumData, setSumData] = useState([]);
   const [multiProductArray, setMultiProductArray] = useState([]);
   const [requiredProductArray, setRequiredProductArray] = useState([]);
+  
   const [data, setData] = useState({
     shop: shop,
     type: "productMixMatch",
@@ -233,9 +234,9 @@ const ProductMixMatch = () => {
     }
   };
   const handleSave = async () => {
-    if (plan != "standard") {
+    if (plan == "free") {
       Swal.fire({
-        title: 'Upgrade to "Standard" Plan',
+        title: 'Upgrade to "Basic" Plan',
         text: "Do you want to continue",
         icon: "info",
         showCancelButton: true,

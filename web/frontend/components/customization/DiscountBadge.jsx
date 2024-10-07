@@ -169,6 +169,7 @@ const DiscountBadge = ({ data, setData, bundleOption, displayOption }) => {
                   sizeValue
                 )
               }
+              suffix={data[bundleOption]["DiscountBadge"]["fontSize"]}
               value={data[bundleOption]["DiscountBadge"]["fontSize"]}
               min={10}
               max={15}

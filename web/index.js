@@ -70,7 +70,7 @@ app.get(
       seeMore:"See more",
       seeLess:"See less",
       discountApplied:"Discount will be applied at checkout",
-      save:"save",
+      save:"Save",
       delete:"delete",
       added:"added",
       addedItems:"added items",

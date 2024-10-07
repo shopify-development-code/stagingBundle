@@ -3546,6 +3546,7 @@ svg.sd-bundle-premium1 {
     position: relative;
     border : 1px solid black;
     width: 100%;
+    overflow: hidden
   }
   .sd-collection-main-column {
     overflow: hidden;
@@ -3799,7 +3800,7 @@ svg.sd-bundle-premium1 {
     background: #F4383B;
     position: absolute;
     top: 0;
-    right: 0;
+    right: -3px;
     padding: 5px 20px;
     border-radius: 0px 20px 0px 100px;
     min-width: 170px;
@@ -4019,7 +4020,7 @@ img.BADGE {
 }
 .sd-bundle-product-badgeOptions {
     position: absolute;
-    top: 96px;
+    top: 97px;
     right: 36px;
 }
 .sd-bundle-product-badgeOptions h4 {
@@ -4036,7 +4037,7 @@ img.BADGE {
 }
 .sd-bundle-product-badgeOptions1 {
     position: absolute;
-    top: 171px;
+    top: 172px;
     right: 36px;
 }
 .sd-bundle-product-badgeOptions1 h4 {
@@ -4054,3 +4055,58 @@ img.BADGE {
 .sd-bundle-designCustom{
     width: 50%;
 }
+p.sd-bundle-custom-item-heading-common.optionalBadge {
+    margin: 10px;
+}
+:where(.css-dev-only-do-not-override-d2lrxs).ant-switch.ant-switch-checked.switchOption {
+    background: #247a5b;
+}
+.sd-bundle-item-custom-radio-common span.Polaris-Icon, .sd-bundle-item-custom-radio-common input{
+    margin: 0;
+    padding: 0;
+}
+.sd-bundle-item-custom-radio-main .sd-bundle-item-custom-radio-common {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    border-right: 1px solid #d1d1d1;
+}
+.sd-bundle-item-custom-radio-main .sd-bundle-item-custom-radio-common.active {
+    background: #eeeeee;
+}
+.sd-bundle-item-custom-radio-main .sd-bundle-item-custom-radio-common:last-child {
+    border: none;
+}
+.sd-bundle-item-custom-radio-main {
+    display: flex;
+    align-items: center;
+    border: 1px solid #d1d1d1;
+    width: max-content;
+    border-radius: 10px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+.sd-bundle-product-badge2 {
+    position: relative;
+    top: -26px;
+    right: 12px;
+}
+.sd-bundle-product-badge2 h4 {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 100%;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 25px;
+    color: #fff;
+    text-align: center;
+}
+.extra-padding{
+    padding-top: 15px
+}
+/* .Polaris-RangeSlider-SingleThumb__Input {
+    --pc-single-thumb-progress-lower: rgb(0 0 0);
+} */

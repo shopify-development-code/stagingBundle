@@ -42,6 +42,7 @@ import { LockMajor } from "@shopify/polaris-icons";
 import CustomizationFBt from "./CustomizationFBTPreview";
 import Swal from "sweetalert2";
 import OrderOverview from "./OrderOverview";
+import OptionalBadges from "./optionalBadges";
 
 const CustomizationEditor = (props) => {
   const app = useAppBridge();
@@ -139,6 +140,24 @@ const CustomizationEditor = (props) => {
           },
         ]
       : []),
+    ...(props.bundleOption === "bundle"
+      ? [
+          {
+            id: "optional-Badge",
+            content: "Optional Badge",
+            panelID: "OptionalBadge",
+          },
+        ]
+      : []),
+    ...(props.bundleOption === "frequentlyBoughtTogether"
+      ? [
+          {
+            id: "optional-Badge",
+            content: "Optional Badge",
+            panelID: "OptionalBadge",
+          },
+        ]
+      : []),
   ];
 
   const handleSelectChange = (value) => {
@@ -157,24 +176,60 @@ const CustomizationEditor = (props) => {
   ];
 
   const handleCustomizeSave = async () => {
-    console.log("k,jf hedgfed ", props.bundleOption);
-
-    setSpinner(true);
-    const response = await postApi(
-      "/api/admin/updateCustomization",
-      props.data,
-      app
-    );
-    if (response.data.status == 200) {
-      setSpinner(false);
-      toastNotification("success", "Save Successfully", "bottom");
+    if (
+      props.bundleOption == "productMixMatch" &&
+      props.plansData.data.data.plan == "free"
+    ) {
+      Swal.fire({
+        title: 'Upgrade to "Basic" Plan',
+        text: "Do you want to continue",
+        icon: "info",
+        showCancelButton: true,
+        confirmButtonText: "Get Plan",
+        cancelButtonText: "Cancel",
+        confirmButtonColor: "#59da7c",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/plans");
+        }
+      });
+    } else if (
+      (props.bundleOption == "buyXgetY" &&
+        props.plansData.data.data.plan != "standard") ||
+      (props.bundleOption == "frequentlyBoughtTogether" &&
+        props.plansData.data.data.plan != "standard")
+    ) {
+      Swal.fire({
+        title: 'Upgrade to "Standard" Plan',
+        text: "Do you want to continue",
+        icon: "info",
+        showCancelButton: true,
+        confirmButtonText: "Get Plan",
+        cancelButtonText: "Cancel",
+        confirmButtonColor: "#59da7c",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/plans");
+        }
+      });
     } else {
-      setSpinner(false);
-      toastNotification(
-        "success",
-        "Something went wrong ! Please try again",
-        "bottom"
+      setSpinner(true);
+      const response = await postApi(
+        "/api/admin/updateCustomization",
+        props.data,
+        app
       );
+      if (response.data.status == 200) {
+        setSpinner(false);
+        toastNotification("success", "Save Successfully", "bottom");
+      } else {
+        setSpinner(false);
+        toastNotification(
+          "success",
+          "Something went wrong ! Please try again",
+          "bottom"
+        );
+      }
     }
   };
 
@@ -211,6 +266,7 @@ const CustomizationEditor = (props) => {
       bundleName == "collection" ||
       bundleName == "bundle" ||
       bundleName == "volume" ||
+      bundleName == "productMixMatch" ||
       bundleName == "buyXgetY"
         ? setCustomOption("Box")
         : "";
@@ -660,6 +716,13 @@ const CustomizationEditor = (props) => {
               <div className="sd-bundle-editSection-wrappper">
                 {customOption === "Design" ? (
                   <Design
+                    bundleOption={props.bundleOption}
+                    data={props.data}
+                    setData={props.setData}
+                    displayOption={displayOption}
+                  />
+                ) : customOption === "OptionalBadge" ? (
+                  <OptionalBadges
                     bundleOption={props.bundleOption}
                     data={props.data}
                     setData={props.setData}

@@ -73,6 +73,7 @@ const TotalSection = ({ bundleOption, displayOption, data, setData }) => {
                   bundleOption
                 )
               }
+              suffix={data[bundleOption]["totalSection"]["fontSize"]}
               value={data[bundleOption]["totalSection"]["fontSize"]}
               min={10}
               max={30}
@@ -123,6 +124,9 @@ const TotalSection = ({ bundleOption, displayOption, data, setData }) => {
                   setData,
                   bundleOption
                 )
+              }
+              suffix={
+                data[bundleOption]["totalSection"]["discountMessage"]["size"]
               }
               value={
                 data[bundleOption]["totalSection"]["discountMessage"]["size"]
@@ -203,6 +207,9 @@ const TotalSection = ({ bundleOption, displayOption, data, setData }) => {
                   bundleOption
                 )
               }
+              suffix={
+                data[bundleOption]["totalSection"]["originalPrice"]["fontSize"]
+              }
               value={
                 data[bundleOption]["totalSection"]["originalPrice"]["fontSize"]
               }
@@ -275,6 +282,7 @@ const TotalSection = ({ bundleOption, displayOption, data, setData }) => {
                 bundleOption
               )
             }
+            suffix={data[bundleOption]["totalSection"]["finalPrice"]["fontSize"]}
             value={data[bundleOption]["totalSection"]["finalPrice"]["fontSize"]}
             min={10}
             max={30}

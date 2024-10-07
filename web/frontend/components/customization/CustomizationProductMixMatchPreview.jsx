@@ -66,7 +66,6 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
                 textAlign: data.productMixMatch.orderOverview.alignment,
               }}
             >
-              {" "}
               You have selected 2 items
             </h5>
             <p
@@ -158,7 +157,7 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
                     data.productMixMatch.productDetails.quantities.size + "px",
                 }}
               >
-                1
+                2
               </span>
             </h6>
           </div>
@@ -400,6 +399,8 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
               color: data.productMixMatch.button.color,
               fontSize: data.productMixMatch.button.fontSize + "px",
               backgroundColor: data.productMixMatch.button.backgroundColor,
+              borderColor: data.productMixMatch.button.borderColor,
+              borderRadius: data.productMixMatch.button.borderRadius + "px"
             }}
           >
             Add to Cart

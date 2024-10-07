@@ -13,6 +13,9 @@ const BXGYBundlePreview = ({
 }) => {
   console.log("trest df wtedgf eydtyu", data);
   const { shop, timeZone, currencyCode } = useAPI();
+  const fontFamily = {
+    fontFamily: data.customization?.[0]?.buyXgetY?.box?.fontFamily,
+  };
   return (
     <div className="sd-bundle-bundleSection-common sd-bundle-productBundle-preview first-previewCard">
       <div className="sd-bundle-bundleSection-heading-common">Preview</div>
@@ -33,6 +36,7 @@ const BXGYBundlePreview = ({
           <div className="sd-bundle-text-detail">
             <h4
               style={{
+                ...fontFamily,
                 color: data.customization[0].buyXgetY.title.color,
                 fontSize: data.customization[0].buyXgetY.title.fontSize + "px",
                 fontWeight: data.customization[0].buyXgetY.title.titleBold,
@@ -43,6 +47,7 @@ const BXGYBundlePreview = ({
             </h4>
             <p
               style={{
+                ...fontFamily,
                 color: data.customization[0].buyXgetY.title.descriptionColor,
                 fontSize:
                   data.customization[0].buyXgetY.title.descriptionFontSize +
@@ -58,7 +63,14 @@ const BXGYBundlePreview = ({
 
           {data.bundleDetail.xproducts.map((item, index) => {
             return (
-              <div className="sd-bundle-product-detail">
+              <div
+                className="sd-bundle-product-detail"
+                style={{
+                  backgroundColor:
+                    data.customization[0].buyXgetY.productDetails
+                      .productDetailsBox.backgroundColor,
+                }}
+              >
                 <div className="sd-bundle-product-inner">
                   <div
                     className="sd-bundle-product-img"
@@ -84,6 +96,7 @@ const BXGYBundlePreview = ({
                   <div className="sd-bundle-product-name">
                     <h5
                       style={{
+                        ...fontFamily,
                         color:
                           data.customization[0].buyXgetY.productDetails.title
                             .color,
@@ -96,6 +109,7 @@ const BXGYBundlePreview = ({
                     </h5>
                     <h4
                       style={{
+                        ...fontFamily,
                         color:
                           data.customization[0].buyXgetY.productDetails.price
                             .color,
@@ -118,8 +132,12 @@ const BXGYBundlePreview = ({
                           (emptyItem, index) => {
                             return (
                               <select
-                                disabled
                                 style={{
+                                  ...fontFamily,
+                                  width:
+                                    data.customization[0].buyXgetY
+                                      .productDetails.variantSelector.width +
+                                    "px",
                                   backgroundColor:
                                     data.customization[0].buyXgetY
                                       .productDetails.variantSelector
@@ -130,7 +148,11 @@ const BXGYBundlePreview = ({
                                 }}
                               >
                                 {item.variants.map((vItem, i) => {
-                                  return <option key={i}>{vItem.title}</option>;
+                                  return (
+                                    <option style={{ ...fontFamily }} key={i}>
+                                      {vItem.title}
+                                    </option>
+                                  );
                                 })}
                               </select>
                             );
@@ -143,12 +165,14 @@ const BXGYBundlePreview = ({
                 <div className="sd-bundle-product-quantity">
                   <h6
                     style={{
+                      ...fontFamily,
                       color:
                         data.customization[0].buyXgetY.productDetails.quantities
                           .color,
                     }}
                   >
-                    Qty: <span>{item.minimumOrder}</span>
+                    Qty:{" "}
+                    <span style={{ ...fontFamily }}>{item.minimumOrder}</span>
                   </h6>
                 </div>
               </div>
@@ -165,14 +189,21 @@ const BXGYBundlePreview = ({
             >
               <path
                 d="M6.98047 17.3842V0.580255H10.3239V17.3842H6.98047ZM0.256392 10.6477V7.30433H17.0604V10.6477H0.256392Z"
-                fill="#5F5F5F"
+                fill={data.customization[0].buyXgetY.productDetails.plusColor}
               />
             </svg>
           </div>
 
           {data.bundleDetail.yproducts.map((item, index) => {
             return (
-              <div className="sd-bundle-product-detail">
+              <div
+                className="sd-bundle-product-detail"
+                style={{
+                  backgroundColor:
+                    data.customization[0].buyXgetY.productDetails
+                      .productDetailsBox.backgroundColor,
+                }}
+              >
                 {data.customization[0].buyXgetY.DiscountBadge.badgeType ==
                 "leftBanner" ? (
                   <div className="sd-bundle-product-badge left-badge ">
@@ -186,6 +217,7 @@ const BXGYBundlePreview = ({
                     ></div>
                     <h4
                       style={{
+                        ...fontFamily,
                         color:
                           data.customization[0].buyXgetY.DiscountBadge.color,
                         fontSize:
@@ -230,6 +262,7 @@ const BXGYBundlePreview = ({
                     </svg>
                     <h4
                       style={{
+                        ...fontFamily,
                         color:
                           data.customization[0].buyXgetY.DiscountBadge.color,
                         fontSize:
@@ -274,6 +307,7 @@ const BXGYBundlePreview = ({
                   <div className="sd-bundle-product-name">
                     <h5
                       style={{
+                        ...fontFamily,
                         color:
                           data.customization[0].buyXgetY.productDetails.title
                             .color,
@@ -286,6 +320,7 @@ const BXGYBundlePreview = ({
                     </h5>
                     <h4
                       style={{
+                        ...fontFamily,
                         color:
                           data.customization[0].buyXgetY.productDetails.price
                             .color,
@@ -307,8 +342,12 @@ const BXGYBundlePreview = ({
                           (emptyItem, index) => {
                             return (
                               <select
-                                disabled
                                 style={{
+                                  ...fontFamily,
+                                  width:
+                                    data.customization[0].buyXgetY
+                                      .productDetails.variantSelector.width +
+                                    "px",
                                   backgroundColor:
                                     data.customization[0].buyXgetY
                                       .productDetails.variantSelector
@@ -319,7 +358,11 @@ const BXGYBundlePreview = ({
                                 }}
                               >
                                 {item.variants.map((vItem, i) => {
-                                  return <option key={i}>{vItem.title}</option>;
+                                  return (
+                                    <option style={{ ...fontFamily }} key={i}>
+                                      {vItem.title}
+                                    </option>
+                                  );
                                 })}
                               </select>
                             );
@@ -332,12 +375,14 @@ const BXGYBundlePreview = ({
                 <div className="sd-bundle-product-quantity">
                   <h6
                     style={{
+                      ...fontFamily,
                       color:
                         data.customization[0].buyXgetY.productDetails.quantities
                           .color,
                     }}
                   >
-                    Qty: <span>{item.minimumOrder}</span>
+                    Qty:{" "}
+                    <span style={{ ...fontFamily }}>{item.minimumOrder}</span>
                   </h6>
                 </div>
               </div>
@@ -348,6 +393,7 @@ const BXGYBundlePreview = ({
             <div className="sd-total-desc">
               <h4
                 style={{
+                  ...fontFamily,
                   color: data.customization[0].buyXgetY.totalSection.color,
                   fontSize:
                     data.customization[0].buyXgetY.totalSection.fontSize + "px",
@@ -357,7 +403,10 @@ const BXGYBundlePreview = ({
               </h4>
               <p
                 style={{
-                  color: data.customization[0].buyXgetY.title.descriptionColor,
+                  ...fontFamily,
+                  color: data.customization[0].buyXgetY.totalSection.discountMessage.color,
+                  fontSize:
+                    data.customization[0].buyXgetY.totalSection.discountMessage.size + "px",
                 }}
               >
                 Discount will be applied at checkout
@@ -366,6 +415,7 @@ const BXGYBundlePreview = ({
             <div className="sd-total-amount">
               <h4
                 style={{
+                  ...fontFamily,
                   color:
                     data.customization[0].buyXgetY.totalSection.finalPrice
                       .color,
@@ -379,6 +429,7 @@ const BXGYBundlePreview = ({
               </h4>
               <h6
                 style={{
+                  ...fontFamily,
                   color:
                     data.customization[0].buyXgetY.totalSection.originalPrice
                       .color,
@@ -394,10 +445,14 @@ const BXGYBundlePreview = ({
           <div className="sd-bundle-addto-cart">
             <button
               style={{
+                ...fontFamily,
                 color: data.customization[0].buyXgetY.button.color,
                 fontSize: data.customization[0].buyXgetY.button.fontSize + "px",
                 backgroundColor:
                   data.customization[0].buyXgetY.button.backgroundColor,
+                borderRadius:
+                  data.customization[0].buyXgetY.button.borderRadius + "px",
+                borderColor: data.customization[0].buyXgetY.button.borderColor,
               }}
             >
               Add to Cart

@@ -8,6 +8,8 @@ import {
 } from "../helperFunctions";
 
 const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
+  console.log("dvf bdsgfjh0",bundleOption);
+  
   return (
     <div className="sd-bundle-boxCustom">
       <Grid>
@@ -48,25 +50,6 @@ const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
                 </p>
               </div>
             </div>
-
-            {/* <RangeSlider
-              label="Size"
-              onChange={(newvalue) =>
-                handleChangeValueCommon2(
-                  newvalue,
-                  "productDetails",
-                  "price",
-                  "fontSize",
-                  data,
-                  setData,
-                  bundleOption
-                )
-              }
-              value={data[bundleOption]["productDetails"]["price"]["fontSize"]}
-              min={10}
-              max={30}
-              output
-            /> */}
           </div>
         </Grid.Cell>
         {bundleOption != "volume" && (
@@ -94,30 +77,6 @@ const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
                   <p>{data[bundleOption]["productDetails"]["plusColor"]}</p>
                 </div>
               </div>
-              {/* <div className="sd-bundle-custom-item-inputSection">
-              <input
-                type="color"
-                value={
-                  data[bundleOption]["productDetails"]["plusBackgroundColor"]
-                }
-                onChange={(e) =>
-                  handleChangeCommon(
-                    e,
-                    "productDetails",
-                    "plusBackgroundColor",
-                    data,
-                    setData,
-                    bundleOption
-                  )
-                }
-              />
-              <div className="sd-bundle-custom-fieldColorCode-common">
-                <p>Background Color </p>
-                <p>
-                  {data[bundleOption]["productDetails"]["plusBackgroundColor"]}
-                </p>
-              </div>
-            </div> */}
             </div>
           </Grid.Cell>
         )}
@@ -191,7 +150,7 @@ const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
             </div>
 
             <RangeSlider
-              label="Size"
+              label="Font Size"
               onChange={(e) =>
                 handleChangeValueCommon2(
                   e,
@@ -203,9 +162,10 @@ const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
                   bundleOption
                 )
               }
+              suffix={data[bundleOption]["productDetails"]["title"]["fontSize"]}
               value={data[bundleOption]["productDetails"]["title"]["fontSize"]}
-              min={10}
-              max={30}
+              min={1}
+              max={25}
               output
             />
           </div>
@@ -239,7 +199,7 @@ const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
             </div>
 
             <RangeSlider
-              label="Size"
+              label="Font Size"
               onChange={(newvalue) =>
                 handleChangeValueCommon2(
                   newvalue,
@@ -251,9 +211,10 @@ const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
                   bundleOption
                 )
               }
+              suffix={data[bundleOption]["productDetails"]["price"]["fontSize"]}
               value={data[bundleOption]["productDetails"]["price"]["fontSize"]}
-              min={10}
-              max={30}
+              min={1}
+              max={25}
               output
             />
           </div>
@@ -304,11 +265,14 @@ const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
                   bundleOption
                 )
               }
+              suffix={
+                data[bundleOption]["productDetails"]["image"]["borderRadius"]
+              }
               value={
                 data[bundleOption]["productDetails"]["image"]["borderRadius"]
               }
-              min={10}
-              max={40}
+              min={1}
+              max={35}
               output
             />
           </div>
@@ -338,7 +302,7 @@ const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
                 />
 
                 <div className="sd-bundle-custom-fieldColorCode-common">
-                  <p>Text Color </p>
+                  <p>Text Color</p>
                   <p>
                     {" "}
                     {
@@ -349,66 +313,59 @@ const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
                   </p>
                 </div>
               </div>
-
-              <RangeSlider
-                label="Size"
-                onChange={(e) =>
-                  handleChangeValueCommon2(
-                    e,
-                    "productDetails",
-                    "quantities",
-                    "size",
-                    data,
-                    setData,
-                    bundleOption
-                  )
-                }
-                value={
-                  data[bundleOption]["productDetails"]["quantities"]["size"]
-                }
-                min={10}
-                max={30}
-                output
-              />
+              {bundleOption == "productMixMatch" || bundleOption == "frequentlyBoughtTogether" ? (
+                <RangeSlider
+                  label="Font Size"
+                  onChange={(e) =>
+                    handleChangeValueCommon2(
+                      e,
+                      "productDetails",
+                      "quantities",
+                      "size",
+                      data,
+                      setData,
+                      bundleOption
+                    )
+                  }
+                  suffix={
+                    data[bundleOption]["productDetails"]["quantities"]["size"]
+                  }
+                  value={
+                    data[bundleOption]["productDetails"]["quantities"]["size"]
+                  }
+                  min={1}
+                  max={16}
+                  output
+                />
+              ) : (
+                <RangeSlider
+                  label="Font Size"
+                  onChange={(e) =>
+                    handleChangeValueCommon2(
+                      e,
+                      "productDetails",
+                      "quantities",
+                      "size",
+                      data,
+                      setData,
+                      bundleOption
+                    )
+                  }
+                  suffix={
+                    data[bundleOption]["productDetails"]["quantities"]["size"]
+                  }
+                  value={
+                    data[bundleOption]["productDetails"]["quantities"]["size"]
+                  }
+                  min={1}
+                  max={25}
+                  output
+                />
+              )}
             </div>
           </Grid.Cell>
         )}
 
-        {/* 
-{ bundleOption == "volume" && <div className="sd-bundle-custom-item-common">
-    <p className="sd-bundle-custom-item-heading-common">Quantities Selector</p>
-    <div className="sd-bundle-custom-item-inputSection">
-<input type="color" value={data[bundleOption]["productDetails"]["quantitiesSelector"]["color"]} onChange={(e)=>handleChangeCommon2(e,"productDetails","quantitiesSelector","color",data,setData,bundleOption)}/>
-
-<div className="sd-bundle-custom-fieldColorCode-common">
-    <p>Text Color </p>
-<p> {data[bundleOption]["productDetails"]["quantitiesSelector"]["color"]} </p>
-
-</div>
-</div>
-
-
-<div className="sd-bundle-custom-item-inputSection">
-<input type="color" value={data[bundleOption]["productDetails"]["quantitiesSelector"]["backgroundColor"]}  onChange={(e)=>handleChangeCommon2(e,"productDetails","quantitiesSelector","backgroundColor",data,setData,bundleOption)}/>
-<div className="sd-bundle-custom-fieldColorCode-common">
-    <p>Background Color </p>
-<p> {data[bundleOption]["productDetails"]["quantitiesSelector"]["backgroundColor"]} </p>
-
-</div>
-</div>
-
-
-<div className="sd-bundle-custom-item-inputSection">
-<input type="color" value={data[bundleOption]["productDetails"]["quantitiesSelector"]["plusMinusColor"]}  onChange={(e)=>handleChangeCommon2(e,"productDetails","quantitiesSelector","plusMinusColor",data,setData,bundleOption)}/>
-<div className="sd-bundle-custom-fieldColorCode-common">
-    <p>PlusMinus Color </p>
-<p> {data[bundleOption]["productDetails"]["quantitiesSelector"]["plusMinusColor"]} </p>
-
-</div>
-</div>
-
-</div> } */}
-       
         <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
           <div className="sd-bundle-custom-item-common">
             <p className="sd-bundle-custom-item-heading-common">
@@ -491,6 +448,9 @@ const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
                   bundleOption
                 )
               }
+              suffix={
+                data[bundleOption]["productDetails"]["variantSelector"]["width"]
+              }
               value={
                 data[bundleOption]["productDetails"]["variantSelector"]["width"]
               }
@@ -498,42 +458,6 @@ const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
               max={200}
               output
             />
-            {/* <RangeSlider
-              label="Height"
-              onChange={(e) =>
-                handleChangeValueCommon2(
-                  e,
-                  "productDetails",
-                  "variantSelector",
-                  "height",
-                  data,
-                  setData,
-                  bundleOption
-                )
-              }
-              value={data[bundleOption]["productDetails"]["variantSelector"]["height"]}
-              min={10}
-              max={30}
-              output
-            />
-            <RangeSlider
-              label="Arrow Icon"
-              onChange={(e) =>
-                handleChangeValueCommon2(
-                  e,
-                  "productDetails",
-                  "variantSelector",
-                  "arrowIcon",
-                  data,
-                  setData,
-                  bundleOption
-                )
-              }
-              value={data[bundleOption]["productDetails"]["variantSelector"]["arrowIcon"]}
-              min={10}
-              max={30}
-              output
-            /> */}
           </div>
         </Grid.Cell>
       </Grid>

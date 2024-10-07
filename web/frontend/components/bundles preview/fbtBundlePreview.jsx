@@ -5,13 +5,14 @@ import Title from "antd/es/typography/Title";
 import { Fragment, useEffect, useState } from "react";
 import { showAmountWithCurrency } from "../showCurrencyFormat";
 import EmptyPreview from "../commonSections/emptyPreview";
+import { useAPI } from "../shop";
 
 const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
   let [allProducts, setAllProducts] = useState([]);
   let [mrpForAllProductsType, setMrpForAllProductsType] = useState(0);
   let [finalPriceForAllProductsType, setFinalPriceForAllProductsType] =
     useState(0);
-
+  const { shop, timeZone, currencyCode } = useAPI();
   let dummyPricesForAllProductsType = [500, 100, 100, 100];
   let designOption = customizeData.design;
 
@@ -25,6 +26,9 @@ const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
       calculateFinalPriceForAllProductsType(mrp);
     }
   }, [data]);
+  const fontFamily = {
+    fontFamily: data.customization[0].frequentlyBoughtTogether.box.fontFamily,
+  };
 
   const calculateMrpForAllProductsType = () => {
     let sum = 0;
@@ -76,15 +80,105 @@ const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
           </div>
           {allProducts.length > 0 &&
           data.bundleDetail.discountedProductType == "specific_product" ? (
-            <div className="sd-bundle-main-column">
-              <div className="sd-bundle-text-detail">
-                <h4>{data?.title}</h4>
-                <p>{data?.description}</p>
+            <div
+              className="sd-bundle-main-column"
+              style={{
+                backgroundColor:
+                  data.customization[0].frequentlyBoughtTogether.box
+                    .backgroundColor,
+                borderColor:
+                  data.customization[0].frequentlyBoughtTogether.box
+                    .borderColor,
+                borderRadius:
+                  data.customization[0].frequentlyBoughtTogether.box
+                    .borderRadius + "px",
+              }}
+            >
+              {(data.bundleDetail.discountType === "percent" ||
+                data.bundleDetail.discountType === "fixed") &&
+                data.customization[0].frequentlyBoughtTogether.optionalBadge
+                  .enable && (
+                  <div
+                    className="sd-badges-part"
+                    style={{
+                      backgroundColor:
+                        data.customization[0].frequentlyBoughtTogether
+                          .optionalBadge.background,
+                    }}
+                  >
+                    <span
+                      style={{
+                        ...fontFamily,
+                        color:
+                          data.customization[0].frequentlyBoughtTogether
+                            .optionalBadge.color,
+                        fontSize: `${data.customization[0].frequentlyBoughtTogether.optionalBadge.color.fontSize}px`,
+                      }}
+                    >
+                      {data.bundleDetail.discountType === "free"
+                        ? "Free"
+                        : data.bundleDetail.discountType === "fixed"
+                          ? currencyCode.replace(/{{.*?}}/g, "") +
+                            data.bundleDetail.discountValue +
+                            " off"
+                          : data.bundleDetail.discountType === "percent"
+                            ? data.bundleDetail.discountValue + "% off"
+                            : null}
+                    </span>
+                  </div>
+                )}
+
+              <div className={`sd-bundle-text-detail ${data.customization[0].frequentlyBoughtTogether.optionalBadge.enable == true ? 'extra-padding' : ''}`}>
+                <h4
+                  style={{
+                    ...fontFamily,
+                    color:
+                      data.customization[0].frequentlyBoughtTogether.title
+                        .color,
+                    fontSize:
+                      data.customization[0].frequentlyBoughtTogether.title
+                        .fontSize + "px",
+                    textAlign:
+                      data.customization[0].frequentlyBoughtTogether.title
+                        .alignment,
+                    fontWeight:
+                      data.customization[0].frequentlyBoughtTogether.title
+                        .titleBold,
+                  }}
+                >
+                  {data?.title}
+                </h4>
+                <p
+                  style={{
+                    ...fontFamily,
+                    color:
+                      data.customization[0].frequentlyBoughtTogether.title
+                        .descriptionColor,
+                    fontSize:
+                      data.customization[0].frequentlyBoughtTogether.title
+                        .descriptionFontSize + "px",
+                    fontWeight:
+                      data.customization[0].frequentlyBoughtTogether.title
+                        .descriptionBold,
+                    textAlign:
+                      data.customization[0].frequentlyBoughtTogether.title
+                        .alignment,
+                  }}
+                >
+                  {data?.description}
+                </p>
               </div>
 
               {allProducts.map((item, index) => (
                 <Fragment key={index}>
-                  <div className="sd-bundle-product-detail">
+                  <div
+                    className="sd-bundle-product-detail"
+                    style={{
+                      backgroundColor:
+                        data.customization[0].frequentlyBoughtTogether
+                          .productDetails.productDetailsBox.backgroundColor,
+                    }}
+                  >
                     <div className="sd-bundle-product-inner">
                       <div className="checkbox-wrapper-18">
                         <div className="round">
@@ -92,7 +186,17 @@ const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
                           <label for="checkbox-18"></label>
                         </div>
                       </div>
-                      <div className="sd-bundle-product-img">
+                      <div
+                        className="sd-bundle-product-img"
+                        style={{
+                          borderColor:
+                            data.customization[0].frequentlyBoughtTogether
+                              .productDetails.image.borderColor,
+                          borderRadius:
+                            data.customization[0].frequentlyBoughtTogether
+                              .productDetails.image.borderRadius + "px",
+                        }}
+                      >
                         <img
                           src={
                             item?.images?.length > 0
@@ -104,22 +208,78 @@ const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
                         />
                       </div>
                       <div className="sd-bundle-product-name">
-                        <h5>{item.title}</h5>
-                        <h4>
+                        <h5
+                          style={{
+                            ...fontFamily,
+                            color:
+                              data.customization[0].frequentlyBoughtTogether
+                                .productDetails.title.color,
+                            fontSize:
+                              data.customization[0].frequentlyBoughtTogether
+                                .productDetails.title.fontSize + "px",
+                          }}
+                        >
+                          {item.title}
+                        </h5>
+                        <h4
+                          style={{
+                            ...fontFamily,
+                            color:
+                              data.customization[0].frequentlyBoughtTogether
+                                .productDetails.price.color,
+                            fontSize:
+                              data.customization[0].frequentlyBoughtTogether
+                                .productDetails.price.fontSize + "px",
+                          }}
+                        >
                           {showAmountWithCurrency(
                             item.variants[0]?.price,
                             currency
                           )}
                         </h4>
-                        <select disabled>
-                          <option>Medium</option>
-                          <option>Small</option>
+                        <select
+                          style={{
+                            ...fontFamily,
+                            backgroundColor:
+                              data.customization[0].frequentlyBoughtTogether
+                                .productDetails.variantSelector.backgroundColor,
+                            color:
+                              data.customization[0].frequentlyBoughtTogether
+                                .productDetails.variantSelector.color,
+                            width:
+                              data.customization[0].frequentlyBoughtTogether
+                                .productDetails.variantSelector.width + "px",
+                          }}
+                          disabled
+                        >
+                          <option style={{ ...fontFamily }}>Medium</option>
+                          <option style={{ ...fontFamily }}>Small</option>
                         </select>
                       </div>
                     </div>
                     <div className="sd-bundle-product-quantity">
-                      <h6>
-                        Qty: <span>1</span>
+                      <h6
+                        style={{
+                          ...fontFamily,
+                          color:
+                            data.customization[0].frequentlyBoughtTogether
+                              .productDetails.quantities.color,
+                          fontSize:
+                            data.customization[0].frequentlyBoughtTogether
+                              .productDetails.quantities.size + "px",
+                        }}
+                      >
+                        Qty:{" "}
+                        <span
+                          style={{
+                            ...fontFamily,
+                            fontSize:
+                              data.customization[0].frequentlyBoughtTogether
+                                .productDetails.quantities.size + "px",
+                          }}
+                        >
+                          1
+                        </span>
                       </h6>
                     </div>
                   </div>
@@ -134,7 +294,10 @@ const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
                       >
                         <path
                           d="M6.98047 17.3842V0.580255H10.3239V17.3842H6.98047ZM0.256392 10.6477V7.30433H17.0604V10.6477H0.256392Z"
-                          fill="#5F5F5F"
+                          fill={
+                            data.customization[0].frequentlyBoughtTogether
+                              .productDetails.plusColor
+                          }
                         />
                       </svg>
                     </div>
@@ -146,14 +309,62 @@ const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
 
               <div className="sd-product-bundle-total">
                 <div className="sd-total-desc">
-                  <h4>Total</h4>
-                  <p>Discount will be applied at checkout</p>
+                  <h4
+                    style={{
+                      ...fontFamily,
+                      color:
+                        data.customization[0].frequentlyBoughtTogether
+                          .totalSection.color,
+                      fontSize:
+                        data.customization[0].frequentlyBoughtTogether
+                          .totalSection.fontSize + "px",
+                    }}
+                  >
+                    Total
+                  </h4>
+                  <p
+                    style={{
+                      ...fontFamily,
+                      color:
+                        data.customization[0].frequentlyBoughtTogether
+                          .totalSection.discountMessage.color,
+                      fontSize:
+                        data.customization[0].frequentlyBoughtTogether
+                          .totalSection.discountMessage.size + "px",
+                    }}
+                  >
+                    Discount will be applied at checkout
+                  </p>
                 </div>
                 <div className="sd-total-amount">
-                  <h4>{showAmountWithCurrency(endPrice, currency)} </h4>
+                  <h4
+                    style={{
+                      ...fontFamily,
+                      color:
+                        data.customization[0].frequentlyBoughtTogether
+                          .totalSection.finalPrice.color,
+                      fontSize:
+                        data.customization[0].frequentlyBoughtTogether
+                          .totalSection.finalPrice.fontSize + "px",
+                    }}
+                  >
+                    {showAmountWithCurrency(endPrice, currency)}{" "}
+                  </h4>
                   {(data.bundleDetail.discountType == "percent" ||
                     data.bundleDetail.discountType == "fixed") && (
-                    <h6>{showAmountWithCurrency(mrp, currency)}</h6>
+                    <h6
+                      style={{
+                        ...fontFamily,
+                        color:
+                          data.customization[0].frequentlyBoughtTogether
+                            .totalSection.originalPrice.color,
+                        fontSize:
+                          data.customization[0].frequentlyBoughtTogether
+                            .totalSection.originalPrice.fontSize + "px",
+                      }}
+                    >
+                      {showAmountWithCurrency(mrp, currency)}
+                    </h6>
                   )}
                 </div>
               </div>
@@ -163,7 +374,10 @@ const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
                     <ShoppingCartOutlined />
                   </div>
 
-                  <div className="sd-bundle-freeShipping-text">
+                  <div
+                    className="sd-bundle-freeShipping-text"
+                    style={{ ...fontFamily }}
+                  >
                     Get Free Shipping
                   </div>
                 </div>
@@ -171,21 +385,131 @@ const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
                 " "
               )}
               <div className="sd-bundle-addto-cart">
-                <button>Add to Cart</button>
+                <button
+                  style={{
+                    ...fontFamily,
+                    color:
+                      data.customization[0].frequentlyBoughtTogether.button
+                        .color,
+                    fontSize:
+                      data.customization[0].frequentlyBoughtTogether.button
+                        .fontSize + "px",
+                    backgroundColor:
+                      data.customization[0].frequentlyBoughtTogether.button
+                        .backgroundColor,
+                    borderColor:
+                      data.customization[0].frequentlyBoughtTogether.button
+                        .borderColor,
+                    borderRadius:
+                      data.customization[0].frequentlyBoughtTogether.button
+                        .borderRadius + "px",
+                  }}
+                >
+                  Add to Cart
+                </button>
               </div>
             </div>
           ) : allProducts.length == 0 &&
             data.bundleDetail.discountedProductType == "specific_product" ? (
             <EmptyPreview type={""} />
           ) : (
-            <div className="sd-bundle-main-column">
-              <div className="sd-bundle-text-detail">
-                <h4>{data?.title}</h4>
-                <p>{data?.description}</p>
+            <div
+              className="sd-bundle-main-column"
+              style={{
+                backgroundColor:
+                  data.customization[0].frequentlyBoughtTogether.box
+                    .backgroundColor,
+                borderColor:
+                  data.customization[0].frequentlyBoughtTogether.box
+                    .borderColor,
+                borderRadius:
+                  data.customization[0].frequentlyBoughtTogether.box
+                    .borderRadius + "px",
+              }}
+            >
+              {(data.bundleDetail.discountType === "percent" ||
+                data.bundleDetail.discountType === "fixed") &&
+                data.customization[0].frequentlyBoughtTogether.optionalBadge
+                  .enable && (
+                  <div
+                    className="sd-badges-part"
+                    style={{
+                      backgroundColor:
+                        data.customization[0].frequentlyBoughtTogether
+                          .optionalBadge.background,
+                    }}
+                  >
+                    <span
+                      style={{
+                        ...fontFamily,
+                        color:
+                          data.customization[0].frequentlyBoughtTogether
+                            .optionalBadge.color,
+                        fontSize: `${data.customization[0].frequentlyBoughtTogether.optionalBadge.color.fontSize}px`,
+                      }}
+                    >
+                      {data.bundleDetail.discountType === "free"
+                        ? "Free"
+                        : data.bundleDetail.discountType === "fixed"
+                          ? currencyCode.replace(/{{.*?}}/g, "") +
+                            data.bundleDetail.discountValue +
+                            " off"
+                          : data.bundleDetail.discountType === "percent"
+                            ? data.bundleDetail.discountValue + "% off"
+                            : null}
+                    </span>
+                  </div>
+                )}
+              <div className={`sd-bundle-text-detail ${data.customization[0].frequentlyBoughtTogether.optionalBadge.enable == true ? 'extra-padding' : ''}`}>
+                <h4
+                  style={{
+                    ...fontFamily,
+                    color:
+                      data.customization[0].frequentlyBoughtTogether.title
+                        .color,
+                    fontSize:
+                      data.customization[0].frequentlyBoughtTogether.title
+                        .fontSize + "px",
+                    textAlign:
+                      data.customization[0].frequentlyBoughtTogether.title
+                        .alignment,
+                    fontWeight:
+                      data.customization[0].frequentlyBoughtTogether.title
+                        .titleBold,
+                  }}
+                >
+                  {data?.title}
+                </h4>
+                <p
+                  style={{
+                    ...fontFamily,
+                    color:
+                      data.customization[0].frequentlyBoughtTogether.title
+                        .descriptionColor,
+                    fontSize:
+                      data.customization[0].frequentlyBoughtTogether.title
+                        .descriptionFontSize + "px",
+                    fontWeight:
+                      data.customization[0].frequentlyBoughtTogether.title
+                        .descriptionBold,
+                    textAlign:
+                      data.customization[0].frequentlyBoughtTogether.title
+                        .alignment,
+                  }}
+                >
+                  {data?.description}
+                </p>
               </div>
               {dummyPricesForAllProductsType.map((element, index) => (
                 <Fragment key={index}>
-                  <div className="sd-bundle-product-detail">
+                  <div
+                    className="sd-bundle-product-detail"
+                    style={{
+                      backgroundColor:
+                        data.customization[0].frequentlyBoughtTogether
+                          .productDetails.productDetailsBox.backgroundColor,
+                    }}
+                  >
                     <div className="sd-bundle-product-inner">
                       <div className="checkbox-wrapper-18">
                         <div className="round">
@@ -193,30 +517,94 @@ const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
                           <label for="checkbox-18"></label>
                         </div>
                       </div>
-                      <div className="sd-bundle-product-img">
+                      <div
+                        className="sd-bundle-product-img"
+                        style={{
+                          borderColor:
+                            data.customization[0].frequentlyBoughtTogether
+                              .productDetails.image.borderColor,
+                          borderRadius:
+                            data.customization[0].frequentlyBoughtTogether
+                              .productDetails.image.borderRadius + "px",
+                        }}
+                      >
                         <img src={pic} width="80" height="80" />
                       </div>
                       <div className="sd-bundle-product-name">
-                        <h5>
+                        <h5
+                          style={{
+                            ...fontFamily,
+                            color:
+                              data.customization[0].frequentlyBoughtTogether
+                                .productDetails.title.color,
+                            fontSize:
+                              data.customization[0].frequentlyBoughtTogether
+                                .productDetails.title.fontSize + "px",
+                          }}
+                        >
                           {index == 0
                             ? "Main Product"
                             : `Offered Product ${index}`}
                         </h5>
-                        <h4>
+                        <h4
+                          style={{
+                            ...fontFamily,
+                            color:
+                              data.customization[0].frequentlyBoughtTogether
+                                .productDetails.price.color,
+                            fontSize:
+                              data.customization[0].frequentlyBoughtTogether
+                                .productDetails.price.fontSize + "px",
+                          }}
+                        >
                           {showAmountWithCurrency(
                             dummyPricesForAllProductsType[index],
                             currency
                           )}
                         </h4>
-                        <select disabled>
-                          <option>Medium</option>
-                          <option>Small</option>
+                        <select
+                          style={{
+                            ...fontFamily,
+                            backgroundColor:
+                              data.customization[0].frequentlyBoughtTogether
+                                .productDetails.variantSelector.backgroundColor,
+                            color:
+                              data.customization[0].frequentlyBoughtTogether
+                                .productDetails.variantSelector.color,
+                            width:
+                              data.customization[0].frequentlyBoughtTogether
+                                .productDetails.variantSelector.width + "px",
+                          }}
+                          disabled
+                        >
+                          <option style={{ ...fontFamily }}>Medium</option>
+                          <option style={{ ...fontFamily }}>Small</option>
                         </select>
                       </div>
                     </div>
                     <div className="sd-bundle-product-quantity">
-                      <h6>
-                        Qty: <span>1</span>
+                      <h6
+                        style={{
+                          ...fontFamily,
+                          color:
+                            data.customization[0].frequentlyBoughtTogether
+                              .productDetails.quantities.color,
+                          fontSize:
+                            data.customization[0].frequentlyBoughtTogether
+                              .productDetails.quantities.size + "px",
+                        }}
+                      >
+                        Qty:{" "}
+                        <span
+                          style={{
+                            ...fontFamily,
+                            fontSize:
+                              data.customization[0].frequentlyBoughtTogether
+                                .productDetails.quantities.size + "px",
+                          }}
+                        >
+                          1
+                        </span>
                       </h6>
                     </div>
                   </div>
@@ -231,7 +619,10 @@ const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
                       >
                         <path
                           d="M6.98047 17.3842V0.580255H10.3239V17.3842H6.98047ZM0.256392 10.6477V7.30433H17.0604V10.6477H0.256392Z"
-                          fill="#5F5F5F"
+                          fill={
+                            data.customization[0].frequentlyBoughtTogether
+                              .productDetails.plusColor
+                          }
                         />
                       </svg>
                     </div>
@@ -243,11 +634,46 @@ const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
 
               <div className="sd-product-bundle-total">
                 <div className="sd-total-desc">
-                  <h4>Total</h4>
-                  <p>Discount will be applied at checkout</p>
+                  <h4
+                    style={{
+                      ...fontFamily,
+                      color:
+                        data.customization[0].frequentlyBoughtTogether
+                          .totalSection.color,
+                      fontSize:
+                        data.customization[0].frequentlyBoughtTogether
+                          .totalSection.fontSize + "px",
+                    }}
+                  >
+                    {" "}
+                    Total
+                  </h4>
+                  <p
+                    style={{
+                      ...fontFamily,
+                      color:
+                        data.customization[0].frequentlyBoughtTogether
+                          .totalSection.discountMessage.color,
+                      fontSize:
+                        data.customization[0].frequentlyBoughtTogether
+                          .totalSection.discountMessage.size + "px",
+                    }}
+                  >
+                    Discount will be applied at checkout
+                  </p>
                 </div>
                 <div className="sd-total-amount">
-                  <h4>
+                  <h4
+                    style={{
+                      ...fontFamily,
+                      color:
+                        data.customization[0].frequentlyBoughtTogether
+                          .totalSection.finalPrice.color,
+                      fontSize:
+                        data.customization[0].frequentlyBoughtTogether
+                          .totalSection.finalPrice.fontSize + "px",
+                    }}
+                  >
                     {" "}
                     {showAmountWithCurrency(
                       finalPriceForAllProductsType,
@@ -256,7 +682,17 @@ const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
                   </h4>
                   {(data.bundleDetail.discountType == "percent" ||
                     data.bundleDetail.discountType == "fixed") && (
-                    <h6>
+                    <h6
+                      style={{
+                        ...fontFamily,
+                        color:
+                          data.customization[0].frequentlyBoughtTogether
+                            .totalSection.originalPrice.color,
+                        fontSize:
+                          data.customization[0].frequentlyBoughtTogether
+                            .totalSection.originalPrice.fontSize + "px",
+                      }}
+                    >
                       {showAmountWithCurrency(mrpForAllProductsType, currency)}
                     </h6>
                   )}
@@ -268,7 +704,10 @@ const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
                     <ShoppingCartOutlined />
                   </div>
 
-                  <div className="sd-bundle-freeShipping-text">
+                  <div
+                    className="sd-bundle-freeShipping-text"
+                    style={{ ...fontFamily }}
+                  >
                     Get Free Shipping
                   </div>
                 </div>
@@ -276,7 +715,28 @@ const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
                 " "
               )}
               <div className="sd-bundle-addto-cart">
-                <button>Add to Cart</button>
+                <button
+                  style={{
+                    ...fontFamily,
+                    color:
+                      data.customization[0].frequentlyBoughtTogether.button
+                        .color,
+                    fontSize:
+                      data.customization[0].frequentlyBoughtTogether.button
+                        .fontSize + "px",
+                    backgroundColor:
+                      data.customization[0].frequentlyBoughtTogether.button
+                        .backgroundColor,
+                    borderColor:
+                      data.customization[0].frequentlyBoughtTogether.button
+                        .borderColor,
+                    borderRadius:
+                      data.customization[0].frequentlyBoughtTogether.button
+                        .borderRadius + "px",
+                  }}
+                >
+                  Add to Cart
+                </button>
               </div>
             </div>
           )}
@@ -288,16 +748,108 @@ const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
           </div>
           {allProducts.length > 0 &&
           data.bundleDetail.discountedProductType == "specific_product" ? (
-            <div className="sd-bundle-main-column">
-              <div className="sd-bundle-text-detail">
-                <h4>{data?.title}</h4>
-                <p>{data?.description}</p>
+            <div
+              className="sd-bundle-main-column"
+              style={{
+                backgroundColor:
+                  data.customization[0].frequentlyBoughtTogether.box
+                    .backgroundColor,
+                borderColor:
+                  data.customization[0].frequentlyBoughtTogether.box
+                    .borderColor,
+                borderRadius:
+                  data.customization[0].frequentlyBoughtTogether.box
+                    .borderRadius + "px",
+              }}
+            >
+              {(data.bundleDetail.discountType === "percent" ||
+                data.bundleDetail.discountType === "fixed") &&
+                data.customization[0].frequentlyBoughtTogether.optionalBadge
+                  .enable && (
+                  <div
+                    className="sd-badges-part"
+                    style={{
+                      backgroundColor:
+                        data.customization[0].frequentlyBoughtTogether
+                          .optionalBadge.background,
+                    }}
+                  >
+                    <span
+                      style={{
+                        ...fontFamily,
+                        color:
+                          data.customization[0].frequentlyBoughtTogether
+                            .optionalBadge.color,
+                        fontSize: `${data.customization[0].frequentlyBoughtTogether.optionalBadge.color.fontSize}px`,
+                      }}
+                    >
+                      {data.bundleDetail.discountType === "free"
+                        ? "Free"
+                        : data.bundleDetail.discountType === "fixed"
+                          ? currencyCode.replace(/{{.*?}}/g, "") +
+                            data.bundleDetail.discountValue +
+                            " off"
+                          : data.bundleDetail.discountType === "percent"
+                            ? data.bundleDetail.discountValue + "% off"
+                            : null}
+                    </span>
+                  </div>
+                )}
+              <div className={`sd-bundle-text-detail ${data.customization[0].frequentlyBoughtTogether.optionalBadge.enable == true ? 'extra-padding' : ''}`}>
+                <h4
+                  style={{
+                    ...fontFamily,
+                    color:
+                      data.customization[0].frequentlyBoughtTogether.title
+                        .color,
+                    fontSize:
+                      data.customization[0].frequentlyBoughtTogether.title
+                        .fontSize + "px",
+                    textAlign:
+                      data.customization[0].frequentlyBoughtTogether.title
+                        .alignment,
+                    fontWeight:
+                      data.customization[0].frequentlyBoughtTogether.title
+                        .titleBold,
+                  }}
+                >
+                  {data?.title}
+                </h4>
+                <p
+                  style={{
+                    ...fontFamily,
+                    color:
+                      data.customization[0].frequentlyBoughtTogether.title
+                        .descriptionColor,
+                    fontSize:
+                      data.customization[0].frequentlyBoughtTogether.title
+                        .descriptionFontSize + "px",
+                    fontWeight:
+                      data.customization[0].frequentlyBoughtTogether.title
+                        .descriptionBold,
+                    textAlign:
+                      data.customization[0].frequentlyBoughtTogether.title
+                        .alignment,
+                  }}
+                >
+                  {data?.description}
+                </p>
                 <div className="sd-show-selected-product-item">
                   {allProducts?.length > 0 &&
                     allProducts?.map((item, index) => {
                       return (
                         <Fragment key={index}>
-                          <div className="sd-selected-product-itemImg">
+                          <div
+                            className="sd-selected-product-itemImg"
+                            style={{
+                              borderColor:
+                                data.customization[0].frequentlyBoughtTogether
+                                  .productDetails.image.borderColor,
+                              borderRadius:
+                                data.customization[0].frequentlyBoughtTogether
+                                  .productDetails.image.borderRadius + "px",
+                            }}
+                          >
                             <img
                               src={
                                 item?.images[0]?.originalSrc
@@ -318,7 +870,11 @@ const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
                               >
                                 <path
                                   d="M6.98047 17.3842V0.580255H10.3239V17.3842H6.98047ZM0.256392 10.6477V7.30433H17.0604V10.6477H0.256392Z"
-                                  fill="#5F5F5F"
+                                  fill={
+                                    data.customization[0]
+                                      .frequentlyBoughtTogether.productDetails
+                                      .plusColor
+                                  }
                                 />
                               </svg>
                             </div>
@@ -331,7 +887,14 @@ const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
 
               {allProducts.map((item, index) => (
                 <Fragment key={index}>
-                  <div className="sd-bundle-product-detail">
+                  <div
+                    className="sd-bundle-product-detail"
+                    style={{
+                      backgroundColor:
+                        data.customization[0].frequentlyBoughtTogether
+                          .productDetails.productDetailsBox.backgroundColor,
+                    }}
+                  >
                     <div className="sd-bundle-product-inner">
                       <div className="checkbox-wrapper-18">
                         <div className="round">
@@ -340,22 +903,78 @@ const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
                         </div>
                       </div>
                       <div className="sd-bundle-product-name">
-                        <h5>{item.title}</h5>
-                        <h4>
+                        <h5
+                          style={{
+                            ...fontFamily,
+                            color:
+                              data.customization[0].frequentlyBoughtTogether
+                                .productDetails.title.color,
+                            fontSize:
+                              data.customization[0].frequentlyBoughtTogether
+                                .productDetails.title.fontSize + "px",
+                          }}
+                        >
+                          {item.title}
+                        </h5>
+                        <h4
+                          style={{
+                            ...fontFamily,
+                            color:
+                              data.customization[0].frequentlyBoughtTogether
+                                .productDetails.price.color,
+                            fontSize:
+                              data.customization[0].frequentlyBoughtTogether
+                                .productDetails.price.fontSize + "px",
+                          }}
+                        >
                           {showAmountWithCurrency(
                             item.variants[0]?.price,
                             currency
                           )}
                         </h4>
-                        <select disabled>
-                          <option>Medium</option>
-                          <option>Small</option>
+                        <select
+                          style={{
+                            ...fontFamily,
+                            backgroundColor:
+                              data.customization[0].frequentlyBoughtTogether
+                                .productDetails.variantSelector.backgroundColor,
+                            color:
+                              data.customization[0].frequentlyBoughtTogether
+                                .productDetails.variantSelector.color,
+                            width:
+                              data.customization[0].frequentlyBoughtTogether
+                                .productDetails.variantSelector.width + "px",
+                          }}
+                          disabled
+                        >
+                          <option style={{ ...fontFamily }}>Medium</option>
+                          <option style={{ ...fontFamily }}>Small</option>
                         </select>
                       </div>
                     </div>
                     <div className="sd-bundle-product-quantity">
-                      <h6>
-                        Qty: <span>1</span>
+                      <h6
+                        style={{
+                          ...fontFamily,
+                          color:
+                            data.customization[0].frequentlyBoughtTogether
+                              .productDetails.quantities.color,
+                          fontSize:
+                            data.customization[0].frequentlyBoughtTogether
+                              .productDetails.quantities.size + "px",
+                        }}
+                      >
+                        Qty:{" "}
+                        <span
+                          style={{
+                            ...fontFamily,
+                            fontSize:
+                              data.customization[0].frequentlyBoughtTogether
+                                .productDetails.quantities.size + "px",
+                          }}
+                        >
+                          1
+                        </span>
                       </h6>
                     </div>
                   </div>
@@ -370,7 +989,10 @@ const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
                       >
                         <path
                           d="M6.98047 17.3842V0.580255H10.3239V17.3842H6.98047ZM0.256392 10.6477V7.30433H17.0604V10.6477H0.256392Z"
-                          fill="#5F5F5F"
+                          fill={
+                            data.customization[0].frequentlyBoughtTogether
+                              .productDetails.plusColor
+                          }
                         />
                       </svg>
                     </div>
@@ -382,14 +1004,62 @@ const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
 
               <div className="sd-product-bundle-total">
                 <div className="sd-total-desc">
-                  <h4>Total</h4>
-                  <p>Discount will be applied at checkout</p>
+                  <h4
+                    style={{
+                      ...fontFamily,
+                      color:
+                        data.customization[0].frequentlyBoughtTogether
+                          .totalSection.color,
+                      fontSize:
+                        data.customization[0].frequentlyBoughtTogether
+                          .totalSection.fontSize + "px",
+                    }}
+                  >
+                    Total
+                  </h4>
+                  <p
+                    style={{
+                      ...fontFamily,
+                      color:
+                        data.customization[0].frequentlyBoughtTogether
+                          .totalSection.discountMessage.color,
+                      fontSize:
+                        data.customization[0].frequentlyBoughtTogether
+                          .totalSection.discountMessage.size + "px",
+                    }}
+                  >
+                    Discount will be applied at checkout
+                  </p>
                 </div>
                 <div className="sd-total-amount">
-                  <h4>{showAmountWithCurrency(endPrice, currency)} </h4>
+                  <h4
+                    style={{
+                      ...fontFamily,
+                      color:
+                        data.customization[0].frequentlyBoughtTogether
+                          .totalSection.finalPrice.color,
+                      fontSize:
+                        data.customization[0].frequentlyBoughtTogether
+                          .totalSection.finalPrice.fontSize + "px",
+                    }}
+                  >
+                    {showAmountWithCurrency(endPrice, currency)}{" "}
+                  </h4>
                   {(data.bundleDetail.discountType == "percent" ||
                     data.bundleDetail.discountType == "fixed") && (
-                    <h6>{showAmountWithCurrency(mrp, currency)}</h6>
+                    <h6
+                      style={{
+                        ...fontFamily,
+                        color:
+                          data.customization[0].frequentlyBoughtTogether
+                            .totalSection.originalPrice.color,
+                        fontSize:
+                          data.customization[0].frequentlyBoughtTogether
+                            .totalSection.originalPrice.fontSize + "px",
+                      }}
+                    >
+                      {showAmountWithCurrency(mrp, currency)}
+                    </h6>
                   )}
                 </div>
               </div>
@@ -399,7 +1069,10 @@ const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
                     <ShoppingCartOutlined />
                   </div>
 
-                  <div className="sd-bundle-freeShipping-text">
+                  <div
+                    className="sd-bundle-freeShipping-text"
+                    style={{ ...fontFamily }}
+                  >
                     Get Free Shipping
                   </div>
                 </div>
@@ -407,26 +1080,140 @@ const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
                 " "
               )}
               <div className="sd-bundle-addto-cart">
-                <button>Add to Cart</button>
+                <button
+                  style={{
+                    ...fontFamily,
+                    color:
+                      data.customization[0].frequentlyBoughtTogether.button
+                        .color,
+                    fontSize:
+                      data.customization[0].frequentlyBoughtTogether.button
+                        .fontSize + "px",
+                    backgroundColor:
+                      data.customization[0].frequentlyBoughtTogether.button
+                        .backgroundColor,
+                    borderColor:
+                      data.customization[0].frequentlyBoughtTogether.button
+                        .borderColor,
+                    borderRadius:
+                      data.customization[0].frequentlyBoughtTogether.button
+                        .borderRadius + "px",
+                  }}
+                >
+                  Add to Cart
+                </button>
               </div>
             </div>
           ) : allProducts.length == 0 &&
             data.bundleDetail.discountedProductType == "specific_product" ? (
             <EmptyPreview type={""} />
           ) : (
-            <div className="sd-bundle-main-column">
-              <div className="sd-bundle-text-detail">
-                <h4>{data?.title}</h4>
-                <p>{data?.description}</p>
+            <div
+              className="sd-bundle-main-column"
+              style={{
+                backgroundColor:
+                  data.customization[0].frequentlyBoughtTogether.box
+                    .backgroundColor,
+                borderColor:
+                  data.customization[0].frequentlyBoughtTogether.box
+                    .borderColor,
+                borderRadius:
+                  data.customization[0].frequentlyBoughtTogether.box
+                    .borderRadius + "px",
+              }}
+            >
+              {(data.bundleDetail.discountType === "percent" ||
+                data.bundleDetail.discountType === "fixed") &&
+                data.customization[0].frequentlyBoughtTogether.optionalBadge
+                  .enable && (
+                  <div
+                    className="sd-badges-part"
+                    style={{
+                      backgroundColor:
+                        data.customization[0].frequentlyBoughtTogether
+                          .optionalBadge.background,
+                    }}
+                  >
+                    <span
+                      style={{
+                        ...fontFamily,
+                        color:
+                          data.customization[0].frequentlyBoughtTogether
+                            .optionalBadge.color,
+                        fontSize: `${data.customization[0].frequentlyBoughtTogether.optionalBadge.color.fontSize}px`,
+                      }}
+                    >
+                      {data.bundleDetail.discountType === "free"
+                        ? "Free"
+                        : data.bundleDetail.discountType === "fixed"
+                          ? currencyCode.replace(/{{.*?}}/g, "") +
+                            data.bundleDetail.discountValue +
+                            " off"
+                          : data.bundleDetail.discountType === "percent"
+                            ? data.bundleDetail.discountValue + "% off"
+                            : null}
+                    </span>
+                  </div>
+                )}
+              <div className={`sd-bundle-text-detail ${data.customization[0].frequentlyBoughtTogether.optionalBadge.enable == true ? 'extra-padding' : ''}`}>
+                <h4
+                  style={{
+                    ...fontFamily,
+                    color:
+                      data.customization[0].frequentlyBoughtTogether.title
+                        .color,
+                    fontSize:
+                      data.customization[0].frequentlyBoughtTogether.title
+                        .fontSize + "px",
+                    textAlign:
+                      data.customization[0].frequentlyBoughtTogether.title
+                        .alignment,
+                    fontWeight:
+                      data.customization[0].frequentlyBoughtTogether.title
+                        .titleBold,
+                  }}
+                >
+                  {data?.title}
+                </h4>
+                <p
+                  style={{
+                    ...fontFamily,
+                    color:
+                      data.customization[0].frequentlyBoughtTogether.title
+                        .descriptionColor,
+                    fontSize:
+                      data.customization[0].frequentlyBoughtTogether.title
+                        .descriptionFontSize + "px",
+                    fontWeight:
+                      data.customization[0].frequentlyBoughtTogether.title
+                        .descriptionBold,
+                    textAlign:
+                      data.customization[0].frequentlyBoughtTogether.title
+                        .alignment,
+                  }}
+                >
+                  {data?.description}
+                </p>
                 <div className="sd-show-selected-product-item">
                   {dummyPricesForAllProductsType?.length > 0 &&
                     dummyPricesForAllProductsType?.map((item, index) => {
                       return (
                         <Fragment key={index}>
-                          <div className="sd-selected-product-itemImg">
-                            <img src={pic} width="80" height="80" />
+                          <div
+                            className="sd-selected-product-itemImg"
+                            style={{
+                              borderColor:
+                                data.customization[0].frequentlyBoughtTogether
+                                  .productDetails.image.borderColor,
+                              borderRadius:
+                                data.customization[0].frequentlyBoughtTogether
+                                  .productDetails.image.borderRadius + "px",
+                            }}
+                          >
+                            <img src={pic} width={80} height={80}/>
                           </div>
-                          {index !== dummyPricesForAllProductsType?.length - 1 && (
+                          {index !==
+                            dummyPricesForAllProductsType?.length - 1 && (
                             <div className="plus-selectedIcon">
                               <svg
                                 width="18"
@@ -437,7 +1224,11 @@ const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
                               >
                                 <path
                                   d="M6.98047 17.3842V0.580255H10.3239V17.3842H6.98047ZM0.256392 10.6477V7.30433H17.0604V10.6477H0.256392Z"
-                                  fill="#5F5F5F"
+                                  fill={
+                                    data.customization[0]
+                                      .frequentlyBoughtTogether.productDetails
+                                      .plusColor
+                                  }
                                 />
                               </svg>
                             </div>
@@ -450,7 +1241,14 @@ const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
 
               {dummyPricesForAllProductsType.map((item, index) => (
                 <Fragment key={index}>
-                  <div className="sd-bundle-product-detail">
+                  <div
+                    className="sd-bundle-product-detail"
+                    style={{
+                      backgroundColor:
+                        data.customization[0].frequentlyBoughtTogether
+                          .productDetails.productDetailsBox.backgroundColor,
+                    }}
+                  >
                     <div className="sd-bundle-product-inner">
                       <div className="checkbox-wrapper-18">
                         <div className="round">
@@ -459,26 +1257,80 @@ const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
                         </div>
                       </div>
                       <div className="sd-bundle-product-name">
-                        <h5>
+                        <h5
+                          style={{
+                            ...fontFamily,
+                            color:
+                              data.customization[0].frequentlyBoughtTogether
+                                .productDetails.title.color,
+                            fontSize:
+                              data.customization[0].frequentlyBoughtTogether
+                                .productDetails.title.fontSize + "px",
+                          }}
+                        >
                           {index == 0
                             ? "Main Product"
                             : `Offered Product ${index}`}
                         </h5>
-                        <h4>
+                        <h4
+                          style={{
+                            ...fontFamily,
+                            color:
+                              data.customization[0].frequentlyBoughtTogether
+                                .productDetails.price.color,
+                            fontSize:
+                              data.customization[0].frequentlyBoughtTogether
+                                .productDetails.price.fontSize + "px",
+                          }}
+                        >
                           {showAmountWithCurrency(
                             dummyPricesForAllProductsType[index],
                             currency
                           )}
                         </h4>
-                        <select disabled>
-                          <option>Medium</option>
-                          <option>Small</option>
+                        <select
+                          style={{
+                            ...fontFamily,
+                            backgroundColor:
+                              data.customization[0].frequentlyBoughtTogether
+                                .productDetails.variantSelector.backgroundColor,
+                            color:
+                              data.customization[0].frequentlyBoughtTogether
+                                .productDetails.variantSelector.color,
+                            width:
+                              data.customization[0].frequentlyBoughtTogether
+                                .productDetails.variantSelector.width + "px",
+                          }}
+                          disabled
+                        >
+                          <option style={{ ...fontFamily }}>Medium</option>
+                          <option style={{ ...fontFamily }}>Small</option>
                         </select>
                       </div>
                     </div>
                     <div className="sd-bundle-product-quantity">
-                      <h6>
-                        Qty: <span>1</span>
+                      <h6
+                        style={{
+                          ...fontFamily,
+                          color:
+                            data.customization[0].frequentlyBoughtTogether
+                              .productDetails.quantities.color,
+                          fontSize:
+                            data.customization[0].frequentlyBoughtTogether
+                              .productDetails.quantities.size + "px",
+                        }}
+                      >
+                        Qty:{" "}
+                        <span
+                          style={{
+                            ...fontFamily,
+                            fontSize:
+                              data.customization[0].frequentlyBoughtTogether
+                                .productDetails.quantities.size + "px",
+                          }}
+                        >
+                          1
+                        </span>
                       </h6>
                     </div>
                   </div>
@@ -493,7 +1345,10 @@ const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
                       >
                         <path
                           d="M6.98047 17.3842V0.580255H10.3239V17.3842H6.98047ZM0.256392 10.6477V7.30433H17.0604V10.6477H0.256392Z"
-                          fill="#5F5F5F"
+                          fill={
+                            data.customization[0].frequentlyBoughtTogether
+                              .productDetails.plusColor
+                          }
                         />
                       </svg>
                     </div>
@@ -505,11 +1360,45 @@ const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
 
               <div className="sd-product-bundle-total">
                 <div className="sd-total-desc">
-                  <h4>Total</h4>
-                  <p>Discount will be applied at checkout</p>
+                  <h4
+                    style={{
+                      ...fontFamily,
+                      color:
+                        data.customization[0].frequentlyBoughtTogether
+                          .totalSection.color,
+                      fontSize:
+                        data.customization[0].frequentlyBoughtTogether
+                          .totalSection.fontSize + "px",
+                    }}
+                  >
+                    Total
+                  </h4>
+                  <p
+                    style={{
+                      ...fontFamily,
+                      color:
+                        data.customization[0].frequentlyBoughtTogether
+                          .totalSection.discountMessage.color,
+                      fontSize:
+                        data.customization[0].frequentlyBoughtTogether
+                          .totalSection.discountMessage.size + "px",
+                    }}
+                  >
+                    Discount will be applied at checkout
+                  </p>
                 </div>
                 <div className="sd-total-amount">
-                  <h4>
+                  <h4
+                    style={{
+                      ...fontFamily,
+                      color:
+                        data.customization[0].frequentlyBoughtTogether
+                          .totalSection.finalPrice.color,
+                      fontSize:
+                        data.customization[0].frequentlyBoughtTogether
+                          .totalSection.finalPrice.fontSize + "px",
+                    }}
+                  >
                     {" "}
                     {showAmountWithCurrency(
                       finalPriceForAllProductsType,
@@ -518,7 +1407,17 @@ const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
                   </h4>
                   {(data.bundleDetail.discountType == "percent" ||
                     data.bundleDetail.discountType == "fixed") && (
-                    <h6>
+                    <h6
+                      style={{
+                        ...fontFamily,
+                        color:
+                          data.customization[0].frequentlyBoughtTogether
+                            .totalSection.originalPrice.color,
+                        fontSize:
+                          data.customization[0].frequentlyBoughtTogether
+                            .totalSection.originalPrice.fontSize + "px",
+                      }}
+                    >
                       {showAmountWithCurrency(mrpForAllProductsType, currency)}
                     </h6>
                   )}
@@ -530,7 +1429,10 @@ const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
                     <ShoppingCartOutlined />
                   </div>
 
-                  <div className="sd-bundle-freeShipping-text">
+                  <div
+                    className="sd-bundle-freeShipping-text"
+                    style={{ ...fontFamily }}
+                  >
                     Get Free Shipping
                   </div>
                 </div>
@@ -538,7 +1440,28 @@ const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
                 " "
               )}
               <div className="sd-bundle-addto-cart">
-                <button>Add to Cart</button>
+                <button
+                  style={{
+                    ...fontFamily,
+                    color:
+                      data.customization[0].frequentlyBoughtTogether.button
+                        .color,
+                    fontSize:
+                      data.customization[0].frequentlyBoughtTogether.button
+                        .fontSize + "px",
+                    backgroundColor:
+                      data.customization[0].frequentlyBoughtTogether.button
+                        .backgroundColor,
+                    borderColor:
+                      data.customization[0].frequentlyBoughtTogether.button
+                        .borderColor,
+                    borderRadius:
+                      data.customization[0].frequentlyBoughtTogether.button
+                        .borderRadius + "px",
+                  }}
+                >
+                  Add to Cart
+                </button>
               </div>
             </div>
           )}

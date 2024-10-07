@@ -1,22 +1,10 @@
 import EmptyPreview from "../commonSections/emptyPreview";
 import React, { useEffect, useState } from "react";
-// import { Icon } from "@shopify/polaris";
-// import {ShipmentMajor,ChevronLeftMinor,ChevronRightMinor } from "@shopify/polaris-icons";
-import {
-  PlusOutlined,
-  ShoppingCartOutlined,
-  DoubleLeftOutlined,
-  DoubleRightOutlined,
-} from "@ant-design/icons";
-import { Button, Modal, Image } from "antd";
+import { ShoppingCartOutlined } from "@ant-design/icons";
+import { Button } from "antd";
 import pic from "../../assets/image2.png";
-import { Swiper, SwiperSlide } from "swiper/react";
-// import Swiper from 'swiper';
-import { Navigation } from "swiper/modules";
-// import Swiper and modules styles
 import "swiper/css";
 import "swiper/css/navigation";
-import { Thumbnail } from "@shopify/polaris";
 import { showAmountWithCurrency } from "../showCurrencyFormat";
 
 const ProductBundlePreview = ({
@@ -38,7 +26,9 @@ const ProductBundlePreview = ({
   const [selectedItemIndex, setSelectedItemIndex] = useState("");
   const [seeMoreIndex, setSeeMoreIndex] = useState(0);
   const [Move, setMove] = useState("");
-
+  const fontFamily = {
+    fontFamily: data.customization[0].bundle.box.fontFamily,
+  };
   const handlePopUp = (item, index) => {
     setPopUp(true);
     setPopUpItem({ ...item });
@@ -95,10 +85,36 @@ const ProductBundlePreview = ({
             borderColor: data.customization[0].bundle.box.borderColor,
             borderRadius: data.customization[0].bundle.box.borderRadius + "px",
           }}
-        >
-          <div className="sd-bundle-text-detail">
+        >{(data.bundleDetail.discountType == "percent" ||data.bundleDetail.discountType == "fixed")&&
+          (data.customization[0].bundle.optionalBadge.enable == true) && (
+            <div
+              className="sd-badges-part"
+              style={{
+                backgroundColor:
+                  data.customization[0].bundle.optionalBadge.background,
+              }}
+            >
+              <span
+                style={{
+                  ...fontFamily,
+                  color: data.customization[0].bundle.optionalBadge.color,
+                  fontSize:
+                    data.customization[0].bundle.optionalBadge.fontSize + "px",
+                }}
+              >
+                {data.bundleDetail.discountType === "percent"
+                  ? `${data.bundleDetail.discountValue}% off`
+                  : data.bundleDetail.discountType === "fixed"
+                    ? `${showAmountWithCurrency(data.bundleDetail.discountValue, currency)} off`
+                    : null}
+              </span>
+            </div>
+          )
+        }
+          <div className={`sd-bundle-text-detail ${data.customization[0].bundle.optionalBadge.enable == true ? 'extra-padding' : ''}`}>
             <h4
               style={{
+                ...fontFamily,
                 color: data.customization[0].bundle.title.color,
                 fontSize: data.customization[0].bundle.title.fontSize + "px",
                 textAlign: data.customization[0].bundle.title.alignment,
@@ -109,6 +125,7 @@ const ProductBundlePreview = ({
             </h4>
             <p
               style={{
+                ...fontFamily,
                 color: data.customization[0].bundle.title.descriptionColor,
                 fontSize:
                   data.customization[0].bundle.title.descriptionFontSize + "px",
@@ -122,7 +139,15 @@ const ProductBundlePreview = ({
           {data.bundleDetail.products.map((item, mainindex) => {
             return (
               <>
-                <div key={mainindex} className="sd-bundle-product-detail">
+                <div
+                  key={mainindex}
+                  className="sd-bundle-product-detail"
+                  style={{
+                    backgroundColor:
+                      data.customization[0].bundle.productDetails
+                        .productDetailsBox.backgroundColor,
+                  }}
+                >
                   <div className="sd-bundle-product-inner">
                     <div
                       className="sd-bundle-product-img"
@@ -148,6 +173,7 @@ const ProductBundlePreview = ({
                     <div className="sd-bundle-product-name">
                       <h5
                         style={{
+                          ...fontFamily,
                           color:
                             data.customization[0].bundle.productDetails.title
                               .color,
@@ -160,6 +186,7 @@ const ProductBundlePreview = ({
                       </h5>
                       <h4
                         style={{
+                          ...fontFamily,
                           color:
                             data.customization[0].bundle.productDetails.price
                               .color,
@@ -188,6 +215,7 @@ const ProductBundlePreview = ({
                                   <>
                                     <select
                                       style={{
+                                        ...fontFamily,
                                         backgroundColor:
                                           data.customization[0].bundle
                                             .productDetails.variantSelector
@@ -196,12 +224,19 @@ const ProductBundlePreview = ({
                                           data.customization[0].bundle
                                             .productDetails.variantSelector
                                             .color,
+                                        width:
+                                          data.customization[0].bundle
+                                            .productDetails.variantSelector
+                                            .width + "px",
                                       }}
                                       onChange={(e, main) =>
                                         handleVariantChoice(e, mainindex, index)
                                       }
                                     >
-                                      <option value={item.variants[0].price}>
+                                      <option
+                                        style={{ ...fontFamily }}
+                                        value={item.variants[0].price}
+                                      >
                                         {" "}
                                         Select Variant{" "}
                                       </option>
@@ -209,6 +244,7 @@ const ProductBundlePreview = ({
                                       {item?.variants.map((sub, ind) => {
                                         return (
                                           <option
+                                            style={{ ...fontFamily }}
                                             value={sub.price}
                                             data-varindex="3"
                                           >
@@ -247,12 +283,26 @@ const ProductBundlePreview = ({
                   <div className="sd-bundle-product-quantity">
                     <h6
                       style={{
+                        ...fontFamily,
                         color:
                           data.customization[0].bundle.productDetails.quantities
                             .color,
+                        fontSize:
+                          data.customization[0].bundle.productDetails.quantities
+                            .size + "px",
                       }}
                     >
-                      Qty: <span>{item.minimumOrder}</span>
+                      Qty:{" "}
+                      <span
+                        style={{
+                          ...fontFamily,
+                          fontSize:
+                            data.customization[0].bundle.productDetails
+                              .quantities.size + "px",
+                        }}
+                      >
+                        {item.minimumOrder}
+                      </span>
                     </h6>
                   </div>
                 </div>
@@ -284,6 +334,7 @@ const ProductBundlePreview = ({
             <div className="sd-total-desc">
               <h4
                 style={{
+                  ...fontFamily,
                   color: data.customization[0].bundle.totalSection.color,
                   fontSize:
                     data.customization[0].bundle.totalSection.fontSize + "px",
@@ -293,7 +344,13 @@ const ProductBundlePreview = ({
               </h4>
               <p
                 style={{
-                  color: data.customization[0].bundle.title.descriptionColor,
+                  ...fontFamily,
+                  color:
+                    data.customization[0].bundle.totalSection.discountMessage
+                      .color,
+                  fontSize:
+                    data.customization[0].bundle.totalSection.discountMessage
+                      .size + "px",
                 }}
               >
                 Discount will be applied at checkout
@@ -303,6 +360,7 @@ const ProductBundlePreview = ({
             <div className="sd-total-amount">
               <h4
                 style={{
+                  ...fontFamily,
                   color:
                     data.customization[0].bundle.totalSection.finalPrice.color,
                   fontSize:
@@ -316,6 +374,7 @@ const ProductBundlePreview = ({
                 data.bundleDetail.discountType != "noDiscount" && (
                   <h6
                     style={{
+                      ...fontFamily,
                       color:
                         data.customization[0].bundle.totalSection.originalPrice
                           .color,
@@ -335,7 +394,10 @@ const ProductBundlePreview = ({
                 <ShoppingCartOutlined />
               </div>
 
-              <div className="sd-bundle-freeShipping-text">
+              <div
+                className="sd-bundle-freeShipping-text"
+                style={{ ...fontFamily }}
+              >
                 Get Free Shipping
               </div>
             </div>
@@ -343,13 +405,21 @@ const ProductBundlePreview = ({
             " "
           )}
           <div className="sd-bundle-addto-cart">
-            <button style={{
-                    color: data.customization[0].bundle.button.color,
-                    fontSize:
-                      data.customization[0].bundle.button.fontSize + "px",
-                    backgroundColor:
-                      data.customization[0].bundle.button.backgroundColor,
-                  }}> {data.customization[0].bundle.button.text_others}</button>
+            <button
+              style={{
+                ...fontFamily,
+                color: data.customization[0].bundle.button.color,
+                fontSize: data.customization[0].bundle.button.fontSize + "px",
+                backgroundColor:
+                  data.customization[0].bundle.button.backgroundColor,
+                borderColor: data.customization[0].bundle.button.borderColor,
+                borderRadius:
+                  data.customization[0].bundle.button.borderRadius + "px",
+              }}
+            >
+              {" "}
+              {data.customization[0].bundle.button.text_others}
+            </button>
           </div>
         </div>
       ) : (

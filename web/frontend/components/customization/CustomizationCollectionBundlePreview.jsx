@@ -185,6 +185,8 @@ const CustomizationCollectionBundlePreview = ({ data }) => {
               backgroundColor: data["collection"]["button"]["backgroundColor"],
               color: data["collection"]["button"]["color"],
               fontSize: data["collection"]["button"]["fontSize"] + "px",
+              borderColor: data["collection"]["button"]["borderColor"],
+              borderRadius: data["collection"]["button"]["borderRadius"]+ "px"
             }}
           >
             {data["collection"]["button"]["text_others"]}

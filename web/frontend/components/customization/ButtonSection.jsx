@@ -15,6 +15,8 @@ const ButtonSection = ({ bundleOption, data, setData }) => {
     });
   };
 
+  console.log("jfkeje kekekrke", data[bundleOption]["button"]["borderColor"]);
+
   const handleText = (newvalue) => {
     setData({
       ...data,
@@ -28,6 +30,50 @@ const ButtonSection = ({ bundleOption, data, setData }) => {
   return (
     <div className="sd-bundle-buttonCustom">
       <Grid>
+        <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
+          <div className="sd-bundle-custom-item-common">
+            <p className="sd-bundle-custom-item-heading-common">Border</p>
+            <div className="sd-bundle-custom-item-inputSection">
+              <input
+                type="color"
+                value={data[bundleOption]["button"]["borderColor"]}
+                onChange={(e) =>
+                  handleChangeCommon(
+                    e,
+                    "button",
+                    "borderColor",
+                    data,
+                    setData,
+                    bundleOption
+                  )
+                }
+              />
+              <div className="sd-bundle-custom-fieldColorCode-common">
+                <p>Border Color </p>
+                <p>{data[bundleOption]["button"]["borderColor"]}</p>
+              </div>
+            </div>
+            <RangeSlider
+              output
+              label="Border Radius"
+              min={1}
+              max={30}
+              suffix={data[bundleOption]["button"]["borderRadius"]}
+              value={data[bundleOption]["button"]["borderRadius"]}
+              onChange={(newvalue) =>
+                handleChangeValueCommon(
+                  newvalue,
+                  "button",
+                  "borderRadius",
+                  data,
+                  setData,
+                  bundleOption
+                )
+              }
+            />
+          </div>
+        </Grid.Cell>
+
         <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
           <div className="sd-bundle-custom-item-common">
             <p className="sd-bundle-custom-item-heading-common">Background</p>
@@ -77,28 +123,8 @@ const ButtonSection = ({ bundleOption, data, setData }) => {
               </div>
             </div>
 
-            {/* <TextField
-          type="number"
-          label="Size"
-          // placeholder="set minimum order  for item"
-          onChange={(e) =>
-            handleChangeValueCommon(
-              e,
-              "button",
-              "fontSize",
-              data,
-              setData,
-              bundleOption
-            )
-          }
-          value={data[bundleOption]["button"]["fontSize"]}
-          autoComplete="off"
-          min={10}
-          max={30}
-        /> */}
-
             <RangeSlider
-              label="Size"
+              label="Font Size"
               onChange={(e) =>
                 handleChangeValueCommon(
                   e,
@@ -109,50 +135,15 @@ const ButtonSection = ({ bundleOption, data, setData }) => {
                   bundleOption
                 )
               }
+              suffix={data[bundleOption]["button"]["fontSize"]}
               value={data[bundleOption]["button"]["fontSize"]}
               min={10}
               max={30}
               output
             />
-
-            {/* <TextField
-           
-            label="text"
-            // placeholder="set minimum order  for item"
-            onChange={handleText}
-            value={data[bundleOption]["button"]["text_others"]}
-            autoComplete="off"
-        
-          />
-
-<TextField
-           
-            label="text(for 'No Discount' option)"
-            // placeholder="set minimum order  for item"
-            onChange={handleNoDiscountText}
-            value={data[bundleOption]["button"]["text_noDiscount"]}
-            autoComplete="off"
-            
-          /> */}
           </div>
         </Grid.Cell>
       </Grid>
-
-      {/* functionality: Adjust position of Add to cart button (TOP OR BOTTOM) */}
-      {/* {bundleOption != "collection" &&
-<div className="sd-bundle-custom-item-common">
-<p className="sd-bundle-custom-item-heading-common">Position</p>
-<div className="sd-bundle-item-custom-radio-common">
-    <input  id="top"   type="radio" name="position"  value="top" checked={data[bundleOption]["button"]["position"]=="top"} onChange={(e)=>handleChangeCommon(e,"button","position",data,setData,bundleOption)}/>
-<label htmlFor="top" >top</label>
-</div>
-<div className="sd-bundle-item-custom-radio-common">
-    <input  id="bottom"   type="radio" name="position"  value="bottom" checked={data[bundleOption]["button"]["position"]=="bottom"} onChange={(e)=>handleChangeCommon(e,"button","position",data,setData,bundleOption)}/>
-<label htmlFor="bottom" >bottom</label>
-</div>
-
-
-</div> } */}
     </div>
   );
 };

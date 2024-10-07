@@ -54,36 +54,6 @@ const CollectionDetails = ({ data, setData, bundleOption, displayOption }) => {
         <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
           <div className="sd-bundle-custom-item-common">
             <p className="sd-bundle-custom-item-heading-common">Plus</p>
-            {/* <div className="sd-bundle-custom-item-inputSection">
-          <input
-            type="color"
-            value={
-              data[bundleOption]["collectionDetails"]["plus"]["backgroundColor"]
-            }
-            onChange={(e) =>
-              handleChangeCommon2(
-                e,
-                "collectionDetails",
-                "plus",
-                "backgroundColor",
-                data,
-                setData,
-                bundleOption
-              )
-            }
-          />
-          <div className="sd-bundle-custom-fieldColorCode-common">
-            <p>Background Color </p>
-            <p>
-              {" "}
-              {
-                data[bundleOption]["collectionDetails"]["plus"][
-                  "backgroundColor"
-                ]
-              }{" "}
-            </p>
-          </div>
-        </div> */}
 
             <div className="sd-bundle-custom-item-inputSection">
               <input
@@ -145,7 +115,7 @@ const CollectionDetails = ({ data, setData, bundleOption, displayOption }) => {
               </div>
             </div>
             <RangeSlider
-              label="Size"
+              label="Font Size"
               onChange={(e) =>
                 handleChangeValueCommon2(
                   e,
@@ -157,11 +127,14 @@ const CollectionDetails = ({ data, setData, bundleOption, displayOption }) => {
                   bundleOption
                 )
               }
+              suffix={
+                data[bundleOption]["collectionDetails"]["title"]["fontSize"]
+              }
               value={
                 data[bundleOption]["collectionDetails"]["title"]["fontSize"]
               }
-              min={10}
-              max={30}
+              min={1}
+              max={25}
               output
             />
           </div>
@@ -203,7 +176,7 @@ const CollectionDetails = ({ data, setData, bundleOption, displayOption }) => {
             </div>
 
             <RangeSlider
-              label="Size"
+              label="Font Size"
               onChange={(e) =>
                 handleChangeValueCommon2(
                   e,
@@ -215,13 +188,18 @@ const CollectionDetails = ({ data, setData, bundleOption, displayOption }) => {
                   bundleOption
                 )
               }
+              suffix={
+                data[bundleOption]["collectionDetails"]["description"][
+                  "fontSize"
+                ]
+              }
               value={
                 data[bundleOption]["collectionDetails"]["description"][
                   "fontSize"
                 ]
               }
-              min={10}
-              max={30}
+              min={1}
+              max={25}
               output
             />
           </div>
@@ -268,16 +246,18 @@ const CollectionDetails = ({ data, setData, bundleOption, displayOption }) => {
                   bundleOption
                 )
               }
+              suffix={
+                data[bundleOption]["collectionDetails"]["imageBorderRadius"]
+              }
               value={
                 data[bundleOption]["collectionDetails"]["imageBorderRadius"]
               }
-              min={10}
-              max={40}
+              min={1}
+              max={35}
               output
             />
           </div>
         </Grid.Cell>
-        
       </Grid>
     </div>
   );

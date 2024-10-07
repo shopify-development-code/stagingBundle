@@ -89,6 +89,7 @@ const Options = ({ bundleOption, data, setData, displayOption }) => {
                   bundleOption
                 )
               }
+              suffix ={data[bundleOption]["options"]["fontSize"]}
               value={data[bundleOption]["options"]["fontSize"]}
               min={10}
               max={30}
@@ -211,6 +212,9 @@ const Options = ({ bundleOption, data, setData, displayOption }) => {
                     bundleOption
                   )
                 }
+                suffix={
+                  data[bundleOption]["options"]["saveDiscount"]["borderRadius"]
+                }
                 value={
                   data[bundleOption]["options"]["saveDiscount"]["borderRadius"]
                 }
@@ -247,6 +251,7 @@ const Options = ({ bundleOption, data, setData, displayOption }) => {
                   bundleOption
                 )
               }
+              suffix={data[bundleOption]["options"]["saveDiscount"]["fontSize"]}
               value={data[bundleOption]["options"]["saveDiscount"]["fontSize"]}
               min={10}
               max={16}

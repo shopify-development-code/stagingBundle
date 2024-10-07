@@ -367,6 +367,8 @@ const CustomizationBuyXgetY = ({ data }) => {
               color: data.buyXgetY.button.color,
               fontSize: data.buyXgetY.button.fontSize + "px",
               backgroundColor: data.buyXgetY.button.backgroundColor,
+              borderRadius: data.buyXgetY.button.borderRadius + "px",
+              borderColor: data.buyXgetY.button.borderColor,
             }}
           >
             Add to Cart

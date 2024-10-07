@@ -31,7 +31,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
   };
 
   const textStyle = {
-    fontFamily:  `${data.volume.box.fontFamily}`
+    fontFamily: `${data.volume.box.fontFamily}`,
   };
 
   useEffect(() => {
@@ -79,23 +79,6 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
               data.volume.productDetails.productDetailsBox.backgroundColor,
           }}
         >
-          {/* {data.volume.options.DiscountBadge.badgeType == "leftBanner" && 
-            <div className="sd-bundle-product-badge left-badge ">
-              <div
-                className="open-badge"
-                style={{
-                  background: data.buyXgetY.DiscountBadge.backgroundColor,
-                }}
-              ></div>
-              <h4
-                style={{
-                  color: data.buyXgetY.DiscountBadge.color,
-                  fontSize: data.buyXgetY.DiscountBadge.fontSize + "px",
-                }}
-              >
-                50% Off
-              </h4>
-            </div>} */}
           {data.volume.options.DiscountBadge.badgeType == "rightBanner" && (
             <div className="sd-bundle-product-badgeOptions ">
               <svg
@@ -319,8 +302,8 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
                         data.volume.productDetails.variantSelector.width + "px",
                     }}
                   >
-                    <option style={{...textStyle,}}>Medium</option>
-                    <option style={{...textStyle,}}>Small</option>
+                    <option style={{ ...textStyle }}>Medium</option>
+                    <option style={{ ...textStyle }}>Small</option>
                   </select>
                 </div>
               </div>
@@ -401,6 +384,9 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
               color: data["volume"]["button"]["color"],
               fontSize: data["volume"]["button"]["fontSize"] + "px",
               backgroundColor: data["volume"]["button"]["backgroundColor"],
+              borderColor: data.volume.button.borderColor,
+              borderRadius:
+                data.volume.button.borderRadius + "px",
             }}
           >
             {data["volume"]["button"]["text_others"] + " "}

@@ -65,16 +65,29 @@ export const handleChangeCommon = (
   key2,
   data,
   setData,
-  bundleOption
+  bundleOption,
+  type
 ) => {
+  console.log("datatatatatatata",e,bundleOption,type);
+  
   // setData({...data,[key1]:{...(data[key1]),[key2]:e.target.value}})
-  setData({
-    ...data,
-    [bundleOption]: {
-      ...data[bundleOption],
-      [key1]: { ...data[bundleOption][key1], [key2]: e.target.value },
-    },
-  });
+  if (type != "alignment") {
+    setData({
+      ...data,
+      [bundleOption]: {
+        ...data[bundleOption],
+        [key1]: { ...data[bundleOption][key1], [key2]: e.target.value },
+      },
+    });
+  } else {
+    setData({
+      ...data,
+      [bundleOption]: {
+        ...data[bundleOption],
+        [key1]: { ...data[bundleOption][key1], [key2]: e },
+      },
+    });
+  }
 };
 
 export const handleChangeValueCommon = (

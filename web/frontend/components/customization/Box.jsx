@@ -50,6 +50,7 @@ const Box = (props) => {
     }
   };
   const options = [
+    { label: "Current Theme Font", value: "inherit" },
     { label: "Cursive", value: "cursive" },
     { label: "Fantasy", value: "fantasy" },
     { label: "Serif", value: "serif" },
@@ -149,9 +150,10 @@ console.log("fdewjfh jewhewhfr ioewfioewio",props.data[props.bundleOption]["box"
                 </div>
                 <RangeSlider
                   output
-                  label="Radius"
+                  label="Border Radius"
                   min={1}
                   max={30}
+                  suffix= {dataToChange.box.borderRadius}
                   value={dataToChange.box.borderRadius}
                   onChange={(newvalue) =>
                     handleChangeValueCommon(

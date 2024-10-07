@@ -1,12 +1,18 @@
 import React from "react";
-import { Divider
- } from "antd";
-import { TextField, Select, RangeSlider, RadioButton, Grid ,Icon} from "@shopify/polaris";
+import { Divider } from "antd";
+import {
+  TextField,
+  Select,
+  RangeSlider,
+  RadioButton,
+  Grid,
+  Icon,
+} from "@shopify/polaris";
 import {
   TextAlignmentCenterMajor,
   TextAlignmentLeftMajor,
-  TextAlignmentRightMajor
-} from '@shopify/polaris-icons';  
+  TextAlignmentRightMajor,
+} from "@shopify/polaris-icons";
 import {
   handleChangeCommon,
   handleChangeCommon2,
@@ -27,7 +33,9 @@ const OrderOverview = ({ bundleOption, displayOption, data, setData }) => {
                 type="color"
                 min={10}
                 max={30}
-                value={data[bundleOption]["orderOverview"]["selectedText"]["color"]}
+                value={
+                  data[bundleOption]["orderOverview"]["selectedText"]["color"]
+                }
                 onChange={(e) =>
                   handleChangeCommon2(
                     e,
@@ -42,7 +50,12 @@ const OrderOverview = ({ bundleOption, displayOption, data, setData }) => {
               />
               <div className="sd-bundle-custom-fieldColorCode-common">
                 <p>Title Color </p>
-                <p> {data[bundleOption]["orderOverview"]["selectedText"]["color"]} </p>
+                <p>
+                  {" "}
+                  {
+                    data[bundleOption]["orderOverview"]["selectedText"]["color"]
+                  }{" "}
+                </p>
               </div>
             </div>
 
@@ -51,7 +64,12 @@ const OrderOverview = ({ bundleOption, displayOption, data, setData }) => {
               label="Font Size"
               min={10}
               max={30}
-              value={data[bundleOption]["orderOverview"]["selectedText"]["fontSize"]}
+              suffix={
+                data[bundleOption]["orderOverview"]["selectedText"]["fontSize"]
+              }
+              value={
+                data[bundleOption]["orderOverview"]["selectedText"]["fontSize"]
+              }
               onChange={(e) =>
                 handleChangeValueCommon2(
                   e,
@@ -74,7 +92,9 @@ const OrderOverview = ({ bundleOption, displayOption, data, setData }) => {
             <div className="sd-bundle-custom-item-inputSection">
               <input
                 type="color"
-                value={data[bundleOption]["orderOverview"]["discountText"]["color"]}
+                value={
+                  data[bundleOption]["orderOverview"]["discountText"]["color"]
+                }
                 onChange={(e) =>
                   handleChangeCommon2(
                     e,
@@ -95,10 +115,15 @@ const OrderOverview = ({ bundleOption, displayOption, data, setData }) => {
 
             <RangeSlider
               output
-              label="Size"
+              label="Font Size"
               min={10}
               max={30}
-              value={data[bundleOption]["orderOverview"]["discountText"]["fontSize"]}
+              suffix={
+                data[bundleOption]["orderOverview"]["discountText"]["fontSize"]
+              }
+              value={
+                data[bundleOption]["orderOverview"]["discountText"]["fontSize"]
+              }
               onChange={(e) =>
                 handleChangeValueCommon2(
                   e,
@@ -111,71 +136,75 @@ const OrderOverview = ({ bundleOption, displayOption, data, setData }) => {
                 )
               }
             />
-
           </div>
         </Grid.Cell>
         <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
           <div className="sd-bundle-custom-item-common">
             <p className="sd-bundle-custom-item-heading-common">Alignment</p>
-            <div className="sd-bundle-item-custom-radio-common">
-              <input
-                id="left"
-                type="radio"
-                name="position"
-                checked={data[bundleOption]["orderOverview"]["alignment"] == "left"}
-                value="left"
-                onChange={(e) =>
+            <div className="sd-bundle-item-custom-radio-main">
+              <div
+                className={`sd-bundle-item-custom-radio-common ${data[bundleOption]["orderOverview"]["alignment"] === "left" ? "active" : ""} `}
+                onClick={() => {
                   handleChangeCommon(
-                    e,
+                    "left",
                     "orderOverview",
                     "alignment",
                     data,
                     setData,
-                    bundleOption
-                  )
-                }
-              />
-              <Icon source={TextAlignmentLeftMajor} tone="base" />
-            </div>
-            <div className="sd-bundle-item-custom-radio-common">
-              <input
-                id="center"
-                type="radio"
-                name="position"
-                value="center"
-                checked={data[bundleOption]["orderOverview"]["alignment"] == "center"}
-                onChange={(e) =>
+                    bundleOption,
+                    "alignment"
+                  );
+                }}
+              >
+                <Icon
+                  className="icon"
+                  accessibilityLabel="left"
+                  source={TextAlignmentLeftMajor}
+                  tone="base"
+                />
+              </div>
+              <div
+                className={`sd-bundle-item-custom-radio-common ${data[bundleOption]["orderOverview"]["alignment"] === "center" ? "active" : ""} `}
+                onClick={(e) =>
                   handleChangeCommon(
-                    e,
+                    "center",
                     "orderOverview",
                     "alignment",
                     data,
                     setData,
-                    bundleOption
+                    bundleOption,
+                    "alignment"
                   )
                 }
-              />
-              <Icon source={TextAlignmentCenterMajor} tone="base" />
-            </div>
-            <div className="sd-bundle-item-custom-radio-common">
-              <input
-                id="right"
-                type="radio"
-                name="position"
-                value="right"
-                checked={data[bundleOption]["orderOverview"]["alignment"] == "right"}
-                onChange={(e) =>
+              >
+                <Icon
+                  className="icon"
+                  accessibilityLabel="center"
+                  source={TextAlignmentCenterMajor}
+                  tone="base"
+                />
+              </div>
+              <div
+                className={`sd-bundle-item-custom-radio-common ${data[bundleOption]["orderOverview"]["alignment"] === "right" ? "active" : ""} `}
+                onClick={(e) =>
                   handleChangeCommon(
-                    e,
+                    "right",
                     "orderOverview",
                     "alignment",
                     data,
                     setData,
-                    bundleOption
+                    bundleOption,
+                    "alignment"
                   )
                 }
-              />
-              <Icon source={TextAlignmentRightMajor} tone="base" />
+              >
+                <Icon
+                  className="icon"
+                  accessibilityLabel="right"
+                  source={TextAlignmentRightMajor}
+                  tone="base"
+                />
+              </div>
             </div>
           </div>
         </Grid.Cell>
