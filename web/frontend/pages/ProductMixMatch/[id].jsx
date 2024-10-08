@@ -118,7 +118,25 @@ const ProductMixMatch = () => {
     const planResponse = await postApi("/api/admin/getPlans", data, app);
     setPlan(planResponse?.data?.data?.plan);
   };
+  async function getCustomization() {
+    try {
+      const response = await postApi(
+        "/api/admin/getCustomization",
+        { shop: shop },
+        app
+      );
+      console.log("test......................",response);
+      
+      setData((prevData) => ({
+        ...prevData,
+        customization: [response.data.response],
+      }));
+    } catch (error) {
+      console.log(error);
+    }
+  }
   useEffect(() => {
+    getCustomization()
     getPlans();
   }, []);
   useEffect(() => {

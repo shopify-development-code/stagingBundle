@@ -7,14 +7,14 @@ import { showAmountWithCurrency } from "../showCurrencyFormat";
 import EmptyPreview from "../commonSections/emptyPreview";
 import { useAPI } from "../shop";
 
-const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
+const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
   let [allProducts, setAllProducts] = useState([]);
   let [mrpForAllProductsType, setMrpForAllProductsType] = useState(0);
   let [finalPriceForAllProductsType, setFinalPriceForAllProductsType] =
     useState(0);
   const { shop, timeZone, currencyCode } = useAPI();
   let dummyPricesForAllProductsType = [500, 100, 100, 100];
-  let designOption = customizeData.design;
+  let designOption = data.customization[0].frequentlyBoughtTogether.design;
 
   useEffect(() => {
     setAllProducts([
@@ -128,7 +128,9 @@ const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
                   </div>
                 )}
 
-              <div className={`sd-bundle-text-detail ${data.customization[0].frequentlyBoughtTogether.optionalBadge.enable == true ? 'extra-padding' : ''}`}>
+              <div
+                className={`sd-bundle-text-detail ${data.customization[0].frequentlyBoughtTogether.optionalBadge.enable == true ? "extra-padding" : ""}`}
+              >
                 <h4
                   style={{
                     ...fontFamily,
@@ -460,7 +462,9 @@ const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
                     </span>
                   </div>
                 )}
-              <div className={`sd-bundle-text-detail ${data.customization[0].frequentlyBoughtTogether.optionalBadge.enable == true ? 'extra-padding' : ''}`}>
+              <div
+                className={`sd-bundle-text-detail ${data.customization[0].frequentlyBoughtTogether.optionalBadge.enable == true ? "extra-padding" : ""}`}
+              >
                 <h4
                   style={{
                     ...fontFamily,
@@ -795,7 +799,9 @@ const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
                     </span>
                   </div>
                 )}
-              <div className={`sd-bundle-text-detail ${data.customization[0].frequentlyBoughtTogether.optionalBadge.enable == true ? 'extra-padding' : ''}`}>
+              <div
+                className={`sd-bundle-text-detail ${data.customization[0].frequentlyBoughtTogether.optionalBadge.enable == true ? "extra-padding" : ""}`}
+              >
                 <h4
                   style={{
                     ...fontFamily,
@@ -1155,7 +1161,9 @@ const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
                     </span>
                   </div>
                 )}
-              <div className={`sd-bundle-text-detail ${data.customization[0].frequentlyBoughtTogether.optionalBadge.enable == true ? 'extra-padding' : ''}`}>
+              <div
+                className={`sd-bundle-text-detail ${data.customization[0].frequentlyBoughtTogether.optionalBadge.enable == true ? "extra-padding" : ""}`}
+              >
                 <h4
                   style={{
                     ...fontFamily,
@@ -1210,7 +1218,7 @@ const FBTBundlePreview = ({ data, customizeData, mrp, endPrice, currency }) => {
                                   .productDetails.image.borderRadius + "px",
                             }}
                           >
-                            <img src={pic} width={80} height={80}/>
+                            <img src={pic} width={80} height={80} />
                           </div>
                           {index !==
                             dummyPricesForAllProductsType?.length - 1 && (

@@ -57,17 +57,27 @@ const FrequentlyBoughtTogether = () => {
 
   let [mainProductLength, setMainProductLength] = useState(0);
   let [selectedProducts, setSelectedProducts] = useState([]);
-  let [customizeData, setCustomizeData] = useState([]);
   const [plan, setPlan] = useState("");
 
-  let getCustomizeData = async () => {
-    const planResponse = await postApi("/api/admin/getPlans", data, app);
-    setPlan(planResponse?.data?.data?.plan);
-    const response = await postApi("/api/admin/getCustomization", {}, app);
-    setCustomizeData(response.data.response.frequentlyBoughtTogether);
-  };
+  async function getCustomization() {
+    try {
+      const planResponse = await postApi("/api/admin/getPlans", data, app);
+      setPlan(planResponse?.data?.data?.plan);
+      const response = await postApi(
+        "/api/admin/getCustomization",
+        { shop: shop },
+        app
+      );
+      setData((prevData) => ({
+        ...prevData,
+        customization: [response.data.response],
+      }));
+    } catch (error) {
+      console.log(error);
+    }
+  }
   useEffect(() => {
-    getCustomizeData();
+    getCustomization();
   }, []);
   useEffect(() => {
     setSelectedProducts([
@@ -441,7 +451,6 @@ const FrequentlyBoughtTogether = () => {
               endPrice={endPrice}
               showPrice={showPrice}
               errorArray={errorArray}
-              customizeData={customizeData}
             />
           </div>
         </div>
