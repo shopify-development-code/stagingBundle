@@ -163,21 +163,8 @@ const CustomizationEditor = (props) => {
   const handleSelectChange = (value) => {
     setSelectedTab(0);
     setSelected(value);
-    handleBundleOption(value);
-  };
-
-  const options = [
-    { label: "Product Bundle", value: "bundle" },
-    { label: "Volume Bundle", value: "volume" },
-    { label: "Collection mix & match Bundle", value: "collection" },
-    { label: "Product mix & match Bundle", value: "productMixMatch" },
-    { label: "Buy X Get Y Bundle", value: "buyXgetY" },
-    { label: "Frequently Bought Together", value: "frequentlyBoughtTogether" },
-  ];
-
-  const handleCustomizeSave = async () => {
     if (
-      props.bundleOption == "productMixMatch" &&
+      value == "productMixMatch" &&
       props.plansData.data.data.plan == "free"
     ) {
       Swal.fire({
@@ -194,9 +181,9 @@ const CustomizationEditor = (props) => {
         }
       });
     } else if (
-      (props.bundleOption == "buyXgetY" &&
+      (value == "buyXgetY" &&
         props.plansData.data.data.plan != "standard") ||
-      (props.bundleOption == "frequentlyBoughtTogether" &&
+      (value == "frequentlyBoughtTogether" &&
         props.plansData.data.data.plan != "standard")
     ) {
       Swal.fire({
@@ -212,7 +199,21 @@ const CustomizationEditor = (props) => {
           navigate("/plans");
         }
       });
-    } else {
+    }else{
+      handleBundleOption(value);
+    }
+  };
+
+  const options = [
+    { label: "Product Bundle", value: "bundle" },
+    { label: "Volume Bundle", value: "volume" },
+    { label: "Collection mix & match Bundle", value: "collection" },
+    { label: "Product mix & match Bundle", value: "productMixMatch" },
+    { label: "Buy X Get Y Bundle", value: "buyXgetY" },
+    { label: "Frequently Bought Together", value: "frequentlyBoughtTogether" },
+  ];
+
+  const handleCustomizeSave = async () => {
       setSpinner(true);
       const response = await postApi(
         "/api/admin/updateCustomization",
@@ -230,7 +231,6 @@ const CustomizationEditor = (props) => {
           "bottom"
         );
       }
-    }
   };
 
   const popUpAlertFun = () => {
