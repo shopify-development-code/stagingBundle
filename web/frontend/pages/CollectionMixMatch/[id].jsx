@@ -70,7 +70,26 @@ const CollectionMixMatch = () => {
     }
   };
 
+  async function getCustomization() {
+    try {
+      const response = await postApi(
+        "/api/admin/getCustomization",
+        { shop: shop },
+        app
+      );
+      console.log("test......................",response);
+      
+      setData((prevData) => ({
+        ...prevData,
+        customization: [response.data.response],
+      }));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
+    getCustomization()
     if (param.id !== "create") {
       getCollectionMixMatchData();
     }

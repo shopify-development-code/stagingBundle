@@ -159,7 +159,7 @@ const PricingPlan = () => {
                     )}
                     <strong>All Free features, plus:</strong>
                     <p>
-                      <Icon source={CircleTickMajor} tone="base" />3 types of
+                      <Icon source={CircleTickMajor} tone="base" />4 types of
                       bundles
                     </p>
                     <ul className="sd-bundle-plans-list">
@@ -214,14 +214,14 @@ const PricingPlan = () => {
                     <strong>All Free features, plus:</strong>
                     <p>
                       <Icon source={CircleTickMajor} tone="base" />
-                      All 5 types of bundles
+                      All 6 types of bundles
                     </p>
                     <ul className="sd-bundle-plans-list">
                       <li>Product Bundle</li>
                       <li>Volume Bundle</li>
-                      <li>Buy X Get Y Bundle</li>
                       <li>Collection Mix & Match Bundle</li>
                       <li>Product Mix & Match Bundle</li>
+                      <li>Buy X Get Y Bundle</li>
                       <li>Frequently Bought Together Bundle</li>
                     </ul>
                     <p>

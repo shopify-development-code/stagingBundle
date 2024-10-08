@@ -67,8 +67,8 @@ function CreateBundle() {
         productPagesList: [],
       },
     },
-    customization: [defaultData] ,
-    timeZone:timeZone
+    customization: [defaultData],
+    timeZone: timeZone,
   });
 
   const app = useAppBridge();
@@ -78,13 +78,29 @@ function CreateBundle() {
     setSpinner(true);
     const response = await postApi("/api/admin/editBundle", body, app);
     if (response.status === 200) {
-      
       setData(response.data.response);
       setSpinner(false);
     }
   };
 
+  async function getCustomization() {
+    try {
+      const response = await postApi(
+        "/api/admin/getCustomization",
+        { shop: shop },
+        app
+      );
+      setData((prevData) => ({
+        ...prevData,
+        customization: [response.data.response],
+      }));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
+    getCustomization();
     if (param.id !== "create") {
       getBundleData();
     }
@@ -103,8 +119,6 @@ function CreateBundle() {
       setSearchValue("");
     }
   };
-
-  
 
   const removeProductFromList = (item, index) => {
     let update = [...data.bundleDetail.products];
@@ -226,16 +240,16 @@ function CreateBundle() {
   };
 
   const handleDiscountType = (e) => {
-    if(e.target.value == "percent" && data.bundleDetail.discountValue > 100){
+    if (e.target.value == "percent" && data.bundleDetail.discountValue > 100) {
       setData({
         ...data,
         bundleDetail: {
           ...data.bundleDetail,
           discountType: e.target.value,
-          discountValue: 100
+          discountValue: 100,
         },
       });
-    }else{
+    } else {
       setData({
         ...data,
         bundleDetail: {
@@ -257,9 +271,9 @@ function CreateBundle() {
       });
     } else {
       newvalue = String(newvalue);
- 
+
       newvalue = newvalue.replace(/^0/, 1);
-      if(data.bundleDetail.discountType == "percent" && newvalue > 100){
+      if (data.bundleDetail.discountType == "percent" && newvalue > 100) {
         setData({
           ...data,
           bundleDetail: {
@@ -267,7 +281,7 @@ function CreateBundle() {
             discountValue: 100,
           },
         });
-      }else{
+      } else {
         setData({
           ...data,
           bundleDetail: {
@@ -286,14 +300,11 @@ function CreateBundle() {
   const handleVariantChoice = (e, main, index) => {
     let newArr = [...arr];
 
-   
-
     setShowPrice({ ...showPrice, [main]: e.target.value });
     newArr[main].splice(index, 1, e.target.value);
 
     setArr(newArr);
   };
-
 
   const handleDisplayOptions = (e) => {
     if (e.target.checked) {
@@ -457,8 +468,8 @@ function CreateBundle() {
       }
     });
 
-    if(data.bundleDetail.display.productPagesList.length <= 0){
-      flag= false;
+    if (data.bundleDetail.display.productPagesList.length <= 0) {
+      flag = false;
       alertText.push("Please select at least one product from display options");
     }
 
@@ -485,7 +496,7 @@ function CreateBundle() {
       flag = false;
       alertText.push("Please provide title of bundle");
     }
-    
+
     // if (data.startdate == "") {
     //   if (!errorArray.includes("startdate")) {
     //     setErrorArray((prev) => [...prev, "startdate"]);
@@ -504,7 +515,9 @@ function CreateBundle() {
       if (param.id == "create") {
         const response = await postApi("/api/admin/createBundle", data, app);
         if (response.data.status === 200) {
-          return toastNotification("success", "Saved", "bottom"), navigate("/bundle");
+          return (
+            toastNotification("success", "Saved", "bottom"), navigate("/bundle")
+          );
         } else {
           return alertCommon(
             setAlert,
@@ -532,11 +545,8 @@ function CreateBundle() {
     }
   };
 
- 
-
   return (
-    <Spin spinning={spinner}
-     size="large">
+    <Spin spinning={spinner} size="large">
       <div className="Polaris-Page Polaris-Page--fullWidth">
         <MoveToHomePage data={headerkey} />
 
@@ -604,11 +614,7 @@ function CreateBundle() {
               setData={setData}
               errorArray={errorArray}
             /> */}
-            <General 
-              data={data}
-              setData={setData}
-              errorArray={errorArray}
-            />
+            <General data={data} setData={setData} errorArray={errorArray} />
 
             <DiscountOptions
               discountType={data.bundleDetail.discountType}
@@ -633,10 +639,10 @@ function CreateBundle() {
               displayPageOptions={data.bundleDetail.display.productPages}
               handleDisplayPageOptions={handleDisplayPageOptions}
               products={data.bundleDetail.products}
-              data= {data}
+              data={data}
             />
 
-            <ProductBundlePreview 
+            <ProductBundlePreview
               data={data}
               currency={currencyCode}
               mrp={mrp}
@@ -646,10 +652,9 @@ function CreateBundle() {
               bundleType={"productBundle"}
               errorArray={errorArray}
             />
-
           </div>
         </div>
- 
+
         {/* below code is for the modal opening on click of Edit Further  */}
         {antModal && (
           <Modal
