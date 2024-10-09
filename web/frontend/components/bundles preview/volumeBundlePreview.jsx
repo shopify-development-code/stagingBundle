@@ -85,7 +85,7 @@ const VolumeBundlePreview = ({
               className="sd-volume-bundle-detail"
               style={{
                 backgroundColor:
-                  data?.customization[0]?.volume?.productDetails?.productDetailsBox?.backgroundColor,
+                  data?.customization[0]?.volume?.productDetails?.productDetailsBox?.backgroundColor|| "white",
               }}
             >
               <div className="sd-select-radio-with-text">
@@ -143,7 +143,7 @@ const VolumeBundlePreview = ({
                   </label>
                 </div>
                 {item.type != "noDiscount" && item.type != "freeShipping" ? (
-                 data?.customization?.[0]?.volume?.options?.DiscountBadge?.badgeType == "options" ? (
+                 data?.customization?.[0]?.volume?.options?.DiscountBadge?.badgeType == "options" || " " ? (
                     <div
                       className="sd-percent-badge"
                       style={{
