@@ -2180,7 +2180,7 @@ function createBundle(BUNDLE_DATA) {
             let GET_PRODUCTS_NAME = document.createElement("h5");
             GET_PRODUCTS_NAME.style.color = el?.customization?.frequentlyBoughtTogether?.productDetails?.title?.color;
             GET_PRODUCTS_NAME.style.fontSize = el?.customization?.frequentlyBoughtTogether?.productDetails?.title?.fontSize+"px";
-            GET_PRODUCTS_NAME.style.fontFamily = el?.customization?.frequentlyBoughtTogether?.box.fontFamily;
+            GET_PRODUCTS_NAME.style.fontFamily = el?.customization?.frequentlyBoughtTogether?.box?.fontFamily;
             GET_PRODUCTS_NAME.innerText = item.title;
             GET_PRODUCTS_NAME_PRICE_DIV.append(GET_PRODUCTS_NAME);
 
