@@ -916,7 +916,7 @@ function createBundle(BUNDLE_DATA) {
             
 
             if(ele.type == "percent" || ele.type == "fixed"){
-              if(el.customization.volume.options.DiscountBadge.badgeType == "options"){
+              if(el?.customization?.volume?.options?.DiscountBadge?.badgeType == "options"){
                 DISCOUNT_OPT_BadgeSection.className = "sd-percent-badge";
                 let BagdeSpan = document.createElement("span");
                 BagdeSpan.style.fontFamily = el?.customization?.volume?.box?.fontFamily;
@@ -1517,7 +1517,7 @@ function createBundle(BUNDLE_DATA) {
         addToCartBtn.innerText = el?.translations?.translation?.addToCartButton;
         addToCart.append(addToCartBtn);
 
-        if (el.customization.volume.button.position == "bottom") {
+        if (el?.customization?.volume?.button?.position == "bottom") {
           VOLUME_DIV.append(addToCart);
         } else {
           VOLUME_DIV.prepend(addToCart);
@@ -1801,7 +1801,7 @@ function createBundle(BUNDLE_DATA) {
         customiseDescriptionText.style.fontFamily = el?.customization?.collectionMixMatch?.box?.fontFamily;
         customiseDescriptionText.innerText = el?.description;
         customiseDescriptionText.style.color =
-          el?.customization.collectionMixMatch?.title?.descriptionColor;
+          el?.customization?.collectionMixMatch?.title?.descriptionColor;
         customiseDescriptionText.style.fontSize =
           el?.customization?.collectionMixMatch?.title?.descriptionFontSize + "px";
         customiseDescriptionText.style.textAlign = el?.customization?.collectionMixMatch?.title?.alignment;
@@ -2040,7 +2040,7 @@ function createBundle(BUNDLE_DATA) {
           
           let FBT_TITLE_DIV = document.createElement("div");
           FBT_TITLE_DIV.className = "sd-bundle-text-detail";
-          if (el.customization.frequentlyBoughtTogether.optionalBadge.enable === true) {
+          if (el?.customization?.frequentlyBoughtTogether?.optionalBadge?.enable === true) {
             if (el.bundleDetail.discountType === "percent" || el.bundleDetail.discountType === "fixed") {
               FBT_TITLE_DIV.classList.add("extra-padding");
             }
@@ -2568,7 +2568,7 @@ function createBundle(BUNDLE_DATA) {
         FBT_DIV.id = `FBT_DIV${bundleIndex}`;
         mainDiv.append(FBT_DIV);
 
-        if (el.customization.frequentlyBoughtTogether.optionalBadge.enable === true) {
+        if (el?.customization?.frequentlyBoughtTogether?.optionalBadge?.enable === true) {
           if (el.bundleDetail.discountType === "percent" || el.bundleDetail.discountType === "fixed") {
             let VOLUME_HEADER_DIV = document.createElement("span");
             VOLUME_HEADER_DIV.className = "sd-badges-part-optional";
@@ -2637,7 +2637,7 @@ function createBundle(BUNDLE_DATA) {
             let BUNDLE_PLUS_BTN_DIV = document.createElement("div");
             BUNDLE_PLUS_BTN_DIV.className = "plus-selectedIcon";
             BUNDLE_PLUS_BTN_DIV.innerHTML = `<svg viewBox="0 0 18 18" focusable="false" width="18" height="18" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6.98047 17.3842V0.580255H10.3239V17.3842H6.98047ZM0.256392 10.6477V7.30433H17.0604V10.6477H0.256392Z" fill= ${el.customization.frequentlyBoughtTogether.productDetails.plusColor}></path>
+            <path d="M6.98047 17.3842V0.580255H10.3239V17.3842H6.98047ZM0.256392 10.6477V7.30433H17.0604V10.6477H0.256392Z" fill= ${el?.customization?.frequentlyBoughtTogether?.productDetails?.plusColor}></path>
             </svg>`;
             FBT_PRODUCTS_IMAGE_DIV.append(BUNDLE_PLUS_BTN_DIV);
           }  
@@ -2800,7 +2800,7 @@ function createBundle(BUNDLE_DATA) {
             let BUNDLE_PLUS_BTN_DIV = document.createElement("div");
             BUNDLE_PLUS_BTN_DIV.className = "sd-add-bundle";
             BUNDLE_PLUS_BTN_DIV.innerHTML = `<svg viewBox="0 0 18 18" focusable="false" width="18" height="18" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6.98047 17.3842V0.580255H10.3239V17.3842H6.98047ZM0.256392 10.6477V7.30433H17.0604V10.6477H0.256392Z" fill= ${el.customization.frequentlyBoughtTogether.productDetails.plusColor}></path>
+            <path d="M6.98047 17.3842V0.580255H10.3239V17.3842H6.98047ZM0.256392 10.6477V7.30433H17.0604V10.6477H0.256392Z" fill= ${el?.customization?.frequentlyBoughtTogether?.productDetails?.plusColor}></path>
             </svg>`;
             FBT_DIV.append(BUNDLE_PLUS_BTN_DIV);
           }
@@ -3322,7 +3322,7 @@ function createBundle(BUNDLE_DATA) {
         ShowActiveDiscountBadgeDiv.className = "sd-show-items";
         el.bundleDetail.discountOptions.map((items,discountBadgeIndex)=>{
           let ShowMultiDiscountBadgeDiv = document.createElement("span");
-          ShowMultiDiscountBadgeDiv.style.fontFamily = el.customization.productMixMatch.box.fontFamily;
+          ShowMultiDiscountBadgeDiv.style.fontFamily = el?.customization?.productMixMatch?.box?.fontFamily;
           ShowMultiDiscountBadgeDiv.id = `DiscountBadge${bundleIndex}${discountBadgeIndex}`;
           if(items.type === "percent"){
             ShowMultiDiscountBadgeDiv.innerText = `${items.quantity} items|${items.value}% ${el.translations.translation.off}`;
@@ -3574,7 +3574,7 @@ function createBundle(BUNDLE_DATA) {
               CheckBox_Round_Div.append(PopUpMessageDiv);
               let PopupSpan = document.createElement("span");
               PopupSpan.className = "sd-bundle-mix-match-checkBox-popup-span";
-              PopupSpan.style.fontFamily = el.customization.productMixMatch.box.fontFamily;
+              PopupSpan.style.fontFamily = el?.customization?.productMixMatch?.box?.fontFamily;
               PopupSpan.innerText = "This product is required and can not be deselected";
               PopUpMessageDiv.append(PopupSpan);
               setTimeout(()=>{
@@ -4109,7 +4109,7 @@ function createBundle(BUNDLE_DATA) {
             });
         });
         AddToCartBtnDiv.append(AddToCartBTN);
-        if (el.customization.productMixMatch.button.position == "bottom") {
+        if (el?.customization?.productMixMatch?.button?.position == "bottom") {
           MixMatchDiv.append(AddToCartBtnDiv);
         } else {
           MixMatchDiv.prepend(AddToCartBtnDiv);
