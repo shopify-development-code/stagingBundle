@@ -10,41 +10,39 @@ const CustomizationBuyXgetY = ({ data }) => {
   const { currency } = useAPI();
   const discount = 40;
   const textStyle = {
-    fontFamily:  `${data.buyXgetY.box.fontFamily}`
+    fontFamily: `${data?.buyXgetY?.box?.fontFamily || 'inherit'}`,
   };
+  
   return (
     <>
       <div
         class="sd-bundle-main-column"
         style={{
-          backgroundColor: data?.buyXgetY?.box?.backgroundColor,
-          border:
-            data?.buyXgetY?.box?.thickness +
-            "px solid" +
-            data?.buyXgetY?.box?.borderColor,
-          borderRadius: data?.buyXgetY?.box?.borderRadius + "px",
-        }}
+          backgroundColor: data?.buyXgetY?.box?.backgroundColor || 'transparent', // default to transparent if not available
+          border: `${(data?.buyXgetY?.box?.thickness || 0)}px solid ${data?.buyXgetY?.box?.borderColor || 'black'}`, // default thickness to 0 and border color to black
+          borderRadius: (data?.buyXgetY?.box?.borderRadius || 0) + "px", // default to 0
+        }}        
       >
         <div class="sd-bundle-text-detail">
           <h4
             style={{
               ...textStyle,
-              color: data?.buyXgetY?.title?.color,
-              fontSize: data?.buyXgetY?.title?.fontSize + "px",
-              fontWeight: data?.buyXgetY?.title?.titleBold,
-              textAlign: data?.buyXgetY?.title?.alignment,
-            }}
+              color: data?.buyXgetY?.title?.color || 'inherit', // default to 'inherit' if not available
+              fontSize: (data?.buyXgetY?.title?.fontSize || 0) + "px", // default to 0
+              fontWeight: data?.buyXgetY?.title?.titleBold ? 'bold' : 'normal', // default to 'normal'
+              textAlign: data?.buyXgetY?.title?.alignment || 'left', // default to 'left'
+            }}            
           >
             Buy X get Y
           </h4>
           <p
             style={{
               ...textStyle,
-              color: data.buyXgetY.title.descriptionColor,
-              fontSize: data.buyXgetY.title.descriptionFontSize + "px",
-              fontWeight: data.buyXgetY.title.descriptionBold,
-              textAlign: data.buyXgetY.title.alignment,
-            }}
+              color: data?.buyXgetY?.title?.descriptionColor || 'inherit', // default to 'inherit' if not available
+              fontSize: (data?.buyXgetY?.title?.descriptionFontSize || 0) + "px", // default to 0
+              fontWeight: data?.buyXgetY?.title?.descriptionBold ? 'bold' : 'normal', // default to 'normal'
+              textAlign: data?.buyXgetY?.title?.alignment || 'left', // default to 'left'
+            }}            
           >
             Buy two product get one free
           </p>
@@ -53,18 +51,16 @@ const CustomizationBuyXgetY = ({ data }) => {
         <div
           class="sd-bundle-product-detail"
           style={{
-            backgroundColor:
-              data.buyXgetY.productDetails.productDetailsBox.backgroundColor,
-          }}
+            backgroundColor: data?.buyXgetY?.productDetails?.productDetailsBox?.backgroundColor || 'transparent', // default to 'transparent' if not available
+          }}          
         >
           <div class="sd-bundle-product-inner">
             <div
               class="sd-bundle-product-img"
               style={{
-                borderColor: data.buyXgetY.productDetails.image.borderColor,
-                borderRadius:
-                  data.buyXgetY.productDetails.image.borderRadius + "px",
-              }}
+                borderColor: data?.buyXgetY?.productDetails?.image?.borderColor || 'black', // default to 'black' if not available
+                borderRadius: (data?.buyXgetY?.productDetails?.image?.borderRadius || 0) + "px", // default to 0
+              }}              
             >
               <img src={productImg} width="80" height="80" />
             </div>
@@ -72,31 +68,28 @@ const CustomizationBuyXgetY = ({ data }) => {
               <h5
                 style={{
                   ...textStyle,
-                  color: data.buyXgetY.productDetails.title.color,
-                  fontSize: data.buyXgetY.productDetails.title.fontSize + "px",
-                }}
+                  color: data?.buyXgetY?.productDetails?.title?.color || 'inherit', // default to 'inherit' if not available
+                  fontSize: (data?.buyXgetY?.productDetails?.title?.fontSize || 0) + "px", // default to 0
+                }}                
               >
                 Smart Wireless Charger
               </h5>
               <h4
                 style={{
                   ...textStyle,
-                  color: data.buyXgetY.productDetails.price.color,
-                  fontSize: data.buyXgetY.productDetails.price.fontSize + "px",
-                }}
+                  color: data?.buyXgetY?.productDetails?.price?.color || 'inherit', // default to 'inherit' if not available
+                  fontSize: (data?.buyXgetY?.productDetails?.price?.fontSize || 0) + "px", // default to 0
+                }}                
               >
                 Rs. 2500.00
               </h4>
               <select
-                style={{
-                  ...textStyle,
-                  backgroundColor:
-                    data.buyXgetY.productDetails.variantSelector
-                      .backgroundColor,
-                  color: data.buyXgetY.productDetails.variantSelector.color,
-                  width:
-                    data.buyXgetY.productDetails.variantSelector.width + "px",
-                }}
+               style={{
+                ...textStyle,
+                backgroundColor: data?.buyXgetY?.productDetails?.variantSelector?.backgroundColor || 'transparent', // default to 'transparent' if not available
+                color: data?.buyXgetY?.productDetails?.variantSelector?.color || 'inherit', // default to 'inherit' if not available
+                width: (data?.buyXgetY?.productDetails?.variantSelector?.width || 0) + "px", // default to 0
+              }}              
               >
                 <option style={{...textStyle,}}>Medium</option>
                 <option style={{...textStyle,}}>Small</option>
@@ -107,11 +100,11 @@ const CustomizationBuyXgetY = ({ data }) => {
             <h6
               style={{
                 ...textStyle,
-                color: data.buyXgetY.productDetails.quantities.color,
-                fontSize: data.buyXgetY.productDetails.quantities.size + "px"
-              }}
+                color: data?.buyXgetY?.productDetails?.quantities?.color || 'inherit', // default to 'inherit' if not available
+                fontSize: (data?.buyXgetY?.productDetails?.quantities?.size || 0) + "px", // default to 0
+              }}              
             >
-              Qty: <span style={{...textStyle,fontSize: data.buyXgetY.productDetails.quantities.size + "px"}}>1</span>
+              Qty: <span style={{...textStyle,fontSize: data?.buyXgetY?.productDetails?.quantities?.size + "px"}}>1</span>
             </h6>
           </div>
         </div>
@@ -119,18 +112,16 @@ const CustomizationBuyXgetY = ({ data }) => {
         <div
           class="sd-bundle-product-detail"
           style={{
-            backgroundColor:
-              data.buyXgetY.productDetails.productDetailsBox.backgroundColor,
-          }}
+            backgroundColor: data?.buyXgetY?.productDetails?.productDetailsBox?.backgroundColor || 'transparent', // default to 'transparent' if not available
+          }}          
         >
           <div class="sd-bundle-product-inner">
             <div
               class="sd-bundle-product-img"
               style={{
-                borderColor: data.buyXgetY.productDetails.image.borderColor,
-                borderRadius:
-                  data.buyXgetY.productDetails.image.borderRadius + "px",
-              }}
+                borderColor: data?.buyXgetY?.productDetails?.image?.borderColor || 'black', // default to 'black' if not available
+                borderRadius: (data?.buyXgetY?.productDetails?.image?.borderRadius || 0) + "px", // default to 0
+              }}              
             >
               <img src={productImg} width="80" height="80" />
             </div>
@@ -138,31 +129,28 @@ const CustomizationBuyXgetY = ({ data }) => {
               <h5
                 style={{
                   ...textStyle,
-                  color: data.buyXgetY.productDetails.title.color,
-                  fontSize: data.buyXgetY.productDetails.title.fontSize + "px",
-                }}
+                  color: data?.buyXgetY?.productDetails?.title?.color || 'inherit', // default to 'inherit' if not available
+                  fontSize: (data?.buyXgetY?.productDetails?.title?.fontSize || 0) + "px", // default to 0
+                }}                
               >
                 Smart Wireless Charger
               </h5>
               <h4
-                style={{
-                  ...textStyle,
-                  color: data.buyXgetY.productDetails.price.color,
-                  fontSize: data.buyXgetY.productDetails.price.fontSize + "px",
-                }}
+               style={{
+                ...textStyle,
+                color: data?.buyXgetY?.productDetails?.price?.color || 'inherit', // default to 'inherit' if not available
+                fontSize: (data?.buyXgetY?.productDetails?.price?.fontSize || 0) + "px", // default to 0
+              }}              
               >
                 Rs. 2500.00
               </h4>
               <select
                 style={{
                   ...textStyle,
-                  backgroundColor:
-                    data.buyXgetY.productDetails.variantSelector
-                      .backgroundColor,
-                  color: data.buyXgetY.productDetails.variantSelector.color,
-                  width:
-                    data.buyXgetY.productDetails.variantSelector.width + "px",
-                }}
+                  backgroundColor: data?.buyXgetY?.productDetails?.variantSelector?.backgroundColor || 'transparent', // default to 'transparent' if not available
+                  color: data?.buyXgetY?.productDetails?.variantSelector?.color || 'inherit', // default to 'inherit' if not available
+                  width: (data?.buyXgetY?.productDetails?.variantSelector?.width || 0) + "px", // default to 0
+                }}                
               >
                 <option style={{...textStyle,}}>Medium</option>
                 <option style={{...textStyle,}}>Small</option>
@@ -173,11 +161,11 @@ const CustomizationBuyXgetY = ({ data }) => {
             <h6
               style={{
                 ...textStyle,
-                color: data.buyXgetY.productDetails.quantities.color,
-                fontSize: data.buyXgetY.productDetails.quantities.size + "px"
-              }}
+                color: data?.buyXgetY?.productDetails?.quantities?.color || 'inherit', // default to 'inherit' if not available
+                fontSize: (data?.buyXgetY?.productDetails?.quantities?.size || 0) + "px", // default to 0
+              }}              
             >
-              Qty: <span style={{...textStyle,fontSize: data.buyXgetY.productDetails.quantities.size + "px"}}>1</span>
+              Qty: <span style={{...textStyle,fontSize: data?.buyXgetY?.productDetails?.quantities?.size + "px"}}>1</span>
             </h6>
           </div>
         </div>
@@ -191,7 +179,7 @@ const CustomizationBuyXgetY = ({ data }) => {
           >
             <path
               d="M6.98047 17.3842V0.580255H10.3239V17.3842H6.98047ZM0.256392 10.6477V7.30433H17.0604V10.6477H0.256392Z"
-              fill={data.buyXgetY.productDetails.plusColor}
+              fill={data?.buyXgetY?.productDetails?.plusColor} // provide a default color if needed
             />
           </svg>
         </div>
@@ -199,26 +187,25 @@ const CustomizationBuyXgetY = ({ data }) => {
         <div
           class="sd-bundle-product-detail"
           style={{
-            backgroundColor:
-              data.buyXgetY.productDetails.productDetailsBox.backgroundColor,
-          }}
+            backgroundColor: data?.buyXgetY?.productDetails?.productDetailsBox?.backgroundColor || 'transparent', // default to 'transparent' if not available
+          }}          
         >
           {data.buyXgetY.DiscountBadge.badgeType == "leftBanner" ? (
             <div className="sd-bundle-product-badge left-badge ">
               <div
                 className="open-badge"
                 style={{
-                  background: data.buyXgetY.DiscountBadge.backgroundColor,
-                }}
+                  background: data?.buyXgetY?.DiscountBadge?.backgroundColor || 'transparent', // default to 'transparent' if not available
+                }}                
               ></div>
               <h4
-                style={{
-                  ...textStyle,
-                  color: data.buyXgetY.DiscountBadge.color,
-                  fontSize: data.buyXgetY.DiscountBadge.fontSize + "px",
-                }}
+               style={{
+                ...textStyle,
+                color: data?.buyXgetY?.DiscountBadge?.color || 'inherit', // default to 'inherit' if not available
+                fontSize: (data?.buyXgetY?.DiscountBadge?.fontSize || 0) + "px", // default to 0
+              }}              
               >
-                {data.buyXgetY.DiscountBadge.text}
+                {data?.buyXgetY?.DiscountBadge?.text}
               </h4>
             </div>
           ) : (
@@ -233,21 +220,22 @@ const CustomizationBuyXgetY = ({ data }) => {
               >
                 <path
                   d="M0 10L8.63148 0H83.3261L91 10H0Z"
-                  fill={data.buyXgetY.DiscountBadge.backgroundColor}
+                  fill={data?.buyXgetY?.DiscountBadge?.backgroundColor} // Provide a default color if needed
+
                 />
                 <path
                   d="M9 0H83V19C83 21.7614 80.7614 24 78 24H14C11.2386 24 9 21.7614 9 19V0Z"
-                  fill={data.buyXgetY.DiscountBadge.backgroundColor}
+                  fill={data?.buyXgetY?.DiscountBadge?.backgroundColor}
                 />
               </svg>
               <h4
                 style={{
                   ...textStyle,
-                  color: data.buyXgetY.DiscountBadge.color,
-                  fontSize: data.buyXgetY.DiscountBadge.fontSize + "px",
-                }}
+                  color: data?.buyXgetY?.DiscountBadge?.color || 'inherit', // default to 'inherit' if not available
+                  fontSize: (data?.buyXgetY?.DiscountBadge?.fontSize || 0) + "px", // default to 0
+                }}                
               >
-                {data.buyXgetY.DiscountBadge.text}
+                {data?.buyXgetY?.DiscountBadge?.text} 
               </h4>
             </div>
           )}
@@ -274,31 +262,28 @@ const CustomizationBuyXgetY = ({ data }) => {
               <h5
                 style={{
                   ...textStyle,
-                  color: data.buyXgetY.productDetails.title.color,
-                  fontSize: data.buyXgetY.productDetails.title.fontSize + "px",
-                }}
+                  color: data?.buyXgetY?.productDetails?.title?.color || 'inherit', // default to 'inherit' if not available
+                  fontSize: (data?.buyXgetY?.productDetails?.title?.fontSize || 0) + "px", // default to 0
+                }}                
               >
                 Smart Wireless Charger
               </h5>
               <h4
                 style={{
                   ...textStyle,
-                  color: data.buyXgetY.productDetails.price.color,
-                  fontSize: data.buyXgetY.productDetails.price.fontSize + "px",
-                }}
+                  color: data?.buyXgetY?.productDetails?.price?.color || 'inherit', // default to 'inherit' if not available
+                  fontSize: (data?.buyXgetY?.productDetails?.price?.fontSize || 0) + "px", // default to 0
+                }}                
               >
                 Rs. 2500.00
               </h4>
               <select
                 style={{
                   ...textStyle,
-                  backgroundColor:
-                    data.buyXgetY.productDetails.variantSelector
-                      .backgroundColor,
-                  color: data.buyXgetY.productDetails.variantSelector.color,
-                  width:
-                    data.buyXgetY.productDetails.variantSelector.width + "px",
-                }}
+                  backgroundColor: data?.buyXgetY?.productDetails?.variantSelector?.backgroundColor || 'transparent', // default to 'transparent' if not available
+                  color: data?.buyXgetY?.productDetails?.variantSelector?.color || 'inherit', // default to 'inherit' if not available
+                  width: (data?.buyXgetY?.productDetails?.variantSelector?.width || 0) + "px", // default to 0
+                }}                
               >
                 <option style={{...textStyle,}}>Medium</option>
                 <option style={{...textStyle,}}>Small</option>
@@ -309,11 +294,11 @@ const CustomizationBuyXgetY = ({ data }) => {
             <h6
               style={{
                 ...textStyle,
-                color: data.buyXgetY.productDetails.quantities.color,
-                fontSize: data.buyXgetY.productDetails.quantities.size + "px"
-              }}
+                color: data?.buyXgetY?.productDetails?.quantities?.color || 'inherit', // default to 'inherit' if not available
+                fontSize: (data?.buyXgetY?.productDetails?.quantities?.size || 0) + "px", // default to 0
+              }}              
             >
-              Qty: <span style={{...textStyle,fontSize: data.buyXgetY.productDetails.quantities.size + "px"}}>1</span>
+              Qty: <span style={{...textStyle,fontSize: data?.buyXgetY?.productDetails?.quantities?.size + "px"}}>1</span>
             </h6>
           </div>
         </div>
@@ -322,18 +307,18 @@ const CustomizationBuyXgetY = ({ data }) => {
             <h4
               style={{
                 ...textStyle,
-                color: data.buyXgetY.totalSection.color,
-                fontSize: data.buyXgetY.totalSection.fontSize + "px",
-              }}
+                color: data?.buyXgetY?.totalSection?.color || 'inherit', // default to 'inherit' if not available
+                fontSize: (data?.buyXgetY?.totalSection?.fontSize || 0) + "px", // default to 0
+              }}              
             >
               Total
             </h4>
             <p
               style={{
                 ...textStyle,
-                color: data.buyXgetY.totalSection.discountMessage.color,
-                fontSize: data.buyXgetY.totalSection.discountMessage.size + "px"
-              }}
+                color: data?.buyXgetY?.totalSection?.discountMessage?.color || 'inherit', // default to 'inherit' if not available
+                fontSize: (data?.buyXgetY?.totalSection?.discountMessage?.size || 0) + "px", // default to 0
+              }}              
             >
               Discount will be applied at checkout
             </p>
@@ -342,19 +327,18 @@ const CustomizationBuyXgetY = ({ data }) => {
             <h4
               style={{
                 ...textStyle,
-                color: data.buyXgetY.totalSection.finalPrice.color,
-                fontSize: data.buyXgetY.totalSection.finalPrice.fontSize + "px",
-              }}
+                color: data?.buyXgetY?.totalSection?.finalPrice?.color || 'inherit', // default to 'inherit' if not available
+                fontSize: (data?.buyXgetY?.totalSection?.finalPrice?.fontSize || 0) + "px", // default to 0
+              }}              
             >
               Rs. 5,000.00
             </h4>
             <h6
-              style={{
-                ...textStyle,
-                color: data.buyXgetY.totalSection.originalPrice.color,
-                fontSize:
-                  data.buyXgetY.totalSection.originalPrice.fontSize + "px",
-              }}
+             style={{
+              ...textStyle,
+              color: data?.buyXgetY?.totalSection?.originalPrice?.color || 'inherit', // default to 'inherit' if not available
+              fontSize: (data?.buyXgetY?.totalSection?.originalPrice?.fontSize || 0) + "px", // default to 0
+            }}            
             >
               Rs. 7500.00
             </h6>
@@ -364,12 +348,12 @@ const CustomizationBuyXgetY = ({ data }) => {
           <button
             style={{
               ...textStyle,
-              color: data.buyXgetY.button.color,
-              fontSize: data.buyXgetY.button.fontSize + "px",
-              backgroundColor: data.buyXgetY.button.backgroundColor,
-              borderRadius: data.buyXgetY.button.borderRadius + "px",
-              borderColor: data.buyXgetY.button.borderColor,
-            }}
+              color: data?.buyXgetY?.button?.color || 'inherit', // default to 'inherit' if not available
+              fontSize: (data?.buyXgetY?.button?.fontSize || 0) + "px", // default to 0
+              backgroundColor: data?.buyXgetY?.button?.backgroundColor || 'transparent', // default to 'transparent'
+              borderRadius: (data?.buyXgetY?.button?.borderRadius || 0) + "px", // default to 0
+              borderColor: data?.buyXgetY?.button?.borderColor || 'black', // default to 'black'
+            }}            
           >
             Add to Cart
           </button>

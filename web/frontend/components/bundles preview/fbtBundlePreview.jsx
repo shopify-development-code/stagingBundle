@@ -14,7 +14,7 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
     useState(0);
   const { shop, timeZone, currencyCode } = useAPI();
   let dummyPricesForAllProductsType = [500, 100, 100, 100];
-  let designOption = data.customization[0].frequentlyBoughtTogether.design;
+  let designOption = data?.customization[0]?.frequentlyBoughtTogether?.design;
 
   useEffect(() => {
     setAllProducts([
@@ -83,37 +83,27 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
             <div
               className="sd-bundle-main-column"
               style={{
-                backgroundColor:
-                  data.customization[0].frequentlyBoughtTogether.box
-                    .backgroundColor,
-                borderColor:
-                  data.customization[0].frequentlyBoughtTogether.box
-                    .borderColor,
-                borderRadius:
-                  data.customization[0].frequentlyBoughtTogether.box
-                    .borderRadius + "px",
-              }}
+                backgroundColor: data.customization[0]?.frequentlyBoughtTogether?.box?.backgroundColor,
+                borderColor: data.customization[0]?.frequentlyBoughtTogether?.box?.borderColor,
+                borderRadius: (data.customization[0]?.frequentlyBoughtTogether?.box?.borderRadius) + "px",
+              }}              
             >
               {(data.bundleDetail.discountType === "percent" ||
                 data.bundleDetail.discountType === "fixed") &&
-                data.customization[0].frequentlyBoughtTogether.optionalBadge
-                  .enable && (
+                data?.customization[0]?.frequentlyBoughtTogether?.optionalBadge
+                  ?.enable && (
                   <div
                     className="sd-badges-part"
                     style={{
-                      backgroundColor:
-                        data.customization[0].frequentlyBoughtTogether
-                          .optionalBadge.background,
-                    }}
+                      backgroundColor: data.customization[0]?.frequentlyBoughtTogether?.optionalBadge?.background,
+                    }}                    
                   >
                     <span
                       style={{
                         ...fontFamily,
-                        color:
-                          data.customization[0].frequentlyBoughtTogether
-                            .optionalBadge.color,
-                        fontSize: `${data.customization[0].frequentlyBoughtTogether.optionalBadge.color.fontSize}px`,
-                      }}
+                        color: data.customization[0]?.frequentlyBoughtTogether?.optionalBadge?.color ,
+                        fontSize: `${data.customization[0]?.frequentlyBoughtTogether?.optionalBadge?.fontSize }px`,
+                      }}                      
                     >
                       {data.bundleDetail.discountType === "free"
                         ? "Free"
@@ -129,43 +119,27 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                 )}
 
               <div
-                className={`sd-bundle-text-detail ${data.customization[0].frequentlyBoughtTogether.optionalBadge.enable == true ? "extra-padding" : ""}`}
+                className={`sd-bundle-text-detail ${data.customization[0]?.frequentlyBoughtTogether?.optionalBadge?.enable === true ? "extra-padding" : ""}`}
               >
                 <h4
                   style={{
                     ...fontFamily,
-                    color:
-                      data.customization[0].frequentlyBoughtTogether.title
-                        .color,
-                    fontSize:
-                      data.customization[0].frequentlyBoughtTogether.title
-                        .fontSize + "px",
-                    textAlign:
-                      data.customization[0].frequentlyBoughtTogether.title
-                        .alignment,
-                    fontWeight:
-                      data.customization[0].frequentlyBoughtTogether.title
-                        .titleBold,
-                  }}
+                    color: data.customization[0]?.frequentlyBoughtTogether?.title?.color ,
+                    fontSize: (data.customization[0]?.frequentlyBoughtTogether?.title?.fontSize) + "px", 
+                    textAlign: data.customization[0]?.frequentlyBoughtTogether?.title?.alignment ?? 'left', 
+                    fontWeight: data.customization[0]?.frequentlyBoughtTogether?.title?.titleBold ?? 'normal',
+                  }}                  
                 >
                   {data?.title}
                 </h4>
                 <p
                   style={{
                     ...fontFamily,
-                    color:
-                      data.customization[0].frequentlyBoughtTogether.title
-                        .descriptionColor,
-                    fontSize:
-                      data.customization[0].frequentlyBoughtTogether.title
-                        .descriptionFontSize + "px",
-                    fontWeight:
-                      data.customization[0].frequentlyBoughtTogether.title
-                        .descriptionBold,
-                    textAlign:
-                      data.customization[0].frequentlyBoughtTogether.title
-                        .alignment,
-                  }}
+                    color: data.customization[0]?.frequentlyBoughtTogether?.title?.descriptionColor ,
+                    fontSize: (data.customization[0]?.frequentlyBoughtTogether?.title?.descriptionFontSize) + "px",
+                    fontWeight: data.customization[0]?.frequentlyBoughtTogether?.title?.descriptionBold,
+                    textAlign: data.customization[0]?.frequentlyBoughtTogether?.title?.alignment,
+                  }}                  
                 >
                   {data?.description}
                 </p>
@@ -176,10 +150,8 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                   <div
                     className="sd-bundle-product-detail"
                     style={{
-                      backgroundColor:
-                        data.customization[0].frequentlyBoughtTogether
-                          .productDetails.productDetailsBox.backgroundColor,
-                    }}
+                      backgroundColor: data.customization[0]?.frequentlyBoughtTogether?.productDetails?.productDetailsBox?.backgroundColor
+                    }}                    
                   >
                     <div className="sd-bundle-product-inner">
                       <div className="checkbox-wrapper-18">
@@ -191,13 +163,9 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                       <div
                         className="sd-bundle-product-img"
                         style={{
-                          borderColor:
-                            data.customization[0].frequentlyBoughtTogether
-                              .productDetails.image.borderColor,
-                          borderRadius:
-                            data.customization[0].frequentlyBoughtTogether
-                              .productDetails.image.borderRadius + "px",
-                        }}
+                          borderColor: data.customization[0]?.frequentlyBoughtTogether?.productDetails?.image?.borderColor ,
+                          borderRadius: (data.customization[0]?.frequentlyBoughtTogether?.productDetails?.image?.borderRadius ) + "px", 
+                        }}                        
                       >
                         <img
                           src={
@@ -213,26 +181,18 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                         <h5
                           style={{
                             ...fontFamily,
-                            color:
-                              data.customization[0].frequentlyBoughtTogether
-                                .productDetails.title.color,
-                            fontSize:
-                              data.customization[0].frequentlyBoughtTogether
-                                .productDetails.title.fontSize + "px",
-                          }}
+                            color: data.customization[0]?.frequentlyBoughtTogether?.productDetails?.title?.color ,
+                            fontSize: (data.customization[0]?.frequentlyBoughtTogether?.productDetails?.title?.fontSize) + "px",
+                          }}                          
                         >
                           {item.title}
                         </h5>
                         <h4
                           style={{
                             ...fontFamily,
-                            color:
-                              data.customization[0].frequentlyBoughtTogether
-                                .productDetails.price.color,
-                            fontSize:
-                              data.customization[0].frequentlyBoughtTogether
-                                .productDetails.price.fontSize + "px",
-                          }}
+                            color: data.customization[0]?.frequentlyBoughtTogether?.productDetails?.price?.color , 
+                            fontSize: (data.customization[0]?.frequentlyBoughtTogether?.productDetails?.price?.fontSize) + "px", 
+                          }}                          
                         >
                           {showAmountWithCurrency(
                             item.variants[0]?.price,
@@ -242,16 +202,10 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                         <select
                           style={{
                             ...fontFamily,
-                            backgroundColor:
-                              data.customization[0].frequentlyBoughtTogether
-                                .productDetails.variantSelector.backgroundColor,
-                            color:
-                              data.customization[0].frequentlyBoughtTogether
-                                .productDetails.variantSelector.color,
-                            width:
-                              data.customization[0].frequentlyBoughtTogether
-                                .productDetails.variantSelector.width + "px",
-                          }}
+                            backgroundColor: data.customization[0]?.frequentlyBoughtTogether?.productDetails?.variantSelector?.backgroundColor ,
+                            color: data.customization[0]?.frequentlyBoughtTogether?.productDetails?.variantSelector?.color,
+                            width: (data.customization[0]?.frequentlyBoughtTogether?.productDetails?.variantSelector?.width) + "px",
+                          }}                          
                           disabled
                         >
                           <option style={{ ...fontFamily }}>Medium</option>
@@ -263,22 +217,16 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                       <h6
                         style={{
                           ...fontFamily,
-                          color:
-                            data.customization[0].frequentlyBoughtTogether
-                              .productDetails.quantities.color,
-                          fontSize:
-                            data.customization[0].frequentlyBoughtTogether
-                              .productDetails.quantities.size + "px",
-                        }}
+                          color: data.customization[0]?.frequentlyBoughtTogether?.productDetails?.quantities?.color,
+                          fontSize: (data.customization[0]?.frequentlyBoughtTogether?.productDetails?.quantities?.size) + "px",
+                        }}                        
                       >
                         Qty:{" "}
                         <span
                           style={{
                             ...fontFamily,
-                            fontSize:
-                              data.customization[0].frequentlyBoughtTogether
-                                .productDetails.quantities.size + "px",
-                          }}
+                            fontSize: (data.customization[0]?.frequentlyBoughtTogether?.productDetails?.quantities?.size) + "px", 
+                          }}                          
                         >
                           1
                         </span>
@@ -296,10 +244,7 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                       >
                         <path
                           d="M6.98047 17.3842V0.580255H10.3239V17.3842H6.98047ZM0.256392 10.6477V7.30433H17.0604V10.6477H0.256392Z"
-                          fill={
-                            data.customization[0].frequentlyBoughtTogether
-                              .productDetails.plusColor
-                          }
+                          fill={data.customization[0]?.frequentlyBoughtTogether?.productDetails?.plusColor }
                         />
                       </svg>
                     </div>
@@ -314,26 +259,18 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                   <h4
                     style={{
                       ...fontFamily,
-                      color:
-                        data.customization[0].frequentlyBoughtTogether
-                          .totalSection.color,
-                      fontSize:
-                        data.customization[0].frequentlyBoughtTogether
-                          .totalSection.fontSize + "px",
-                    }}
+                      color: data.customization[0]?.frequentlyBoughtTogether?.totalSection?.color,
+                      fontSize: (data.customization[0]?.frequentlyBoughtTogether?.totalSection?.fontSize) + "px",
+                    }}                    
                   >
                     Total
                   </h4>
                   <p
                     style={{
                       ...fontFamily,
-                      color:
-                        data.customization[0].frequentlyBoughtTogether
-                          .totalSection.discountMessage.color,
-                      fontSize:
-                        data.customization[0].frequentlyBoughtTogether
-                          .totalSection.discountMessage.size + "px",
-                    }}
+                      color: data.customization[0]?.frequentlyBoughtTogether?.totalSection?.discountMessage?.color ,
+                      fontSize: (data.customization[0]?.frequentlyBoughtTogether?.totalSection?.discountMessage?.size ) + "px",
+                    }}                    
                   >
                     Discount will be applied at checkout
                   </p>
@@ -342,28 +279,20 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                   <h4
                     style={{
                       ...fontFamily,
-                      color:
-                        data.customization[0].frequentlyBoughtTogether
-                          .totalSection.finalPrice.color,
-                      fontSize:
-                        data.customization[0].frequentlyBoughtTogether
-                          .totalSection.finalPrice.fontSize + "px",
-                    }}
+                      color: data.customization[0]?.frequentlyBoughtTogether?.totalSection?.finalPrice?.color ,
+                      fontSize: (data.customization[0]?.frequentlyBoughtTogether?.totalSection?.finalPrice?.fontSize ) + "px",
+                    }}                    
                   >
                     {showAmountWithCurrency(endPrice, currency)}{" "}
                   </h4>
                   {(data.bundleDetail.discountType == "percent" ||
                     data.bundleDetail.discountType == "fixed") && (
                     <h6
-                      style={{
-                        ...fontFamily,
-                        color:
-                          data.customization[0].frequentlyBoughtTogether
-                            .totalSection.originalPrice.color,
-                        fontSize:
-                          data.customization[0].frequentlyBoughtTogether
-                            .totalSection.originalPrice.fontSize + "px",
-                      }}
+                    style={{
+                      ...fontFamily,
+                      color: data.customization[0]?.frequentlyBoughtTogether?.totalSection?.originalPrice?.color , 
+                      fontSize: (data.customization[0]?.frequentlyBoughtTogether?.totalSection?.originalPrice?.fontSize ) + "px", 
+                    }}                    
                     >
                       {showAmountWithCurrency(mrp, currency)}
                     </h6>
@@ -390,22 +319,12 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                 <button
                   style={{
                     ...fontFamily,
-                    color:
-                      data.customization[0].frequentlyBoughtTogether.button
-                        .color,
-                    fontSize:
-                      data.customization[0].frequentlyBoughtTogether.button
-                        .fontSize + "px",
-                    backgroundColor:
-                      data.customization[0].frequentlyBoughtTogether.button
-                        .backgroundColor,
-                    borderColor:
-                      data.customization[0].frequentlyBoughtTogether.button
-                        .borderColor,
-                    borderRadius:
-                      data.customization[0].frequentlyBoughtTogether.button
-                        .borderRadius + "px",
-                  }}
+                    color: data.customization[0]?.frequentlyBoughtTogether?.button?.color ,
+                    fontSize: (data.customization[0]?.frequentlyBoughtTogether?.button?.fontSize ) + "px",
+                    backgroundColor: data.customization[0]?.frequentlyBoughtTogether?.button?.backgroundColor ,
+                    borderColor: data.customization[0]?.frequentlyBoughtTogether?.button?.borderColor,
+                    borderRadius: (data.customization[0]?.frequentlyBoughtTogether?.button?.borderRadius) + "px"
+                  }}                  
                 >
                   Add to Cart
                 </button>
@@ -418,37 +337,27 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
             <div
               className="sd-bundle-main-column"
               style={{
-                backgroundColor:
-                  data.customization[0].frequentlyBoughtTogether.box
-                    .backgroundColor,
-                borderColor:
-                  data.customization[0].frequentlyBoughtTogether.box
-                    .borderColor,
-                borderRadius:
-                  data.customization[0].frequentlyBoughtTogether.box
-                    .borderRadius + "px",
-              }}
+                backgroundColor: data.customization[0]?.frequentlyBoughtTogether?.box?.backgroundColor,
+                borderColor: data.customization[0]?.frequentlyBoughtTogether?.box?.borderColor,
+                borderRadius: (data.customization[0]?.frequentlyBoughtTogether?.box?.borderRadius ) + "px",
+              }}              
             >
               {(data.bundleDetail.discountType === "percent" ||
                 data.bundleDetail.discountType === "fixed") &&
-                data.customization[0].frequentlyBoughtTogether.optionalBadge
+                data?.customization[0]?.frequentlyBoughtTogether?.optionalBadge
                   .enable && (
                   <div
                     className="sd-badges-part"
                     style={{
-                      backgroundColor:
-                        data.customization[0].frequentlyBoughtTogether
-                          .optionalBadge.background,
-                    }}
+                      backgroundColor: data.customization[0]?.frequentlyBoughtTogether?.optionalBadge?.background,
+                    }}                    
                   >
                     <span
                       style={{
                         ...fontFamily,
-                        color:
-                          data.customization[0].frequentlyBoughtTogether
-                            .optionalBadge.color,
-                        fontSize: `${data.customization[0].frequentlyBoughtTogether.optionalBadge.color.fontSize}px`,
-                      }}
+                        color: data.customization[0]?.frequentlyBoughtTogether?.optionalBadge?.color,
+                        fontSize: `${data.customization[0]?.frequentlyBoughtTogether?.optionalBadge?.fontSize}px`,
+                      }}                      
                     >
                       {data.bundleDetail.discountType === "free"
                         ? "Free"
@@ -463,43 +372,27 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                   </div>
                 )}
               <div
-                className={`sd-bundle-text-detail ${data.customization[0].frequentlyBoughtTogether.optionalBadge.enable == true ? "extra-padding" : ""}`}
+               className={`sd-bundle-text-detail ${data.customization[0]?.frequentlyBoughtTogether?.optionalBadge?.enable ? "extra-padding" : ""}`}
               >
                 <h4
-                  style={{
-                    ...fontFamily,
-                    color:
-                      data.customization[0].frequentlyBoughtTogether.title
-                        .color,
-                    fontSize:
-                      data.customization[0].frequentlyBoughtTogether.title
-                        .fontSize + "px",
-                    textAlign:
-                      data.customization[0].frequentlyBoughtTogether.title
-                        .alignment,
-                    fontWeight:
-                      data.customization[0].frequentlyBoughtTogether.title
-                        .titleBold,
-                  }}
+                 style={{
+                  ...fontFamily,
+                  color: data.customization[0]?.frequentlyBoughtTogether?.title?.color,
+                  fontSize: `${data.customization[0]?.frequentlyBoughtTogether?.title?.fontSize}px`,
+                  textAlign: data.customization[0]?.frequentlyBoughtTogether?.title?.alignment,
+                  fontWeight: data.customization[0]?.frequentlyBoughtTogether?.title?.titleBold,
+                }}                
                 >
                   {data?.title}
                 </h4>
                 <p
                   style={{
                     ...fontFamily,
-                    color:
-                      data.customization[0].frequentlyBoughtTogether.title
-                        .descriptionColor,
-                    fontSize:
-                      data.customization[0].frequentlyBoughtTogether.title
-                        .descriptionFontSize + "px",
-                    fontWeight:
-                      data.customization[0].frequentlyBoughtTogether.title
-                        .descriptionBold,
-                    textAlign:
-                      data.customization[0].frequentlyBoughtTogether.title
-                        .alignment,
-                  }}
+                    color: data.customization[0]?.frequentlyBoughtTogether?.title?.descriptionColor,
+                    fontSize: `${data.customization[0]?.frequentlyBoughtTogether?.title?.descriptionFontSize}px`,
+                    fontWeight: data.customization[0]?.frequentlyBoughtTogether?.title?.descriptionBold,
+                    textAlign: data.customization[0]?.frequentlyBoughtTogether?.title?.alignment,
+                  }}                  
                 >
                   {data?.description}
                 </p>
@@ -509,10 +402,8 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                   <div
                     className="sd-bundle-product-detail"
                     style={{
-                      backgroundColor:
-                        data.customization[0].frequentlyBoughtTogether
-                          .productDetails.productDetailsBox.backgroundColor,
-                    }}
+                      backgroundColor: data.customization[0]?.frequentlyBoughtTogether?.productDetails?.productDetailsBox?.backgroundColor,
+                    }}                    
                   >
                     <div className="sd-bundle-product-inner">
                       <div className="checkbox-wrapper-18">
@@ -524,13 +415,9 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                       <div
                         className="sd-bundle-product-img"
                         style={{
-                          borderColor:
-                            data.customization[0].frequentlyBoughtTogether
-                              .productDetails.image.borderColor,
-                          borderRadius:
-                            data.customization[0].frequentlyBoughtTogether
-                              .productDetails.image.borderRadius + "px",
-                        }}
+                          borderColor: data.customization[0]?.frequentlyBoughtTogether?.productDetails?.image?.borderColor,
+                          borderRadius: data.customization[0]?.frequentlyBoughtTogether?.productDetails?.image?.borderRadius + "px",
+                        }}                        
                       >
                         <img src={pic} width="80" height="80" />
                       </div>
@@ -538,13 +425,9 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                         <h5
                           style={{
                             ...fontFamily,
-                            color:
-                              data.customization[0].frequentlyBoughtTogether
-                                .productDetails.title.color,
-                            fontSize:
-                              data.customization[0].frequentlyBoughtTogether
-                                .productDetails.title.fontSize + "px",
-                          }}
+                            color: data.customization[0]?.frequentlyBoughtTogether?.productDetails?.title?.color,
+                            fontSize: data.customization[0]?.frequentlyBoughtTogether?.productDetails?.title?.fontSize + "px",
+                          }}                          
                         >
                           {index == 0
                             ? "Main Product"
@@ -553,13 +436,9 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                         <h4
                           style={{
                             ...fontFamily,
-                            color:
-                              data.customization[0].frequentlyBoughtTogether
-                                .productDetails.price.color,
-                            fontSize:
-                              data.customization[0].frequentlyBoughtTogether
-                                .productDetails.price.fontSize + "px",
-                          }}
+                            color: data.customization[0]?.frequentlyBoughtTogether?.productDetails?.price?.color,
+                            fontSize: data.customization[0]?.frequentlyBoughtTogether?.productDetails?.price?.fontSize + "px",
+                          }}                          
                         >
                           {showAmountWithCurrency(
                             dummyPricesForAllProductsType[index],
@@ -570,15 +449,12 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                           style={{
                             ...fontFamily,
                             backgroundColor:
-                              data.customization[0].frequentlyBoughtTogether
-                                .productDetails.variantSelector.backgroundColor,
+                              data.customization[0]?.frequentlyBoughtTogether?.productDetails?.variantSelector?.backgroundColor,
                             color:
-                              data.customization[0].frequentlyBoughtTogether
-                                .productDetails.variantSelector.color,
+                              data.customization[0]?.frequentlyBoughtTogether?.productDetails?.variantSelector?.color,
                             width:
-                              data.customization[0].frequentlyBoughtTogether
-                                .productDetails.variantSelector.width + "px",
-                          }}
+                              data.customization[0]?.frequentlyBoughtTogether?.productDetails?.variantSelector?.width + "px",
+                          }}                          
                           disabled
                         >
                           <option style={{ ...fontFamily }}>Medium</option>
@@ -591,21 +467,18 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                         style={{
                           ...fontFamily,
                           color:
-                            data.customization[0].frequentlyBoughtTogether
-                              .productDetails.quantities.color,
+                            data.customization[0]?.frequentlyBoughtTogether?.productDetails?.quantities?.color,
                           fontSize:
-                            data.customization[0].frequentlyBoughtTogether
-                              .productDetails.quantities.size + "px",
-                        }}
+                            data.customization[0]?.frequentlyBoughtTogether?.productDetails?.quantities?.size + "px",
+                        }}                        
                       >
                         Qty:{" "}
                         <span
                           style={{
                             ...fontFamily,
                             fontSize:
-                              data.customization[0].frequentlyBoughtTogether
-                                .productDetails.quantities.size + "px",
-                          }}
+                              data.customization[0]?.frequentlyBoughtTogether?.productDetails?.quantities?.size + "px",
+                          }}                          
                         >
                           1
                         </span>
@@ -624,9 +497,8 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                         <path
                           d="M6.98047 17.3842V0.580255H10.3239V17.3842H6.98047ZM0.256392 10.6477V7.30433H17.0604V10.6477H0.256392Z"
                           fill={
-                            data.customization[0].frequentlyBoughtTogether
-                              .productDetails.plusColor
-                          }
+                            data.customization[0]?.frequentlyBoughtTogether?.productDetails?.plusColor
+                          }                          
                         />
                       </svg>
                     </div>
@@ -641,13 +513,9 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                   <h4
                     style={{
                       ...fontFamily,
-                      color:
-                        data.customization[0].frequentlyBoughtTogether
-                          .totalSection.color,
-                      fontSize:
-                        data.customization[0].frequentlyBoughtTogether
-                          .totalSection.fontSize + "px",
-                    }}
+                      color: data.customization[0]?.frequentlyBoughtTogether?.totalSection?.color,
+                      fontSize: data.customization[0]?.frequentlyBoughtTogether?.totalSection?.fontSize + "px",
+                    }}                    
                   >
                     {" "}
                     Total
@@ -655,13 +523,9 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                   <p
                     style={{
                       ...fontFamily,
-                      color:
-                        data.customization[0].frequentlyBoughtTogether
-                          .totalSection.discountMessage.color,
-                      fontSize:
-                        data.customization[0].frequentlyBoughtTogether
-                          .totalSection.discountMessage.size + "px",
-                    }}
+                      color: data.customization[0]?.frequentlyBoughtTogether?.totalSection?.discountMessage?.color,
+                      fontSize: data.customization[0]?.frequentlyBoughtTogether?.totalSection?.discountMessage?.size + "px",
+                    }}                    
                   >
                     Discount will be applied at checkout
                   </p>
@@ -670,13 +534,9 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                   <h4
                     style={{
                       ...fontFamily,
-                      color:
-                        data.customization[0].frequentlyBoughtTogether
-                          .totalSection.finalPrice.color,
-                      fontSize:
-                        data.customization[0].frequentlyBoughtTogether
-                          .totalSection.finalPrice.fontSize + "px",
-                    }}
+                      color: data.customization[0]?.frequentlyBoughtTogether?.totalSection?.finalPrice?.color,
+                      fontSize: data.customization[0]?.frequentlyBoughtTogether?.totalSection?.finalPrice?.fontSize + "px",
+                    }}                    
                   >
                     {" "}
                     {showAmountWithCurrency(
@@ -687,15 +547,11 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                   {(data.bundleDetail.discountType == "percent" ||
                     data.bundleDetail.discountType == "fixed") && (
                     <h6
-                      style={{
-                        ...fontFamily,
-                        color:
-                          data.customization[0].frequentlyBoughtTogether
-                            .totalSection.originalPrice.color,
-                        fontSize:
-                          data.customization[0].frequentlyBoughtTogether
-                            .totalSection.originalPrice.fontSize + "px",
-                      }}
+                    style={{
+                      ...fontFamily,
+                      color: data.customization[0]?.frequentlyBoughtTogether?.totalSection?.originalPrice?.color,
+                      fontSize: data.customization[0]?.frequentlyBoughtTogether?.totalSection?.originalPrice?.fontSize + "px",
+                    }}                    
                     >
                       {showAmountWithCurrency(mrpForAllProductsType, currency)}
                     </h6>
@@ -720,24 +576,14 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
               )}
               <div className="sd-bundle-addto-cart">
                 <button
-                  style={{
-                    ...fontFamily,
-                    color:
-                      data.customization[0].frequentlyBoughtTogether.button
-                        .color,
-                    fontSize:
-                      data.customization[0].frequentlyBoughtTogether.button
-                        .fontSize + "px",
-                    backgroundColor:
-                      data.customization[0].frequentlyBoughtTogether.button
-                        .backgroundColor,
-                    borderColor:
-                      data.customization[0].frequentlyBoughtTogether.button
-                        .borderColor,
-                    borderRadius:
-                      data.customization[0].frequentlyBoughtTogether.button
-                        .borderRadius + "px",
-                  }}
+                 style={{
+                  ...fontFamily,
+                  color: data.customization[0]?.frequentlyBoughtTogether?.button?.color,
+                  fontSize: data.customization[0]?.frequentlyBoughtTogether?.button?.fontSize + "px",
+                  backgroundColor: data.customization[0]?.frequentlyBoughtTogether?.button?.backgroundColor,
+                  borderColor: data.customization[0]?.frequentlyBoughtTogether?.button?.borderColor,
+                  borderRadius: data.customization[0]?.frequentlyBoughtTogether?.button?.borderRadius + "px",
+                }}                
                 >
                   Add to Cart
                 </button>
@@ -755,37 +601,27 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
             <div
               className="sd-bundle-main-column"
               style={{
-                backgroundColor:
-                  data.customization[0].frequentlyBoughtTogether.box
-                    .backgroundColor,
-                borderColor:
-                  data.customization[0].frequentlyBoughtTogether.box
-                    .borderColor,
-                borderRadius:
-                  data.customization[0].frequentlyBoughtTogether.box
-                    .borderRadius + "px",
-              }}
+                backgroundColor: data.customization[0]?.frequentlyBoughtTogether?.box?.backgroundColor,
+                borderColor: data.customization[0]?.frequentlyBoughtTogether?.box?.borderColor,
+                borderRadius: data.customization[0]?.frequentlyBoughtTogether?.box?.borderRadius + "px",
+              }}              
             >
               {(data.bundleDetail.discountType === "percent" ||
                 data.bundleDetail.discountType === "fixed") &&
-                data.customization[0].frequentlyBoughtTogether.optionalBadge
-                  .enable && (
+                data.customization[0]?.frequentlyBoughtTogether?.optionalBadge?.enable && (
                   <div
                     className="sd-badges-part"
                     style={{
                       backgroundColor:
-                        data.customization[0].frequentlyBoughtTogether
-                          .optionalBadge.background,
-                    }}
+                        data.customization[0]?.frequentlyBoughtTogether?.optionalBadge?.background,
+                    }}                    
                   >
                     <span
                       style={{
                         ...fontFamily,
-                        color:
-                          data.customization[0].frequentlyBoughtTogether
-                            .optionalBadge.color,
-                        fontSize: `${data.customization[0].frequentlyBoughtTogether.optionalBadge.color.fontSize}px`,
-                      }}
+                        color: data.customization[0]?.frequentlyBoughtTogether?.optionalBadge?.color,
+                        fontSize: `${data.customization[0]?.frequentlyBoughtTogether?.optionalBadge?.color?.fontSize}px`,
+                      }}                      
                     >
                       {data.bundleDetail.discountType === "free"
                         ? "Free"
@@ -800,43 +636,29 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                   </div>
                 )}
               <div
-                className={`sd-bundle-text-detail ${data.customization[0].frequentlyBoughtTogether.optionalBadge.enable == true ? "extra-padding" : ""}`}
+                className={`sd-bundle-text-detail ${
+                  data.customization[0]?.frequentlyBoughtTogether?.optionalBadge?.enable ? "extra-padding" : ""
+                }`}                
               >
                 <h4
                   style={{
                     ...fontFamily,
-                    color:
-                      data.customization[0].frequentlyBoughtTogether.title
-                        .color,
-                    fontSize:
-                      data.customization[0].frequentlyBoughtTogether.title
-                        .fontSize + "px",
-                    textAlign:
-                      data.customization[0].frequentlyBoughtTogether.title
-                        .alignment,
-                    fontWeight:
-                      data.customization[0].frequentlyBoughtTogether.title
-                        .titleBold,
-                  }}
+                    color: data.customization[0]?.frequentlyBoughtTogether?.title?.color,
+                    fontSize: data.customization[0]?.frequentlyBoughtTogether?.title?.fontSize + "px",
+                    textAlign: data.customization[0]?.frequentlyBoughtTogether?.title?.alignment,
+                    fontWeight: data.customization[0]?.frequentlyBoughtTogether?.title?.titleBold,
+                  }}                  
                 >
                   {data?.title}
                 </h4>
                 <p
                   style={{
                     ...fontFamily,
-                    color:
-                      data.customization[0].frequentlyBoughtTogether.title
-                        .descriptionColor,
-                    fontSize:
-                      data.customization[0].frequentlyBoughtTogether.title
-                        .descriptionFontSize + "px",
-                    fontWeight:
-                      data.customization[0].frequentlyBoughtTogether.title
-                        .descriptionBold,
-                    textAlign:
-                      data.customization[0].frequentlyBoughtTogether.title
-                        .alignment,
-                  }}
+                    color: data.customization[0]?.frequentlyBoughtTogether?.title?.descriptionColor,
+                    fontSize: data.customization[0]?.frequentlyBoughtTogether?.title?.descriptionFontSize + "px",
+                    fontWeight: data.customization[0]?.frequentlyBoughtTogether?.title?.descriptionBold,
+                    textAlign: data.customization[0]?.frequentlyBoughtTogether?.title?.alignment,
+                  }}                  
                 >
                   {data?.description}
                 </p>
@@ -848,13 +670,9 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                           <div
                             className="sd-selected-product-itemImg"
                             style={{
-                              borderColor:
-                                data.customization[0].frequentlyBoughtTogether
-                                  .productDetails.image.borderColor,
-                              borderRadius:
-                                data.customization[0].frequentlyBoughtTogether
-                                  .productDetails.image.borderRadius + "px",
-                            }}
+                              borderColor: data.customization[0]?.frequentlyBoughtTogether?.productDetails?.image?.borderColor,
+                              borderRadius: data.customization[0]?.frequentlyBoughtTogether?.productDetails?.image?.borderRadius + "px",
+                            }}                            
                           >
                             <img
                               src={
@@ -877,10 +695,8 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                                 <path
                                   d="M6.98047 17.3842V0.580255H10.3239V17.3842H6.98047ZM0.256392 10.6477V7.30433H17.0604V10.6477H0.256392Z"
                                   fill={
-                                    data.customization[0]
-                                      .frequentlyBoughtTogether.productDetails
-                                      .plusColor
-                                  }
+                                    data?.customization?.[0]?.frequentlyBoughtTogether?.productDetails?.plusColor
+                                }                                
                                 />
                               </svg>
                             </div>
@@ -897,9 +713,8 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                     className="sd-bundle-product-detail"
                     style={{
                       backgroundColor:
-                        data.customization[0].frequentlyBoughtTogether
-                          .productDetails.productDetailsBox.backgroundColor,
-                    }}
+                          data?.customization?.[0]?.frequentlyBoughtTogether?.productDetails?.productDetailsBox?.backgroundColor,
+                  }}                  
                   >
                     <div className="sd-bundle-product-inner">
                       <div className="checkbox-wrapper-18">
@@ -913,12 +728,10 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                           style={{
                             ...fontFamily,
                             color:
-                              data.customization[0].frequentlyBoughtTogether
-                                .productDetails.title.color,
+                                data?.customization?.[0]?.frequentlyBoughtTogether?.productDetails?.title?.color,
                             fontSize:
-                              data.customization[0].frequentlyBoughtTogether
-                                .productDetails.title.fontSize + "px",
-                          }}
+                                `${data?.customization?.[0]?.frequentlyBoughtTogether?.productDetails?.title?.fontSize || 0}px`,
+                        }}                        
                         >
                           {item.title}
                         </h5>
@@ -926,12 +739,10 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                           style={{
                             ...fontFamily,
                             color:
-                              data.customization[0].frequentlyBoughtTogether
-                                .productDetails.price.color,
+                                data?.customization?.[0]?.frequentlyBoughtTogether?.productDetails?.price?.color,
                             fontSize:
-                              data.customization[0].frequentlyBoughtTogether
-                                .productDetails.price.fontSize + "px",
-                          }}
+                                `${data?.customization?.[0]?.frequentlyBoughtTogether?.productDetails?.price?.fontSize || 0}px`,
+                        }}                        
                         >
                           {showAmountWithCurrency(
                             item.variants[0]?.price,
@@ -942,15 +753,12 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                           style={{
                             ...fontFamily,
                             backgroundColor:
-                              data.customization[0].frequentlyBoughtTogether
-                                .productDetails.variantSelector.backgroundColor,
+                                data?.customization?.[0]?.frequentlyBoughtTogether?.productDetails?.variantSelector?.backgroundColor,
                             color:
-                              data.customization[0].frequentlyBoughtTogether
-                                .productDetails.variantSelector.color,
+                                data?.customization?.[0]?.frequentlyBoughtTogether?.productDetails?.variantSelector?.color,
                             width:
-                              data.customization[0].frequentlyBoughtTogether
-                                .productDetails.variantSelector.width + "px",
-                          }}
+                                `${data?.customization?.[0]?.frequentlyBoughtTogether?.productDetails?.variantSelector?.width || 0}px`,
+                        }}                        
                           disabled
                         >
                           <option style={{ ...fontFamily }}>Medium</option>
@@ -963,21 +771,18 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                         style={{
                           ...fontFamily,
                           color:
-                            data.customization[0].frequentlyBoughtTogether
-                              .productDetails.quantities.color,
+                              data?.customization?.[0]?.frequentlyBoughtTogether?.productDetails?.quantities?.color,
                           fontSize:
-                            data.customization[0].frequentlyBoughtTogether
-                              .productDetails.quantities.size + "px",
-                        }}
+                              `${data?.customization?.[0]?.frequentlyBoughtTogether?.productDetails?.quantities?.size || 0}px`,
+                      }}                      
                       >
                         Qty:{" "}
                         <span
                           style={{
                             ...fontFamily,
                             fontSize:
-                              data.customization[0].frequentlyBoughtTogether
-                                .productDetails.quantities.size + "px",
-                          }}
+                                `${data?.customization?.[0]?.frequentlyBoughtTogether?.productDetails?.quantities?.size || 0}px`,
+                        }}                        
                         >
                           1
                         </span>
@@ -996,9 +801,8 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                         <path
                           d="M6.98047 17.3842V0.580255H10.3239V17.3842H6.98047ZM0.256392 10.6477V7.30433H17.0604V10.6477H0.256392Z"
                           fill={
-                            data.customization[0].frequentlyBoughtTogether
-                              .productDetails.plusColor
-                          }
+                            data?.customization?.[0]?.frequentlyBoughtTogether?.productDetails?.plusColor
+                        }                        
                         />
                       </svg>
                     </div>
@@ -1014,55 +818,47 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                     style={{
                       ...fontFamily,
                       color:
-                        data.customization[0].frequentlyBoughtTogether
-                          .totalSection.color,
+                          data?.customization?.[0]?.frequentlyBoughtTogether?.totalSection?.color,
                       fontSize:
-                        data.customization[0].frequentlyBoughtTogether
-                          .totalSection.fontSize + "px",
-                    }}
+                          `${data?.customization?.[0]?.frequentlyBoughtTogether?.totalSection?.fontSize || 0}px`,
+                  }}                  
                   >
                     Total
                   </h4>
                   <p
-                    style={{
-                      ...fontFamily,
-                      color:
-                        data.customization[0].frequentlyBoughtTogether
-                          .totalSection.discountMessage.color,
-                      fontSize:
-                        data.customization[0].frequentlyBoughtTogether
-                          .totalSection.discountMessage.size + "px",
-                    }}
+                   style={{
+                    ...fontFamily,
+                    color:
+                        data?.customization?.[0]?.frequentlyBoughtTogether?.totalSection?.discountMessage?.color,
+                    fontSize:
+                        `${data?.customization?.[0]?.frequentlyBoughtTogether?.totalSection?.discountMessage?.size || 0}px`,
+                }}                
                   >
                     Discount will be applied at checkout
                   </p>
                 </div>
                 <div className="sd-total-amount">
                   <h4
-                    style={{
-                      ...fontFamily,
-                      color:
-                        data.customization[0].frequentlyBoughtTogether
-                          .totalSection.finalPrice.color,
-                      fontSize:
-                        data.customization[0].frequentlyBoughtTogether
-                          .totalSection.finalPrice.fontSize + "px",
-                    }}
+                   style={{
+                    ...fontFamily,
+                    color:
+                        data?.customization?.[0]?.frequentlyBoughtTogether?.totalSection?.finalPrice?.color,
+                    fontSize:
+                        `${data?.customization?.[0]?.frequentlyBoughtTogether?.totalSection?.finalPrice?.fontSize || 0}px`,
+                }}                
                   >
                     {showAmountWithCurrency(endPrice, currency)}{" "}
                   </h4>
                   {(data.bundleDetail.discountType == "percent" ||
                     data.bundleDetail.discountType == "fixed") && (
                     <h6
-                      style={{
-                        ...fontFamily,
-                        color:
-                          data.customization[0].frequentlyBoughtTogether
-                            .totalSection.originalPrice.color,
-                        fontSize:
-                          data.customization[0].frequentlyBoughtTogether
-                            .totalSection.originalPrice.fontSize + "px",
-                      }}
+                    style={{
+                      ...fontFamily,
+                      color:
+                          data?.customization?.[0]?.frequentlyBoughtTogether?.totalSection?.originalPrice?.color,
+                      fontSize:
+                          `${data?.customization?.[0]?.frequentlyBoughtTogether?.totalSection?.originalPrice?.fontSize || 0}px`,
+                  }}                  
                     >
                       {showAmountWithCurrency(mrp, currency)}
                     </h6>
@@ -1090,21 +886,16 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                   style={{
                     ...fontFamily,
                     color:
-                      data.customization[0].frequentlyBoughtTogether.button
-                        .color,
+                        data?.customization?.[0]?.frequentlyBoughtTogether?.button?.color,
                     fontSize:
-                      data.customization[0].frequentlyBoughtTogether.button
-                        .fontSize + "px",
+                        `${data?.customization?.[0]?.frequentlyBoughtTogether?.button?.fontSize || 0}px`,
                     backgroundColor:
-                      data.customization[0].frequentlyBoughtTogether.button
-                        .backgroundColor,
+                        data?.customization?.[0]?.frequentlyBoughtTogether?.button?.backgroundColor,
                     borderColor:
-                      data.customization[0].frequentlyBoughtTogether.button
-                        .borderColor,
+                        data?.customization?.[0]?.frequentlyBoughtTogether?.button?.borderColor,
                     borderRadius:
-                      data.customization[0].frequentlyBoughtTogether.button
-                        .borderRadius + "px",
-                  }}
+                        `${data?.customization?.[0]?.frequentlyBoughtTogether?.button?.borderRadius || 0}px`,
+                }}                
                 >
                   Add to Cart
                 </button>
@@ -1118,36 +909,31 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
               className="sd-bundle-main-column"
               style={{
                 backgroundColor:
-                  data.customization[0].frequentlyBoughtTogether.box
-                    .backgroundColor,
+                    data?.customization?.[0]?.frequentlyBoughtTogether?.box?.backgroundColor,
                 borderColor:
-                  data.customization[0].frequentlyBoughtTogether.box
-                    .borderColor,
+                    data?.customization?.[0]?.frequentlyBoughtTogether?.box?.borderColor,
                 borderRadius:
-                  data.customization[0].frequentlyBoughtTogether.box
-                    .borderRadius + "px",
-              }}
+                    `${data?.customization?.[0]?.frequentlyBoughtTogether?.box?.borderRadius || 0}px`,
+            }}            
             >
               {(data.bundleDetail.discountType === "percent" ||
                 data.bundleDetail.discountType === "fixed") &&
-                data.customization[0].frequentlyBoughtTogether.optionalBadge
-                  .enable && (
+                data?.customization[0]?.frequentlyBoughtTogether?.optionalBadge
+                  ?.enable && (
                   <div
                     className="sd-badges-part"
                     style={{
                       backgroundColor:
-                        data.customization[0].frequentlyBoughtTogether
-                          .optionalBadge.background,
-                    }}
+                          data?.customization?.[0]?.frequentlyBoughtTogether?.optionalBadge?.background,
+                  }}                  
                   >
                     <span
                       style={{
                         ...fontFamily,
                         color:
-                          data.customization[0].frequentlyBoughtTogether
-                            .optionalBadge.color,
-                        fontSize: `${data.customization[0].frequentlyBoughtTogether.optionalBadge.color.fontSize}px`,
-                      }}
+                            data?.customization?.[0]?.frequentlyBoughtTogether?.optionalBadge?.color,
+                        fontSize: `${data?.customization?.[0]?.frequentlyBoughtTogether?.optionalBadge?.fontSize || 0}px`,
+                    }}                    
                     >
                       {data.bundleDetail.discountType === "free"
                         ? "Free"
@@ -1162,43 +948,35 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                   </div>
                 )}
               <div
-                className={`sd-bundle-text-detail ${data.customization[0].frequentlyBoughtTogether.optionalBadge.enable == true ? "extra-padding" : ""}`}
+                className={`sd-bundle-text-detail ${data?.customization?.[0]?.frequentlyBoughtTogether?.optionalBadge?.enable ? "extra-padding" : ""}`}
               >
                 <h4
                   style={{
                     ...fontFamily,
                     color:
-                      data.customization[0].frequentlyBoughtTogether.title
-                        .color,
+                        data?.customization?.[0]?.frequentlyBoughtTogether?.title?.color,
                     fontSize:
-                      data.customization[0].frequentlyBoughtTogether.title
-                        .fontSize + "px",
+                        `${data?.customization?.[0]?.frequentlyBoughtTogether?.title?.fontSize || 0}px`,
                     textAlign:
-                      data.customization[0].frequentlyBoughtTogether.title
-                        .alignment,
+                        data?.customization?.[0]?.frequentlyBoughtTogether?.title?.alignment,
                     fontWeight:
-                      data.customization[0].frequentlyBoughtTogether.title
-                        .titleBold,
-                  }}
+                        data?.customization?.[0]?.frequentlyBoughtTogether?.title?.titleBold,
+                }}                
                 >
                   {data?.title}
                 </h4>
                 <p
-                  style={{
-                    ...fontFamily,
-                    color:
-                      data.customization[0].frequentlyBoughtTogether.title
-                        .descriptionColor,
-                    fontSize:
-                      data.customization[0].frequentlyBoughtTogether.title
-                        .descriptionFontSize + "px",
-                    fontWeight:
-                      data.customization[0].frequentlyBoughtTogether.title
-                        .descriptionBold,
-                    textAlign:
-                      data.customization[0].frequentlyBoughtTogether.title
-                        .alignment,
-                  }}
+                 style={{
+                  ...fontFamily,
+                  color:
+                      data?.customization?.[0]?.frequentlyBoughtTogether?.title?.descriptionColor,
+                  fontSize:
+                      `${data?.customization?.[0]?.frequentlyBoughtTogether?.title?.descriptionFontSize || 0}px`,
+                  fontWeight:
+                      data?.customization?.[0]?.frequentlyBoughtTogether?.title?.descriptionBold,
+                  textAlign:
+                      data?.customization?.[0]?.frequentlyBoughtTogether?.title?.alignment,
+              }}              
                 >
                   {data?.description}
                 </p>
@@ -1211,12 +989,10 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                             className="sd-selected-product-itemImg"
                             style={{
                               borderColor:
-                                data.customization[0].frequentlyBoughtTogether
-                                  .productDetails.image.borderColor,
+                                  data?.customization?.[0]?.frequentlyBoughtTogether?.productDetails?.image?.borderColor,
                               borderRadius:
-                                data.customization[0].frequentlyBoughtTogether
-                                  .productDetails.image.borderRadius + "px",
-                            }}
+                                  `${data?.customization?.[0]?.frequentlyBoughtTogether?.productDetails?.image?.borderRadius || 0}px`,
+                          }}                          
                           >
                             <img src={pic} width={80} height={80} />
                           </div>
@@ -1233,10 +1009,8 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                                 <path
                                   d="M6.98047 17.3842V0.580255H10.3239V17.3842H6.98047ZM0.256392 10.6477V7.30433H17.0604V10.6477H0.256392Z"
                                   fill={
-                                    data.customization[0]
-                                      .frequentlyBoughtTogether.productDetails
-                                      .plusColor
-                                  }
+                                    data?.customization?.[0]?.frequentlyBoughtTogether?.productDetails?.plusColor
+                                }                                
                                 />
                               </svg>
                             </div>
@@ -1253,9 +1027,8 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                     className="sd-bundle-product-detail"
                     style={{
                       backgroundColor:
-                        data.customization[0].frequentlyBoughtTogether
-                          .productDetails.productDetailsBox.backgroundColor,
-                    }}
+                          data?.customization?.[0]?.frequentlyBoughtTogether?.productDetails?.productDetailsBox?.backgroundColor,
+                  }}                  
                   >
                     <div className="sd-bundle-product-inner">
                       <div className="checkbox-wrapper-18">
@@ -1269,12 +1042,10 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                           style={{
                             ...fontFamily,
                             color:
-                              data.customization[0].frequentlyBoughtTogether
-                                .productDetails.title.color,
+                                data?.customization?.[0]?.frequentlyBoughtTogether?.productDetails?.title?.color,
                             fontSize:
-                              data.customization[0].frequentlyBoughtTogether
-                                .productDetails.title.fontSize + "px",
-                          }}
+                                `${data?.customization?.[0]?.frequentlyBoughtTogether?.productDetails?.title?.fontSize || 0}px`,
+                        }}                        
                         >
                           {index == 0
                             ? "Main Product"
@@ -1284,12 +1055,10 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                           style={{
                             ...fontFamily,
                             color:
-                              data.customization[0].frequentlyBoughtTogether
-                                .productDetails.price.color,
+                                data?.customization?.[0]?.frequentlyBoughtTogether?.productDetails?.price?.color,
                             fontSize:
-                              data.customization[0].frequentlyBoughtTogether
-                                .productDetails.price.fontSize + "px",
-                          }}
+                                `${data?.customization?.[0]?.frequentlyBoughtTogether?.productDetails?.price?.fontSize || 0}px`,
+                        }}                        
                         >
                           {showAmountWithCurrency(
                             dummyPricesForAllProductsType[index],
@@ -1300,15 +1069,12 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                           style={{
                             ...fontFamily,
                             backgroundColor:
-                              data.customization[0].frequentlyBoughtTogether
-                                .productDetails.variantSelector.backgroundColor,
+                                data?.customization?.[0]?.frequentlyBoughtTogether?.productDetails?.variantSelector?.backgroundColor,
                             color:
-                              data.customization[0].frequentlyBoughtTogether
-                                .productDetails.variantSelector.color,
+                                data?.customization?.[0]?.frequentlyBoughtTogether?.productDetails?.variantSelector?.color,
                             width:
-                              data.customization[0].frequentlyBoughtTogether
-                                .productDetails.variantSelector.width + "px",
-                          }}
+                                `${data?.customization?.[0]?.frequentlyBoughtTogether?.productDetails?.variantSelector?.width || 0}px`,
+                        }}                        
                           disabled
                         >
                           <option style={{ ...fontFamily }}>Medium</option>
@@ -1321,21 +1087,18 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                         style={{
                           ...fontFamily,
                           color:
-                            data.customization[0].frequentlyBoughtTogether
-                              .productDetails.quantities.color,
+                              data?.customization?.[0]?.frequentlyBoughtTogether?.productDetails?.quantities?.color,
                           fontSize:
-                            data.customization[0].frequentlyBoughtTogether
-                              .productDetails.quantities.size + "px",
-                        }}
+                              `${data?.customization?.[0]?.frequentlyBoughtTogether?.productDetails?.quantities?.size || 0}px`,
+                      }}                      
                       >
                         Qty:{" "}
                         <span
                           style={{
                             ...fontFamily,
                             fontSize:
-                              data.customization[0].frequentlyBoughtTogether
-                                .productDetails.quantities.size + "px",
-                          }}
+                                `${data?.customization?.[0]?.frequentlyBoughtTogether?.productDetails?.quantities?.size || 0}px`,
+                        }}                        
                         >
                           1
                         </span>
@@ -1354,9 +1117,8 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                         <path
                           d="M6.98047 17.3842V0.580255H10.3239V17.3842H6.98047ZM0.256392 10.6477V7.30433H17.0604V10.6477H0.256392Z"
                           fill={
-                            data.customization[0].frequentlyBoughtTogether
-                              .productDetails.plusColor
-                          }
+                            data?.customization?.[0]?.frequentlyBoughtTogether?.productDetails?.plusColor
+                        }                        
                         />
                       </svg>
                     </div>
@@ -1372,12 +1134,10 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                     style={{
                       ...fontFamily,
                       color:
-                        data.customization[0].frequentlyBoughtTogether
-                          .totalSection.color,
+                          data?.customization?.[0]?.frequentlyBoughtTogether?.totalSection?.color,
                       fontSize:
-                        data.customization[0].frequentlyBoughtTogether
-                          .totalSection.fontSize + "px",
-                    }}
+                          `${data?.customization?.[0]?.frequentlyBoughtTogether?.totalSection?.fontSize || 0}px`,
+                  }}                  
                   >
                     Total
                   </h4>
@@ -1385,12 +1145,10 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                     style={{
                       ...fontFamily,
                       color:
-                        data.customization[0].frequentlyBoughtTogether
-                          .totalSection.discountMessage.color,
+                          data?.customization?.[0]?.frequentlyBoughtTogether?.totalSection?.discountMessage?.color,
                       fontSize:
-                        data.customization[0].frequentlyBoughtTogether
-                          .totalSection.discountMessage.size + "px",
-                    }}
+                          `${data?.customization?.[0]?.frequentlyBoughtTogether?.totalSection?.discountMessage?.size || 0}px`,
+                  }}                  
                   >
                     Discount will be applied at checkout
                   </p>
@@ -1400,12 +1158,10 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                     style={{
                       ...fontFamily,
                       color:
-                        data.customization[0].frequentlyBoughtTogether
-                          .totalSection.finalPrice.color,
+                          data?.customization?.[0]?.frequentlyBoughtTogether?.totalSection?.finalPrice?.color,
                       fontSize:
-                        data.customization[0].frequentlyBoughtTogether
-                          .totalSection.finalPrice.fontSize + "px",
-                    }}
+                          `${data?.customization?.[0]?.frequentlyBoughtTogether?.totalSection?.finalPrice?.fontSize || 0}px`,
+                  }}                  
                   >
                     {" "}
                     {showAmountWithCurrency(
@@ -1416,15 +1172,13 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                   {(data.bundleDetail.discountType == "percent" ||
                     data.bundleDetail.discountType == "fixed") && (
                     <h6
-                      style={{
-                        ...fontFamily,
-                        color:
-                          data.customization[0].frequentlyBoughtTogether
-                            .totalSection.originalPrice.color,
-                        fontSize:
-                          data.customization[0].frequentlyBoughtTogether
-                            .totalSection.originalPrice.fontSize + "px",
-                      }}
+                    style={{
+                      ...fontFamily,
+                      color:
+                          data?.customization?.[0]?.frequentlyBoughtTogether?.totalSection?.originalPrice?.color,
+                      fontSize:
+                          `${data?.customization?.[0]?.frequentlyBoughtTogether?.totalSection?.originalPrice?.fontSize || 0}px`,
+                  }}                  
                     >
                       {showAmountWithCurrency(mrpForAllProductsType, currency)}
                     </h6>
@@ -1452,21 +1206,16 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                   style={{
                     ...fontFamily,
                     color:
-                      data.customization[0].frequentlyBoughtTogether.button
-                        .color,
+                        data?.customization?.[0]?.frequentlyBoughtTogether?.button?.color,
                     fontSize:
-                      data.customization[0].frequentlyBoughtTogether.button
-                        .fontSize + "px",
+                        `${data?.customization?.[0]?.frequentlyBoughtTogether?.button?.fontSize || 0}px`,
                     backgroundColor:
-                      data.customization[0].frequentlyBoughtTogether.button
-                        .backgroundColor,
+                        data?.customization?.[0]?.frequentlyBoughtTogether?.button?.backgroundColor,
                     borderColor:
-                      data.customization[0].frequentlyBoughtTogether.button
-                        .borderColor,
+                        data?.customization?.[0]?.frequentlyBoughtTogether?.button?.borderColor,
                     borderRadius:
-                      data.customization[0].frequentlyBoughtTogether.button
-                        .borderRadius + "px",
-                  }}
+                        `${data?.customization?.[0]?.frequentlyBoughtTogether?.button?.borderRadius || 0}px`,
+                }}                
                 >
                   Add to Cart
                 </button>

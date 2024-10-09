@@ -6,42 +6,40 @@ import productImg from "../../assets/product.png";
 const CustomizationProductMixMatchPreview = ({ data }) => {
   console.log("check data ****", data);
   const textStyle = {
-    fontFamily: `${data.productMixMatch.box.fontFamily}`,
+    fontFamily: `${data?.productMixMatch?.box?.fontFamily || 'inherit'}`
   };
+  
   return (
     <>
       <div
         class="sd-bundle-main-column"
         style={{
-          backgroundColor: data.productMixMatch.box.backgroundColor,
-          borderColor: data.productMixMatch.box.borderColor,
-          borderRadius: data.productMixMatch.box.borderRadius + "px",
-          border:
-            data.productMixMatch.box.thickness +
-            "px solid" +
-            data.buyXgetY.box.borderColor,
-        }}
+          backgroundColor: data?.productMixMatch?.box?.backgroundColor,
+          borderColor: data?.productMixMatch?.box?.borderColor,
+          borderRadius: `${data?.productMixMatch?.box?.borderRadius || 0}px`,
+          border: `${data?.productMixMatch?.box?.thickness || 0}px solid ${data?.buyXgetY?.box?.borderColor || 'transparent'}`
+        }}        
       >
         <div class="sd-bundle-text-detail">
           <h4
             style={{
               ...textStyle,
-              color: data.productMixMatch.title.color,
-              fontSize: data.productMixMatch.title.fontSize + "px",
-              textAlign: data.productMixMatch.title.alignment,
-              fontWeight: data.productMixMatch.title.titleBold,
-            }}
+              color: data?.productMixMatch?.title?.color,
+              fontSize: `${data?.productMixMatch?.title?.fontSize || 16}px`,
+              textAlign: data?.productMixMatch?.title?.alignment,
+              fontWeight: data?.productMixMatch?.title?.titleBold
+            }}            
           >
             Product Mix & Match Bundle
           </h4>
           <p
             style={{
               ...textStyle,
-              color: data.productMixMatch.title.descriptionColor,
-              fontSize: data.productMixMatch.title.descriptionFontSize + "px",
-              fontWeight: data.productMixMatch.title.descriptionBold,
-              textAlign: data.productMixMatch.title.alignment,
-            }}
+              color: data?.productMixMatch?.title?.descriptionColor,
+              fontSize: `${data?.productMixMatch?.title?.descriptionFontSize || 16}px`,
+              fontWeight: data?.productMixMatch?.title?.descriptionBold,
+              textAlign: data?.productMixMatch?.title?.alignment
+            }}            
           >
             Buy this bundle and save more!
           </p>
@@ -59,24 +57,20 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
             <h5
               style={{
                 ...textStyle,
-                fontSize:
-                  data.productMixMatch.orderOverview.selectedText.fontSize +
-                  "px",
-                color: data.productMixMatch.orderOverview.selectedText.color,
-                textAlign: data.productMixMatch.orderOverview.alignment,
-              }}
+                fontSize: `${data?.productMixMatch?.orderOverview?.selectedText?.fontSize || 16}px`,
+                color: data?.productMixMatch?.orderOverview?.selectedText?.color,
+                textAlign: data?.productMixMatch?.orderOverview?.alignment
+              }}              
             >
               You have selected 2 items
             </h5>
             <p
               style={{
                 ...textStyle,
-                fontSize:
-                  data.productMixMatch.orderOverview.discountText.fontSize +
-                  "px",
-                color: data.productMixMatch.orderOverview.discountText.color,
-                textAlign: data.productMixMatch.orderOverview.alignment,
-              }}
+                fontSize: `${data?.productMixMatch?.orderOverview?.discountText?.fontSize || 16}px`,
+                color: data?.productMixMatch?.orderOverview?.discountText?.color,
+                textAlign: data?.productMixMatch?.orderOverview?.alignment
+              }}              
             >
               5% discount is applied on the selected products.
             </p>
@@ -86,11 +80,9 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
               class="sd-selected-product-itemImg"
               style={{
                 border: "1px solid white",
-                borderColor:
-                  data.productMixMatch.productDetails.image.borderColor,
-                borderRadius:
-                  data.productMixMatch.productDetails.image.borderRadius + "px",
-              }}
+                borderColor: data?.productMixMatch?.productDetails?.image?.borderColor,
+                borderRadius: `${data?.productMixMatch?.productDetails?.image?.borderRadius || 0}px`
+              }}              
             >
               <img src={productImg} alt="" />
             </div>
@@ -104,7 +96,7 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
               >
                 <path
                   d="M6.98047 17.3842V0.580255H10.3239V17.3842H6.98047ZM0.256392 10.6477V7.30433H17.0604V10.6477H0.256392Z"
-                  fill={data.productMixMatch.productDetails.plusColor}
+                  fill={data?.productMixMatch?.productDetails?.plusColor}
                 />
               </svg>
             </div>
@@ -112,11 +104,9 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
               class="sd-selected-product-itemImg"
               style={{
                 border: "1px solid",
-                borderColor:
-                  data.productMixMatch.productDetails.image.borderColor,
-                borderRadius:
-                  data.productMixMatch.productDetails.image.borderRadius + "px",
-              }}
+                borderColor: data?.productMixMatch?.productDetails?.image?.borderColor,
+                borderRadius: `${data?.productMixMatch?.productDetails?.image?.borderRadius || 0}px`
+              }}              
             >
               <img src={productImg} alt="" />
             </div>
@@ -129,11 +119,8 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
               class="sd-control sd-control--checkbox"
               style={{
                 ...textStyle,
-                color:
-                  data["productMixMatch"]["productDetails"][
-                    "productDetailsBox"
-                  ]["allProductColor"],
-              }}
+                color: data?.productMixMatch?.productDetails?.productDetailsBox?.allProductColor
+              }}              
             >
               All Product
               <input type="checkbox" checked />
@@ -144,18 +131,16 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
             <h6
               style={{
                 ...textStyle,
-                color: data.productMixMatch.productDetails.quantities.color,
-                fontSize:
-                  data.productMixMatch.productDetails.quantities.size + "px",
-              }}
+                color: data?.productMixMatch?.productDetails?.quantities?.color,
+                fontSize: `${data?.productMixMatch?.productDetails?.quantities?.size || 16}px`
+              }}              
             >
               Qty:{" "}
               <span
-                style={{
-                  ...textStyle,
-                  fontSize:
-                    data.productMixMatch.productDetails.quantities.size + "px",
-                }}
+               style={{
+                ...textStyle,
+                fontSize: `${data?.productMixMatch?.productDetails?.quantities?.size || 16}px`
+              }}              
               >
                 2
               </span>
@@ -166,10 +151,8 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
         <div
           class="sd-bundle-product-detail"
           style={{
-            backgroundColor:
-              data.productMixMatch.productDetails.productDetailsBox
-                .backgroundColor,
-          }}
+            backgroundColor: data?.productMixMatch?.productDetails?.productDetailsBox?.backgroundColor 
+          }}          
         >
           <div class="sd-bundle-product-inner">
             <div class="checkbox-wrapper-18">
@@ -182,50 +165,39 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
               class="sd-bundle-product-img"
               style={{
                 border: "1px solid white",
-                borderColor:
-                  data.productMixMatch.productDetails.image.borderColor,
-                borderRadius:
-                  data.productMixMatch.productDetails.image.borderRadius + "px",
-              }}
+                borderColor: data?.productMixMatch?.productDetails?.image?.borderColor,
+                borderRadius: `${data?.productMixMatch?.productDetails?.image?.borderRadius || 0}px`
+              }}              
             >
               <img src={productImg} width="80" height="80" />
             </div>
             <div class="sd-bundle-product-name">
               <h5
-                style={{
-                  ...textStyle,
-                  color: data.productMixMatch.productDetails.title.color,
-                  fontSize:
-                    data.productMixMatch.productDetails.title.fontSize + "px",
-                }}
+               style={{
+                ...textStyle,
+                color: data?.productMixMatch?.productDetails?.title?.color,
+                fontSize: `${data?.productMixMatch?.productDetails?.title?.fontSize || 16}px`
+              }}              
               >
                 Smart Wireless Charger
               </h5>
               <h4
                 style={{
                   ...textStyle,
-                  color: data.productMixMatch.productDetails.price.color,
-                  fontSize:
-                    data.productMixMatch.productDetails.price.fontSize + "px",
-                }}
+                  color: data?.productMixMatch?.productDetails?.price?.color,
+                  fontSize: `${data?.productMixMatch?.productDetails?.price?.fontSize || 16}px`
+                }}                
               >
                 Rs. 2500.00
               </h4>
               <select
                 style={{
                   ...textStyle,
-                  backgroundColor:
-                    data.productMixMatch.productDetails.variantSelector
-                      .backgroundColor,
-                  color:
-                    data.productMixMatch.productDetails.variantSelector.color,
-                  borderColor:
-                    data.productMixMatch.productDetails.variantSelector
-                      .borderColor,
-                  width:
-                    data.productMixMatch.productDetails.variantSelector.width +
-                    "px",
-                }}
+                  backgroundColor: data?.productMixMatch?.productDetails?.variantSelector?.backgroundColor ,
+                  color: data?.productMixMatch?.productDetails?.variantSelector?.color,
+                  borderColor: data?.productMixMatch?.productDetails?.variantSelector?.borderColor ,
+                  width: `${data?.productMixMatch?.productDetails?.variantSelector?.width || 100}px`
+                }}                
               >
                 <option style={{...textStyle,}}>Medium</option>
                 <option style={{...textStyle,}}>Small</option>
@@ -236,18 +208,16 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
             <h6
               style={{
                 ...textStyle,
-                color: data.productMixMatch.productDetails.quantities.color,
-                fontSize:
-                  data.productMixMatch.productDetails.quantities.size + "px",
-              }}
+                color: data?.productMixMatch?.productDetails?.quantities?.color,
+                fontSize: `${data?.productMixMatch?.productDetails?.quantities?.size || 16}px`
+              }}              
             >
               Qty:{" "}
               <span
                 style={{
                   ...textStyle,
-                  fontSize:
-                    data.productMixMatch.productDetails.quantities.size + "px",
-                }}
+                  fontSize: `${data?.productMixMatch?.productDetails?.quantities?.size || 16}px`
+                }}                
               >
                 1
               </span>
@@ -258,10 +228,8 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
         <div
           class="sd-bundle-product-detail"
           style={{
-            backgroundColor:
-              data.productMixMatch.productDetails.productDetailsBox
-                .backgroundColor,
-          }}
+            backgroundColor: data?.productMixMatch?.productDetails?.productDetailsBox?.backgroundColor 
+          }}          
         >
           <div class="sd-bundle-product-inner">
             <div class="checkbox-wrapper-18">
@@ -274,11 +242,9 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
               class="sd-bundle-product-img"
               style={{
                 border: "1px solid white",
-                borderColor:
-                  data.productMixMatch.productDetails.image.borderColor,
-                borderRadius:
-                  data.productMixMatch.productDetails.image.borderRadius + "px",
-              }}
+                borderColor: data?.productMixMatch?.productDetails?.image?.borderColor,
+                borderRadius: `${data?.productMixMatch?.productDetails?.image?.borderRadius || 0}px`
+              }}              
             >
               <img src={productImg} width="80" height="80" />
             </div>
@@ -286,20 +252,18 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
               <h5
                 style={{
                   ...textStyle,
-                  color: data.productMixMatch.productDetails.title.color,
-                  fontSize:
-                    data.productMixMatch.productDetails.title.fontSize + "px",
-                }}
+                  color: data?.productMixMatch?.productDetails?.title?.color,
+                  fontSize: `${data?.productMixMatch?.productDetails?.title?.fontSize || 16}px`
+                }}                 
               >
                 Smart Wireless Charger
               </h5>
               <h4
                 style={{
                   ...textStyle,
-                  color: data.productMixMatch.productDetails.price.color,
-                  fontSize:
-                    data.productMixMatch.productDetails.price.fontSize + "px",
-                }}
+                  color: data?.productMixMatch?.productDetails?.price?.color || 'inherit',
+                  fontSize: `${data?.productMixMatch?.productDetails?.price?.fontSize || 15}px`
+                }}                
               >
                 Rs. 2500.00
               </h4>
@@ -307,17 +271,14 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
                 style={{
                   ...textStyle,
                   backgroundColor:
-                    data.productMixMatch.productDetails.variantSelector
-                      .backgroundColor,
+                    data.productMixMatch?.productDetails?.variantSelector?.backgroundColor,
                   color:
-                    data.productMixMatch.productDetails.variantSelector.color,
+                    data.productMixMatch?.productDetails?.variantSelector?.color,
                   borderColor:
-                    data.productMixMatch.productDetails.variantSelector
-                      .borderColor,
+                    data.productMixMatch?.productDetails?.variantSelector?.borderColor,
                   width:
-                    data.productMixMatch.productDetails.variantSelector.width +
-                    "px",
-                }}
+                    (data.productMixMatch?.productDetails?.variantSelector?.width ?? 0) + "px",
+                }}                
               >
                 <option style={{...textStyle,}}>Medium</option>
                 <option style={{...textStyle,}}>Small</option>
@@ -328,18 +289,16 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
             <h6
               style={{
                 ...textStyle,
-                color: data.productMixMatch.productDetails.quantities.color,
-                fontSize:
-                  data.productMixMatch.productDetails.quantities.size + "px",
-              }}
+                color: data.productMixMatch?.productDetails?.quantities?.color,
+                fontSize: (data.productMixMatch?.productDetails?.quantities?.size ?? 0) + "px"
+              }}              
             >
               Qty:{" "}
               <span
                 style={{
                   ...textStyle,
-                  fontSize:
-                    data.productMixMatch.productDetails.quantities.size + "px",
-                }}
+                  fontSize: (data.productMixMatch?.productDetails?.quantities?.size ?? 0) + "px",
+                }}                
               >
                 1
               </span>
@@ -351,19 +310,18 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
             <h4
               style={{
                 ...textStyle,
-                color: data.productMixMatch.totalSection.color,
-                fontSize: data.productMixMatch.totalSection.fontSize + "px",
-              }}
+                color: data.productMixMatch?.totalSection?.color,
+                fontSize: (data.productMixMatch?.totalSection?.fontSize ?? 0) + "px"
+              }}              
             >
               Total
             </h4>
             <p
               style={{
                 ...textStyle,
-                color: data.productMixMatch.totalSection.discountMessage.color,
-                fontSize:
-                  data.productMixMatch.totalSection.discountMessage.size + "px",
-              }}
+                color: data.productMixMatch?.totalSection?.discountMessage?.color,
+                fontSize: (data.productMixMatch?.totalSection?.discountMessage?.size ?? 0) + "px"
+              }} 
             >
               Discount will be applied at checkout
             </p>
@@ -372,21 +330,18 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
             <h4
               style={{
                 ...textStyle,
-                color: data.productMixMatch.totalSection.finalPrice.color,
-                fontSize:
-                  data.productMixMatch.totalSection.finalPrice.fontSize + "px",
-              }}
+                color: data.productMixMatch?.totalSection?.finalPrice?.color,
+                fontSize: (data.productMixMatch?.totalSection?.finalPrice?.fontSize ?? 0) + "px",
+              }}              
             >
               Rs. 4,750.00
             </h4>
             <h6
               style={{
                 ...textStyle,
-                color: data.productMixMatch.totalSection.originalPrice.color,
-                fontSize:
-                  data.productMixMatch.totalSection.originalPrice.fontSize +
-                  "px",
-              }}
+                color: data.productMixMatch?.totalSection?.originalPrice?.color,
+                fontSize: (data.productMixMatch?.totalSection?.originalPrice?.fontSize ?? 0) + "px"
+              }}              
             >
               Rs. 5000.00
             </h6>
@@ -396,12 +351,9 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
           <button
             style={{
               ...textStyle,
-              color: data.productMixMatch.button.color,
-              fontSize: data.productMixMatch.button.fontSize + "px",
-              backgroundColor: data.productMixMatch.button.backgroundColor,
-              borderColor: data.productMixMatch.button.borderColor,
-              borderRadius: data.productMixMatch.button.borderRadius + "px"
-            }}
+              color: data.productMixMatch?.totalSection?.originalPrice?.color,
+              fontSize: (data.productMixMatch?.totalSection?.originalPrice?.fontSize ?? 0) + "px"
+            }}            
           >
             Add to Cart
           </button>
