@@ -27,7 +27,7 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
     }
   }, [data]);
   const fontFamily = {
-    fontFamily: data.customization[0].frequentlyBoughtTogether.box.fontFamily,
+    fontFamily: data?.customization[0]?.frequentlyBoughtTogether?.box?.fontFamily || 'inherit',
   };
 
   const calculateMrpForAllProductsType = () => {

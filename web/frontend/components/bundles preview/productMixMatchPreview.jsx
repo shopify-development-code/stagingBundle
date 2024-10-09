@@ -14,7 +14,7 @@ const ProductMixMatchPreview = ({
   let freeShipping = "Free Shipping";
   console.log("cfdh", data);
   const fontSize = {
-    fontFamily: data.customization[0]?.productMixMatch.box.fontFamily,
+    fontFamily: data?.customization[0]?.productMixMatch?.box?.fontFamily || 'inherit',
   };
   return (
     <div className="sd-bundle-bundleSection-common">
