@@ -9,8 +9,8 @@ import EmptyPreview from "../commonSections/emptyPreview";
 const CollectionBundlePreview = ({ data, currency }) => {
   console.log("test test", data);
   const fontFamily = {
-    fontFamily: data.customization[0].collectionMixMatch.box.fontFamily,
-  };
+    fontFamily: data?.customization?.[0]?.collectionMixMatch?.box?.fontFamily || 'inherit',
+  };  
 
   return (
     <div className="sd-bundle-bundleSection-common">
@@ -19,91 +19,66 @@ const CollectionBundlePreview = ({ data, currency }) => {
         <div
           className="sd-collection-main-column"
           style={{
-            backgroundColor:
-              data.customization[0].collectionMixMatch.box.backgroundColor,
-            borderRadius:
-              data.customization[0].collectionMixMatch.box.borderRadius + "px",
-            borderColor:
-              data.customization[0].collectionMixMatch.box.borderColor,
-          }}
+            backgroundColor: data?.customization?.[0]?.collectionMixMatch?.box?.backgroundColor,
+            borderRadius: `${data?.customization?.[0]?.collectionMixMatch?.box?.borderRadius}px`,
+            borderColor: data?.customization?.[0]?.collectionMixMatch?.box?.borderColor,
+          }}          
         >
           <span
             className="sd-badges-part"
             style={{
               ...fontFamily,
-              color:
-                data.customization[0].collectionMixMatch.DiscountBadge.color,
-              backgroundColor:
-                data.customization[0].collectionMixMatch.DiscountBadge
-                  .backgroundColor,
-              fontSize:
-                data.customization[0].collectionMixMatch.DiscountBadge
-                  .fontSize + "px",
-            }}
+              color: data?.customization?.[0]?.collectionMixMatch?.DiscountBadge?.color,
+              backgroundColor: data?.customization?.[0]?.collectionMixMatch?.DiscountBadge?.backgroundColor,
+              fontSize: `${data?.customization?.[0]?.collectionMixMatch?.DiscountBadge?.fontSize}px`
+            }}            
           >
-            {data.customization[0].collectionMixMatch.DiscountBadge.text}
+            {data?.customization?.[0]?.collectionMixMatch?.DiscountBadge?.text}
           </span>
           <div
             className="sd-bundle-text-detail"
             style={{
-              textAlign:
-                data.customization[0].collectionMixMatch.title.alignment,
-            }}
+              textAlign: data?.customization?.[0]?.collectionMixMatch?.title?.alignment
+            }}            
           >
             <h4
               style={{
                 ...fontFamily,
-                color: data.customization[0].collectionMixMatch.title.color,
-                fontSize:
-                  data.customization[0].collectionMixMatch.title.fontSize +
-                  "px",
-                fontWeight:
-                  data.customization[0].collectionMixMatch.title.titleBold,
-              }}
+                color: data?.customization?.[0]?.collectionMixMatch?.title?.color,
+                fontSize: `${data?.customization?.[0]?.collectionMixMatch?.title?.fontSize}px`,
+                fontWeight: data?.customization?.[0]?.collectionMixMatch?.title?.titleBold
+              }}              
             >
-              {data.title}{" "}
+              {data?.title}{" "}
             </h4>
             <p
               style={{
                 ...fontFamily,
-                color:
-                  data.customization[0].collectionMixMatch.title
-                    .descriptionColor,
-                fontSize:
-                  data.customization[0].collectionMixMatch.title
-                    .descriptionFontSize + "px",
-                textAlign:
-                  data.customization[0].collectionMixMatch.title.alignment,
-                fontWeight:
-                  data.customization[0].collectionMixMatch.title
-                    .descriptionBold,
-              }}
+                color: data?.customization?.[0]?.collectionMixMatch?.title?.descriptionColor,
+                fontSize: `${data?.customization?.[0]?.collectionMixMatch?.title?.descriptionFontSize}px`,
+                textAlign: data?.customization?.[0]?.collectionMixMatch?.title?.alignment,
+                fontWeight: data?.customization?.[0]?.collectionMixMatch?.title?.descriptionBold
+              }}              
             >
-              {data.description}
+              {data?.description}
             </p>
           </div>
-          {data.bundleDetail.products.map((item, index) => {
+          {data?.bundleDetail?.products?.map((item, index) => {
             return (
               <>
                 <div
                   className="sd-bundle-product-detail create-bundle-discount"
                   style={{
-                    backgroundColor:
-                      data.customization[0].collectionMixMatch.collectionDetails
-                        .collectionDetailsBox.backgroundColor,
-                  }}
+                    backgroundColor: data?.customization?.[0]?.collectionMixMatch?.collectionDetails?.collectionDetailsBox?.backgroundColor
+                  }}                  
                 >
                   <div className="sd-bundle-product-inner">
                     <div
                       className="sd-bundle-product-img"
                       style={{
-                        borderColor:
-                          data.customization[0].collectionMixMatch
-                            .collectionDetails.imageBorderColor,
-                        borderRadius:
-                          data.customization[0].collectionMixMatch
-                            .collectionDetails.imageBorderRadius + "px",
-                      }}
+                        borderColor: data?.customization?.[0]?.collectionMixMatch?.collectionDetails?.imageBorderColor,
+                        borderRadius: `${data?.customization?.[0]?.collectionMixMatch?.collectionDetails?.imageBorderRadius}px`
+                      }}                      
                     >
                       <img
                         src={item?.image ? item?.image?.originalSrc : pic}
@@ -115,13 +90,9 @@ const CollectionBundlePreview = ({ data, currency }) => {
                       <h5
                         style={{
                           ...fontFamily,
-                          color:
-                            data.customization[0].collectionMixMatch
-                              .collectionDetails.title.color,
-                          fontSize:
-                            data.customization[0].collectionMixMatch
-                              .collectionDetails.title.fontSize + "px",
-                        }}
+                          color: data?.customization?.[0]?.collectionMixMatch?.collectionDetails?.title?.color,
+                          fontSize: `${data?.customization?.[0]?.collectionMixMatch?.collectionDetails?.title?.fontSize}px`
+                        }}                        
                       >
                         {" "}
                         {item.title} Collection
@@ -129,13 +100,9 @@ const CollectionBundlePreview = ({ data, currency }) => {
                       <p
                         style={{
                           ...fontFamily,
-                          color:
-                            data.customization[0].collectionMixMatch
-                              .collectionDetails.description.color,
-                          fontSize:
-                            data.customization[0].collectionMixMatch
-                              .collectionDetails.description.fontSize + "px",
-                        }}
+                          color: data?.customization?.[0]?.collectionMixMatch?.collectionDetails?.description?.color,
+                          fontSize: `${data?.customization?.[0]?.collectionMixMatch?.collectionDetails?.description?.fontSize}px`
+                        }}                        
                       >
                         Add {item.quantity} items from {item.title} collection
                       </p>
@@ -154,8 +121,7 @@ const CollectionBundlePreview = ({ data, currency }) => {
                       <path
                         d="M6.98047 17.3842V0.580255H10.3239V17.3842H6.98047ZM0.256392 10.6477V7.30433H17.0604V10.6477H0.256392Z"
                         fill={
-                          data.customization[0].collectionMixMatch
-                            .collectionDetails.plus.color
+                          data?.customization?.[0]?.collectionMixMatch?.collectionDetails?.plus?.color
                         }
                       />
                     </svg>
@@ -168,19 +134,15 @@ const CollectionBundlePreview = ({ data, currency }) => {
             <button
               style={{
                 ...fontFamily,
-                color: data.customization[0].collectionMixMatch.button.color,
-                backgroundColor:
-                  data.customization[0].collectionMixMatch.button
-                    .backgroundColor,
-                fontSize:
-                  data.customization[0].collectionMixMatch.button.fontSize +
-                  "px",
-                borderColor: data.customization[0].collectionMixMatch.button.borderColor,
-                borderRadius:
-                data.customization[0].collectionMixMatch.button.borderRadius + "px",
+                color: data?.customization?.[0]?.collectionMixMatch?.button?.color,
+                backgroundColor: data?.customization?.[0]?.collectionMixMatch?.button?.backgroundColor,
+                fontSize: `${data?.customization?.[0]?.collectionMixMatch?.button?.fontSize }px`,
+                borderColor: data?.customization?.[0]?.collectionMixMatch?.button?.borderColor,
+                borderRadius: `${data?.customization?.[0]?.collectionMixMatch?.button?.borderRadius}px`
               }}
+              
             >
-              {data.customization[0].collectionMixMatch.button.text_others}
+              {data?.customization?.[0]?.collectionMixMatch?.button?.text_others}
             </button>
           </div>
         </div>
@@ -190,5 +152,4 @@ const CollectionBundlePreview = ({ data, currency }) => {
     </div>
   );
 };
-
 export default CollectionBundlePreview;

@@ -1,7 +1,7 @@
 let server = "https://bundle.shinedezigninfotech.com";
 
 console.log("Smart Bundle Discount app new version 41.0 02 Oct 2024");
-// let server = "https://maker-pretty-vbulletin-birmingham.trycloudflare.com";
+// let server = "https://julian-frankfurt-dollars-philadelphia.trycloudflare.com";
 let smartNoImg = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAHYUlEQVR4nO2da0wUVxTHb/xSk/qxNbXCzsyyvGYWFhF51Qeo0IeAjxRba/1kW9MiVA1FGkGbippabWJsVBDQVjuNbEF5iCBoLWw1ltqaan01NmlD6wdi+sAvTWtOcy67I4/VXXF3587s/Scnk50Pyzn3t+eec2fDWUK4uLi4uLi4zCtBlF2CKPdZrYmT9faFawjIt4KkgCAqlzgUBmSzJT0piPIPCMUiyVctlrgpevsU9uJQGBSHwqA4FAbFoTAoDoVBcSgMikNhUBwKg+JQGBSHwqA4FINAiYpSIi2SvNoiKSfwniDJd+gDS0OafIfGJSntFkkummpLiCAGg/KHIMr/6r+QSrDsriApDaIYLxCWZRGVFYIoo7MgWBXIy38ZNm3aCbX7neBs6IaW5h5DmrOhm8aAsSxesgKstkQKxiIqf0dKSj5hURZRLnZ/ciAufjp1ODV9Lhw+1Kr7grYE2OrrG6Fg4XItW3BrJiwpUpQL0DHRaoeStytB/awdMjJzTA2lpbkHSkoqAGPG2JnJlIgIx1RMXVx8hOFxFqGkZcyjUGyxSRAdn6z3vg/+WOrsZ8F16/ZI+20Aztzsh+4L16Ct/esxUNzb119MfJEniHItOoQpPNzRLR9Vg+LIAHtSBnU4fc5z0HbpxthgDWa9/QPQ0XtxRKz597aval1hYGsrSPJ/WOTq65pGwJiWlg1qz3k4cfUmzJqfTx3OyHreFFBct26PgFJX1whSVCJgZ4k7hm5AsJjhQmPn4XHu8yMdYE/KpDA8zpsRSm//ALQeP6vFvWjRCk+WvKUjEKUdncB20ONY0Tvvwar1G8cEYEYoXReuaXFXbtwxBESU2/QDIio30Ina2i80x3DRPznl8hqA2aCcudmvxY3nFPeh+JpuQARRGUQnnM4uzbFYOQW6f+6/bxBmgtLbP6DFjWswlCHKoH5A3K3i8I4DX/sKxExQWkbFjmY4IKxAOfrdZVi5phRSUjPBGp1AryvXltL7YQdEbyh7m09A0vRU2LklF37qK4Q7vy6n1x1VueBIToW9zR3hB0QvKEcvXKYwzp9cDP/8/uoYO3dyMYVy7Psfww+IHlBWrimlmeENhsc+rMqF19aVhieQUENJSc2k29ODgNzoK4SU9JnhCySUUKKiE2nNeBCQwV9eAVuMI7yBuEIEJSXtGZ8Zcv2bQpiREeYZ4goRFGxtsZt6EJDtm7GGlHEgrhBAwXMGdlHYTXmDcbZzqMtqvniFA3GFKFPwnIGLjt0UFnCsKXjFzBg6h3T6fA/8MisstixXiKDgOQNbW+ymsNDjFbcpfzIDzVvshgdy+Mw5mFnwEkQnptErvg4llEcx02XI/uOnINqRDpPKK2BCXT294mu8bxQopgFS1/kl2BzpMLFqKxBV1eyxbR/Q+9VtXYaAYgog94NBDAbFFFuWLxjEQFAMX9T9hUEMAsXQQGo7Tj8UDGIAKIYFMl4YJIhQsL3OWrgU4hxpkL1oqdd225Q15FFhkCBAwbY6LikdsreVw8LWffSKr721277MUEACBYMEEArWMVz8nD3vw5LTBzXLra6i9729tymABBoGCQCU+8EYLxTDbFnBgkEeAYovGOOBYpiiHkwYZBxQdjUc8wvGw0IxDJCJVduCCoO4Df+OzY9nX6ItAbK3v+sXjIeBYhggoYBB/MiU3Y2tIEUlUJ9iM2dBftPHAYXCgaj+Q/HUjLk7N0DcrDlBgcKBqP5lyugCXtC8NyhQOBDV9/ZlTUiFmIQZYwp4MKBwIKp/NUWwp3jtqAINhQNR/S/0gpcsCTQUDkRlCwoHorIDJWfPZg6EMAaFZ4jKFhQORGULCgeisgWFOSCeoTPD/y1akOwwoaYmIM+pCMNQ8pt201g9cTcc6dSG0OgJ5Dr9/qPWqTlmjZ0Gk9aV6b7wxMdTYpFC2TxuKLM3rQNbfLIW9/4abXDAFd1Ha2wcNlpj3gsvQkTmPN0XnQQZSvzMLMjJW6rFXVnJwmgNSS4aPXym7kATCFY7PF5eYVooWVvLaIy1BxvHDp+xKm/qBgSnc+JIIjqeqf6ec6+vXk8nrZkRStbWMpCi7LBqdbkWL856YWI8E0qQlBpvA8wQCn6KIjLnwqS1ZUwX+ok+oCAM+s1jdCKN6Y2iezCaj30FefnL3PVD2Uf0VmRk7NPaiL+SihFQMKXnLyiEqLhkEBkY3yeM2+ye2YqQPGPOiBmSxSUb3N2V/KcgyE8RFoQDILUhmKOgmMXUUYM9D33aAsXFG7QhmBarfQFhSe7pcnRMLM4gxLF3ZoYSE5c8fExsEWFRFknJw4MROopFDjsPnLSGPfrww6PRzOnsgpqaBtra5uUtG7b9yndxeDRhWVNiYp4QJHmXqUeNiwrGdttQv/OI7R/25BZROY6nV8/0OUOaqAwOxSC3YUwYG/9VCAbFoTAoDoVBcSgMikNhUBwKg+JQGBSHwqA4FAbFoTAoDoVBcSgMikNhUFZr4mRBVC4NPbCU+/T2h4t4oMh9gqj08AXh4uLi4uIi5tX/Fms2vZkCm94AAAAASUVORK5CYII=`;
 let productPageClass = document.getElementsByClassName("sd-bundle-app");
 
@@ -209,30 +209,28 @@ function createBundle(BUNDLE_DATA) {
     bundleData.push([]);
     bundleSum.push([]);
     gidArray.push([]);
-    console.log()
-    if (el.type == "productBundle") {
+    if (el?.type == "productBundle") {
         let BUNDLE_DIV = document.createElement("div");
         BUNDLE_DIV.className = "sd-bundle-main-column";
-        BUNDLE_DIV.style.borderRadius = `${el.customization?.bundle.box.borderRadius}px`;
-        BUNDLE_DIV.style.borderColor = el.customization?.bundle.box.borderColor;
-        BUNDLE_DIV.style.background =
-        el.customization?.bundle.box.backgroundColor;
+        BUNDLE_DIV.style.borderRadius = `${el?.customization?.bundle?.box?.borderRadius}px`;
+        BUNDLE_DIV.style.borderColor = el?.customization?.bundle?.box?.borderColor;
+        BUNDLE_DIV.style.background = el?.customization?.bundle?.box?.backgroundColor;
         mainDiv.append(BUNDLE_DIV);
       
-        if (el.customization.bundle.optionalBadge.enable === true) {
-          if (el.bundleDetail.discountType === "percent" || el.bundleDetail.discountType === "fixed") {
+        if (el?.customization?.bundle?.optionalBadge?.enable === true) {
+          if (el?.bundleDetail?.discountType === "percent" || el?.bundleDetail?.discountType === "fixed") {
             let VOLUME_HEADER_DIV = document.createElement("span");
             VOLUME_HEADER_DIV.className = "sd-badges-part-optional";
-            VOLUME_HEADER_DIV.style.background = el.customization.bundle.optionalBadge.background;
-            VOLUME_HEADER_DIV.style.color = el.customization.bundle.optionalBadge.color;
-            VOLUME_HEADER_DIV.style.fontSize = el.customization.bundle.optionalBadge.fontSize + "px"; 
+            VOLUME_HEADER_DIV.style.background =el?.customization?.bundle?.optionalBadge?.background;
+            VOLUME_HEADER_DIV.style.color = el?.customization?.bundle?.optionalBadge?.color;
+            VOLUME_HEADER_DIV.style.fontSize =`${el?.customization?.bundle?.optionalBadge?.fontSize}px`;
             let discountBadge = document.createElement("span");
             discountBadge.className = "sd-collectionMM-badge";
-            if (el.bundleDetail.discountType === "percent") {
-                discountBadge.innerText = el.translations.translation.save + " " + el.bundleDetail.discountValue + "%";
-            } else if (el.bundleDetail.discountType === "fixed") {
-                let newPrice = el.bundleDetail.discountValue;
-                discountBadge.innerText = el.translations.translation.save + " " + showAmountWithCurrency(newPrice);
+            if (el?.bundleDetail?.discountType === "percent") {
+                discountBadge.innerText = el?.translations?.translation?.save + " " + el?.bundleDetail?.discountValue + "%";
+            } else if (el?.bundleDetail?.discountType === "fixed") {
+                let newPrice = el?.bundleDetail?.discountValue;
+                discountBadge.innerText = el?.translations?.translation?.save + " " + showAmountWithCurrency(newPrice);
             }
             VOLUME_HEADER_DIV.append(discountBadge);
             BUNDLE_DIV.append(VOLUME_HEADER_DIV);
@@ -242,47 +240,47 @@ function createBundle(BUNDLE_DATA) {
         let BUNDLE_TITLE = document.createElement("div");
         BUNDLE_TITLE.className = "sd-bundle-text-detail";
         BUNDLE_DIV.append(BUNDLE_TITLE);
-        if (el.customization.bundle.optionalBadge.enable === true) {
-          if (el.bundleDetail.discountType === "percent" || el.bundleDetail.discountType === "fixed") {
+        if (el?.customization?.bundle?.optionalBadge?.enable === true) {
+          if (el?.bundleDetail?.discountType === "percent" || el?.bundleDetail?.discountType === "fixed") {
             BUNDLE_TITLE.classList.add("extra-padding");
           }
         }
         let bundleTitleText = document.createElement("h4");
-        bundleTitleText.innerText = el.title;
-        bundleTitleText.style.color = el.customization?.bundle.title.color;
-        bundleTitleText.style.fontSize = `${el.customization?.bundle.title.fontSize}px`;
-        bundleTitleText.style.fontWeight = el.customization?.bundle.title.titleBold;
-        bundleTitleText.style.textAlign = el.customization?.bundle.title.alignment;
-        bundleTitleText.style.fontFamily = el.customization?.bundle.box.fontFamily;
+        bundleTitleText.innerText = el?.title;
+        bundleTitleText.style.color = el?.customization?.bundle?.title?.color;
+        bundleTitleText.style.fontSize = `${el?.customization?.bundle?.title?.fontSize}px`;
+        bundleTitleText.style.fontWeight = el?.customization?.bundle?.title?.titleBold;
+        bundleTitleText.style.textAlign = el?.customization?.bundle?.title?.alignment;
+        bundleTitleText.style.fontFamily = el?.customization?.bundle?.box?.fontFamily;
         BUNDLE_TITLE.append(bundleTitleText);
       
         let ProductBundleDescription = document.createElement("p");
-        ProductBundleDescription.innerText = el.description;
-        ProductBundleDescription.style.textAlign = el.customization?.bundle.title.alignment;
-        ProductBundleDescription.style.color = el.customization?.bundle.title.descriptionColor;
-        ProductBundleDescription.style.fontSize = `${el.customization?.bundle.title.descriptionFontSize}px`;
-        ProductBundleDescription.style.fontWeight = el.customization?.bundle.title.descriptionBold;
-        ProductBundleDescription.style.fontFamily = el.customization?.bundle.box.fontFamily;
+        ProductBundleDescription.innerText = el?.description;
+        ProductBundleDescription.style.textAlign = el?.customization?.bundle?.title?.alignment;
+        ProductBundleDescription.style.color = el?.customization?.bundle?.title?.descriptionColor;
+        ProductBundleDescription.style.fontSize = `${el?.customization?.bundle?.title?.descriptionFontSize}px`;
+        ProductBundleDescription.style.fontWeight = el?.customization?.bundle?.title?.descriptionBold;
+        ProductBundleDescription.style.fontFamily = el?.customization?.bundle?.box?.fontFamily;
         BUNDLE_TITLE.append(ProductBundleDescription);
       
-        el.bundleDetail.products.map((ele, index) => {
+        el?.bundleDetail?.products?.map((ele, index) => {
           bundleData[bundleIndex].push([]);
           bundleSum[bundleIndex].push([]);
           gidArray[bundleIndex].push([]);
           let BUNDLE_PRODUCT_DIV = document.createElement("div");
           BUNDLE_PRODUCT_DIV.className ="sd-bundle-product-detail";
-          BUNDLE_PRODUCT_DIV.style.backgroundColor = el.customization?.bundle.productDetails.productDetailsBox.backgroundColor
+          BUNDLE_PRODUCT_DIV.style.backgroundColor = el?.customization?.bundle?.productDetails?.productDetailsBox?.backgroundColor
           
           let DATA_SECTION_IMAGE_TITLE_DIV = document.createElement("div");
           DATA_SECTION_IMAGE_TITLE_DIV.className ="sd-bundle-product-inner";
           
           let DATA_SECTION_IMAGE_DIV = document.createElement("div");
           DATA_SECTION_IMAGE_DIV.className = "sd-bundle-product-img";
-          DATA_SECTION_IMAGE_DIV.style.border ="1px solid" + el.customization?.bundle.productDetails.image.borderColor;
-          DATA_SECTION_IMAGE_DIV.style.borderRadius = `${el.customization?.bundle.productDetails.image.borderRadius}px`;
+          DATA_SECTION_IMAGE_DIV.style.border ="1px solid" + el?.customization?.bundle?.productDetails?.image?.borderColor;
+          DATA_SECTION_IMAGE_DIV.style.borderRadius = `${el?.customization?.bundle?.productDetails?.image?.borderRadius}px`;
           
           let DATA_SECTION_IMG = document.createElement("img");
-          let bundleProductImg = ele.images[0]?.originalSrc ?? smartNoImg;
+          let bundleProductImg = ele?.images[0]?.originalSrc ?? smartNoImg;
           DATA_SECTION_IMG.setAttribute("src", bundleProductImg);
           DATA_SECTION_IMG.style.width = "80";
           DATA_SECTION_IMG.style.height = "80";
@@ -292,17 +290,17 @@ function createBundle(BUNDLE_DATA) {
           DATA_SECTION_TITLE_PRICE_DIV.className ="sd-bundle-product-name";
           
           let DATA_SECTION_TITLE = document.createElement("h5");
-          DATA_SECTION_TITLE.style.fontFamily = el.customization?.bundle.box.fontFamily;
-          DATA_SECTION_TITLE.style.color = el.customization?.bundle.productDetails.title.color;
-          DATA_SECTION_TITLE.style.fontSize = `${el.customization?.bundle.productDetails.title.fontSize}px`;
+          DATA_SECTION_TITLE.style.fontFamily = el?.customization?.bundle?.box?.fontFamily;
+          DATA_SECTION_TITLE.style.color = el?.customization?.bundle?.productDetails?.title?.color;
+          DATA_SECTION_TITLE.style.fontSize = `${el?.customization?.bundle?.productDetails?.title?.fontSize}px`;
 
-          DATA_SECTION_TITLE.innerText = ele.title;
+          DATA_SECTION_TITLE.innerText = ele?.title;
           let DATA_SECTION_PRICE = document.createElement("h4");
-          DATA_SECTION_PRICE.style.fontFamily = el.customization?.bundle.box.fontFamily;
-          DATA_SECTION_PRICE.style.color = el.customization?.bundle.productDetails.price.color;
-          DATA_SECTION_PRICE.style.fontSize = `${el.customization?.bundle.productDetails.price.fontSize}px`;
+          DATA_SECTION_PRICE.style.fontFamily = el?.customization?.bundle?.box?.fontFamily;
+          DATA_SECTION_PRICE.style.color = el?.customization?.bundle?.productDetails?.price?.color;
+          DATA_SECTION_PRICE.style.fontSize = `${el?.customization?.bundle?.productDetails?.price?.fontSize}px`;
           DATA_SECTION_PRICE.id = `sd-bundle-datasection-price${index}${bundleIndex}`;
-          let covertedPrice = ele.variants[0].price;
+          let covertedPrice = ele?.variants[0]?.price;
           DATA_SECTION_PRICE.innerText = showAmountWithCurrency(covertedPrice);
           
           DATA_SECTION_TITLE_PRICE_DIV.append(
@@ -319,9 +317,9 @@ function createBundle(BUNDLE_DATA) {
           let QUANTITY_SPAN = document.createElement("span");
           QUANTITY_SPAN.innerText = ele.minimumOrder;
           DATA_SECTION_QUANTITY.append(QUANTITY_SPAN);
-          DATA_SECTION_QUANTITY.style.fontSize = el.customization?.bundle.productDetails.quantities.size+"px";
-          DATA_SECTION_QUANTITY.style.fontFamily = el.customization?.bundle.box.fontFamily;
-          DATA_SECTION_QUANTITY.style.color = el.customization?.bundle.productDetails.quantities.color;
+          DATA_SECTION_QUANTITY.style.fontSize = el?.customization?.bundle?.productDetails?.quantities?.size+"px";
+          DATA_SECTION_QUANTITY.style.fontFamily = el?.customization?.bundle?.box?.fontFamily;
+          DATA_SECTION_QUANTITY.style.color = el?.customization?.bundle?.productDetails?.quantities?.color;
           DATA_SECTION_QUANTITY.innerText = `Qty: ${QUANTITY_SPAN.innerText}`;
           DATA_SECTION_QUANTITY_DIV.append(DATA_SECTION_QUANTITY);
         
@@ -332,53 +330,53 @@ function createBundle(BUNDLE_DATA) {
           selectRow.className = "sd-bundle-product-select-main";
           let seeMoreDiv = document.createElement("div");
           let show_more = document.createElement("button");
-          show_more.style.fontFamily = el.customization?.bundle.box.fontFamily;
+          show_more.style.fontFamily = el?.customization?.bundle?.box?.fontFamily;
           show_more.className = "sd-volume-showMoreLess"
           seeMoreDiv.append(show_more);
-          show_more.innerText = el.translations.translation.seeMore;
+          show_more.innerText = el?.translations?.translation?.seeMore;
           let seeLessDiv = document.createElement("div");
           let show_less = document.createElement("button");
-          show_less.style.fontFamily = el.customization?.bundle.box.fontFamily;
+          show_less.style.fontFamily = el?.customization?.bundle?.box?.fontFamily;
           show_less.className = "sd-volume-showMoreLess"
           seeLessDiv.append(show_less);
-          show_less.innerText = el.translations.translation.seeLess;
+          show_less.innerText = el?.translations?.translation?.seeLess;
           seeLessDiv.classList.add("sd-bundle-hide-click");
-          for (let i = 1; i <= ele.minimumOrder; i++) {
-            if (ele.minimumOrder <= 2 || ele.variants.length <= 1) {
+          for (let i = 1; i <= ele?.minimumOrder; i++) {
+            if (ele?.minimumOrder <= 2 || ele?.variants?.length <= 1) {
               seeMoreDiv.style.display = "none";
             }
-            gidArray[bundleIndex][index][i - 1] = ele.variants[0].id;
+            gidArray[bundleIndex][index][i - 1] = ele?.variants[0].id;
             bundleData[bundleIndex][index][i - 1] = {
-              id: ele.variants[0].id.replace(
+              id: ele?.variants[0]?.id?.replace(
                 "gid://shopify/ProductVariant/",
                 ""
               ),
               quantity: 1,
             };
-            bundleSum[bundleIndex][index][i - 1] = ele.variants[0].price;
+            bundleSum[bundleIndex][index][i - 1] = ele?.variants[0]?.price;
 
             if (ele.variants.length > 1) {
               BUNDLE_SELECT = document.createElement("select");
-              BUNDLE_SELECT.style.fontFamily = el.customization?.bundle.box.fontFamily;
-              BUNDLE_SELECT.style.color = el.customization?.bundle.productDetails.variantSelector.color;
-              BUNDLE_SELECT.style.background = el.customization?.bundle.productDetails.variantSelector.backgroundColor;
-              BUNDLE_SELECT.style.width = `${el.customization?.bundle.productDetails.variantSelector.width}px`;
+              BUNDLE_SELECT.style.fontFamily = el?.customization?.bundle?.box?.fontFamily;
+              BUNDLE_SELECT.style.color = el?.customization?.bundle?.productDetails?.variantSelector?.color;
+              BUNDLE_SELECT.style.background = el?.customization?.bundle?.productDetails?.variantSelector?.backgroundColor;
+              BUNDLE_SELECT.style.width = `${el?.customization?.bundle?.productDetails?.variantSelector?.width}px`;
               BUNDLE_SELECT.id = `sd-bundle-select-option${i}${bundleIndex}${index}`;
               BUNDLE_SELECT.className = "sd-bundle-select-option";
               BUNDLE_SELECT.classList.add(
                 `sd-bundle-select-option${i}${bundleIndex}${index}`
               );
 
-              ele.variants.map((elem, optionIndex) => {
+              ele?.variants?.map((elem, optionIndex) => {
                 let BUNDLE_OPTION = document.createElement("option");
-                BUNDLE_OPTION.textContent = elem.title;
-                BUNDLE_OPTION.value = elem.id.replace(
+                BUNDLE_OPTION.textContent = elem?.title;
+                BUNDLE_OPTION.value = elem?.id?.replace(
                   "gid://shopify/ProductVariant/",
                   ""
                 );
                 BUNDLE_OPTION.setAttribute("optionIndex", optionIndex);
-                BUNDLE_OPTION.style.fontFamily = el.customization?.bundle.box.fontFamily;
-                BUNDLE_OPTION.setAttribute("data-id", elem.price);
+                BUNDLE_OPTION.style.fontFamily = el?.customization?.bundle?.box?.fontFamily;
+                BUNDLE_OPTION.setAttribute("data-id", elem?.price);
                 BUNDLE_SELECT.appendChild(BUNDLE_OPTION);
 
                 selectRow.append(BUNDLE_SELECT);
@@ -413,18 +411,18 @@ function createBundle(BUNDLE_DATA) {
               arr.push(id);
 
               selected.addEventListener("change", (e) => {
-                const varientPrice = e.target.options[e.target.selectedIndex].dataset.id;
+                const varientPrice = e?.target?.options[e?.target?.selectedIndex]?.dataset?.id;
                 bundleSum[bundleIndex][index][i - 1] = varientPrice;
                 bundleData[bundleIndex][index][i - 1] = {
-                  id: e.target.value,
+                  id: e?.target?.value,
                   quantity: 1,
                 };
-                const gitVal = "gid://shopify/ProductVariant/" + e.target.value;
+                const gitVal = "gid://shopify/ProductVariant/" + e?.target?.value;
                 gidArray[bundleIndex][index][i - 1] = gitVal;
                 let priceDiv = document.getElementById(
                   `sd-bundle-datasection-price${index}${bundleIndex}`
                 );
-                const selectedOption = selected.options[selected.selectedIndex];
+                const selectedOption = selected?.options[selected?.selectedIndex];
                 const id = selectedOption.getAttribute("data-id");
 
                 priceDiv.innerText = showAmountWithCurrency(id);
@@ -454,14 +452,14 @@ function createBundle(BUNDLE_DATA) {
                   `sd-bundle-final-price${bundleIndex}`
                 );
 
-                if (el.bundleDetail.discountType == "percent") {
-                  let part = parseFloat(el.bundleDetail.discountValue);
+                if (el?.bundleDetail?.discountType == "percent") {
+                  let part = parseFloat(el?.bundleDetail?.discountValue);
                   let percentage = (total * part) / 100;
                   let totalPrice = total - percentage;
                   var newPrice = totalPrice.toFixed(2);
                   discountedPriceDiv.innerHTML = showAmountWithCurrency(newPrice);
-                } else if (el.bundleDetail.discountType == "fixed") {
-                  let part = parseFloat(el.bundleDetail.discountValue);
+                } else if (el?.bundleDetail?.discountType == "fixed") {
+                  let part = parseFloat(el?.bundleDetail?.discountValue);
                   let fixed = total - part;
                   var newPrice = fixed.toFixed(2);
                   discountedPriceDiv.innerHTML = showAmountWithCurrency(newPrice);
@@ -474,12 +472,12 @@ function createBundle(BUNDLE_DATA) {
           }
               selectRow.append(seeMoreDiv);
               selectRow.append(seeLessDiv);
-          console.log("dgdwydfui",el.bundleDetail.products.length)
+          // console.log("dgdwydfui",el.bundleDetail.products.length)
           if (index < el.bundleDetail.products.length - 1) {
             let BUNDLE_PLUS_BTN_DIV = document.createElement("div");
             BUNDLE_PLUS_BTN_DIV.className = "sd-add-bundle";
             BUNDLE_PLUS_BTN_DIV.innerHTML = `<svg viewBox="0 0 18 18" focusable="false" width="18" height="18" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6.98047 17.3842V0.580255H10.3239V17.3842H6.98047ZM0.256392 10.6477V7.30433H17.0604V10.6477H0.256392Z" fill= ${el.customization.bundle.productDetails.plusColor}></path>
+            <path d="M6.98047 17.3842V0.580255H10.3239V17.3842H6.98047ZM0.256392 10.6477V7.30433H17.0604V10.6477H0.256392Z" fill= ${el?.customization?.bundle?.productDetails?.plusColor}></path>
             </svg>`;
             BUNDLE_DIV.append(BUNDLE_PLUS_BTN_DIV);
           }
@@ -494,19 +492,19 @@ function createBundle(BUNDLE_DATA) {
           0
         );
         let discountedPrice;
-        if (el.bundleDetail.discountType == "percent") {
-          let part = parseFloat(el.bundleDetail.discountValue);
+        if (el?.bundleDetail?.discountType == "percent") {
+          let part = parseFloat(el?.bundleDetail?.discountValue);
           let percentage = (total * part) / 100;
           result = total - percentage;
           discountedPrice = result.toFixed(2);
-        } else if (el.bundleDetail.discountType == "fixed") {
-          let part = parseFloat(el.bundleDetail.discountValue);
+        } else if (el?.bundleDetail?.discountType == "fixed") {
+          let part = parseFloat(el?.bundleDetail?.discountValue);
           let fixed = total - part;
           discountedPrice = fixed.toFixed(2);
-        } else if (el.bundleDetail.discountType == "price") {
-          let part = parseFloat(el.bundleDetail.discountValue);
+        } else if (el?.bundleDetail?.discountType == "price") {
+          let part = parseFloat(el?.bundleDetail?.discountValue);
           discountedPrice = part;
-        } else if (el.bundleDetail.discountType == "noDiscount") {
+        } else if (el?.bundleDetail?.discountType == "noDiscount") {
         }
 
         let TOTAL_DIV = document.createElement("div");
@@ -516,27 +514,27 @@ function createBundle(BUNDLE_DATA) {
         TOTAL_DIV.append(total_text_Desc);
       
         let total_text =  document.createElement("h4");
-        total_text.style.fontFamily = el.customization?.bundle.box.fontFamily;
-        total_text.style.color = el.customization?.bundle.totalSection.color;
-        total_text.style.fontSize = el.customization?.bundle.totalSection.fontSize + "px";
-        total_text.innerText = el.translations.translation.total;
+        total_text.style.fontFamily = el?.customization?.bundle?.box?.fontFamily;
+        total_text.style.color = el?.customization?.bundle?.totalSection?.color;
+        total_text.style.fontSize = el?.customization?.bundle?.totalSection?.fontSize + "px";
+        total_text.innerText = el?.translations?.translation?.total;
         total_text_Desc.append(total_text);
       
         if (
-          el.bundleDetail.discountType == "freeShipping" ||
-          el.bundleDetail.discountType == "noDiscount"
+          el?.bundleDetail?.discountType == "freeShipping" ||
+          el?.bundleDetail?.discountType == "noDiscount"
         ) {
           // no changes
         } else {
           let infoDescription = document.createElement("p");
-          infoDescription.style.fontFamily = el.customization?.bundle.box.fontFamily;
-          infoDescription.style.color = el.customization?.bundle.totalSection.discountMessage.color;
-          infoDescription.style.fontSize = el.customization?.bundle.totalSection.discountMessage.size + "px";
-          infoDescription.innerText = el.translations.translation.discountApplied;
+          infoDescription.style.fontFamily = el?.customization?.bundle?.box?.fontFamily;
+          infoDescription.style.color = el?.customization?.bundle?.totalSection?.discountMessage?.color;
+          infoDescription.style.fontSize = el?.customization?.bundle?.totalSection?.discountMessage?.size + "px";
+          infoDescription.innerText = el?.translations?.translation?.discountApplied;
           total_text_Desc.append(infoDescription);
         }
 
-      if (el.bundleDetail.discountType == "freeShipping") {
+      if (el?.bundleDetail?.discountType == "freeShipping") {
           let noShippingDiv = document.createElement("div");
           noShippingDiv.className = "sd-bundle-no-shopping-container";
           total_text_Desc.append(noShippingDiv);
@@ -546,8 +544,8 @@ function createBundle(BUNDLE_DATA) {
           noShippingDiv.append(shippingIcon);
           let noShippingText = document.createElement("span");
           noShippingText.className = "sd-bundle-noShipping-text";
-          noShippingText.style.fontFamily = el.customization?.bundle.box.fontFamily;
-          noShippingText.innerText = el.translations.translation.FreeShipping;
+          noShippingText.style.fontFamily = el?.customization?.bundle?.box?.fontFamily;
+          noShippingText.innerText = el?.translations?.translation?.FreeShipping;
           noShippingDiv.append(noShippingText);
         }
       
@@ -555,55 +553,54 @@ function createBundle(BUNDLE_DATA) {
         discountedPriceDiv.className = "sd-total-amount";
       
         if (
-          el.bundleDetail.discountType == "freeShipping" ||
-          el.bundleDetail.discountType == "noDiscount"
+          el?.bundleDetail?.discountType == "freeShipping" ||
+          el?.bundleDetail?.discountType == "noDiscount"
         ) {
           let discountPrice = document.createElement("h4");
-          discountPrice.style.fontFamily = el.customization?.bundle.box.fontFamily;
+          discountPrice.style.fontFamily = el?.customization?.bundle?.box?.fontFamily;
           discountPrice.id = `sd-bundle-discount-price${bundleIndex}`;
-          discountPrice.style.color = el.customization?.bundle.totalSection.originalPrice.color;
-          discountPrice.style.fontSize = el.customization?.bundle.totalSection.originalPrice.fontSize + "px";
+          discountPrice.style.color = el?.customization?.bundle?.totalSection?.originalPrice?.color;
+          discountPrice.style.fontSize = el?.customization?.bundle?.totalSection?.originalPrice?.fontSize + "px";
           let newDiscountPrice = total.toFixed(2);
           discountPrice.innerText = showAmountWithCurrency(newDiscountPrice);
           discountedPriceDiv.append(discountPrice);
         } else {
           let finalPrice = document.createElement("h4");
-          finalPrice.style.fontFamily = el.customization?.bundle.box.fontFamily;
+          finalPrice.style.fontFamily = el?.customization?.bundle?.box?.fontFamily;
           finalPrice.id = "sd-bundle-final-price" + bundleIndex;
-          finalPrice.style.color = el.customization?.bundle.totalSection.finalPrice.color;
-          finalPrice.style.fontSize = el.customization?.bundle.totalSection.finalPrice.fontSize + "px";
+          finalPrice.style.color = el?.customization?.bundle?.totalSection?.finalPrice?.color;
+          finalPrice.style.fontSize = el?.customization?.bundle?.totalSection?.finalPrice?.fontSize + "px";
           finalPrice.innerText = showAmountWithCurrency(discountedPrice);
           discountedPriceDiv.append(finalPrice);
           
           let discountPrice = document.createElement("h6");
-          discountPrice.style.fontFamily = el.customization?.bundle.box.fontFamily;
+          discountPrice.style.fontFamily = el?.customization?.bundle?.box?.fontFamily;
           discountPrice.id = `sd-bundle-discount-price${bundleIndex}`;
           discountPrice.style.color =
-            el.customization?.bundle.totalSection.originalPrice.color;
+            el?.customization?.bundle?.totalSection?.originalPrice?.color;
           discountPrice.style.fontSize =
-            el.customization?.bundle.totalSection.originalPrice.fontSize + "px";
+            el?.customization?.bundle?.totalSection?.originalPrice?.fontSize + "px";
           let newDiscountPrice = total.toFixed(2);
           discountPrice.innerText = showAmountWithCurrency(newDiscountPrice);
           discountedPriceDiv.append(discountPrice);
         }
-      
       
         TOTAL_DIV.append(discountedPriceDiv);
         BUNDLE_DIV.append(TOTAL_DIV);
         let ADD_TO_CART_BTN_DIV = document.createElement("div");
         ADD_TO_CART_BTN_DIV.className = "sd-bundle-addto-cart";
         let ADD_TO_CART_BUTTON = document.createElement("button");
-        ADD_TO_CART_BUTTON.style.fontFamily = el.customization?.bundle.box.fontFamily;
-        ADD_TO_CART_BUTTON.style.background = el.customization?.bundle.button.backgroundColor;
-        ADD_TO_CART_BUTTON.style.color = el.customization?.bundle.button.color;
-        ADD_TO_CART_BUTTON.style.borderColor = el.customization?.bundle.button.borderColor;
-        ADD_TO_CART_BUTTON.style.borderRadius = el.customization?.bundle.button.borderRadius + "px";
-        ADD_TO_CART_BUTTON.style.fontSize = `${el.customization?.bundle.button.fontSize}px`;
-        ADD_TO_CART_BUTTON.innerText = el.translations.translation.addToCartButton;
+        ADD_TO_CART_BUTTON.style.fontFamily = el?.customization?.bundle?.box?.fontFamily;
+        ADD_TO_CART_BUTTON.style.background = el?.customization?.bundle?.button?.backgroundColor;
+        ADD_TO_CART_BUTTON.style.color = el?.customization?.bundle?.button?.color;
+        ADD_TO_CART_BUTTON.style.borderColor = el?.customization?.bundle?.button?.borderColor;
+        ADD_TO_CART_BUTTON.style.borderRadius = el?.customization?.bundle?.button?.borderRadius + "px";
+        ADD_TO_CART_BUTTON.style.fontSize = `${el?.customization?.bundle?.button?.fontSize}px`;
+        ADD_TO_CART_BUTTON.innerText = el?.translations?.translation?.addToCartButton;
         ADD_TO_CART_BTN_DIV.append(ADD_TO_CART_BUTTON);
         ADD_TO_CART_BUTTON.addEventListener("click", (e) => {
           let code = JSON.parse(localStorage.getItem("sd_bundle_data"));
-          let discountCodeId = code.discountCreateId ?? "";
+          let discountCodeId = code?.discountCreateId ?? "";
           ADD_TO_CART_BUTTON.innerText = "";
           let btnSpinner = document.createElement("div");
           btnSpinner.className = "bundleBtnSpinner";
@@ -813,35 +810,34 @@ function createBundle(BUNDLE_DATA) {
         }
     } 
     else if (el.type == "volumeBundle") {
-      console.log("volume bundle..............",el);
         let optionIndex;
         let discountedPrice;
         let VOLUME_DIV = document.createElement("div");
         VOLUME_DIV.className = "sd-bundle-main-column";
         VOLUME_DIV.classList.add("sd-volumeBundle" + bundleIndex);
-        VOLUME_DIV.style.background = el.customization.volume.box.backgroundColor;
-        VOLUME_DIV.style.borderRadius = `${el.customization.volume.box.borderRadius}px`;
-        VOLUME_DIV.style.borderColor = el.customization.volume.box.borderColor;
+        VOLUME_DIV.style.background = el?.customization?.volume?.box?.backgroundColor;
+        VOLUME_DIV.style.borderRadius = `${el?.customization?.volume?.box?.borderRadius}px`;
+        VOLUME_DIV.style.borderColor = el?.customization?.volume?.box?.borderColor;
       
         let VOLUME_TITLE_DIV = document.createElement("div");
         VOLUME_TITLE_DIV.className = "sd-bundle-text-detail";
         
         let volumeTitleText = document.createElement("h4");
-        volumeTitleText.style.fontFamily = el.customization?.volume.box.fontFamily;
-        volumeTitleText.style.color = el.customization.volume.title.color;
-        volumeTitleText.style.fontWeight = el.customization?.volume.title.titleBold;
-        volumeTitleText.style.textAlign = el.customization.volume.title.alignment;
-        volumeTitleText.style.fontSize = `${el.customization.volume.title.fontSize}px`;
-        volumeTitleText.innerText = el.title;
+        volumeTitleText.style.fontFamily = el?.customization?.volume?.box?.fontFamily;
+        volumeTitleText.style.color = el?.customization?.volume?.title?.color;
+        volumeTitleText.style.fontWeight = el?.customization?.volume?.title?.titleBold;
+        volumeTitleText.style.textAlign =  el?.customization?.volume?.title?.alignment;
+        volumeTitleText.style.fontSize =  `${el?.customization?.volume?.title?.fontSize}px`;
+        volumeTitleText.innerText = el?.title;
         VOLUME_TITLE_DIV.append(volumeTitleText);
 
         let VolumeDescription = document.createElement("p");
-        VolumeDescription.style.color = el.customization.volume.title.descriptionColor;
-        VolumeDescription.style.fontFamily = el.customization?.volume.box.fontFamily;
-        VolumeDescription.style.fontWeight = el.customization?.volume.title.descriptionBold;
-        VolumeDescription.style.textAlign = el.customization.volume.title.alignment;
-        VolumeDescription.style.fontSize = `${el.customization.volume.title.descriptionFontSize}px`;
-        VolumeDescription.innerText = el.description;
+        VolumeDescription.style.color = el?.customization?.volume?.title?.descriptionColor;
+        VolumeDescription.style.fontFamily = el?.customization?.volume?.box?.fontFamily;
+        VolumeDescription.style.fontWeight = el?.customization?.volume?.title?.descriptionBold;
+        VolumeDescription.style.textAlign = el?.customization?.volume?.title?.alignment;
+        VolumeDescription.style.fontSize = `${el?.customization?.volume?.title?.descriptionFontSize}px`;
+        VolumeDescription.innerText = el?.description;
         VOLUME_TITLE_DIV.append(VolumeDescription);
       
         VOLUME_DIV.append(VOLUME_TITLE_DIV);
@@ -849,7 +845,7 @@ function createBundle(BUNDLE_DATA) {
         el.bundleDetail.discountOptions.forEach((ele, volumeIndex) => {
           let DISCOUNTOPTIONS = document.createElement("div");
           DISCOUNTOPTIONS.className = "sd-volume-bundle-detail";
-          DISCOUNTOPTIONS.style.background = el.customization.volume.productDetails.productDetailsBox.backgroundColor;
+          DISCOUNTOPTIONS.style.background = el?.customization?.volume?.productDetails?.productDetailsBox?.backgroundColor;
           VOLUME_DIV.append(DISCOUNTOPTIONS);
           mainDiv.append(VOLUME_DIV);
 
@@ -878,40 +874,40 @@ function createBundle(BUNDLE_DATA) {
             DISCOUNT_OPT_titleDiv.append(radioBtn);
 
             let discountOptTitle = document.createElement("label");
-            discountOptTitle.style.fontFamily = el.customization?.volume.box.fontFamily;
-            discountOptTitle.style.color = el.customization.volume.options.color;
-            discountOptTitle.style.fontSize = `${el.customization.volume.options.fontSize}px`;
+            discountOptTitle.style.fontFamily = el?.customization?.volume?.box?.fontFamily;
+            discountOptTitle.style.color = el?.customization?.volume?.options?.color;
+            discountOptTitle.style.fontSize = `${el?.customization?.volume?.options?.fontSize}px`;
             discountOptTitle.setAttribute(
               "for",
               "volumeDiscount" + volumeIndex + bundleIndex
             );
             discountOptTitle.className = "sd-radio-label";
 
-            if (ele.description.includes("{discount}")) {
-              if (ele.type == "percent") {
-                let updatedString = ele.description.replace(
+            if (ele?.description.includes("{discount}")) {
+              if (ele?.type == "percent") {
+                let updatedString = ele?.description?.replace(
                   "{discount}",
                   ele.value + "%"
                 );
                 discountOptTitle.innerText = updatedString;
-              } else if (ele.type == "fixed") {
-                let newPrice = showAmountWithCurrency(ele.value);
+              } else if (ele?.type == "fixed") {
+                let newPrice = showAmountWithCurrency(ele?.value);
                 let updatedString = ele.description.replace(
                   "{discount}",
                   newPrice + " " + el.translations.translation.off
                 );
                 discountOptTitle.innerText = updatedString;
-              } else if (ele.type == "price") {
-                let updatedString = ele.description.replace("{discount}", "");
+              } else if (ele?.type == "price") {
+                let updatedString = ele?.description?.replace("{discount}", "");
                 discountOptTitle.innerText = updatedString;
               } else if (
-                ele.type == "noDiscount" ||
-                ele.type == "freeShipping"
+                ele?.type == "noDiscount" ||
+                ele?.type == "freeShipping"
               ) {
-                discountOptTitle.innerText = ele.description;
+                discountOptTitle.innerText = ele?.description;
               }
             } else {
-              discountOptTitle.innerText = ele.description;
+              discountOptTitle.innerText = ele?.description;
             }
 
             DISCOUNT_OPT_titleDiv.append(discountOptTitle);
@@ -923,11 +919,11 @@ function createBundle(BUNDLE_DATA) {
               if(el.customization.volume.options.DiscountBadge.badgeType == "options"){
                 DISCOUNT_OPT_BadgeSection.className = "sd-percent-badge";
                 let BagdeSpan = document.createElement("span");
-                BagdeSpan.style.fontFamily = el.customization?.volume.box.fontFamily;
-                BagdeSpan.style.color = el.customization.volume.options.saveDiscount.color;
-                BagdeSpan.style.background = el.customization.volume.options.saveDiscount.backgroundColor;
-                BagdeSpan.style.borderRadius = `${el.customization.volume.options.saveDiscount.borderRadius}px`;
-                BagdeSpan.style.fontSize = `${el.customization.volume.options.saveDiscount.fontSize}px`;
+                BagdeSpan.style.fontFamily = el?.customization?.volume?.box?.fontFamily;
+                BagdeSpan.style.color = el?.customization?.volume?.options?.saveDiscount?.color;
+                BagdeSpan.style.background = el?.customization?.volume?.options?.saveDiscount?.backgroundColor;
+                BagdeSpan.style.borderRadius = `${el?.customization?.volume?.options?.saveDiscount?.borderRadius}px`;
+                BagdeSpan.style.fontSize = `${el?.customization?.volume?.options?.saveDiscount?.fontSize}px`;
                 if (ele.type == "percent") {
                   BagdeSpan.innerText =
                     el.translations.translation.save + " " + ele.value + "%";
@@ -956,15 +952,15 @@ function createBundle(BUNDLE_DATA) {
                           <path
                             d="M0 10L8.63148 0H83.3261L91 10H0Z"
                             fill= ${
-                              el.customization.volume.options
-                                .saveDiscount.backgroundColor
+                              el?.customization?.volume?.options
+                                ?.saveDiscount?.backgroundColor
                             }
                           />
                           <path
                             d="M9 0H83V19C83 21.7614 80.7614 24 78 24H14C11.2386 24 9 21.7614 9 19V0Z"
                             fill= ${
-                              el.customization.volume.options
-                                .saveDiscount.backgroundColor
+                              el?.customization?.volume?.options
+                                ?.saveDiscount?.backgroundColor
                             }
                           />
                         </svg>`
@@ -978,9 +974,9 @@ function createBundle(BUNDLE_DATA) {
                     showAmountWithCurrency(newPrice)+
                     " Off";
                 }
-                Badge_Text.style.fontFamily = el.customization?.volume.box.fontFamily;
-                Badge_Text.style.fontSize = el.customization.volume.options.saveDiscount.fontSize+"px";
-                Badge_Text.style.color = el.customization.volume.options.saveDiscount.color;
+                Badge_Text.style.fontFamily = el?.customization?.volume?.box?.fontFamily;
+                Badge_Text.style.fontSize = el?.customization?.volume?.options?.saveDiscount?.fontSize+"px";
+                Badge_Text.style.color = el?.customization?.volume?.options?.saveDiscount?.color;
                 DISCOUNT_OPT_BadgeSection.append(Badge_Text);
               }
             }
@@ -1004,8 +1000,8 @@ function createBundle(BUNDLE_DATA) {
             DISCOUNT_OPT_PRODUCT.className = "sd-bundle-product-inner";
             let productImgDiv = document.createElement("div");
             productImgDiv.className = "sd-bundle-product-img";
-            productImgDiv.style.borderColor = el.customization.volume.productDetails.image.borderColor;
-            productImgDiv.style.borderRadius = `${el.customization.volume.productDetails.image.borderRadius}px`;
+            productImgDiv.style.borderColor = el?.customization?.volume?.productDetails?.image?.borderColor;
+            productImgDiv.style.borderRadius = `${el?.customization?.volume?.productDetails?.image?.borderRadius}px`;
             let productImg = document.createElement("img");
             if (
               el.bundleDetail.discountedProductType == "collection" ||
@@ -1025,10 +1021,10 @@ function createBundle(BUNDLE_DATA) {
             let productTitlePriceDiv = document.createElement("div");
             productTitlePriceDiv.className = "sd-bundle-product-name";
             let productTitle = document.createElement("h5");
-            productTitle.style.fontFamily = el.customization?.volume.box.fontFamily;
-            productTitle.style.color = el.customization.volume.productDetails.title.color;
-            productTitle.style.fontSize = `${el.customization.volume.productDetails.title.fontSize}px`;
-            productTitle.innerText = el.bundleDetail.products[0].title;
+            productTitle.style.fontFamily = el?.customization?.volume?.box?.fontFamily;
+            productTitle.style.color = el?.customization?.volume?.productDetails?.title?.color;
+            productTitle.style.fontSize = `${el?.customization?.volume?.productDetails?.title?.fontSize}px`;
+            productTitle.innerText = el?.bundleDetail?.products[0]?.title;
             let productPrice = document.createElement("h4");
             productPrice.classList.add(
               "productPrice" + bundleIndex + volumeIndex
@@ -1046,10 +1042,10 @@ function createBundle(BUNDLE_DATA) {
               xprice = parseFloat(toFixedPrice).toFixed(2);
             }
             productPrice.innerText = showAmountWithCurrency(xprice);
-            productPrice.style.fontFamily = el.customization?.volume.box.fontFamily;
+            productPrice.style.fontFamily = el?.customization?.volume?.box?.fontFamily;
             productPrice.id = `sd-volume-datasection-price${index}${bundleIndex}${volumeIndex}`;
-            productPrice.style.color = el.customization.volume.productDetails.price.color;
-            productPrice.style.fontSize = `${el.customization.volume.productDetails.price.fontSize}px`;
+            productPrice.style.color = el?.customization?.volume?.productDetails?.price?.color;
+            productPrice.style.fontSize = `${el?.customization?.volume?.productDetails?.price?.fontSize}px`;
             productTitlePriceDiv.append(productTitle, productPrice);
 
             DISCOUNT_OPT_PRODUCT.append(productImgDiv, productTitlePriceDiv);
@@ -1058,13 +1054,13 @@ function createBundle(BUNDLE_DATA) {
             let discountOptionQuantity = document.createElement("h6");
             let QUANTITY_SPAN = document.createElement("span");
             discountOptionQuantity.innerText = ele.quantity;
-            QUANTITY_SPAN.style.fontFamily = el.customization?.volume.box.fontFamily;
+            QUANTITY_SPAN.style.fontFamily = el?.customization?.volume?.box?.fontFamily;
             discountOptionQuantity.append(QUANTITY_SPAN);
-            discountOptionQuantity.style.color = el.customization.volume.productDetails.quantities.color;
+            discountOptionQuantity.style.color = el?.customization?.volume?.productDetails?.quantities?.color;
             discountOptionQuantity.innerText = `Qty: ${ele.quantity}`;
-            discountOptionQuantity.style.fontSize = el.customization?.volume.productDetails.quantities.size + "px";
+            discountOptionQuantity.style.fontSize = el?.customization?.volume?.productDetails?.quantities?.size + "px";
             // discountOptionQuantity.innerText = `Qty: ${QUANTITY_SPAN.innerText}`;
-            discountOptionQuantity.style.fontFamily = el.customization?.volume.box.fontFamily;
+            discountOptionQuantity.style.fontFamily = el?.customization?.volume?.box?.fontFamily;
             discountOptionQuantityBox.append(discountOptionQuantity);
             
             DISCOUNT_OPT_PRODUCT_DATA.append(DISCOUNT_OPT_PRODUCT,discountOptionQuantityBox);
@@ -1077,26 +1073,26 @@ function createBundle(BUNDLE_DATA) {
             let seeMoreDiv = document.createElement("div");
             let show_more = document.createElement("button");
             show_more.className = "sd-volume-showMoreLess";
-            show_more.style.fontFamily = el.customization?.volume.box.fontFamily;
+            show_more.style.fontFamily = el?.customization?.volume?.box?.fontFamily;
             seeMoreDiv.append(show_more);
-            show_more.innerText = el.translations.translation.seeMore;
+            show_more.innerText = el?.translations?.translation?.seeMore;
             let seeLessDiv = document.createElement("div");
 
             let show_less = document.createElement("button");
             show_less.className = "sd-volume-showMoreLess";
-            show_less.style.fontFamily = el.customization?.volume.box.fontFamily;
+            show_less.style.fontFamily = el?.customization?.volume?.box?.fontFamily;
             seeLessDiv.append(show_less);
-            show_less.innerText = el.translations.translation.seeLess;
+            show_less.innerText = el?.translations?.translation?.seeLess;
             seeLessDiv.classList.add("sd-volume-hide-click");
             if (ele.quantity <= 2) {
               seeMoreDiv.style.display = "none";
             };
             for (let i = 1; i <= ele.quantity; i++) {
               VOLUME_SELECT = document.createElement("select");
-              VOLUME_SELECT.style.color = el.customization.volume.productDetails.variantSelector.color;
-              VOLUME_SELECT.style.background = el.customization.volume.productDetails.variantSelector.backgroundColor;
-              VOLUME_SELECT.style.fontFamily = el.customization?.volume.box.fontFamily;
-              VOLUME_SELECT.style.width = el.customization.volume.productDetails.variantSelector.width+"px";
+              VOLUME_SELECT.style.color = el?.customization?.volume?.productDetails?.variantSelector?.color;
+              VOLUME_SELECT.style.background = el?.customization?.volume?.productDetails?.variantSelector?.backgroundColor;
+              VOLUME_SELECT.style.fontFamily = el?.customization?.volume?.box?.fontFamily;
+              VOLUME_SELECT.style.width = el?.customization?.volume?.productDetails?.variantSelector?.width+"px";
               VOLUME_SELECT.id = `sd-volume-select-option${i}${volumeIndex}`;
               VOLUME_SELECT.classList.add(
                 "volumeDiscount" + volumeIndex + bundleIndex
@@ -1454,27 +1450,26 @@ function createBundle(BUNDLE_DATA) {
         let totalTextDiv = document.createElement("div");
         totalTextDiv.className = "sd-total-desc";
         let TotalText = document.createElement("h4");
-        TotalText.style.color = el.customization.volume.totalSection.color;
-        TotalText.style.fontSize = el.customization.volume.totalSection.fontSize + "px";
-        TotalText.style.fontFamily = el.customization?.volume.box.fontFamily;
-        TotalText.innerText = el.translations.translation.total;
-        TotalText.style.color = el.customization.volume.totalSection.color;
+        TotalText.style.color = el?.customization?.volume?.totalSection?.color;
+        TotalText.style.fontSize = el?.customization?.volume?.totalSection?.fontSize + "px";
+        TotalText.style.fontFamily = el?.customization?.volume?.box?.fontFamily;
+        TotalText.innerText = el?.translations?.translation?.total;
+        TotalText.style.color = el?.customization?.volume?.totalSection?.color;
         totalTextDiv.append(TotalText);
 
         let DiscountText = document.createElement("p");
-        DiscountText.style.fontSize = el.customization.volume.totalSection.discountMessage.size + "px";
-        DiscountText.style.fontFamily = el.customization?.volume.box.fontFamily;
-        DiscountText.style.color = el.customization.volume.totalSection.discountMessage.color;
-        DiscountText.innerText = el.translations.translation.discountApplied;
+        DiscountText.style.fontSize = el?.customization?.volume?.totalSection?.discountMessage?.size + "px";
+        DiscountText.style.fontFamily = el?.customization?.volume?.box?.fontFamily;
+        DiscountText.style.color = el?.customization?.volume?.totalSection?.discountMessage?.color;
+        DiscountText.innerText = el?.translations?.translation?.discountApplied;
         totalTextDiv.append(DiscountText);
-      
         let totalDiscountDiv = document.createElement("div");
         totalDiscountDiv.className = "sd-total-amount";
         let firstDiscountText = document.createElement("h6");
-        firstDiscountText.style.fontFamily = el.customization?.volume.box.fontFamily;
+        firstDiscountText.style.fontFamily = el?.customization?.volume?.box?.fontFamily;
         firstDiscountText.id = `sd-bundle-volume-discounted-price${bundleIndex}`;
-        firstDiscountText.style.color = el.customization.volume.totalSection.originalPrice.color;
-        firstDiscountText.style.fontSize = el.customization.volume.totalSection.originalPrice.fontSize + "px";
+        firstDiscountText.style.color = el?.customization?.volume?.totalSection?.originalPrice.color;
+        firstDiscountText.style.fontSize = el?.customization?.volume.totalSection?.originalPrice?.fontSize + "px";
         let tPrice;
         if (
           el.bundleDetail.discountedProductType == "all_products" ||
@@ -1484,17 +1479,15 @@ function createBundle(BUNDLE_DATA) {
         } else {
           tPrice = total.toFixed(2);
         }
-
         let newFirstDiscountPrice = tPrice;
-
         firstDiscountText.innerText = showAmountWithCurrency(
           newFirstDiscountPrice
         );
 
         let secondDiscountText = document.createElement("h4");
-        secondDiscountText.style.fontFamily = el.customization?.volume.box.fontFamily;
-        secondDiscountText.style.color = el.customization.volume.totalSection.finalPrice.color;
-        secondDiscountText.style.fontSize = el.customization.volume.totalSection.finalPrice.fontSize + "px";
+        secondDiscountText.style.fontFamily = el?.customization?.volume?.box?.fontFamily;
+        secondDiscountText.style.color = el?.customization?.volume?.totalSection?.finalPrice?.color;
+        secondDiscountText.style.fontSize = el?.customization?.volume?.totalSection?.finalPrice?.fontSize + "px";
         secondDiscountText.id = "sd-bundle-volume-discount-final-price" + bundleIndex;
        
         newSecondDiscountPrice = discountedPrice;
@@ -1515,14 +1508,13 @@ function createBundle(BUNDLE_DATA) {
         totalDiv.className = "sd-product-bundle-total";
         VOLUME_DIV.append(totalDiv);
         let addToCartBtn = document.createElement("button");
-        addToCartBtn.style.borderColor = el.customization.volume.button.borderColor;
-        addToCartBtn.style.borderRadius = el.customization.volume.button.borderRadius+"px";
-        addToCartBtn.style.fontFamily = el.customization?.volume.box.fontFamily;
-        addToCartBtn.style.background = el.customization.volume.button.backgroundColor;
-        addToCartBtn.style.color = el.customization.volume.button.color;
-        addToCartBtn.style.fontSize = `${el.customization.volume.button.fontSize}px`;
-
-        addToCartBtn.innerText = el.translations.translation.addToCartButton;
+        addToCartBtn.style.borderColor = el?.customization?.volume?.button?.borderColor;
+        addToCartBtn.style.borderRadius = el?.customization?.volume.button?.borderRadius+"px";
+        addToCartBtn.style.fontFamily = el?.customization?.volume?.box?.fontFamily;
+        addToCartBtn.style.background = el?.customization?.volume?.button?.backgroundColor;
+        addToCartBtn.style.color = el?.customization?.volume?.button?.color;
+        addToCartBtn.style.fontSize = `${el?.customization?.volume?.button?.fontSize}px`;
+        addToCartBtn.innerText = el?.translations?.translation?.addToCartButton;
         addToCart.append(addToCartBtn);
 
         if (el.customization.volume.button.position == "bottom") {
@@ -1773,23 +1765,23 @@ function createBundle(BUNDLE_DATA) {
         }
     } 
     else if (el.type == "collectionMixMatch") {
-      console.log("test....collection data........",el)
+      // console.log("test....collection data........",el)
       //--------------------------------------------------------------------------Collection Bundle----------------------------------------------------------------------------
       let collectionDiv = document.createElement("div");
         collectionDiv.className = "sd-collection-main-column";
-        collectionDiv.style.background = el.customization.collectionMixMatch.box.backgroundColor;
-        collectionDiv.style.border = "1px solid" + el.customization.collectionMixMatch.box.borderColor;
-        collectionDiv.style.borderRadius = el.customization.collectionMixMatch.box.borderRadius + "px";
+        collectionDiv.style.background = el?.customization?.collectionMixMatch?.box?.backgroundColor;
+        collectionDiv.style.border = "1px solid" + el?.customization?.collectionMixMatch?.box?.borderColor;
+        collectionDiv.style.borderRadius = el?.customization?.collectionMixMatch?.box?.borderRadius + "px";
         mainDiv.append(collectionDiv);
 
         let VOLUME_HEADER_DIV = document.createElement("span");
         VOLUME_HEADER_DIV.className = "sd-badges-part";
-        VOLUME_HEADER_DIV.style.background = el.customization.collectionMixMatch.DiscountBadge.backgroundColor;
-        VOLUME_HEADER_DIV.style.fontFamily = el.customization.collectionMixMatch.box.fontFamily;
-        VOLUME_HEADER_DIV.style.color = el.customization.collectionMixMatch.DiscountBadge.color;
+        VOLUME_HEADER_DIV.style.background = el?.customization?.collectionMixMatch?.DiscountBadge?.backgroundColor;
+        VOLUME_HEADER_DIV.style.fontFamily = el?.customization?.collectionMixMatch?.box?.fontFamily;
+        VOLUME_HEADER_DIV.style.color = el?.customization?.collectionMixMatch?.DiscountBadge?.color;
         let discountBadge = document.createElement("span");
         discountBadge.className = "sd-collectionMM-badge";
-        discountBadge.innerText = el.translations.translation.grabTheDeal;
+        discountBadge.innerText = el?.translations?.translation?.grabTheDeal;
         VOLUME_HEADER_DIV.append(discountBadge);
         collectionDiv.append(VOLUME_HEADER_DIV);
       
@@ -1797,28 +1789,28 @@ function createBundle(BUNDLE_DATA) {
         customiseTitle.className = "sd-bundle-text-detail";
         collectionDiv.append(customiseTitle);
         let customiseTitleText = document.createElement("h4");
-        customiseTitleText.style.fontFamily = el.customization.collectionMixMatch.box.fontFamily;
-        customiseTitleText.innerText = el.title;
-        customiseTitleText.style.color = el.customization.collectionMixMatch.title.color;
-        customiseTitleText.style.fontSize = el.customization.collectionMixMatch.title.fontSize + "px";
-        customiseTitleText.style.textAlign = el.customization.collectionMixMatch.title.alignment;
+        customiseTitleText.style.fontFamily = el?.customization?.collectionMixMatch?.box?.fontFamily;
+        customiseTitleText.innerText = el?.title;
+        customiseTitleText.style.color = el?.customization?.collectionMixMatch?.title?.color;
+        customiseTitleText.style.fontSize = el?.customization?.collectionMixMatch?.title?.fontSize + "px";
+        customiseTitleText.style.textAlign = el?.customization?.collectionMixMatch?.title?.alignment;
 
         customiseTitle.append(customiseTitleText);
 
         let customiseDescriptionText = document.createElement("p");
-        customiseDescriptionText.style.fontFamily = el.customization.collectionMixMatch.box.fontFamily;
-        customiseDescriptionText.innerText = el.description;
+        customiseDescriptionText.style.fontFamily = el?.customization?.collectionMixMatch?.box?.fontFamily;
+        customiseDescriptionText.innerText = el?.description;
         customiseDescriptionText.style.color =
-          el.customization.collectionMixMatch.title.descriptionColor;
+          el?.customization.collectionMixMatch?.title?.descriptionColor;
         customiseDescriptionText.style.fontSize =
-          el.customization.collectionMixMatch.title.descriptionFontSize + "px";
-        customiseDescriptionText.style.textAlign = el.customization.collectionMixMatch.title.alignment;
+          el?.customization?.collectionMixMatch?.title?.descriptionFontSize + "px";
+        customiseDescriptionText.style.textAlign = el?.customization?.collectionMixMatch?.title?.alignment;
         customiseTitle.append(customiseDescriptionText);
 
         el.bundleDetail.products.forEach((ele, index) => {
           let CollectionDetails = document.createElement("div")
           CollectionDetails.className = "sd-bundle-product-detail create-bundle-discount";
-          CollectionDetails.style.backgroundColor = el.customization.collectionMixMatch.collectionDetails.collectionDetailsBox.backgroundColor;
+          CollectionDetails.style.backgroundColor = el?.customization?.collectionMixMatch?.collectionDetails?.collectionDetailsBox?.backgroundColor;
           collectionDiv.append(CollectionDetails);
           let selectedCollection = document.createElement("div");
           selectedCollection.className = "sd-bundle-product-inner";
@@ -1826,7 +1818,7 @@ function createBundle(BUNDLE_DATA) {
 
           let SelectedCollectionImgDiv = document.createElement("div");
           SelectedCollectionImgDiv.className = "sd-bundle-product-img";
-          SelectedCollectionImgDiv.style.border = "1px solid" + el.customization.collectionMixMatch.collectionDetails.imageBorderColor;
+          SelectedCollectionImgDiv.style.border = "1px solid" + el?.customization?.collectionMixMatch?.collectionDetails?.imageBorderColor;
           selectedCollection.append(SelectedCollectionImgDiv);
           let selectedCollectionImg = document.createElement("img");
           selectedCollectionImg.style.width = "100%";
@@ -1839,26 +1831,26 @@ function createBundle(BUNDLE_DATA) {
           selectedCollection.append(selectedCollectionData);
 
           let selectedCollectionName = document.createElement("h5");
-          selectedCollectionName.style.fontFamily = el.customization.collectionMixMatch.box.fontFamily;
-          selectedCollectionName.style.color = el.customization.collectionMixMatch.collectionDetails.title.color;
-          selectedCollectionName.style.fontSize = el.customization.collectionMixMatch.collectionDetails.title.fontSize + "px";
+          selectedCollectionName.style.fontFamily = el?.customization?.collectionMixMatch?.box?.fontFamily;
+          selectedCollectionName.style.color = el?.customization?.collectionMixMatch?.collectionDetails?.title?.color;
+          selectedCollectionName.style.fontSize = el?.customization?.collectionMixMatch?.collectionDetails?.title?.fontSize + "px";
           selectedCollectionName.innerText = ele.title;
           selectedCollectionData.append(selectedCollectionName);
           let selectedCollectionQuantity = document.createElement("p");
-          selectedCollectionQuantity.style.fontFamily = el.customization.collectionMixMatch.box.fontFamily;
+          selectedCollectionQuantity.style.fontFamily = el?.customization?.collectionMixMatch?.box?.fontFamily;
           selectedCollectionQuantity.innerText = `Add ${ele.quantity} items from ${ele.title}`;
-          selectedCollectionQuantity.style.color = el.customization.collectionMixMatch.collectionDetails.description.color;
-          selectedCollectionQuantity.style.fontSize =el.customization.collectionMixMatch.collectionDetails.description.fontSize + "px";
+          selectedCollectionQuantity.style.color = el?.customization?.collectionMixMatch?.collectionDetails?.description?.color;
+          selectedCollectionQuantity.style.fontSize =el?.customization?.collectionMixMatch?.collectionDetails?.description?.fontSize + "px";
           selectedCollectionData.append(selectedCollectionQuantity);
 
            if (index < el.bundleDetail.products.length - 1) {
             let BUNDLE_PLUS_BTN_DIV = document.createElement("div");
             BUNDLE_PLUS_BTN_DIV.className = "sd-add-bundle";
-            BUNDLE_PLUS_BTN_DIV.style.color = el.customization.collectionMixMatch.collectionDetails.plus.color;
+            BUNDLE_PLUS_BTN_DIV.style.color = el?.customization?.collectionMixMatch?.collectionDetails?.plus?.color;
             BUNDLE_PLUS_BTN_DIV.innerHTML = `<svg viewBox="0 0 18 18" focusable="false" width="18" height="18" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
             <path d="M6.98047 17.3842V0.580255H10.3239V17.3842H6.98047ZM0.256392 10.6477V7.30433H17.0604V10.6477H0.256392Z" fill= ${
-                          el.customization.collectionMixMatch
-                            .collectionDetails.plus.color
+                          el?.customization?.collectionMixMatch
+                            ?.collectionDetails?.plus?.color
                         }></path>
             </svg>`;
             collectionDiv.append(BUNDLE_PLUS_BTN_DIV);
@@ -1869,13 +1861,13 @@ function createBundle(BUNDLE_DATA) {
         let Go_To_Bundle_Div = document.createElement("div");
         Go_To_Bundle_Div.className = "sd-bundle-addto-cart"
         let go_to_bundleBuilder_btn = document.createElement("button");
-        go_to_bundleBuilder_btn.style.fontFamily = el.customization.collectionMixMatch.box.fontFamily;
-        go_to_bundleBuilder_btn.style.borderColor = el.customization.collectionMixMatch.button.borderColor;
-        go_to_bundleBuilder_btn.style.borderRadius = el.customization.collectionMixMatch.button.borderRadius + "px";
-        go_to_bundleBuilder_btn.style.background = el.customization.collectionMixMatch.button.backgroundColor;
-        go_to_bundleBuilder_btn.style.color = el.customization.collectionMixMatch.button.color;
-        go_to_bundleBuilder_btn.style.fontSize = el.customization.collectionMixMatch.button.fontSize + "px";
-        go_to_bundleBuilder_btn.innerText = el.translations.translation.goToBundleBuilder;
+        go_to_bundleBuilder_btn.style.fontFamily = el?.customization?.collectionMixMatch?.box?.fontFamily;
+        go_to_bundleBuilder_btn.style.borderColor = el?.customization?.collectionMixMatch?.button?.borderColor;
+        go_to_bundleBuilder_btn.style.borderRadius = el?.customization?.collectionMixMatch?.button?.borderRadius + "px";
+        go_to_bundleBuilder_btn.style.background = el?.customization?.collectionMixMatch?.button?.backgroundColor;
+        go_to_bundleBuilder_btn.style.color = el?.customization?.collectionMixMatch?.button?.color;
+        go_to_bundleBuilder_btn.style.fontSize = el?.customization?.collectionMixMatch?.button?.fontSize + "px";
+        go_to_bundleBuilder_btn.innerText = el?.translations?.translation?.goToBundleBuilder;
         
         collectionDiv.append(Go_To_Bundle_Div);
         Go_To_Bundle_Div.append(go_to_bundleBuilder_btn)
@@ -1975,10 +1967,8 @@ function createBundle(BUNDLE_DATA) {
         }
     }
     else if (el.type == "fbt") {
-      console.log("fbt....................",el.customization.frequentlyBoughtTogether)
       if(el.plans.plan == "standard"){
         let totalProducts =[];
-        console.log("data.........................",el)
         function execFbtModern(){
           let originalPriceArray=[];
           let originalPrice ;
@@ -2022,19 +2012,19 @@ function createBundle(BUNDLE_DATA) {
       
           let FBT_DIV = document.createElement("div");
           FBT_DIV.className = "sd-bundle-main-column";
-          FBT_DIV.style.backgroundColor = el.customization.frequentlyBoughtTogether.box.backgroundColor;
-          FBT_DIV.style.borderRadius = el.customization.frequentlyBoughtTogether.box.borderRadius+"px";
-          FBT_DIV.style.borderColor = el.customization.frequentlyBoughtTogether.box.borderColor;
+          FBT_DIV.style.backgroundColor = el?.customization?.frequentlyBoughtTogether?.box?.backgroundColor;
+          FBT_DIV.style.borderRadius = el?.customization?.frequentlyBoughtTogether?.box?.borderRadius+"px";
+          FBT_DIV.style.borderColor = el?.customization?.frequentlyBoughtTogether?.box?.borderColor;
           FBT_DIV.id = `FBT_DIV${bundleIndex}`;
           mainDiv.append(FBT_DIV);
 
-          if (el.customization.frequentlyBoughtTogether.optionalBadge.enable === true) {
-            if (el.bundleDetail.discountType === "percent" || el.bundleDetail.discountType === "fixed") {
+          if (el?.customization?.frequentlyBoughtTogether?.optionalBadge?.enable === true) {
+            if (el?.bundleDetail?.discountType === "percent" || el?.bundleDetail?.discountType === "fixed") {
               let VOLUME_HEADER_DIV = document.createElement("span");
               VOLUME_HEADER_DIV.className = "sd-badges-part-optional";
-              VOLUME_HEADER_DIV.style.background = el.customization.frequentlyBoughtTogether.optionalBadge.background;
-              VOLUME_HEADER_DIV.style.color = el.customization.frequentlyBoughtTogether.optionalBadge.color;
-              VOLUME_HEADER_DIV.style.fontSize = el.customization.frequentlyBoughtTogether.optionalBadge.fontSize + "px"; 
+              VOLUME_HEADER_DIV.style.background = el?.customization?.frequentlyBoughtTogether?.optionalBadge?.background;
+              VOLUME_HEADER_DIV.style.color = el?.customization?.frequentlyBoughtTogether?.optionalBadge?.color;
+              VOLUME_HEADER_DIV.style.fontSize = el?.customization?.frequentlyBoughtTogether?.optionalBadge?.fontSize + "px"; 
               let discountBadge = document.createElement("span");
               discountBadge.className = "sd-collectionMM-badge";
               if (el.bundleDetail.discountType === "percent") {
@@ -2056,17 +2046,17 @@ function createBundle(BUNDLE_DATA) {
             }
           }
           let FBT_TITLE_TEXT_DIV = document.createElement("h4");
-          FBT_TITLE_TEXT_DIV.style.color = el.customization.frequentlyBoughtTogether.title.color;
-          FBT_TITLE_TEXT_DIV.style.fontWeight = el.customization.frequentlyBoughtTogether.title.titleBold;
-          FBT_TITLE_TEXT_DIV.style.fontSize = el.customization.frequentlyBoughtTogether.title.fontSize+"px";
-          FBT_TITLE_TEXT_DIV.style.fontFamily = el.customization.frequentlyBoughtTogether.box.fontFamily;
-          FBT_TITLE_TEXT_DIV.innerText = el.title;
+          FBT_TITLE_TEXT_DIV.style.color = el?.customization?.frequentlyBoughtTogether?.title?.color;
+          FBT_TITLE_TEXT_DIV.style.fontWeight = el?.customization?.frequentlyBoughtTogether?.title?.titleBold;
+          FBT_TITLE_TEXT_DIV.style.fontSize = el?.customization?.frequentlyBoughtTogether?.title?.fontSize+"px";
+          FBT_TITLE_TEXT_DIV.style.fontFamily = el?.customization?.frequentlyBoughtTogether?.box?.fontFamily;
+          FBT_TITLE_TEXT_DIV.innerText = el?.title;
           let FBT_DESCRIPTION_TEXT_DIV = document.createElement("p");
-          FBT_DESCRIPTION_TEXT_DIV.style.fontFamily = el.customization.frequentlyBoughtTogether.box.fontFamily;
-          FBT_DESCRIPTION_TEXT_DIV.style.color = el.customization.frequentlyBoughtTogether.title.descriptionColor;
-          FBT_DESCRIPTION_TEXT_DIV.style.fontWeight = el.customization.frequentlyBoughtTogether.title.descriptionBold;
-          FBT_DESCRIPTION_TEXT_DIV.style.fontSize = el.customization.frequentlyBoughtTogether.title.descriptionFontSize+"px";
-          FBT_DESCRIPTION_TEXT_DIV.innerText = el.description;
+          FBT_DESCRIPTION_TEXT_DIV.style.fontFamily = el?.customization?.frequentlyBoughtTogether?.box?.fontFamily;
+          FBT_DESCRIPTION_TEXT_DIV.style.color = el?.customization?.frequentlyBoughtTogether?.title.descriptionColor;
+          FBT_DESCRIPTION_TEXT_DIV.style.fontWeight = el?.customization?.frequentlyBoughtTogether?.title?.descriptionBold;
+          FBT_DESCRIPTION_TEXT_DIV.style.fontSize = el?.customization?.frequentlyBoughtTogether?.title?.descriptionFontSize+"px";
+          FBT_DESCRIPTION_TEXT_DIV.innerText = el?.description;
 
           FBT_TITLE_DIV.append(FBT_TITLE_TEXT_DIV, FBT_DESCRIPTION_TEXT_DIV)
           FBT_DIV.append(FBT_TITLE_DIV);
@@ -2075,7 +2065,7 @@ function createBundle(BUNDLE_DATA) {
             originalPriceArray.push({price: el.bundleDetail.discountedProductType != 'all_products'  ? item.variants[0].price  : item.variants[0].price/100 ,id: el.bundleDetail.discountedProductType != 'all_products'  ? item.variants[0].id : ('gid://shopify/ProductVariant/' + item.variants[0].id) , selected:true ,quantity:1});
             let FBT_PRODUCT_DETAILS_DIV = document.createElement("div");
             FBT_PRODUCT_DETAILS_DIV.className = "sd-bundle-product-detail";
-            FBT_PRODUCT_DETAILS_DIV.style.backgroundColor = el.customization.frequentlyBoughtTogether.productDetails.productDetailsBox.backgroundColor;
+            FBT_PRODUCT_DETAILS_DIV.style.backgroundColor = el?.customization?.frequentlyBoughtTogether?.productDetails?.productDetailsBox?.backgroundColor;
             FBT_DIV.append(FBT_PRODUCT_DETAILS_DIV);
               
             let SINGLE_PRODUCT_DIV = document.createElement("div");
@@ -2174,8 +2164,8 @@ function createBundle(BUNDLE_DATA) {
             
             let GET_PRODUCT_IMAGE_DIV = document.createElement("div");
             GET_PRODUCT_IMAGE_DIV.className = "sd-bundle-product-img";    
-            GET_PRODUCT_IMAGE_DIV.style.borderColor = el.customization.frequentlyBoughtTogether.productDetails.image.borderColor;
-            GET_PRODUCT_IMAGE_DIV.style.borderRadius = el.customization.frequentlyBoughtTogether.productDetails.image.borderRadius+"px";
+            GET_PRODUCT_IMAGE_DIV.style.borderColor = el?.customization?.frequentlyBoughtTogether?.productDetails?.image?.borderColor;
+            GET_PRODUCT_IMAGE_DIV.style.borderRadius = el?.customization?.frequentlyBoughtTogether?.productDetails?.image?.borderRadius+"px";
             GET_PRODUCT_IMAGE_DIV.id = `GET_PRODUCT_IMAGE_DIV${bundleIndex}${index}`;
             SINGLE_PRODUCT_DIV.append(GET_PRODUCT_IMAGE_DIV);
       
@@ -2188,16 +2178,16 @@ function createBundle(BUNDLE_DATA) {
             SINGLE_PRODUCT_DIV.append(GET_PRODUCTS_NAME_PRICE_DIV);
 
             let GET_PRODUCTS_NAME = document.createElement("h5");
-            GET_PRODUCTS_NAME.style.color = el.customization.frequentlyBoughtTogether.productDetails.title.color;
-            GET_PRODUCTS_NAME.style.fontSize = el.customization.frequentlyBoughtTogether.productDetails.title.fontSize+"px";
-            GET_PRODUCTS_NAME.style.fontFamily = el.customization.frequentlyBoughtTogether.box.fontFamily;
+            GET_PRODUCTS_NAME.style.color = el?.customization?.frequentlyBoughtTogether?.productDetails?.title?.color;
+            GET_PRODUCTS_NAME.style.fontSize = el?.customization?.frequentlyBoughtTogether?.productDetails?.title?.fontSize+"px";
+            GET_PRODUCTS_NAME.style.fontFamily = el?.customization?.frequentlyBoughtTogether?.box.fontFamily;
             GET_PRODUCTS_NAME.innerText = item.title;
             GET_PRODUCTS_NAME_PRICE_DIV.append(GET_PRODUCTS_NAME);
 
             let GET_PRODUCTS_PRICE = document.createElement("h4");
-            GET_PRODUCTS_PRICE.style.color = el.customization.frequentlyBoughtTogether.productDetails.price.color;
-            GET_PRODUCTS_PRICE.style.fontSize = el.customization.frequentlyBoughtTogether.productDetails.price.fontSize+"px";
-            GET_PRODUCTS_PRICE.style.fontFamily = el.customization.frequentlyBoughtTogether.box.fontFamily;
+            GET_PRODUCTS_PRICE.style.color = el?.customization?.frequentlyBoughtTogether?.productDetails?.price?.color;
+            GET_PRODUCTS_PRICE.style.fontSize = el?.customization?.frequentlyBoughtTogether?.productDetails?.price?.fontSize+"px";
+            GET_PRODUCTS_PRICE.style.fontFamily = el?.customization?.frequentlyBoughtTogether?.box?.fontFamily;
             GET_PRODUCTS_PRICE.id = `productsPriceDiv${bundleIndex}${index}`;       
             GET_PRODUCTS_PRICE.innerText = el.bundleDetail.discountedProductType != 'all_products'  ? showAmountWithCurrency(item.variants[0].price)  : showAmountWithCurrency(item.variants[0].price/100);
             GET_PRODUCTS_NAME_PRICE_DIV.append(GET_PRODUCTS_PRICE);
@@ -2205,10 +2195,10 @@ function createBundle(BUNDLE_DATA) {
             if (item.variants.length > 1) {
               const select = document.createElement("select");
               select.id=`fbtSelect${bundleIndex}${index}` 
-              select.style.backgroundColor = el.customization.frequentlyBoughtTogether.productDetails.variantSelector.backgroundColor;
-              select.style.color = el.customization.frequentlyBoughtTogether.productDetails.variantSelector.color;
-              select.style.width = el.customization.frequentlyBoughtTogether.productDetails.variantSelector.width+"px";
-              select.style.fontFamily = el.customization.frequentlyBoughtTogether.box.fontFamily;
+              select.style.backgroundColor = el?.customization?.frequentlyBoughtTogether?.productDetails?.variantSelector?.backgroundColor;
+              select.style.color = el?.customization?.frequentlyBoughtTogether?.productDetails?.variantSelector?.color;
+              select.style.width = el?.customization?.frequentlyBoughtTogether?.productDetails?.variantSelector?.width+"px";
+              select.style.fontFamily = el?.customization?.frequentlyBoughtTogether?.box?.fontFamily;
               item.variants.forEach((optionData) => {
                 const option = document.createElement("option");
                 option.value = el.bundleDetail.discountedProductType != 'all_products'  ? optionData.price  : (optionData.price)/100;
@@ -2256,9 +2246,9 @@ function createBundle(BUNDLE_DATA) {
           FBT_PRODUCT_DETAILS_DIV.append(GET_PRODUCT_QUANTITY);
 
           let GET_PRODUCT_QUANTITY_TEXT = document.createElement("h6");
-          GET_PRODUCT_QUANTITY_TEXT.style.fontFamily = el.customization.frequentlyBoughtTogether.box.fontFamily;
-          GET_PRODUCT_QUANTITY_TEXT.style.color = el.customization.frequentlyBoughtTogether.productDetails.quantities.color;
-          GET_PRODUCT_QUANTITY_TEXT.style.fontSize = el.customization.frequentlyBoughtTogether.productDetails.quantities.size+"px";
+          GET_PRODUCT_QUANTITY_TEXT.style.fontFamily = el?.customization?.frequentlyBoughtTogether?.box?.fontFamily;
+          GET_PRODUCT_QUANTITY_TEXT.style.color = el?.customization?.frequentlyBoughtTogether?.productDetails?.quantities?.color;
+          GET_PRODUCT_QUANTITY_TEXT.style.fontSize = el?.customization?.frequentlyBoughtTogether?.productDetails?.quantities?.size+"px";
           GET_PRODUCT_QUANTITY_TEXT.innerText = `Qty: 1`;
           GET_PRODUCT_QUANTITY.append(GET_PRODUCT_QUANTITY_TEXT)
           });
@@ -2272,9 +2262,9 @@ function createBundle(BUNDLE_DATA) {
           FBT_ADDTOCART_TOTAL_DIV.append(FBT_TOTAL_DIV);
 
           let FBT_TOTAL_LABEL = document.createElement("h4");
-          FBT_TOTAL_LABEL.style.color = el.customization.frequentlyBoughtTogether.totalSection.color;
-          FBT_TOTAL_LABEL.style.fontSize = el.customization.frequentlyBoughtTogether.totalSection.fontSize+"px";
-          FBT_TOTAL_LABEL.style.fontFamily = el.customization.frequentlyBoughtTogether.box.fontFamily;
+          FBT_TOTAL_LABEL.style.color = el?.customization?.frequentlyBoughtTogether?.totalSection?.color;
+          FBT_TOTAL_LABEL.style.fontSize = el?.customization?.frequentlyBoughtTogether?.totalSection?.fontSize+"px";
+          FBT_TOTAL_LABEL.style.fontFamily = el?.customization?.frequentlyBoughtTogether?.box.fontFamily;
           FBT_TOTAL_LABEL.innerText = "TOTAL ";
           FBT_TOTAL_DIV.append(FBT_TOTAL_LABEL);
 
@@ -2285,10 +2275,10 @@ function createBundle(BUNDLE_DATA) {
             // no changes
           } else {
             let FBT_TOTAL_DESCRIPTION = document.createElement("p");
-            FBT_TOTAL_DESCRIPTION.style.color = el.customization.frequentlyBoughtTogether.totalSection.discountMessage.color;
-            FBT_TOTAL_DESCRIPTION.style.fontSize = el.customization.frequentlyBoughtTogether.totalSection.discountMessage.size+"px";
-            FBT_TOTAL_DESCRIPTION.innerText = `${el.translations.translation.discountApplied}`
-            FBT_TOTAL_DESCRIPTION.style.fontFamily = el.customization.frequentlyBoughtTogether.box.fontFamily;
+            FBT_TOTAL_DESCRIPTION.style.color = el?.customization?.frequentlyBoughtTogether?.totalSection?.discountMessage?.color;
+            FBT_TOTAL_DESCRIPTION.style.fontSize = el?.customization?.frequentlyBoughtTogether?.totalSection?.discountMessage?.size+"px";
+            FBT_TOTAL_DESCRIPTION.innerText = `${el?.translations?.translation?.discountApplied}`
+            FBT_TOTAL_DESCRIPTION.style.fontFamily = el?.customization?.frequentlyBoughtTogether?.box?.fontFamily;
             FBT_TOTAL_DIV.append(FBT_TOTAL_DESCRIPTION);
           }
 
@@ -2297,15 +2287,15 @@ function createBundle(BUNDLE_DATA) {
           FBT_ADDTOCART_TOTAL_DIV.append(Price_Div);
 
           let FBT_MRP_PRICE = document.createElement("h6");
-          FBT_MRP_PRICE.style.color = el.customization.frequentlyBoughtTogether.totalSection.originalPrice.color;
-          FBT_MRP_PRICE.style.fontSize = el.customization.frequentlyBoughtTogether.totalSection.originalPrice.size+"px";
-          FBT_MRP_PRICE.style.fontFamily = el.customization.frequentlyBoughtTogether.box.fontFamily;
+          FBT_MRP_PRICE.style.color = el?.customization?.frequentlyBoughtTogether?.totalSection?.originalPrice.color;
+          FBT_MRP_PRICE.style.fontSize = el?.customization?.frequentlyBoughtTogether?.totalSection?.originalPrice.size+"px";
+          FBT_MRP_PRICE.style.fontFamily = el?.customization?.frequentlyBoughtTogether?.box?.fontFamily;
           FBT_MRP_PRICE.className = `sd-fbt-mrp-span${bundleIndex}`;
 
           let FBT_SELLING_PRICE = document.createElement("h4");
-          FBT_SELLING_PRICE.style.color = el.customization.frequentlyBoughtTogether.totalSection.finalPrice.color;
-          FBT_SELLING_PRICE.style.fontSize = el.customization.frequentlyBoughtTogether.totalSection.finalPrice.size+"px";
-          FBT_SELLING_PRICE.style.fontFamily = el.customization.frequentlyBoughtTogether.box.fontFamily;
+          FBT_SELLING_PRICE.style.color = el?.customization?.frequentlyBoughtTogether?.totalSection?.finalPrice?.color;
+          FBT_SELLING_PRICE.style.fontSize = el?.customization?.frequentlyBoughtTogether?.totalSection?.finalPrice?.size+"px";
+          FBT_SELLING_PRICE.style.fontFamily = el?.customization?.frequentlyBoughtTogether?.box?.fontFamily;
           FBT_SELLING_PRICE.className = `sd-fbt-sellingPrice-span${bundleIndex}`;
           Price_Div.append(FBT_SELLING_PRICE);  
           Price_Div.append(FBT_MRP_PRICE);
@@ -2316,14 +2306,14 @@ function createBundle(BUNDLE_DATA) {
           ADD_TO_CART_BUTTON_DIV.className = "sd-bundle-addto-cart";
           FBT_DIV.append(ADD_TO_CART_BUTTON_DIV);
           let ADD_TO_CART_BUTTON = document.createElement("button");
-          ADD_TO_CART_BUTTON.style.backgroundColor = el.customization.frequentlyBoughtTogether.button.backgroundColor;
-          ADD_TO_CART_BUTTON.style.borderColor = el.customization.frequentlyBoughtTogether.button.borderColor;
-          ADD_TO_CART_BUTTON.style.borderRadius = el.customization.frequentlyBoughtTogether.button.borderRadius+"px";
-          ADD_TO_CART_BUTTON.style.color = el.customization.frequentlyBoughtTogether.button.color;
-          ADD_TO_CART_BUTTON.style.fontSize = el.customization.frequentlyBoughtTogether.button.fontSize+"px";
-          ADD_TO_CART_BUTTON.style.fontFamily = el.customization.frequentlyBoughtTogether.box.fontFamily;
+          ADD_TO_CART_BUTTON.style.backgroundColor = el?.customization?.frequentlyBoughtTogether?.button?.backgroundColor;
+          ADD_TO_CART_BUTTON.style.borderColor = el?.customization?.frequentlyBoughtTogether?.button?.borderColor;
+          ADD_TO_CART_BUTTON.style.borderRadius = el?.customization?.frequentlyBoughtTogether?.button?.borderRadius+"px";
+          ADD_TO_CART_BUTTON.style.color = el?.customization?.frequentlyBoughtTogether?.button?.color;
+          ADD_TO_CART_BUTTON.style.fontSize = el?.customization?.frequentlyBoughtTogether?.button?.fontSize+"px";
+          ADD_TO_CART_BUTTON.style.fontFamily = el?.customization?.frequentlyBoughtTogether?.box?.fontFamily;
           ADD_TO_CART_BUTTON.className = `sd-bundle-fbt-add-to-cart-button${bundleIndex}`;
-          ADD_TO_CART_BUTTON.innerHTML = el.translations.translation.addToCartButton;
+          ADD_TO_CART_BUTTON.innerHTML = el?.translations?.translation?.addToCartButton;
           ADD_TO_CART_BUTTON.type = "button";
           ADD_TO_CART_BUTTON_DIV.append(ADD_TO_CART_BUTTON);    
           
@@ -2572,9 +2562,9 @@ function createBundle(BUNDLE_DATA) {
         let FBT_DIV = document.createElement("div");
           
         FBT_DIV.className = "sd-bundle-main-column";
-        FBT_DIV.style.backgroundColor = el.customization.frequentlyBoughtTogether.box.backgroundColor;
-        FBT_DIV.style.borderRadius = el.customization.frequentlyBoughtTogether.box.borderRadius+"px";
-        FBT_DIV.style.borderColor = el.customization.frequentlyBoughtTogether.box.borderColor;
+        FBT_DIV.style.backgroundColor = el?.customization?.frequentlyBoughtTogether?.box?.backgroundColor;
+        FBT_DIV.style.borderRadius = el?.customization?.frequentlyBoughtTogether?.box?.borderRadius+"px";
+        FBT_DIV.style.borderColor = el?.customization?.frequentlyBoughtTogether?.box?.borderColor;
         FBT_DIV.id = `FBT_DIV${bundleIndex}`;
         mainDiv.append(FBT_DIV);
 
@@ -2582,9 +2572,9 @@ function createBundle(BUNDLE_DATA) {
           if (el.bundleDetail.discountType === "percent" || el.bundleDetail.discountType === "fixed") {
             let VOLUME_HEADER_DIV = document.createElement("span");
             VOLUME_HEADER_DIV.className = "sd-badges-part-optional";
-            VOLUME_HEADER_DIV.style.background = el.customization.frequentlyBoughtTogether.optionalBadge.background;
-            VOLUME_HEADER_DIV.style.color = el.customization.frequentlyBoughtTogether.optionalBadge.color;
-            VOLUME_HEADER_DIV.style.fontSize = el.customization.frequentlyBoughtTogether.optionalBadge.fontSize + "px"; 
+            VOLUME_HEADER_DIV.style.background = el?.customization?.frequentlyBoughtTogether?.optionalBadge?.background;
+            VOLUME_HEADER_DIV.style.color = el?.customization?.frequentlyBoughtTogether?.optionalBadge?.color;
+            VOLUME_HEADER_DIV.style.fontSize = el?.customization?.frequentlyBoughtTogether?.optionalBadge?.fontSize + "px"; 
             let discountBadge = document.createElement("span");
             discountBadge.className = "sd-collectionMM-badge";
             if (el.bundleDetail.discountType === "percent") {
@@ -2601,26 +2591,26 @@ function createBundle(BUNDLE_DATA) {
         let FBT_BUNDLE_DETAILS_DIV = document.createElement("div");
        
         FBT_BUNDLE_DETAILS_DIV.className = "sd-bundle-text-detail";
-        if (el.customization.frequentlyBoughtTogether.optionalBadge.enable === true) {
-          if (el.bundleDetail.discountType === "percent" || el.bundleDetail.discountType === "fixed") {
+        if (el?.customization?.frequentlyBoughtTogether?.optionalBadge?.enable === true) {
+          if (el?.bundleDetail?.discountType === "percent" || el?.bundleDetail?.discountType === "fixed") {
             FBT_BUNDLE_DETAILS_DIV.classList.add("extra-padding");
           }
         }
         FBT_DIV.append(FBT_BUNDLE_DETAILS_DIV);
 
         let FBT_TITLE_DIV = document.createElement("h4");
-        FBT_TITLE_DIV.style.color = el.customization.frequentlyBoughtTogether.title.color;
-        FBT_TITLE_DIV.style.fontWeight = el.customization.frequentlyBoughtTogether.title.titleBold;
-        FBT_TITLE_DIV.style.fontSize = el.customization.frequentlyBoughtTogether.title.fontSize+"px";
-        FBT_TITLE_DIV.style.fontFamily = el.customization.frequentlyBoughtTogether.box.fontFamily;
+        FBT_TITLE_DIV.style.color = el?.customization?.frequentlyBoughtTogether?.title?.color;
+        FBT_TITLE_DIV.style.fontWeight = el?.customization?.frequentlyBoughtTogether?.title?.titleBold;
+        FBT_TITLE_DIV.style.fontSize = el?.customization?.frequentlyBoughtTogether?.title?.fontSize+"px";
+        FBT_TITLE_DIV.style.fontFamily = el?.customization?.frequentlyBoughtTogether?.box?.fontFamily;
         FBT_TITLE_DIV.innerText = el.title;
         FBT_BUNDLE_DETAILS_DIV.append(FBT_TITLE_DIV);
 
         let FBT_DESCRIPTION_DIV = document.createElement("p");
-        FBT_DESCRIPTION_DIV.style.fontFamily = el.customization.frequentlyBoughtTogether.box.fontFamily;
-        FBT_DESCRIPTION_DIV.style.color = el.customization.frequentlyBoughtTogether.title.descriptionColor;
-        FBT_DESCRIPTION_DIV.style.fontWeight = el.customization.frequentlyBoughtTogether.title.descriptionBold;
-        FBT_DESCRIPTION_DIV.style.fontSize = el.customization.frequentlyBoughtTogether.title.descriptionFontSize+"px";
+        FBT_DESCRIPTION_DIV.style.fontFamily = el?.customization?.frequentlyBoughtTogether?.box?.fontFamily;
+        FBT_DESCRIPTION_DIV.style.color = el?.customization?.frequentlyBoughtTogether?.title?.descriptionColor;
+        FBT_DESCRIPTION_DIV.style.fontWeight = el?.customization?.frequentlyBoughtTogether?.title?.descriptionBold;
+        FBT_DESCRIPTION_DIV.style.fontSize = el?.customization?.frequentlyBoughtTogether?.title?.descriptionFontSize+"px";
         FBT_DESCRIPTION_DIV.innerText = el.description;
         FBT_BUNDLE_DETAILS_DIV.append(FBT_DESCRIPTION_DIV);
           
@@ -2632,8 +2622,8 @@ function createBundle(BUNDLE_DATA) {
           originalPriceArray.push({price: el.bundleDetail.discountedProductType != 'all_products'  ? item.variants[0].price  : item.variants[0].price/100 ,id: el.bundleDetail.discountedProductType != 'all_products'  ? item.variants[0].id : ('gid://shopify/ProductVariant/' + item.variants[0].id) , selected:true ,quantity:1});
           let GET_PRODUCT_IMAGE_DIV = document.createElement("div");
           GET_PRODUCT_IMAGE_DIV.className = "sd-bundle-product-img";    
-          GET_PRODUCT_IMAGE_DIV.style.borderColor = el.customization.frequentlyBoughtTogether.productDetails.image.borderColor;
-          GET_PRODUCT_IMAGE_DIV.style.borderRadius = el.customization.frequentlyBoughtTogether.productDetails.image.borderRadius+"px";
+          GET_PRODUCT_IMAGE_DIV.style.borderColor = el?.customization?.frequentlyBoughtTogether?.productDetails?.image?.borderColor;
+          GET_PRODUCT_IMAGE_DIV.style.borderRadius = el?.customization?.frequentlyBoughtTogether?.productDetails?.image?.borderRadius+"px";
           GET_PRODUCT_IMAGE_DIV.className = "sd-selected-product-itemImg";       
           GET_PRODUCT_IMAGE_DIV.id = `GET_PRODUCT_IMAGE_DIV${bundleIndex}${index}`;
           FBT_PRODUCTS_IMAGE_DIV.append(GET_PRODUCT_IMAGE_DIV);
@@ -2654,7 +2644,7 @@ function createBundle(BUNDLE_DATA) {
 
           let SINGLE_PRODUCT_DIV_CONTAINER=document.createElement("div");
           SINGLE_PRODUCT_DIV_CONTAINER.className = "sd-bundle-product-detail";
-          SINGLE_PRODUCT_DIV_CONTAINER.style.backgroundColor = el.customization.frequentlyBoughtTogether.productDetails.productDetailsBox.backgroundColor;
+          SINGLE_PRODUCT_DIV_CONTAINER.style.backgroundColor = el?.customization?.frequentlyBoughtTogether?.productDetails?.productDetailsBox?.backgroundColor;
           FBT_DIV.append(SINGLE_PRODUCT_DIV_CONTAINER);
 
           let SINGLE_PRODUCT_DIV = document.createElement("div");
@@ -2752,16 +2742,16 @@ function createBundle(BUNDLE_DATA) {
           SINGLE_PRODUCT_DIV.append(GET_PRODUCTS_NAME_PRICE_DIV);
       
           let GET_PRODUCTS_NAME = document.createElement("h5");
-          GET_PRODUCTS_NAME.style.color = el.customization.frequentlyBoughtTogether.productDetails.title.color;
-          GET_PRODUCTS_NAME.style.fontSize = el.customization.frequentlyBoughtTogether.productDetails.title.fontSize+"px";
-          GET_PRODUCTS_NAME.style.fontFamily = el.customization.frequentlyBoughtTogether.box.fontFamily;
+          GET_PRODUCTS_NAME.style.color = el?.customization?.frequentlyBoughtTogether?.productDetails?.title?.color;
+          GET_PRODUCTS_NAME.style.fontSize = el?.customization?.frequentlyBoughtTogether?.productDetails?.title?.fontSize+"px";
+          GET_PRODUCTS_NAME.style.fontFamily = el?.customization?.frequentlyBoughtTogether?.box?.fontFamily;
           GET_PRODUCTS_NAME.innerText = item.title;
           GET_PRODUCTS_NAME_PRICE_DIV.append(GET_PRODUCTS_NAME);
 
           let GET_PRODUCTS_PRICE = document.createElement("h4");
-          GET_PRODUCTS_PRICE.style.color = el.customization.frequentlyBoughtTogether.productDetails.price.color;
-          GET_PRODUCTS_PRICE.style.fontSize = el.customization.frequentlyBoughtTogether.productDetails.price.fontSize+"px";
-          GET_PRODUCTS_PRICE.style.fontFamily = el.customization.frequentlyBoughtTogether.box.fontFamily;
+          GET_PRODUCTS_PRICE.style.color = el?.customization?.frequentlyBoughtTogether?.productDetails?.price?.color;
+          GET_PRODUCTS_PRICE.style.fontSize = el?.customization?.frequentlyBoughtTogether?.productDetails?.price.fontSize+"px";
+          GET_PRODUCTS_PRICE.style.fontFamily = el?.customization?.frequentlyBoughtTogether?.box?.fontFamily;
           GET_PRODUCTS_PRICE.id = `productsPriceDiv${bundleIndex}${index}`;       
           GET_PRODUCTS_PRICE.innerText = el.bundleDetail.discountedProductType != 'all_products'  ? showAmountWithCurrency(item.variants[0].price)  : showAmountWithCurrency(item.variants[0].price/100);
           GET_PRODUCTS_NAME_PRICE_DIV.append(GET_PRODUCTS_PRICE);
@@ -2769,10 +2759,10 @@ function createBundle(BUNDLE_DATA) {
           if (item.variants.length > 1) {
             const select = document.createElement("select");
             select.id=`fbtSelect${bundleIndex}${index}` 
-            select.style.backgroundColor = el.customization.frequentlyBoughtTogether.productDetails.variantSelector.backgroundColor;
-            select.style.color = el.customization.frequentlyBoughtTogether.productDetails.variantSelector.color;
-            select.style.width = el.customization.frequentlyBoughtTogether.productDetails.variantSelector.width+"px";
-            select.style.fontFamily = el.customization.frequentlyBoughtTogether.box.fontFamily;
+            select.style.backgroundColor = el?.customization?.frequentlyBoughtTogether?.productDetails?.variantSelector?.backgroundColor;
+            select.style.color = el?.customization?.frequentlyBoughtTogether?.productDetails?.variantSelector?.color;
+            select.style.width = el?.customization?.frequentlyBoughtTogether?.productDetails?.variantSelector?.width+"px";
+            select.style.fontFamily = el?.customization?.frequentlyBoughtTogether?.box?.fontFamily;
             item.variants.forEach((optionData) => {
               const option = document.createElement("option");
               option.value = el.bundleDetail.discountedProductType != 'all_products'  ? optionData.price  : (optionData.price)/100;
@@ -2800,9 +2790,9 @@ function createBundle(BUNDLE_DATA) {
           SINGLE_PRODUCT_DIV_CONTAINER.append(GET_PRODUCT_QUANTITY);
 
           let GET_PRODUCT_QUANTITY_TEXT = document.createElement("h6");
-          GET_PRODUCT_QUANTITY_TEXT.style.fontFamily = el.customization.frequentlyBoughtTogether.box.fontFamily;
-          GET_PRODUCT_QUANTITY_TEXT.style.color = el.customization.frequentlyBoughtTogether.productDetails.quantities.color;
-          GET_PRODUCT_QUANTITY_TEXT.style.fontSize = el.customization.frequentlyBoughtTogether.productDetails.quantities.size+"px";
+          GET_PRODUCT_QUANTITY_TEXT.style.fontFamily = el?.customization?.frequentlyBoughtTogether?.box?.fontFamily;
+          GET_PRODUCT_QUANTITY_TEXT.style.color = el?.customization?.frequentlyBoughtTogether?.productDetails?.quantities?.color;
+          GET_PRODUCT_QUANTITY_TEXT.style.fontSize = el?.customization?.frequentlyBoughtTogether?.productDetails?.quantities?.size+"px";
           GET_PRODUCT_QUANTITY_TEXT.innerText = `Qty: 1`;
           GET_PRODUCT_QUANTITY.append(GET_PRODUCT_QUANTITY_TEXT)
 
@@ -2825,9 +2815,9 @@ function createBundle(BUNDLE_DATA) {
         FBT_TOTAL_DIV.append(Total_Description_Div);
 
         let FBT_TOTAL_LABEL = document.createElement("h4");
-        FBT_TOTAL_LABEL.style.color = el.customization.frequentlyBoughtTogether.totalSection.color;
-        FBT_TOTAL_LABEL.style.fontSize = el.customization.frequentlyBoughtTogether.totalSection.fontSize+"px";
-        FBT_TOTAL_LABEL.style.fontFamily = el.customization.frequentlyBoughtTogether.box.fontFamily;
+        FBT_TOTAL_LABEL.style.color = el?.customization?.frequentlyBoughtTogether?.totalSection?.color;
+        FBT_TOTAL_LABEL.style.fontSize = el?.customization?.frequentlyBoughtTogether?.totalSection?.fontSize+"px";
+        FBT_TOTAL_LABEL.style.fontFamily = el?.customization?.frequentlyBoughtTogether?.box?.fontFamily;
         FBT_TOTAL_LABEL.innerText = "TOTAL ";
         Total_Description_Div.append(FBT_TOTAL_LABEL);
 
@@ -2838,10 +2828,10 @@ function createBundle(BUNDLE_DATA) {
             // no changes
         } else {
           let FBT_DESCRIPTION = document.createElement("p");
-          FBT_DESCRIPTION.style.color = el.customization.frequentlyBoughtTogether.totalSection.discountMessage.color;
-          FBT_DESCRIPTION.style.fontSize = el.customization.frequentlyBoughtTogether.totalSection.discountMessage.size+"px";
-          FBT_DESCRIPTION.innerText = `${el.translations.translation.discountApplied}`
-          FBT_DESCRIPTION.style.fontFamily = el.customization.frequentlyBoughtTogether.box.fontFamily;
+          FBT_DESCRIPTION.style.color = el?.customization?.frequentlyBoughtTogether?.totalSection?.discountMessage?.color;
+          FBT_DESCRIPTION.style.fontSize = el?.customization?.frequentlyBoughtTogether?.totalSection?.discountMessage?.size+"px";
+          FBT_DESCRIPTION.innerText = `${el?.translations?.translation?.discountApplied}`
+          FBT_DESCRIPTION.style.fontFamily = el?.customization?.frequentlyBoughtTogether?.box?.fontFamily;
           Total_Description_Div.append(FBT_DESCRIPTION);
         }
 
@@ -2850,16 +2840,16 @@ function createBundle(BUNDLE_DATA) {
         FBT_TOTAL_DIV.append(AMOUNT_DIV);
 
         let FBT_SELLING_PRICE = document.createElement("h4");
-        FBT_SELLING_PRICE.style.color = el.customization.frequentlyBoughtTogether.totalSection.finalPrice.color;
-        FBT_SELLING_PRICE.style.fontSize = el.customization.frequentlyBoughtTogether.totalSection.finalPrice.size+"px";
-        FBT_SELLING_PRICE.style.fontFamily = el.customization.frequentlyBoughtTogether.box.fontFamily;
+        FBT_SELLING_PRICE.style.color = el?.customization?.frequentlyBoughtTogether?.totalSection?.finalPrice?.color;
+        FBT_SELLING_PRICE.style.fontSize = el?.customization?.frequentlyBoughtTogether?.totalSection?.finalPrice?.size+"px";
+        FBT_SELLING_PRICE.style.fontFamily = el?.customization?.frequentlyBoughtTogether?.box?.fontFamily;
         FBT_SELLING_PRICE.className = `sd-fbt-sellingPrice-span${bundleIndex}`;
         AMOUNT_DIV.append(FBT_SELLING_PRICE);
           
         let FBT_MRP_PRICE = document.createElement("h6");
-        FBT_MRP_PRICE.style.color = el.customization.frequentlyBoughtTogether.totalSection.originalPrice.color;
-        FBT_MRP_PRICE.style.fontSize = el.customization.frequentlyBoughtTogether.totalSection.originalPrice.size+"px";
-        FBT_MRP_PRICE.style.fontFamily = el.customization.frequentlyBoughtTogether.box.fontFamily;
+        FBT_MRP_PRICE.style.color = el?.customization?.frequentlyBoughtTogether?.totalSection?.originalPrice.color;
+        FBT_MRP_PRICE.style.fontSize = el?.customization?.frequentlyBoughtTogether?.totalSection?.originalPrice.size+"px";
+        FBT_MRP_PRICE.style.fontFamily = el?.customization?.frequentlyBoughtTogether?.box?.fontFamily;
         FBT_MRP_PRICE.className = `sd-fbt-mrp-span${bundleIndex}`;
         AMOUNT_DIV.append(FBT_MRP_PRICE);
         
@@ -2871,14 +2861,14 @@ function createBundle(BUNDLE_DATA) {
         FBT_DIV.append(FBT_ADDTOCART_TOTAL_DIV);
         
         let ADD_TO_CART_BUTTON = document.createElement("button");
-        ADD_TO_CART_BUTTON.style.backgroundColor = el.customization.frequentlyBoughtTogether.button.backgroundColor;
-        ADD_TO_CART_BUTTON.style.borderColor = el.customization.frequentlyBoughtTogether.button.borderColor;
-        ADD_TO_CART_BUTTON.style.borderRadius = el.customization.frequentlyBoughtTogether.button.borderRadius+"px";
-        ADD_TO_CART_BUTTON.style.color = el.customization.frequentlyBoughtTogether.button.color;
-        ADD_TO_CART_BUTTON.style.fontSize = el.customization.frequentlyBoughtTogether.button.fontSize+"px";
-        ADD_TO_CART_BUTTON.style.fontFamily = el.customization.frequentlyBoughtTogether.box.fontFamily;
+        ADD_TO_CART_BUTTON.style.backgroundColor = el?.customization?.frequentlyBoughtTogether?.butto?.backgroundColor;
+        ADD_TO_CART_BUTTON.style.borderColor = el?.customization?.frequentlyBoughtTogether?.button?.borderColor;
+        ADD_TO_CART_BUTTON.style.borderRadius = el?.customization?.frequentlyBoughtTogether?.button?.borderRadius+"px";
+        ADD_TO_CART_BUTTON.style.color = el?.customization?.frequentlyBoughtTogether?.button?.color;
+        ADD_TO_CART_BUTTON.style.fontSize = el?.customization?.frequentlyBoughtTogether?.button?.fontSize+"px";
+        ADD_TO_CART_BUTTON.style.fontFamily = el?.customization?.frequentlyBoughtTogether?.box?.fontFamily;
         ADD_TO_CART_BUTTON.className = `sd-bundle-fbt-add-to-cart-classic-button sd-bundle-fbt-add-to-cart-button${bundleIndex} `;
-        ADD_TO_CART_BUTTON.innerHTML = el.translations.translation.addToCartButton;
+        ADD_TO_CART_BUTTON.innerHTML = el?.translations?.translation?.addToCartButton;
         ADD_TO_CART_BUTTON.type = "button";
         FBT_ADDTOCART_TOTAL_DIV.append(ADD_TO_CART_BUTTON);    
         
@@ -3086,9 +3076,9 @@ function createBundle(BUNDLE_DATA) {
             .then(({ products }) => {
               if (products.length > 0) {
             let suggestedProducts=getRandomItems(products,3);
-                console.log("suggestedproducts",sdProductJson)
+                // console.log("suggestedproducts",sdProductJson)
                 totalProducts=[sdProductJson,...suggestedProducts]
-                el.customization.frequentlyBoughtTogether.design =='modern' ?  execFbtModern() : execFbtClassic() ;      
+                el?.customization?.frequentlyBoughtTogether?.design =='modern' ?  execFbtModern() : execFbtClassic() ;      
               }    
             }
           );
@@ -3099,7 +3089,7 @@ function createBundle(BUNDLE_DATA) {
             ...el.bundleDetail.mainProducts,
             ...el.bundleDetail.offeredProducts,
           ];
-          el.customization.frequentlyBoughtTogether.design =='modern'?  execFbtModern() : execFbtClassic() ;  
+          el?.customization?.frequentlyBoughtTogether?.design =='modern'?  execFbtModern() : execFbtClassic() ;  
         }
       }
     }
@@ -3112,14 +3102,14 @@ function createBundle(BUNDLE_DATA) {
         let SelectedProductsQuantity = 0;
         let DiscountType;
         let DiscountValue;
-        console.log("product mixmatch...............",el)
+        // console.log("product mixmatch...............",el)
         let VariantDropDownFun = (productIndex,elements,VariantOptionDiv,TotalQuantity) => {
             let SelectVariants = document.createElement("SELECT");
             SelectVariants.id = `SelectVariants${bundleIndex}${productIndex}${TotalQuantity}`;
-            SelectVariants.style.background = el.customization.productMixMatch.productDetails.variantSelector.backgroundColor;
-            SelectVariants.style.fontFamily = el.customization.productMixMatch.box.fontFamily;
-            SelectVariants.style.color = el.customization.productMixMatch.productDetails.variantSelector.color;
-            SelectVariants.style.width = el.customization.productMixMatch.productDetails.variantSelector.width + "px";
+            SelectVariants.style.background = el?.customization?.productMixMatch?.productDetails?.variantSelector?.backgroundColor;
+            SelectVariants.style.fontFamily = el?.customization?.productMixMatch?.box?.fontFamily;
+            SelectVariants.style.color = el?.customization?.productMixMatch?.productDetails?.variantSelector?.color;
+            SelectVariants.style.width = el?.customization?.productMixMatch?.productDetails?.variantSelector?.width + "px";
             SelectVariants.addEventListener("change",VariantOptionFun=(e)=>{
               let SelectedVariantsId = document.querySelector(`#SelectVariants${bundleIndex}${productIndex}${TotalQuantity}`).value;
               let SelectVariantPrice = document.getElementById([`variants${TotalQuantity}${bundleIndex}${SelectedVariantsId}`]).getAttribute("price");
@@ -3151,7 +3141,7 @@ function createBundle(BUNDLE_DATA) {
               let VariantOptions = document.createElement("option");
               VariantOptions.value = `${items.id}`;
               VariantOptions.text =`${items.title}`;
-              VariantOptions.style.fontFamily = el.customization.productMixMatch.box.fontFamily;
+              VariantOptions.style.fontFamily = el?.customization?.productMixMatch?.box?.fontFamily;
               VariantOptions.setAttribute("variantsId",TotalQuantity-1);
               VariantOptions.id = `variants${TotalQuantity}${bundleIndex}${items.id}`;
               VariantOptions.setAttribute("price",items.price);
@@ -3175,7 +3165,7 @@ function createBundle(BUNDLE_DATA) {
             ActiveBadge.setAttribute("class","active");
             addToCartBTN.disabled = false;
             addToCartBTN.style.cursor = "pointer";
-            addToCartBTN.style.background = `${el.customization.productMixMatch.button.backgroundColor}`
+            addToCartBTN.style.background = `${el?.customization?.productMixMatch?.button?.backgroundColor}`
             if(ActiveBadge.previousSibling !== null){
               ActiveBadge.previousSibling.setAttribute("class","")
             }
@@ -3209,7 +3199,7 @@ function createBundle(BUNDLE_DATA) {
               let appliedDiscount = document.getElementById(`${bundleIndex}discountOffer`);
               let PriceDiv = document.getElementById(`${bundleIndex}OriginalPrice`);
               if(appliedDiscount !==null && PriceDiv !== null){
-                let selectedItemMsg = el.translations.translation.selectAtLeastItemsToApplyTheDiscount.replace('{{item}}', `${el.bundleDetail.discountOptions[0].quantity}`);
+                let selectedItemMsg = el?.translations?.translation?.selectAtLeastItemsToApplyTheDiscount.replace('{{item}}', `${el.bundleDetail.discountOptions[0].quantity}`);
                 appliedDiscount.innerText = selectedItemMsg;
                 PriceDiv.style.display = "none";
               }
@@ -3295,10 +3285,10 @@ function createBundle(BUNDLE_DATA) {
 
         let MixMatchDiv = document.createElement("div");
         MixMatchDiv.className = "sd-bundle-main-column";
-        MixMatchDiv.style.borderColor = el.customization?.productMixMatch.box.borderColor;
-        MixMatchDiv.style.borderRadius = `${el.customization?.productMixMatch.box.borderRadius}px`;
-        MixMatchDiv.style.background = el.customization?.productMixMatch.box.backgroundColor;
-        MixMatchDiv.style.borderWidth = `${el.customization?.productMixMatch.box.thickness}px`;
+        MixMatchDiv.style.borderColor = el?.customization?.productMixMatch?.box?.borderColor;
+        MixMatchDiv.style.borderRadius = `${el?.customization?.productMixMatch?.box?.borderRadius}px`;
+        MixMatchDiv.style.background = el?.customization?.productMixMatch?.box?.backgroundColor;
+        MixMatchDiv.style.borderWidth = `${el?.customization?.productMixMatch?.box?.thickness}px`;
 
         let Title_Description_Div = document.createElement("div");
         Title_Description_Div.className = "sd-bundle-text-detail";
@@ -3306,21 +3296,21 @@ function createBundle(BUNDLE_DATA) {
 
         let TitleDiv = document.createElement("h4");
         TitleDiv.innerText = el.title;
-        TitleDiv.style.fontFamily = el.customization.productMixMatch.box.fontFamily;
-        TitleDiv.style.color = el.customization.productMixMatch.title.color;
-        TitleDiv.style.textAlign = el.customization.productMixMatch.title.alignment;
-        TitleDiv.style.fontSize = `${el.customization.productMixMatch.title.fontSize}px`;
-        TitleDiv.style.fontWeight = el.customization.productMixMatch.title.titleBold;
+        TitleDiv.style.fontFamily = el?.customization?.productMixMatch?.box?.fontFamily;
+        TitleDiv.style.color = el?.customization?.productMixMatch?.title?.color;
+        TitleDiv.style.textAlign = el?.customization?.productMixMatch?.title?.alignment;
+        TitleDiv.style.fontSize = `${el?.customization?.productMixMatch?.title?.fontSize}px`;
+        TitleDiv.style.fontWeight = el?.customization?.productMixMatch?.title?.titleBold;
         Title_Description_Div.append(TitleDiv);
 
         let DescriptionDiv = document.createElement("p");
         if(el.description != "" && el.description != null && el.description != undefined){
           DescriptionDiv.innerText = el.description;
         }
-        DescriptionDiv.style.fontFamily = el.customization.productMixMatch.box.fontFamily;
-        DescriptionDiv.style.color = el.customization.productMixMatch.title.descriptionColor;
-        DescriptionDiv.style.fontSize = `${el.customization.productMixMatch.title.descriptionFontSize}px`;
-        DescriptionDiv.style.fontWeight = el.customization.productMixMatch.title.descriptionBold;
+        DescriptionDiv.style.fontFamily = el?.customization?.productMixMatch?.box?.fontFamily;
+        DescriptionDiv.style.color = el?.customization?.productMixMatch?.title?.descriptionColor;
+        DescriptionDiv.style.fontSize = `${el?.customization?.productMixMatch?.title?.descriptionFontSize}px`;
+        DescriptionDiv.style.fontWeight = el?.customization?.productMixMatch?.title?.descriptionBold;
         Title_Description_Div.append(DescriptionDiv);
 
         let Discount_Information_Div = document.createElement("div");
@@ -3352,10 +3342,10 @@ function createBundle(BUNDLE_DATA) {
         Discount_Information_Div.append(Selected_Text_Description_Div);
         
         let ShowSelectedItemDiv = document.createElement("h5");
-        ShowSelectedItemDiv.style.fontFamily = el.customization.productMixMatch.box.fontFamily;
-        ShowSelectedItemDiv.style.textAlign = el.customization.productMixMatch.orderOverview.alignment;
-        ShowSelectedItemDiv.style.color = el.customization.productMixMatch.orderOverview.selectedText.color;
-        ShowSelectedItemDiv.style.fontSize = el.customization.productMixMatch.orderOverview.selectedText.fontSize+"px";
+        ShowSelectedItemDiv.style.fontFamily = el?.customization?.productMixMatch?.box?.fontFamily;
+        ShowSelectedItemDiv.style.textAlign = el?.customization?.productMixMatch?.orderOverview?.alignment;
+        ShowSelectedItemDiv.style.color = el?.customization.productMixMatch?.orderOverview?.selectedText?.color;
+        ShowSelectedItemDiv.style.fontSize = el.customization?.productMixMatch?.orderOverview?.selectedText?.fontSize+"px";
         // ShowSelectedItemDiv.className = "sd-bundle-mix-match-selected-item-div";
         ShowSelectedItemDiv.id = `${bundleIndex}selectedItems`;
         let selectedItemMsg = el.translations.translation.youHaveSelectedItems.replace('{{item}}', `${el.bundleDetail.products.length}`);
@@ -3363,10 +3353,10 @@ function createBundle(BUNDLE_DATA) {
         Selected_Text_Description_Div.append(ShowSelectedItemDiv);
 
         let DiscountOfferDiv = document.createElement("p");
-        DiscountOfferDiv.style.fontFamily = el.customization.productMixMatch.box.fontFamily;
-        DiscountOfferDiv.style.textAlign = el.customization.productMixMatch.orderOverview.alignment;
-        DiscountOfferDiv.style.color = el.customization.productMixMatch.orderOverview.discountText.color;
-        DiscountOfferDiv.style.fontSize = el.customization.productMixMatch.orderOverview.discountText.fontSize+"px";
+        DiscountOfferDiv.style.fontFamily = el?.customization?.productMixMatch?.box?.fontFamily;
+        DiscountOfferDiv.style.textAlign = el?.customization?.productMixMatch?.orderOverview?.alignment;
+        DiscountOfferDiv.style.color = el?.customization?.productMixMatch?.orderOverview?.discountText?.color;
+        DiscountOfferDiv.style.fontSize = el?.customization?.productMixMatch?.orderOverview?.discountText?.fontSize+"px";
         DiscountOfferDiv.className = "sd-bundle-mix-match-discount-offer-div";
         DiscountOfferDiv.id = `${bundleIndex}discountOffer`;
         Selected_Text_Description_Div.append(DiscountOfferDiv);
@@ -3376,8 +3366,8 @@ function createBundle(BUNDLE_DATA) {
         el.bundleDetail.products.map((elements,index)=>{
           let MapProductsImages = document.createElement("div");
           MapProductsImages.style.border = "2px solid black";
-          MapProductsImages.style.borderColor = el.customization.productMixMatch.productDetails.image.borderColor;
-          MapProductsImages.style.borderRadius = `${el.customization.productMixMatch.productDetails.image.borderRadius}px`;
+          MapProductsImages.style.borderColor = el?.customization?.productMixMatch?.productDetails?.image?.borderColor;
+          MapProductsImages.style.borderRadius = `${el?.customization?.productMixMatch?.productDetails?.image?.borderRadius}px`;
           MapProductsImages.className = "sd-selected-product-itemImg";
           ImageDiv.append(MapProductsImages);
           let Images = document.createElement("img");
@@ -3387,11 +3377,11 @@ function createBundle(BUNDLE_DATA) {
           if (index < el.bundleDetail.products.length - 1) {
               let BUNDLE_PLUS_BTN_DIV = document.createElement("div");
               BUNDLE_PLUS_BTN_DIV.className = "plus-selectedIcon";
-              BUNDLE_PLUS_BTN_DIV.style.color = el.customization.collectionMixMatch.collectionDetails.plus.color;
+              BUNDLE_PLUS_BTN_DIV.style.color = el?.customization?.collectionMixMatch?.collectionDetails?.plus?.color;
               BUNDLE_PLUS_BTN_DIV.innerHTML = `<svg viewBox="0 0 18 18" focusable="false" width="18" height="18" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
               <path d="M6.98047 17.3842V0.580255H10.3239V17.3842H6.98047ZM0.256392 10.6477V7.30433H17.0604V10.6477H0.256392Z" fill= ${
-                            el.customization.productMixMatch
-                              .productDetails.plusColor
+                            el?.customization?.productMixMatch
+                              ?.productDetails?.plusColor
                           }></path>
               </svg>`;
               ImageDiv.append(BUNDLE_PLUS_BTN_DIV);
@@ -3409,9 +3399,9 @@ function createBundle(BUNDLE_DATA) {
 
         let AllCheckBoxLabel = document.createElement("label");
         AllCheckBoxLabel.className = "sd-control sd-control--checkbox";
-        AllCheckBoxLabel.style.fontFamily = el.customization.productMixMatch.box.fontFamily;
-        AllCheckBoxLabel.style.color = el.customization.productMixMatch.productDetails.productDetailsBox.allProductColor;
-        AllCheckBoxLabel.innerText = el.translations.translation.allProducts;
+        AllCheckBoxLabel.style.fontFamily = el?.customization?.productMixMatch?.box?.fontFamily;
+        AllCheckBoxLabel.style.color = el?.customization?.productMixMatch?.productDetails?.productDetailsBox?.allProductColor;
+        AllCheckBoxLabel.innerText = el?.translations?.translation?.allProducts;
         CheckboxLableDiv.append(AllCheckBoxLabel);
         
         let AllProductCheckBox = document.createElement("input");
@@ -3539,10 +3529,10 @@ function createBundle(BUNDLE_DATA) {
         ItemCounterDiv.append(QuantityCounterDiv);
         let Quantity_Text = document.createElement("h6");
         Quantity_Text.id = `${bundleIndex}QuantityCounter`;
-        Quantity_Text.style.fontFamily = el.customization.productMixMatch.box.fontFamily;
-        Quantity_Text.style.fontSize = el.customization.productMixMatch.productDetails.quantities.size + "px";
-        Quantity_Text.style.color = el.customization.productMixMatch.productDetails.quantities.color;
-        Quantity_Text.innerText = `Qty: ${el.bundleDetail.products.length}`;
+        Quantity_Text.style.fontFamily = el?.customization?.productMixMatch?.box?.fontFamily;
+        Quantity_Text.style.fontSize = el?.customization?.productMixMatch?.productDetails?.quantities?.size + "px";
+        Quantity_Text.style.color = el?.customization?.productMixMatch?.productDetails?.quantities?.color;
+        Quantity_Text.innerText = `Qty: ${el?.bundleDetail?.products?.length}`;
         QuantityCounterDiv.append(Quantity_Text);
         
         MixMatchDiv.append(ItemCounterDiv);
@@ -3556,7 +3546,7 @@ function createBundle(BUNDLE_DATA) {
           calculateFinalPriceFunction();
           let SetProductsDetailsDiv = document.createElement("div");
           SetProductsDetailsDiv.className = "sd-bundle-product-detail";
-          SetProductsDetailsDiv.style.backgroundColor = el.customization.productMixMatch.productDetails.productDetailsBox.backgroundColor;
+          SetProductsDetailsDiv.style.backgroundColor = el?.customization?.productMixMatch?.productDetails?.productDetailsBox?.backgroundColor;
 
           let Inner_Div = document.createElement("div");
           Inner_Div.className = "sd-bundle-product-inner";
@@ -3575,7 +3565,7 @@ function createBundle(BUNDLE_DATA) {
           ProductsCheckBox.setAttribute("type", "checkbox");
           ProductsCheckBox.setAttribute("checked","checked");
           ProductsCheckBox.addEventListener("click", (e) =>{
-            console.log("test",e)
+            // console.log("test",e)
             if(elements.required === true){
               document.getElementById(`ProductCheckbox${bundleIndex}${productIndex}`).checked = true; 
               let PopUpMessageDiv = document.createElement("div");
@@ -3688,8 +3678,8 @@ function createBundle(BUNDLE_DATA) {
           let ImageDiv = document.createElement("div");
           ImageDiv.className = "sd-bundle-product-img";
           ImageDiv.style.border = "2px solid black";
-          ImageDiv.style.borderColor = el.customization.productMixMatch.productDetails.image.borderColor;
-          ImageDiv.style.borderRadius = `${el.customization.productMixMatch.productDetails.image.borderRadius}px`;
+          ImageDiv.style.borderColor = el?.customization?.productMixMatch?.productDetails?.image?.borderColor;
+          ImageDiv.style.borderRadius = `${el?.customization?.productMixMatch?.productDetails?.image?.borderRadius}px`;
           Inner_Div.append(ImageDiv);
           
           let ProductImages = document.createElement("img");
@@ -3699,18 +3689,18 @@ function createBundle(BUNDLE_DATA) {
           let ProductNamePriceDiv = document.createElement("div");
           ProductNamePriceDiv.className = "sd-bundle-product-name";
           let ProductName = document.createElement("h5");
-          ProductName.style.fontFamily = el.customization.productMixMatch.box.fontFamily;
+          ProductName.style.fontFamily = el?.customization?.productMixMatch?.box?.fontFamily;
           ProductName.innerText = `${elements?.title}`;
-          ProductName.style.color = el.customization.productMixMatch.productDetails.title.color;
-          ProductName.style.fontSize = `${el.customization.productMixMatch.productDetails.title.fontSize}px`;
+          ProductName.style.color = el?.customization?.productMixMatch?.productDetails?.title?.color;
+          ProductName.style.fontSize = `${el?.customization?.productMixMatch?.productDetails?.title?.fontSize}px`;
           ProductNamePriceDiv.append(ProductName);
 
           let ProductPrice = document.createElement("h4");
-          ProductPrice.style.fontFamily = el.customization.productMixMatch.box.fontFamily;
+          ProductPrice.style.fontFamily = el?.customization?.productMixMatch?.box?.fontFamily;
           ProductPrice.id = `ProductPrice${bundleIndex}${productIndex}`;
           ProductPrice.innerText = showAmountWithCurrency(`${elements?.variants[0]?.price}`);
-          ProductPrice.style.color = el.customization.productMixMatch.productDetails.price.color;
-          ProductPrice.style.fontSize = `${el.customization.productMixMatch.productDetails.price.fontSize}px`;
+          ProductPrice.style.color = el?.customization?.productMixMatch?.productDetails?.price?.color;
+          ProductPrice.style.fontSize = `${el?.customization?.productMixMatch?.productDetails?.price?.fontSize}px`;
           ProductNamePriceDiv.append(ProductPrice);
           Inner_Div.append(ProductNamePriceDiv);
 
@@ -3773,7 +3763,7 @@ function createBundle(BUNDLE_DATA) {
             let QuantityCount = document.createElement("div");
             QuantityCount.id = `QuantityCount${bundleIndex}${productIndex}`;
             QuantityCount.innerText = TotalQuantity;
-            QuantityCount.style.fontFamily = el.customization.productMixMatch.box.fontFamily;
+            QuantityCount.style.fontFamily = el?.customization?.productMixMatch?.box?.fontFamily;
             QuantitiesDiv.append(QuantityCount);
             
             let PlusBtnDiv = document.createElement("div");
@@ -3830,9 +3820,9 @@ function createBundle(BUNDLE_DATA) {
           SetProductsDetailsDiv.append(Quantity_Div);
 
           let Quantity_Text = document.createElement("h6");
-          Quantity_Text.style.fontFamily = el.customization.productMixMatch.box.fontFamily;
-          Quantity_Text.style.fontSize = el.customization.productMixMatch.productDetails.quantities.size + "px";
-          Quantity_Text.style.color = el.customization.productMixMatch.productDetails.quantities.color;
+          Quantity_Text.style.fontFamily = el?.customization?.productMixMatch?.box?.fontFamily;
+          Quantity_Text.style.fontSize = el?.customization?.productMixMatch?.productDetails?.quantities?.size + "px";
+          Quantity_Text.style.color = el?.customization?.productMixMatch?.productDetails?.quantities.color;
           Quantity_Text.id = `QTY:${bundleIndex}${productIndex}`;
           Quantity_Text.innerText = `Qty: ${TotalQuantity}`;
           Quantity_Div.append(Quantity_Text);
@@ -3849,34 +3839,34 @@ function createBundle(BUNDLE_DATA) {
         TotalPriceDiv.append(PriceTextDiv);
 
         let Total_Text = document.createElement("h4");
-        Total_Text.style.fontFamily = el.customization.productMixMatch.box.fontFamily;
-        Total_Text.innerText = el.translations.translation.total;
-        Total_Text.style.color = el.customization.productMixMatch.totalSection.color;
-        Total_Text.style.fontSize = `${el.customization.productMixMatch.totalSection.fontSize}px`;
+        Total_Text.style.fontFamily = el?.customization?.productMixMatch?.box?.fontFamily;
+        Total_Text.innerText = el?.translations?.translation?.total;
+        Total_Text.style.color = el?.customization?.productMixMatch?.totalSection?.color;
+        Total_Text.style.fontSize = `${el?.customization?.productMixMatch?.totalSection?.fontSize}px`;
         PriceTextDiv.append(Total_Text);
 
         let Discount_Text = document.createElement("p");
-        Discount_Text.style.fontFamily = el.customization.productMixMatch.box.fontFamily;
-        Discount_Text.style.color = el.customization.productMixMatch.totalSection.discountMessage.color;
-        Discount_Text.style.fontSize = el.customization.productMixMatch.totalSection.discountMessage.size+"px";
-        Discount_Text.innerText = el.translations.translation.discountApplied;
+        Discount_Text.style.fontFamily = el?.customization?.productMixMatch?.box?.fontFamily;
+        Discount_Text.style.color = el?.customization?.productMixMatch?.totalSection?.discountMessage?.color;
+        Discount_Text.style.fontSize = el?.customization?.productMixMatch?.totalSection?.discountMessage?.size+"px";
+        Discount_Text.innerText = el?.translations?.translation?.discountApplied;
         PriceTextDiv.append(Discount_Text);
 
         let AllPriceDiv = document.createElement("div");
         AllPriceDiv.className = "sd-total-amount";
 
         let OriginalPriceDiv = document.createElement("h6");
-        OriginalPriceDiv.style.fontFamily = el.customization.productMixMatch.box.fontFamily;
+        OriginalPriceDiv.style.fontFamily = el?.customization?.productMixMatch?.box?.fontFamily;
         OriginalPriceDiv.id = `${bundleIndex}OriginalPrice`;
-        OriginalPriceDiv.style.color = el.customization.productMixMatch.totalSection.originalPrice.color;
-        OriginalPriceDiv.style.fontSize = `${el.customization.productMixMatch.totalSection.originalPrice.fontSize}px`;
+        OriginalPriceDiv.style.color = el?.customization?.productMixMatch?.totalSection?.originalPrice?.color;
+        OriginalPriceDiv.style.fontSize = `${el?.customization?.productMixMatch?.totalSection?.originalPrice?.fontSize}px`;
         OriginalPriceDiv.innerText = showAmountWithCurrency(OriginalPrice.toFixed(2));
 
         let FinalPriceDiv = document.createElement("h4");
-        FinalPriceDiv.style.fontFamily = el.customization.productMixMatch.box.fontFamily;
+        FinalPriceDiv.style.fontFamily = el?.customization?.productMixMatch?.box?.fontFamily;
         FinalPriceDiv.id = `${bundleIndex}FInalPrice`;
-        FinalPriceDiv.style.color = el.customization.productMixMatch.totalSection.finalPrice.color;
-        FinalPriceDiv.style.fontSize = `${el.customization.productMixMatch.totalSection.finalPrice.fontSize}px`;
+        FinalPriceDiv.style.color = el?.customization?.productMixMatch?.totalSection?.finalPrice?.color;
+        FinalPriceDiv.style.fontSize = `${el?.customization?.productMixMatch?.totalSection?.finalPrice?.fontSize}px`;
         FinalPriceDiv.innerText = showAmountWithCurrency(FinalPrice.toFixed(2));
 
         AllPriceDiv.append(FinalPriceDiv);
@@ -3891,12 +3881,12 @@ function createBundle(BUNDLE_DATA) {
         AddToCartBTN.id = `sd-bundle-add-to-cart-buttonID${bundleIndex}`
         AddToCartBTN.style.background = "grey";
         AddToCartBTN.style.cursor = "not-allowed";
-        AddToCartBTN.style.borderRadius = el.customization.productMixMatch.button.borderRadius+"px";
-        AddToCartBTN.style.borderColor = el.customization.productMixMatch.button.borderColor;
-        AddToCartBTN.style.color = `${el.customization.productMixMatch.button.color}`;
-        AddToCartBTN.style.fontSize = `${el.customization.productMixMatch.button.fontSize}px`;
-        AddToCartBTN.style.fontFamily = el.customization.productMixMatch.box.fontFamily;
-        AddToCartBTN.innerHTML = el.translations.translation.addToCartButton;
+        AddToCartBTN.style.borderRadius = el?.customization?.productMixMatch?.button?.borderRadius+"px";
+        AddToCartBTN.style.borderColor = el?.customization?.productMixMatch?.button?.borderColor;
+        AddToCartBTN.style.color = `${el?.customization?.productMixMatch?.button?.color}`;
+        AddToCartBTN.style.fontSize = `${el?.customization?.productMixMatch?.button?.fontSize}px`;
+        AddToCartBTN.style.fontFamily = el?.customization?.productMixMatch?.box?.fontFamily;
+        AddToCartBTN.innerHTML = el?.translations?.translation?.addToCartButton;
         AddToCartBTN.type = "button";
         AddToCartBTN.addEventListener("click",addToCartFunc=(e)=>{
           let bundleDataArray = SelectedProducts.reduce(
@@ -4159,7 +4149,7 @@ function createBundle(BUNDLE_DATA) {
               activeBadge.className = "active";
               addToCartBTN.disabled = false;
               addToCartBTN.style.cursor = "pointer";
-              addToCartBTN.style.background = `${el.customization.productMixMatch.button.backgroundColor}`
+              addToCartBTN.style.background = `${el?.customization?.productMixMatch?.button?.backgroundColor}`
             }
           }
           if(el.bundleDetail.discountOptions[index].type === "fixed"){
@@ -4168,27 +4158,27 @@ function createBundle(BUNDLE_DATA) {
               activeBadge.className = "active";
               addToCartBTN.disabled = false;
               addToCartBTN.style.cursor = "pointer";
-              addToCartBTN.style.background = `${el.customization.productMixMatch.button.backgroundColor}`
+              addToCartBTN.style.background = `${el?.customization?.productMixMatch?.button?.backgroundColor}`
             }
           }
           if(el.bundleDetail.discountOptions[index].type === "noDiscount"){
             if((ele.quantity == SelectedProductsQuantity)  || (index === el.bundleDetail.discountOptions.length-1 && SelectedProductsQuantity >= ele.quantity)) {
-              getDiscountTextDiv.innerText = `${el.translations.translation.discountIsApplied}.`;
+              getDiscountTextDiv.innerText = `${el?.translations?.translation?.discountIsApplied}.`;
               activeBadge.className = "active";
               PriceDiv.style.display = "none";
               addToCartBTN.disabled = false;
               addToCartBTN.style.cursor = "pointer";
-              addToCartBTN.style.background = `${el.customization.productMixMatch.button.backgroundColor}`
+              addToCartBTN.style.background = `${el?.customization?.productMixMatch?.button?.backgroundColor}`
             }
           }
           if(el.bundleDetail.discountOptions[index].type === "freeShipping"){
             if((ele.quantity == SelectedProductsQuantity)  || (index === el.bundleDetail.discountOptions.length-1 && SelectedProductsQuantity >= ele.quantity)) {
-              getDiscountTextDiv.innerText = `100% ${el.translations.translation.FreeShipping} ${el.translations.translation.discountIsApplied}.`;
+              getDiscountTextDiv.innerText = `100% ${el?.translations.translation?.FreeShipping} ${el.translations.translation.discountIsApplied}.`;
               activeBadge.className = "active";
               PriceDiv.style.display = "none";
               addToCartBTN.disabled = false;
               addToCartBTN.style.cursor = "pointer";
-              addToCartBTN.style.background = `${el.customization.productMixMatch.button.backgroundColor}`
+              addToCartBTN.style.background = `${el.customization?.productMixMatch?.button?.backgroundColor}`
             }
           }
         })
@@ -4203,9 +4193,9 @@ function createBundle(BUNDLE_DATA) {
         
         let BXGY_DIV = document.createElement("div");
         BXGY_DIV.className = "sd-bundle-main-column";
-        BXGY_DIV.style.borderRadius = `${el.customization?.buyXgetY.box.borderRadius}px`;
-        BXGY_DIV.style.borderColor = el.customization?.buyXgetY.box.borderColor;
-        BXGY_DIV.style.background = el.customization.buyXgetY.box.backgroundColor;
+        BXGY_DIV.style.borderRadius = `${el?.customization?.buyXgetY?.box?.borderRadius}px`;
+        BXGY_DIV.style.borderColor = el?.customization?.buyXgetY?.box?.borderColor;
+        BXGY_DIV.style.background = el?.customization?.buyXgetY?.box?.backgroundColor;
         BXGY_DIV.id = `BXGY_DIV${bundleIndex}`;
         mainDiv.append(BXGY_DIV);
 
@@ -4214,27 +4204,27 @@ function createBundle(BUNDLE_DATA) {
         BXGY_DIV.append(Desc_Title_text_Div);
 
         let BXGY_TITLE_DIV = document.createElement("h4");
-        BXGY_TITLE_DIV.style.color = el.customization.buyXgetY.title.color;
-        BXGY_TITLE_DIV.style.textAlign = el.customization.buyXgetY.title.alignment;
-        BXGY_TITLE_DIV.style.fontSize = `${el.customization.buyXgetY.title.fontSize}px`;
-        BXGY_TITLE_DIV.style.fontFamily = el.customization.buyXgetY.box.fontFamily;
-        BXGY_TITLE_DIV.style.fontWeight = el.customization.buyXgetY.title.titleBold;
-        BXGY_TITLE_DIV.innerText = el.title;
+        BXGY_TITLE_DIV.style.color = el?.customization?.buyXgetY?.title?.color;
+        BXGY_TITLE_DIV.style.textAlign = el?.customization?.buyXgetY?.title?.alignment;
+        BXGY_TITLE_DIV.style.fontSize = `${el?.customization?.buyXgetY?.title?.fontSize}px`;
+        BXGY_TITLE_DIV.style.fontFamily = el?.customization?.buyXgetY?.box?.fontFamily;
+        BXGY_TITLE_DIV.style.fontWeight = el?.customization?.buyXgetY?.title?.titleBold;
+        BXGY_TITLE_DIV.innerText = el?.title;
         Desc_Title_text_Div.append(BXGY_TITLE_DIV);
 
         let BXGY_DESCRIPTION_DIV = document.createElement("p");
-        BXGY_DESCRIPTION_DIV.style.color = el.customization.buyXgetY.title.descriptionColor;
-        BXGY_DESCRIPTION_DIV.style.textAlign = el.customization.buyXgetY.title.alignment;
-        BXGY_DESCRIPTION_DIV.style.fontFamily = el.customization.buyXgetY.box.fontFamily;
-        BXGY_DESCRIPTION_DIV.style.fontSize = `${el.customization.buyXgetY.title.descriptionFontSize}px`;
-        BXGY_DESCRIPTION_DIV.style.fontWeight = el.customization.buyXgetY.title.descriptionBold;
+        BXGY_DESCRIPTION_DIV.style.color = el?.customization?.buyXgetY?.title?.descriptionColor;
+        BXGY_DESCRIPTION_DIV.style.textAlign = el?.customization?.buyXgetY?.title?.alignment;
+        BXGY_DESCRIPTION_DIV.style.fontFamily = el?.customization?.buyXgetY?.box?.fontFamily;
+        BXGY_DESCRIPTION_DIV.style.fontSize = `${el?.customization?.buyXgetY?.title?.descriptionFontSize}px`;
+        BXGY_DESCRIPTION_DIV.style.fontWeight = el?.customization?.buyXgetY?.title?.descriptionBold;
         BXGY_DESCRIPTION_DIV.innerText = el.description;
         Desc_Title_text_Div.append(BXGY_DESCRIPTION_DIV);
-console.log("bxgy...................",el)
+
         el.bundleDetail.xproducts.map((Xitems,Xindex)=>{
           let MAIN_BUY_PRODUCT_NAME_IMAGE_DIV = document.createElement("div");
           MAIN_BUY_PRODUCT_NAME_IMAGE_DIV.className = "sd-bundle-product-detail";
-          MAIN_BUY_PRODUCT_NAME_IMAGE_DIV.style.backgroundColor = el.customization.buyXgetY.productDetails.productDetailsBox.backgroundColor;
+          MAIN_BUY_PRODUCT_NAME_IMAGE_DIV.style.backgroundColor = el?.customization?.buyXgetY?.productDetails?.productDetailsBox?.backgroundColor;
           BXGY_DIV.append(MAIN_BUY_PRODUCT_NAME_IMAGE_DIV);
 
           let Inner_X_Div = document.createElement("div");
@@ -4245,8 +4235,8 @@ console.log("bxgy...................",el)
           BUY_PRODUCT_IMAGE_DIV.className = "sd-bundle-product-img";
           BUY_PRODUCT_IMAGE_DIV.id = `BUY_PRODUCT_IMAGE_DIV${bundleIndex}${Xindex}`;
           BUY_PRODUCT_IMAGE_DIV.style.border = "2px solid black";
-          BUY_PRODUCT_IMAGE_DIV.style.borderColor = el.customization.buyXgetY.productDetails.image.borderColor;
-          BUY_PRODUCT_IMAGE_DIV.style.borderRadius = `${el.customization.buyXgetY.productDetails.image.borderRadius}px`;
+          BUY_PRODUCT_IMAGE_DIV.style.borderColor = el?.customization?.buyXgetY?.productDetails?.image?.borderColor;
+          BUY_PRODUCT_IMAGE_DIV.style.borderRadius = `${el?.customization?.buyXgetY?.productDetails?.image?.borderRadius}px`;
           Inner_X_Div.append(BUY_PRODUCT_IMAGE_DIV);
 
           let BUY_PRODUCTS_IMAGE = document.createElement("img");
@@ -4258,17 +4248,17 @@ console.log("bxgy...................",el)
           Inner_X_Div.append(BUY_PRODUCTS_NAME_PRICE_DIV);
 
           let BUY_PRODUCTS_NAME = document.createElement("h5");
-          BUY_PRODUCTS_NAME.style.fontFamily = el.customization.buyXgetY.box.fontFamily;
-          BUY_PRODUCTS_NAME.style.fontSize = `${el.customization.buyXgetY.productDetails.title.fontSize}px`;
-          BUY_PRODUCTS_NAME.style.color = el.customization.buyXgetY.productDetails.title.color;
+          BUY_PRODUCTS_NAME.style.fontFamily = el?.customization?.buyXgetY?.box?.fontFamily;
+          BUY_PRODUCTS_NAME.style.fontSize = `${el?.customization?.buyXgetY?.productDetails?.title?.fontSize}px`;
+          BUY_PRODUCTS_NAME.style.color = el?.customization?.buyXgetY?.productDetails?.title?.color;
           BUY_PRODUCTS_NAME.innerText = Xitems.title;
           BUY_PRODUCTS_NAME_PRICE_DIV.append(BUY_PRODUCTS_NAME);
 
           let BUY_PRODUCTS_PRICE = document.createElement("h4");
           BUY_PRODUCTS_PRICE.id = `XproductsPriceDiv${Xindex}`;
-          BUY_PRODUCTS_PRICE.style.fontFamily = el.customization.buyXgetY.box.fontFamily;
-          BUY_PRODUCTS_PRICE.style.fontSize = `${el.customization.buyXgetY.productDetails.price.fontSize}px`;
-          BUY_PRODUCTS_PRICE.style.color = el.customization.buyXgetY.productDetails.price.color;
+          BUY_PRODUCTS_PRICE.style.fontFamily = el?.customization?.buyXgetY?.box?.fontFamily;
+          BUY_PRODUCTS_PRICE.style.fontSize = `${el?.customization?.buyXgetY?.productDetails?.price?.fontSize}px`;
+          BUY_PRODUCTS_PRICE.style.color = el?.customization?.buyXgetY?.productDetails?.price?.color;
           BUY_PRODUCTS_PRICE.innerText = showAmountWithCurrency(`${Xitems?.variants[0]?.price}`);
           BUY_PRODUCTS_NAME_PRICE_DIV.append(BUY_PRODUCTS_PRICE);
 
@@ -4276,9 +4266,9 @@ console.log("bxgy...................",el)
             let QuantityCounterDiv = document.createElement("div");
             QuantityCounterDiv.className = "sd-bundle-mix-match-quantity-counter-div";
             QuantityCounterDiv.id = `QuantityCounter${bundleIndex}${Xindex}`;
-            QuantityCounterDiv.style.borderColor = el.customization.buyXgetY.productDetails.quantities.borderColor;
-            QuantityCounterDiv.style.background = el.customization.buyXgetY.productDetails.quantities.backgroundColor;
-            QuantityCounterDiv.style.color = el.customization.buyXgetY.productDetails.quantities.color;
+            QuantityCounterDiv.style.borderColor = el?.customization?.buyXgetY?.productDetails?.quantities?.borderColor;
+            QuantityCounterDiv.style.background = el?.customization?.buyXgetY?.productDetails?.quantities?.backgroundColor;
+            QuantityCounterDiv.style.color = el?.customization?.buyXgetY?.productDetails?.quantities?.color;
             QuantityCounterDiv.innerText = `${Xitems.minimumOrder}X`;
             Inner_X_Div.append(QuantityCounterDiv);
           }
@@ -4293,10 +4283,10 @@ console.log("bxgy...................",el)
             CalculateFinalPrice();
             if (Xitems.variants.length > 1) {
               let BUY_PRODUCTS_SELECT_VARIANT = document.createElement("SELECT");
-              BUY_PRODUCTS_SELECT_VARIANT.style.width = el.customization?.buyXgetY.productDetails.variantSelector.width+"px";
-              BUY_PRODUCTS_SELECT_VARIANT.style.fontFamily = el.customization.buyXgetY.box.fontFamily;
-              BUY_PRODUCTS_SELECT_VARIANT.style.color = el.customization?.buyXgetY.productDetails.variantSelector.color;
-              BUY_PRODUCTS_SELECT_VARIANT.style.background = el.customization?.buyXgetY.productDetails.variantSelector.backgroundColor;
+              BUY_PRODUCTS_SELECT_VARIANT.style.width = el?.customization?.buyXgetY?.productDetails?.variantSelector?.width+"px";
+              BUY_PRODUCTS_SELECT_VARIANT.style.fontFamily = el?.customization?.buyXgetY?.box?.fontFamily;
+              BUY_PRODUCTS_SELECT_VARIANT.style.color = el?.customization?.buyXgetY?.productDetails?.variantSelector?.color;
+              BUY_PRODUCTS_SELECT_VARIANT.style.background = el?.customization?.buyXgetY?.productDetails?.variantSelector?.backgroundColor;
               BUY_PRODUCTS_SELECT_VARIANT.id = `XvariantsSelect${Xindex}${i + 1}`;
               BUY_PRODUCTS_NAME_PRICE_DIV.appendChild(BUY_PRODUCTS_SELECT_VARIANT);
           
@@ -4328,9 +4318,9 @@ console.log("bxgy...................",el)
           MAIN_BUY_PRODUCT_NAME_IMAGE_DIV.append(Quantity_Div);
           
           let Quantity_Text = document.createElement("h6")
-          Quantity_Text.style.fontSize = el.customization.buyXgetY.productDetails.quantities.size+"px";
-          Quantity_Text.style.fontFamily = el.customization.buyXgetY.box.fontFamily;
-          Quantity_Text.style.color = el.customization.buyXgetY.productDetails.quantities.color;
+          Quantity_Text.style.fontSize = el?.customization?.buyXgetY?.productDetails?.quantities?.size+"px";
+          Quantity_Text.style.fontFamily = el?.customization?.buyXgetY?.box?.fontFamily;
+          Quantity_Text.style.color = el?.customization?.buyXgetY?.productDetails?.quantities?.color;
           Quantity_Text.innerText = `Qty: ${Xitems.minimumOrder}`;
           Quantity_Div.append(Quantity_Text);
         });
@@ -4339,7 +4329,7 @@ console.log("bxgy...................",el)
         BUNDLE_PLUS_BTN_DIV.className = "sd-add-bundle";
         BUNDLE_PLUS_BTN_DIV.innerHTML = `<svg viewBox="0 0 18 18" focusable="false" width="18" height="18" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
           <path d="M6.98047 17.3842V0.580255H10.3239V17.3842H6.98047ZM0.256392 10.6477V7.30433H17.0604V10.6477H0.256392Z" fill= ${
-            el.customization.buyXgetY.productDetails.plusColor
+            el?.customization?.buyXgetY?.productDetails?.plusColor
           }></path>
         </svg>`;
         BXGY_DIV.append(BUNDLE_PLUS_BTN_DIV);
@@ -4348,11 +4338,11 @@ console.log("bxgy...................",el)
         el.bundleDetail.yproducts.map((Yitems,Yindex)=>{
           let MAIN_GET_PRODUCT_NAME_IMAGE_DIV = document.createElement("div");
           MAIN_GET_PRODUCT_NAME_IMAGE_DIV.className = "sd-bundle-product-detail"
-          MAIN_GET_PRODUCT_NAME_IMAGE_DIV.style.backgroundColor = el.customization.buyXgetY.productDetails.productDetailsBox.backgroundColor;
+          MAIN_GET_PRODUCT_NAME_IMAGE_DIV.style.backgroundColor = el?.customization?.buyXgetY?.productDetails?.productDetailsBox?.backgroundColor;
           BXGY_DIV.append(MAIN_GET_PRODUCT_NAME_IMAGE_DIV);
 
         let DISCOUNT_BADGE_DIV = document.createElement("div");
-          if(el.customization.buyXgetY.DiscountBadge.badgeType == "rightBanner"){
+          if(el?.customization?.buyXgetY?.DiscountBadge?.badgeType == "rightBanner"){
             DISCOUNT_BADGE_DIV.className = "sd-bundle-product-badge";
             DISCOUNT_BADGE_DIV.innerHTML = `<svg
                       width="91"
@@ -4364,15 +4354,15 @@ console.log("bxgy...................",el)
                       <path
                         d="M0 10L8.63148 0H83.3261L91 10H0Z"
                         fill= ${
-                          el.customization.buyXgetY.DiscountBadge
-                            .backgroundColor
+                          el?.customization?.buyXgetY?.DiscountBadge
+                            ?.backgroundColor
                         }
                       />
                       <path
                         d="M9 0H83V19C83 21.7614 80.7614 24 78 24H14C11.2386 24 9 21.7614 9 19V0Z"
                         fill= ${
-                          el.customization.buyXgetY.DiscountBadge
-                            .backgroundColor
+                          el?.customization?.buyXgetY?.DiscountBadge
+                            ?.backgroundColor
                         }
                       />
                     </svg>`
@@ -4380,11 +4370,11 @@ console.log("bxgy...................",el)
             DISCOUNT_BADGE_DIV.className = "sd-bundle-product-badge left-badge";
             let DISCOUNT_BADGE_Internal_DIV = document.createElement("div");
             DISCOUNT_BADGE_Internal_DIV.className = "open-badge";
-            DISCOUNT_BADGE_Internal_DIV.style.background = el.customization.buyXgetY.DiscountBadge.backgroundColor;
+            DISCOUNT_BADGE_Internal_DIV.style.background = el?.customization?.buyXgetY?.DiscountBadge?.backgroundColor;
             DISCOUNT_BADGE_DIV.append(DISCOUNT_BADGE_Internal_DIV);
           }
           let Badge_Text = document.createElement("h4");
-          Badge_Text.style.fontFamily = el.customization.buyXgetY.box.fontFamily;
+          Badge_Text.style.fontFamily = el?.customization?.buyXgetY?.box?.fontFamily;
           if(el.bundleDetail.discountType == "percent"){
             Badge_Text.innerText = `${el.bundleDetail.discountValue}% Off`;
           }else if(el.bundleDetail.discountType == "fixed"){
@@ -4393,8 +4383,8 @@ console.log("bxgy...................",el)
             Badge_Text.innerText = `Free`;
           }
           DISCOUNT_BADGE_DIV.append(Badge_Text);
-          Badge_Text.style.color = el.customization.buyXgetY.DiscountBadge.color;
-          Badge_Text.style.fontSize = `${el.customization.buyXgetY.DiscountBadge.fontSize}px`;
+          Badge_Text.style.color = el?.customization?.buyXgetY?.DiscountBadge?.color;
+          Badge_Text.style.fontSize = `${el?.customization?.buyXgetY?.DiscountBadge?.fontSize}px`;
           MAIN_GET_PRODUCT_NAME_IMAGE_DIV.append(DISCOUNT_BADGE_DIV);
           
           let Inner_Y_Div = document.createElement("div");
@@ -4404,8 +4394,8 @@ console.log("bxgy...................",el)
           let GET_PRODUCT_IMAGE_DIV = document.createElement("div");
           GET_PRODUCT_IMAGE_DIV.className = "sd-bundle-product-img";
           GET_PRODUCT_IMAGE_DIV.style.border = "2px solid black";
-          GET_PRODUCT_IMAGE_DIV.style.borderColor = el.customization.buyXgetY.productDetails.image.borderColor;
-          GET_PRODUCT_IMAGE_DIV.style.borderRadius = `${el.customization.buyXgetY.productDetails.image.borderRadius}px`;
+          GET_PRODUCT_IMAGE_DIV.style.borderColor = el?.customization?.buyXgetY?.productDetails?.image?.borderColor;
+          GET_PRODUCT_IMAGE_DIV.style.borderRadius = `${el?.customization?.buyXgetY?.productDetails?.image?.borderRadius}px`;
           GET_PRODUCT_IMAGE_DIV.id = `GET_PRODUCT_IMAGE_DIV${bundleIndex}${Yindex}`;
           Inner_Y_Div.append(GET_PRODUCT_IMAGE_DIV);
 
@@ -4418,17 +4408,17 @@ console.log("bxgy...................",el)
           Inner_Y_Div.append(GET_PRODUCTS_NAME_PRICE_DIV);
 
           let GET_PRODUCTS_NAME = document.createElement("h5");
-          GET_PRODUCTS_NAME.style.fontFamily = el.customization.buyXgetY.box.fontFamily;
-          GET_PRODUCTS_NAME.style.fontSize = `${el.customization.buyXgetY.productDetails.title.fontSize}px`;
-          GET_PRODUCTS_NAME.style.color = el.customization.buyXgetY.productDetails.title.color;
+          GET_PRODUCTS_NAME.style.fontFamily = el?.customization?.buyXgetY?.box?.fontFamily;
+          GET_PRODUCTS_NAME.style.fontSize = `${el?.customization?.buyXgetY?.productDetails?.title?.fontSize}px`;
+          GET_PRODUCTS_NAME.style.color = el?.customization?.buyXgetY?.productDetails?.title?.color;
           GET_PRODUCTS_NAME.innerText = Yitems.title;
           GET_PRODUCTS_NAME_PRICE_DIV.append(GET_PRODUCTS_NAME);
 
           let GET_PRODUCTS_PRICE = document.createElement("h4");
-          GET_PRODUCTS_PRICE.style.fontFamily = el.customization.buyXgetY.box.fontFamily;
+          GET_PRODUCTS_PRICE.style.fontFamily = el?.customization?.buyXgetY?.box?.fontFamily;
           GET_PRODUCTS_PRICE.id = `YproductsPriceDiv${Yindex}`;
-          GET_PRODUCTS_PRICE.style.fontSize = `${el.customization.buyXgetY.productDetails.price.fontSize}px`;
-          GET_PRODUCTS_PRICE.style.color = el.customization.buyXgetY.productDetails.price.color;
+          GET_PRODUCTS_PRICE.style.fontSize = `${el?.customization?.buyXgetY?.productDetails?.price?.fontSize}px`;
+          GET_PRODUCTS_PRICE.style.color = el?.customization?.buyXgetY?.productDetails?.price?.color;
           GET_PRODUCTS_PRICE.innerText = showAmountWithCurrency(`${Yitems?.variants[0]?.price}`);
           GET_PRODUCTS_NAME_PRICE_DIV.append(GET_PRODUCTS_PRICE);
 
@@ -4436,9 +4426,9 @@ console.log("bxgy...................",el)
             let QuantityCounterDiv = document.createElement("div");
             QuantityCounterDiv.className = "sd-bundle-mix-match-quantity-counter-div";
             QuantityCounterDiv.id = `QuantityCounter${bundleIndex}${Yindex}`;
-            QuantityCounterDiv.style.borderColor = el.customization.buyXgetY.productDetails.quantities.borderColor;
-            QuantityCounterDiv.style.background = el.customization.buyXgetY.productDetails.quantities.backgroundColor;
-            QuantityCounterDiv.style.color = el.customization.buyXgetY.productDetails.quantities.color;
+            QuantityCounterDiv.style.borderColor = el?.customization?.buyXgetY?.productDetails?.quantities?.borderColor;
+            QuantityCounterDiv.style.background = el?.customization?.buyXgetY?.productDetails?.quantities?.backgroundColor;
+            QuantityCounterDiv.style.color = el?.customization?.buyXgetY?.productDetails?.quantities?.color;
             QuantityCounterDiv.innerText = `${Yitems.minimumOrder}X`;
             Inner_Y_Div.append(QuantityCounterDiv);
           }
@@ -4453,10 +4443,10 @@ console.log("bxgy...................",el)
             CalculateFinalPrice();
             if (Yitems.variants.length > 1) {
               let GET_PRODUCTS_SELECT_VARIANT = document.createElement("SELECT");
-              GET_PRODUCTS_SELECT_VARIANT.style.width = el.customization?.buyXgetY.productDetails.variantSelector.width+"px";
-              GET_PRODUCTS_SELECT_VARIANT.style.fontFamily = el.customization.buyXgetY.box.fontFamily;
-              GET_PRODUCTS_SELECT_VARIANT.style.background = el.customization?.buyXgetY.productDetails.variantSelector.backgroundColor;
-              GET_PRODUCTS_SELECT_VARIANT.style.color = el.customization?.buyXgetY.productDetails.variantSelector.color;
+              GET_PRODUCTS_SELECT_VARIANT.style.width = el?.customization?.buyXgetY?.productDetails?.variantSelector?.width+"px";
+              GET_PRODUCTS_SELECT_VARIANT.style.fontFamily = el?.customization?.buyXgetY?.box?.fontFamily;
+              GET_PRODUCTS_SELECT_VARIANT.style.background = el?.customization?.buyXgetY?.productDetails?.variantSelector?.backgroundColor;
+              GET_PRODUCTS_SELECT_VARIANT.style.color = el?.customization?.buyXgetY?.productDetails?.variantSelector?.color;
               GET_PRODUCTS_SELECT_VARIANT.id = `YvariantsSelect${Yindex}${i + 1}`;
               GET_PRODUCTS_NAME_PRICE_DIV.appendChild(GET_PRODUCTS_SELECT_VARIANT);
           
@@ -4488,9 +4478,9 @@ console.log("bxgy...................",el)
           MAIN_GET_PRODUCT_NAME_IMAGE_DIV.append(Quantity_Div);
           
           let Quantity_Text = document.createElement("h6");
-          Quantity_Text.style.fontSize = el.customization.buyXgetY.productDetails.quantities.size+"px";
-          Quantity_Text.style.fontFamily = el.customization.buyXgetY.box.fontFamily;
-          Quantity_Text.style.color = el.customization.buyXgetY.productDetails.quantities.color;
+          Quantity_Text.style.fontSize = el?.customization?.buyXgetY?.productDetails?.quantities?.size+"px";
+          Quantity_Text.style.fontFamily = el?.customization?.buyXgetY?.box?.fontFamily;
+          Quantity_Text.style.color = el?.customization?.buyXgetY?.productDetails?.quantities?.color;
           Quantity_Text.innerText = `Qty: ${Yitems.minimumOrder}`;
           Quantity_Div.append(Quantity_Text);
         });
@@ -4504,10 +4494,10 @@ console.log("bxgy...................",el)
         TOTAL_SECTION_DIV.append(Total_Desc_Div);
         
         let TOTAL_TITLE_DIV = document.createElement("h4");
-        TOTAL_TITLE_DIV.style.fontFamily = el.customization.buyXgetY.box.fontFamily;
-        TOTAL_TITLE_DIV.innerText = el.translations.translation.total;
-        TOTAL_TITLE_DIV.style.fontSize = `${el.customization.buyXgetY.totalSection.fontSize}px`;
-        TOTAL_TITLE_DIV.style.color = el.customization.buyXgetY.totalSection.color;
+        TOTAL_TITLE_DIV.style.fontFamily = el?.customization?.buyXgetY?.box?.fontFamily;
+        TOTAL_TITLE_DIV.innerText = el?.translations?.translation?.total;
+        TOTAL_TITLE_DIV.style.fontSize = `${el?.customization?.buyXgetY?.totalSection?.fontSize}px`;
+        TOTAL_TITLE_DIV.style.color = el?.customization?.buyXgetY?.totalSection?.color;
         Total_Desc_Div.append(TOTAL_TITLE_DIV);
 
          if (
@@ -4517,10 +4507,10 @@ console.log("bxgy...................",el)
           // no changes
         } else {
           let Discount_Description = document.createElement("p");
-          Discount_Description.style.fontFamily = el.customization.buyXgetY.box.fontFamily;
-          Discount_Description.style.color = el.customization.buyXgetY.totalSection.discountMessage.color;
-           Discount_Description.style.fontSize = el.customization.buyXgetY.totalSection.discountMessage.size+"px";
-          Discount_Description.innerText = el.translations.translation.discountApplied;
+          Discount_Description.style.fontFamily = el?.customization?.buyXgetY?.box?.fontFamily;
+          Discount_Description.style.color = el?.customization?.buyXgetY?.totalSection?.discountMessage?.color;
+           Discount_Description.style.fontSize = el?.customization?.buyXgetY?.totalSection?.discountMessage?.size+"px";
+          Discount_Description.innerText = el?.translations?.translation?.discountApplied;
           Total_Desc_Div.append(Discount_Description);
          }
 
@@ -4529,18 +4519,18 @@ console.log("bxgy...................",el)
         TOTAL_SECTION_DIV.append(MAIN_PRICE_DIV);
 
         let ORIGINAL_PRICE_DIV = document.createElement("h6");
-        ORIGINAL_PRICE_DIV.style.fontFamily = el.customization.buyXgetY.box.fontFamily;
+        ORIGINAL_PRICE_DIV.style.fontFamily = el?.customization?.buyXgetY?.box?.fontFamily;
         ORIGINAL_PRICE_DIV.id = "sd-bxgy-original-price";
         ORIGINAL_PRICE_DIV.innerText = showAmountWithCurrency(parseFloat(OriginalPrice).toFixed(2));
-        ORIGINAL_PRICE_DIV.style.fontSize = `${el.customization.buyXgetY.totalSection.originalPrice.fontSize}px`;
-        ORIGINAL_PRICE_DIV.style.color = el.customization.buyXgetY.totalSection.originalPrice.color;
+        ORIGINAL_PRICE_DIV.style.fontSize = `${el?.customization?.buyXgetY?.totalSection?.originalPrice?.fontSize}px`;
+        ORIGINAL_PRICE_DIV.style.color = el?.customization?.buyXgetY?.totalSection?.originalPrice?.color;
 
         let FINAL_PRICE_DIV = document.createElement("h4");
-        FINAL_PRICE_DIV.style.fontFamily = el.customization.buyXgetY.box.fontFamily;
+        FINAL_PRICE_DIV.style.fontFamily = el?.customization?.buyXgetY?.box?.fontFamily;
         FINAL_PRICE_DIV.id = "sd-bxgy-final-price";
         FINAL_PRICE_DIV.innerText = showAmountWithCurrency(parseFloat(FinalPrice).toFixed(2));
-        FINAL_PRICE_DIV.style.fontSize = `${el.customization.buyXgetY.totalSection.finalPrice.fontSize}px`;
-        FINAL_PRICE_DIV.style.color = el.customization.buyXgetY.totalSection.finalPrice.color;
+        FINAL_PRICE_DIV.style.fontSize = `${el?.customization?.buyXgetY?.totalSection?.finalPrice?.fontSize}px`;
+        FINAL_PRICE_DIV.style.color = el?.customization?.buyXgetY?.totalSection?.finalPrice?.color;
         MAIN_PRICE_DIV.append(FINAL_PRICE_DIV);
         MAIN_PRICE_DIV.append(ORIGINAL_PRICE_DIV);
 
@@ -4549,13 +4539,13 @@ console.log("bxgy...................",el)
         BXGY_DIV.append(ADD_TO_CART_DIV);
 
         let ADD_TO_CART_BUTTON = document.createElement("button");
-        ADD_TO_CART_BUTTON.style.borderColor = el.customization.buyXgetY.button.borderColor;
-        ADD_TO_CART_BUTTON.style.borderRadius = el.customization.buyXgetY.button.borderRadius+"px";
-        ADD_TO_CART_BUTTON.style.fontFamily = el.customization.buyXgetY.box.fontFamily;
-        ADD_TO_CART_BUTTON.style.background = el.customization.buyXgetY.button.backgroundColor;
-        ADD_TO_CART_BUTTON.style.fontSize = `${el.customization.buyXgetY.button.fontSize}px`;
-        ADD_TO_CART_BUTTON.style.color = el.customization.buyXgetY.button.color;
-        ADD_TO_CART_BUTTON.innerText = el.translations.translation.addToCartButton;
+        ADD_TO_CART_BUTTON.style.borderColor = el?.customization?.buyXgetY?.button?.borderColor;
+        ADD_TO_CART_BUTTON.style.borderRadius = el?.customization?.buyXgetY?.button?.borderRadius+"px";
+        ADD_TO_CART_BUTTON.style.fontFamily = el?.customization?.buyXgetY?.box?.fontFamily;
+        ADD_TO_CART_BUTTON.style.background = el?.customization?.buyXgetY?.button?.backgroundColor;
+        ADD_TO_CART_BUTTON.style.fontSize = `${el?.customization?.buyXgetY?.button?.fontSize}px`;
+        ADD_TO_CART_BUTTON.style.color = el?.customization?.buyXgetY?.button?.color;
+        ADD_TO_CART_BUTTON.innerText = el?.translations?.translation?.addToCartButton;
         ADD_TO_CART_BUTTON.addEventListener("click", (e) => {
             let code = JSON.parse(localStorage.getItem("sd_bundle_data"));
             let discountCodeId = code.discountCreateId ?? "";
@@ -5057,7 +5047,7 @@ async function bundlePageBuilder(data) {
                     CollectionProductsData(pdata, CollectionProductDiv);
                   })
                   .catch((error) => {
-                    // console.log(error.message);
+                    console.log(error.message);
                   });
               }
             }, 1000);
@@ -5696,7 +5686,7 @@ function addselectedProductList(selectedProducts, mainIndex, extra, data) {
       selectedProductTitleDiv.append(ProductTitle);
       let productVariantTitle = document.createElement("div");
       productVariantTitle.className = "sd-builder-info-variant-title";
-      console.log(el.variantTitle);
+      // console.log(el.variantTitle);
       productVariantTitle.innerText = el.variantTitle;
       if (el.variantTitle == "Default Title") {
         productVariantTitle.style.display = "none";

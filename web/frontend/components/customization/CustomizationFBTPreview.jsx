@@ -7,8 +7,9 @@ import productImg from "../../assets/product.png";
 
 const CustomizationFBt = ({ data }) => {
   const textStyle = {
-    fontFamily: `${data.frequentlyBoughtTogether.box.fontFamily}`,
-  };
+    fontFamily: `${data?.frequentlyBoughtTogether?.box?.fontFamily || 'inherit'}`,
+};
+
 
   return (
     <>
@@ -16,33 +17,26 @@ const CustomizationFBt = ({ data }) => {
         <div
           class="sd-bundle-main-column"
           style={{
-            backgroundColor: data.frequentlyBoughtTogether.box.backgroundColor,
-            borderColor: data.frequentlyBoughtTogether.box.borderColor,
-            borderRadius: data.frequentlyBoughtTogether.box.borderRadius + "px",
-          }}
+            backgroundColor: data?.frequentlyBoughtTogether?.box?.backgroundColor,
+            borderColor: data?.frequentlyBoughtTogether?.box?.borderColor,
+            borderRadius: `${data?.frequentlyBoughtTogether?.box?.borderRadius || 0}px`,
+        }}
         >
           {data.frequentlyBoughtTogether.optionalBadge.enable == true && (
             <div
               className="sd-badges-part"
               style={{
-                backgroundColor:
-                  data["frequentlyBoughtTogether"]["optionalBadge"][
-                    "background"
-                  ],
-              }}
+                backgroundColor: data?.frequentlyBoughtTogether?.optionalBadge?.background,
+            }}            
             >
               <span
-                style={{
-                  ...textStyle,
-                  color:
-                    data["frequentlyBoughtTogether"]["optionalBadge"]["color"],
-                  fontSize:
-                    data["frequentlyBoughtTogether"]["optionalBadge"][
-                      "fontSize"
-                    ] + "px",
-                }}
+               style={{
+                ...textStyle,
+                color: data?.frequentlyBoughtTogether?.optionalBadge?.color,
+                fontSize: `${data?.frequentlyBoughtTogether?.optionalBadge?.fontSize || 0}px`,
+            }}            
               >
-                {data.frequentlyBoughtTogether.optionalBadge.text}
+                {data?.frequentlyBoughtTogether?.optionalBadge?.text}
               </span>
             </div>
           )}
@@ -51,24 +45,22 @@ const CustomizationFBt = ({ data }) => {
             <h4
               style={{
                 ...textStyle,
-                color: data.frequentlyBoughtTogether.title.color,
-                fontSize: data.frequentlyBoughtTogether.title.fontSize + "px",
-                textAlign: data.frequentlyBoughtTogether.title.alignment,
-                fontWeight: data.frequentlyBoughtTogether.title.titleBold,
-              }}
+                color: data?.frequentlyBoughtTogether?.title?.color,
+                fontSize: `${data?.frequentlyBoughtTogether?.title?.fontSize || 0}px`,
+                textAlign: data?.frequentlyBoughtTogether?.title?.alignment,
+                fontWeight: data?.frequentlyBoughtTogether?.title?.titleBold,
+            }}            
             >
               Frequently bought together
             </h4>
             <p
               style={{
                 ...textStyle,
-                color: data.frequentlyBoughtTogether.title.descriptionColor,
-                fontSize:
-                  data.frequentlyBoughtTogether.title.descriptionFontSize +
-                  "px",
-                fontWeight: data.frequentlyBoughtTogether.title.descriptionBold,
-                textAlign: data.frequentlyBoughtTogether.title.alignment,
-              }}
+                color: data?.frequentlyBoughtTogether?.title?.descriptionColor,
+                fontSize: `${data?.frequentlyBoughtTogether?.title?.descriptionFontSize || 0}px`,
+                fontWeight: data?.frequentlyBoughtTogether?.title?.descriptionBold,
+                textAlign: data?.frequentlyBoughtTogether?.title?.alignment,
+            }}            
             >
               Buy and save 5%
             </p>
@@ -77,10 +69,8 @@ const CustomizationFBt = ({ data }) => {
           <div
             class="sd-bundle-product-detail"
             style={{
-              backgroundColor:
-                data.frequentlyBoughtTogether.productDetails.productDetailsBox
-                  .backgroundColor,
-            }}
+              backgroundColor: data?.frequentlyBoughtTogether?.productDetails?.productDetailsBox?.backgroundColor,
+          }}          
           >
             <div class="sd-bundle-product-inner">
               <div class="checkbox-wrapper-18">
@@ -92,13 +82,9 @@ const CustomizationFBt = ({ data }) => {
               <div
                 class="sd-bundle-product-img"
                 style={{
-                  borderColor:
-                    data.frequentlyBoughtTogether.productDetails.image
-                      .borderColor,
-                  borderRadius:
-                    data.frequentlyBoughtTogether.productDetails.image
-                      .borderRadius + "px",
-                }}
+                  borderColor: data?.frequentlyBoughtTogether?.productDetails?.image?.borderColor,
+                  borderRadius: `${data?.frequentlyBoughtTogether?.productDetails?.image?.borderRadius || 0}px`,
+              }}              
               >
                 <img src={productImg} width="80" height="80" />
               </div>
@@ -106,24 +92,18 @@ const CustomizationFBt = ({ data }) => {
                 <h5
                   style={{
                     ...textStyle,
-                    color:
-                      data.frequentlyBoughtTogether.productDetails.title.color,
-                    fontSize:
-                      data.frequentlyBoughtTogether.productDetails.title
-                        .fontSize + "px",
-                  }}
+                    color: data?.frequentlyBoughtTogether?.productDetails?.title?.color,
+                    fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.title?.fontSize || 0}px`,
+                }}                
                 >
                   Smart Wireless Charger
                 </h5>
                 <h4
                   style={{
                     ...textStyle,
-                    color:
-                      data.frequentlyBoughtTogether.productDetails.price.color,
-                    fontSize:
-                      data.frequentlyBoughtTogether.productDetails.price
-                        .fontSize + "px",
-                  }}
+                    color: data?.frequentlyBoughtTogether?.productDetails?.price?.color,
+                    fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.price?.fontSize || 0}px`,
+                }}                
                 >
                   {" "}
                   Rs. 2500.00
@@ -131,16 +111,10 @@ const CustomizationFBt = ({ data }) => {
                 <select
                   style={{
                     ...textStyle,
-                    backgroundColor:
-                      data.frequentlyBoughtTogether.productDetails
-                        .variantSelector.backgroundColor,
-                    color:
-                      data.frequentlyBoughtTogether.productDetails
-                        .variantSelector.color,
-                    width:
-                      data.frequentlyBoughtTogether.productDetails
-                        .variantSelector.width + "px",
-                  }}
+                    backgroundColor: data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.backgroundColor,
+                    color: data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.color,
+                    width: `${data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.width || 0}px`,
+                }}                
                 >
                   <option style={{ ...textStyle }}>Medium</option>
                   <option style={{ ...textStyle }}>Small</option>
@@ -151,22 +125,16 @@ const CustomizationFBt = ({ data }) => {
               <h6
                 style={{
                   ...textStyle,
-                  color:
-                    data.frequentlyBoughtTogether.productDetails.quantities
-                      .color,
-                  fontSize:
-                    data.frequentlyBoughtTogether.productDetails.quantities
-                      .size + "px",
-                }}
+                  color: data?.frequentlyBoughtTogether?.productDetails?.quantities?.color,
+                  fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.quantities?.size || 0}px`,
+              }}              
               >
                 Qty:{" "}
                 <span
                   style={{
                     ...textStyle,
-                    fontSize:
-                      data.frequentlyBoughtTogether.productDetails.quantities
-                        .size + "px",
-                  }}
+                    fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.quantities?.size || 0}px`,
+                }}                
                 >
                   1
                 </span>
@@ -183,17 +151,15 @@ const CustomizationFBt = ({ data }) => {
             >
               <path
                 d="M6.98047 17.3842V0.580255H10.3239V17.3842H6.98047ZM0.256392 10.6477V7.30433H17.0604V10.6477H0.256392Z"
-                fill={data.frequentlyBoughtTogether.productDetails.plusColor}
+                fill={data?.frequentlyBoughtTogether?.productDetails?.plusColor}
               />
             </svg>
           </div>
           <div
             class="sd-bundle-product-detail"
             style={{
-              backgroundColor:
-                data.frequentlyBoughtTogether.productDetails.productDetailsBox
-                  .backgroundColor,
-            }}
+              backgroundColor: data?.frequentlyBoughtTogether?.productDetails?.productDetailsBox?.backgroundColor,
+          }}          
           >
             <div class="sd-bundle-product-inner">
               <div class="checkbox-wrapper-18">
@@ -205,38 +171,28 @@ const CustomizationFBt = ({ data }) => {
               <div
                 class="sd-bundle-product-img"
                 style={{
-                  borderColor:
-                    data.frequentlyBoughtTogether.productDetails.image
-                      .borderColor,
-                  borderRadius:
-                    data.frequentlyBoughtTogether.productDetails.image
-                      .borderRadius + "px",
-                }}
+                  borderColor: data?.frequentlyBoughtTogether?.productDetails?.image?.borderColor,
+                  borderRadius: `${data?.frequentlyBoughtTogether?.productDetails?.image?.borderRadius || 0}px`,
+              }}              
               >
                 <img src={productImg} width="80" height="80" />
               </div>
               <div class="sd-bundle-product-name">
                 <h5
-                  style={{
-                    ...textStyle,
-                    color:
-                      data.frequentlyBoughtTogether.productDetails.title.color,
-                    fontSize:
-                      data.frequentlyBoughtTogether.productDetails.title
-                        .fontSize + "px",
-                  }}
+                 style={{
+                  ...textStyle,
+                  color: data?.frequentlyBoughtTogether?.productDetails?.title?.color,
+                  fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.title?.fontSize || 0}px`,
+              }}              
                 >
                   Smart Wireless Charger
                 </h5>
                 <h4
                   style={{
                     ...textStyle,
-                    color:
-                      data.frequentlyBoughtTogether.productDetails.price.color,
-                    fontSize:
-                      data.frequentlyBoughtTogether.productDetails.price
-                        .fontSize + "px",
-                  }}
+                    color: data?.frequentlyBoughtTogether?.productDetails?.price?.color,
+                    fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.price?.fontSize || 0}px`,
+                }}
                 >
                   {" "}
                   Rs. 2500.00
@@ -244,16 +200,10 @@ const CustomizationFBt = ({ data }) => {
                 <select
                   style={{
                     ...textStyle,
-                    backgroundColor:
-                      data.frequentlyBoughtTogether.productDetails
-                        .variantSelector.backgroundColor,
-                    color:
-                      data.frequentlyBoughtTogether.productDetails
-                        .variantSelector.color,
-                    width:
-                      data.frequentlyBoughtTogether.productDetails
-                        .variantSelector.width + "px",
-                  }}
+                    backgroundColor: data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.backgroundColor,
+                    color: data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.color,
+                    width: `${data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.width || 0}px`,
+                }}                
                 >
                   <option style={{ ...textStyle }}>Medium</option>
                   <option style={{ ...textStyle }}>Small</option>
@@ -262,24 +212,18 @@ const CustomizationFBt = ({ data }) => {
             </div>
             <div class="sd-bundle-product-quantity">
               <h6
-                style={{
-                  ...textStyle,
-                  color:
-                    data.frequentlyBoughtTogether.productDetails.quantities
-                      .color,
-                  fontSize:
-                    data.frequentlyBoughtTogether.productDetails.quantities
-                      .size + "px",
-                }}
+               style={{
+                ...textStyle,
+                color: data?.frequentlyBoughtTogether?.productDetails?.quantities?.color,
+                fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.quantities?.size || 0}px`,
+            }}
               >
                 Qty:{" "}
                 <span
                   style={{
                     ...textStyle,
-                    fontSize:
-                      data.frequentlyBoughtTogether.productDetails.quantities
-                        .size + "px",
-                  }}
+                    fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.quantities?.size || 0}px`,
+                }}                
                 >
                   1
                 </span>
@@ -291,23 +235,18 @@ const CustomizationFBt = ({ data }) => {
               <h4
                 style={{
                   ...textStyle,
-                  color: data.frequentlyBoughtTogether.totalSection.color,
-                  fontSize:
-                    data.frequentlyBoughtTogether.totalSection.fontSize + "px",
-                }}
+                  color: data?.frequentlyBoughtTogether?.totalSection?.color,
+                  fontSize: `${data?.frequentlyBoughtTogether?.totalSection?.fontSize || 0}px`,
+              }}              
               >
                 Total
               </h4>
               <p
                 style={{
                   ...textStyle,
-                  color:
-                    data.frequentlyBoughtTogether.totalSection.discountMessage
-                      .color,
-                  fontSize:
-                    data.frequentlyBoughtTogether.totalSection.discountMessage
-                      .size + "px",
-                }}
+                  color: data?.frequentlyBoughtTogether?.totalSection?.discountMessage?.color,
+                  fontSize: `${data?.frequentlyBoughtTogether?.totalSection?.discountMessage?.size || 0}px`,
+              }}              
               >
                 Discount will be applied at checkout
               </p>
@@ -316,25 +255,18 @@ const CustomizationFBt = ({ data }) => {
               <h4
                 style={{
                   ...textStyle,
-                  color:
-                    data.frequentlyBoughtTogether.totalSection.finalPrice.color,
-                  fontSize:
-                    data.frequentlyBoughtTogether.totalSection.finalPrice
-                      .fontSize + "px",
-                }}
+                  color: data?.frequentlyBoughtTogether?.totalSection?.finalPrice?.color,
+                  fontSize: `${data?.frequentlyBoughtTogether?.totalSection?.finalPrice?.fontSize || 0}px`,
+              }}              
               >
                 Rs. 4750.00
               </h4>
               <h6
-                style={{
-                  ...textStyle,
-                  color:
-                    data.frequentlyBoughtTogether.totalSection.originalPrice
-                      .color,
-                  fontSize:
-                    data.frequentlyBoughtTogether.totalSection.originalPrice
-                      .fontSize + "px",
-                }}
+               style={{
+                ...textStyle,
+                color: data?.frequentlyBoughtTogether?.totalSection?.originalPrice?.color,
+                fontSize: `${data?.frequentlyBoughtTogether?.totalSection?.originalPrice?.fontSize || 0}px`,
+            }}            
               >
                 Rs. 5000.00
               </h6>
@@ -344,13 +276,12 @@ const CustomizationFBt = ({ data }) => {
             <button
               style={{
                 ...textStyle,
-                color: data.frequentlyBoughtTogether.button.color,
-                fontSize: data.frequentlyBoughtTogether.button.fontSize + "px",
-                backgroundColor:
-                  data.frequentlyBoughtTogether.button.backgroundColor,
-                borderColor: data.frequentlyBoughtTogether.button.borderColor,
-                borderRadius: data.frequentlyBoughtTogether.button.borderRadius + "px",
-              }}
+                color: data?.frequentlyBoughtTogether?.button?.color,
+                fontSize: `${data?.frequentlyBoughtTogether?.button?.fontSize || 0}px`,
+                backgroundColor: data?.frequentlyBoughtTogether?.button?.backgroundColor,
+                borderColor: data?.frequentlyBoughtTogether?.button?.borderColor,
+                borderRadius: `${data?.frequentlyBoughtTogether?.button?.borderRadius || 0}px`,
+            }}            
             >
               Add to Cart
             </button>
@@ -360,31 +291,24 @@ const CustomizationFBt = ({ data }) => {
         <div
           class="sd-bundle-main-column"
           style={{
-            backgroundColor: data.frequentlyBoughtTogether.box.backgroundColor,
-            borderColor: data.frequentlyBoughtTogether.box.borderColor,
-            borderRadius: data.frequentlyBoughtTogether.box.borderRadius + "px",
-          }}
+            backgroundColor: data?.frequentlyBoughtTogether?.box?.backgroundColor,
+            borderColor: data?.frequentlyBoughtTogether?.box?.borderColor,
+            borderRadius: `${data?.frequentlyBoughtTogether?.box?.borderRadius || 0}px`,
+        }}        
         >
           {data.frequentlyBoughtTogether.optionalBadge.enable == true && (
             <div
               className="sd-badges-part"
               style={{
-                backgroundColor:
-                  data["frequentlyBoughtTogether"]["optionalBadge"][
-                    "background"
-                  ],
-              }}
+                backgroundColor: data?.frequentlyBoughtTogether?.optionalBadge?.background,
+            }}            
             >
               <span
                 style={{
                   ...textStyle,
-                  color:
-                    data["frequentlyBoughtTogether"]["optionalBadge"]["color"],
-                  fontSize:
-                    data["frequentlyBoughtTogether"]["optionalBadge"][
-                      "fontSize"
-                    ] + "px",
-                }}
+                  color: data?.frequentlyBoughtTogether?.optionalBadge?.color,
+                  fontSize: `${data?.frequentlyBoughtTogether?.optionalBadge?.fontSize || 0}px`,
+              }}              
               >
                 {data.frequentlyBoughtTogether.optionalBadge.text}
               </span>
@@ -394,24 +318,22 @@ const CustomizationFBt = ({ data }) => {
             <h4
               style={{
                 ...textStyle,
-                color: data.frequentlyBoughtTogether.title.color,
-                fontSize: data.frequentlyBoughtTogether.title.fontSize + "px",
-                textAlign: data.frequentlyBoughtTogether.title.alignment,
-                fontWeight: data.frequentlyBoughtTogether.title.titleBold,
-              }}
+                color: data?.frequentlyBoughtTogether?.title?.color,
+                fontSize: `${data?.frequentlyBoughtTogether?.title?.fontSize || 0}px`,
+                textAlign: data?.frequentlyBoughtTogether?.title?.alignment,
+                fontWeight: data?.frequentlyBoughtTogether?.title?.titleBold,
+            }}            
             >
               Frequently bought together
             </h4>
             <p
               style={{
                 ...textStyle,
-                color: data.frequentlyBoughtTogether.title.descriptionColor,
-                fontSize:
-                  data.frequentlyBoughtTogether.title.descriptionFontSize +
-                  "px",
-                fontWeight: data.frequentlyBoughtTogether.title.descriptionBold,
-                textAlign: data.frequentlyBoughtTogether.title.alignment,
-              }}
+                color: data?.frequentlyBoughtTogether?.title?.descriptionColor,
+                fontSize: `${data?.frequentlyBoughtTogether?.title?.descriptionFontSize || 0}px`,
+                fontWeight: data?.frequentlyBoughtTogether?.title?.descriptionBold,
+                textAlign: data?.frequentlyBoughtTogether?.title?.alignment,
+            }}            
             >
               Buy and save 5%
             </p>
@@ -419,13 +341,9 @@ const CustomizationFBt = ({ data }) => {
               <div
                 class="sd-bundle-product-img"
                 style={{
-                  borderColor:
-                    data.frequentlyBoughtTogether.productDetails.image
-                      .borderColor,
-                  borderRadius:
-                    data.frequentlyBoughtTogether.productDetails.image
-                      .borderRadius + "px",
-                }}
+                  borderColor: data?.frequentlyBoughtTogether?.productDetails?.image?.borderColor,
+                  borderRadius: `${data?.frequentlyBoughtTogether?.productDetails?.image?.borderRadius || 0}px`,
+              }}              
               >
                 <img src={productImg} width="80" height="80" />
               </div>
@@ -439,20 +357,16 @@ const CustomizationFBt = ({ data }) => {
                 >
                   <path
                     d="M6.98047 17.3842V0.580255H10.3239V17.3842H6.98047ZM0.256392 10.6477V7.30433H17.0604V10.6477H0.256392Z"
-                    fill={data.frequentlyBoughtTogether.productDetails.plusColor}
+                    fill={data?.frequentlyBoughtTogether?.productDetails?.plusColor}
                   />
                 </svg>
               </div>
               <div
                 class="sd-bundle-product-img"
                 style={{
-                  borderColor:
-                    data.frequentlyBoughtTogether.productDetails.image
-                      .borderColor,
-                  borderRadius:
-                    data.frequentlyBoughtTogether.productDetails.image
-                      .borderRadius + "px",
-                }}
+                  borderColor: data?.frequentlyBoughtTogether?.productDetails?.image?.borderColor,
+                  borderRadius: `${data?.frequentlyBoughtTogether?.productDetails?.image?.borderRadius || 0}px`,
+              }}              
               >
                 <img src={productImg} width="80" height="80" />
               </div>
@@ -462,10 +376,8 @@ const CustomizationFBt = ({ data }) => {
           <div
             class="sd-bundle-product-detail"
             style={{
-              backgroundColor:
-                data.frequentlyBoughtTogether.productDetails.productDetailsBox
-                  .backgroundColor,
-            }}
+              backgroundColor: data?.frequentlyBoughtTogether?.productDetails?.productDetailsBox?.backgroundColor,
+          }}          
           >
             <div class="sd-bundle-product-inner">
               <div class="checkbox-wrapper-18">
@@ -479,40 +391,28 @@ const CustomizationFBt = ({ data }) => {
                 <h5
                   style={{
                     ...textStyle,
-                    color:
-                      data.frequentlyBoughtTogether.productDetails.title.color,
-                    fontSize:
-                      data.frequentlyBoughtTogether.productDetails.title
-                        .fontSize + "px",
-                  }}
+                    color: data?.frequentlyBoughtTogether?.productDetails?.title?.color,
+                    fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.title?.fontSize || 0}px`,
+                }}                
                 >
                   Smart Wireless Charger
                 </h5>
                 <h4
-                  style={{
-                    ...textStyle,
-                    color:
-                      data.frequentlyBoughtTogether.productDetails.price.color,
-                    fontSize:
-                      data.frequentlyBoughtTogether.productDetails.price
-                        .fontSize + "px",
-                  }}
+                 style={{
+                  ...textStyle,
+                  color: data?.frequentlyBoughtTogether?.productDetails?.price?.color,
+                  fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.price?.fontSize || 0}px`,
+              }}              
                 >
                   Rs. 2500.00
                 </h4>
                 <select
                   style={{
                     ...textStyle,
-                    backgroundColor:
-                      data.frequentlyBoughtTogether.productDetails
-                        .variantSelector.backgroundColor,
-                    color:
-                      data.frequentlyBoughtTogether.productDetails
-                        .variantSelector.color,
-                    width:
-                      data.frequentlyBoughtTogether.productDetails
-                        .variantSelector.width + "px",
-                  }}
+                    backgroundColor: data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.backgroundColor,
+                    color: data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.color,
+                    width: `${data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.width || 0}px`,
+                }}                
                 >
                   <option style={{ ...textStyle }}>Medium</option>
                   <option style={{ ...textStyle }}>Small</option>
@@ -523,22 +423,16 @@ const CustomizationFBt = ({ data }) => {
               <h6
                 style={{
                   ...textStyle,
-                  color:
-                    data.frequentlyBoughtTogether.productDetails.quantities
-                      .color,
-                  fontSize:
-                    data.frequentlyBoughtTogether.productDetails.quantities
-                      .size + "px",
-                }}
+                  color: data?.frequentlyBoughtTogether?.productDetails?.quantities?.color,
+                  fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.quantities?.size || 0}px`,
+              }}              
               >
                 Qty:{" "}
                 <span
                   style={{
                     ...textStyle,
-                    fontSize:
-                      data.frequentlyBoughtTogether.productDetails.quantities
-                        .size + "px",
-                  }}
+                    fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.quantities?.size || 0}px`,
+                }}                
                 >
                   1
                 </span>
@@ -555,17 +449,15 @@ const CustomizationFBt = ({ data }) => {
             >
               <path
                 d="M6.98047 17.3842V0.580255H10.3239V17.3842H6.98047ZM0.256392 10.6477V7.30433H17.0604V10.6477H0.256392Z"
-                fill={data.frequentlyBoughtTogether.productDetails.plusColor}
+                fill={data?.frequentlyBoughtTogether?.productDetails?.plusColor}
               />
             </svg>
           </div>
           <div
             class="sd-bundle-product-detail"
             style={{
-              backgroundColor:
-                data.frequentlyBoughtTogether.productDetails.productDetailsBox
-                  .backgroundColor,
-            }}
+              backgroundColor: data?.frequentlyBoughtTogether?.productDetails?.productDetailsBox?.backgroundColor,
+            }}            
           >
             <div class="sd-bundle-product-inner">
               <div class="checkbox-wrapper-18">
@@ -578,40 +470,28 @@ const CustomizationFBt = ({ data }) => {
                 <h5
                   style={{
                     ...textStyle,
-                    color:
-                      data.frequentlyBoughtTogether.productDetails.title.color,
-                    fontSize:
-                      data.frequentlyBoughtTogether.productDetails.title
-                        .fontSize + "px",
-                  }}
+                    color: data?.frequentlyBoughtTogether?.productDetails?.title?.color,
+                    fontSize: (data?.frequentlyBoughtTogether?.productDetails?.title?.fontSize || 0) + "px",
+                  }}                  
                 >
                   Smart Wireless Charger
                 </h5>
                 <h4
                   style={{
                     ...textStyle,
-                    color:
-                      data.frequentlyBoughtTogether.productDetails.price.color,
-                    fontSize:
-                      data.frequentlyBoughtTogether.productDetails.price
-                        .fontSize + "px",
-                  }}
+                    color: data?.frequentlyBoughtTogether?.productDetails?.price?.color,
+                    fontSize: (data?.frequentlyBoughtTogether?.productDetails?.price?.fontSize || 0) + "px",
+                  }}                  
                 >
                   Rs. 2500.00
                 </h4>
                 <select
                   style={{
                     ...textStyle,
-                    backgroundColor:
-                      data.frequentlyBoughtTogether.productDetails
-                        .variantSelector.backgroundColor,
-                    color:
-                      data.frequentlyBoughtTogether.productDetails
-                        .variantSelector.color,
-                    width:
-                      data.frequentlyBoughtTogether.productDetails
-                        .variantSelector.width + "px",
-                  }}
+                    backgroundColor: data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.backgroundColor,
+                    color: data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.color,
+                    width: (data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.width || 0) + "px",
+                  }}                  
                 >
                   <option style={{ ...textStyle }}>Medium</option>
                   <option style={{ ...textStyle }}>Small</option>
@@ -622,22 +502,16 @@ const CustomizationFBt = ({ data }) => {
               <h6
                 style={{
                   ...textStyle,
-                  color:
-                    data.frequentlyBoughtTogether.productDetails.quantities
-                      .color,
-                  fontSize:
-                    data.frequentlyBoughtTogether.productDetails.quantities
-                      .size + "px",
-                }}
+                  color: data?.frequentlyBoughtTogether?.productDetails?.quantities?.color,
+                  fontSize: (data?.frequentlyBoughtTogether?.productDetails?.quantities?.size || 0) + "px",
+                }}                
               >
                 Qty:{" "}
                 <span
                   style={{
                     ...textStyle,
-                    fontSize:
-                      data.frequentlyBoughtTogether.productDetails.quantities
-                        .size + "px",
-                  }}
+                    fontSize: (data?.frequentlyBoughtTogether?.productDetails?.quantities?.size || 0) + "px",
+                  }}                  
                 >
                   1
                 </span>
@@ -649,23 +523,18 @@ const CustomizationFBt = ({ data }) => {
               <h4
                 style={{
                   ...textStyle,
-                  color: data.frequentlyBoughtTogether.totalSection.color,
-                  fontSize:
-                    data.frequentlyBoughtTogether.totalSection.fontSize + "px",
-                }}
+                  color: data?.frequentlyBoughtTogether?.totalSection?.color,
+                  fontSize: (data?.frequentlyBoughtTogether?.totalSection?.fontSize || 0) + "px",
+                }}                
               >
                 Total
               </h4>
               <p
                 style={{
                   ...textStyle,
-                  color:
-                    data.frequentlyBoughtTogether.totalSection.discountMessage
-                      .color,
-                  fontSize:
-                    data.frequentlyBoughtTogether.totalSection.discountMessage
-                      .size + "px",
-                }}
+                  color: data?.frequentlyBoughtTogether?.totalSection?.discountMessage?.color,
+                  fontSize: (data?.frequentlyBoughtTogether?.totalSection?.discountMessage?.size || 0) + "px",
+                }}                
               >
                 Discount will be applied at checkout
               </p>
@@ -674,25 +543,18 @@ const CustomizationFBt = ({ data }) => {
               <h4
                 style={{
                   ...textStyle,
-                  color:
-                    data.frequentlyBoughtTogether.totalSection.finalPrice.color,
-                  fontSize:
-                    data.frequentlyBoughtTogether.totalSection.finalPrice
-                      .fontSize + "px",
-                }}
+                  color: data?.frequentlyBoughtTogether?.totalSection?.finalPrice?.color,
+                  fontSize: (data?.frequentlyBoughtTogether?.totalSection?.finalPrice?.fontSize || 0) + "px",
+                }}                
               >
                 Rs. 4,750.00
               </h4>
               <h6
                 style={{
                   ...textStyle,
-                  color:
-                    data.frequentlyBoughtTogether.totalSection.originalPrice
-                      .color,
-                  fontSize:
-                    data.frequentlyBoughtTogether.totalSection.originalPrice
-                      .fontSize + "px",
-                }}
+                  color: data?.frequentlyBoughtTogether?.totalSection?.originalPrice?.color,
+                  fontSize: (data?.frequentlyBoughtTogether?.totalSection?.originalPrice?.fontSize || 0) + "px",
+                }}                
               >
                 Rs. 5,000.00
               </h6>
@@ -702,13 +564,12 @@ const CustomizationFBt = ({ data }) => {
             <button
               style={{
                 ...textStyle,
-                color: data.frequentlyBoughtTogether.button.color,
-                fontSize: data.frequentlyBoughtTogether.button.fontSize + "px",
-                backgroundColor:
-                  data.frequentlyBoughtTogether.button.backgroundColor,
-                borderColor: data.frequentlyBoughtTogether.button.borderColor,
-                borderRadius: data.frequentlyBoughtTogether.button.borderRadius +"px",
-              }}
+                color: data?.frequentlyBoughtTogether?.button?.color,
+                fontSize: (data?.frequentlyBoughtTogether?.button?.fontSize || 0) + "px",
+                backgroundColor: data?.frequentlyBoughtTogether?.button?.backgroundColor,
+                borderColor: data?.frequentlyBoughtTogether?.button?.borderColor,
+                borderRadius: (data?.frequentlyBoughtTogether?.button?.borderRadius || 0) + "px",
+              }}              
             >
               Add to Cart
             </button>

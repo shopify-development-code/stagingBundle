@@ -23,43 +23,31 @@ const ProductMixMatchPreview = ({
         <div
           className="sd-bundle-main-column"
           style={{
-            backgroundColor:
-              data.customization[0]?.productMixMatch.box.backgroundColor,
-            borderColor: data.customization[0]?.productMixMatch.box.borderColor,
-            borderRadius:
-              data.customization[0]?.productMixMatch.box.borderRadius + "px",
-            border:
-              data.customization[0]?.productMixMatch.box.thickness +
-              "px solid" +
-              data.customization[0]?.productMixMatch.box.borderColor,
-          }}
+            backgroundColor: data.customization[0]?.productMixMatch?.box?.backgroundColor,
+            borderColor: data.customization[0]?.productMixMatch?.box?.borderColor,
+            borderRadius: (data.customization[0]?.productMixMatch?.box?.borderRadius ?? 0) + "px",
+            border: `${data.customization[0]?.productMixMatch?.box?.thickness ?? 0}px solid ${data.customization[0]?.productMixMatch?.box?.borderColor ?? 'transparent'}`,
+          }}   
         >
           <div className="sd-bundle-text-detail">
             <h4
-              style={{
-                ...fontSize,
-                color: data.customization[0]?.productMixMatch.title.color,
-                fontSize:
-                  data.customization[0]?.productMixMatch.title.fontSize + "px",
-                textAlign:
-                  data.customization[0]?.productMixMatch.title.alignment,
-                fontWeight:
-                  data.customization[0]?.productMixMatch.title.titleBold,
-              }}
+             style={{
+              ...fontSize,
+              color: data.customization[0]?.productMixMatch?.title?.color,
+              fontSize: (data.customization[0]?.productMixMatch?.title?.fontSize ?? 0) + "px", 
+              textAlign: data.customization[0]?.productMixMatch?.title?.alignment,
+              fontWeight: data.customization[0]?.productMixMatch?.title?.titleBold ? 'bold' : 'normal',
+            }}
             >
               {data.title}
             </h4>
             <p
               style={{
                 ...fontSize,
-                color:
-                  data.customization[0]?.productMixMatch.title.descriptionColor,
-                fontSize:
-                  data.customization[0]?.productMixMatch.title
-                    .descriptionFontSize + "px",
-                fontWeight:
-                  data.customization[0]?.productMixMatch.title.descriptionBold,
-              }}
+                color: data.customization[0]?.productMixMatch?.title?.descriptionColor,
+                fontSize: (data.customization[0]?.productMixMatch?.title?.descriptionFontSize ?? 0) + "px",
+                fontWeight: data.customization[0]?.productMixMatch?.title?.descriptionBold ? 'bold' : 'normal',
+              }}              
             >
               {data.description}
             </p>
@@ -180,16 +168,11 @@ const ProductMixMatchPreview = ({
                   <h5
                     style={{
                       ...fontSize,
-                      fontSize:
-                        data.customization[0].productMixMatch.orderOverview
-                          .selectedText.fontSize + "px",
-                      color:
-                        data.customization[0].productMixMatch.orderOverview
-                          .selectedText.color,
-                      textAlign:
-                        data.customization[0].productMixMatch.orderOverview
-                          .alignment,
+                      fontSize: (data.customization[0]?.productMixMatch?.orderOverview?.selectedText?.fontSize ?? 0) + "px",
+                      color: data.customization[0]?.productMixMatch?.orderOverview?.selectedText?.color ?? 'inherit', 
+                      textAlign: data.customization[0]?.productMixMatch?.orderOverview?.alignment ?? 'left',
                     }}
+                    
                   >
                     You have selected {data?.bundleDetail?.products?.length}{" "}
                     items
@@ -208,16 +191,11 @@ const ProductMixMatchPreview = ({
                                   item.quantity) ? (
                                 <p style={{
                                   ...fontSize,
-                                  fontSize:
-                                    data.customization[0].productMixMatch.orderOverview
-                                      .discountText.fontSize + "px",
-                                  color:
-                                    data.customization[0].productMixMatch.orderOverview
-                                      .discountText.color,
-                                  textAlign:
-                                    data.customization[0].productMixMatch.orderOverview
-                                      .alignment,
-                                }}>
+                                  fontSize: (data.customization[0]?.productMixMatch?.orderOverview?.discountText?.fontSize ?? 0) + "px", 
+                                  color: data.customization[0]?.productMixMatch?.orderOverview?.discountText?.color ?? 'inherit', 
+                                  textAlign: data.customization[0]?.productMixMatch?.orderOverview?.alignment ?? 'left',
+                                }}
+                                >
                                   100% {freeShipping} discount is applied on the
                                   selected products.
                                 </p>
@@ -235,16 +213,11 @@ const ProductMixMatchPreview = ({
                                   item.quantity) ? (
                                 <p style={{
                                   ...fontSize,
-                                  fontSize:
-                                    data.customization[0].productMixMatch.orderOverview
-                                      .discountText.fontSize + "px",
-                                  color:
-                                    data.customization[0].productMixMatch.orderOverview
-                                      .discountText.color,
-                                  textAlign:
-                                    data.customization[0].productMixMatch.orderOverview
-                                      .alignment,
-                                }}>
+                                  fontSize: (data.customization[0]?.productMixMatch?.orderOverview?.discountText?.fontSize ?? 0) + "px",
+                                  color: data.customization[0]?.productMixMatch?.orderOverview?.discountText?.color ?? 'inherit',
+                                  textAlign: data.customization[0]?.productMixMatch?.orderOverview?.alignment ?? 'left',
+                                }}
+                                >
                                   -
                                   {showAmountWithCurrency(item.value, currency)}{" "}
                                   discount is applied on the selected products.
@@ -263,16 +236,11 @@ const ProductMixMatchPreview = ({
                                   item.quantity) ? (
                                 <p style={{
                                   ...fontSize,
-                                  fontSize:
-                                    data.customization[0].productMixMatch.orderOverview
-                                      .discountText.fontSize + "px",
-                                  color:
-                                    data.customization[0].productMixMatch.orderOverview
-                                      .discountText.color,
-                                  textAlign:
-                                    data.customization[0].productMixMatch.orderOverview
-                                      .alignment,
-                                }}>
+                                  fontSize: (data.customization[0]?.productMixMatch?.orderOverview?.discountText?.fontSize ?? 0) + "px", 
+                                  color: data.customization[0]?.productMixMatch?.orderOverview?.discountText?.color ?? 'inherit',
+                                  textAlign: data.customization[0]?.productMixMatch?.orderOverview?.alignment ?? 'left',
+                                }}
+                                >
                                   discount is applied on the selected products.
                                 </p>
                               ) : (
@@ -289,16 +257,11 @@ const ProductMixMatchPreview = ({
                                   item.quantity) ? (
                                 <p style={{
                                   ...fontSize,
-                                  fontSize:
-                                    data.customization[0].productMixMatch.orderOverview
-                                      .discountText.fontSize + "px",
-                                  color:
-                                    data.customization[0].productMixMatch.orderOverview
-                                      .discountText.color,
-                                  textAlign:
-                                    data.customization[0].productMixMatch.orderOverview
-                                      .alignment,
-                                }}>
+                                  fontSize: (data.customization[0]?.productMixMatch?.orderOverview?.discountText?.fontSize ?? 0) + "px",
+                                  color: data.customization[0]?.productMixMatch?.orderOverview?.discountText?.color ?? 'inherit', 
+                                  textAlign: data.customization[0]?.productMixMatch?.orderOverview?.alignment ?? 'left', 
+                                }}
+                                >
                                   {item?.value}% discount is applied on the
                                   selected products.
                                 </p>
@@ -317,16 +280,11 @@ const ProductMixMatchPreview = ({
                   <p
                     style={{
                       ...fontSize,
-                      fontSize:
-                        data.customization[0].productMixMatch.orderOverview
-                          .selectedText.fontSize + "px",
-                      color:
-                        data.customization[0].productMixMatch.orderOverview
-                          .selectedText.color,
-                      textAlign:
-                        data.customization[0].productMixMatch.orderOverview
-                          .alignment,
+                      fontSize: (data.customization[0]?.productMixMatch?.orderOverview?.selectedText?.fontSize ?? 0) + "px",
+                      color: data.customization[0]?.productMixMatch?.orderOverview?.selectedText?.color ?? 'inherit',
+                      textAlign: data.customization[0]?.productMixMatch?.orderOverview?.alignment ?? 'left',
                     }}
+                    
                   >
                     You have selected {data?.bundleDetail?.products?.length}{" "}
                     items
@@ -334,15 +292,9 @@ const ProductMixMatchPreview = ({
                   <p
                     style={{
                       ...fontSize,
-                      fontSize:
-                        data.customization[0].productMixMatch.orderOverview
-                          .discountText.fontSize + "px",
-                      color:
-                        data.customization[0].productMixMatch.orderOverview
-                          .discountText.color,
-                      textAlign:
-                        data.customization[0].productMixMatch.orderOverview
-                          .alignment,
+                      fontSize: (data.customization[0]?.productMixMatch?.orderOverview?.discountText?.fontSize ?? 0) + "px",
+                      color: data.customization[0]?.productMixMatch?.orderOverview?.discountText?.color ?? 'inherit', 
+                      textAlign: data.customization[0]?.productMixMatch?.orderOverview?.alignment ?? 'left',
                     }}
                   >
                     Select at least{" "}
@@ -361,13 +313,10 @@ const ProductMixMatchPreview = ({
                         className="sd-selected-product-itemImg"
                         style={{
                           border: "1px solid white",
-                          borderColor:
-                            data.customization[0]?.productMixMatch
-                              .productDetails.image.borderColor,
-                          borderRadius:
-                            data.customization[0]?.productMixMatch
-                              .productDetails.image.borderRadius + "px",
+                          borderColor: data.customization[0]?.productMixMatch?.productDetails?.image?.borderColor ?? 'transparent', 
+                          borderRadius: (data.customization[0]?.productMixMatch?.productDetails?.image?.borderRadius ?? 0) + "px",
                         }}
+                        
                       >
                         <img
                           src={
@@ -389,10 +338,7 @@ const ProductMixMatchPreview = ({
                           >
                             <path
                               d="M6.98047 17.3842V0.580255H10.3239V17.3842H6.98047ZM0.256392 10.6477V7.30433H17.0604V10.6477H0.256392Z"
-                              fill={
-                                data.customization[0]?.productMixMatch
-                                  .productDetails.plusColor
-                              }
+                              fill={data.customization[0]?.productMixMatch?.productDetails?.plusColor}
                             />
                           </svg>
                         </div>
@@ -409,10 +355,8 @@ const ProductMixMatchPreview = ({
                 className="sd-control sd-control--checkbox"
                 style={{
                   ...fontSize,
-                  color:
-                    data.customization[0]?.productMixMatch.productDetails
-                      .productDetailsBox.allProductColor,
-                }}
+                  color: data.customization[0]?.productMixMatch?.productDetails?.productDetailsBox?.allProductColor ?? 'inherit',
+                }}                
               >
                 All Product
                 <input type="checkbox" checked />
@@ -423,22 +367,16 @@ const ProductMixMatchPreview = ({
               <h6
                 style={{
                   ...fontSize,
-                  color:
-                    data.customization[0]?.productMixMatch.productDetails
-                      .quantities.color,
-                  fontSize:
-                    data.customization[0]?.productMixMatch.productDetails
-                      .quantities.size + "px",
+                  color: data.customization[0]?.productMixMatch?.productDetails?.quantities?.color ?? 'inherit',
+                  fontSize: (data.customization[0]?.productMixMatch?.productDetails?.quantities?.size ?? 0) + "px",
                 }}
               >
                 Qty:{" "}
                 <span
                   style={{
                     ...fontSize,
-                    fontSize:
-                      data.customization[0]?.productMixMatch.productDetails
-                        .quantities.size + "px",
-                  }}
+                    fontSize: (data.customization[0]?.productMixMatch?.productDetails?.quantities?.size ?? 0) + "px"
+                  }}                  
                 >
                   {data?.bundleDetail?.products?.length}
                 </span>
@@ -452,10 +390,8 @@ const ProductMixMatchPreview = ({
                 <div
                   className="sd-bundle-product-detail"
                   style={{
-                    backgroundColor:
-                      data.customization[0]?.productMixMatch.productDetails
-                        .productDetailsBox.backgroundColor,
-                  }}
+                    backgroundColor: data.customization[0]?.productMixMatch?.productDetails?.productDetailsBox?.backgroundColor ?? 'transparent'
+                  }}                  
                 >
                   <div className="sd-bundle-product-inner">
                     <div className="checkbox-wrapper-18">
@@ -467,13 +403,9 @@ const ProductMixMatchPreview = ({
                     <div
                       className="sd-bundle-product-img"
                       style={{
-                        borderColor:
-                          data.customization[0]?.productMixMatch.productDetails
-                            .image.borderColor,
-                        borderRadius:
-                          data.customization[0]?.productMixMatch.productDetails
-                            .image.borderRadius + "px",
-                      }}
+                        borderColor: data.customization[0]?.productMixMatch?.productDetails?.image?.borderColor ?? 'transparent', 
+                        borderRadius: (data.customization[0]?.productMixMatch?.productDetails?.image?.borderRadius ?? 0) + "px"
+                      }}                      
                     >
                       <img
                         src={
@@ -489,26 +421,18 @@ const ProductMixMatchPreview = ({
                       <h5
                         style={{
                           ...fontSize,
-                          color:
-                            data.customization[0]?.productMixMatch
-                              .productDetails.title.color,
-                          fontSize:
-                            data.customization[0]?.productMixMatch
-                              .productDetails.title.fontSize + "px",
-                        }}
+                          color: data.customization[0]?.productMixMatch?.productDetails?.title?.color ?? 'inherit',
+                          fontSize: (data.customization[0]?.productMixMatch?.productDetails?.title?.fontSize ?? 0) + "px",
+                        }}                        
                       >
                         {item?.title}
                       </h5>
                       <h4
-                        style={{
-                          ...fontSize,
-                          color:
-                            data.customization[0]?.productMixMatch
-                              .productDetails.price.color,
-                          fontSize:
-                            data.customization[0]?.productMixMatch
-                              .productDetails.price.fontSize + "px",
-                        }}
+                       style={{
+                        ...fontSize,
+                        color: data.customization[0]?.productMixMatch?.productDetails?.price?.color ?? 'inherit', 
+                        fontSize: (data.customization[0]?.productMixMatch?.productDetails?.price?.fontSize ?? 0) + "px"
+                      }}                      
                       >
                         {showAmountWithCurrency(
                           item?.variants[0]?.price,
@@ -518,19 +442,12 @@ const ProductMixMatchPreview = ({
                       <select
                         style={{
                           ...fontSize,
-                          backgroundColor:
-                            data.customization[0]?.productMixMatch
-                              .productDetails.variantSelector.backgroundColor,
-                          color:
-                            data.customization[0]?.productMixMatch
-                              .productDetails.variantSelector.color,
-                          borderColor:
-                            data.customization[0]?.productMixMatch
-                              .productDetails.variantSelector.borderColor,
-                          width:
-                            data.customization[0]?.productMixMatch
-                              .productDetails.variantSelector.width + "px",
+                          backgroundColor: data.customization[0]?.productMixMatch?.productDetails?.variantSelector?.backgroundColor ?? 'transparent', 
+                          color: data.customization[0]?.productMixMatch?.productDetails?.variantSelector?.color ?? 'inherit', 
+                          borderColor: data.customization[0]?.productMixMatch?.productDetails?.variantSelector?.borderColor ?? 'transparent',
+                          width: (data.customization[0]?.productMixMatch?.productDetails?.variantSelector?.width ?? 200) + "px", 
                         }}
+                        
                       >
                         <option style={{ ...fontSize }}>Medium</option>
                         <option style={{ ...fontSize }}>Small</option>
@@ -541,22 +458,16 @@ const ProductMixMatchPreview = ({
                     <h6
                       style={{
                         ...fontSize,
-                        color:
-                          data.customization[0]?.productMixMatch.productDetails
-                            .quantities.color,
-                        fontSize:
-                          data.customization[0]?.productMixMatch.productDetails
-                            .quantities.size + "px",
-                      }}
+                        color: data.customization[0]?.productMixMatch?.productDetails?.quantities?.color ?? 'inherit', 
+                        fontSize: (data.customization[0]?.productMixMatch?.productDetails?.quantities?.size ?? 10) + "px"
+                      }}                      
                     >
                       Qty:{" "}
                       <span
                         style={{
                           ...fontSize,
-                          fontSize:
-                            data.customization[0]?.productMixMatch
-                              .productDetails.quantities.size + "px",
-                        }}
+                          fontSize: (data.customization[0]?.productMixMatch?.productDetails?.quantities?.size ?? 0) + "px"
+                        }}                        
                       >
                         1
                       </span>
@@ -571,28 +482,18 @@ const ProductMixMatchPreview = ({
               <h4
                 style={{
                   ...fontSize,
-                  color:
-                    data.customization[0]?.productMixMatch.totalSection.color,
-                  fontSize:
-                    data.customization[0]?.productMixMatch.totalSection
-                      .fontSize + "px",
-                }}
+                  color: data.customization[0]?.productMixMatch?.totalSection?.color ?? 'inherit',
+                  fontSize: (data.customization[0]?.productMixMatch?.totalSection?.fontSize ?? 0) + "px", 
+                }}                
               >
                 Total
               </h4>
               <p
                 style={{
                   ...fontSize,
-                  color:
-                    data.customization[0]?.productMixMatch.title
-                      .descriptionColor,
-                  color:
-                    data.customization[0]?.productMixMatch.totalSection
-                      .discountMessage.color,
-                  fontSize:
-                    data.customization[0]?.productMixMatch.totalSection
-                      .discountMessage.size + "px",
-                }}
+                  color: data.customization[0]?.productMixMatch?.totalSection?.discountMessage?.color ?? data.customization[0]?.productMixMatch?.title?.descriptionColor ?? 'inherit', // Defaults to 'inherit' if both are undefined
+                  fontSize: (data.customization[0]?.productMixMatch?.totalSection?.discountMessage?.size ?? 10) + "px", // Defaults to 0 if size is undefined
+                }}                
               >
                 Discount will be applied at checkout
               </p>
@@ -604,15 +505,11 @@ const ProductMixMatchPreview = ({
                 "noDiscount" ||
               data.bundleDetail.products.length < 2 ? (
                 <h4
-                  style={{
-                    ...fontSize,
-                    color:
-                      data.customization[0]?.productMixMatch.totalSection
-                        .finalPrice.color,
-                    fontSize:
-                      data.customization[0]?.productMixMatch.totalSection
-                        .finalPrice.fontSize + "px",
-                  }}
+                style={{
+                  ...fontSize,
+                  color: data.customization[0]?.productMixMatch?.totalSection?.finalPrice?.color ?? 'inherit', // Defaults to 'inherit' if color is undefined
+                  fontSize: (data.customization[0]?.productMixMatch?.totalSection?.finalPrice?.fontSize ?? 10) + "px", // Defaults to 0 if fontSize is undefined
+                }}                
                 >
                   {showAmountWithCurrency(mrp, currency)}
                 </h4>
@@ -621,26 +518,18 @@ const ProductMixMatchPreview = ({
                   <h4
                     style={{
                       ...fontSize,
-                      color:
-                        data.customization[0]?.productMixMatch.totalSection
-                          .finalPrice.color,
-                      fontSize:
-                        data.customization[0]?.productMixMatch.totalSection
-                          .finalPrice.fontSize + "px",
-                    }}
+                      color: data.customization[0]?.productMixMatch?.totalSection?.finalPrice?.color ?? 'inherit', // Defaults to 'inherit' if color is undefined
+                      fontSize: (data.customization[0]?.productMixMatch?.totalSection?.finalPrice?.fontSize ?? 10) + "px", // Defaults to 0 if fontSize is undefined
+                    }}                    
                   >
                     {showAmountWithCurrency(endPrice, currency)}
                   </h4>
                   <h6
                     style={{
                       ...fontSize,
-                      color:
-                        data.customization[0]?.productMixMatch.totalSection
-                          .originalPrice.color,
-                      fontSize:
-                        data.customization[0]?.productMixMatch.totalSection
-                          .originalPrice.fontSize + "px",
-                    }}
+                      color: data.customization[0]?.productMixMatch?.totalSection?.originalPrice?.color ?? 'inherit', // Defaults to 'inherit' if color is undefined
+                      fontSize: (data.customization[0]?.productMixMatch?.totalSection?.originalPrice?.fontSize ?? 0) + "px", // Defaults to 0 if fontSize is undefined
+                    }}                    
                   >
                     {showAmountWithCurrency(mrp, currency)}
                   </h6>
@@ -652,17 +541,12 @@ const ProductMixMatchPreview = ({
             <button
               style={{
                 ...fontSize,
-                color: data.customization[0]?.productMixMatch.button.color,
-                fontSize:
-                  data.customization[0]?.productMixMatch.button.fontSize + "px",
-                backgroundColor:
-                  data.customization[0]?.productMixMatch.button.backgroundColor,
-                borderColor:
-                  data.customization[0]?.productMixMatch.button.borderColor,
-                borderRadius:
-                  data.customization[0]?.productMixMatch.button.borderRadius +
-                  "px",
-              }}
+                color: data.customization[0]?.productMixMatch?.button?.color ?? 'inherit',
+                fontSize: (data.customization[0]?.productMixMatch?.button?.fontSize ?? 0) + "px", 
+                backgroundColor: data.customization[0]?.productMixMatch?.button?.backgroundColor ?? 'transparent', 
+                borderColor: data.customization[0]?.productMixMatch?.button?.borderColor ?? 'transparent', 
+                borderRadius: (data.customization[0]?.productMixMatch?.button?.borderRadius ?? 0) + "px",
+              }}              
             >
               Add to Cart
             </button>

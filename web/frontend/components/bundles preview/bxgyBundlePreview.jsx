@@ -14,7 +14,7 @@ const BXGYBundlePreview = ({
   console.log("trest df wtedgf eydtyu", data);
   const { shop, timeZone, currencyCode } = useAPI();
   const fontFamily = {
-    fontFamily: data.customization?.[0]?.buyXgetY?.box?.fontFamily,
+    fontFamily: data?.customization?.[0]?.buyXgetY?.box?.fontFamily || 'inherit',
   };
   return (
     <div className="sd-bundle-bundleSection-common sd-bundle-productBundle-preview first-previewCard">
@@ -24,23 +24,19 @@ const BXGYBundlePreview = ({
         <div
           className="sd-bundle-main-column"
           style={{
-            backgroundColor: data.customization[0].buyXgetY.box.backgroundColor,
-            border:
-              data.customization[0].buyXgetY.box.thickness +
-              "px solid" +
-              data.customization[0].buyXgetY.box.borderColor,
-            borderRadius:
-              data.customization[0].buyXgetY.box.borderRadius + "px",
-          }}
+            backgroundColor: data.customization[0]?.buyXgetY?.box?.backgroundColor ?? 'transparent', 
+            border: `${(data.customization[0]?.buyXgetY?.box?.thickness ?? 0)}px solid ${data.customization[0]?.buyXgetY?.box?.borderColor ?? 'transparent'}`, 
+            borderRadius: (data.customization[0]?.buyXgetY?.box?.borderRadius ?? 0) + "px", 
+          }}          
         >
           <div className="sd-bundle-text-detail">
             <h4
               style={{
                 ...fontFamily,
-                color: data.customization[0].buyXgetY.title.color,
-                fontSize: data.customization[0].buyXgetY.title.fontSize + "px",
-                fontWeight: data.customization[0].buyXgetY.title.titleBold,
-                textAlign: data.customization[0].buyXgetY.title.alignment,
+                color: data.customization[0]?.buyXgetY?.title?.color, 
+                fontSize: (data.customization[0]?.buyXgetY?.title?.fontSize ?? 10) + "px", 
+                fontWeight: data.customization[0]?.buyXgetY?.title?.titleBold ?? 'normal',
+                textAlign: data.customization[0]?.buyXgetY?.title?.alignment ?? 'left', 
               }}
             >
               {data.title}
@@ -48,14 +44,11 @@ const BXGYBundlePreview = ({
             <p
               style={{
                 ...fontFamily,
-                color: data.customization[0].buyXgetY.title.descriptionColor,
-                fontSize:
-                  data.customization[0].buyXgetY.title.descriptionFontSize +
-                  "px",
-                fontWeight:
-                  data.customization[0].buyXgetY.title.descriptionBold,
-                textAlign: data.customization[0].buyXgetY.title.alignment,
-              }}
+                color: data.customization[0]?.buyXgetY?.title?.descriptionColor , 
+                fontSize: (data.customization[0]?.buyXgetY?.title?.descriptionFontSize) + "px", 
+                fontWeight: data.customization[0]?.buyXgetY?.title?.descriptionBold , 
+                textAlign: data.customization[0]?.buyXgetY?.title?.alignment ?? 'left', 
+              }}              
             >
               {data.description}
             </p>
@@ -66,22 +59,16 @@ const BXGYBundlePreview = ({
               <div
                 className="sd-bundle-product-detail"
                 style={{
-                  backgroundColor:
-                    data.customization[0].buyXgetY.productDetails
-                      .productDetailsBox.backgroundColor,
-                }}
+                  backgroundColor: data.customization[0]?.buyXgetY?.productDetails?.productDetailsBox?.backgroundColor, 
+                }}                
               >
                 <div className="sd-bundle-product-inner">
                   <div
                     className="sd-bundle-product-img"
                     style={{
-                      borderColor:
-                        data.customization[0].buyXgetY.productDetails.image
-                          .borderColor,
-                      borderRadius:
-                        data.customization[0].buyXgetY.productDetails.image
-                          .borderRadius + "px",
-                    }}
+                      borderColor: data.customization[0]?.buyXgetY?.productDetails?.image?.borderColor , 
+                      borderRadius: (data.customization[0]?.buyXgetY?.productDetails?.image?.borderRadius) + "px",
+                    }}                    
                   >
                     <img
                       src={
@@ -97,26 +84,18 @@ const BXGYBundlePreview = ({
                     <h5
                       style={{
                         ...fontFamily,
-                        color:
-                          data.customization[0].buyXgetY.productDetails.title
-                            .color,
-                        fontSize:
-                          data.customization[0].buyXgetY.productDetails.title
-                            .fontSize + "px",
-                      }}
+                        color: data.customization[0]?.buyXgetY?.productDetails?.title?.color, 
+                        fontSize: (data.customization[0]?.buyXgetY?.productDetails?.title?.fontSize) + "px"
+                      }}                      
                     >
                       {item.title}
                     </h5>
                     <h4
-                      style={{
-                        ...fontFamily,
-                        color:
-                          data.customization[0].buyXgetY.productDetails.price
-                            .color,
-                        fontSize:
-                          data.customization[0].buyXgetY.productDetails.price
-                            .fontSize + "px",
-                      }}
+                     style={{
+                      ...fontFamily,
+                      color: data.customization[0]?.buyXgetY?.productDetails?.price?.color ,
+                      fontSize: (data.customization[0]?.buyXgetY?.productDetails?.price?.fontSize ) + "px"
+                    }}                    
                     >
                       {" "}
                       {showPrice[index]
@@ -132,20 +111,12 @@ const BXGYBundlePreview = ({
                           (emptyItem, index) => {
                             return (
                               <select
-                                style={{
-                                  ...fontFamily,
-                                  width:
-                                    data.customization[0].buyXgetY
-                                      .productDetails.variantSelector.width +
-                                    "px",
-                                  backgroundColor:
-                                    data.customization[0].buyXgetY
-                                      .productDetails.variantSelector
-                                      .backgroundColor,
-                                  color:
-                                    data.customization[0].buyXgetY
-                                      .productDetails.variantSelector.color,
-                                }}
+                              style={{
+                                ...fontFamily,
+                                width: (data.customization[0]?.buyXgetY?.productDetails?.variantSelector?.width ) + "px",
+                                backgroundColor: data.customization[0]?.buyXgetY?.productDetails?.variantSelector?.backgroundColor , 
+                                color: data.customization[0]?.buyXgetY?.productDetails?.variantSelector?.color ,
+                              }}                              
                               >
                                 {item.variants.map((vItem, i) => {
                                   return (
@@ -166,10 +137,8 @@ const BXGYBundlePreview = ({
                   <h6
                     style={{
                       ...fontFamily,
-                      color:
-                        data.customization[0].buyXgetY.productDetails.quantities
-                          .color,
-                    }}
+                      color: data?.customization[0]?.buyXgetY?.productDetails?.quantities?.color,
+                    }}                    
                   >
                     Qty:{" "}
                     <span style={{ ...fontFamily }}>{item.minimumOrder}</span>
@@ -189,7 +158,7 @@ const BXGYBundlePreview = ({
             >
               <path
                 d="M6.98047 17.3842V0.580255H10.3239V17.3842H6.98047ZM0.256392 10.6477V7.30433H17.0604V10.6477H0.256392Z"
-                fill={data.customization[0].buyXgetY.productDetails.plusColor}
+                fill={data.customization[0]?.buyXgetY?.productDetails?.plusColor} 
               />
             </svg>
           </div>
@@ -199,10 +168,8 @@ const BXGYBundlePreview = ({
               <div
                 className="sd-bundle-product-detail"
                 style={{
-                  backgroundColor:
-                    data.customization[0].buyXgetY.productDetails
-                      .productDetailsBox.backgroundColor,
-                }}
+                  backgroundColor: data.customization[0]?.buyXgetY?.productDetails?.productDetailsBox?.backgroundColor ?? 'transparent',
+                }}                
               >
                 {data.customization[0].buyXgetY.DiscountBadge.badgeType ==
                 "leftBanner" ? (
@@ -210,20 +177,15 @@ const BXGYBundlePreview = ({
                     <div
                       className="open-badge"
                       style={{
-                        background:
-                          data.customization[0].buyXgetY.DiscountBadge
-                            .backgroundColor,
-                      }}
+                        background: data.customization[0]?.buyXgetY?.DiscountBadge?.backgroundColor,
+                      }}                      
                     ></div>
                     <h4
                       style={{
                         ...fontFamily,
-                        color:
-                          data.customization[0].buyXgetY.DiscountBadge.color,
-                        fontSize:
-                          data.customization[0].buyXgetY.DiscountBadge
-                            .fontSize + "px",
-                      }}
+                        color: data.customization[0]?.buyXgetY?.DiscountBadge?.color,
+                        fontSize: (data.customization[0]?.buyXgetY?.DiscountBadge?.fontSize) + "px", 
+                      }}                      
                     >
                       {data.bundleDetail.discountType === "free"
                         ? "Free"
@@ -247,28 +209,19 @@ const BXGYBundlePreview = ({
                     >
                       <path
                         d="M0 10L8.63148 0H83.3261L91 10H0Z"
-                        fill={
-                          data.customization[0].buyXgetY.DiscountBadge
-                            .backgroundColor
-                        }
+                        fill={data.customization[0]?.buyXgetY?.DiscountBadge?.backgroundColor}
                       />
                       <path
                         d="M9 0H83V19C83 21.7614 80.7614 24 78 24H14C11.2386 24 9 21.7614 9 19V0Z"
-                        fill={
-                          data.customization[0].buyXgetY.DiscountBadge
-                            .backgroundColor
-                        }
+                        fill={data.customization[0]?.buyXgetY?.DiscountBadge?.backgroundColor}
                       />
                     </svg>
                     <h4
                       style={{
                         ...fontFamily,
-                        color:
-                          data.customization[0].buyXgetY.DiscountBadge.color,
-                        fontSize:
-                          data.customization[0].buyXgetY.DiscountBadge
-                            .fontSize + "px",
-                      }}
+                        color: data.customization[0]?.buyXgetY?.DiscountBadge?.color , 
+                        fontSize: (data.customization[0]?.buyXgetY?.DiscountBadge?.fontSize ) + "px"
+                      }}                      
                     >
                       {data.bundleDetail.discountType === "free"
                         ? "Free"
@@ -286,12 +239,8 @@ const BXGYBundlePreview = ({
                   <div
                     className="sd-bundle-product-img"
                     style={{
-                      borderColor:
-                        data.customization[0].buyXgetY.productDetails.image
-                          .borderColor,
-                      borderRadius:
-                        data.customization[0].buyXgetY.productDetails.image
-                          .borderRadius + "px",
+                      borderColor: data.customization[0]?.buyXgetY?.productDetails?.image?.borderColor, 
+                      borderRadius: (data.customization[0]?.buyXgetY?.productDetails?.image?.borderRadius ) + "px", 
                     }}
                   >
                     <img
@@ -308,26 +257,18 @@ const BXGYBundlePreview = ({
                     <h5
                       style={{
                         ...fontFamily,
-                        color:
-                          data.customization[0].buyXgetY.productDetails.title
-                            .color,
-                        fontSize:
-                          data.customization[0].buyXgetY.productDetails.title
-                            .fontSize + "px",
-                      }}
+                        color: data.customization[0]?.buyXgetY?.productDetails?.title?.color , 
+                        fontSize: (data.customization[0]?.buyXgetY?.productDetails?.title?.fontSize) + "px", 
+                      }}                      
                     >
                       {item.title}
                     </h5>
                     <h4
                       style={{
                         ...fontFamily,
-                        color:
-                          data.customization[0].buyXgetY.productDetails.price
-                            .color,
-                        fontSize:
-                          data.customization[0].buyXgetY.productDetails.price
-                            .fontSize + "px",
-                      }}
+                        color: data.customization[0]?.buyXgetY?.productDetails?.price?.color,
+                        fontSize: (data.customization[0]?.buyXgetY?.productDetails?.price?.fontSize) + "px",
+                      }}                      
                     >
                       {showPrice[index]
                         ? showAmountWithCurrency(showPrice[index], currency)
@@ -342,20 +283,12 @@ const BXGYBundlePreview = ({
                           (emptyItem, index) => {
                             return (
                               <select
-                                style={{
-                                  ...fontFamily,
-                                  width:
-                                    data.customization[0].buyXgetY
-                                      .productDetails.variantSelector.width +
-                                    "px",
-                                  backgroundColor:
-                                    data.customization[0].buyXgetY
-                                      .productDetails.variantSelector
-                                      .backgroundColor,
-                                  color:
-                                    data.customization[0].buyXgetY
-                                      .productDetails.variantSelector.color,
-                                }}
+                              style={{
+                                ...fontFamily,
+                                width: (data.customization[0]?.buyXgetY?.productDetails?.variantSelector?.width ) + "px",
+                                backgroundColor: data.customization[0]?.buyXgetY?.productDetails?.variantSelector?.backgroundColor,
+                                color: data.customization[0]?.buyXgetY?.productDetails?.variantSelector?.color ,
+                              }}                              
                               >
                                 {item.variants.map((vItem, i) => {
                                   return (
@@ -376,10 +309,8 @@ const BXGYBundlePreview = ({
                   <h6
                     style={{
                       ...fontFamily,
-                      color:
-                        data.customization[0].buyXgetY.productDetails.quantities
-                          .color,
-                    }}
+                      color: data.customization[0]?.buyXgetY?.productDetails?.quantities?.color ,
+                    }}                    
                   >
                     Qty:{" "}
                     <span style={{ ...fontFamily }}>{item.minimumOrder}</span>
@@ -394,20 +325,18 @@ const BXGYBundlePreview = ({
               <h4
                 style={{
                   ...fontFamily,
-                  color: data.customization[0].buyXgetY.totalSection.color,
-                  fontSize:
-                    data.customization[0].buyXgetY.totalSection.fontSize + "px",
-                }}
+                  color: data.customization[0]?.buyXgetY?.totalSection?.color ,
+                  fontSize: (data.customization[0]?.buyXgetY?.totalSection?.fontSize) + "px",
+                }}                
               >
                 Total
               </h4>
               <p
                 style={{
                   ...fontFamily,
-                  color: data.customization[0].buyXgetY.totalSection.discountMessage.color,
-                  fontSize:
-                    data.customization[0].buyXgetY.totalSection.discountMessage.size + "px",
-                }}
+                  color: data.customization[0]?.buyXgetY?.totalSection?.discountMessage?.color, 
+                  fontSize: (data.customization[0]?.buyXgetY?.totalSection?.discountMessage?.size ?? 0) + "px", 
+                }}                
               >
                 Discount will be applied at checkout
               </p>
@@ -416,13 +345,9 @@ const BXGYBundlePreview = ({
               <h4
                 style={{
                   ...fontFamily,
-                  color:
-                    data.customization[0].buyXgetY.totalSection.finalPrice
-                      .color,
-                  fontSize:
-                    data.customization[0].buyXgetY.totalSection.finalPrice
-                      .fontSize + "px",
-                }}
+                  color: data.customization[0]?.buyXgetY?.totalSection?.finalPrice?.color , 
+                  fontSize: (data.customization[0]?.buyXgetY?.totalSection?.finalPrice?.fontSize) + "px",
+                }}                
               >
                 {" "}
                 {currencyCode.replace(/{{.*?}}/g, "") + endPrice}{" "}
@@ -430,13 +355,9 @@ const BXGYBundlePreview = ({
               <h6
                 style={{
                   ...fontFamily,
-                  color:
-                    data.customization[0].buyXgetY.totalSection.originalPrice
-                      .color,
-                  fontSize:
-                    data.customization[0].buyXgetY.totalSection.originalPrice
-                      .fontSize + "px",
-                }}
+                  color: data.customization[0]?.buyXgetY?.totalSection?.originalPrice?.color,
+                  fontSize: (data.customization[0]?.buyXgetY?.totalSection?.originalPrice?.fontSize) + "px", 
+                }}                
               >
                 {currencyCode.replace(/{{.*?}}/g, "") + mrp}{" "}
               </h6>
@@ -446,14 +367,12 @@ const BXGYBundlePreview = ({
             <button
               style={{
                 ...fontFamily,
-                color: data.customization[0].buyXgetY.button.color,
-                fontSize: data.customization[0].buyXgetY.button.fontSize + "px",
-                backgroundColor:
-                  data.customization[0].buyXgetY.button.backgroundColor,
-                borderRadius:
-                  data.customization[0].buyXgetY.button.borderRadius + "px",
-                borderColor: data.customization[0].buyXgetY.button.borderColor,
-              }}
+                color: data.customization[0]?.buyXgetY?.button?.color , 
+                fontSize: (data.customization[0]?.buyXgetY?.button?.fontSize ) + "px", 
+                backgroundColor: data.customization[0]?.buyXgetY?.button?.backgroundColor, 
+                borderRadius: (data.customization[0]?.buyXgetY?.button?.borderRadius) + "px",
+                borderColor: data.customization[0]?.buyXgetY?.button?.borderColor ,
+              }}              
             >
               Add to Cart
             </button>
