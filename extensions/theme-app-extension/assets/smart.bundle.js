@@ -2053,7 +2053,7 @@ function createBundle(BUNDLE_DATA) {
           FBT_TITLE_TEXT_DIV.innerText = el?.title;
           let FBT_DESCRIPTION_TEXT_DIV = document.createElement("p");
           FBT_DESCRIPTION_TEXT_DIV.style.fontFamily = el?.customization?.frequentlyBoughtTogether?.box?.fontFamily;
-          FBT_DESCRIPTION_TEXT_DIV.style.color = el?.customization?.frequentlyBoughtTogether?.title.descriptionColor;
+          FBT_DESCRIPTION_TEXT_DIV.style.color = el?.customization?.frequentlyBoughtTogether?.title?.descriptionColor;
           FBT_DESCRIPTION_TEXT_DIV.style.fontWeight = el?.customization?.frequentlyBoughtTogether?.title?.descriptionBold;
           FBT_DESCRIPTION_TEXT_DIV.style.fontSize = el?.customization?.frequentlyBoughtTogether?.title?.descriptionFontSize+"px";
           FBT_DESCRIPTION_TEXT_DIV.innerText = el?.description;
