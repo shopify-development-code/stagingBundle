@@ -245,7 +245,7 @@ const VolumeBundlePreview = ({
                                     "all_products"
                                     ? pic
                                     : data.bundleDetail?.products[0]?.images[0]
-                                        .originalSrc
+                                        ?.originalSrc
                                   : pic
                         }
                         width="80"
