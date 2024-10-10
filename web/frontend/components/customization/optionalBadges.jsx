@@ -7,7 +7,6 @@ import {
 } from "../helperFunctions";
 
 const OptionalBadges = ({ data, setData, bundleOption, displayOption }) => {
-  console.log("data..................",data);
 
   const handleText = (newvalue) => {
     setData({
@@ -42,10 +41,10 @@ const OptionalBadges = ({ data, setData, bundleOption, displayOption }) => {
         Enable Badge{" "}
         <Switch
           onChange={(e) => badgeEnableHandler(e)}
-          checked={data[bundleOption]["optionalBadge"]["enable"]}
+          checked={data[bundleOption]?.optionalBadge?.enable}
         />
       </p>
-      {data[bundleOption]["optionalBadge"]["enable"] == true && (
+      {data[bundleOption]?.optionalBadge?.enable == true && (
         <Grid>
           <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
             <div className="sd-bundle-custom-item-common">
@@ -55,7 +54,7 @@ const OptionalBadges = ({ data, setData, bundleOption, displayOption }) => {
               <div className="sd-bundle-custom-item-inputSection">
                 <input
                   type="color"
-                  value={data[bundleOption]["optionalBadge"]["color"]}
+                  value={data[bundleOption]?.optionalBadge?.color}
                   onChange={(e) =>
                     handleChangeCommon(
                       e,
@@ -70,14 +69,14 @@ const OptionalBadges = ({ data, setData, bundleOption, displayOption }) => {
 
                 <div className="sd-bundle-custom-fieldColorCode-common">
                   <p>Text Color </p>
-                  <p> {data[bundleOption]["optionalBadge"]["color"]} </p>
+                  <p> {data[bundleOption]?.optionalBadge?.color}</p>
                 </div>
               </div>
 
               <div className="sd-bundle-custom-item-inputSection">
                 <input
                   type="color"
-                  value={data[bundleOption]["optionalBadge"]["background"]}
+                  value={data[bundleOption]?.optionalBadge?.background}
                   onChange={(e) =>
                     handleChangeCommon(
                       e,
@@ -92,7 +91,7 @@ const OptionalBadges = ({ data, setData, bundleOption, displayOption }) => {
 
                 <div className="sd-bundle-custom-fieldColorCode-common">
                   <p>Background Color </p>
-                  <p> {data[bundleOption]["optionalBadge"]["background"]} </p>
+                  <p> {data[bundleOption]?.optionalBadge?.background} </p>
                 </div>
               </div>
             </div>
@@ -105,7 +104,7 @@ const OptionalBadges = ({ data, setData, bundleOption, displayOption }) => {
               <TextField
                 type="text"
                 onChange={handleText}
-                value={data[bundleOption]["optionalBadge"]["text"]}
+                value={data[bundleOption]?.optionalBadge?.text}
                 maxLength={20}
               />
               <RangeSlider
@@ -120,8 +119,8 @@ const OptionalBadges = ({ data, setData, bundleOption, displayOption }) => {
                     bundleOption
                   )
                 }
-                suffix={data[bundleOption]["optionalBadge"]["fontSize"]}
-                value={data[bundleOption]["optionalBadge"]["fontSize"]}
+                suffix={data[bundleOption]?.optionalBadge?.fontSize}
+                value={data[bundleOption]?.optionalBadge?.fontSize}
                 min={10}
                 max={15}
                 output

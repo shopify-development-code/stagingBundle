@@ -18,8 +18,6 @@ import {
   handleChangeValueCommon,
 } from "../helperFunctions";
 const Title = ({ bundleOption, displayOption, data, setData }) => {
-  console.log("................................",`sd-bundle-item-custom-radio-common ${data[bundleOption]["title"]["alignment"] === "left" ? "active" : "" } `);
-  
   return (
     <div className="sd-bundle-titleCustom">
       <Grid>
@@ -33,7 +31,7 @@ const Title = ({ bundleOption, displayOption, data, setData }) => {
                 type="color"
                 min={10}
                 max={30}
-                value={data[bundleOption]["title"]["color"]}
+                value={data[bundleOption]?.title?.color}
                 onChange={(e) =>
                   handleChangeCommon(
                     e,
@@ -47,7 +45,7 @@ const Title = ({ bundleOption, displayOption, data, setData }) => {
               />
               <div className="sd-bundle-custom-fieldColorCode-common">
                 <p>Title Color </p>
-                <p> {data[bundleOption]["title"]["color"]} </p>
+                <p> {data[bundleOption]?.title?.color}</p>
               </div>
             </div>
 
@@ -56,8 +54,8 @@ const Title = ({ bundleOption, displayOption, data, setData }) => {
               label="Font Size"
               min={1}
               max={30}
-              suffix ={data[bundleOption]["title"]["fontSize"]}
-              value={data[bundleOption]["title"]["fontSize"]}
+              suffix={data[bundleOption]?.title?.fontSize}
+              value={data[bundleOption]?.title?.fontSize}
               onChange={(e) =>
                 handleChangeValueCommon(
                   e,
@@ -75,8 +73,8 @@ const Title = ({ bundleOption, displayOption, data, setData }) => {
               min={100}
               max={900}
               step={100}
-              suffix = {data[bundleOption]["title"]["titleBold"]}
-              value={data[bundleOption]["title"]["titleBold"]}
+              suffix={data[bundleOption]?.title?.titleBold}
+              value={data[bundleOption]?.title?.titleBold}
               onChange={(e) =>
                 handleChangeValueCommon(
                   e,
@@ -98,7 +96,7 @@ const Title = ({ bundleOption, displayOption, data, setData }) => {
             <div className="sd-bundle-custom-item-inputSection">
               <input
                 type="color"
-                value={data[bundleOption]["title"]["descriptionColor"]}
+                value={data[bundleOption]?.title?.descriptionColor}
                 onChange={(e) =>
                   handleChangeCommon(
                     e,
@@ -112,7 +110,7 @@ const Title = ({ bundleOption, displayOption, data, setData }) => {
               />
               <div className="sd-bundle-custom-fieldColorCode-common">
                 <p>Description Color </p>
-                <p>{data[bundleOption]["title"]["descriptionColor"]}</p>
+                <p>{data[bundleOption]?.title?.descriptionColor}</p>
               </div>
             </div>
 
@@ -121,8 +119,8 @@ const Title = ({ bundleOption, displayOption, data, setData }) => {
               label="Font Size"
               min={1}
               max={30}
-              suffix = {data[bundleOption]["title"]["descriptionFontSize"]}
-              value={data[bundleOption]["title"]["descriptionFontSize"]}
+              suffix={data[bundleOption]?.title?.descriptionFontSize}
+              value={data[bundleOption]?.title?.descriptionFontSize}
               onChange={(e) =>
                 handleChangeValueCommon(
                   e,
@@ -141,8 +139,8 @@ const Title = ({ bundleOption, displayOption, data, setData }) => {
               min={100}
               max={900}
               step={100}
-              suffix= {data[bundleOption]["title"]["descriptionBold"]}
-              value={data[bundleOption]["title"]["descriptionBold"]}
+              suffix={data[bundleOption]?.title?.descriptionBold}
+              value={data[bundleOption]?.title?.descriptionBold}
               onChange={(e) =>
                 handleChangeValueCommon(
                   e,
@@ -161,7 +159,7 @@ const Title = ({ bundleOption, displayOption, data, setData }) => {
             <p className="sd-bundle-custom-item-heading-common">Alignment</p>
             <div className="sd-bundle-item-custom-radio-main">
               <div
-                className={`sd-bundle-item-custom-radio-common ${data[bundleOption]["title"]["alignment"] === "left" ? "active" : "" } `}
+               className={`sd-bundle-item-custom-radio-common ${data[bundleOption]?.title?.alignment === "left" ? "active" : ""}`}
                 onClick={() => {
                   handleChangeCommon(
                     "left",
@@ -182,7 +180,7 @@ const Title = ({ bundleOption, displayOption, data, setData }) => {
                 />
               </div>
               <div
-                className={`sd-bundle-item-custom-radio-common ${data[bundleOption]["title"]["alignment"] === "center" ? "active" : "" } `}
+                className={`sd-bundle-item-custom-radio-common ${data[bundleOption]?.title?.alignment === "center" ? "active" : ""}`}
                 onClick={(e) =>
                   handleChangeCommon(
                     "center",
@@ -203,7 +201,7 @@ const Title = ({ bundleOption, displayOption, data, setData }) => {
                 />
               </div>
               <div
-                className={`sd-bundle-item-custom-radio-common ${data[bundleOption]["title"]["alignment"] === "right" ? "active" : "" } `}
+                className={`sd-bundle-item-custom-radio-common ${data[bundleOption]?.title?.alignment === "right" ? "active" : ""}`}
                 onClick={(e) =>
                   handleChangeCommon(
                     "right",

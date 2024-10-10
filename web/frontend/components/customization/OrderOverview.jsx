@@ -34,8 +34,8 @@ const OrderOverview = ({ bundleOption, displayOption, data, setData }) => {
                 min={10}
                 max={30}
                 value={
-                  data[bundleOption]["orderOverview"]["selectedText"]["color"]
-                }
+                  data[bundleOption]?.orderOverview?.selectedText?.color
+                }                
                 onChange={(e) =>
                   handleChangeCommon2(
                     e,
@@ -51,10 +51,7 @@ const OrderOverview = ({ bundleOption, displayOption, data, setData }) => {
               <div className="sd-bundle-custom-fieldColorCode-common">
                 <p>Title Color </p>
                 <p>
-                  {" "}
-                  {
-                    data[bundleOption]["orderOverview"]["selectedText"]["color"]
-                  }{" "}
+                {" "}{data[bundleOption]?.orderOverview?.selectedText?.color}{" "}
                 </p>
               </div>
             </div>
@@ -65,11 +62,11 @@ const OrderOverview = ({ bundleOption, displayOption, data, setData }) => {
               min={10}
               max={30}
               suffix={
-                data[bundleOption]["orderOverview"]["selectedText"]["fontSize"]
+                data[bundleOption]?.orderOverview?.selectedText?.fontSize
               }
               value={
-                data[bundleOption]["orderOverview"]["selectedText"]["fontSize"]
-              }
+                data[bundleOption]?.orderOverview?.selectedText?.fontSize
+              }              
               onChange={(e) =>
                 handleChangeValueCommon2(
                   e,
@@ -93,8 +90,8 @@ const OrderOverview = ({ bundleOption, displayOption, data, setData }) => {
               <input
                 type="color"
                 value={
-                  data[bundleOption]["orderOverview"]["discountText"]["color"]
-                }
+                  data[bundleOption]?.orderOverview?.discountText?.color
+                }                
                 onChange={(e) =>
                   handleChangeCommon2(
                     e,
@@ -109,7 +106,7 @@ const OrderOverview = ({ bundleOption, displayOption, data, setData }) => {
               />
               <div className="sd-bundle-custom-fieldColorCode-common">
                 <p>Description Color </p>
-                <p>{data[bundleOption]["title"]["descriptionColor"]}</p>
+                <p>{data[bundleOption]?.title?.descriptionColor}</p>
               </div>
             </div>
 
@@ -119,11 +116,11 @@ const OrderOverview = ({ bundleOption, displayOption, data, setData }) => {
               min={10}
               max={30}
               suffix={
-                data[bundleOption]["orderOverview"]["discountText"]["fontSize"]
+                data[bundleOption]?.orderOverview?.discountText?.fontSize
               }
               value={
-                data[bundleOption]["orderOverview"]["discountText"]["fontSize"]
-              }
+                  data[bundleOption]?.orderOverview?.discountText?.fontSize
+              }            
               onChange={(e) =>
                 handleChangeValueCommon2(
                   e,
@@ -143,7 +140,7 @@ const OrderOverview = ({ bundleOption, displayOption, data, setData }) => {
             <p className="sd-bundle-custom-item-heading-common">Alignment</p>
             <div className="sd-bundle-item-custom-radio-main">
               <div
-                className={`sd-bundle-item-custom-radio-common ${data[bundleOption]["orderOverview"]["alignment"] === "left" ? "active" : ""} `}
+                className={`sd-bundle-item-custom-radio-common ${data[bundleOption]?.orderOverview?.alignment === "left" ? "active" : ""}`}
                 onClick={() => {
                   handleChangeCommon(
                     "left",
@@ -164,7 +161,7 @@ const OrderOverview = ({ bundleOption, displayOption, data, setData }) => {
                 />
               </div>
               <div
-                className={`sd-bundle-item-custom-radio-common ${data[bundleOption]["orderOverview"]["alignment"] === "center" ? "active" : ""} `}
+                className={`sd-bundle-item-custom-radio-common ${data[bundleOption]?.orderOverview?.alignment === "center" ? "active" : ""}`}
                 onClick={(e) =>
                   handleChangeCommon(
                     "center",
@@ -185,7 +182,7 @@ const OrderOverview = ({ bundleOption, displayOption, data, setData }) => {
                 />
               </div>
               <div
-                className={`sd-bundle-item-custom-radio-common ${data[bundleOption]["orderOverview"]["alignment"] === "right" ? "active" : ""} `}
+                className={`sd-bundle-item-custom-radio-common ${data[bundleOption]?.orderOverview?.alignment === "right" ? "active" : ""}`}
                 onClick={(e) =>
                   handleChangeCommon(
                     "right",

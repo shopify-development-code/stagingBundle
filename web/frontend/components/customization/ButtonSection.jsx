@@ -15,8 +15,6 @@ const ButtonSection = ({ bundleOption, data, setData }) => {
     });
   };
 
-  console.log("jfkeje kekekrke", data[bundleOption]["button"]["borderColor"]);
-
   const handleText = (newvalue) => {
     setData({
       ...data,
@@ -36,7 +34,7 @@ const ButtonSection = ({ bundleOption, data, setData }) => {
             <div className="sd-bundle-custom-item-inputSection">
               <input
                 type="color"
-                value={data[bundleOption]["button"]["borderColor"]}
+                value={data[bundleOption]?.button?.borderColor}
                 onChange={(e) =>
                   handleChangeCommon(
                     e,
@@ -50,7 +48,7 @@ const ButtonSection = ({ bundleOption, data, setData }) => {
               />
               <div className="sd-bundle-custom-fieldColorCode-common">
                 <p>Border Color </p>
-                <p>{data[bundleOption]["button"]["borderColor"]}</p>
+                <p>{data[bundleOption]?.button?.borderColor}</p>
               </div>
             </div>
             <RangeSlider
@@ -58,8 +56,8 @@ const ButtonSection = ({ bundleOption, data, setData }) => {
               label="Border Radius"
               min={1}
               max={30}
-              suffix={data[bundleOption]["button"]["borderRadius"]}
-              value={data[bundleOption]["button"]["borderRadius"]}
+              suffix={data[bundleOption]?.button?.borderRadius}
+              value={data[bundleOption]?.button?.borderRadius}
               onChange={(newvalue) =>
                 handleChangeValueCommon(
                   newvalue,
@@ -80,7 +78,7 @@ const ButtonSection = ({ bundleOption, data, setData }) => {
             <div className="sd-bundle-custom-item-inputSection">
               <input
                 type="color"
-                value={data[bundleOption]["button"]["backgroundColor"]}
+                value={data[bundleOption]?.button?.backgroundColor}
                 onChange={(e) =>
                   handleChangeCommon(
                     e,
@@ -94,7 +92,7 @@ const ButtonSection = ({ bundleOption, data, setData }) => {
               />
               <div className="sd-bundle-custom-fieldColorCode-common">
                 <p>Background Color</p>
-                <p> {data[bundleOption]["button"]["backgroundColor"]} </p>
+                <p> {data[bundleOption]?.button?.backgroundColor} </p>
               </div>
             </div>
           </div>
@@ -105,7 +103,7 @@ const ButtonSection = ({ bundleOption, data, setData }) => {
             <div className="sd-bundle-custom-item-inputSection">
               <input
                 type="color"
-                value={data[bundleOption]["button"]["color"]}
+                value={data[bundleOption]?.button?.color}
                 onChange={(e) =>
                   handleChangeCommon(
                     e,
@@ -119,7 +117,7 @@ const ButtonSection = ({ bundleOption, data, setData }) => {
               />
               <div className="sd-bundle-custom-fieldColorCode-common">
                 <p>Text Color</p>
-                <p> {data[bundleOption]["button"]["color"]} </p>
+                <p> {data[bundleOption]?.button?.color} </p>
               </div>
             </div>
 
@@ -135,8 +133,8 @@ const ButtonSection = ({ bundleOption, data, setData }) => {
                   bundleOption
                 )
               }
-              suffix={data[bundleOption]["button"]["fontSize"]}
-              value={data[bundleOption]["button"]["fontSize"]}
+              suffix={data[bundleOption]?.button?.fontSize}
+              value={data[bundleOption]?.button?.fontSize}
               min={10}
               max={30}
               output

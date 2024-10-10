@@ -11,10 +11,7 @@ import RightBanner from "../../assets/Right_Banner.png";
 import LeftBanner from "../../assets/Left_Banner.png";
 import BadgeOption from "../../assets/BadgeOption.png";
 const Options = ({ bundleOption, data, setData, displayOption }) => {
-  console.log(
-    "teste",
-    data[bundleOption]["options"]["DiscountBadge"]["badgeType"]
-  );
+
   const handleText = (newValue) => {
     setData((prevData) => {
       const currentBundle = prevData[bundleOption] || {};
@@ -40,18 +37,6 @@ const Options = ({ bundleOption, data, setData, displayOption }) => {
 
   return (
     <div className="sd-bundle-optionsCustom">
-      {/* <div className="sd-bundle-custom-item-common">
-    <p className="sd-bundle-custom-item-heading-common">Icon</p>
-    <div className="sd-bundle-custom-item-inputSection">
-<input type="color" value={data[bundleOption]["options"]["iconColor"]}  onChange={(e)=>handleChangeCommon(e,"options","iconColor",data,setData,bundleOption)}/>
-<div className="sd-bundle-custom-fieldColorCode-common">
-    <p>BackgroundColor </p>
-<p> {data[bundleOption]["options"]["iconColor"]}</p>
-
-</div>
-</div>
-
-</div> */}
       <Grid>
         <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
           <div className="sd-bundle-custom-item-common">
@@ -59,7 +44,7 @@ const Options = ({ bundleOption, data, setData, displayOption }) => {
             <div className="sd-bundle-custom-item-inputSection">
               <input
                 type="color"
-                value={data[bundleOption]["options"]["color"]}
+                value={data[bundleOption]?.options?.color}
                 onChange={(e) =>
                   handleChangeCommon(
                     e,
@@ -73,7 +58,7 @@ const Options = ({ bundleOption, data, setData, displayOption }) => {
               />
               <div className="sd-bundle-custom-fieldColorCode-common">
                 <p>Title Text Color </p>
-                <p>{data[bundleOption]["options"]["color"]} </p>
+                <p>{data[bundleOption]?.options?.color}</p>
               </div>
             </div>
             
@@ -89,8 +74,8 @@ const Options = ({ bundleOption, data, setData, displayOption }) => {
                   bundleOption
                 )
               }
-              suffix ={data[bundleOption]["options"]["fontSize"]}
-              value={data[bundleOption]["options"]["fontSize"]}
+              suffix={data[bundleOption]?.options?.fontSize}
+              value={data[bundleOption]?.options?.fontSize}
               min={10}
               max={30}
               output
@@ -116,9 +101,7 @@ const Options = ({ bundleOption, data, setData, displayOption }) => {
                   bundleOption
                 )
               }
-              value={
-                data[bundleOption]["options"]["DiscountBadge"]["badgeType"]
-              }
+              value={data[bundleOption]?.options?.DiscountBadge?.badgeType}
             >
               <Space direction="vertical">
                 <Radio value="rightBanner">
@@ -142,7 +125,7 @@ const Options = ({ bundleOption, data, setData, displayOption }) => {
             <div className="sd-bundle-custom-item-inputSection">
               <input
                 type="color"
-                value={data[bundleOption]["options"]["saveDiscount"]["color"]}
+                value={data[bundleOption]?.options?.saveDiscount?.color}
                 onChange={(e) =>
                   handleChangeCommon2(
                     e,
@@ -159,7 +142,7 @@ const Options = ({ bundleOption, data, setData, displayOption }) => {
                 <p>Text Color </p>
                 <p>
                   {" "}
-                  {data[bundleOption]["options"]["saveDiscount"]["color"]}{" "}
+                  {data[bundleOption]?.options?.saveDiscount?.color}{" "}
                 </p>
               </div>
             </div>
@@ -168,10 +151,8 @@ const Options = ({ bundleOption, data, setData, displayOption }) => {
               <input
                 type="color"
                 value={
-                  data[bundleOption]["options"]["saveDiscount"][
-                    "backgroundColor"
-                  ]
-                }
+                  data[bundleOption]?.options?.saveDiscount?.backgroundColor
+                }                
                 onChange={(e) =>
                   handleChangeCommon2(
                     e,
@@ -187,12 +168,7 @@ const Options = ({ bundleOption, data, setData, displayOption }) => {
               <div className="sd-bundle-custom-fieldColorCode-common">
                 <p>Background Color </p>
                 <p>
-                  {" "}
-                  {
-                    data[bundleOption]["options"]["saveDiscount"][
-                      "backgroundColor"
-                    ]
-                  }{" "}
+                  {data[bundleOption]?.options?.saveDiscount?.backgroundColor}
                 </p>
               </div>
             </div>
@@ -213,11 +189,11 @@ const Options = ({ bundleOption, data, setData, displayOption }) => {
                   )
                 }
                 suffix={
-                  data[bundleOption]["options"]["saveDiscount"]["borderRadius"]
+                  data[bundleOption]?.options?.saveDiscount?.borderRadius
                 }
                 value={
-                  data[bundleOption]["options"]["saveDiscount"]["borderRadius"]
-                }
+                  data[bundleOption]?.options?.saveDiscount?.borderRadius
+                }                
                 min={1}
                 max={15}
                 output
@@ -234,7 +210,7 @@ const Options = ({ bundleOption, data, setData, displayOption }) => {
               type="text"
               // placeholder="set minimum order  for item"
               onChange={(e)=>handleText(e)}
-              value={data[bundleOption]["options"]["DiscountBadge"]["text"]}
+              value={data[bundleOption]?.options?.DiscountBadge?.text}
               // autoComplete="off"
               // min="0"
             />
@@ -251,8 +227,8 @@ const Options = ({ bundleOption, data, setData, displayOption }) => {
                   bundleOption
                 )
               }
-              suffix={data[bundleOption]["options"]["saveDiscount"]["fontSize"]}
-              value={data[bundleOption]["options"]["saveDiscount"]["fontSize"]}
+              suffix={data[bundleOption]?.options?.saveDiscount?.fontSize}
+              value={data[bundleOption]?.options?.saveDiscount?.fontSize}
               min={10}
               max={16}
               output

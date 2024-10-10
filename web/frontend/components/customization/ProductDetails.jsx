@@ -8,7 +8,7 @@ import {
 } from "../helperFunctions";
 
 const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
-  console.log("dvf bdsgfjh0",bundleOption);
+  console.log("dvf bdsgfjh0", data[bundleOption].productDetails.productDetailsBox.backgroundColor);
   
   return (
     <div className="sd-bundle-boxCustom">
@@ -22,9 +22,7 @@ const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
               <input
                 type="color"
                 value={
-                  data[bundleOption]["productDetails"]["productDetailsBox"][
-                    "backgroundColor"
-                  ]
+                  data[bundleOption]?.productDetails?.productDetailsBox?.backgroundColor
                 }
                 onChange={(e) =>
                   handleChangeCommon2(
@@ -43,9 +41,7 @@ const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
                 <p>
                   {" "}
                   {
-                    data[bundleOption]["productDetails"]["productDetailsBox"][
-                      "backgroundColor"
-                    ]
+                    data[bundleOption]?.productDetails?.productDetailsBox?.backgroundColor
                   }{" "}
                 </p>
               </div>
@@ -60,7 +56,7 @@ const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
               <div className="sd-bundle-custom-item-inputSection">
                 <input
                   type="color"
-                  value={data[bundleOption]["productDetails"]["plusColor"]}
+                  value={data[bundleOption]?.productDetails?.plusColor}
                   onChange={(e) =>
                     handleChangeCommon(
                       e,
@@ -74,7 +70,7 @@ const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
                 />
                 <div className="sd-bundle-custom-fieldColorCode-common">
                   <p>Color </p>
-                  <p>{data[bundleOption]["productDetails"]["plusColor"]}</p>
+                  <p>{data[bundleOption]?.productDetails?.plusColor}</p>
                 </div>
               </div>
             </div>
@@ -90,9 +86,7 @@ const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
                 <input
                   type="color"
                   value={
-                    data[bundleOption]["productDetails"]["productDetailsBox"][
-                      "allProductColor"
-                    ]
+                    data[bundleOption]?.productDetails?.productDetailsBox?.allProductColor
                   }
                   onChange={(e) =>
                     handleChangeCommon2(
@@ -111,9 +105,7 @@ const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
                   <p>
                     {" "}
                     {
-                      data[bundleOption]["productDetails"]["productDetailsBox"][
-                        "backgroundColor"
-                      ]
+                      data[bundleOption]?.productDetails?.productDetailsBox?.backgroundColor
                     }{" "}
                   </p>
                 </div>
@@ -144,7 +136,7 @@ const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
                 <p>Title Color </p>
                 <p>
                   {" "}
-                  {data[bundleOption]["productDetails"]["title"]["color"]}{" "}
+                  {data[bundleOption]?.productDetails?.title?.color}{" "}
                 </p>
               </div>
             </div>
@@ -162,8 +154,8 @@ const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
                   bundleOption
                 )
               }
-              suffix={data[bundleOption]["productDetails"]["title"]["fontSize"]}
-              value={data[bundleOption]["productDetails"]["title"]["fontSize"]}
+              suffix={data[bundleOption]?.productDetails?.title?.fontSize}
+              value={data[bundleOption]?.productDetails?.title?.fontSize}
               min={1}
               max={25}
               output
@@ -176,7 +168,7 @@ const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
             <div className="sd-bundle-custom-item-inputSection">
               <input
                 type="color"
-                value={data[bundleOption]["productDetails"]["price"]["color"]}
+                value={data[bundleOption]?.productDetails?.price?.color}
                 onChange={(e) =>
                   handleChangeCommon2(
                     e,
@@ -193,7 +185,7 @@ const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
                 <p>Price Color </p>
                 <p>
                   {" "}
-                  {data[bundleOption]["productDetails"]["price"]["color"]}{" "}
+                  {data[bundleOption]?.productDetails?.price?.color}{" "}
                 </p>
               </div>
             </div>
@@ -211,8 +203,8 @@ const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
                   bundleOption
                 )
               }
-              suffix={data[bundleOption]["productDetails"]["price"]["fontSize"]}
-              value={data[bundleOption]["productDetails"]["price"]["fontSize"]}
+              suffix={data[bundleOption]?.productDetails?.price?.fontSize}
+              value={data[bundleOption]?.productDetails?.price?.fontSize}
               min={1}
               max={25}
               output
@@ -225,9 +217,7 @@ const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
             <div className="sd-bundle-custom-item-inputSection">
               <input
                 type="color"
-                value={
-                  data[bundleOption]["productDetails"]["image"]["borderColor"]
-                }
+                value={data[bundleOption]?.productDetails?.image?.borderColor}
                 onChange={(e) =>
                   handleChangeCommon2(
                     e,
@@ -244,10 +234,7 @@ const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
               <div className="sd-bundle-custom-fieldColorCode-common">
                 <p>Border Color </p>
                 <p>
-                  {" "}
-                  {
-                    data[bundleOption]["productDetails"]["image"]["borderColor"]
-                  }{" "}
+                  {data[bundleOption]?.productDetails?.image?.borderColor}
                 </p>
               </div>
             </div>
@@ -265,12 +252,8 @@ const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
                   bundleOption
                 )
               }
-              suffix={
-                data[bundleOption]["productDetails"]["image"]["borderRadius"]
-              }
-              value={
-                data[bundleOption]["productDetails"]["image"]["borderRadius"]
-              }
+              suffix={data[bundleOption]?.productDetails?.image?.borderRadius}
+              value={data[bundleOption]?.productDetails?.image?.borderRadius}
               min={1}
               max={35}
               output
@@ -285,9 +268,7 @@ const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
               <div className="sd-bundle-custom-item-inputSection">
                 <input
                   type="color"
-                  value={
-                    data[bundleOption]["productDetails"]["quantities"]["color"]
-                  }
+                  value={data[bundleOption]?.productDetails?.quantities?.color}
                   onChange={(e) =>
                     handleChangeCommon2(
                       e,
@@ -306,9 +287,7 @@ const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
                   <p>
                     {" "}
                     {
-                      data[bundleOption]["productDetails"]["quantities"][
-                        "color"
-                      ]
+                      data[bundleOption]?.productDetails?.quantities?.color
                     }{" "}
                   </p>
                 </div>
@@ -327,12 +306,8 @@ const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
                       bundleOption
                     )
                   }
-                  suffix={
-                    data[bundleOption]["productDetails"]["quantities"]["size"]
-                  }
-                  value={
-                    data[bundleOption]["productDetails"]["quantities"]["size"]
-                  }
+                  suffix={data[bundleOption]?.productDetails?.quantities?.size}
+                  value={data[bundleOption]?.productDetails?.quantities?.size}
                   min={1}
                   max={16}
                   output
@@ -351,12 +326,8 @@ const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
                       bundleOption
                     )
                   }
-                  suffix={
-                    data[bundleOption]["productDetails"]["quantities"]["size"]
-                  }
-                  value={
-                    data[bundleOption]["productDetails"]["quantities"]["size"]
-                  }
+                  suffix={data[bundleOption]?.productDetails?.quantities?.size}
+                  value={data[bundleOption]?.productDetails?.quantities?.size}
                   min={1}
                   max={25}
                   output
@@ -374,11 +345,7 @@ const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
             <div className="sd-bundle-custom-item-inputSection">
               <input
                 type="color"
-                value={
-                  data[bundleOption]["productDetails"]["variantSelector"][
-                    "color"
-                  ]
-                }
+                value={data[bundleOption]?.productDetails?.variantSelector?.color}
                 onChange={(e) =>
                   handleChangeCommon2(
                     e,
@@ -396,9 +363,7 @@ const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
                 <p>Text Color </p>
                 <p>
                   {
-                    data[bundleOption]["productDetails"]["variantSelector"][
-                      "color"
-                    ]
+                    data[bundleOption]?.productDetails?.variantSelector?.color
                   }{" "}
                 </p>
               </div>
@@ -407,11 +372,7 @@ const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
             <div className="sd-bundle-custom-item-inputSection">
               <input
                 type="color"
-                value={
-                  data[bundleOption]["productDetails"]["variantSelector"][
-                    "backgroundColor"
-                  ]
-                }
+                value={data[bundleOption]?.productDetails?.variantSelector?.backgroundColor}
                 onChange={(e) =>
                   handleChangeCommon2(
                     e,
@@ -427,11 +388,7 @@ const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
               <div className="sd-bundle-custom-fieldColorCode-common">
                 <p>Background Color </p>
                 <p>
-                  {
-                    data[bundleOption]["productDetails"]["variantSelector"][
-                      "backgroundColor"
-                    ]
-                  }{" "}
+                  {data[bundleOption]?.productDetails?.variantSelector?.backgroundColor}{" "}
                 </p>
               </div>
             </div>
@@ -448,12 +405,8 @@ const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
                   bundleOption
                 )
               }
-              suffix={
-                data[bundleOption]["productDetails"]["variantSelector"]["width"]
-              }
-              value={
-                data[bundleOption]["productDetails"]["variantSelector"]["width"]
-              }
+              suffix={data[bundleOption]?.productDetails?.variantSelector?.width}
+              value={data[bundleOption]?.productDetails?.variantSelector?.width}
               min={100}
               max={200}
               output
