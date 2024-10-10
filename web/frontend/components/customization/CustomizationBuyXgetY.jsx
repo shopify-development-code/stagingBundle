@@ -19,8 +19,8 @@ const CustomizationBuyXgetY = ({ data }) => {
         class="sd-bundle-main-column"
         style={{
           backgroundColor: data?.buyXgetY?.box?.backgroundColor || 'transparent', // default to transparent if not available
-          border: `${(data?.buyXgetY?.box?.thickness || 0)}px solid ${data?.buyXgetY?.box?.borderColor || 'black'}`, // default thickness to 0 and border color to black
-          borderRadius: (data?.buyXgetY?.box?.borderRadius || 0) + "px", // default to 0
+          border: `${(data?.buyXgetY?.box?.thickness )}px solid ${data?.buyXgetY?.box?.borderColor || 'black'}`, // default thickness to 0 and border color to black
+          borderRadius: (data?.buyXgetY?.box?.borderRadius || 14) + "px", // default to 0
         }}        
       >
         <div class="sd-bundle-text-detail">
@@ -28,7 +28,7 @@ const CustomizationBuyXgetY = ({ data }) => {
             style={{
               ...textStyle,
               color: data?.buyXgetY?.title?.color || 'inherit', // default to 'inherit' if not available
-              fontSize: (data?.buyXgetY?.title?.fontSize || 0) + "px", // default to 0
+              fontSize: (data?.buyXgetY?.title?.fontSize || 15) + "px", // default to 0
               fontWeight: data?.buyXgetY?.title?.titleBold ? 'bold' : 'normal', // default to 'normal'
               textAlign: data?.buyXgetY?.title?.alignment || 'left', // default to 'left'
             }}            
@@ -39,7 +39,7 @@ const CustomizationBuyXgetY = ({ data }) => {
             style={{
               ...textStyle,
               color: data?.buyXgetY?.title?.descriptionColor || 'inherit', // default to 'inherit' if not available
-              fontSize: (data?.buyXgetY?.title?.descriptionFontSize || 0) + "px", // default to 0
+              fontSize: (data?.buyXgetY?.title?.descriptionFontSize || 15) + "px", // default to 0
               fontWeight: data?.buyXgetY?.title?.descriptionBold ? 'bold' : 'normal', // default to 'normal'
               textAlign: data?.buyXgetY?.title?.alignment || 'left', // default to 'left'
             }}            
@@ -59,7 +59,7 @@ const CustomizationBuyXgetY = ({ data }) => {
               class="sd-bundle-product-img"
               style={{
                 borderColor: data?.buyXgetY?.productDetails?.image?.borderColor || 'black', // default to 'black' if not available
-                borderRadius: (data?.buyXgetY?.productDetails?.image?.borderRadius || 0) + "px", // default to 0
+                borderRadius: (data?.buyXgetY?.productDetails?.image?.borderRadius || 15) + "px", // default to 0
               }}              
             >
               <img src={productImg} width="80" height="80" />
@@ -69,7 +69,7 @@ const CustomizationBuyXgetY = ({ data }) => {
                 style={{
                   ...textStyle,
                   color: data?.buyXgetY?.productDetails?.title?.color || 'inherit', // default to 'inherit' if not available
-                  fontSize: (data?.buyXgetY?.productDetails?.title?.fontSize || 0) + "px", // default to 0
+                  fontSize: (data?.buyXgetY?.productDetails?.title?.fontSize || 14) + "px", // default to 0
                 }}                
               >
                 Smart Wireless Charger
@@ -78,7 +78,7 @@ const CustomizationBuyXgetY = ({ data }) => {
                 style={{
                   ...textStyle,
                   color: data?.buyXgetY?.productDetails?.price?.color || 'inherit', // default to 'inherit' if not available
-                  fontSize: (data?.buyXgetY?.productDetails?.price?.fontSize || 0) + "px", // default to 0
+                  fontSize: (data?.buyXgetY?.productDetails?.price?.fontSize || 14) + "px", // default to 0
                 }}                
               >
                 Rs. 2500.00
@@ -88,7 +88,7 @@ const CustomizationBuyXgetY = ({ data }) => {
                 ...textStyle,
                 backgroundColor: data?.buyXgetY?.productDetails?.variantSelector?.backgroundColor || 'transparent', // default to 'transparent' if not available
                 color: data?.buyXgetY?.productDetails?.variantSelector?.color || 'inherit', // default to 'inherit' if not available
-                width: (data?.buyXgetY?.productDetails?.variantSelector?.width || 0) + "px", // default to 0
+                width: (data?.buyXgetY?.productDetails?.variantSelector?.width || 160) + "px", // default to 0
               }}              
               >
                 <option style={{...textStyle,}}>Medium</option>
@@ -101,7 +101,7 @@ const CustomizationBuyXgetY = ({ data }) => {
               style={{
                 ...textStyle,
                 color: data?.buyXgetY?.productDetails?.quantities?.color || 'inherit', // default to 'inherit' if not available
-                fontSize: (data?.buyXgetY?.productDetails?.quantities?.size || 0) + "px", // default to 0
+                fontSize: (data?.buyXgetY?.productDetails?.quantities?.size || 15) + "px", // default to 0
               }}              
             >
               Qty: <span style={{...textStyle,fontSize: data?.buyXgetY?.productDetails?.quantities?.size + "px"}}>1</span>
@@ -120,7 +120,7 @@ const CustomizationBuyXgetY = ({ data }) => {
               class="sd-bundle-product-img"
               style={{
                 borderColor: data?.buyXgetY?.productDetails?.image?.borderColor || 'black', // default to 'black' if not available
-                borderRadius: (data?.buyXgetY?.productDetails?.image?.borderRadius || 0) + "px", // default to 0
+                borderRadius: (data?.buyXgetY?.productDetails?.image?.borderRadius || 15) + "px", // default to 0
               }}              
             >
               <img src={productImg} width="80" height="80" />
@@ -130,7 +130,7 @@ const CustomizationBuyXgetY = ({ data }) => {
                 style={{
                   ...textStyle,
                   color: data?.buyXgetY?.productDetails?.title?.color || 'inherit', // default to 'inherit' if not available
-                  fontSize: (data?.buyXgetY?.productDetails?.title?.fontSize || 0) + "px", // default to 0
+                  fontSize: (data?.buyXgetY?.productDetails?.title?.fontSize || 15) + "px", // default to 0
                 }}                
               >
                 Smart Wireless Charger
@@ -139,7 +139,7 @@ const CustomizationBuyXgetY = ({ data }) => {
                style={{
                 ...textStyle,
                 color: data?.buyXgetY?.productDetails?.price?.color || 'inherit', // default to 'inherit' if not available
-                fontSize: (data?.buyXgetY?.productDetails?.price?.fontSize || 0) + "px", // default to 0
+                fontSize: (data?.buyXgetY?.productDetails?.price?.fontSize || 14) + "px", // default to 0
               }}              
               >
                 Rs. 2500.00
@@ -149,7 +149,7 @@ const CustomizationBuyXgetY = ({ data }) => {
                   ...textStyle,
                   backgroundColor: data?.buyXgetY?.productDetails?.variantSelector?.backgroundColor || 'transparent', // default to 'transparent' if not available
                   color: data?.buyXgetY?.productDetails?.variantSelector?.color || 'inherit', // default to 'inherit' if not available
-                  width: (data?.buyXgetY?.productDetails?.variantSelector?.width || 0) + "px", // default to 0
+                  width: (data?.buyXgetY?.productDetails?.variantSelector?.width || 160) + "px", // default to 0
                 }}                
               >
                 <option style={{...textStyle,}}>Medium</option>
@@ -162,7 +162,7 @@ const CustomizationBuyXgetY = ({ data }) => {
               style={{
                 ...textStyle,
                 color: data?.buyXgetY?.productDetails?.quantities?.color || 'inherit', // default to 'inherit' if not available
-                fontSize: (data?.buyXgetY?.productDetails?.quantities?.size || 0) + "px", // default to 0
+                fontSize: (data?.buyXgetY?.productDetails?.quantities?.size || 15) + "px", // default to 0
               }}              
             >
               Qty: <span style={{...textStyle,fontSize: data?.buyXgetY?.productDetails?.quantities?.size + "px"}}>1</span>
@@ -202,7 +202,7 @@ const CustomizationBuyXgetY = ({ data }) => {
                style={{
                 ...textStyle,
                 color: data?.buyXgetY?.DiscountBadge?.color || 'inherit', // default to 'inherit' if not available
-                fontSize: (data?.buyXgetY?.DiscountBadge?.fontSize || 0) + "px", // default to 0
+                fontSize: (data?.buyXgetY?.DiscountBadge?.fontSize || 12) + "px", // default to 0
               }}              
               >
                 {data?.buyXgetY?.DiscountBadge?.text}
@@ -232,7 +232,7 @@ const CustomizationBuyXgetY = ({ data }) => {
                 style={{
                   ...textStyle,
                   color: data?.buyXgetY?.DiscountBadge?.color || 'inherit', // default to 'inherit' if not available
-                  fontSize: (data?.buyXgetY?.DiscountBadge?.fontSize || 0) + "px", // default to 0
+                  fontSize: (data?.buyXgetY?.DiscountBadge?.fontSize) + "px", // default to 0
                 }}                
               >
                 {data?.buyXgetY?.DiscountBadge?.text} 
@@ -263,7 +263,7 @@ const CustomizationBuyXgetY = ({ data }) => {
                 style={{
                   ...textStyle,
                   color: data?.buyXgetY?.productDetails?.title?.color || 'inherit', // default to 'inherit' if not available
-                  fontSize: (data?.buyXgetY?.productDetails?.title?.fontSize || 0) + "px", // default to 0
+                  fontSize: (data?.buyXgetY?.productDetails?.title?.fontSize ) + "px", // default to 0
                 }}                
               >
                 Smart Wireless Charger
@@ -272,7 +272,7 @@ const CustomizationBuyXgetY = ({ data }) => {
                 style={{
                   ...textStyle,
                   color: data?.buyXgetY?.productDetails?.price?.color || 'inherit', // default to 'inherit' if not available
-                  fontSize: (data?.buyXgetY?.productDetails?.price?.fontSize || 0) + "px", // default to 0
+                  fontSize: (data?.buyXgetY?.productDetails?.price?.fontSize ) + "px", // default to 0
                 }}                
               >
                 Rs. 2500.00
@@ -282,7 +282,7 @@ const CustomizationBuyXgetY = ({ data }) => {
                   ...textStyle,
                   backgroundColor: data?.buyXgetY?.productDetails?.variantSelector?.backgroundColor || 'transparent', // default to 'transparent' if not available
                   color: data?.buyXgetY?.productDetails?.variantSelector?.color || 'inherit', // default to 'inherit' if not available
-                  width: (data?.buyXgetY?.productDetails?.variantSelector?.width || 0) + "px", // default to 0
+                  width: (data?.buyXgetY?.productDetails?.variantSelector?.width ) + "px", // default to 0
                 }}                
               >
                 <option style={{...textStyle,}}>Medium</option>
@@ -295,7 +295,7 @@ const CustomizationBuyXgetY = ({ data }) => {
               style={{
                 ...textStyle,
                 color: data?.buyXgetY?.productDetails?.quantities?.color || 'inherit', // default to 'inherit' if not available
-                fontSize: (data?.buyXgetY?.productDetails?.quantities?.size || 0) + "px", // default to 0
+                fontSize: (data?.buyXgetY?.productDetails?.quantities?.size ) + "px", // default to 0
               }}              
             >
               Qty: <span style={{...textStyle,fontSize: data?.buyXgetY?.productDetails?.quantities?.size + "px"}}>1</span>
@@ -307,8 +307,8 @@ const CustomizationBuyXgetY = ({ data }) => {
             <h4
               style={{
                 ...textStyle,
-                color: data?.buyXgetY?.totalSection?.color || 'inherit', // default to 'inherit' if not available
-                fontSize: (data?.buyXgetY?.totalSection?.fontSize || 0) + "px", // default to 0
+                color: data?.buyXgetY?.totalSection?.color || 'black', // default to 'inherit' if not available
+                fontSize: (data?.buyXgetY?.totalSection?.fontSize || 15) + "px", // default to 0
               }}              
             >
               Total
@@ -316,8 +316,8 @@ const CustomizationBuyXgetY = ({ data }) => {
             <p
               style={{
                 ...textStyle,
-                color: data?.buyXgetY?.totalSection?.discountMessage?.color || 'inherit', // default to 'inherit' if not available
-                fontSize: (data?.buyXgetY?.totalSection?.discountMessage?.size || 0) + "px", // default to 0
+                color: data?.buyXgetY?.totalSection?.discountMessage?.color || 'black', // default to 'inherit' if not available
+                fontSize: (data?.buyXgetY?.totalSection?.discountMessage?.size || 16) + "px", // default to 0
               }}              
             >
               Discount will be applied at checkout
@@ -327,8 +327,8 @@ const CustomizationBuyXgetY = ({ data }) => {
             <h4
               style={{
                 ...textStyle,
-                color: data?.buyXgetY?.totalSection?.finalPrice?.color || 'inherit', // default to 'inherit' if not available
-                fontSize: (data?.buyXgetY?.totalSection?.finalPrice?.fontSize || 0) + "px", // default to 0
+                color: data?.buyXgetY?.totalSection?.finalPrice?.color || 'green', // default to 'inherit' if not available
+                fontSize: (data?.buyXgetY?.totalSection?.finalPrice?.fontSize || 17) + "px", // default to 0
               }}              
             >
               Rs. 5,000.00
@@ -336,8 +336,8 @@ const CustomizationBuyXgetY = ({ data }) => {
             <h6
              style={{
               ...textStyle,
-              color: data?.buyXgetY?.totalSection?.originalPrice?.color || 'inherit', // default to 'inherit' if not available
-              fontSize: (data?.buyXgetY?.totalSection?.originalPrice?.fontSize || 0) + "px", // default to 0
+              color: data?.buyXgetY?.totalSection?.originalPrice?.color || 'red', // default to 'inherit' if not available
+              fontSize: (data?.buyXgetY?.totalSection?.originalPrice?.fontSize || 16) + "px", // default to 0
             }}            
             >
               Rs. 7500.00
@@ -348,10 +348,10 @@ const CustomizationBuyXgetY = ({ data }) => {
           <button
             style={{
               ...textStyle,
-              color: data?.buyXgetY?.button?.color || 'inherit', // default to 'inherit' if not available
-              fontSize: (data?.buyXgetY?.button?.fontSize || 0) + "px", // default to 0
-              backgroundColor: data?.buyXgetY?.button?.backgroundColor || 'transparent', // default to 'transparent'
-              borderRadius: (data?.buyXgetY?.button?.borderRadius || 0) + "px", // default to 0
+              color: data?.buyXgetY?.button?.color || 'black', // default to 'inherit' if not available
+              fontSize: (data?.buyXgetY?.button?.fontSize || 16) + "px", // default to 0
+              backgroundColor: data?.buyXgetY?.button?.backgroundColor || 'white', // default to 'transparent'
+              borderRadius: (data?.buyXgetY?.button?.borderRadius || 30) + "px", // default to 0
               borderColor: data?.buyXgetY?.button?.borderColor || 'black', // default to 'black'
             }}            
           >

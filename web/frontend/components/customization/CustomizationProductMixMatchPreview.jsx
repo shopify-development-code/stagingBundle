@@ -16,8 +16,8 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
         style={{
           backgroundColor: data?.productMixMatch?.box?.backgroundColor,
           borderColor: data?.productMixMatch?.box?.borderColor,
-          borderRadius: `${data?.productMixMatch?.box?.borderRadius || 0}px`,
-          border: `${data?.productMixMatch?.box?.thickness || 0}px solid ${data?.buyXgetY?.box?.borderColor || 'transparent'}`
+          borderRadius: `${data?.productMixMatch?.box?.borderRadius }px`,
+          border: `${data?.productMixMatch?.box?.thickness }px solid ${data?.buyXgetY?.box?.borderColor || 'transparent'}`
         }}        
       >
         <div class="sd-bundle-text-detail">
@@ -81,7 +81,7 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
               style={{
                 border: "1px solid white",
                 borderColor: data?.productMixMatch?.productDetails?.image?.borderColor,
-                borderRadius: `${data?.productMixMatch?.productDetails?.image?.borderRadius || 0}px`
+                borderRadius: `${data?.productMixMatch?.productDetails?.image?.borderRadius }px`
               }}              
             >
               <img src={productImg} alt="" />
@@ -105,7 +105,7 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
               style={{
                 border: "1px solid",
                 borderColor: data?.productMixMatch?.productDetails?.image?.borderColor,
-                borderRadius: `${data?.productMixMatch?.productDetails?.image?.borderRadius || 0}px`
+                borderRadius: `${data?.productMixMatch?.productDetails?.image?.borderRadius }px`
               }}              
             >
               <img src={productImg} alt="" />
@@ -166,7 +166,7 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
               style={{
                 border: "1px solid white",
                 borderColor: data?.productMixMatch?.productDetails?.image?.borderColor,
-                borderRadius: `${data?.productMixMatch?.productDetails?.image?.borderRadius || 0}px`
+                borderRadius: `${data?.productMixMatch?.productDetails?.image?.borderRadius }px`
               }}              
             >
               <img src={productImg} width="80" height="80" />
@@ -243,7 +243,7 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
               style={{
                 border: "1px solid white",
                 borderColor: data?.productMixMatch?.productDetails?.image?.borderColor,
-                borderRadius: `${data?.productMixMatch?.productDetails?.image?.borderRadius || 0}px`
+                borderRadius: `${data?.productMixMatch?.productDetails?.image?.borderRadius }px`
               }}              
             >
               <img src={productImg} width="80" height="80" />
