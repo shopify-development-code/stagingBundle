@@ -351,8 +351,11 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
           <button
             style={{
               ...textStyle,
-              color: data.productMixMatch?.totalSection?.originalPrice?.color,
-              fontSize: (data.productMixMatch?.totalSection?.originalPrice?.fontSize ?? 0) + "px"
+              color: data?.productMixMatch?.button?.color || 'black', // default to 'inherit' if not available
+              fontSize: (data?.productMixMatch?.button?.fontSize || 16) + "px", // default to 0
+              backgroundColor: data?.productMixMatch?.button?.backgroundColor || 'white', // default to 'transparent'
+              borderRadius: (data?.productMixMatch?.button?.borderRadius || 30) + "px", // default to 0
+              borderColor: data?.productMixMatch?.button?.borderColor || 'black', // default to 'black'
             }}            
           >
             Add to Cart
