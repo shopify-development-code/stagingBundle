@@ -22,7 +22,7 @@ const CustomizationFBt = ({ data }) => {
             borderRadius: `${data?.frequentlyBoughtTogether?.box?.borderRadius || 0}px`,
         }}
         >
-          {data.frequentlyBoughtTogether.optionalBadge.enable == true && (
+          {data?.frequentlyBoughtTogether?.optionalBadge?.enable == true && (
             <div
               className="sd-badges-part"
               style={{
@@ -41,7 +41,7 @@ const CustomizationFBt = ({ data }) => {
             </div>
           )}
           {/* <div class="sd-bundle-text-detail"> */}
-          <div className={`sd-bundle-text-detail ${data.frequentlyBoughtTogether.optionalBadge.enable == true ? 'extra-padding' : ' '}`}>
+          <div className={`sd-bundle-text-detail ${data?.frequentlyBoughtTogether?.optionalBadge?.enable == true ? 'extra-padding' : ' '}`}>
             <h4
               style={{
                 ...textStyle,
@@ -296,7 +296,7 @@ const CustomizationFBt = ({ data }) => {
             borderRadius: `${data?.frequentlyBoughtTogether?.box?.borderRadius || 0}px`,
         }}        
         >
-          {data.frequentlyBoughtTogether.optionalBadge.enable == true && (
+          {data?.frequentlyBoughtTogether?.optionalBadge?.enable == true && (
             <div
               className="sd-badges-part"
               style={{
@@ -314,7 +314,7 @@ const CustomizationFBt = ({ data }) => {
               </span>
             </div>
           )}
-           <div className={`sd-bundle-text-detail ${data.frequentlyBoughtTogether.optionalBadge.enable == true ? 'extra-padding' : ''}`}>
+           <div className={`sd-bundle-text-detail ${data?.frequentlyBoughtTogether?.optionalBadge?.enable == true ? 'extra-padding' : ''}`}>
             <h4
               style={{
                 ...textStyle,

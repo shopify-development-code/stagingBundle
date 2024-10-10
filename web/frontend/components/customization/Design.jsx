@@ -15,7 +15,7 @@ const Design = (props) => {
   };
   
   
-  console.log("fdehfh feydfye",props.data,checkedOption);
+  // console.log("fdehfh feydfye",props.data,checkedOption);
   
   return (
     <>

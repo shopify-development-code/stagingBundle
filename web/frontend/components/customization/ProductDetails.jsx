@@ -8,7 +8,7 @@ import {
 } from "../helperFunctions";
 
 const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
-  console.log("dvf bdsgfjh0", data[bundleOption].productDetails.productDetailsBox.backgroundColor);
+  // console.log("dvf bdsgfjh0", data[bundleOption].productDetails.productDetailsBox.backgroundColor);
   
   return (
     <div className="sd-bundle-boxCustom">
