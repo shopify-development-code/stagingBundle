@@ -26,7 +26,6 @@ const ProductMixMatchPreview = ({
             backgroundColor: data.customization[0]?.productMixMatch?.box?.backgroundColor,
             borderColor: data.customization[0]?.productMixMatch?.box?.borderColor,
             borderRadius: (data.customization[0]?.productMixMatch?.box?.borderRadius ?? 0) + "px",
-            border: `${data.customization[0]?.productMixMatch?.box?.thickness ?? 0}px solid ${data.customization[0]?.productMixMatch?.box?.borderColor ?? 'transparent'}`,
           }}   
         >
           <div className="sd-bundle-text-detail">
