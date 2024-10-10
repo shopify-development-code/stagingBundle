@@ -290,14 +290,14 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
               style={{
                 ...textStyle,
                 color: data.productMixMatch?.productDetails?.quantities?.color,
-                fontSize: (data.productMixMatch?.productDetails?.quantities?.size ?? 0) + "px"
+                fontSize: (data.productMixMatch?.productDetails?.quantities?.size ?? 14) + "px"
               }}              
             >
               Qty:{" "}
               <span
                 style={{
                   ...textStyle,
-                  fontSize: (data.productMixMatch?.productDetails?.quantities?.size ?? 0) + "px",
+                  fontSize: (data.productMixMatch?.productDetails?.quantities?.size ?? 14) + "px",
                 }}                
               >
                 1
@@ -311,7 +311,7 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
               style={{
                 ...textStyle,
                 color: data.productMixMatch?.totalSection?.color,
-                fontSize: (data.productMixMatch?.totalSection?.fontSize ?? 0) + "px"
+                fontSize: (data.productMixMatch?.totalSection?.fontSize ?? 14) + "px"
               }}              
             >
               Total
@@ -320,7 +320,7 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
               style={{
                 ...textStyle,
                 color: data.productMixMatch?.totalSection?.discountMessage?.color,
-                fontSize: (data.productMixMatch?.totalSection?.discountMessage?.size ?? 0) + "px"
+                fontSize: (data.productMixMatch?.totalSection?.discountMessage?.size ?? 14) + "px"
               }} 
             >
               Discount will be applied at checkout
@@ -331,7 +331,7 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
               style={{
                 ...textStyle,
                 color: data.productMixMatch?.totalSection?.finalPrice?.color,
-                fontSize: (data.productMixMatch?.totalSection?.finalPrice?.fontSize ?? 0) + "px",
+                fontSize: (data.productMixMatch?.totalSection?.finalPrice?.fontSize ?? 14) + "px",
               }}              
             >
               Rs. 4,750.00
@@ -340,7 +340,7 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
               style={{
                 ...textStyle,
                 color: data.productMixMatch?.totalSection?.originalPrice?.color,
-                fontSize: (data.productMixMatch?.totalSection?.originalPrice?.fontSize ?? 0) + "px"
+                fontSize: (data.productMixMatch?.totalSection?.originalPrice?.fontSize ?? 14) + "px"
               }}              
             >
               Rs. 5000.00
