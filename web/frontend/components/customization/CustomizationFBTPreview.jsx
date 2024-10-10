@@ -113,7 +113,7 @@ const CustomizationFBt = ({ data }) => {
                     ...textStyle,
                     backgroundColor: data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.backgroundColor,
                     color: data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.color,
-                    width: `${data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.width || 12}px`,
+                    width: `${data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.width || 160}px`,
                 }}                
                 >
                   <option style={{ ...textStyle }}>Medium</option>
@@ -202,7 +202,7 @@ const CustomizationFBt = ({ data }) => {
                     ...textStyle,
                     backgroundColor: data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.backgroundColor,
                     color: data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.color,
-                    width: `${data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.width || 12}px`,
+                    width: `${data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.width || 160}px`,
                 }}                
                 >
                   <option style={{ ...textStyle }}>Medium</option>
@@ -411,7 +411,7 @@ const CustomizationFBt = ({ data }) => {
                     ...textStyle,
                     backgroundColor: data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.backgroundColor,
                     color: data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.color,
-                    width: `${data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.width || 12}px`,
+                    width: `${data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.width || 160}px`,
                 }}                
                 >
                   <option style={{ ...textStyle }}>Medium</option>
@@ -490,7 +490,7 @@ const CustomizationFBt = ({ data }) => {
                     ...textStyle,
                     backgroundColor: data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.backgroundColor,
                     color: data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.color,
-                    width: (data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.width || 12) + "px",
+                    width: (data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.width || 160) + "px",
                   }}                  
                 >
                   <option style={{ ...textStyle }}>Medium</option>

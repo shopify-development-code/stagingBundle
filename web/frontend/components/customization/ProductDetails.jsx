@@ -119,7 +119,7 @@ const ProductDetails = ({ bundleOption, data, setData, displayOption }) => {
             <div className="sd-bundle-custom-item-inputSection">
               <input
                 type="color"
-                value={data[bundleOption]["productDetails"]["title"]["color"]}
+                value={data[bundleOption]?.productDetails?.title?.color}
                 onChange={(e) =>
                   handleChangeCommon2(
                     e,
