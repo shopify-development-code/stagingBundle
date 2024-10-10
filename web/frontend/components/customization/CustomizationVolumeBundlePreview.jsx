@@ -79,7 +79,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
               data?.volume?.productDetails?.productDetailsBox?.backgroundColor,
           }}
         >
-          {data.volume.options.DiscountBadge.badgeType == "rightBanner" && (
+          {data?.volume?.options?.DiscountBadge?.badgeType == "rightBanner" && (
             <div className="sd-bundle-product-badgeOptions ">
               <svg
                 width="91"
@@ -155,7 +155,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
             backgroundColor: data?.volume?.productDetails?.productDetailsBox?.backgroundColor,
           }}          
         >
-          {data.volume.options.DiscountBadge.badgeType == "rightBanner" && (
+          {data?.volume?.options?.DiscountBadge?.badgeType == "rightBanner" && (
             <div className="sd-bundle-product-badgeOptions1">
               <svg
                 width="91"

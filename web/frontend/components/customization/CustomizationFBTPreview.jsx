@@ -19,7 +19,7 @@ const CustomizationFBt = ({ data }) => {
           style={{
             backgroundColor: data?.frequentlyBoughtTogether?.box?.backgroundColor,
             borderColor: data?.frequentlyBoughtTogether?.box?.borderColor,
-            borderRadius: `${data?.frequentlyBoughtTogether?.box?.borderRadius || 0}px`,
+            borderRadius: `${data?.frequentlyBoughtTogether?.box?.borderRadius || 12}px`,
         }}
         >
           {data?.frequentlyBoughtTogether?.optionalBadge?.enable == true && (
@@ -33,7 +33,7 @@ const CustomizationFBt = ({ data }) => {
                style={{
                 ...textStyle,
                 color: data?.frequentlyBoughtTogether?.optionalBadge?.color,
-                fontSize: `${data?.frequentlyBoughtTogether?.optionalBadge?.fontSize || 0}px`,
+                fontSize: `${data?.frequentlyBoughtTogether?.optionalBadge?.fontSize || 12}px`,
             }}            
               >
                 {data?.frequentlyBoughtTogether?.optionalBadge?.text}
@@ -46,7 +46,7 @@ const CustomizationFBt = ({ data }) => {
               style={{
                 ...textStyle,
                 color: data?.frequentlyBoughtTogether?.title?.color,
-                fontSize: `${data?.frequentlyBoughtTogether?.title?.fontSize || 0}px`,
+                fontSize: `${data?.frequentlyBoughtTogether?.title?.fontSize || 12}px`,
                 textAlign: data?.frequentlyBoughtTogether?.title?.alignment,
                 fontWeight: data?.frequentlyBoughtTogether?.title?.titleBold,
             }}            
@@ -57,7 +57,7 @@ const CustomizationFBt = ({ data }) => {
               style={{
                 ...textStyle,
                 color: data?.frequentlyBoughtTogether?.title?.descriptionColor,
-                fontSize: `${data?.frequentlyBoughtTogether?.title?.descriptionFontSize || 0}px`,
+                fontSize: `${data?.frequentlyBoughtTogether?.title?.descriptionFontSize || 12}px`,
                 fontWeight: data?.frequentlyBoughtTogether?.title?.descriptionBold,
                 textAlign: data?.frequentlyBoughtTogether?.title?.alignment,
             }}            
@@ -83,7 +83,7 @@ const CustomizationFBt = ({ data }) => {
                 class="sd-bundle-product-img"
                 style={{
                   borderColor: data?.frequentlyBoughtTogether?.productDetails?.image?.borderColor,
-                  borderRadius: `${data?.frequentlyBoughtTogether?.productDetails?.image?.borderRadius || 0}px`,
+                  borderRadius: `${data?.frequentlyBoughtTogether?.productDetails?.image?.borderRadius || 12}px`,
               }}              
               >
                 <img src={productImg} width="80" height="80" />
@@ -93,7 +93,7 @@ const CustomizationFBt = ({ data }) => {
                   style={{
                     ...textStyle,
                     color: data?.frequentlyBoughtTogether?.productDetails?.title?.color,
-                    fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.title?.fontSize || 0}px`,
+                    fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.title?.fontSize || 12}px`,
                 }}                
                 >
                   Smart Wireless Charger
@@ -102,7 +102,7 @@ const CustomizationFBt = ({ data }) => {
                   style={{
                     ...textStyle,
                     color: data?.frequentlyBoughtTogether?.productDetails?.price?.color,
-                    fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.price?.fontSize || 0}px`,
+                    fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.price?.fontSize || 12}px`,
                 }}                
                 >
                   {" "}
@@ -113,7 +113,7 @@ const CustomizationFBt = ({ data }) => {
                     ...textStyle,
                     backgroundColor: data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.backgroundColor,
                     color: data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.color,
-                    width: `${data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.width || 0}px`,
+                    width: `${data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.width || 12}px`,
                 }}                
                 >
                   <option style={{ ...textStyle }}>Medium</option>
@@ -126,14 +126,14 @@ const CustomizationFBt = ({ data }) => {
                 style={{
                   ...textStyle,
                   color: data?.frequentlyBoughtTogether?.productDetails?.quantities?.color,
-                  fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.quantities?.size || 0}px`,
+                  fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.quantities?.size || 12}px`,
               }}              
               >
                 Qty:{" "}
                 <span
                   style={{
                     ...textStyle,
-                    fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.quantities?.size || 0}px`,
+                    fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.quantities?.size || 12}px`,
                 }}                
                 >
                   1
@@ -172,7 +172,7 @@ const CustomizationFBt = ({ data }) => {
                 class="sd-bundle-product-img"
                 style={{
                   borderColor: data?.frequentlyBoughtTogether?.productDetails?.image?.borderColor,
-                  borderRadius: `${data?.frequentlyBoughtTogether?.productDetails?.image?.borderRadius || 0}px`,
+                  borderRadius: `${data?.frequentlyBoughtTogether?.productDetails?.image?.borderRadius || 12}px`,
               }}              
               >
                 <img src={productImg} width="80" height="80" />
@@ -182,7 +182,7 @@ const CustomizationFBt = ({ data }) => {
                  style={{
                   ...textStyle,
                   color: data?.frequentlyBoughtTogether?.productDetails?.title?.color,
-                  fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.title?.fontSize || 0}px`,
+                  fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.title?.fontSize || 12}px`,
               }}              
                 >
                   Smart Wireless Charger
@@ -191,7 +191,7 @@ const CustomizationFBt = ({ data }) => {
                   style={{
                     ...textStyle,
                     color: data?.frequentlyBoughtTogether?.productDetails?.price?.color,
-                    fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.price?.fontSize || 0}px`,
+                    fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.price?.fontSize || 12}px`,
                 }}
                 >
                   {" "}
@@ -202,7 +202,7 @@ const CustomizationFBt = ({ data }) => {
                     ...textStyle,
                     backgroundColor: data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.backgroundColor,
                     color: data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.color,
-                    width: `${data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.width || 0}px`,
+                    width: `${data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.width || 12}px`,
                 }}                
                 >
                   <option style={{ ...textStyle }}>Medium</option>
@@ -215,14 +215,14 @@ const CustomizationFBt = ({ data }) => {
                style={{
                 ...textStyle,
                 color: data?.frequentlyBoughtTogether?.productDetails?.quantities?.color,
-                fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.quantities?.size || 0}px`,
+                fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.quantities?.size || 12}px`,
             }}
               >
                 Qty:{" "}
                 <span
                   style={{
                     ...textStyle,
-                    fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.quantities?.size || 0}px`,
+                    fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.quantities?.size || 12}px`,
                 }}                
                 >
                   1
@@ -236,7 +236,7 @@ const CustomizationFBt = ({ data }) => {
                 style={{
                   ...textStyle,
                   color: data?.frequentlyBoughtTogether?.totalSection?.color,
-                  fontSize: `${data?.frequentlyBoughtTogether?.totalSection?.fontSize || 0}px`,
+                  fontSize: `${data?.frequentlyBoughtTogether?.totalSection?.fontSize || 12}px`,
               }}              
               >
                 Total
@@ -245,7 +245,7 @@ const CustomizationFBt = ({ data }) => {
                 style={{
                   ...textStyle,
                   color: data?.frequentlyBoughtTogether?.totalSection?.discountMessage?.color,
-                  fontSize: `${data?.frequentlyBoughtTogether?.totalSection?.discountMessage?.size || 0}px`,
+                  fontSize: `${data?.frequentlyBoughtTogether?.totalSection?.discountMessage?.size || 12}px`,
               }}              
               >
                 Discount will be applied at checkout
@@ -256,7 +256,7 @@ const CustomizationFBt = ({ data }) => {
                 style={{
                   ...textStyle,
                   color: data?.frequentlyBoughtTogether?.totalSection?.finalPrice?.color,
-                  fontSize: `${data?.frequentlyBoughtTogether?.totalSection?.finalPrice?.fontSize || 0}px`,
+                  fontSize: `${data?.frequentlyBoughtTogether?.totalSection?.finalPrice?.fontSize || 12}px`,
               }}              
               >
                 Rs. 4750.00
@@ -265,7 +265,7 @@ const CustomizationFBt = ({ data }) => {
                style={{
                 ...textStyle,
                 color: data?.frequentlyBoughtTogether?.totalSection?.originalPrice?.color,
-                fontSize: `${data?.frequentlyBoughtTogether?.totalSection?.originalPrice?.fontSize || 0}px`,
+                fontSize: `${data?.frequentlyBoughtTogether?.totalSection?.originalPrice?.fontSize || 12}px`,
             }}            
               >
                 Rs. 5000.00
@@ -277,10 +277,10 @@ const CustomizationFBt = ({ data }) => {
               style={{
                 ...textStyle,
                 color: data?.frequentlyBoughtTogether?.button?.color,
-                fontSize: `${data?.frequentlyBoughtTogether?.button?.fontSize || 0}px`,
+                fontSize: `${data?.frequentlyBoughtTogether?.button?.fontSize || 12}px`,
                 backgroundColor: data?.frequentlyBoughtTogether?.button?.backgroundColor,
                 borderColor: data?.frequentlyBoughtTogether?.button?.borderColor,
-                borderRadius: `${data?.frequentlyBoughtTogether?.button?.borderRadius || 0}px`,
+                borderRadius: `${data?.frequentlyBoughtTogether?.button?.borderRadius || 12}px`,
             }}            
             >
               Add to Cart
@@ -293,7 +293,7 @@ const CustomizationFBt = ({ data }) => {
           style={{
             backgroundColor: data?.frequentlyBoughtTogether?.box?.backgroundColor,
             borderColor: data?.frequentlyBoughtTogether?.box?.borderColor,
-            borderRadius: `${data?.frequentlyBoughtTogether?.box?.borderRadius || 0}px`,
+            borderRadius: `${data?.frequentlyBoughtTogether?.box?.borderRadius || 12}px`,
         }}        
         >
           {data?.frequentlyBoughtTogether?.optionalBadge?.enable == true && (
@@ -307,7 +307,7 @@ const CustomizationFBt = ({ data }) => {
                 style={{
                   ...textStyle,
                   color: data?.frequentlyBoughtTogether?.optionalBadge?.color,
-                  fontSize: `${data?.frequentlyBoughtTogether?.optionalBadge?.fontSize || 0}px`,
+                  fontSize: `${data?.frequentlyBoughtTogether?.optionalBadge?.fontSize || 12}px`,
               }}              
               >
                 {data.frequentlyBoughtTogether.optionalBadge.text}
@@ -319,7 +319,7 @@ const CustomizationFBt = ({ data }) => {
               style={{
                 ...textStyle,
                 color: data?.frequentlyBoughtTogether?.title?.color,
-                fontSize: `${data?.frequentlyBoughtTogether?.title?.fontSize || 0}px`,
+                fontSize: `${data?.frequentlyBoughtTogether?.title?.fontSize || 12}px`,
                 textAlign: data?.frequentlyBoughtTogether?.title?.alignment,
                 fontWeight: data?.frequentlyBoughtTogether?.title?.titleBold,
             }}            
@@ -330,7 +330,7 @@ const CustomizationFBt = ({ data }) => {
               style={{
                 ...textStyle,
                 color: data?.frequentlyBoughtTogether?.title?.descriptionColor,
-                fontSize: `${data?.frequentlyBoughtTogether?.title?.descriptionFontSize || 0}px`,
+                fontSize: `${data?.frequentlyBoughtTogether?.title?.descriptionFontSize || 12}px`,
                 fontWeight: data?.frequentlyBoughtTogether?.title?.descriptionBold,
                 textAlign: data?.frequentlyBoughtTogether?.title?.alignment,
             }}            
@@ -342,7 +342,7 @@ const CustomizationFBt = ({ data }) => {
                 class="sd-bundle-product-img"
                 style={{
                   borderColor: data?.frequentlyBoughtTogether?.productDetails?.image?.borderColor,
-                  borderRadius: `${data?.frequentlyBoughtTogether?.productDetails?.image?.borderRadius || 0}px`,
+                  borderRadius: `${data?.frequentlyBoughtTogether?.productDetails?.image?.borderRadius || 12}px`,
               }}              
               >
                 <img src={productImg} width="80" height="80" />
@@ -365,7 +365,7 @@ const CustomizationFBt = ({ data }) => {
                 class="sd-bundle-product-img"
                 style={{
                   borderColor: data?.frequentlyBoughtTogether?.productDetails?.image?.borderColor,
-                  borderRadius: `${data?.frequentlyBoughtTogether?.productDetails?.image?.borderRadius || 0}px`,
+                  borderRadius: `${data?.frequentlyBoughtTogether?.productDetails?.image?.borderRadius || 12}px`,
               }}              
               >
                 <img src={productImg} width="80" height="80" />
@@ -392,7 +392,7 @@ const CustomizationFBt = ({ data }) => {
                   style={{
                     ...textStyle,
                     color: data?.frequentlyBoughtTogether?.productDetails?.title?.color,
-                    fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.title?.fontSize || 0}px`,
+                    fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.title?.fontSize || 12}px`,
                 }}                
                 >
                   Smart Wireless Charger
@@ -401,7 +401,7 @@ const CustomizationFBt = ({ data }) => {
                  style={{
                   ...textStyle,
                   color: data?.frequentlyBoughtTogether?.productDetails?.price?.color,
-                  fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.price?.fontSize || 0}px`,
+                  fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.price?.fontSize || 12}px`,
               }}              
                 >
                   Rs. 2500.00
@@ -411,7 +411,7 @@ const CustomizationFBt = ({ data }) => {
                     ...textStyle,
                     backgroundColor: data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.backgroundColor,
                     color: data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.color,
-                    width: `${data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.width || 0}px`,
+                    width: `${data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.width || 12}px`,
                 }}                
                 >
                   <option style={{ ...textStyle }}>Medium</option>
@@ -424,14 +424,14 @@ const CustomizationFBt = ({ data }) => {
                 style={{
                   ...textStyle,
                   color: data?.frequentlyBoughtTogether?.productDetails?.quantities?.color,
-                  fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.quantities?.size || 0}px`,
+                  fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.quantities?.size || 12}px`,
               }}              
               >
                 Qty:{" "}
                 <span
                   style={{
                     ...textStyle,
-                    fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.quantities?.size || 0}px`,
+                    fontSize: `${data?.frequentlyBoughtTogether?.productDetails?.quantities?.size || 12}px`,
                 }}                
                 >
                   1
@@ -471,7 +471,7 @@ const CustomizationFBt = ({ data }) => {
                   style={{
                     ...textStyle,
                     color: data?.frequentlyBoughtTogether?.productDetails?.title?.color,
-                    fontSize: (data?.frequentlyBoughtTogether?.productDetails?.title?.fontSize || 0) + "px",
+                    fontSize: (data?.frequentlyBoughtTogether?.productDetails?.title?.fontSize || 12) + "px",
                   }}                  
                 >
                   Smart Wireless Charger
@@ -480,7 +480,7 @@ const CustomizationFBt = ({ data }) => {
                   style={{
                     ...textStyle,
                     color: data?.frequentlyBoughtTogether?.productDetails?.price?.color,
-                    fontSize: (data?.frequentlyBoughtTogether?.productDetails?.price?.fontSize || 0) + "px",
+                    fontSize: (data?.frequentlyBoughtTogether?.productDetails?.price?.fontSize || 12) + "px",
                   }}                  
                 >
                   Rs. 2500.00
@@ -490,7 +490,7 @@ const CustomizationFBt = ({ data }) => {
                     ...textStyle,
                     backgroundColor: data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.backgroundColor,
                     color: data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.color,
-                    width: (data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.width || 0) + "px",
+                    width: (data?.frequentlyBoughtTogether?.productDetails?.variantSelector?.width || 12) + "px",
                   }}                  
                 >
                   <option style={{ ...textStyle }}>Medium</option>
@@ -503,14 +503,14 @@ const CustomizationFBt = ({ data }) => {
                 style={{
                   ...textStyle,
                   color: data?.frequentlyBoughtTogether?.productDetails?.quantities?.color,
-                  fontSize: (data?.frequentlyBoughtTogether?.productDetails?.quantities?.size || 0) + "px",
+                  fontSize: (data?.frequentlyBoughtTogether?.productDetails?.quantities?.size || 12) + "px",
                 }}                
               >
                 Qty:{" "}
                 <span
                   style={{
                     ...textStyle,
-                    fontSize: (data?.frequentlyBoughtTogether?.productDetails?.quantities?.size || 0) + "px",
+                    fontSize: (data?.frequentlyBoughtTogether?.productDetails?.quantities?.size || 12) + "px",
                   }}                  
                 >
                   1
@@ -524,7 +524,7 @@ const CustomizationFBt = ({ data }) => {
                 style={{
                   ...textStyle,
                   color: data?.frequentlyBoughtTogether?.totalSection?.color,
-                  fontSize: (data?.frequentlyBoughtTogether?.totalSection?.fontSize || 0) + "px",
+                  fontSize: (data?.frequentlyBoughtTogether?.totalSection?.fontSize || 12) + "px",
                 }}                
               >
                 Total
@@ -533,7 +533,7 @@ const CustomizationFBt = ({ data }) => {
                 style={{
                   ...textStyle,
                   color: data?.frequentlyBoughtTogether?.totalSection?.discountMessage?.color,
-                  fontSize: (data?.frequentlyBoughtTogether?.totalSection?.discountMessage?.size || 0) + "px",
+                  fontSize: (data?.frequentlyBoughtTogether?.totalSection?.discountMessage?.size || 12) + "px",
                 }}                
               >
                 Discount will be applied at checkout
@@ -544,7 +544,7 @@ const CustomizationFBt = ({ data }) => {
                 style={{
                   ...textStyle,
                   color: data?.frequentlyBoughtTogether?.totalSection?.finalPrice?.color,
-                  fontSize: (data?.frequentlyBoughtTogether?.totalSection?.finalPrice?.fontSize || 0) + "px",
+                  fontSize: (data?.frequentlyBoughtTogether?.totalSection?.finalPrice?.fontSize || 12) + "px",
                 }}                
               >
                 Rs. 4,750.00
@@ -553,7 +553,7 @@ const CustomizationFBt = ({ data }) => {
                 style={{
                   ...textStyle,
                   color: data?.frequentlyBoughtTogether?.totalSection?.originalPrice?.color,
-                  fontSize: (data?.frequentlyBoughtTogether?.totalSection?.originalPrice?.fontSize || 0) + "px",
+                  fontSize: (data?.frequentlyBoughtTogether?.totalSection?.originalPrice?.fontSize || 12) + "px",
                 }}                
               >
                 Rs. 5,000.00
@@ -565,10 +565,10 @@ const CustomizationFBt = ({ data }) => {
               style={{
                 ...textStyle,
                 color: data?.frequentlyBoughtTogether?.button?.color,
-                fontSize: (data?.frequentlyBoughtTogether?.button?.fontSize || 0) + "px",
+                fontSize: (data?.frequentlyBoughtTogether?.button?.fontSize || 12) + "px",
                 backgroundColor: data?.frequentlyBoughtTogether?.button?.backgroundColor,
                 borderColor: data?.frequentlyBoughtTogether?.button?.borderColor,
-                borderRadius: (data?.frequentlyBoughtTogether?.button?.borderRadius || 0) + "px",
+                borderRadius: (data?.frequentlyBoughtTogether?.button?.borderRadius || 12) + "px",
               }}              
             >
               Add to Cart
