@@ -72,7 +72,7 @@ const CustomizationCollectionBundlePreview = ({ data }) => {
               class="sd-bundle-product-img"
               style={{
                 borderColor: data?.collection?.collectionDetails?.imageBorderColor,
-                borderRadius: `${data?.collection?.collectionDetails?.imageBorderRadius || 0}px`
+                borderRadius: `${data?.collection?.collectionDetails?.imageBorderRadius }px`
               }}              
             >
               <img src={productImg} width="80" height="80" />
@@ -124,7 +124,7 @@ const CustomizationCollectionBundlePreview = ({ data }) => {
               class="sd-bundle-product-img"
               style={{
                 borderColor: data?.collection?.collectionDetails?.imageBorderColor,
-                borderRadius: `${data?.collection?.collectionDetails?.imageBorderRadius || 0}px`
+                borderRadius: `${data?.collection?.collectionDetails?.imageBorderRadius }px`
               }}              
             >
               <img src={productImg} width="80" height="80" />
@@ -159,7 +159,7 @@ const CustomizationCollectionBundlePreview = ({ data }) => {
               color: data?.collection?.button?.color,
               fontSize: `${data?.collection?.button?.fontSize || 16}px`,
               borderColor: data?.collection?.button?.borderColor,
-              borderRadius: `${data?.collection?.button?.borderRadius || 0}px`
+              borderRadius: `${data?.collection?.button?.borderRadius }px`
             }}            
           >
             {data?.collection?.button?.text_others}
