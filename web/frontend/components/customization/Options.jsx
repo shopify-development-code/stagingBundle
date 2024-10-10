@@ -173,7 +173,7 @@ const Options = ({ bundleOption, data, setData, displayOption }) => {
               </div>
             </div>
             
-            {data[bundleOption]["options"]["DiscountBadge"]["badgeType"] ==
+            {data[bundleOption]?.options?.DiscountBadge?.badgeType ==
               "options" && (
               <RangeSlider
                 label="Border Radius"
