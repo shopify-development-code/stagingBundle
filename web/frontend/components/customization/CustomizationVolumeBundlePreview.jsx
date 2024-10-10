@@ -76,7 +76,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
           class="sd-volume-bundle-detail"
           style={{
             backgroundColor:
-              data.volume.productDetails.productDetailsBox.backgroundColor,
+              data?.volume?.productDetails?.productDetailsBox?.backgroundColor,
           }}
         >
           {data.volume.options.DiscountBadge.badgeType == "rightBanner" && (

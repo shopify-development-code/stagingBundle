@@ -9,7 +9,7 @@ import {
 import RightBanner from "../../assets/Right_Banner.png";
 import LeftBanner from "../../assets/Left_Banner.png";
 const DiscountBadge = ({ data, setData, bundleOption, displayOption }) => {
-  console.log(data);
+  // console.log(data);
   const [sizeValue, setSizeValue] = useState(15);
   const handleText = (newvalue) => {
     setData({

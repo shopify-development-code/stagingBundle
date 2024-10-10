@@ -22,7 +22,7 @@ const OptionalBadges = ({ data, setData, bundleOption, displayOption }) => {
   };
 
   const badgeEnableHandler = (e) => {
-    console.log("  hgwjfdnfew jfj kej", e);
+    // console.log("  hgwjfdnfew jfj kej", e);
     setData({
       ...data,
       [bundleOption]: {
