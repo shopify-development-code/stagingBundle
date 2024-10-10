@@ -542,10 +542,10 @@ const ProductMixMatchPreview = ({
               style={{
                 ...fontSize,
                 color: data.customization[0]?.productMixMatch?.button?.color ?? 'inherit',
-                fontSize: (data.customization[0]?.productMixMatch?.button?.fontSize ?? 0) + "px", 
+                fontSize: (data.customization[0]?.productMixMatch?.button?.fontSize ?? 14) + "px", 
                 backgroundColor: data.customization[0]?.productMixMatch?.button?.backgroundColor ?? 'transparent', 
                 borderColor: data.customization[0]?.productMixMatch?.button?.borderColor ?? 'transparent', 
-                borderRadius: (data.customization[0]?.productMixMatch?.button?.borderRadius ?? 0) + "px",
+                borderRadius: (data.customization[0]?.productMixMatch?.button?.borderRadius ?? 30) + "px",
               }}              
             >
               Add to Cart
