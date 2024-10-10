@@ -25,7 +25,7 @@ const BXGYBundlePreview = ({
           className="sd-bundle-main-column"
           style={{
             backgroundColor: data.customization[0]?.buyXgetY?.box?.backgroundColor ?? 'transparent', 
-            border: `${(data.customization[0]?.buyXgetY?.box?.thickness ?? 0)}px solid ${data.customization[0]?.buyXgetY?.box?.borderColor ?? 'transparent'}`, 
+            borderColor: `${data.customization[0]?.buyXgetY?.box?.borderColor ?? 'transparent'}`, 
             borderRadius: (data.customization[0]?.buyXgetY?.box?.borderRadius ?? 0) + "px", 
           }}          
         >
