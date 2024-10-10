@@ -277,7 +277,7 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
                   borderColor:
                     data.productMixMatch?.productDetails?.variantSelector?.borderColor,
                   width:
-                    (data.productMixMatch?.productDetails?.variantSelector?.width ?? 0) + "px",
+                    (data.productMixMatch?.productDetails?.variantSelector?.width ?? 100) + "px",
                 }}                
               >
                 <option style={{...textStyle,}}>Medium</option>

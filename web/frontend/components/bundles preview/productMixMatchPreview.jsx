@@ -168,9 +168,9 @@ const ProductMixMatchPreview = ({
                   <h5
                     style={{
                       ...fontSize,
-                      fontSize: (data.customization[0]?.productMixMatch?.orderOverview?.selectedText?.fontSize ?? 0) + "px",
-                      color: data.customization[0]?.productMixMatch?.orderOverview?.selectedText?.color ?? 'inherit', 
-                      textAlign: data.customization[0]?.productMixMatch?.orderOverview?.alignment ?? 'left',
+                      fontSize: (data.customization[0]?.productMixMatch?.orderOverview?.selectedText?.fontSize ?? 10) + "px",
+                      color: data.customization[0]?.productMixMatch?.orderOverview?.selectedText?.color ?? 'black', 
+                      textAlign: data.customization[0]?.productMixMatch?.orderOverview?.alignment ?? 'center',
                     }}
                     
                   >
@@ -191,9 +191,9 @@ const ProductMixMatchPreview = ({
                                   item.quantity) ? (
                                 <p style={{
                                   ...fontSize,
-                                  fontSize: (data.customization[0]?.productMixMatch?.orderOverview?.discountText?.fontSize ?? 0) + "px", 
-                                  color: data.customization[0]?.productMixMatch?.orderOverview?.discountText?.color ?? 'inherit', 
-                                  textAlign: data.customization[0]?.productMixMatch?.orderOverview?.alignment ?? 'left',
+                                  fontSize: (data.customization[0]?.productMixMatch?.orderOverview?.discountText?.fontSize ?? 10) + "px", 
+                                  color: data.customization[0]?.productMixMatch?.orderOverview?.discountText?.color ?? 'black', 
+                                  textAlign: data.customization[0]?.productMixMatch?.orderOverview?.alignment ?? 'center',
                                 }}
                                 >
                                   100% {freeShipping} discount is applied on the
@@ -213,9 +213,9 @@ const ProductMixMatchPreview = ({
                                   item.quantity) ? (
                                 <p style={{
                                   ...fontSize,
-                                  fontSize: (data.customization[0]?.productMixMatch?.orderOverview?.discountText?.fontSize ?? 0) + "px",
-                                  color: data.customization[0]?.productMixMatch?.orderOverview?.discountText?.color ?? 'inherit',
-                                  textAlign: data.customization[0]?.productMixMatch?.orderOverview?.alignment ?? 'left',
+                                  fontSize: (data.customization[0]?.productMixMatch?.orderOverview?.discountText?.fontSize ?? 10) + "px",
+                                  color: data.customization[0]?.productMixMatch?.orderOverview?.discountText?.color ?? 'black',
+                                  textAlign: data.customization[0]?.productMixMatch?.orderOverview?.alignment ?? 'center',
                                 }}
                                 >
                                   -
@@ -236,9 +236,9 @@ const ProductMixMatchPreview = ({
                                   item.quantity) ? (
                                 <p style={{
                                   ...fontSize,
-                                  fontSize: (data.customization[0]?.productMixMatch?.orderOverview?.discountText?.fontSize ?? 0) + "px", 
-                                  color: data.customization[0]?.productMixMatch?.orderOverview?.discountText?.color ?? 'inherit',
-                                  textAlign: data.customization[0]?.productMixMatch?.orderOverview?.alignment ?? 'left',
+                                  fontSize: (data.customization[0]?.productMixMatch?.orderOverview?.discountText?.fontSize ?? 10) + "px", 
+                                  color: data.customization[0]?.productMixMatch?.orderOverview?.discountText?.color ?? 'black',
+                                  textAlign: data.customization[0]?.productMixMatch?.orderOverview?.alignment ?? 'center',
                                 }}
                                 >
                                   discount is applied on the selected products.
@@ -257,9 +257,9 @@ const ProductMixMatchPreview = ({
                                   item.quantity) ? (
                                 <p style={{
                                   ...fontSize,
-                                  fontSize: (data.customization[0]?.productMixMatch?.orderOverview?.discountText?.fontSize ?? 0) + "px",
-                                  color: data.customization[0]?.productMixMatch?.orderOverview?.discountText?.color ?? 'inherit', 
-                                  textAlign: data.customization[0]?.productMixMatch?.orderOverview?.alignment ?? 'left', 
+                                  fontSize: (data.customization[0]?.productMixMatch?.orderOverview?.discountText?.fontSize ?? 10) + "px",
+                                  color: data.customization[0]?.productMixMatch?.orderOverview?.discountText?.color ?? 'black', 
+                                  textAlign: data.customization[0]?.productMixMatch?.orderOverview?.alignment ?? 'center', 
                                 }}
                                 >
                                   {item?.value}% discount is applied on the
@@ -280,9 +280,9 @@ const ProductMixMatchPreview = ({
                   <p
                     style={{
                       ...fontSize,
-                      fontSize: (data.customization[0]?.productMixMatch?.orderOverview?.selectedText?.fontSize ?? 0) + "px",
-                      color: data.customization[0]?.productMixMatch?.orderOverview?.selectedText?.color ?? 'inherit',
-                      textAlign: data.customization[0]?.productMixMatch?.orderOverview?.alignment ?? 'left',
+                      fontSize: (data.customization[0]?.productMixMatch?.orderOverview?.selectedText?.fontSize ?? 10) + "px",
+                      color: data.customization[0]?.productMixMatch?.orderOverview?.selectedText?.color ?? 'black',
+                      textAlign: data.customization[0]?.productMixMatch?.orderOverview?.alignment ?? 'center',
                     }}
                     
                   >
@@ -292,9 +292,9 @@ const ProductMixMatchPreview = ({
                   <p
                     style={{
                       ...fontSize,
-                      fontSize: (data.customization[0]?.productMixMatch?.orderOverview?.discountText?.fontSize ?? 0) + "px",
-                      color: data.customization[0]?.productMixMatch?.orderOverview?.discountText?.color ?? 'inherit', 
-                      textAlign: data.customization[0]?.productMixMatch?.orderOverview?.alignment ?? 'left',
+                      fontSize: (data.customization[0]?.productMixMatch?.orderOverview?.discountText?.fontSize ?? 10) + "px",
+                      color: data.customization[0]?.productMixMatch?.orderOverview?.discountText?.color ?? 'black', 
+                      textAlign: data.customization[0]?.productMixMatch?.orderOverview?.alignment ?? 'center',
                     }}
                   >
                     Select at least{" "}
