@@ -74,9 +74,6 @@ const Box = (props) => {
     {label: "Tahoma", value: "Tahoma"},
     {label: "Work Sans", value: "Work Sans"},
   ];
-  
-  
-console.log("fdewjfh jewhewhfr ioewfioewio",props.data[props.bundleOption]["box"]["fontFamily"]);
 
   return (
     <>
@@ -91,7 +88,7 @@ console.log("fdewjfh jewhewhfr ioewfioewio",props.data[props.bundleOption]["box"
                 <div className="sd-bundle-custom-item-inputSection">
                   <input
                     type="color"
-                    value={dataToChange.box.backgroundColor}
+                    value={dataToChange?.box?.backgroundColor}
                     onChange={(e) =>
                       handleChangeCommon(
                         e,
@@ -103,7 +100,7 @@ console.log("fdewjfh jewhewhfr ioewfioewio",props.data[props.bundleOption]["box"
                   />
                   <div className="sd-bundle-custom-fieldColorCode-common">
                     <p>Background Color </p>
-                    <p> {dataToChange.box.backgroundColor} </p>
+                    <p> {dataToChange?.box?.backgroundColor} </p>
                   </div>
                 </div>
               </div>
@@ -123,7 +120,7 @@ console.log("fdewjfh jewhewhfr ioewfioewio",props.data[props.bundleOption]["box"
                       props.bundleOption
                     )
                   }
-                  value={props.data[props.bundleOption]["box"]["fontFamily"]}
+                  value={props.data[props.bundleOption]?.box?.fontFamily}
                 />
               </div>
             </Grid.Cell>
@@ -133,7 +130,7 @@ console.log("fdewjfh jewhewhfr ioewfioewio",props.data[props.bundleOption]["box"
                 <div className="sd-bundle-custom-item-inputSection">
                   <input
                     type="color"
-                    value={dataToChange.box.borderColor}
+                    value={dataToChange?.box?.borderColor}
                     onChange={(e) =>
                       handleChangeCommon(
                         e,
@@ -145,7 +142,7 @@ console.log("fdewjfh jewhewhfr ioewfioewio",props.data[props.bundleOption]["box"
                   />
                   <div className="sd-bundle-custom-fieldColorCode-common">
                     <p>Border Color </p>
-                    <p> {dataToChange.box.borderColor} </p>
+                    <p> {dataToChange?.box?.borderColor} </p>
                   </div>
                 </div>
                 <RangeSlider
@@ -153,8 +150,8 @@ console.log("fdewjfh jewhewhfr ioewfioewio",props.data[props.bundleOption]["box"
                   label="Border Radius"
                   min={1}
                   max={30}
-                  suffix= {dataToChange.box.borderRadius}
-                  value={dataToChange.box.borderRadius}
+                  suffix= {dataToChange?.box?.borderRadius}
+                  value={dataToChange?.box?.borderRadius}
                   onChange={(newvalue) =>
                     handleChangeValueCommon(
                       newvalue,
@@ -164,23 +161,6 @@ console.log("fdewjfh jewhewhfr ioewfioewio",props.data[props.bundleOption]["box"
                     )
                   }
                 />
-                {/* <TextField
-                type="number"
-                label="Radius"
-                // placeholder="set minimum order  for item"
-                onChange={(newvalue) =>
-                  handleChangeValueCommon(
-                    newvalue,
-                    "box",
-                    "borderRadius",
-                    props.bundleOption
-                  )
-                }
-                value={dataToChange.box.borderRadius}
-                autoComplete="off"
-                min={0}
-                max={30}
-              /> */}
               </div>
             </Grid.Cell>
           </Grid>

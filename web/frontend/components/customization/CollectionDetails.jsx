@@ -21,10 +21,8 @@ const CollectionDetails = ({ data, setData, bundleOption, displayOption }) => {
               <input
                 type="color"
                 value={
-                  data[bundleOption]["collectionDetails"][
-                    "collectionDetailsBox"
-                  ]["backgroundColor"]
-                }
+                  data[bundleOption]?.collectionDetails?.collectionDetailsBox?.backgroundColor
+                }                
                 onChange={(e) =>
                   handleChangeCommon2(
                     e,
@@ -40,12 +38,7 @@ const CollectionDetails = ({ data, setData, bundleOption, displayOption }) => {
               <div className="sd-bundle-custom-fieldColorCode-common">
                 <p>Background Color</p>
                 <p>
-                  {" "}
-                  {
-                    data[bundleOption]["collectionDetails"][
-                      "collectionDetailsBox"
-                    ]["backgroundColor"]
-                  }{" "}
+                  {data[bundleOption]?.collectionDetails?.collectionDetailsBox?.backgroundColor}
                 </p>
               </div>
             </div>
@@ -58,7 +51,7 @@ const CollectionDetails = ({ data, setData, bundleOption, displayOption }) => {
             <div className="sd-bundle-custom-item-inputSection">
               <input
                 type="color"
-                value={data[bundleOption]["collectionDetails"]["plus"]["color"]}
+                value={data[bundleOption]?.collectionDetails?.plus?.color}
                 onChange={(e) =>
                   handleChangeCommon2(
                     e,
@@ -76,7 +69,7 @@ const CollectionDetails = ({ data, setData, bundleOption, displayOption }) => {
                 <p>
                   {" "}
                   {
-                    data[bundleOption]["collectionDetails"]["plus"]["color"]
+                    data[bundleOption]?.collectionDetails?.plus?.color
                   }{" "}
                 </p>
               </div>
@@ -90,8 +83,8 @@ const CollectionDetails = ({ data, setData, bundleOption, displayOption }) => {
               <input
                 type="color"
                 value={
-                  data[bundleOption]["collectionDetails"]["title"]["color"]
-                }
+                  data[bundleOption]?.collectionDetails?.title?.color
+                }                
                 onChange={(e) =>
                   handleChangeCommon2(
                     e,
@@ -109,7 +102,7 @@ const CollectionDetails = ({ data, setData, bundleOption, displayOption }) => {
                 <p>
                   {" "}
                   {
-                    data[bundleOption]["collectionDetails"]["title"]["color"]
+                    data[bundleOption]?.collectionDetails?.title?.color
                   }{" "}
                 </p>
               </div>
@@ -128,11 +121,11 @@ const CollectionDetails = ({ data, setData, bundleOption, displayOption }) => {
                 )
               }
               suffix={
-                data[bundleOption]["collectionDetails"]["title"]["fontSize"]
+                data[bundleOption]?.collectionDetails?.title?.fontSize
               }
               value={
-                data[bundleOption]["collectionDetails"]["title"]["fontSize"]
-              }
+                data[bundleOption]?.collectionDetails?.title?.fontSize
+              }              
               min={1}
               max={25}
               output
@@ -146,10 +139,8 @@ const CollectionDetails = ({ data, setData, bundleOption, displayOption }) => {
               <input
                 type="color"
                 value={
-                  data[bundleOption]["collectionDetails"]["description"][
-                    "color"
-                  ]
-                }
+                  data[bundleOption]?.collectionDetails?.description?.color
+                }                
                 onChange={(e) =>
                   handleChangeCommon2(
                     e,
@@ -165,12 +156,7 @@ const CollectionDetails = ({ data, setData, bundleOption, displayOption }) => {
               <div className="sd-bundle-custom-fieldColorCode-common">
                 <p>Text Color </p>
                 <p>
-                  {" "}
-                  {
-                    data[bundleOption]["collectionDetails"]["description"][
-                      "color"
-                    ]
-                  }{" "}
+                  {data[bundleOption]?.collectionDetails?.description?.color}
                 </p>
               </div>
             </div>
@@ -189,15 +175,11 @@ const CollectionDetails = ({ data, setData, bundleOption, displayOption }) => {
                 )
               }
               suffix={
-                data[bundleOption]["collectionDetails"]["description"][
-                  "fontSize"
-                ]
+                data[bundleOption]?.collectionDetails?.description?.fontSize
               }
               value={
-                data[bundleOption]["collectionDetails"]["description"][
-                  "fontSize"
-                ]
-              }
+                data[bundleOption]?.collectionDetails?.description?.fontSize
+              }              
               min={1}
               max={25}
               output
@@ -211,8 +193,8 @@ const CollectionDetails = ({ data, setData, bundleOption, displayOption }) => {
               <input
                 type="color"
                 value={
-                  data[bundleOption]["collectionDetails"]["imageBorderColor"]
-                }
+                  data[bundleOption]?.collectionDetails?.imageBorderColor
+                }                
                 onChange={(e) =>
                   handleChangeCommon(
                     e,
@@ -229,7 +211,7 @@ const CollectionDetails = ({ data, setData, bundleOption, displayOption }) => {
                 <p>
                   {" "}
                   {
-                    data[bundleOption]["collectionDetails"]["imageBorderColor"]
+                    data[bundleOption]?.collectionDetails?.imageBorderColor
                   }{" "}
                 </p>
               </div>
@@ -247,11 +229,11 @@ const CollectionDetails = ({ data, setData, bundleOption, displayOption }) => {
                 )
               }
               suffix={
-                data[bundleOption]["collectionDetails"]["imageBorderRadius"]
+                data[bundleOption]?.collectionDetails?.imageBorderRadius
               }
               value={
-                data[bundleOption]["collectionDetails"]["imageBorderRadius"]
-              }
+                data[bundleOption]?.collectionDetails?.imageBorderRadius
+              }              
               min={1}
               max={35}
               output

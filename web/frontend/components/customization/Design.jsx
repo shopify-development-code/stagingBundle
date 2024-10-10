@@ -8,8 +8,8 @@ const Design = (props) => {
     props.setData({
       ...props.data,
       frequentlyBoughtTogether: {
-        ...props.data.frequentlyBoughtTogether, // Spread the existing frequentlyBoughtTogether object
-        design: id, // Set the design property to the new id
+        ...props.data.frequentlyBoughtTogether,
+        design: id,
       },
     });
   };

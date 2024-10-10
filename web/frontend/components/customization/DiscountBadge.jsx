@@ -11,13 +11,6 @@ import LeftBanner from "../../assets/Left_Banner.png";
 const DiscountBadge = ({ data, setData, bundleOption, displayOption }) => {
   console.log(data);
   const [sizeValue, setSizeValue] = useState(15);
-  // useEffect(()=>{
-  //   if(data.buyXgetY.DiscountBadge.badgeType == "ribbon"){
-  //     setSizeValue(10)
-  //   }else{
-  //     setSizeValue(15);
-  //   }
-  // },[data.buyXgetY.DiscountBadge.badgeType]);
   const handleText = (newvalue) => {
     setData({
       ...data,
@@ -42,7 +35,7 @@ const DiscountBadge = ({ data, setData, bundleOption, displayOption }) => {
             <div className="sd-bundle-custom-item-inputSection">
               <input
                 type="color"
-                value={data[bundleOption]["DiscountBadge"]["color"]}
+                value={data[bundleOption]?.DiscountBadge?.color}
                 onChange={(e) =>
                   handleChangeCommon(
                     e,
@@ -57,14 +50,14 @@ const DiscountBadge = ({ data, setData, bundleOption, displayOption }) => {
 
               <div className="sd-bundle-custom-fieldColorCode-common">
                 <p>Text Color </p>
-                <p> {data[bundleOption]["DiscountBadge"]["color"]} </p>
+                <p>{data[bundleOption]?.DiscountBadge?.color}</p>
               </div>
             </div>
 
             <div className="sd-bundle-custom-item-inputSection">
               <input
                 type="color"
-                value={data[bundleOption]["DiscountBadge"]["backgroundColor"]}
+                value={data[bundleOption]?.DiscountBadge?.backgroundColor}
                 onChange={(e) =>
                   handleChangeCommon(
                     e,
@@ -80,34 +73,10 @@ const DiscountBadge = ({ data, setData, bundleOption, displayOption }) => {
               <div className="sd-bundle-custom-fieldColorCode-common">
                 <p>Background Color </p>
                 <p>
-                  {" "}
-                  {data[bundleOption]["DiscountBadge"]["backgroundColor"]}{" "}
+                  {data[bundleOption]?.DiscountBadge?.backgroundColor}
                 </p>
               </div>
             </div>
-
-            {/* <TextField
-            type="number"
-            label="Size"
-            inputMode="none"
-            // placeholder="set minimum order  for item"
-            onChange={(e) =>
-              handleChangeValueCommon(
-                e,
-                "DiscountBadge",
-                "fontSize",
-                data,
-                setData,
-                bundleOption,
-                sizeValue
-              )
-            }
-            value={data[bundleOption]["DiscountBadge"]["fontSize"]}
-            autoComplete="off"
-            min={1}
-            max={sizeValue}
-          /> */}
-            
           </div>
         </Grid.Cell>
         {bundleOption == "buyXgetY" && (
@@ -129,7 +98,7 @@ const DiscountBadge = ({ data, setData, bundleOption, displayOption }) => {
                     sizeValue
                   )
                 }
-                value={data[bundleOption]["DiscountBadge"]["badgeType"]}
+                value={data[bundleOption]?.DiscountBadge?.badgeType}
               >
                 <Space direction="vertical">
                   <Radio value="rightBanner">
@@ -152,7 +121,7 @@ const DiscountBadge = ({ data, setData, bundleOption, displayOption }) => {
               type="text"
               // placeholder="set minimum order  for item"
               onChange={handleText}
-              value={data[bundleOption]["DiscountBadge"]["text"]}
+              value={data[bundleOption]?.DiscountBadge?.text}
               autoComplete="off"
               maxLength={20}
             />
@@ -169,8 +138,8 @@ const DiscountBadge = ({ data, setData, bundleOption, displayOption }) => {
                   sizeValue
                 )
               }
-              suffix={data[bundleOption]["DiscountBadge"]["fontSize"]}
-              value={data[bundleOption]["DiscountBadge"]["fontSize"]}
+              suffix={data[bundleOption]?.DiscountBadge?.fontSize}
+              value={data[bundleOption]?.DiscountBadge?.fontSize}              
               min={10}
               max={15}
               output
