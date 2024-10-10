@@ -19,7 +19,7 @@ const CustomizationBuyXgetY = ({ data }) => {
         class="sd-bundle-main-column"
         style={{
           backgroundColor: data?.buyXgetY?.box?.backgroundColor || 'transparent', // default to transparent if not available
-          border: `${(data?.buyXgetY?.box?.thickness )}px solid ${data?.buyXgetY?.box?.borderColor || 'black'}`, // default thickness to 0 and border color to black
+          borderColor: `${data?.buyXgetY?.box?.borderColor || 'black'}`, // default thickness to 0 and border color to black
           borderRadius: (data?.buyXgetY?.box?.borderRadius || 14) + "px", // default to 0
         }}        
       >
