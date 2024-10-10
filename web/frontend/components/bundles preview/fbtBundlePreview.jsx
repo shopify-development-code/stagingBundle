@@ -244,7 +244,7 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                       >
                         <path
                           d="M6.98047 17.3842V0.580255H10.3239V17.3842H6.98047ZM0.256392 10.6477V7.30433H17.0604V10.6477H0.256392Z"
-                          fill={data.customization[0]?.frequentlyBoughtTogether?.productDetails?.plusColor }
+                          fill={data.customization[0]?.frequentlyBoughtTogether?.productDetails?.plusColor || "black" }
                         />
                       </svg>
                     </div>
@@ -497,7 +497,7 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                         <path
                           d="M6.98047 17.3842V0.580255H10.3239V17.3842H6.98047ZM0.256392 10.6477V7.30433H17.0604V10.6477H0.256392Z"
                           fill={
-                            data.customization[0]?.frequentlyBoughtTogether?.productDetails?.plusColor
+                            data.customization[0]?.frequentlyBoughtTogether?.productDetails?.plusColor || "black"
                           }                          
                         />
                       </svg>
@@ -801,7 +801,7 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                         <path
                           d="M6.98047 17.3842V0.580255H10.3239V17.3842H6.98047ZM0.256392 10.6477V7.30433H17.0604V10.6477H0.256392Z"
                           fill={
-                            data?.customization?.[0]?.frequentlyBoughtTogether?.productDetails?.plusColor
+                            data?.customization?.[0]?.frequentlyBoughtTogether?.productDetails?.plusColor || "black"
                         }                        
                         />
                       </svg>
@@ -1117,7 +1117,7 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                         <path
                           d="M6.98047 17.3842V0.580255H10.3239V17.3842H6.98047ZM0.256392 10.6477V7.30433H17.0604V10.6477H0.256392Z"
                           fill={
-                            data?.customization?.[0]?.frequentlyBoughtTogether?.productDetails?.plusColor
+                            data?.customization?.[0]?.frequentlyBoughtTogether?.productDetails?.plusColor || "black"
                         }                        
                         />
                       </svg>
