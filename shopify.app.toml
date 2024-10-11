@@ -1,27 +1,25 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
-client_id = "b8c12ad6dd6cca8d5809e99013d4289b"
-name = "Staging Advanced Bundles"
-handle = "staging-advanced-bundles"
-application_url = "https://bundle.shinedezigninfotech.com/"
+client_id = "4f96a8c9db0ecb7d5f6b2191d28c602c"
+name = "Smart Bundle Discounts"
+handle = "smart-bundle-discounts-1"
+application_url = "https://bundlesgroup.com/"
 embedded = true
 
-[build]
-automatically_update_urls_on_dev = false
-dev_store_url = "robins-store1.myshopify.com"
+[auth]
+redirect_urls = [
+  "https://bundlesgroup.com/api/auth",
+  "https://bundlesgroup.com/api/auth/callback"
+]
+
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
 scopes = "read_content,read_themes,write_content,write_discounts,write_orders,write_price_rules,write_products"
 
-[auth]
-redirect_urls = [
-  "https://bundle.shinedezigninfotech.com/api/auth",
-  "https://bundle.shinedezigninfotech.com/api/auth/callback"
-]
-
 [webhooks]
-api_version = "2024-04"
+api_version = "2024-07"
+
 
 [pos]
 embedded = false
