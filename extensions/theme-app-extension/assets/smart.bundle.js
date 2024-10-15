@@ -2861,7 +2861,7 @@ function createBundle(BUNDLE_DATA) {
         FBT_DIV.append(FBT_ADDTOCART_TOTAL_DIV);
         
         let ADD_TO_CART_BUTTON = document.createElement("button");
-        ADD_TO_CART_BUTTON.style.backgroundColor = el?.customization?.frequentlyBoughtTogether?.butto?.backgroundColor;
+        ADD_TO_CART_BUTTON.style.backgroundColor = el?.customization?.frequentlyBoughtTogether?.button?.backgroundColor;
         ADD_TO_CART_BUTTON.style.borderColor = el?.customization?.frequentlyBoughtTogether?.button?.borderColor;
         ADD_TO_CART_BUTTON.style.borderRadius = el?.customization?.frequentlyBoughtTogether?.button?.borderRadius+"px";
         ADD_TO_CART_BUTTON.style.color = el?.customization?.frequentlyBoughtTogether?.button?.color;
