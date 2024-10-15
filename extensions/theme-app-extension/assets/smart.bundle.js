@@ -4382,7 +4382,7 @@ function createBundle(BUNDLE_DATA) {
           }else{
             Badge_Text.innerText = `Free`;
           }
-          DISCOUNT_BADGE_DIV.append(Badge_Text);
+          DISCOUNT_BADGE_Internal_DIV.append(Badge_Text);
           Badge_Text.style.color = el?.customization?.buyXgetY?.DiscountBadge?.color;
           Badge_Text.style.fontSize = `${el?.customization?.buyXgetY?.DiscountBadge?.fontSize}px`;
           MAIN_GET_PRODUCT_NAME_IMAGE_DIV.append(DISCOUNT_BADGE_DIV);
