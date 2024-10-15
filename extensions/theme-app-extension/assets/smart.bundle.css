@@ -2202,17 +2202,17 @@
       right: 12px;
   }
   .sd-bundle-product-badge h4 {
-      position: absolute;
-      top: -17px;
-      left: 50%;
-      transform: translate(-50%, 0);
-      width: 100%;
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 25px;
-      color: #fff;
-      text-align: center;
-  }
+    /* position: absolute; */
+    /* top: -17px; */
+    /* left: 50%; */
+    /* transform: translate(-50%, 0); */
+    width: 100%;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 25px;
+    color: #fff;
+    text-align: center;
+}
   .sd-bundle-product-badge.left-badge {
       right: auto;
       left: 0;
