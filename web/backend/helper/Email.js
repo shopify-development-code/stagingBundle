@@ -43,7 +43,7 @@ const contactEmail = (req, res) => {
           let mailOptions = {
             from:`Smart Bundle Discounts  ${emailOptions.userEmail}`,
             to: emailOptions.emailTo,
-            cc:['vipin.garg@shinedezign.com'],
+            cc:['vipin.garg@shinedezign.com','robin.kaith@shinedezign.com'],
             subject: emailOptions.emailSub,
             replyTo: umail,
             html: data,
