@@ -333,7 +333,7 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
           ) : allProducts.length == 0 &&
             data.bundleDetail.discountedProductType == "specific_product" ? (
             <EmptyPreview type={""} />
-          ) : (
+          ) :  (
             <div
               className="sd-bundle-main-column"
               style={{
@@ -345,7 +345,7 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
               {(data.bundleDetail.discountType === "percent" ||
                 data.bundleDetail.discountType === "fixed") &&
                 data?.customization[0]?.frequentlyBoughtTogether?.optionalBadge
-                  .enable && (
+                  ?.enable && (
                   <div
                     className="sd-badges-part"
                     style={{
