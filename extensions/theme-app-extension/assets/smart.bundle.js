@@ -4342,37 +4342,48 @@ function createBundle(BUNDLE_DATA) {
           BXGY_DIV.append(MAIN_GET_PRODUCT_NAME_IMAGE_DIV);
 
         let DISCOUNT_BADGE_DIV = document.createElement("div");
-          if(el?.customization?.buyXgetY?.DiscountBadge?.badgeType == "rightBanner"){
-            DISCOUNT_BADGE_DIV.className = "sd-bundle-product-badge";
-            DISCOUNT_BADGE_DIV.innerHTML = `<svg
-                      width="91"
-                      height="24"
-                      viewBox="0 0 91 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M0 10L8.63148 0H83.3261L91 10H0Z"
-                        fill= ${
-                          el?.customization?.buyXgetY?.DiscountBadge
-                            ?.backgroundColor
-                        }
-                      />
-                      <path
-                        d="M9 0H83V19C83 21.7614 80.7614 24 78 24H14C11.2386 24 9 21.7614 9 19V0Z"
-                        fill= ${
-                          el?.customization?.buyXgetY?.DiscountBadge
-                            ?.backgroundColor
-                        }
-                      />
-                    </svg>`
-          } else{
-            DISCOUNT_BADGE_DIV.className = "sd-bundle-product-badge left-badge";
-            let DISCOUNT_BADGE_Internal_DIV = document.createElement("div");
-            DISCOUNT_BADGE_Internal_DIV.className = "open-badge";
-            DISCOUNT_BADGE_Internal_DIV.style.background = el?.customization?.buyXgetY?.DiscountBadge?.backgroundColor;
-            DISCOUNT_BADGE_DIV.append(DISCOUNT_BADGE_Internal_DIV);
-          }
+        if(el?.customization?.buyXgetY?.DiscountBadge?.badgeType == "rightBanner"){
+          DISCOUNT_BADGE_DIV.className = "sd-bundle-product-badge";
+          DISCOUNT_BADGE_DIV.innerHTML = `<svg
+                    width="91"
+                    height="24"
+                    viewBox="0 0 91 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0 10L8.63148 0H83.3261L91 10H0Z"
+                      fill= ${
+                        el?.customization?.buyXgetY?.DiscountBadge
+                          ?.backgroundColor
+                      }
+                    />
+                    <path
+                      d="M9 0H83V19C83 21.7614 80.7614 24 78 24H14C11.2386 24 9 21.7614 9 19V0Z"
+                      fill= ${
+                        el?.customization?.buyXgetY?.DiscountBadge
+                          ?.backgroundColor
+                      }
+                    />
+                  </svg>`
+                  let Badge_Text = document.createElement("h4");
+                  Badge_Text.style.fontFamily = el?.customization?.buyXgetY?.box?.fontFamily;
+                  if(el.bundleDetail.discountType == "percent"){
+                    Badge_Text.innerText = `${el.bundleDetail.discountValue}% Off`;
+                  }else if(el.bundleDetail.discountType == "fixed"){
+                    Badge_Text.innerText = `${showAmountWithCurrency(el.bundleDetail.discountValue)} Off`;
+                  }else{
+                    Badge_Text.innerText = `Free`;
+                  }
+                  DISCOUNT_BADGE_DIV.append(Badge_Text);
+                  Badge_Text.style.color = el?.customization?.buyXgetY?.DiscountBadge?.color;
+                  Badge_Text.style.fontSize = `${el?.customization?.buyXgetY?.DiscountBadge?.fontSize}px`;
+        } else{
+          DISCOUNT_BADGE_DIV.className = "sd-bundle-product-badge left-badge";
+          let DISCOUNT_BADGE_Internal_DIV = document.createElement("div");
+          DISCOUNT_BADGE_Internal_DIV.className = "open-badge";
+          DISCOUNT_BADGE_Internal_DIV.style.background = el?.customization?.buyXgetY?.DiscountBadge?.backgroundColor;
+          DISCOUNT_BADGE_DIV.append(DISCOUNT_BADGE_Internal_DIV);
           let Badge_Text = document.createElement("h4");
           Badge_Text.style.fontFamily = el?.customization?.buyXgetY?.box?.fontFamily;
           if(el.bundleDetail.discountType == "percent"){
@@ -4385,6 +4396,8 @@ function createBundle(BUNDLE_DATA) {
           DISCOUNT_BADGE_Internal_DIV.append(Badge_Text);
           Badge_Text.style.color = el?.customization?.buyXgetY?.DiscountBadge?.color;
           Badge_Text.style.fontSize = `${el?.customization?.buyXgetY?.DiscountBadge?.fontSize}px`;
+        }
+         
           MAIN_GET_PRODUCT_NAME_IMAGE_DIV.append(DISCOUNT_BADGE_DIV);
           
           let Inner_Y_Div = document.createElement("div");
