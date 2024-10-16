@@ -91,7 +91,7 @@ const VolumeBundle = () => {
         { shop: shop },
         app
       );
-      console.log("test......................",response);
+      // console.log("test......................",response);
       
       setData((prevData) => ({
         ...prevData,
@@ -130,7 +130,7 @@ const VolumeBundle = () => {
     let endPriceArray = [];
 
     data.bundleDetail.discountOptions.map((item, index) => {
-      console.log("helllllooooooo*******", parseFloat(sumArray[index]));
+      // console.log("helllllooooooo*******", parseFloat(sumArray[index]));
       let temp = Array.from({ length: item.quantity }, (x, itemIndex) =>
         data.bundleDetail.discountedProductType == "specific_product"
           ? data.bundleDetail.products[0]?.variants[0].price
@@ -383,7 +383,7 @@ const VolumeBundle = () => {
     let isAscending = false;
 
     update.map((items, updateIndex) => {
-      console.log("fvdghfewghdfgdghfghdsh d dhgfgdsghfvd", items.quantity);
+      // console.log("fvdghfewghdfgdghfghdsh d dhgfgdsghfvd", items.quantity);
       array.push(Number(items.quantity));
     });
     array.forEach(function (value, index, array) {
@@ -394,19 +394,19 @@ const VolumeBundle = () => {
         duplicates.push(value);
       }
     });
-    console.log("***********dfdgfydfdfdfdg**************", array);
+    // console.log("***********dfdgfydfdfdfdg**************", array);
     if (duplicates.length == 0 && update.length > 1) {
       for (let i = 0; i < update.length - 1; i++) {
         if (array[i] > array[i + 1]) {
-          console.log("not in ascending order", array);
+          // console.log("not in ascending order", array);
           return false;
         }
       }
       isAscending = true;
     }
-    console.log("iciiciiciiciiciiciciciciic", isAscending);
+    // console.log("iciiciiciiciiciiciciciciic", isAscending);
     if (isAscending == true) {
-      console.log("enter in delete");
+      // console.log("enter in delete");
       update.map((item, updateIndex) => {
         if (errorArray.includes(`increasingOrder${updateIndex}`) == true) {
           copy.splice(copy.indexOf(`increasingOrder${updateIndex}`), 1);
@@ -420,7 +420,7 @@ const VolumeBundle = () => {
   };
 
   const handleDiscountType = (value, index) => {
-    console.log("hello check the values", value);
+    // console.log("hello check the values", value);
     let update = { ...data };
     update.bundleDetail.discountOptions[index].type = value;
     setData(update);
@@ -758,8 +758,8 @@ const VolumeBundle = () => {
     // }
     // console.log("name regex",validNameAndTitle.test(data.name))
     // console.log("title regex",validNameAndTitle.test(data.title))
-    console.log("name regex", data.name.trim(), "77777");
-    console.log("title regex", data.title.trim());
+    // console.log("name regex", data.name.trim(), "77777");
+    // console.log("title regex", data.title.trim());
     // setData(data.name{})
     if (
       data.bundleDetail.products.length < 1 &&

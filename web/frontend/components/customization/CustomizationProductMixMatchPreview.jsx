@@ -4,7 +4,7 @@ import { PlusOutlined } from "@ant-design/icons";
 import productImg from "../../assets/product.png";
 
 const CustomizationProductMixMatchPreview = ({ data }) => {
-  console.log("check data ****", data);
+  // console.log("check data ****", data);
   const textStyle = {
     fontFamily: `${data?.productMixMatch?.box?.fontFamily || 'inherit'}`
   };

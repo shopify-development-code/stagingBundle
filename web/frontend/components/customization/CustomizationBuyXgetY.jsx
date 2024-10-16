@@ -29,7 +29,7 @@ const CustomizationBuyXgetY = ({ data }) => {
               ...textStyle,
               color: data?.buyXgetY?.title?.color || 'inherit', // default to 'inherit' if not available
               fontSize: (data?.buyXgetY?.title?.fontSize || 15) + "px", // default to 0
-              fontWeight: data?.buyXgetY?.title?.titleBold ? 'bold' : 'normal', // default to 'normal'
+              fontWeight: data?.buyXgetY?.title?.titleBold || 'normal', // default to 'normal'
               textAlign: data?.buyXgetY?.title?.alignment || 'left', // default to 'left'
             }}            
           >
@@ -40,7 +40,7 @@ const CustomizationBuyXgetY = ({ data }) => {
               ...textStyle,
               color: data?.buyXgetY?.title?.descriptionColor || 'inherit', // default to 'inherit' if not available
               fontSize: (data?.buyXgetY?.title?.descriptionFontSize || 15) + "px", // default to 0
-              fontWeight: data?.buyXgetY?.title?.descriptionBold ? 'bold' : 'normal', // default to 'normal'
+              fontWeight: data?.buyXgetY?.title?.descriptionBold || 'normal', // default to 'normal'
               textAlign: data?.buyXgetY?.title?.alignment || 'left', // default to 'left'
             }}            
           >
@@ -190,7 +190,7 @@ const CustomizationBuyXgetY = ({ data }) => {
             backgroundColor: data?.buyXgetY?.productDetails?.productDetailsBox?.backgroundColor || 'transparent', // default to 'transparent' if not available
           }}          
         >
-          {data.buyXgetY.DiscountBadge.badgeType == "leftBanner" ? (
+          {data?.buyXgetY?.DiscountBadge?.badgeType == "leftBanner" ? (
             <div className="sd-bundle-product-badge left-badge ">
               <div
                 className="open-badge"
@@ -251,9 +251,9 @@ const CustomizationBuyXgetY = ({ data }) => {
             <div
               class="sd-bundle-product-img"
               style={{
-                borderColor: data.buyXgetY.productDetails.image.borderColor,
+                borderColor: data?.buyXgetY?.productDetails?.image?.borderColor|| 'black',
                 borderRadius:
-                  data.buyXgetY.productDetails.image.borderRadius + "px",
+                  data?.buyXgetY?.productDetails?.image?.borderRadius + "px",
               }}
             >
               <img src={productImg} width="80" height="80" />

@@ -11,7 +11,7 @@ const BXGYBundlePreview = ({
   showPrice,
   handleVariantChoice,
 }) => {
-  console.log("trest df wtedgf eydtyu", data);
+  // console.log("trest df wtedgf eydtyu", data);
   const { shop, timeZone, currencyCode } = useAPI();
   const fontFamily = {
     fontFamily: data?.customization?.[0]?.buyXgetY?.box?.fontFamily || 'inherit',
@@ -171,7 +171,7 @@ const BXGYBundlePreview = ({
                   backgroundColor: data.customization[0]?.buyXgetY?.productDetails?.productDetailsBox?.backgroundColor ?? 'transparent',
                 }}                
               >
-                {data.customization[0].buyXgetY.DiscountBadge.badgeType ==
+                {data?.customization[0]?.buyXgetY?.DiscountBadge?.badgeType ==
                 "leftBanner" ? (
                   <div className="sd-bundle-product-badge left-badge ">
                     <div

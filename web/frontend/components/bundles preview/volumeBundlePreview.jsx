@@ -39,7 +39,7 @@ const VolumeBundlePreview = ({
   const handleOptionChange = (e, index) => {
     setSelectedOption(e.target.value);
     // setDiscountType(data.bundleDetail.discountOptions[index].type)
-    console.log("ehheherghgr", data, index);
+    // console.log("ehheherghgr", data, index);
     setDiscountType(data.bundleDetail?.discountOptions[index].type);
   };
 

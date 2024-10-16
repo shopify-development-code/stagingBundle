@@ -12,7 +12,7 @@ const ProductMixMatchPreview = ({
   discountIndex,
 }) => {
   let freeShipping = "Free Shipping";
-  console.log("cfdh", data);
+  // console.log("cfdh", data);
   const fontSize = {
     fontFamily: data?.customization[0]?.productMixMatch?.box?.fontFamily || 'inherit',
   };
@@ -32,10 +32,10 @@ const ProductMixMatchPreview = ({
             <h4
              style={{
               ...fontSize,
-              color: data.customization[0]?.productMixMatch?.title?.color,
-              fontSize: (data.customization[0]?.productMixMatch?.title?.fontSize ?? 0) + "px", 
+              color: data.customization[0]?.productMixMatch?.title?.color ?? 'black',
+              fontSize: (data.customization[0]?.productMixMatch?.title?.fontSize ?? 14) + "px", 
               textAlign: data.customization[0]?.productMixMatch?.title?.alignment,
-              fontWeight: data.customization[0]?.productMixMatch?.title?.titleBold ? 'bold' : 'normal',
+              fontWeight: data.customization[0]?.productMixMatch?.title?.titleBold || 'normal',
             }}
             >
               {data.title}
@@ -43,9 +43,9 @@ const ProductMixMatchPreview = ({
             <p
               style={{
                 ...fontSize,
-                color: data.customization[0]?.productMixMatch?.title?.descriptionColor,
-                fontSize: (data.customization[0]?.productMixMatch?.title?.descriptionFontSize ?? 0) + "px",
-                fontWeight: data.customization[0]?.productMixMatch?.title?.descriptionBold ? 'bold' : 'normal',
+                color: data.customization[0]?.productMixMatch?.title?.descriptionColor ?? 'black',
+                fontSize: (data.customization[0]?.productMixMatch?.title?.descriptionFontSize ?? 14) + "px",
+                fontWeight: data.customization[0]?.productMixMatch?.title?.descriptionBold || 'normal',
               }}              
             >
               {data.description}

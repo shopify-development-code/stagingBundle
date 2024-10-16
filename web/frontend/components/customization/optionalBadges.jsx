@@ -9,31 +9,31 @@ import {
 const OptionalBadges = ({ data, setData, bundleOption, displayOption }) => {
 
   const handleText = (newvalue) => {
-    setData({
-      ...data,
+    setData((prevData) => ({
+      ...prevData,
       [bundleOption]: {
-        ...data[bundleOption],
+        ...prevData[bundleOption],
         optionalBadge: {
-          ...data[bundleOption]["optionalBadge"],
+          ...prevData[bundleOption]?.optionalBadge,
           text: newvalue,
         },
       },
-    });
-  };
+    }));
+  };  
 
   const badgeEnableHandler = (e) => {
-    // console.log("  hgwjfdnfew jfj kej", e);
-    setData({
-      ...data,
+    setData((prevData) => ({
+      ...prevData,
       [bundleOption]: {
-        ...data[bundleOption],
+        ...prevData[bundleOption],
         optionalBadge: {
-          ...data[bundleOption]["optionalBadge"],
+          ...prevData[bundleOption]?.optionalBadge,
           enable: e,
         },
       },
-    });
+    }));
   };
+  
 
   return (
     <div className="sd-bundle-titleCustom">
