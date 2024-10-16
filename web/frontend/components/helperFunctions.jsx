@@ -68,27 +68,22 @@ export const handleChangeCommon = (
   bundleOption,
   type
 ) => {
-  console.log("datatatatatatata",e,bundleOption,type);
-  
-  // setData({...data,[key1]:{...(data[key1]),[key2]:e.target.value}})
-  if (type != "alignment") {
-    setData({
-      ...data,
-      [bundleOption]: {
-        ...data[bundleOption],
-        [key1]: { ...data[bundleOption][key1], [key2]: e.target.value },
+  // console.log("datatatatatatata", e, bundleOption, type);
+
+  const valueToSet = type !== "alignment" ? e.target.value : e;
+
+  setData((prevData) => ({
+    ...prevData,
+    [bundleOption]: {
+      ...prevData[bundleOption],
+      [key1]: {
+        ...prevData[bundleOption]?.[key1],
+        [key2]: valueToSet,
       },
-    });
-  } else {
-    setData({
-      ...data,
-      [bundleOption]: {
-        ...data[bundleOption],
-        [key1]: { ...data[bundleOption][key1], [key2]: e },
-      },
-    });
-  }
+    },
+  }));
 };
+
 
 export const handleChangeValueCommon = (
   newvalue,
@@ -98,32 +93,20 @@ export const handleChangeValueCommon = (
   setData,
   bundleOption
 ) => {
-  if (newvalue == "" || newvalue < 0) {
-    setData({ ...data, [key1]: { ...data[key1], [key2]: 1 } });
-    setData({
-      ...data,
-      [bundleOption]: {
-        ...data[bundleOption],
-        [key1]: { ...data[bundleOption][key1], [key2]: 1 },
+  const valueToSet = (newvalue === "" || newvalue < 0) ? 1 : String(newvalue).replace(/^0/, '1');
+
+  setData((prevData) => ({
+    ...prevData,
+    [bundleOption]: {
+      ...prevData[bundleOption],
+      [key1]: {
+        ...prevData[bundleOption]?.[key1],
+        [key2]: valueToSet,
       },
-    });
-  } else {
-    newvalue = String(newvalue);
-    //      if(sizeValue != "" && newvalue > sizeValue ){
-    //       newvalue = sizeValue
-    //  setData({...data,[bundleOption]:{...(data[bundleOption]),[key1]:{...(data[bundleOption][key1]),[key2]:newvalue}}})
-    //      }else{
-    newvalue = newvalue.replace(/^0/, 1);
-    setData({
-      ...data,
-      [bundleOption]: {
-        ...data[bundleOption],
-        [key1]: { ...data[bundleOption][key1], [key2]: newvalue },
-      },
-    });
-    //  }
-  }
+    },
+  }));
 };
+
 
 export const handleChangeCommon2 = (
   e,
@@ -134,17 +117,25 @@ export const handleChangeCommon2 = (
   setData,
   bundleOption
 ) => {
-  setData({
-    ...data,
+  // console.log("f ewew f", e);
+
+  const newValue = e.target.value;
+
+  setData((prevData) => ({
+    ...prevData,
     [bundleOption]: {
-      ...data[bundleOption],
+      ...prevData[bundleOption],
       [key1]: {
-        ...data[bundleOption][key1],
-        [key2]: { ...data[bundleOption][key1][key2], [key3]: e.target.value },
+        ...prevData[bundleOption]?.[key1],
+        [key2]: {
+          ...prevData[bundleOption]?.[key1]?.[key2],
+          [key3]: newValue,
+        },
       },
     },
-  });
+  }));
 };
+
 
 export const handleChangeValueCommon2 = (
   newvalue,
@@ -155,31 +146,35 @@ export const handleChangeValueCommon2 = (
   setData,
   bundleOption
 ) => {
-  if (newvalue == "" || newvalue < 0) {
-    setData({
-      ...data,
+  if (newvalue === "" || newvalue < 0) {
+    setData((prevData) => ({
+      ...prevData,
       [bundleOption]: {
-        ...data[bundleOption],
+        ...prevData[bundleOption],
         [key1]: {
-          ...data[bundleOption][key1],
-          [key2]: { ...data[bundleOption][key1][key2], [key3]: 0 },
-        },
-      },
-    });
-  } else {
-    newvalue = String(newvalue);
-    {
-      newvalue = newvalue.replace(/^0/, "");
-      setData({
-        ...data,
-        [bundleOption]: {
-          ...data[bundleOption],
-          [key1]: {
-            ...data[bundleOption][key1],
-            [key2]: { ...data[bundleOption][key1][key2], [key3]: newvalue },
+          ...prevData[bundleOption]?.[key1],
+          [key2]: {
+            ...prevData[bundleOption]?.[key1]?.[key2],
+            [key3]: 0,
           },
         },
-      });
-    }
+      },
+    }));
+  } else {
+    // console.log("testestestest.....................", key1, key2, key3, data);
+    newvalue = String(newvalue).replace(/^0/, "");
+    setData((prevData) => ({
+      ...prevData,
+      [bundleOption]: {
+        ...prevData[bundleOption],
+        [key1]: {
+          ...prevData[bundleOption]?.[key1],
+          [key2]: {
+            ...prevData[bundleOption]?.[key1]?.[key2],
+            [key3]: newvalue,
+          },
+        },
+      },
+    }));
   }
 };

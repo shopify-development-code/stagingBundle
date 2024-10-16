@@ -7,7 +7,7 @@ import pic from "../../assets/image2.png";
 import EmptyPreview from "../commonSections/emptyPreview";
 
 const CollectionBundlePreview = ({ data, currency }) => {
-  console.log("test test", data);
+  // console.log("test test", data);
   const fontFamily = {
     fontFamily: data?.customization?.[0]?.collectionMixMatch?.box?.fontFamily || 'inherit',
   };  

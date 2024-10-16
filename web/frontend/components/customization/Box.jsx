@@ -4,51 +4,43 @@ import { Grid, RangeSlider, Select, TextField } from "@shopify/polaris";
 const Box = (props) => {
   let dataToChange = props["data"][props.bundleOption];
   const handleChangeCommon = (e, key1, key2, bundleOption) => {
-    props.setData({
-      ...props.data,
+    const newValue = e.target.value;
+  
+    props.setData((prevData) => ({
+      ...prevData,
       [bundleOption]: {
-        ...props["data"][props.bundleOption],
+        ...prevData[bundleOption],
         [key1]: {
-          ...props["data"][props.bundleOption][key1],
-          [key2]: e.target.value,
+          ...prevData[bundleOption]?.[key1],
+          [key2]: newValue,
         },
       },
-    });
+    }));
   };
+  
   const handleChangeValueCommon = (newvalue, key1, key2, bundleOption) => {
-    if (newvalue == "" || newvalue < 0) {
-      props.setData({
-        ...props.data,
-        [bundleOption]: {
-          ...props["data"][props.bundleOption],
-          [key1]: { ...props["data"][props.bundleOption][key1], [key2]: 0 },
-        },
-      });
+    let valueToSet = 0;
+  
+    if (newvalue === "" || newvalue < 0) {
+      valueToSet = 0;
     } else if (newvalue > 30) {
-      props.setData({
-        ...props.data,
-        [bundleOption]: {
-          ...props["data"][props.bundleOption],
-          [key1]: { ...props["data"][props.bundleOption][key1], [key2]: 30 },
-        },
-      });
+      valueToSet = 30;
     } else {
-      newvalue = String(newvalue);
-      {
-        newvalue = newvalue.replace(/^0/, "");
-        props.setData({
-          ...props.data,
-          [bundleOption]: {
-            ...props["data"][props.bundleOption],
-            [key1]: {
-              ...props["data"][props.bundleOption][key1],
-              [key2]: newvalue,
-            },
-          },
-        });
-      }
+      valueToSet = String(newvalue).replace(/^0/, "");
     }
+  
+    props.setData((prevData) => ({
+      ...prevData,
+      [bundleOption]: {
+        ...prevData[bundleOption],
+        [key1]: {
+          ...prevData[bundleOption]?.[key1],
+          [key2]: valueToSet,
+        },
+      },
+    }));
   };
+  
   const options = [
     { label: "Current Theme Font", value: "inherit" },
     { label: "Cursive", value: "cursive" },

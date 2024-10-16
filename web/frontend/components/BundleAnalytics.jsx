@@ -34,7 +34,7 @@ const BundleAnalytics = () => {
       setBtnDisabled(false)
 
       let data = response.data.response
-      console.log("data", data)
+      // console.log("data", data)
       bundleclickSum(data)
       bundleViewSum(data)
       bundleSalesSum(data)

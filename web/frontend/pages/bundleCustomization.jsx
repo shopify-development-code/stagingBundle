@@ -37,7 +37,7 @@ const BundleCustomization = () => {
     }
     if (response.data.status == 200) {
       setSpinner(false)
-      console.log("check response=====>>>>", response.data.response.buyXgetY);
+      // console.log("check response=====>>>>", response.data.response.buyXgetY);
       setData({
         bundle: response.data.response.bundle,
         volume: response.data.response.volume,

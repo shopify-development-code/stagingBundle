@@ -1,7 +1,7 @@
 import { RadioButton } from "@shopify/polaris";
 import React, { useState } from "react";
 const Design = (props) => {
-  let designOption = props.data.frequentlyBoughtTogether.design;
+  let designOption = props?.data?.frequentlyBoughtTogether?.design;
   let [checkedOption, setChecked] = useState(designOption);
   const handleChange = (e, id) => {
     setChecked(id);

@@ -77,7 +77,7 @@ const CollectionMixMatch = () => {
         { shop: shop },
         app
       );
-      console.log("test......................",response);
+      // console.log("test......................",response);
       
       setData((prevData) => ({
         ...prevData,

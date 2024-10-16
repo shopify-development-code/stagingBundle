@@ -125,7 +125,7 @@ const ProductMixMatch = () => {
         { shop: shop },
         app
       );
-      console.log("test......................",response);
+      // console.log("test......................",response);
       
       setData((prevData) => ({
         ...prevData,
@@ -267,7 +267,7 @@ const ProductMixMatch = () => {
         }
       });
     } else {
-      console.log("enter in save function");
+      // console.log("enter in save function");
       let alertText = [];
       let flag = true;
 
@@ -311,7 +311,7 @@ const ProductMixMatch = () => {
       //   alertText.push("Please select start date & time");
       // }
       if (errorArray.length != 0) {
-        console.log("enter in flag false section------->>>>>>------>>>>>");
+        // console.log("enter in flag false section------->>>>>>------>>>>>");
         flag = false;
         alertText.push("Options quantities must be in increasing order");
       }
@@ -319,7 +319,7 @@ const ProductMixMatch = () => {
         data.bundleDetail.multiItemSelection.enable == true &&
         data.bundleDetail.multiProductsArray.multiProductArray.length == 0
       ) {
-        console.log("enter in new functions");
+        // console.log("enter in new functions");
         flag = false;
         alertText.push(
           `You have enabled multi select option but not selected any product, Please select at least one product`
@@ -329,7 +329,7 @@ const ProductMixMatch = () => {
         data.bundleDetail.requiredItem.enable == true &&
         data.bundleDetail.requiredProductsArray.requiredProductArray.length == 0
       ) {
-        console.log("enter in requiredItem functions");
+        // console.log("enter in requiredItem functions");
         flag = false;
         alertText.push(
           `You have enabled required item option but not selected any product, Please select at least one product`
@@ -343,7 +343,7 @@ const ProductMixMatch = () => {
         setSpinner(true);
         setErrorArray("");
         setPickerError([]);
-        console.log("enter in else section=====-----=====------=====>>>>>>>>>");
+        // console.log("enter in else section=====-----=====------=====>>>>>>>>>");
         if (param.id == "create") {
           try {
             const response = await postApi(
@@ -535,7 +535,7 @@ const ProductMixMatch = () => {
         duplicates.push(value);
       }
     });
-    console.log("dfgdhgfdsghfg dshcgfyjdsgyfgdygfjgfy yyjg", array, duplicates);
+    // console.log("dfgdhgfdsghfg dshcgfyjdsgyfgdygfjgfy yyjg", array, duplicates);
     if (duplicates.length == 0) {
       for (let i = 0; i < update.length - 1; i++) {
         if (update[i].quantity > update[i + 1].quantity) {
@@ -561,7 +561,7 @@ const ProductMixMatch = () => {
   const handleDiscountQuantity = (newvalue, index) => {
     if (newvalue == "" || newvalue <= 1) {
     } else if (newvalue != "" && newvalue != 0) {
-      console.log("else......");
+      // console.log("else......");
       let update = { ...data };
       update.bundleDetail.discountOptions[index].quantity = parseInt(newvalue);
 
