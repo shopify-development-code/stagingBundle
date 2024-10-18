@@ -205,6 +205,7 @@ export async function getBundleData(req, res) {
           title: 1,
           description:1,
           status: 1,
+          badgeText: 1,
           currencyCode: 1,
           bundleDetail: 1,
           startdate: 1,

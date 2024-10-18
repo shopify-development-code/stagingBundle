@@ -52,6 +52,7 @@ function CreateBundle() {
     name: "",
     title: "",
     description: "",
+    badgeText: "",  
     status: "active",
     startdate: "",
     endDate: "",
@@ -544,6 +545,7 @@ function CreateBundle() {
       }
     }
   };
+console.log("test ...............",data);
 
   return (
     <Spin spinning={spinner} size="large">

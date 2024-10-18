@@ -85,39 +85,6 @@ const Options = ({ bundleOption, data, setData, displayOption }) => {
         
         <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
           <div className="sd-bundle-custom-item-common">
-            {" "}
-            <div className="sd-bundle-custom-item-heading-common">
-              Select Badges
-            </div>
-            <Radio.Group
-              onChange={(e) =>
-                handleChangeValueCommon2(
-                  e.target.value,
-                  "options",
-                  "DiscountBadge",
-                  "badgeType",
-                  data,
-                  setData,
-                  bundleOption
-                )
-              }
-              value={data[bundleOption]?.options?.DiscountBadge?.badgeType}
-            >
-              <Space direction="vertical">
-                <Radio value="rightBanner">
-                  <img src={RightBanner} />
-                </Radio>
-
-                <Radio value="options">
-                  <img src={BadgeOption} className="BADGE" />
-                </Radio>
-              </Space>
-            </Radio.Group>
-          </div>
-        </Grid.Cell>
-        
-        <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
-          <div className="sd-bundle-custom-item-common">
             <p className="sd-bundle-custom-item-heading-common">
               Discount Badge{" "}
             </p>
@@ -199,40 +166,6 @@ const Options = ({ bundleOption, data, setData, displayOption }) => {
                 output
               />
             )}
-          </div>
-        </Grid.Cell>
-        <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
-          <div className="sd-bundle-custom-item-common">
-          <div className="sd-bundle-custom-item-heading-common">
-            Edit Badge Text
-          </div>
-            <TextField
-              type="text"
-              // placeholder="set minimum order  for item"
-              onChange={(e)=>handleText(e)}
-              value={data[bundleOption]?.options?.DiscountBadge?.text}
-              // autoComplete="off"
-              // min="0"
-            />
-            <RangeSlider
-              label="Font Size"
-              onChange={(newvalue) =>
-                handleChangeValueCommon2(
-                  newvalue,
-                  "options",
-                  "saveDiscount",
-                  "fontSize",
-                  data,
-                  setData,
-                  bundleOption
-                )
-              }
-              suffix={data[bundleOption]?.options?.saveDiscount?.fontSize}
-              value={data[bundleOption]?.options?.saveDiscount?.fontSize}
-              min={10}
-              max={16}
-              output
-            />
           </div>
         </Grid.Cell>
       </Grid>

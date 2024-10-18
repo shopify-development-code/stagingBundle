@@ -37,14 +37,13 @@ const OptionalBadges = ({ data, setData, bundleOption, displayOption }) => {
 
   return (
     <div className="sd-bundle-titleCustom">
-      <p className="sd-bundle-custom-item-heading-common optionalBadge">
+      {/* <p className="sd-bundle-custom-item-heading-common optionalBadge">
         Enable Badge{" "}
         <Switch
           onChange={(e) => badgeEnableHandler(e)}
           checked={data[bundleOption]?.optionalBadge?.enable}
         />
-      </p>
-      {data[bundleOption]?.optionalBadge?.enable == true && (
+      </p> */}
         <Grid>
           <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
             <div className="sd-bundle-custom-item-common">
@@ -96,39 +95,7 @@ const OptionalBadges = ({ data, setData, bundleOption, displayOption }) => {
               </div>
             </div>
           </Grid.Cell>
-          <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
-            <div className="sd-bundle-custom-item-common">
-              <div className="sd-bundle-custom-item-heading-common">
-                Edit Badge Text
-              </div>
-              <TextField
-                type="text"
-                onChange={handleText}
-                value={data[bundleOption]?.optionalBadge?.text}
-                maxLength={20}
-              />
-              <RangeSlider
-                label="Font Size"
-                onChange={(e) =>
-                  handleChangeValueCommon(
-                    e,
-                    "optionalBadge",
-                    "fontSize",
-                    data,
-                    setData,
-                    bundleOption
-                  )
-                }
-                suffix={data[bundleOption]?.optionalBadge?.fontSize}
-                value={data[bundleOption]?.optionalBadge?.fontSize}
-                min={10}
-                max={15}
-                output
-              />
-            </div>
-          </Grid.Cell>
         </Grid>
-      )}
     </div>
   );
 };

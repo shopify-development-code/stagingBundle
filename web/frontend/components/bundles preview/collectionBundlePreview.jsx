@@ -17,13 +17,16 @@ const CollectionBundlePreview = ({ data, currency }) => {
       <div className="sd-bundle-bundleSection-heading-common">Preview</div>
       {data.bundleDetail.products.length > 0 ? (
         <div
-          className="sd-collection-main-column"
+          className="sd-collection-main-column "
           style={{
             backgroundColor: data?.customization?.[0]?.collectionMixMatch?.box?.backgroundColor,
             borderRadius: `${data?.customization?.[0]?.collectionMixMatch?.box?.borderRadius}px`,
             borderColor: data?.customization?.[0]?.collectionMixMatch?.box?.borderColor,
           }}          
         >
+          {(data?.badgeText !== "" && data?.badgeText !== undefined) &&
+            ((data?.bundleDetail?.discountType === "percent" ||
+              data?.bundleDetail?.discountType === "fixed") && (
           <span
             className="sd-badges-part"
             style={{
@@ -33,10 +36,12 @@ const CollectionBundlePreview = ({ data, currency }) => {
               fontSize: `${data?.customization?.[0]?.collectionMixMatch?.DiscountBadge?.fontSize}px`
             }}            
           >
-            {data?.customization?.[0]?.collectionMixMatch?.DiscountBadge?.text}
+            {data?.badgeText}
           </span>
+          ))}
           <div
-            className="sd-bundle-text-detail"
+            className={`sd-bundle-text-detail ${((data?.badgeText != "" && data?.badgeText != undefined) && (data?.bundleDetail?.discountType === "percent" ||
+              data?.bundleDetail?.discountType === "fixed") )? "extra-padding" : ""}`}
             style={{
               textAlign: data?.customization?.[0]?.collectionMixMatch?.title?.alignment
             }}            

@@ -21,9 +21,9 @@ const VolumeBundlePreview = ({
   const [arr, setArr] = useState([]);
   const [discountType, setDiscountType] = useState(discountTypes);
   const fontFamily = {
-    fontFamily: data?.customization?.[0]?.volume?.box?.fontFamily || 'inherit',
+    fontFamily: data?.customization?.[0]?.volume?.box?.fontFamily || "inherit",
   };
-  
+
   const [selectedOption, setSelectedOption] = useState("option0");
 
   // document.getElementsByClassName("quantity-button").disabled = true;
@@ -42,6 +42,7 @@ const VolumeBundlePreview = ({
     // console.log("ehheherghgr", data, index);
     setDiscountType(data.bundleDetail?.discountOptions[index].type);
   };
+// console.log("jhfhh hd f",data?.customization[0]?.volume?.options?.saveDiscount?.backgroundColor);
 
   return (
     <div className="sd-bundle-bundleSection-common">
@@ -51,10 +52,11 @@ const VolumeBundlePreview = ({
         <div
           className="sd-bundle-main-column"
           style={{
-            backgroundColor: data?.customization?.[0]?.volume?.box?.backgroundColor,
+            backgroundColor:
+              data?.customization?.[0]?.volume?.box?.backgroundColor,
             borderColor: data?.customization?.[0]?.volume?.box?.borderColor,
             borderRadius: `${data?.customization?.[0]?.volume?.box?.borderRadius}px`,
-          }}          
+          }}
         >
           <div className="sd-bundle-text-detail">
             <h4
@@ -64,18 +66,20 @@ const VolumeBundlePreview = ({
                 fontSize: `${data?.customization?.[0]?.volume?.title?.fontSize}px`,
                 textAlign: data?.customization?.[0]?.volume?.title?.alignment,
                 fontWeight: data?.customization?.[0]?.volume?.title?.titleBold,
-              }}              
+              }}
             >
               {data.title}
             </h4>
             <p
-             style={{
-              ...fontFamily,
-              color: data?.customization?.[0]?.volume?.title?.descriptionColor,
-              fontSize: `${data?.customization?.[0]?.volume?.title?.descriptionFontSize}px`,
-              textAlign: data?.customization?.[0]?.volume?.title?.alignment,
-              fontWeight: data?.customization?.[0]?.volume?.title?.descriptionBold,
-            }}            
+              style={{
+                ...fontFamily,
+                color:
+                  data?.customization?.[0]?.volume?.title?.descriptionColor,
+                fontSize: `${data?.customization?.[0]?.volume?.title?.descriptionFontSize}px`,
+                textAlign: data?.customization?.[0]?.volume?.title?.alignment,
+                fontWeight:
+                  data?.customization?.[0]?.volume?.title?.descriptionBold,
+              }}
             >
               {data?.description}
             </p>
@@ -85,9 +89,48 @@ const VolumeBundlePreview = ({
               className="sd-volume-bundle-detail"
               style={{
                 backgroundColor:
-                  data?.customization[0]?.volume?.productDetails?.productDetailsBox?.backgroundColor|| "white",
+                  data?.customization[0]?.volume?.productDetails
+                    ?.productDetailsBox?.backgroundColor || "white",
               }}
             >
+              {item?.badgeText != "" && item?.badgeText != undefined && (
+                <div class="style_badge">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="8"
+                    height="8"
+                    viewBox="0 0 8 8"
+                    fill="none"
+                  >
+                    <path
+                      d="M8 0L0 8H8V0Z"
+                      fill={`${data?.customization[0]?.volume?.options?.saveDiscount?.backgroundColor}`}
+                    ></path>
+                    <path d="M8 0L0 8H8V0Z" fill="black" opacity="0.2"></path>
+                  </svg>
+                  <span
+                    style={{
+                      backgroundColor:
+                        data?.customization[0]?.volume?.options?.saveDiscount?.backgroundColor,
+                    }}
+                  >
+                    {item?.badgeText}
+                  </span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="8"
+                    height="8"
+                    viewBox="0 0 8 8"
+                    fill="none"
+                  >
+                    <path
+                      d="M0 0L8 8H0V0Z"
+                      fill={`${data?.customization[0]?.volume?.options?.saveDiscount?.backgroundColor}`}
+                    ></path>
+                    <path d="M0 0L8 8H0V0Z" fill="black" opacity="0.2"></path>
+                  </svg>
+                </div>
+              )}
               <div className="sd-select-radio-with-text">
                 <div className="radio">
                   <input
@@ -106,7 +149,7 @@ const VolumeBundlePreview = ({
                       ...fontFamily,
                       color: data?.customization?.[0]?.volume?.options?.color,
                       fontSize: `${data?.customization?.[0]?.volume?.options?.fontSize}px`,
-                    }}                    
+                    }}
                   >
                     {item?.description ==
                       `Buy ${item?.quantity} & Save {discount}` ||
@@ -115,7 +158,8 @@ const VolumeBundlePreview = ({
                       <>
                         <span style={{ ...fontFamily }}>
                           Buy{" "}
-                          {index === data?.bundleDetail?.discountOptions?.length - 1 &&
+                          {index ===
+                            data?.bundleDetail?.discountOptions?.length - 1 &&
                           data?.bundleDetail?.allowDiscountOnIncrease === true
                             ? item.quantity + "+"
                             : item.quantity}{" "}
@@ -127,10 +171,10 @@ const VolumeBundlePreview = ({
                             : ""}
                         </span>
                         <span style={{ ...fontFamily }}>
-                          {item.type == "percent" || item.type == "fixed"
+                          {item.type == "percent"
                             ? item.value
-                            : item.type == "price"
-                              ? ""
+                            : item.type == "fixed"
+                              ? showAmountWithCurrency(item.value,currency)
                               : null}
                         </span>
                         <span style={{ ...fontFamily }}>
@@ -142,82 +186,6 @@ const VolumeBundlePreview = ({
                     )}
                   </label>
                 </div>
-                {item.type != "noDiscount" && item.type != "freeShipping" ? (
-                 data?.customization?.[0]?.volume?.options?.DiscountBadge?.badgeType == "options" || " " ? (
-                    <div
-                      className="sd-percent-badge"
-                      style={{
-                        backgroundColor: data?.customization?.[0]?.volume?.options?.saveDiscount?.backgroundColor,
-                        borderRadius: `${data?.customization?.[0]?.volume?.options?.saveDiscount?.borderRadius}px`,
-                      }}                      
-                    >
-                      <span
-                        style={{
-                          ...fontFamily,
-                          color: data?.customization?.[0]?.volume?.options?.saveDiscount?.color, 
-                          fontSize: `${data?.customization?.[0]?.volume?.options?.saveDiscount?.fontSize}px`
-                        }}
-                      >
-                        {item.type == "fixed"
-                          ? showAmountWithCurrency(
-                              (sumData[index] - endPriceData[index]),
-                              currency
-                            )
-                          : data.bundleDetail.discountOptions[index].value}
-                        {item.type == "percent"
-                          ? "% off"
-                          : item.type == "fixed"
-                            ? " off"
-                            : ""}
-                      </span>
-                    </div>
-                  ) : (
-                    <div className="sd-bundle-product-badge2 ">
-                      <svg
-                        width="91"
-                        height="24"
-                        viewBox="0 0 91 24"
-                        fill="none"
-                        xmlns="
-          http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M0 10L8.63148 0H83.3261L91 10H0Z"
-                          fill={
-                            data?.customization?.[0]?.volume?.options?.saveDiscount?.backgroundColor
-                          }
-                        />
-                        <path
-                          d="M9 0H83V19C83 21.7614 80.7614 24 78 24H14C11.2386 24 9 21.7614 9 19V0Z"
-                          fill={
-                            data?.customization?.[0]?.volume?.options?.saveDiscount?.backgroundColor
-                          }
-                        />
-                      </svg>
-                      <h4
-                       style={{
-                        ...fontFamily,
-                        color: data?.customization?.[0]?.volume?.options?.saveDiscount?.color,
-                        fontSize: `${data?.customization?.[0]?.volume?.options?.saveDiscount?.fontSize}px`
-                      }}
-                      >
-                        {item.type == "fixed"
-                          ? showAmountWithCurrency(
-                              (sumData[index] - endPriceData[index]),
-                              currency
-                            )
-                          : data.bundleDetail.discountOptions[index].value}
-                        {item.type == "percent"
-                          ? "% Off"
-                          : item.type == "fixed"
-                            ? " Off"
-                            : ""}
-                      </h4>
-                    </div>
-                  )
-                ) : (
-                  <></>
-                )}
               </div>
               {selected == index && (
                 <div className="sd-bundle-product-detail">
@@ -225,8 +193,10 @@ const VolumeBundlePreview = ({
                     <div
                       className="sd-bundle-product-img"
                       style={{
-                        borderColor: data?.customization?.[0]?.volume?.productDetails?.image?.borderColor,
-                        borderRadius: `${data?.customization?.[0]?.volume?.productDetails?.image?.borderRadius}px`
+                        borderColor:
+                          data?.customization?.[0]?.volume?.productDetails
+                            ?.image?.borderColor,
+                        borderRadius: `${data?.customization?.[0]?.volume?.productDetails?.image?.borderRadius}px`,
                       }}
                     >
                       <img
@@ -256,8 +226,10 @@ const VolumeBundlePreview = ({
                       <h5
                         style={{
                           ...fontFamily,
-                          color: data?.customization?.[0]?.volume?.productDetails?.title?.color,
-                          fontSize: `${data?.customization?.[0]?.volume?.productDetails?.title?.fontSize}px`
+                          color:
+                            data?.customization?.[0]?.volume?.productDetails
+                              ?.title?.color,
+                          fontSize: `${data?.customization?.[0]?.volume?.productDetails?.title?.fontSize}px`,
                         }}
                       >
                         {data.bundleDetail.discountedProductType ==
@@ -269,9 +241,11 @@ const VolumeBundlePreview = ({
                       <h4
                         style={{
                           ...fontFamily,
-                          color: data?.customization?.[0]?.volume?.productDetails?.price?.color,
-                          fontSize: `${data?.customization?.[0]?.volume?.productDetails?.price?.fontSize}px`
-                        }}                        
+                          color:
+                            data?.customization?.[0]?.volume?.productDetails
+                              ?.price?.color,
+                          fontSize: `${data?.customization?.[0]?.volume?.productDetails?.price?.fontSize}px`,
+                        }}
                       >
                         {data.bundleDetail.discountedProductType ==
                           "all_products" ||
@@ -294,12 +268,18 @@ const VolumeBundlePreview = ({
                               return (
                                 (idx <= 1 || showMore) && (
                                   <select
-                                  style={{
-                                    ...fontFamily,
-                                    backgroundColor: data?.customization?.[0]?.volume?.productDetails?.variantSelector?.backgroundColor,
-                                    color: data?.customization?.[0]?.volume?.productDetails?.variantSelector?.color,
-                                    width: `${data?.customization?.[0]?.volume?.productDetails?.variantSelector?.width}px`
-                                  }}
+                                    style={{
+                                      ...fontFamily,
+                                      backgroundColor:
+                                        data?.customization?.[0]?.volume
+                                          ?.productDetails?.variantSelector
+                                          ?.backgroundColor,
+                                      color:
+                                        data?.customization?.[0]?.volume
+                                          ?.productDetails?.variantSelector
+                                          ?.color,
+                                      width: `${data?.customization?.[0]?.volume?.productDetails?.variantSelector?.width}px`,
+                                    }}
                                     onChange={(e, main) =>
                                       handleVariantChoice(e, index, idx)
                                     }
@@ -344,16 +324,18 @@ const VolumeBundlePreview = ({
                     <h6
                       style={{
                         ...fontFamily,
-                        color: data?.customization?.[0]?.volume?.productDetails?.quantities?.color,
-                        fontSize: `${data?.customization?.[0]?.volume?.productDetails?.quantities?.size}px`
-                      }}                      
+                        color:
+                          data?.customization?.[0]?.volume?.productDetails
+                            ?.quantities?.color,
+                        fontSize: `${data?.customization?.[0]?.volume?.productDetails?.quantities?.size}px`,
+                      }}
                     >
                       Qty:{" "}
                       <span
                         style={{
                           ...fontFamily,
-                          fontSize: `${data?.customization?.[0]?.volume?.productDetails?.quantities?.size}px`
-                        }}                        
+                          fontSize: `${data?.customization?.[0]?.volume?.productDetails?.quantities?.size}px`,
+                        }}
                       >
                         {item?.quantity}
                       </span>
@@ -370,17 +352,19 @@ const VolumeBundlePreview = ({
                 style={{
                   ...fontFamily,
                   color: data?.customization?.[0]?.volume?.totalSection?.color,
-                  fontSize: `${data?.customization?.[0]?.volume?.totalSection?.fontSize}px`
-                }}                
+                  fontSize: `${data?.customization?.[0]?.volume?.totalSection?.fontSize}px`,
+                }}
               >
                 {data?.customization?.[0]?.volume?.totalSection?.text}
               </h4>
               <p
                 style={{
                   ...fontFamily,
-                  color: data?.customization?.[0]?.volume?.totalSection?.discountMessage?.color,
-                  fontSize: `${data?.customization?.[0]?.volume?.totalSection?.discountMessage?.size}px`
-                }}                
+                  color:
+                    data?.customization?.[0]?.volume?.totalSection
+                      ?.discountMessage?.color,
+                  fontSize: `${data?.customization?.[0]?.volume?.totalSection?.discountMessage?.size}px`,
+                }}
               >
                 Discount will be applied at checkout
               </p>
@@ -389,9 +373,11 @@ const VolumeBundlePreview = ({
               <h4
                 style={{
                   ...fontFamily,
-                  color: data?.customization?.[0]?.volume?.totalSection?.finalPrice?.color,
-                  fontSize: `${data?.customization?.[0]?.volume?.totalSection?.finalPrice?.fontSize}px`
-                }}                
+                  color:
+                    data?.customization?.[0]?.volume?.totalSection?.finalPrice
+                      ?.color,
+                  fontSize: `${data?.customization?.[0]?.volume?.totalSection?.finalPrice?.fontSize}px`,
+                }}
               >
                 {data.bundleDetail?.discountOptions[selected].type ==
                   "freeShipping" ||
@@ -405,11 +391,13 @@ const VolumeBundlePreview = ({
                 data.bundleDetail?.discountOptions[selected].type !=
                   "noDiscount" && (
                   <h6
-                  style={{
-                    ...fontFamily,
-                    color: data?.customization?.[0]?.volume?.totalSection?.originalPrice?.color,
-                    fontSize: `${data?.customization?.[0]?.volume?.totalSection?.originalPrice?.fontSize}px`
-                  }}                  
+                    style={{
+                      ...fontFamily,
+                      color:
+                        data?.customization?.[0]?.volume?.totalSection
+                          ?.originalPrice?.color,
+                      fontSize: `${data?.customization?.[0]?.volume?.totalSection?.originalPrice?.fontSize}px`,
+                    }}
                   >
                     {showAmountWithCurrency(sumData[selected], currency)}
                   </h6>
@@ -422,9 +410,11 @@ const VolumeBundlePreview = ({
                 ...fontFamily,
                 color: data?.customization?.[0]?.volume?.button?.color,
                 fontSize: `${data?.customization?.[0]?.volume?.button?.fontSize}px`,
-                backgroundColor: data?.customization?.[0]?.volume?.button?.backgroundColor,
-                borderColor: data?.customization?.[0]?.volume?.button?.borderColor,
-                borderRadius: `${data?.customization?.[0]?.volume?.button?.borderRadius}px`
+                backgroundColor:
+                  data?.customization?.[0]?.volume?.button?.backgroundColor,
+                borderColor:
+                  data?.customization?.[0]?.volume?.button?.borderColor,
+                borderRadius: `${data?.customization?.[0]?.volume?.button?.borderRadius}px`,
               }}
             >
               {" "}
@@ -433,7 +423,7 @@ const VolumeBundlePreview = ({
           </div>
         </div>
       ) : (
-        <EmptyPreview type={data?.bundleDetail?.discountedProductType}/>
+        <EmptyPreview type={data?.bundleDetail?.discountedProductType} />
       )}
     </div>
   );

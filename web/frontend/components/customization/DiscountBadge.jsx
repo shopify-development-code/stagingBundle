@@ -112,41 +112,6 @@ const DiscountBadge = ({ data, setData, bundleOption, displayOption }) => {
             </div>
           </Grid.Cell>
         )}
-        <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
-          <div className="sd-bundle-custom-item-common">
-            <div className="sd-bundle-custom-item-heading-common">
-              Edit Badge Text
-            </div>
-           <TextField
-              type="text"
-              // placeholder="set minimum order  for item"
-              onChange={handleText}
-              value={data[bundleOption]?.DiscountBadge?.text}
-              autoComplete="off"
-              maxLength={20}
-            />
-            <RangeSlider
-              label="Font Size"
-              onChange={(e) =>
-                handleChangeValueCommon(
-                  e,
-                  "DiscountBadge",
-                  "fontSize",
-                  data,
-                  setData,
-                  bundleOption,
-                  sizeValue
-                )
-              }
-              suffix={data[bundleOption]?.DiscountBadge?.fontSize}
-              value={data[bundleOption]?.DiscountBadge?.fontSize}              
-              min={10}
-              max={15}
-              output
-            />
-          </div>
-        </Grid.Cell>
-        
       </Grid>
     </div>
   );

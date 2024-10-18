@@ -17,13 +17,14 @@ export async function createBundle(req,res){
  
     const session = res.locals.shopify.session;
     let shop = session.shop;
-   const {type,name,title,description,status,bundleDetail,customization,startdate,endDate,display,currencyCode,timeZone} = req.body
-  //  console.log("check customization===========>",customization);
+   const {type,name,title,badgeText,description,status,bundleDetail,customization,startdate,endDate,display,currencyCode,timeZone} = req.body
+   console.log("check customization===========>",req.body);
    const response = await bundleModel.create({
     shop:shop ,
       type:type,
       name:name,
       title: title,
+      badgeText:badgeText,
       description:description,
       status: status,
       currencyCode:currencyCode,
@@ -284,6 +285,7 @@ export async function getBundle (req,res){
           type:1,
           name :1,
           status:1,
+          badgeText:1,
           "bundleDetail.discountValue" : 1,
           "bundleDetail.discountOptions" : 1,
           "bundleDetail.products.images" : 1,
@@ -313,6 +315,7 @@ export async function getBundle (req,res){
 
   
     if(response){
+console.log("test.............",response);
 
         return res.status(200).json({message:"success!!",response:response.reverse(), status:200})
         }else{
@@ -323,7 +326,6 @@ export async function getBundle (req,res){
 
 }
 }
-
 
 export async function updateStatus (req,res){
   try{

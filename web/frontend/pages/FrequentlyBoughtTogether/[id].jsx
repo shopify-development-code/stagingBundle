@@ -39,6 +39,7 @@ const FrequentlyBoughtTogether = () => {
     name: "",
     title: "Bundle title",
     description: "Bundle description",
+    badgeText: "",
     status: "active",
     startdate: "",
     endDate: "",
@@ -428,18 +429,19 @@ const FrequentlyBoughtTogether = () => {
                 />
               </>
             )}
+
+            <General
+              data={data}
+              setData={setData}
+              errorArray={errorArray}
+              type="FrequentlyBoughtTogether"
+            />
             <DiscountOptions
               discountType={data.bundleDetail.discountType}
               discountValue={data.bundleDetail.discountValue}
               handleDiscountType={handleDiscountType}
               handleDiscountValue={handleDiscountValue}
               currency={currencyCode}
-            />
-            <General
-              data={data}
-              setData={setData}
-              errorArray={errorArray}
-              type="FrequentlyBoughtTogether"
             />
           </div>
           <div className="sd-bundle-productBundle-rightSection Polaris-Layout__Section Polaris-Layout__Section--secondary">

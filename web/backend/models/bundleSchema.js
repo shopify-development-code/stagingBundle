@@ -16,6 +16,9 @@ const bundleSchema = new mongoose.Schema({
   description:{
     type: String,
   },
+  badgeText:{
+    type: String,
+  },
   title: {
     type: String
   },
@@ -37,7 +40,6 @@ const bundleSchema = new mongoose.Schema({
   timeZone:{
     type:String
   }
- 
 },{
   timestamps:true
 });
@@ -52,7 +54,6 @@ bundleSchema.index({
   status: 1,
   currencyCode: 1,
 });
-  
 
 const bundleModel = mongoose.model('bundleData', bundleSchema);
 export default bundleModel ;

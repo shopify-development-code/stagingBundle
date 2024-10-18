@@ -42,12 +42,12 @@ const CollectionMixMatch = () => {
     title: "Create Your Bundle & Get Discount",
     description: "",
     shop: "",
+    badgeText:"",
     type: "collectionMixMatch",
     status: "active",
     startdate: new Date(),
     endDate: "",
     bundleDetail: {
-      description: "Buy products from below collections,Save {discount}",
       products: [],
       display: { productPages: true, bundle: true, productPagesList: [] },
       quantities: [],

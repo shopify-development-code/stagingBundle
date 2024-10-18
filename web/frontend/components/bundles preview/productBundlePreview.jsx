@@ -27,7 +27,7 @@ const ProductBundlePreview = ({
   const [seeMoreIndex, setSeeMoreIndex] = useState(0);
   const [Move, setMove] = useState("");
   const fontFamily = {
-    fontFamily: data?.customization[0]?.bundle?.box?.fontFamily || 'inherit',
+    fontFamily: data?.customization[0]?.bundle?.box?.fontFamily || "inherit",
   };
   const handlePopUp = (item, index) => {
     setPopUp(true);
@@ -72,7 +72,7 @@ const ProductBundlePreview = ({
       setSeeMoreIndex(mainindex);
     }
   };
-  // console.log("working success", data);
+  console.log("working success", data);
 
   return (
     <div className="sd-bundle-bundleSection-common">
@@ -81,42 +81,44 @@ const ProductBundlePreview = ({
         <div
           className="sd-bundle-main-column"
           style={{
-            backgroundColor: data?.customization[0]?.bundle?.box?.backgroundColor,
+            backgroundColor:
+              data?.customization[0]?.bundle?.box?.backgroundColor,
             borderColor: data?.customization[0]?.bundle?.box?.borderColor,
-            borderRadius: data?.customization[0]?.bundle?.box?.borderRadius + "px",
+            borderRadius:
+              data?.customization[0]?.bundle?.box?.borderRadius + "px",
           }}
-        >{(data?.bundleDetail?.discountType == "percent" ||data?.bundleDetail?.discountType == "fixed")&&
-          (data?.customization[0]?.bundle?.optionalBadge?.enable == true) && (
-            <div
-              className="sd-badges-part"
-              style={{
-                backgroundColor:
-                  data?.customization[0]?.bundle?.optionalBadge?.background,
-              }}
-            >
-              <span
+        >
+          {(data?.badgeText !== "" && data?.badgeText !== undefined) &&
+            ((data?.bundleDetail?.discountType === "percent" ||
+              data?.bundleDetail?.discountType === "fixed") && (
+              <div
+                className="sd-badges-part"
                 style={{
-                  ...fontFamily,
-                  color: data?.customization[0]?.bundle?.optionalBadge?.color,
-                  fontSize:
-                    data?.customization[0]?.bundle?.optionalBadge?.fontSize + "px",
+                  backgroundColor:
+                    data?.customization[0]?.bundle?.optionalBadge?.background,
                 }}
               >
-                {data?.bundleDetail?.discountType === "percent"
-                  ? `${data?.bundleDetail?.discountValue}% off`
-                  : data?.bundleDetail?.discountType === "fixed"
-                    ? `${showAmountWithCurrency(data?.bundleDetail?.discountValue, currency)} off`
-                    : null}
-              </span>
-            </div>
-          )
-        }
-          <div className={`sd-bundle-text-detail ${data?.customization[0]?.bundle?.optionalBadge?.enable == true ? 'extra-padding' : ''}`}>
+                <span
+                  style={{
+                    ...fontFamily,
+                    color: data?.customization[0]?.bundle?.optionalBadge?.color,
+                    fontSize: `${data?.customization[0]?.bundle?.optionalBadge?.fontSize}px`,
+                  }}
+                >
+                  {data?.badgeText}
+                </span>
+              </div>
+            ))}
+
+          <div
+            className={`sd-bundle-text-detail ${(data?.badgeText != "" && data?.badgeText != undefined )? "extra-padding" : ""}`}
+          >
             <h4
               style={{
                 ...fontFamily,
                 color: data?.customization[0]?.bundle?.title?.color,
-                fontSize: data?.customization[0]?.bundle?.title?.fontSize + "px",
+                fontSize:
+                  data?.customization[0]?.bundle?.title?.fontSize + "px",
                 textAlign: data?.customization[0]?.bundle?.title?.alignment,
                 fontWeight: data?.customization[0]?.bundle?.title?.titleBold,
               }}
@@ -128,9 +130,11 @@ const ProductBundlePreview = ({
                 ...fontFamily,
                 color: data?.customization[0]?.bundle?.title?.descriptionColor,
                 fontSize:
-                  data?.customization[0]?.bundle?.title?.descriptionFontSize + "px",
+                  data?.customization[0]?.bundle?.title?.descriptionFontSize +
+                  "px",
                 textAlign: data?.customization[0]?.bundle?.title?.alignment,
-                fontWeight: data?.customization[0]?.bundle?.title?.descriptionBold,
+                fontWeight:
+                  data?.customization[0]?.bundle?.title?.descriptionBold,
               }}
             >
               {data?.description}
@@ -175,11 +179,11 @@ const ProductBundlePreview = ({
                         style={{
                           ...fontFamily,
                           color:
-                            data?.customization[0]?.bundle?.productDetails?.title
-                              ?.color,
+                            data?.customization[0]?.bundle?.productDetails
+                              ?.title?.color,
                           fontSize:
-                            data?.customization[0]?.bundle?.productDetails?.title
-                              ?.fontSize + "px",
+                            data?.customization[0]?.bundle?.productDetails
+                              ?.title?.fontSize + "px",
                         }}
                       >
                         {item?.title}
@@ -188,11 +192,11 @@ const ProductBundlePreview = ({
                         style={{
                           ...fontFamily,
                           color:
-                            data?.customization[0]?.bundle?.productDetails?.price
-                              ?.color,
+                            data?.customization[0]?.bundle?.productDetails
+                              ?.price?.color,
                           fontSize:
-                            data?.customization[0]?.bundle?.productDetails?.price
-                              ?.fontSize + "px",
+                            data?.customization[0]?.bundle?.productDetails
+                              ?.price?.fontSize + "px",
                         }}
                       >
                         {showPrice[mainindex]
@@ -285,11 +289,11 @@ const ProductBundlePreview = ({
                       style={{
                         ...fontFamily,
                         color:
-                          data?.customization[0]?.bundle?.productDetails?.quantities
-                            ?.color,
+                          data?.customization[0]?.bundle?.productDetails
+                            ?.quantities?.color,
                         fontSize:
-                          data?.customization[0]?.bundle?.productDetails?.quantities
-                            .size + "px",
+                          data?.customization[0]?.bundle?.productDetails
+                            ?.quantities.size + "px",
                       }}
                     >
                       Qty:{" "}
@@ -319,7 +323,8 @@ const ProductBundlePreview = ({
                       <path
                         d="M6.98047 17.3842V0.580255H10.3239V17.3842H6.98047ZM0.256392 10.6477V7.30433H17.0604V10.6477H0.256392Z"
                         fill={
-                          data?.customization[0]?.bundle?.productDetails?.plusColor
+                          data?.customization[0]?.bundle?.productDetails
+                            ?.plusColor
                         }
                       />
                     </svg>
@@ -337,7 +342,8 @@ const ProductBundlePreview = ({
                   ...fontFamily,
                   color: data?.customization[0]?.bundle?.totalSection?.color,
                   fontSize:
-                    data?.customization[0]?.bundle?.totalSection?.fontSize + "px",
+                    data?.customization[0]?.bundle?.totalSection?.fontSize +
+                    "px",
                 }}
               >
                 {data?.customization[0]?.bundle?.totalSection?.text}
@@ -346,11 +352,11 @@ const ProductBundlePreview = ({
                 style={{
                   ...fontFamily,
                   color:
-                    data?.customization[0]?.bundle?.totalSection?.discountMessage
-                      ?.color,
+                    data?.customization[0]?.bundle?.totalSection
+                      ?.discountMessage?.color,
                   fontSize:
-                    data?.customization[0]?.bundle?.totalSection?.discountMessage
-                      ?.size + "px",
+                    data?.customization[0]?.bundle?.totalSection
+                      ?.discountMessage?.size + "px",
                 }}
               >
                 Discount will be applied at checkout
@@ -362,7 +368,8 @@ const ProductBundlePreview = ({
                 style={{
                   ...fontFamily,
                   color:
-                    data?.customization[0]?.bundle?.totalSection?.finalPrice?.color,
+                    data?.customization[0]?.bundle?.totalSection?.finalPrice
+                      ?.color,
                   fontSize:
                     data?.customization[0]?.bundle?.totalSection?.finalPrice
                       ?.fontSize + "px",
@@ -376,11 +383,11 @@ const ProductBundlePreview = ({
                     style={{
                       ...fontFamily,
                       color:
-                        data?.customization[0]?.bundle?.totalSection?.originalPrice
-                          ?.color,
+                        data?.customization[0]?.bundle?.totalSection
+                          ?.originalPrice?.color,
                       fontSize:
-                        data?.customization[0]?.bundle?.totalSection?.originalPrice
-                          ?.fontSize + "px",
+                        data?.customization[0]?.bundle?.totalSection
+                          ?.originalPrice?.fontSize + "px",
                     }}
                   >
                     {showAmountWithCurrency(mrp, currency)}
@@ -409,10 +416,12 @@ const ProductBundlePreview = ({
               style={{
                 ...fontFamily,
                 color: data?.customization[0]?.bundle?.button?.color,
-                fontSize: data?.customization[0]?.bundle?.button?.fontSize + "px",
+                fontSize:
+                  data?.customization[0]?.bundle?.button?.fontSize + "px",
                 backgroundColor:
                   data?.customization[0]?.bundle?.button?.backgroundColor,
-                borderColor: data?.customization[0]?.bundle?.button?.borderColor,
+                borderColor:
+                  data?.customization[0]?.bundle?.button?.borderColor,
                 borderRadius:
                   data?.customization[0]?.bundle?.button?.borderRadius + "px",
               }}

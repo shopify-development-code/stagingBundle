@@ -3535,9 +3535,6 @@ svg.sd-bundle-premium1 {
 }
 
 /***** bundle styling start here *******/
-.sd-bundle-main-column.sd-collection-main-column {
-    padding-top: 40px;
-}
 .sd-bundle-main-column {
     padding: 20px 20px 20px 20px;
     border-radius: 20px;
@@ -3557,7 +3554,6 @@ svg.sd-bundle-premium1 {
     position: relative;
     width: 100%;
     border : 1px solid black;
-    padding-top: 40px;
   }
   .sd-bundle-text-detail {
     border-bottom: 1px solid #cecece;
@@ -3722,6 +3718,7 @@ svg.sd-bundle-premium1 {
     border-radius: 10px;
     margin: 0 0 20px;
     background: #F9F9F9;
+    position: relative;
   }
   
   .sd-select-radio-with-text {
@@ -3803,7 +3800,7 @@ svg.sd-bundle-premium1 {
     right: -3px;
     padding: 5px 20px;
     border-radius: 0px 20px 0px 100px;
-    min-width: 170px;
+    min-width: 100px;
     text-align: center;
     height: 30px;
 }
@@ -4020,8 +4017,8 @@ img.BADGE {
 }
 .sd-bundle-product-badgeOptions {
     position: absolute;
-    top: 97px;
-    right: 36px;
+    top: -11px;
+    right: 14px;
 }
 .sd-bundle-product-badgeOptions h4 {
     position: absolute;
@@ -4037,8 +4034,8 @@ img.BADGE {
 }
 .sd-bundle-product-badgeOptions1 {
     position: absolute;
-    top: 172px;
-    right: 36px;
+    top: -11px;
+    right: 14px;
 }
 .sd-bundle-product-badgeOptions1 h4 {
     position: absolute;
@@ -4105,8 +4102,27 @@ p.sd-bundle-custom-item-heading-common.optionalBadge {
     text-align: center;
 }
 .extra-padding{
-    padding-top: 15px
+    padding-top: 10px
 }
 /* .Polaris-RangeSlider-SingleThumb__Input {
     --pc-single-thumb-progress-lower: rgb(0 0 0);
 } */
+
+.style_badge {
+    display: flex;
+    position: absolute;
+    right: 9px;
+    top: calc(-8px - 1px);
+}
+.style_badge span {
+    border-radius: 0 0 4px 4px;
+    background: red;
+    height: 20px;
+    padding: 1px 8px;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+}

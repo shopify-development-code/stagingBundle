@@ -79,7 +79,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
               data?.volume?.productDetails?.productDetailsBox?.backgroundColor,
           }}
         >
-          {data?.volume?.options?.DiscountBadge?.badgeType == "rightBanner" && (
+          {/* {data?.volume?.options?.DiscountBadge?.badgeType == "rightBanner" && ( */}
             <div className="sd-bundle-product-badgeOptions ">
               <svg
                 width="91"
@@ -112,7 +112,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
                 {data?.volume?.options?.DiscountBadge?.text}
               </h4>
             </div>
-          )}
+
           <div class="sd-select-radio-with-text">
             <div class="radio">
               <input id="radio-1" name="radio" type="radio" />
@@ -128,7 +128,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
                 Buy 3 & Save 5%
               </label>
             </div>
-            {data?.volume?.options?.DiscountBadge?.badgeType == "options" && (
+            {/* {data?.volume?.options?.DiscountBadge?.badgeType == "options" && (
               <div
                 class="sd-percent-badge"
                 style={{
@@ -146,7 +146,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
                   {data?.volume?.options?.DiscountBadge?.text}
                 </span>
               </div>
-            )}
+            )} */}
           </div>
         </div>
         <div
@@ -155,7 +155,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
             backgroundColor: data?.volume?.productDetails?.productDetailsBox?.backgroundColor,
           }}          
         >
-          {data?.volume?.options?.DiscountBadge?.badgeType == "rightBanner" && (
+          {/* {data?.volume?.options?.DiscountBadge?.badgeType == "rightBanner" && ( */}
             <div className="sd-bundle-product-badgeOptions1">
               <svg
                 width="91"
@@ -188,7 +188,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
                 {data?.volume?.options?.DiscountBadge?.text}
               </h4>
             </div>
-          )}
+          {/* )} */}
           <div class="sd-select-radio-with-text">
             <div class="radio">
               <input id="radio-2" name="radio" type="radio" checked />
@@ -204,7 +204,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
                 Buy 3 & Save 5%
               </label>
             </div>
-            {data?.volume?.options?.DiscountBadge?.badgeType == "options" && (
+            {/* {data?.volume?.options?.DiscountBadge?.badgeType == "options" && (
               <div
                 class="sd-percent-badge"
                 style={{
@@ -222,7 +222,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
                   {data?.volume?.options?.DiscountBadge?.text}
                 </span>
               </div>
-            )}
+            )} */}
           </div>
           <div
             class="sd-bundle-product-detail"

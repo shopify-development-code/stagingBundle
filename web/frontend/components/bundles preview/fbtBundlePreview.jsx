@@ -88,10 +88,8 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                 borderRadius: (data.customization[0]?.frequentlyBoughtTogether?.box?.borderRadius) + "px",
               }}              
             >
-              {(data.bundleDetail.discountType === "percent" ||
-                data.bundleDetail.discountType === "fixed") &&
-                data?.customization[0]?.frequentlyBoughtTogether?.optionalBadge
-                  ?.enable && (
+              {(data?.badgeText !== "" && data?.badgeText !== undefined) &&(data.bundleDetail.discountType === "percent" ||
+                data.bundleDetail.discountType === "fixed")  && (
                   <div
                     className="sd-badges-part"
                     style={{
@@ -105,21 +103,13 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                         fontSize: `${data.customization[0]?.frequentlyBoughtTogether?.optionalBadge?.fontSize }px`,
                       }}                      
                     >
-                      {data.bundleDetail.discountType === "free"
-                        ? "Free"
-                        : data.bundleDetail.discountType === "fixed"
-                          ? currencyCode.replace(/{{.*?}}/g, "") +
-                            data.bundleDetail.discountValue +
-                            " off"
-                          : data.bundleDetail.discountType === "percent"
-                            ? data.bundleDetail.discountValue + "% off"
-                            : null}
+                      {data?.badgeText}
                     </span>
                   </div>
                 )}
 
               <div
-                className={`sd-bundle-text-detail ${data.customization[0]?.frequentlyBoughtTogether?.optionalBadge?.enable === true ? "extra-padding" : ""}`}
+                className={`sd-bundle-text-detail ${(data?.badgeText !== "" && data?.badgeText !== undefined) ? "extra-padding" : ""}`}
               >
                 <h4
                   style={{
@@ -343,9 +333,7 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
               }}              
             >
               {(data.bundleDetail.discountType === "percent" ||
-                data.bundleDetail.discountType === "fixed") &&
-                data?.customization[0]?.frequentlyBoughtTogether?.optionalBadge
-                  ?.enable && (
+                data.bundleDetail.discountType === "fixed") && (
                   <div
                     className="sd-badges-part"
                     style={{

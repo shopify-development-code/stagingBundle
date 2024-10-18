@@ -69,6 +69,7 @@ const VolumeBundle = () => {
           quantity: 2,
           type: "percent",
           value: 5,
+          badgeText:"",
           description: "Buy 2 & Save {discount}",
         },
       ],
@@ -76,7 +77,6 @@ const VolumeBundle = () => {
       display: {
         productPages: false,
         bundle: false,
-
         productPagesList: [],
       },
     },
@@ -487,6 +487,11 @@ const VolumeBundle = () => {
   const handleDiscountDescription = (e, index) => {
     let update = { ...data };
     update.bundleDetail.discountOptions[index].description = e.target.value;
+    setData(update);
+  };
+  const handleDiscountBadge = (e, index) => {
+    let update = { ...data };
+    update.bundleDetail.discountOptions[index].badgeText = e.target.value;
     setData(update);
   };
 
@@ -1084,7 +1089,7 @@ const VolumeBundle = () => {
                     {(data.bundleDetail.discountOptions[index].type ===
                       "percent" ||
                       data.bundleDetail.discountOptions[index].type ===
-                        "fixed") && (
+                        "fixed") ? 
                       <Col className="gutter-row" span={8}>
                         <div>
                           <p>Discount value</p>
@@ -1101,23 +1106,51 @@ const VolumeBundle = () => {
                           />
                         </div>
                       </Col>
-                    )}
+                      :
+                      <Col className="gutter-row" span={8}>
+                        <div>
+                          <p>Discount value</p>
+                          <TextField
+                            type="number"
+                            disabled
+                            onChange={(newvalue) =>
+                              handleDiscountValue(newvalue, index)
+                            }
+                            value={0}
+                            autoComplete="off"
+                            min={1}
+                          />
+                        </div>
+                      </Col>
+                    }
                   </Row>
                   <br />
-                  <p>Description</p>
-                  <Input
-                    placeholder="Buy"
-                    value={item.description}
-                    onChange={(e) => handleDiscountDescription(e, index)}
-                  />
-                  {(data.bundleDetail?.discountOptions[index]?.type ==
-                    "fixed" ||
-                    data.bundleDetail?.discountOptions[index]?.type ==
-                      "percent") && (
-                    <span className="sd-bundle-Disclaimer-common">
-                      Use discount to show the discount value
-                    </span>
-                  )}
+                  <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+                    <Col className="gutter-row" span={12}>   
+                      <p>Description</p>
+                      <Input
+                        placeholder="Buy"
+                        value={item.description}
+                        onChange={(e) => handleDiscountDescription(e, index)}
+                      />
+                      {(data.bundleDetail?.discountOptions[index]?.type ==
+                        "fixed" ||
+                        data.bundleDetail?.discountOptions[index]?.type ==
+                          "percent") && (
+                        <span className="sd-bundle-Disclaimer-common">
+                          Use discount to show the discount value
+                        </span>
+                      )}
+                    </Col>
+                    <Col className="gutter-row" span={12}>   
+                      <p>Badge</p>
+                      <Input
+                        placeholder="Edit Badge Text"
+                        value={item.badgeText}
+                        onChange={(e) => handleDiscountBadge(e, index)}
+                      />
+                    </Col>
+                    </Row>
                   <br />
 
                   {/* {data.bundleDetail.discountOptions.length == index + 1 && (

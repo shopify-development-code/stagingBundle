@@ -22,7 +22,6 @@ const CustomizationProductBundlePreview = ({ data }) => {
           borderRadius: `${data?.bundle?.box?.borderRadius}px`,
         }}
       >
-        {data?.bundle?.optionalBadge?.enable == true && (
           <div
             className="sd-badges-part"
             style={{
@@ -39,7 +38,6 @@ const CustomizationProductBundlePreview = ({ data }) => {
               {data?.bundle?.optionalBadge?.text}
             </span>
           </div>
-        )}
         <div
           className={`sd-bundle-text-detail ${data?.bundle?.optionalBadge?.enable ? "extra-padding" : ""}`}
         >
