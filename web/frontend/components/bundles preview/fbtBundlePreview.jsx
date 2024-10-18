@@ -347,15 +347,7 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                         fontSize: `${data.customization[0]?.frequentlyBoughtTogether?.optionalBadge?.fontSize}px`,
                       }}                      
                     >
-                      {data.bundleDetail.discountType === "free"
-                        ? "Free"
-                        : data.bundleDetail.discountType === "fixed"
-                          ? currencyCode.replace(/{{.*?}}/g, "") +
-                            data.bundleDetail.discountValue +
-                            " off"
-                          : data.bundleDetail.discountType === "percent"
-                            ? data.bundleDetail.discountValue + "% off"
-                            : null}
+                     {data?.badgeText}
                     </span>
                   </div>
                 )}
@@ -611,15 +603,7 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                         fontSize: `${data.customization[0]?.frequentlyBoughtTogether?.optionalBadge?.color?.fontSize}px`,
                       }}                      
                     >
-                      {data.bundleDetail.discountType === "free"
-                        ? "Free"
-                        : data.bundleDetail.discountType === "fixed"
-                          ? currencyCode.replace(/{{.*?}}/g, "") +
-                            data.bundleDetail.discountValue +
-                            " off"
-                          : data.bundleDetail.discountType === "percent"
-                            ? data.bundleDetail.discountValue + "% off"
-                            : null}
+                     {data?.badgeText}
                     </span>
                   </div>
                 )}
