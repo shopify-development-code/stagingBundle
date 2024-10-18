@@ -332,8 +332,8 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                 borderRadius: (data.customization[0]?.frequentlyBoughtTogether?.box?.borderRadius ) + "px",
               }}              
             >
-              {(data.bundleDetail.discountType === "percent" ||
-                data.bundleDetail.discountType === "fixed") && (
+             {(data?.badgeText !== "" && data?.badgeText !== undefined) &&(data.bundleDetail.discountType === "percent" ||
+                data.bundleDetail.discountType === "fixed")  && (
                   <div
                     className="sd-badges-part"
                     style={{
@@ -352,7 +352,7 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                   </div>
                 )}
               <div
-               className={`sd-bundle-text-detail ${data.customization[0]?.frequentlyBoughtTogether?.optionalBadge?.enable ? "extra-padding" : ""}`}
+               className={`sd-bundle-text-detail ${data?.badgeText !== "" && data?.badgeText !== undefined ? "extra-padding" : ""}`}
               >
                 <h4
                  style={{
@@ -586,7 +586,7 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                 borderRadius: data.customization[0]?.frequentlyBoughtTogether?.box?.borderRadius + "px",
               }}              
             >
-              {(data.bundleDetail.discountType === "percent" ||
+              {(data?.badgeText !== "" && data?.badgeText !== undefined) &&(data.bundleDetail.discountType === "percent" ||
                 data.bundleDetail.discountType === "fixed") &&
                 data.customization[0]?.frequentlyBoughtTogether?.optionalBadge?.enable && (
                   <div
@@ -609,7 +609,7 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                 )}
               <div
                 className={`sd-bundle-text-detail ${
-                  data.customization[0]?.frequentlyBoughtTogether?.optionalBadge?.enable ? "extra-padding" : ""
+                  data?.badgeText !== "" && data?.badgeText !== undefined ? "extra-padding" : ""
                 }`}                
               >
                 <h4
