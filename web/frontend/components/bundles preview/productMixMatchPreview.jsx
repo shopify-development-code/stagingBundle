@@ -195,7 +195,7 @@ const ProductMixMatchPreview = ({
                                   textAlign: data.customization[0]?.productMixMatch?.orderOverview?.alignment ?? 'center',
                                 }}
                                 >
-                                  140% {freeShipping} discount is applied on the
+                                  100% {freeShipping} discount is applied on the
                                   selected products.
                                 </p>
                               ) : (
