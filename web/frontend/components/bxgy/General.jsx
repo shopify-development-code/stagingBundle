@@ -26,7 +26,7 @@ const General = (props) => {
         <input
           type="text"
           className="sd-bundle-name"
-          placeholder=""
+          placeholder="Enter your bundle name..."
           value={props.data.name}
           onChange={(e) => handleInputChange(e, "name")}
         />
@@ -40,7 +40,7 @@ const General = (props) => {
         <input
           type="text"
           className="sd-bundle-name"
-          placeholder=""
+          placeholder="Title of your bundle..."
           value={props.data.title}
           onChange={(e) => handleInputChange(e, "title")}
         />
@@ -53,7 +53,7 @@ const General = (props) => {
         <input
           type="text"
           className="sd-bundle-name"
-          placeholder=""
+          placeholder="What’s included in your bundle?"
           value={props.data.description}
           onChange={(e) => handleInputChange(e, "description")}
         />
@@ -68,7 +68,7 @@ const General = (props) => {
           <input
             type="text"
             className="sd-bundle-name"
-            placeholder="Enter Badge Text"
+            placeholder="Type the badge message..."
             value={props.data.badgeText}
             onChange={(e) => handleInputChange(e, "badgeText")}
           />

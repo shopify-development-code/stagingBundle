@@ -1145,7 +1145,7 @@ const VolumeBundle = () => {
                     <Col className="gutter-row" span={12}>   
                       <p>Badge</p>
                       <Input
-                        placeholder="Edit Badge Text"
+                        placeholder="Type the badge message..."
                         value={item.badgeText}
                         onChange={(e) => handleDiscountBadge(e, index)}
                       />
