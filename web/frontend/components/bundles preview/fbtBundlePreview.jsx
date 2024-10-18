@@ -587,8 +587,7 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
               }}              
             >
               {(data?.badgeText !== "" && data?.badgeText !== undefined) &&(data.bundleDetail.discountType === "percent" ||
-                data.bundleDetail.discountType === "fixed") &&
-                data.customization[0]?.frequentlyBoughtTogether?.optionalBadge?.enable && (
+                data.bundleDetail.discountType === "fixed") && (
                   <div
                     className="sd-badges-part"
                     style={{
