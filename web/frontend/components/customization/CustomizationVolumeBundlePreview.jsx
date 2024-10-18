@@ -80,7 +80,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
           }}
         >
           {/* {data?.volume?.options?.DiscountBadge?.badgeType == "rightBanner" && ( */}
-            <div className="sd-bundle-product-badgeOptions ">
+            {/* <div className="sd-bundle-product-badgeOptions ">
               <svg
                 width="91"
                 height="24"
@@ -111,7 +111,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
               >
                 {data?.volume?.options?.DiscountBadge?.text}
               </h4>
-            </div>
+            </div> */}
 
           <div class="sd-select-radio-with-text">
             <div class="radio">
@@ -185,7 +185,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
                 fontSize: `${data?.volume?.options?.saveDiscount?.fontSize}px`,
               }}              
               >
-                {data?.volume?.options?.DiscountBadge?.text}
+                5% Off
               </h4>
             </div>
           {/* )} */}
