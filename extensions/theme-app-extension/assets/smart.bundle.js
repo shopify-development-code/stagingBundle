@@ -1,4 +1,4 @@
-let server = "https://bundle.shinedezigninfotech.com";
+let server = "https://bundlesgroup.com";
 
 console.log("Smart Bundle Discount app new version 4.0");
 // let server = "https://org-generally-hockey-oscar.trycloudflare.com";
