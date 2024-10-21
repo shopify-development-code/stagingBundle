@@ -35,7 +35,7 @@ const CustomizationFBt = ({ data }) => {
                 fontSize: `${data?.frequentlyBoughtTogether?.optionalBadge?.fontSize || 12}px`,
             }}            
               >
-                {data?.frequentlyBoughtTogether?.optionalBadge?.text}
+                5% Off
               </span>
             </div>
               {/* <div class="sd-bundle-text-detail"> */}
@@ -307,7 +307,7 @@ const CustomizationFBt = ({ data }) => {
                   fontSize: `${data?.frequentlyBoughtTogether?.optionalBadge?.fontSize || 12}px`,
               }}              
               >
-                {data.frequentlyBoughtTogether.optionalBadge.text}
+                5% Off
               </span>
             </div>
            <div className={`sd-bundle-text-detail extra-padding`}>

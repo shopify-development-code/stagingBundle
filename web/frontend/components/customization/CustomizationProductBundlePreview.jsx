@@ -35,7 +35,7 @@ const CustomizationProductBundlePreview = ({ data }) => {
                 fontSize: `${data?.bundle?.optionalBadge?.fontSize}px`,
               }}
             >
-              {data?.bundle?.optionalBadge?.text}
+              5% Off
             </span>
           </div>
         <div
