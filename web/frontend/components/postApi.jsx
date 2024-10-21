@@ -1,7 +1,8 @@
 import axios from "axios";
 import { getSessionToken } from "@shopify/app-bridge-utils";
 async function postApi(url, body, app) {
-  const sessionToken = await getSessionToken(app);
+  const sessionToken = await app?.idToken()
+  // const sessionToken = await getSessionToken(app);
   const config = {
     headers: { Authorization: `Bearer ${sessionToken}` },
   };

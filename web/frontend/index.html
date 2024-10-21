@@ -5,9 +5,7 @@
 
     <!-- Ensures that the UI is properly scaled in the Shopify Mobile app -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <meta name="shopify-api-key" content="e13323374d92132ba17048d14e6ecb0e"/> -->
-    <!-- <meta name="shopify-api-key" content="b8c12ad6dd6cca8d5809e99013d4289b"/> -->
-    <!-- <script src="https://cdn.shopify.com/shopifycloud/app-bridge.js"></script> -->
+
 
     <script type="module">
       if (!import.meta.env || !import.meta.env.PROD) {
@@ -19,6 +17,8 @@
         document.getElementsByTagName('head')[0].append(script);
       }
     </script>
+        <meta name="shopify-api-key" content="44ed719dd36e0f63a439cc80d42cfb61"/>
+        <script src="https://cdn.shopify.com/shopifycloud/app-bridge.js"></script>
   </head>
   <body>
     <div id="app"><!--index.jsx injects App.jsx here--></div>
@@ -27,5 +27,6 @@
       global = globalThis;
     </script> -->
     <script type="module" src="/index.jsx"></script>
+    
   </body>
 </html>

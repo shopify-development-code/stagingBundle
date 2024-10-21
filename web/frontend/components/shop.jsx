@@ -38,7 +38,7 @@ const APIContext = createContext();
 
   }
   }
-  getThemeId()
+  // getThemeId()
  
   return (
 

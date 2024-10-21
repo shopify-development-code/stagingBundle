@@ -2,7 +2,7 @@ import {useState,useEffect} from 'react'
 
 import { Modal, Spin } from "antd";
 import ProductVariantData from '../productVariantData';
-import BxgyResourcePicker from './bxgyResourcePicker';
+// import BxgyResourcePicker from './bxgyResourcePicker';
 import XpickerData from './xPickerData';
 import XproductVariantData from './BXGYproductVariantData';
 import YpickerData from './ypickerData';
@@ -186,7 +186,7 @@ const BuyY = (props) => {
             />
           </Modal>
         )}
-
+{/* 
             {myModal && (
               <BxgyResourcePicker
                 open={myModal}
@@ -198,7 +198,7 @@ const BuyY = (props) => {
                 setData={props.setData}
                 data={props.data}
               />
-            )}
+            )} */}
            
     </div>
   )

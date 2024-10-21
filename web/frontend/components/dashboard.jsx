@@ -1,6 +1,6 @@
 import React ,{useState} from 'react'
-import { Button, Card } from 'antd'
-import {MediaCard} from '@shopify/polaris';
+// import { Button, Card } from 'antd'
+import {Banner, BlockStack, Box, Button, Card, InlineGrid, Layout, List, Page, Text} from '@shopify/polaris';
 import {useAPI} from "../components/shop"
 
 import Watermark from './watermark';
@@ -18,71 +18,71 @@ function handleOpenCustomization () {
   );
 }
   return (
-    <>
-    <LogoHeader/>
-  <div>
-         <div className="sd-bundle-MoveToHome-section sd-margin-top">
-     
-        
-     <div className="sd-bundle-MoveToHome-arrow">
 
- </div>
- <div className="sd-bundle-commonHeading">Dashboard</div>
-</div>
-<div>
-    <Card
-    title= "Can't see Bundles in store front. Activate the Bundle App"
-    className='sd-bundle-contact-box'
-    extra={<Button onClick={handleOpenCustomization}>Activate</Button>}
-    >
-      
-
-<MediaCard
-     
-      title="Welcome to Smart Bundles !"
-portrait
-      description={<><div className='Polaris-Stack Polaris-Stack--vertical Polaris-Stack--spacingTight'>
-       <div className='Polaris-Heading'> To activate an app through the theme customizer on Shopify, follow these steps:</div>
-
-       <p>1. Navigate to <strong>Online Store &gt; Themes</strong>  in your Shopify admin.</p>
-       <p>2. Locate and click on the theme you wish to modify, then select <strong>Customize</strong>.</p>
-       <p>3. Access the <strong>App embeds</strong> tab within the customization options.</p>
-       <p>4. Choose the desired app embed for activation, or use the <strong>Search</strong> Search bar to find specific installed apps.</p>
-       <p>5. <strong>Activate</strong> the selected app embed by toggling the switch next to it.</p>
-        </div> 
-        <br />
-        <div className='Polaris-Stack Polaris-Stack--vertical Polaris-Stack--spacingTight'>
-        <h3 className='Polaris-Heading'>  To incorporate an app block into a product page on Shopify, follow these steps:</h3>
-
-        <p> 1. Go to <strong>Online Store &gt; Themes</strong> in your Shopify admin.</p>
-        <p> 2. Locate the theme you wish to modify and click <strong>Customize</strong>.</p>
-        <p> 3. Navigate to the specific product page and section where you intend to include the app block.</p>
-        <p> 4. Select <strong>"Add block"</strong> from the sidebar.</p>
-        <p> 5. In the Apps section of the drop-down menu, choose the desired app block, or use the <strong>Search</strong> bar to find installed apps.</p>
-        <p> 6. Optionally, rearrange the block by clicking and dragging the ⋮⋮ icon to another available location on the page.</p>
-         <p>   Customize the block using any available settings if needed.</p>
-        <p> 7. Save your changes by clicking the <strong>Save</strong> button.</p>
-          </div></>}
-      size='small'
-    >
-
-    
-        
-    
-    </MediaCard>
-
-    
-    </Card>
    
- </div>
+<Page
+title='Dashboard'
 
-       <RecommendedApp/>
+>
  
+<BlockStack gap="400">
+<Banner tone='info'  title="Can't see Bundles in store front ?">
+<InlineGrid columns="1fr auto">
 
-      <Watermark/>
-      <ContactUs/>
-    </div>
-    </>
+       <p>Click the button and Activate the Bundle App</p>
+       <Button
+       variant='primary'
+       tone='success'
+      size='slim'
+           onClick={handleOpenCustomization}
+            accessibilityLabel="activate"
+          >Activate</Button>
+</InlineGrid>
+          </Banner>
+          <Card>
+      <Text as="h2" variant="headingLg">
+      Welcome to Smart Bundles !
+      </Text>
+      <Box paddingBlockEnd="200">
+
+      <Text as="h2" variant="bodyMd">
+      To activate an app through the theme customizer on Shopify, follow these steps:
+      </Text>
+      </Box>
+      <Box paddingBlockEnd="200">
+          <List>
+            <List.Item>Navigate to <strong>Online Store &gt; Themes</strong>  in your Shopify admin.</List.Item>
+            <List.Item>Locate and click on the theme you wish to modify, then select <strong>Customize</strong>.</List.Item>
+            <List.Item>Access the <strong>App embeds</strong> tab within the customization options.</List.Item>
+            <List.Item>Choose the desired app embed for activation, or use the <strong>Search</strong> Search bar to find specific installed apps.</List.Item>
+            <List.Item><strong>Activate</strong> the selected app embed by toggling the switch next to it.</List.Item>
+
+          </List>
+        </Box>
+        <Box paddingBlockEnd="200">
+
+<Text as="h2" variant="bodyMd">
+To incorporate an app block into a product page on Shopify, follow these steps:
+</Text>
+</Box>
+      <Box paddingBlockEnd="200">
+          <List>
+            <List.Item> Go to <strong>Online Store &gt; Themes</strong> in your Shopify admin.</List.Item>
+            <List.Item>Locate the theme you wish to modify and click <strong>Customize</strong>.</List.Item>
+            <List.Item>Navigate to the specific product page and section where you intend to include the app block.</List.Item>
+            <List.Item>Select <strong>"Add block"</strong> from the sidebar.</List.Item>
+            <List.Item>In the Apps section of the drop-down menu, choose the desired app block, or use the <strong>Search</strong> bar to find installed apps.</List.Item>
+            <List.Item>Optionally, rearrange the block by clicking and dragging the ⋮⋮ icon to another available location on the page.
+         Customize the block using any available settings if needed.</List.Item>
+            <List.Item> Save your changes by clicking the <strong>Save</strong> button.</List.Item>
+
+          </List>
+        </Box>
+    </Card>
+          </BlockStack>
+         
+
+</Page>
   )
 }
 

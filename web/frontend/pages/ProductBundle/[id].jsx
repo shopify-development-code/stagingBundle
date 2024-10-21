@@ -1,51 +1,35 @@
 import React, { useEffect, useState } from "react";
-import CreateBundleModal from "../../components/createBundleModal";
-import { Modal, Spin } from "antd";
-import toastNotification from "../../components/commonSections/Toast";
-import { useAppBridge } from "@shopify/app-bridge-react";
-import { useAPI } from "../../components/shop";
-import BundleNameTitle from "../../components/commonSections/bundleNameTitle";
-import General from "../../components/bxgy/General";
-// import DateTime from "../../components/commonSections/dateTime";
-import BundleStatus from "../../components/commonSections/bundleStatus";
-import MoveToHomePage from "../../components/commonSections/MoveToHomePage";
-import DisplayOptions from "../../components/commonSections/displayOptions";
-import DiscountOptions from "../../components/commonSections/discountOptions";
-import DeleteSave from "../../components/commonSections/deleteSave";
-import AlertSection from "../../components/commonSections/AlertSection";
-import BundlePickerData from "../../components/resourcePickerData/BundlePickerData";
-import ProductVariantData from "../../components/productVariantData";
-import { alertCommon } from "../../components/helperFunctions";
+import {
+  SaveBar,
+  TitleBar,
+  useAppBridge,
+  Modal,
+} from "@shopify/app-bridge-react";
+import {
+  BlockStack,
+  Button,
+  Card,
+  Checkbox,
+  Grid,
+  InlineStack,
+  Page,
+  RadioButton,
+  ResourceList,
+  Select,
+  Text,
+  TextField,
+  Thumbnail,
+} from "@shopify/polaris";
+import { useNavigate } from "react-router-dom";
 import defaultData from "../../components/customization/defaultData.json";
-import postApi from "../../components/postApi";
-import { useNavigate, useParams } from "react-router-dom";
-import ProductBundlePreview from "../../components/bundles preview/productBundlePreview";
+import { useAPI } from "../../components/shop";
+import { DeleteIcon, SearchIcon } from "@shopify/polaris-icons";
 
-function CreateBundle() {
-  let headerkey = "Create Product Bundle";
-  const navigate = useNavigate();
-  const param = useParams();
-  const [myModal, setMyModal] = useState(false);
-  const [endPrice, setEndPrice] = useState(0);
-  const [mrp, setMrp] = useState(0);
-  const [showPrice, setShowPrice] = useState({});
-
-  const [pid, setPid] = useState("");
-
-  const [loader, setLoader] = useState(false);
-  const [searchValue, setSearchValue] = useState("");
-
-  const [antModal, setAntModal] = useState(false);
-  const [pickerError, setPickerError] = useState([]);
-  const [errorArray, setErrorArray] = useState([]);
-
-  const [alert, setAlert] = useState({ state: false, message: [], status: "" });
-
-  const [arr, setArr] = useState([]);
-  const [variantData, setVariantData] = useState([]);
-  const [checkedIds, setCheckedIds] = useState([]);
-  const [spinner, setSpinner] = useState(false);
+const CreateBundle = () => {
   const { shop, timeZone, currencyCode } = useAPI();
+  const navigate = useNavigate();
+  const app = useAppBridge();
+  const [searchText, setSearchText] = useState('')
   const [data, setData] = useState({
     shop: shop,
     type: "productBundle",
@@ -67,611 +51,294 @@ function CreateBundle() {
         productPagesList: [],
       },
     },
-    customization: [defaultData] ,
-    timeZone:timeZone
+    customization: [defaultData],
+    timeZone: timeZone,
   });
-
-  const app = useAppBridge();
-
-  const getBundleData = async () => {
-    let body = { id: param.id };
-    setSpinner(true);
-    const response = await postApi("/api/admin/editBundle", body, app);
-    if (response.status === 200) {
-      
-      setData(response.data.response);
-      setSpinner(false);
-    }
-  };
-
-  useEffect(() => {
-    if (param.id !== "create") {
-      getBundleData();
-    }
-  }, []);
-
-  const handleBrowseProducts = async () => {
-    setMyModal(true);
-  };
-
-  const handleSearchInput = (e) => {
-    const { value } = e.target;
-    if (value) {
-      setMyModal(true);
-      setSearchValue(value);
-    } else {
-      setSearchValue("");
-    }
-  };
-
-  
-
-  const removeProductFromList = (item, index) => {
-    let update = [...data.bundleDetail.products];
-    update.splice(update.indexOf(item), 1);
-    let copy = [...data.bundleDetail.display.productPagesList];
-
-    let copy2 = copy.filter((item2) => item2 != item.id);
-
-    if (update.length > 0 && copy2.length == 0) {
-      setData({
-        ...data,
-        bundleDetail: {
-          ...data.bundleDetail,
-          products: update,
-          display: {
-            ...data.bundleDetail.display,
-            productPages: false,
-            productPagesList: copy2,
-          },
+  const ResourcePicker = () => {
+    let selectedIds = data?.bundleDetail?.products?.filter((el) => el.id);
+    shopify
+      .resourcePicker({
+        type: "product",
+        multiple: true,
+        action: "select",
+        filter: {
+          archived: false,
+          draft: false,
         },
-      });
-    } else if (update.length == 0) {
-      setData({
-        ...data,
-        bundleDetail: {
-          ...data.bundleDetail,
-          products: update,
-          display: {
-            ...data.bundleDetail.display,
-            productPages: true,
-            productPagesList: copy2,
-          },
-        },
-      });
-    } else {
-      setData({
-        ...data,
-        bundleDetail: {
-          ...data.bundleDetail,
-          products: update,
-          display: { ...data.bundleDetail.display, productPagesList: copy2 },
-        },
-      });
-    }
-    let copyErrorArray = [...pickerError];
-    let copyArray = [];
-    copyErrorArray.map((item2) => {
-      if (item2 >= index) {
-        copyArray.push(item2 - 1);
-      }
-    });
-    setPickerError(copyArray);
-  };
-
-  const temp = {
-    setPid,
-    setAntModal,
-    setLoader,
-    setCheckedIds,
-    setVariantData,
-  };
-
-  useEffect(() => {
-    let dummyArray = [];
-    data.bundleDetail.products.map((item, mainindex) => {
-      dummyArray.push(
-        Array.from(
-          { length: item.minimumOrder },
-          (x, itemIndex) => item.variants[0].price
-        )
-      );
-    });
-    setArr(dummyArray);
-    setShowPrice({});
-  }, [data.bundleDetail.products]);
-
-  const setCancel = () => {
-    setVariantData([]);
-    setCheckedIds([]);
-    setPid("");
-    let copy = [...errorArray];
-    copy.splice(copy.indexOf("uncheckedVariantModal"), 1);
-    setErrorArray(copy);
-    setAntModal(false);
-  };
-
-  const setOk = () => {
-    let getData = variantData.data.filter(
-      (item) => checkedIds.indexOf(item.id) != -1
-    );
-    if (checkedIds.length > 0) {
-      let update = [...data.bundleDetail.products];
-      let update2 = update.map((item) => {
-        if (item.id == pid) {
-          item.variants = getData;
+        query:searchText,
+        selectionIds: selectedIds,
+      })
+      .then((product) => {
+        if (product) {
+          const updatedArray = product?.map((obj) => {
+            return { ...obj, minimumOrder: 1 }; // Add a new key 'age' with the value of 30
+          });
+          let obj = { ...data };
+          obj.bundleDetail.products = updatedArray ?? [];
+          setData(obj);
         }
-        return item;
-      });
-      setData({
-        ...data,
-        bundleDetail: {
-          ...data.bundleDetail,
-          products: update2,
-        },
-      });
-      setCheckedIds([]);
-      setVariantData([]);
-      setPid("");
-      let copy = [...errorArray];
-      copy.splice(copy.indexOf("uncheckedVariantModal"), 1);
-      setErrorArray(copy);
-
-      setAntModal(false);
-    } else if (checkedIds.length == 0) {
-      setErrorArray([...errorArray, "uncheckedVariantModal"]);
-
-      return false;
-    }
+      })
+      .catch((err) => console.log(err));
   };
-
-  const handleDiscountType = (e) => {
-    if(e.target.value == "percent" && data.bundleDetail.discountValue > 100){
-      setData({
-        ...data,
-        bundleDetail: {
-          ...data.bundleDetail,
-          discountType: e.target.value,
-          discountValue: 100
-        },
-      });
-    }else{
-      setData({
-        ...data,
-        bundleDetail: {
-          ...data.bundleDetail,
-          discountType: e.target.value,
-        },
-      });
-    }
-  };
-
-  const handleDiscountValue = (newvalue) => {
-    if (newvalue == "" || newvalue < 0) {
-      setData({
-        ...data,
-        bundleDetail: {
-          ...data.bundleDetail,
-          discountValue: 1,
-        },
-      });
-    } else {
-      newvalue = String(newvalue);
- 
-      newvalue = newvalue.replace(/^0/, 1);
-      if(data.bundleDetail.discountType == "percent" && newvalue > 100){
-        setData({
-          ...data,
-          bundleDetail: {
-            ...data.bundleDetail,
-            discountValue: 100,
-          },
-        });
-      }else{
-        setData({
-          ...data,
-          bundleDetail: {
-            ...data.bundleDetail,
-            discountValue: newvalue,
-          },
-        });
-      }
-    }
-  };
-
-  useEffect(() => {
-    setEndPrice(parseFloat(calculateFinalPrice()).toFixed(2));
-  }, [arr, data.bundleDetail.discountType, data.bundleDetail.discountValue]);
-
-  const handleVariantChoice = (e, main, index) => {
-    let newArr = [...arr];
-
-   
-
-    setShowPrice({ ...showPrice, [main]: e.target.value });
-    newArr[main].splice(index, 1, e.target.value);
-
-    setArr(newArr);
-  };
-
-
-  const handleDisplayOptions = (e) => {
-    if (e.target.checked) {
-      if (e.target.name == "productPages") {
-        let arr = [];
-        data.bundleDetail.products.map((item) => {
-          arr.push(item.id);
-        });
-
-        setData({
-          ...data,
-          bundleDetail: {
-            ...data.bundleDetail,
-            display: {
-              ...data.bundleDetail.display,
-              productPages: true,
-              productPagesList: [...arr],
-            },
-          },
-        });
-      } else {
-        setData({
-          ...data,
-          bundleDetail: {
-            ...data.bundleDetail,
-            display: { ...data.bundleDetail.display, [e.target.name]: true },
-          },
-        });
-      }
-    } else {
-      if (e.target.name == "productPages") {
-        setData({
-          ...data,
-          bundleDetail: {
-            ...data.bundleDetail,
-            display: {
-              ...data.bundleDetail.display,
-              productPages: false,
-              productPagesList: [],
-            },
-          },
-        });
-      } else {
-        setData({
-          ...data,
-          bundleDetail: {
-            ...data.bundleDetail,
-            display: { ...data.bundleDetail.display, [e.target.name]: false },
-          },
-        });
-      }
-    }
-  };
-
-  const handleDisplayPageOptions = (e) => {
-    if (e.target.checked) {
-      let update = { ...data };
-
-      if (update.bundleDetail.display?.productPagesList.length < 1) {
-        update.bundleDetail.display = {
-          ...update.bundleDetail.display,
-          productPages: true,
-          productPagesList: [e.target.value],
-        };
-
-        setData(update);
-      } else {
-        update.bundleDetail.display.productPagesList = [
-          ...update.bundleDetail.display.productPagesList,
-          e.target.value,
-        ];
-        setData(update);
-      }
-    } else {
-      let update = { ...data };
-      let temp = update.bundleDetail.display.productPagesList.filter((item) => {
-        return item !== e.target.value;
-      });
-
-      if (temp.length > 0) {
-        setData({
-          ...data,
-          bundleDetail: {
-            ...data.bundleDetail,
-            display: { ...data.bundleDetail.display, productPagesList: temp },
-          },
-        });
-      } else {
-        setData({
-          ...data,
-          bundleDetail: {
-            ...data.bundleDetail,
-            display: {
-              ...update.bundleDetail.display,
-              productPages: false,
-              productPagesList: temp,
-            },
-          },
-        });
-      }
-    }
-  };
-
-  function calculateFinalPrice() {
-    let finalPrice = 0;
-
-    if (data.bundleDetail.products.length < 2) {
-      finalPrice = calculateMrp();
-    } else {
-      if (data.bundleDetail.discountType == "percent") {
-        if (data.bundleDetail.discountValue > 100) {
-          finalPrice = 0;
-        } else {
-          finalPrice =
-            calculateMrp() -
-            calculateMrp() * (data.bundleDetail.discountValue / 100);
-        }
-      } else if (data.bundleDetail.discountType == "fixed") {
-        if (parseFloat(data.bundleDetail.discountValue) > calculateMrp()) {
-          finalPrice = 0;
-        } else {
-          finalPrice = calculateMrp() - data.bundleDetail.discountValue;
-        }
-      } else if (data.bundleDetail.discountType == "price") {
-        if (data.bundleDetail.discountValue > calculateMrp()) {
-          finalPrice = calculateMrp();
-        } else {
-          finalPrice = data.bundleDetail.discountValue;
-        }
-      } else if (
-        data.bundleDetail.discountType == "freeShipping" ||
-        data.bundleDetail.discountType == "noDiscount"
-      ) {
-        finalPrice = calculateMrp();
-      }
-    }
-
-    return finalPrice;
-  }
-  function calculateMrp() {
-    let sum = 0;
-
-    arr?.map((item) => {
-      item.map((sub) => {
-        sum += parseFloat(sub);
-      });
-    });
-
-    setMrp(parseFloat(sum).toFixed(2));
-    return parseFloat(sum.toFixed(2));
-  }
-
-  const handleSave = async () => {
-    let alertText = [];
-    let flag = true;
-
-    let search2 = [];
-    data.bundleDetail.products.map((item, index) => {
-      if (item.minimumOrder < 1 || item.minimumOrder == "") {
-        search2.push(index);
-      }
-    });
-
-    if(data.bundleDetail.display.productPagesList.length <= 0){
-      flag= false;
-      alertText.push("Please select at least one product from display options");
-    }
-
-    if (search2.length > 0 || data.bundleDetail.products.length < 2) {
-      flag = false;
-      setPickerError(search2);
-      alertText.push(
-        "Minimum  products for bundle  is 2  & Minimum Order for each product  can not be empty  or less than 1 ."
-      );
-    }
-
-    if (data.name.trim() == "") {
-      if (!errorArray.includes("bundleName")) {
-        setErrorArray((prev) => [...prev, "bundleName"]);
-      }
-
-      flag = false;
-      alertText.push("Please provide name of bundle");
-    }
-    if (data.title.trim() == "") {
-      if (!errorArray.includes("bundleTitle")) {
-        setErrorArray((prev) => [...prev, "bundleTitle"]);
-      }
-      flag = false;
-      alertText.push("Please provide title of bundle");
-    }
-    
-    // if (data.startdate == "") {
-    //   if (!errorArray.includes("startdate")) {
-    //     setErrorArray((prev) => [...prev, "startdate"]);
-    //   }
-    //   flag = false;
-    //   alertText.push("Please select start date & time");
-    // }
-    if (flag == false) {
-      alertCommon(setAlert, alertText, "critical", false);
-    }
-
-    if (flag == true) {
-      setSpinner(true);
-      setErrorArray("");
-      setPickerError([]);
-      if (param.id == "create") {
-        const response = await postApi("/api/admin/createBundle", data, app);
-        if (response.data.status === 200) {
-          return toastNotification("success", "Saved", "bottom"), navigate("/bundle");
-        } else {
-          return alertCommon(
-            setAlert,
-            ["Something went wrong"],
-            "warning",
-            false
-          );
-        }
-      } else {
-        const response = await postApi("/api/admin/updateBundle", data, app);
-        if (response.data.status === 200) {
-          return (
-            toastNotification("success", "Update successfully", "bottom"),
-            navigate("/bundle")
-          );
-        } else {
-          return alertCommon(
-            setAlert,
-            ["Something went wrong"],
-            "warning",
-            false
-          );
-        }
-      }
-    }
-  };
-
- 
-
+  console.log(data);
   return (
-    <Spin spinning={spinner}
-     size="large">
-      <div className="Polaris-Page Polaris-Page--fullWidth">
-        <MoveToHomePage data={headerkey} />
-
-        {alert.state == true && (
-          <AlertSection
-            message={alert.message}
-            setAlert={setAlert}
-            status={alert.status}
-          />
-        )}
-
-        <div className="sd-bundle-wrapper-common">
-          <div className="sd-bundle-left-section-common">
-            <div className="sd-bundle-bundleSection-common sd-bundle-productBundleSearchSection">
-              <div className="sd-bundle-bundleSection-heading-common">
-                Product Bundle{" "}
-              </div>
-
-              <div className="sd-bundle-plainText-common">
-                Add product you want to sell
-              </div>
-              <div className="sd-bundle-search">
-                <input
-                  type="text"
-                  placeholder="search products"
-                  onChange={handleSearchInput}
-                  className="sd-bundle-search-box-common"
-                  value={searchValue}
+    <>
+      <Page
+        title="Create Product Bundle"
+        backAction={{ onAction: () => shopify.modal.show("my-modal") }}
+      >
+        <Grid>
+          {/* First Column  */}
+          <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
+            <BlockStack gap="400">
+              {/* Add product Card  */}
+              <Card sectioned>
+                <Text as="h2" variant="headingSm">
+                  Add product you want to sell
+                </Text>
+              
+               
+                  <TextField
+                  
+                    inputMode="search"
+                    size="slim"
+                    placeholder="Search Products"
+                    value={searchText}
+                    onChange={(e)=>{
+                      setSearchText(e)
+                      ResourcePicker()
+                    }}
+                    autoComplete="off"
+                    suffix={<Button onClick={ResourcePicker} variant="monochromePlain">
+                     
+                    Browse
+                  </Button>}
+                  />
+                
+             
+                <ResourceList
+                  resourceName={{
+                    singular: "product",
+                    plural: "products",
+                  }}
+                  items={data?.bundleDetail?.products}
+                  renderItem={(item) => (
+                    <ResourceList.Item
+                      id={item.id}
+                      media={
+                        <Thumbnail
+                          source={
+                            item?.images?.length
+                              ? item?.images[0].originalSrc
+                              : "https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-collection-2_large.png?v=1530129132"
+                          }
+                          alt={
+                            item?.images?.length ? item?.images[0].altText : ""
+                          }
+                        />
+                      }
+                    >
+                      <InlineStack align="space-between">
+                        <div>
+                          <Text variant="bodyMd" fontWeight="bold" as="h3">
+                            {item?.title}
+                          </Text>
+                          <TextField
+                            size="slim"
+                            label="Minimum orders"
+                            type="number"
+                            value={1}
+                            // onChange={handleChange}
+                            autoComplete="off"
+                          />
+                        </div>
+                        <div>
+                          <Button variant="plain">Edit variants</Button>
+                          <DeleteIcon width={20} height={20} />
+                        </div>
+                      </InlineStack>
+                      {/* <div>SKU: {sku}</div>
+                      <div>{quantity} available</div> */}
+                    </ResourceList.Item>
+                  )}
                 />
-                <button
-                  type="button"
-                  onClick={handleBrowseProducts}
-                  className="sd-bundle-search-button-common"
-                >
-                  Browse
-                </button>
-              </div>
-              <BundlePickerData
-                page="productBundle"
-                modalType=""
-                data={data}
-                setData={setData}
-                temp={temp}
-                errorArray={pickerError}
-                setPickerError={setPickerError}
-                removeProductFromList={removeProductFromList}
-              />
-            </div>
+              </Card>
+              {/* General Card  */}
+              <Card sectioned>
+                <Text as="h2" variant="headingSm">
+                  General
+                </Text>
+                <BlockStack gap="400">
+                  <TextField
+                    label={"Name"}
+                    inputMode="text"
+                    size="slim"
+                    helpText={
+                      <Text as="p" variant="bodyXs">
+                        *This name is used for you to identify this bundle.Your
+                        customers won’t see this name.
+                      </Text>
+                    }
+                    // value={value}
+                    // value={value}
+                    // onChange={handleChange}
+                  />
 
-            {myModal && (
-              <CreateBundleModal
-                open={myModal}
-                setOpen={setMyModal}
-                searchValue={searchValue}
-                setSearchValue={setSearchValue}
-                page={"productBundle"}
-                modalType="Product"
-                setData={setData}
-                data={data}
-              />
-            )}
+                  <TextField
+                    label={"Title"}
+                    inputMode="text"
+                    size="slim"
+                    helpText={
+                      <Text as="p" variant="bodyXs">
+                        *Customers will see this as the name of the bundle
+                        displayed.
+                      </Text>
+                    }
+                    // value={value}
+                    // onChange={handleChange}
+                  />
 
-            {/* <BundleNameTitle
-              data={data}
-              setData={setData}
-              errorArray={errorArray}
-            /> */}
-            <General 
-              data={data}
-              setData={setData}
-              errorArray={errorArray}
-            />
+                  <TextField
+                    label={"Bundle description"}
+                    inputMode="text"
+                    size="slim"
+                    helpText={
+                      <Text as="p" variant="bodyXs">
+                        *Provide an explanation of the selection limit within
+                        this bundle to ensure user awareness.
+                      </Text>
+                    }
+                    // value={value}
+                    // onChange={handleChange}
+                  />
+                </BlockStack>
+              </Card>
+              {/* Discount Card  */}
+              <Card sectioned>
+                <Text as="h2" variant="headingSm">
+                  Discount
+                </Text>
+                <Text as="p" variant="bodyXs">
+                  Choose type of discount and discount value for each product.
+                </Text>
+                {/* <Checkbox
+          label="Percentage Discount"
+          // checked={checked}
+          // onChange={handleChange}
+        /> */}
+                <BlockStack vertical>
+                  <RadioButton
+                    label="Percentage Discount"
+                    // helpText="Customers will only be able to check out as guests."
+                    // checked={value === 'disabled'}
+                    // id="disabled"
+                    name="discount"
+                    // onChange={handleChange}
+                  />
+                  <TextField
+                    label="set value for discount"
+                    type="number"
+                    // value={value}
+                    // onChange={handleChange}
+                    autoComplete="off"
+                    suffix={"%"}
+                  />
+                  <RadioButton
+                    label="Fixed Discount"
+                    // helpText="Customers will only be able to check out as guests."
+                    // checked={value === 'disabled'}
+                    // id="disabled"
+                    name="discount"
+                    // onChange={handleChange}
+                  />
+                  <TextField
+                    label="set value for discount"
+                    type="number"
+                    // value={value}
+                    // onChange={handleChange}
+                    autoComplete="off"
+                    suffix={"%"}
+                  />
+                  <RadioButton
+                    label="Free Shipping"
+                    // helpText="Customers will only be able to check out as guests."
+                    // checked={value === 'disabled'}
+                    // id="disabled"
+                    name="discount"
+                    // onChange={handleChange}
+                  />
+                  <RadioButton
+                    label="No Discount"
+                    // helpText="Customers will only be able to check out as guests."
+                    // checked={value === 'disabled'}
+                    // id="disabled"
+                    name="discount"
+                    // onChange={handleChange}
+                  />
+                </BlockStack>
+              </Card>
+            </BlockStack>
+          </Grid.Cell>
+          {/* Second Column  */}
+          <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
+            <BlockStack gap="400">
+              {/* Bundle Status Card  */}
+              <Card title="Orders" sectioned>
+                <Text as="h2" variant="headingSm">
+                  Set Bundle Status
+                  <Select
+                    options={[
+                      { label: "Active", value: "active" },
+                      { label: "Draft", value: "draft" },
+                    ]}
+                    // onChange={handleSelectChange}
+                    // value={selected}
+                  />
+                </Text>
+              </Card>
 
-            <DiscountOptions
-              discountType={data.bundleDetail.discountType}
-              discountValue={data.bundleDetail.discountValue}
-              handleDiscountType={handleDiscountType}
-              handleDiscountValue={handleDiscountValue}
-              currency={currencyCode}
-            />
+              {/* Display Option Card  */}
+              <Card sectioned>
+                <Text as="h2" variant="headingSm">
+                  Display Options
+                </Text>
+                <Text as="p" variant="bodyXs">
+                  check page options where you want to display bundle
+                </Text>
+                <Checkbox
+                  label="Product pages"
+                  // checked={checked}
+                  // onChange={handleChange}
+                />
+              </Card>
 
-            {/* <DateTime data={data} setData={setData} errorArray={errorArray} /> */}
+              {/* Preview Bundle Card  */}
+              <Card sectioned>
+                <Text as="h2" variant="headingSm">
+                  Preview
+                </Text>
+                <Text as="p" variant="bodyXs">
+                  Firstly,Add products in bundle to preview
+                </Text>
+              </Card>
+            </BlockStack>
+          </Grid.Cell>
+        </Grid>
+      </Page>
 
-            <DeleteSave handleSave={handleSave} />
-          </div>
-
-          <div className="sd-bundle-productBundle-rightSection Polaris-Layout__Section Polaris-Layout__Section--secondary">
-            <BundleStatus data={data} setData={setData} />
-
-            <DisplayOptions
-              bundleType="productBundle"
-              display={data.bundleDetail.display}
-              handleDisplayOptions={handleDisplayOptions}
-              displayPageOptions={data.bundleDetail.display.productPages}
-              handleDisplayPageOptions={handleDisplayPageOptions}
-              products={data.bundleDetail.products}
-              data= {data}
-            />
-
-            <ProductBundlePreview 
-              data={data}
-              currency={currencyCode}
-              mrp={mrp}
-              endPrice={endPrice}
-              showPrice={showPrice}
-              handleVariantChoice={handleVariantChoice}
-              bundleType={"productBundle"}
-              errorArray={errorArray}
-            />
-
-          </div>
-        </div>
- 
-        {/* below code is for the modal opening on click of Edit Further  */}
-        {antModal && (
-          <Modal
-            title="Select Variant Options  for Bundle Modal"
-            open={antModal}
-            onOk={setOk}
-            onCancel={setCancel}
-            className="sd-bundle-modal sd-bundle-modal-variant"
-            // width={1000}
-          >
-            <ProductVariantData
-              checkedIds={checkedIds}
-              setCheckedIds={setCheckedIds}
-              variantData={variantData}
-              loader={loader}
-              errorArray={errorArray}
-            />
-          </Modal>
-        )}
-      </div>
-    </Spin>
+      <Modal variant="base" id="my-modal">
+        <Page>
+          <Text as="p">Are you sure you want to exit ?</Text>
+        </Page>
+        <TitleBar title="Exit confirmation">
+          <button onClick={() => navigate("/bundle")} variant="primary">
+            Confirm
+          </button>
+          <button onClick={() => shopify.modal.hide("my-modal")}>Cancel</button>
+        </TitleBar>
+      </Modal>
+    </>
   );
-}
+};
 
 export default CreateBundle;

@@ -1,0 +1,25 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "44ed719dd36e0f63a439cc80d42cfb61"
+name = "RobinSmartBundle"
+handle = "robinsmartbundle"
+application_url = "https://detector-shakespeare-recipients-brown.trycloudflare.com"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "nezuko-komada.myshopify.com"
+include_config_on_deploy = true
+
+[auth]
+redirect_urls = [
+  "https://detector-shakespeare-recipients-brown.trycloudflare.com/auth/callback",
+  "https://detector-shakespeare-recipients-brown.trycloudflare.com/auth/shopify/callback",
+  "https://detector-shakespeare-recipients-brown.trycloudflare.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2024-10"
+
+[pos]
+embedded = false

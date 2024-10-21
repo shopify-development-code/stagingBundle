@@ -583,15 +583,8 @@ const ProductMixMatchPreview = ({
               <p
                 style={{
                   ...fontSize,
-                  color:
-                    data.customization[0]?.productMixMatch.title
-                      .descriptionColor,
-                  color:
-                    data.customization[0]?.productMixMatch.totalSection
-                      .discountMessage.color,
-                  fontSize:
-                    data.customization[0]?.productMixMatch.totalSection
-                      .discountMessage.size + "px",
+                  color:data.customization[0]?.productMixMatch.title.descriptionColor,
+                  fontSize:data.customization[0]?.productMixMatch.totalSection.discountMessage.size + "px",
                 }}
               >
                 Discount will be applied at checkout

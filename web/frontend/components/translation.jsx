@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react'
 import { Card ,Divider,Spin,Skeleton} from 'antd';
 import {Button,Icon,} from "@shopify/polaris";
 import { ArrowLeftOutlined} from "@ant-design/icons";
-import { useNavigate } from "@shopify/app-bridge-react";
+
 import { useAppBridge } from "@shopify/app-bridge-react";
 import postApi from './postApi';
 // import BoatLoader from './BoatLoader';
@@ -10,7 +10,7 @@ import toastNotification from "./commonSections/Toast.jsx";
 import Watermark from './watermark';
 
 const Translation = () => {
-  const navigate = useNavigate()
+
   const app = useAppBridge();
 
   const [translateField,setTranslateField] = useState({})

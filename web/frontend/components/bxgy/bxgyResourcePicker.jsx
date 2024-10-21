@@ -1,5 +1,5 @@
 import React from 'react'
-import { ResourcePicker } from "@shopify/app-bridge-react";
+// import { ResourcePicker } from "@shopify/app-bridge-react";
 import toastNotification from '../commonSections/Toast';
 const BxgyResourcePicker = (props) => {
     const handleProducts = (e, page) => {
@@ -165,7 +165,7 @@ const BxgyResourcePicker = (props) => {
 
   return (
     <>
-    <ResourcePicker
+    {/* <ResourcePicker
         resourceType={props.modalType}
         open={props.open}
         onSelection={(e) => handleProducts(e, props.page)}
@@ -175,7 +175,7 @@ const BxgyResourcePicker = (props) => {
         selectMultiple ={true}
         showDraftBadge={true}
                 
-      />
+      /> */}
     </>
   )
 }
