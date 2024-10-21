@@ -2063,14 +2063,14 @@
       gap: 10px;
     }
     .sd-show-items span {
-      /* display: inline-flex; */
+      display: inline-flex;
       align-items: center;
       border: 1px solid #C9C9C9;
       font-size: 14px;
       font-weight: 500;
       line-height: 16px;
       text-align: center;
-      padding: 10px 15px;
+      padding: 10px 10px;
       border-radius: 30px;
       color: #6d6d6d;
       background: #E8E8E8;
