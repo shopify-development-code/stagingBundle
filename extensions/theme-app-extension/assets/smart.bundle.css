@@ -2123,6 +2123,7 @@
     .sd-selected-product-itemImg img {
       width: 100%;
       height: 100%;
+      object-fit: contain;
     }
     .sd-checkbox-wrapper-21 .sd-control {
       display: block;
