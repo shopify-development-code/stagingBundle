@@ -2063,7 +2063,7 @@
       gap: 10px;
     }
     .sd-show-items span {
-      display: inline-flex;
+      /* display: inline-flex; */
       align-items: center;
       border: 1px solid #C9C9C9;
       font-size: 14px;
