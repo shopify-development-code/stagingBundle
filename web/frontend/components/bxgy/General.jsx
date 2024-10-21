@@ -16,7 +16,7 @@ const General = (props) => {
       [element]: e.target.value,
     });
   };
-  console.log("check.................",props.data.type);
+  // console.log("check.................",props.data.type);
 
   return (
     <div className="sd-bundle-bundleSection-common sd-bundle-createBundleNamingSection">

@@ -21,7 +21,7 @@ import planModel from "./backend/models/plan.js";
 
 
 
-console.log("inside index")
+// console.log("inside index")
 dotenv.config();
 const app=express();
 const PORT = parseInt(process.env.BACKEND_PORT || process.env.PORT, 10);
@@ -39,7 +39,7 @@ process.env.NODE_ENV === "production"
 
 db()
 
-console.log(process.env.HOST);
+console.log("Hostname",process.env.HOST);
 app.get(shopify.config.auth.path, shopify.auth.begin());
 
 console.log("1 run",shopify.config.auth.path,shopify.auth.begin({
@@ -49,7 +49,7 @@ app.get(
   shopify.config.auth.callbackPath,
   shopify.auth.callback(), async(req, res, next) => {
     const session = res.locals.shopify.session;
-    console.log("fghf fhghg  ",session.accessToken.Session);
+    // console.log("fghf fhghg  ",session.accessToken.Session);
     
     const customizationData =  await customizationModel.findOneAndUpdate({shop : session.shop}, {shop : session.shop, bundle:Customizations['bundle'],collectionMixMatch :Customizations['collectionMixMatch'],popUp :Customizations["popUp"],
        volume:Customizations["volume"],buyXgetY:Customizations["buyXgetY"],productMixMatch:Customizations["productMixMatch"],frequentlyBoughtTogether:Customizations["frequentlyBoughtTogether"]}, {upsert:true, new : true},)

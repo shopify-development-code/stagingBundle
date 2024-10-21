@@ -72,7 +72,7 @@ const ProductBundlePreview = ({
       setSeeMoreIndex(mainindex);
     }
   };
-  console.log("working success", data);
+  // console.log("working success", data);
 
   return (
     <div className="sd-bundle-bundleSection-common">
