@@ -490,9 +490,9 @@ const ProductMixMatchPreview = ({
               <p
                 style={{
                   ...fontSize,
-                  color: data.customization[0]?.productMixMatch?.totalSection?.discountMessage?.color ?? data.customization[0]?.productMixMatch?.title?.descriptionColor ?? 'inherit', // Defaults to 'inherit' if both are undefined
-                  fontSize: (data.customization[0]?.productMixMatch?.totalSection?.discountMessage?.size ?? 14) + "px", // Defaults to 0 if size is undefined
-                }}                
+                  color:data.customization[0]?.productMixMatch.title.descriptionColor,
+                  fontSize:data.customization[0]?.productMixMatch.totalSection.discountMessage.size + "px",
+                }}
               >
                 Discount will be applied at checkout
               </p>

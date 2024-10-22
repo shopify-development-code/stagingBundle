@@ -279,8 +279,14 @@ export async function getBundle (req,res){
       },
       { $sort: { createdAt: 1 } },
       {
+        $addFields: {
+          id: "$_id"
+        }
+      },
+      {
         $project: {
           _id:1,
+          id: 1,
           shop:1,
           type:1,
           name :1,
