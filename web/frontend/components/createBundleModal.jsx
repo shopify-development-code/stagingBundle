@@ -1,5 +1,5 @@
 import React from "react";
-import { ResourcePicker } from "@shopify/app-bridge-react";
+// import { ResourcePicker } from "@shopify/app-bridge-react";
 
 function CreateBundleModal(props) {
 
@@ -238,7 +238,7 @@ function CreateBundleModal(props) {
 
   return (
     <>
-      <ResourcePicker
+      {/* <ResourcePicker
         resourceType={props.modalType}
         open={props.open}
         onSelection={(e) => handleProducts(e, props.page)}
@@ -248,7 +248,7 @@ function CreateBundleModal(props) {
         // selectMultiple={props.page == "volumeBundle" ? false : true || props.page == "CollectionMixMatch" ? 2 : true}
         selectMultiple ={props.page == "productBundle" ? true : props.page == "volumeBundle" ? false : props.page == "CollectionMixMatch" ? 2 : true}
         showDraftBadge={true}
-      />
+      /> */}
     </>
   );
 }

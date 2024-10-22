@@ -1,5 +1,6 @@
+
 import React, { useEffect, useState } from 'react'
-import { ResourcePicker } from "@shopify/app-bridge-react";
+// import { ResourcePicker } from "@shopify/app-bridge-react";
 import toastNotification from '../commonSections/Toast';
 const FBTResourcePicker = (props) => {
   
@@ -180,7 +181,7 @@ const FBTResourcePicker = (props) => {
 
   return (
     <>
-    <ResourcePicker
+    {/* <ResourcePicker
         resourceType={props.modalType}
         open={props.open}
         onSelection={(e) => handleProducts(e, props.page)}
@@ -189,7 +190,7 @@ const FBTResourcePicker = (props) => {
         initialQuery={props.searchValue ? props.searchValue : ""}
         selectMultiple ={props.type==='MainProduct' ? 1 : true}
         showDraftBadge={true}
-      />
+      /> */}
     </>
   )
 }
