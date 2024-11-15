@@ -16,6 +16,7 @@ const ProductBundlePreview = ({
   handleVariantChoice,
   bundleType,
 }) => {
+  
   const [display, setDisplay] = useState("productPage");
   const [left, setLeft] = useState(0);
   const [right, setRight] = useState(1);
@@ -75,8 +76,7 @@ const ProductBundlePreview = ({
   // console.log("working success", data);
 
   return (
-    <div className="sd-bundle-bundleSection-common">
-      <div className="sd-bundle-bundleSection-heading-common">Preview</div>
+    <>
       {data?.bundleDetail?.products?.length > 0 ? (
         <div
           className="sd-bundle-main-column"
@@ -434,7 +434,7 @@ const ProductBundlePreview = ({
       ) : (
         <EmptyPreview type={""} />
       )}
-    </div>
+    </>
   );
 };
 

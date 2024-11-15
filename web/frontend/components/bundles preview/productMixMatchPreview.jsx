@@ -17,8 +17,7 @@ const ProductMixMatchPreview = ({
     fontFamily: data?.customization[0]?.productMixMatch?.box?.fontFamily || 'inherit',
   };
   return (
-    <div className="sd-bundle-bundleSection-common">
-      <div className="sd-bundle-bundleSection-heading-common">Preview</div>
+    <>
       {data.bundleDetail.products.length > 0 ? (
         <div
           className="sd-bundle-main-column"
@@ -554,7 +553,7 @@ const ProductMixMatchPreview = ({
       ) : (
         <EmptyPreview type={""} />
       )}
-    </div>
+    </>
   );
 };
 

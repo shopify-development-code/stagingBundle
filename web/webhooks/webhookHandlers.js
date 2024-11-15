@@ -295,14 +295,12 @@ export async function verifyWebhooks(req, res) {
             await planModel.deleteOne({ shop: shop });
             await shopify.config.sessionStorage.deleteSession(session[0].id);
             console.log(`Session cleared for shop: ${shop}`);
-
             res.status(200).send("success");
           } else {
             res.status(401).send("Unauthorized access");
           }
         } catch (error) {
           res.status(200).send("success");
-
         }
         break;
       case "customers/data_request":

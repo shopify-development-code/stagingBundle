@@ -4128,3 +4128,6 @@ p.sd-bundle-custom-item-heading-common.optionalBadge {
     font-weight: 500;
     line-height: 18px;
 }
+.gap{
+    padding: 40px;
+}

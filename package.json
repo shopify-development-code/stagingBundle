@@ -14,11 +14,7 @@
   },
   "dependencies": {
     "@shopify/app": "^3.58.2",
-<<<<<<< HEAD
     "@shopify/cli": "^3.68.1",
-=======
-    "@shopify/cli": "^3.68.0",
->>>>>>> 5fbe95e97b947c04ac01fe0ed573ef2d5ac80d56
     "dotenv": "^16.4.5"
   },
   "author": "ShineD-106"

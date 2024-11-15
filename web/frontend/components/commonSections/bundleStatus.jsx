@@ -1,32 +1,29 @@
+import { Card, Select, Text } from "@shopify/polaris";
 import React from "react";
 
-const BundleStatus=(props)=>{
+const BundleStatus = (props) => {
+  
+  const handleChangeStatus = (e) => {
+    props.setData({
+      ...props.data,
+      status: e,
+    });
+  };
+  return (
+    <Card title="Orders" sectioned>
+      <Text as="h2" variant="headingSm">
+        Set Bundle Status
+        <Select
+          options={[
+            { label: "Active", value: "active" },
+            { label: "Draft", value: "draft" },
+          ]}
+          onChange={handleChangeStatus}
+          value={props.data.status}
+        />
+      </Text>
+    </Card>
+  );
+};
 
-const handleChangeStatus=(e)=>{
-
-props.setData({
-   ...props.data,
- status:e.target.value
-
-})
-
-
-
-}
-return(
-    <div className="sd-bundle-bundleSection-common sd-bundle-productBundle-statusSection">
-            <div className="sd-bundle-bundleSection-heading-common">
-              Set Bundle Status
-            </div>
-            <div>
-              <select value={props.data.status} onChange={handleChangeStatus}>
-                <option className="option"  value="active" >Active</option>
-                <option className="option"  value="draft"  > Draft</option>
-              </select>
-            </div>
-          </div>
-)
-
-}
-
-export default  BundleStatus;
+export default BundleStatus;

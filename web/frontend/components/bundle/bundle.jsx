@@ -338,12 +338,10 @@ const CreateBundle = () => {
                 <div onClick={() => setSelectBundle(item.type)}>
 
                 <Card
-                  title={<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>Buy X get Y <LockIcon className="sd-bundle-premium1" /></div>}
+                  title={<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>Buy X get Y </div>}
                   style={{
                     width: 300,
                   }}
-                
-   
                 >
                   <InlineStack align="space-between">
                     {item.icon}

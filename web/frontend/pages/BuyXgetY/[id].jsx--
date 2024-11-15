@@ -1,26 +1,32 @@
 import { useEffect, useState } from "react";
+import MoveToHomePage from "../../components/commonSections/MoveToHomePage";
 import BuyY from "../../components/bxgy/buyY";
 import BuyX from "../../components/bxgy/buyX";
 import { useAPI } from "../../components/shop";
 import defaultData from "../../components/customization/defaultData.json";
 import DiscountSet from "../../components/bxgy/DiscountSet";
 import General from "../../components/bxgy/General";
+import DateTime from "../../components/commonSections/dateTime";
 import BundleStatus from "../../components/commonSections/bundleStatus";
 import DisplayOptions from "../../components/commonSections/displayOptions";
+import DeleteSave from "../../components/commonSections/deleteSave";
 import { useNavigate, useParams } from "react-router-dom";
 import postApi from "../../components/postApi";
-import { Modal, TitleBar, useAppBridge } from "@shopify/app-bridge-react";
+import { useAppBridge } from "@shopify/app-bridge-react";
 import toastNotification from "../../components/commonSections/Toast";
+import { Card, Spin } from "antd";
 import { alertCommon } from "../../components/helperFunctions";
+import AlertSection from "../../components/commonSections/AlertSection";
 import Swal from "sweetalert2";
 import BXGYBundlePreview from "../../components/bundles preview/bxgyBundlePreview";
-import { BlockStack, Button, Card, Grid, Page, Text } from "@shopify/polaris";
 
 const BuyXgetY = () => {
   const navigate = useNavigate();
   const param = useParams();
   const app = useAppBridge();
+
   let headerkey = "Create Buy X get Y";
+  let back = "Back to Dashboard";
   const { shop, timeZone, currencyCode } = useAPI();
   const [customizationData, setCustomizationData] = useState([]);
   const [errorArray, setErrorArray] = useState([]);
@@ -59,6 +65,7 @@ const BuyXgetY = () => {
     customization: [defaultData],
     timeZone: timeZone,
   });
+
   async function getCustomization() {
     try {
       const planResponse = await postApi("/api/admin/getPlans", data, app);
@@ -72,7 +79,8 @@ const BuyXgetY = () => {
     } catch (error) {
       console.log(error);
     }
-  };
+  }
+
   useEffect(() => {
     getCustomization();
   }, []);
@@ -92,6 +100,7 @@ const BuyXgetY = () => {
       ],
     }));
   }, [customizationData]);
+
   //----------------------------------------------------------
 
   // const handleDisplayOptions = (e) => {
@@ -206,6 +215,7 @@ const BuyXgetY = () => {
       }
     }
   };
+
   const handleDisplayPageOptions = (e) => {
     if (e.target.checked) {
       let update = { ...data };
@@ -254,6 +264,7 @@ const BuyXgetY = () => {
       }
     }
   };
+
   useEffect(() => {
     let dummyArrayX = [];
     let dummyArrayY = [];
@@ -286,6 +297,7 @@ const BuyXgetY = () => {
     setArrX(dummyArrayX);
     setArrY(dummyArrayY);
   }, [data.bundleDetail.xproducts, data.bundleDetail.yproducts]);
+
   useEffect(() => {
     let MergedArray = [];
     arrY.map((item, index) => {
@@ -305,6 +317,7 @@ const BuyXgetY = () => {
     data.bundleDetail.discountType,
     data.bundleDetail.discountValue,
   ]);
+
   function calculateFinalPrice(arrX, arrY, lengthOfYProducts) {
     let finalPrice = 0;
     const totalMrp = calculateMrp(arrX) + calculateMrp(arrY);
@@ -335,7 +348,8 @@ const BuyXgetY = () => {
       finalPrice = calculateMrp(arrX);
     }
     return finalPrice;
-  };
+  }
+
   function calculateMrp(arr) {
     let sum = 0;
     arr?.map((item) => {
@@ -344,7 +358,8 @@ const BuyXgetY = () => {
       });
     });
     return parseFloat(sum.toFixed(2));
-  };
+  }
+
   const getBundleData = async () => {
     let body = { id: param.id };
     setSpinner(true);
@@ -354,11 +369,13 @@ const BuyXgetY = () => {
       setSpinner(false);
     }
   };
+
   useEffect(() => {
     if (param.id !== "create") {
       getBundleData();
     }
   }, []);
+
   const handleSave = async () => {
     if (plan != "standard") {
       Swal.fire({
@@ -490,85 +507,59 @@ const BuyXgetY = () => {
   };
 
   return (
-    <>
-      <Page
-        title={headerkey}
-        primaryAction={
-          <Button onClick={handleSave} variant="primary">
-            Save
-          </Button>
-        }
-        secondaryActions={
-          param.id !== "create" && (
-            <Button onClick={handleDelete} variant="primary" tone="critical">
-              Delete
-            </Button>
-          )
-        }
-        backAction={{ onAction: () => shopify.modal.show("my-modal") }}
-      >
-        {/* <AlertBanner
-            showBanner={showBanner}
-            alertText={warningtText}
-            setShowBanner={setShowBanner}
-          /> */}
-        <Grid>
-          <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
-            <BlockStack gap="400">
-              <BuyX data={data} setData={setData} />
-              <BuyY data={data} setData={setData} />
-              <DiscountSet
-                discountType={data.bundleDetail.discountType}
-                discountValue={data.bundleDetail.discountValue}
-                data={data}
-                setData={setData}
-              />
-              <General data={data} setData={setData} errorArray={errorArray} />
-            </BlockStack>
-          </Grid.Cell>
-          <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
-            <BlockStack gap="400">
-              <BundleStatus data={data} setData={setData} />
-              <DisplayOptions
-                bundleType="bxgy"
-                display={data.bundleDetail.display}
-                handleDisplayOptions={handleDisplayOptions}
-                displayPageOptions={data.bundleDetail.display.productPages}
-                handleDisplayPageOptions={handleDisplayPageOptions}
-                xproducts={data.bundleDetail.xproducts}
-                yproducts={data.bundleDetail.yproducts}
-              />
-              <Card sectioned>
-                <Text as="h2" variant="headingSm">
-                  Preview
-                </Text>
-                <BXGYBundlePreview
-                  data={data}
-                  currency={currencyCode}
-                  mrp={mrp}
-                  endPrice={endPrice}
-                  showPrice={showPrice}
-                  badgeText={badgeText}
-                  bundleType={"productBundle"}
-                  errorArray={errorArray}
-                />
-              </Card>
-            </BlockStack>
-          </Grid.Cell>
-        </Grid>
-      </Page>
-      <Modal variant="base" id="my-modal">
-        <Page>
-          <Text as="p">Are you sure you want to exit ?</Text>
-        </Page>
-        <TitleBar title="Exit confirmation">
-          <button onClick={() => navigate("/bundle")} variant="primary">
-            Confirm
-          </button>
-          <button onClick={() => shopify.modal.hide("my-modal")}>Cancel</button>
-        </TitleBar>
-      </Modal>
-    </>
+    <Spin spinning={spinner}>
+      <div className="Polaris-Page Polaris-Page--fullWidth">
+        <MoveToHomePage data={headerkey} />
+
+        {alert.state == true && (
+          <AlertSection
+            message={alert.message}
+            setAlert={setAlert}
+            status={alert.status}
+          />
+        )}
+
+        <div className="sd-bundle-wrapper-common">
+          <div className="sd-bundle-left-section-common">
+            <BuyX data={data} setData={setData} />
+            <BuyY data={data} setData={setData} />
+            <DiscountSet
+              discountType={data.bundleDetail.discountType}
+              discountValue={data.bundleDetail.discountValue}
+              data={data}
+              setData={setData}
+            />
+            <General data={data} setData={setData} errorArray={errorArray} />
+          </div>
+          <div className="sd-bundle-productBundle-rightSection Polaris-Layout__Section Polaris-Layout__Section--secondary">
+            <BundleStatus data={data} setData={setData} />
+            <DisplayOptions
+              bundleType="bxgy"
+              display={data.bundleDetail.display}
+              handleDisplayOptions={handleDisplayOptions}
+              displayPageOptions={data.bundleDetail.display.productPages}
+              handleDisplayPageOptions={handleDisplayPageOptions}
+              xproducts={data.bundleDetail.xproducts}
+              yproducts={data.bundleDetail.yproducts}
+            />
+
+            <BXGYBundlePreview
+              data={data}
+              currency={currencyCode}
+              mrp={mrp}
+              endPrice={endPrice}
+              showPrice={showPrice}
+              badgeText={badgeText}
+              bundleType={"productBundle"}
+              errorArray={errorArray}
+            />
+          </div>
+        </div>
+        <div className="sd-bundle-wrapper-common">
+          <DeleteSave handleSave={handleSave} />
+        </div>
+      </div>
+    </Spin>
   );
 };
 

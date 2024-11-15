@@ -23,11 +23,7 @@ const VolumeBundlePreview = ({
   const fontFamily = {
     fontFamily: data?.customization?.[0]?.volume?.box?.fontFamily || "inherit",
   };
-
   const [selectedOption, setSelectedOption] = useState("option0");
-
-  // document.getElementsByClassName("quantity-button").disabled = true;
-
   const handleSelected = (option) => {
     option != selected ? setSelected(option) : "";
   };
@@ -38,15 +34,11 @@ const VolumeBundlePreview = ({
 
   const handleOptionChange = (e, index) => {
     setSelectedOption(e.target.value);
-    // setDiscountType(data.bundleDetail.discountOptions[index].type)
-    // console.log("ehheherghgr", data, index);
     setDiscountType(data.bundleDetail?.discountOptions[index].type);
   };
-// console.log("jhfhh hd f",data?.customization[0]?.volume?.options?.saveDiscount?.backgroundColor);
 
   return (
-    <div className="sd-bundle-bundleSection-common">
-      <div className="sd-bundle-bundleSection-heading-common">Preview</div>
+    <>
       {data?.bundleDetail?.discountedProductType == "all_products" ||
       data?.bundleDetail?.products.length > 0 ? (
         <div
@@ -425,7 +417,7 @@ const VolumeBundlePreview = ({
       ) : (
         <EmptyPreview type={data?.bundleDetail?.discountedProductType} />
       )}
-    </div>
+    </>
   );
 };
 

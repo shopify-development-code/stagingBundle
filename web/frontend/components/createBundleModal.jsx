@@ -2,8 +2,7 @@ import React from "react";
 // import { ResourcePicker } from "@shopify/app-bridge-react";
 
 function CreateBundleModal(props) {
-
-  const handleCancel = () => {    
+  const handleCancel = () => {
     if (props.searchValue) {
       props.setSearchValue("");
     }
@@ -11,13 +10,10 @@ function CreateBundleModal(props) {
   };
 
   const handleProducts = (e, page) => {
-    
-
     if (page == "productBundle") {
       let x = {};
-      
+
       props?.data.bundleDetail.products.map((item) => {
-      
         x[item.id] = item.minimumOrder ? item.minimumOrder : 0;
       });
       const result1 = e.selection.filter(({ id: id1 }) =>
@@ -26,8 +22,8 @@ function CreateBundleModal(props) {
       let update = result1.map((item) => {
         if (x[item.id] || x[item.id] == 0) {
           item.minimumOrder = x[item.id];
-          item.required= false;
-          item.multiItemSelect= false;
+          item.required = false;
+          item.multiItemSelect = false;
           return item;
         }
       });
@@ -36,13 +32,13 @@ function CreateBundleModal(props) {
         ({ id: id1 }) =>
           !props.data.bundleDetail.products.some(({ id: id2 }) => id2 === id1)
       );
-     
-    // console.log("result2", result2, "update",update)
+
+      // console.log("result2", result2, "update",update)
       let arr = [];
       result2.map((item, index) => {
         item.minimumOrder = 1;
-        item.required= false;
-        item.multiItemSelect= false;
+        item.required = false;
+        item.multiItemSelect = false;
         arr.push(item.id);
 
         if (index + 1 == result2.length) {
@@ -73,12 +69,11 @@ function CreateBundleModal(props) {
         }
       });
     }
-//..................................................Product mix match.......................................................
+    //..................................................Product mix match.......................................................
     if (page == "productMixMatch") {
       let x = {};
-      
+
       props?.data.bundleDetail.products.map((item) => {
-        
         x[item.id] = item.minimumOrder ? item.minimumOrder : 0;
       });
       const result1 = e.selection.filter(({ id: id1 }) =>
@@ -87,8 +82,8 @@ function CreateBundleModal(props) {
       let update = result1.map((item) => {
         if (x[item.id] || x[item.id] == 0) {
           item.minimumOrder = x[item.id];
-          item.required= false;
-          item.multiItemSelect= false;
+          item.required = false;
+          item.multiItemSelect = false;
           return item;
         }
       });
@@ -97,13 +92,11 @@ function CreateBundleModal(props) {
         ({ id: id1 }) =>
           !props.data.bundleDetail.products.some(({ id: id2 }) => id2 === id1)
       );
-     
-    // console.log("result2", result2, "update",update)
       let arr = [];
       result2.map((item, index) => {
         item.minimumOrder = 1;
-        item.required= false;
-        item.multiItemSelect= false;
+        item.required = false;
+        item.multiItemSelect = false;
         arr.push(item.id);
 
         if (index + 1 == result2.length) {
@@ -137,7 +130,6 @@ function CreateBundleModal(props) {
     //------------------------------------------------------------
     else if (page == "volumeBundle") {
       props.setShowPrice({});
-
       props.setData({
         ...props.data,
         bundleDetail: {
@@ -146,7 +138,7 @@ function CreateBundleModal(props) {
           display: {
             ...props.data.bundleDetail.display,
             productPages: true,
-            productPagesList: [e.selection[0].id]
+            productPagesList: [e.selection[0].id],
           },
         },
       });
@@ -230,11 +222,10 @@ function CreateBundleModal(props) {
     //------------------------------------
 
     props.setOpen(false);
-  if(props.page!= "CollectionMixMatch")
-  {
-    props.setSearchValue("");
-    } 
-   };
+    if (props.page != "CollectionMixMatch") {
+      props.setSearchValue("");
+    }
+  };
 
   return (
     <>

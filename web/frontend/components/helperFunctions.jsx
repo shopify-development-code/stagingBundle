@@ -1,5 +1,6 @@
 import postApi from "./postApi";
 import toastNotification from "./commonSections/Toast";
+import { Banner, List } from "@shopify/polaris";
 
 export async function handleEditFurther(
   id,
@@ -9,10 +10,16 @@ export async function handleEditFurther(
   products,
   setCheckedIds,
   setVariantData,
-  app
+  app,
+  modalId,
+  Shopify
 ) {
+  // let EditVariant = document.getElementById(`${modalId}`).show();
+  // console.log("Show Edit Variant");
+  shopify.modal.show(`${modalId}`);
+  
   setPid(id);
-  setAntModal(true);
+  // setAntModal(true);
   setLoader(true);
 
   let update = products
@@ -42,23 +49,36 @@ export async function handleEditFurther(
       "bottom"
     );
   }
-}
-
+};
+export const AlertBanner = ({ showBanner, alertText ,setShowBanner}) => {
+  return (
+    <div>
+      {showBanner == true && (
+        <Banner title="Something is missing." tone="warning" onDismiss={() => setShowBanner(false)}>
+        <List>
+          {alertText.map((item, index) => (
+            <List.Item key={index}>{item}</List.Item>
+          ))}
+        </List>
+      </Banner>      
+      )}
+    </div>
+  );
+};
 async function getVariants(id, app) {
   try {
     const data = await postApi("/api/admin/fetchVariants", { p_id: id }, app);
+    // console.log("We get data from fetch variant",data);
     return { message: "success", data: data };
   } catch (err) {
     return { message: "fail", data: "" };
   }
-}
-
+};
 export function alertCommon(setAlert, message, status, returnBool) {
   setAlert({ state: true, message: message, status: status });
   window.scrollTo(0, 0);
   return returnBool;
-}
-
+};
 export const handleChangeCommon = (
   e,
   key1,
@@ -83,8 +103,6 @@ export const handleChangeCommon = (
     },
   }));
 };
-
-
 export const handleChangeValueCommon = (
   newvalue,
   key1,
@@ -93,7 +111,8 @@ export const handleChangeValueCommon = (
   setData,
   bundleOption
 ) => {
-  const valueToSet = (newvalue === "" || newvalue < 0) ? 1 : String(newvalue).replace(/^0/, '1');
+  const valueToSet =
+    newvalue === "" || newvalue < 0 ? 1 : String(newvalue).replace(/^0/, "1");
 
   setData((prevData) => ({
     ...prevData,
@@ -106,8 +125,6 @@ export const handleChangeValueCommon = (
     },
   }));
 };
-
-
 export const handleChangeCommon2 = (
   e,
   key1,
@@ -135,8 +152,6 @@ export const handleChangeCommon2 = (
     },
   }));
 };
-
-
 export const handleChangeValueCommon2 = (
   newvalue,
   key1,

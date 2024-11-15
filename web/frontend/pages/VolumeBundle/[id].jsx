@@ -1,23 +1,29 @@
-import React, { useEffect, useState } from "react";
-import MoveToHomePage from "../../components/commonSections/MoveToHomePage";
-import BundleNameTitle from "../../components/commonSections/bundleNameTitle";
+import React, { Fragment, useEffect, useState } from "react";
 import BundleStatus from "../../components/commonSections/bundleStatus";
-import DateTime from "../../components/commonSections/dateTime";
 import DisplayOptions from "../../components/commonSections/displayOptions";
-import DeleteSave from "../../components/commonSections/deleteSave";
 import BundlePickerData from "../../components/resourcePickerData/BundlePickerData";
-import CreateBundleModal from "../../components/createBundleModal";
-import ProductVariantData from "../../components/productVariantData";
-import { handleEditFurther } from "../../components/helperFunctions";
+import {
+  AlertBanner,
+} from "../../components/helperFunctions";
 import { useAPI } from "../../components/shop";
-import AlertSection from "../../components/commonSections/AlertSection";
 import { alertCommon } from "../../components/helperFunctions";
 import General from "../../components/bxgy/General";
-// import VolumePreview from "../../components/preview/VolumePreview";
 import defaultData from "../../components/customization/defaultData.json";
-import { Col, Row, Button, Input, Divider, Modal, Select, Spin } from "antd";
-import { TextField, InlineError } from "@shopify/polaris";
-import { useAppBridge } from "@shopify/app-bridge-react";
+import {
+  TextField,
+  InlineError,
+  Page,
+  Text,
+  Card,
+  RadioButton,
+  Grid,
+  Select,
+  Button,
+  BlockStack,
+  InlineGrid,
+  Divider,
+} from "@shopify/polaris";
+import { Modal, TitleBar, useAppBridge } from "@shopify/app-bridge-react";
 import postApi from "../../components/postApi";
 import { useNavigate, useParams } from "react-router-dom";
 import toastNotification from "../../components/commonSections/Toast";
@@ -26,32 +32,29 @@ const VolumeBundle = () => {
   const navigate = useNavigate();
   const app = useAppBridge();
   const param = useParams();
-
-  const [modal, setModal] = useState(false);
   const [antModal, setAntModal] = useState(false);
-
   const [showPrice, setShowPrice] = useState({});
-
   const [priceData, setPriceData] = useState([]);
   const [sumData, setSumData] = useState([]);
   const [endPriceData, setEndPriceData] = useState([]);
-
   const [pid, setPid] = useState("");
   const [loader, setLoader] = useState(false);
-  const [searchValue, setSearchValue] = useState("");
-
   const [checkedIds, setCheckedIds] = useState([]);
-
   const [errorArray, setErrorArray] = useState([]);
   const [variantData, setVariantData] = useState([]);
+  let [showBanner, setShowBanner] = useState(false);
+  let [warningtText, setWariningText] = useState([]);
   const [alert, setAlert] = useState({ state: false, message: [], status: "" });
   const [spinner, setSpinner] = useState(false);
-  const [previewSpinner, setPreviewSpinner] = useState(false);
   const [discountType, setDiscountType] = useState("percent");
-  const { shop,timeZone, currencyCode } = useAPI();
+  const [pickerType, setPickerType] = useState("product");
+  const [placeholder, setPlaceHolder] = useState("Products");
+  const { shop, timeZone, currencyCode } = useAPI();
+  const Multiple = false;
   const [error, setError] = useState("");
   let headerkey = "Create Volume Bundle";
-
+  let DescText =
+    "Choose a particular product, a collection, or all your products to apply the volume discount.";
   const [data, setData] = useState({
     name: "",
     title: "",
@@ -69,13 +72,13 @@ const VolumeBundle = () => {
           quantity: 2,
           type: "percent",
           value: 5,
-          badgeText:"",
+          badgeText: "",
           description: "Buy 2 & Save {discount}",
         },
       ],
       allowDiscountOnIncrease: false,
       display: {
-        productPages: false,
+        productPages: true,
         bundle: false,
         productPagesList: [],
       },
@@ -83,7 +86,6 @@ const VolumeBundle = () => {
     customization: [defaultData],
     timeZone: timeZone,
   });
-
   async function getCustomization() {
     try {
       const response = await postApi(
@@ -91,8 +93,6 @@ const VolumeBundle = () => {
         { shop: shop },
         app
       );
-      // console.log("test......................",response);
-      
       setData((prevData) => ({
         ...prevData,
         customization: [response.data.response],
@@ -100,8 +100,7 @@ const VolumeBundle = () => {
     } catch (error) {
       console.log(error);
     }
-  }
-
+  };
   const getVolumeBundleData = async () => {
     let body = { id: param.id };
 
@@ -113,24 +112,21 @@ const VolumeBundle = () => {
       setSpinner(false);
     }
   };
-
   useEffect(() => {
-    setSpinner(true);
+    // setSpinner(true);
     getCustomization();
     if (param.id !== "create") {
       getVolumeBundleData();
     } else {
-      setSpinner(false);
+      // setSpinner(false);
     }
   }, []);
-
   function getPreviewData(data) {
     let priceArray = [];
     let sumArray = [];
     let endPriceArray = [];
 
     data.bundleDetail.discountOptions.map((item, index) => {
-      // console.log("helllllooooooo*******", parseFloat(sumArray[index]));
       let temp = Array.from({ length: item.quantity }, (x, itemIndex) =>
         data.bundleDetail.discountedProductType == "specific_product"
           ? data.bundleDetail.products[0]?.variants[0].price
@@ -182,12 +178,9 @@ const VolumeBundle = () => {
     setPriceData(priceArray);
     setSumData(sumArray);
     setEndPriceData(endPriceArray);
-  }
-
-  const handleDiscountProductType = (e) => {
-    if (e.target.value == "all_products") {
-      // setShowPrice({});
-
+  };
+  const handleDiscountProductType = (e, value) => {
+    if (value == "all_products") {
       setData({
         ...data,
         bundleDetail: {
@@ -197,7 +190,7 @@ const VolumeBundle = () => {
           products: [],
         },
       });
-
+      setPickerType(value);
       let priceArray = [];
       let sumArray = [];
       let endPriceArray = [];
@@ -211,82 +204,38 @@ const VolumeBundle = () => {
       setPriceData(priceArray);
       setSumData(sumArray);
       setEndPriceData(endPriceArray);
-    } else if (e.target.value == "collection") {
+    } else if (value == "collection") {
       setShowPrice({});
-
+      setPickerType(value);
+      setPlaceHolder("Collections");
       setData({
         ...data,
         bundleDetail: {
           ...data.bundleDetail,
           discountedProductType: "collection",
-
-          display: { productPages: false, id: "" },
+          display: { productPages: true, id: "", productPagesList: [] },
           products: [],
         },
       });
-    } else if (e.target.value == "specific_product") {
+    } else if (value == "specific_product") {
+      setPickerType("product");
+      setPlaceHolder("Products");
       setData({
         ...data,
         bundleDetail: {
           ...data.bundleDetail,
           discountedProductType: "specific_product",
-          display: { productPages: false, bundle: false, id: "" },
+          display: {
+            productPages: true,
+            bundle: false,
+            id: "",
+            productPagesList: [],
+          },
           products: [],
         },
       });
     }
   };
-
-  const handleSearchInput = (e) => {
-    setSearchValue(e.target.value);
-    setModal(true);
-  };
-
-  const handleBrowseProducts = () => {
-    setModal(true);
-  };
-
-  const setOk = () => {
-    let getData = variantData.data.filter(
-      (item) => checkedIds.indexOf(item.id) != -1
-    );
-
-    if (checkedIds.length > 0) {
-      let update = [...data.bundleDetail.products];
-      let update2 = update.map((item) => {
-        if (item.id == pid) {
-          item.variants = getData;
-        }
-
-        return item;
-      });
-      setData({
-        ...data,
-        bundleDetail: {
-          ...data.bundleDetail,
-          products: update2,
-        },
-      });
-
-      setCheckedIds([]);
-      setVariantData([]);
-      setPid("");
-      setError("");
-      setAntModal(false);
-    } else if (checkedIds.length == 0) {
-      setError("uncheckedVariantModal");
-      return false;
-    }
-  };
-
-  const setCancel = () => {
-    setVariantData([]);
-    setCheckedIds([]);
-    setPid("");
-    setError("");
-    setAntModal(false);
-  };
-
   const removeOptionErrHandler = (deletedIndex) => {
     let copy = [...errorArray];
     if (errorArray.includes(`increasingOrder${deletedIndex}`) == true) {
@@ -294,13 +243,11 @@ const VolumeBundle = () => {
       setErrorArray([...copy]);
     }
   };
-
-  const handleDiscountQuantity = (newvalue, index) => {
+  const handleDiscountQuantity = (newvalue, e, index) => {
     if (newvalue == "" || newvalue <= 1) {
     } else if (newvalue != "" && newvalue != 0) {
       let update = { ...data };
       update.bundleDetail.discountOptions[index].quantity = newvalue;
-
       if (
         data.bundleDetail?.discountOptions[index + 1] &&
         parseInt(newvalue) >=
@@ -344,11 +291,15 @@ const VolumeBundle = () => {
           data.bundleDetail.products.length == 0
         )
       ) {
+        let totalQuantity =
+          priceData[index].length -
+          data.bundleDetail.discountOptions[index].quantity;
+        console.log("Qauntity Of Products....", sumData);
         let newArr = [...priceData];
         newArr[index].push(
-          data.bundleDetail.discountedProductType != "specific_product"
+          data?.bundleDetail?.discountedProductType != "specific_product"
             ? 50
-            : data.bundleDetail.products[0]?.variants[0]?.price
+            : data?.bundleDetail?.products[0]?.variants[0]?.price
         );
         setPriceData(newArr);
 
@@ -366,16 +317,13 @@ const VolumeBundle = () => {
           ).toFixed(2)
         );
         setSumData(update2);
-
-        let newUpdate = [...endPriceData];
+        let newUpdate = [endPriceData];
         newUpdate.splice(index, 1, calculateFinalPrice(index, update2));
         setEndPriceData(newUpdate);
       }
-
       setData(update);
     }
   };
-
   const removeValidationHandler = (newvalue, update, currentIndex) => {
     let copy = [...errorArray];
     let duplicates = [];
@@ -383,7 +331,6 @@ const VolumeBundle = () => {
     let isAscending = false;
 
     update.map((items, updateIndex) => {
-      // console.log("fvdghfewghdfgdghfghdsh d dhgfgdsghfvd", items.quantity);
       array.push(Number(items.quantity));
     });
     array.forEach(function (value, index, array) {
@@ -394,19 +341,15 @@ const VolumeBundle = () => {
         duplicates.push(value);
       }
     });
-    // console.log("***********dfdgfydfdfdfdg**************", array);
     if (duplicates.length == 0 && update.length > 1) {
       for (let i = 0; i < update.length - 1; i++) {
         if (array[i] > array[i + 1]) {
-          // console.log("not in ascending order", array);
           return false;
         }
       }
       isAscending = true;
     }
-    // console.log("iciiciiciiciiciiciciciciic", isAscending);
     if (isAscending == true) {
-      // console.log("enter in delete");
       update.map((item, updateIndex) => {
         if (errorArray.includes(`increasingOrder${updateIndex}`) == true) {
           copy.splice(copy.indexOf(`increasingOrder${updateIndex}`), 1);
@@ -418,9 +361,7 @@ const VolumeBundle = () => {
       });
     }
   };
-
   const handleDiscountType = (value, index) => {
-    // console.log("hello check the values", value);
     let update = { ...data };
     update.bundleDetail.discountOptions[index].type = value;
     setData(update);
@@ -449,7 +390,6 @@ const VolumeBundle = () => {
     newUpdate.splice(index, 1, calculateFinalPrice(index, sumData));
     setEndPriceData(newUpdate);
   };
-  // console.log("datatatatatatatatatata------->>>",data);
   const handleDiscountValue = (newvalue, index) => {
     if (newvalue == "" || newvalue < 1) {
       let update = { ...data };
@@ -483,18 +423,16 @@ const VolumeBundle = () => {
       }
     }
   };
-
   const handleDiscountDescription = (e, index) => {
     let update = { ...data };
-    update.bundleDetail.discountOptions[index].description = e.target.value;
+    update.bundleDetail.discountOptions[index].description = e;
     setData(update);
   };
   const handleDiscountBadge = (e, index) => {
     let update = { ...data };
-    update.bundleDetail.discountOptions[index].badgeText = e.target.value;
+    update.bundleDetail.discountOptions[index].badgeText = e;
     setData(update);
   };
-
   const handleAddDiscountOption = () => {
     let update = { ...data };
     update.bundleDetail.discountOptions.push({
@@ -515,9 +453,6 @@ const VolumeBundle = () => {
       } & Save {discount}`,
     });
     setData(update);
-    // if(update?.bundleDetail?.discountOptions[update.bundleDetail.discountOptions.length-2]?.quantity < update?.bundleDetail?.discountOptions[update.bundleDetail.discountOptions.length-3]?.quantity){
-    //   console.log("return nothing");
-    // }else{
     removeValidationHandler(
       update.bundleDetail.discountOptions[
         update.bundleDetail.discountOptions.length - 1
@@ -525,7 +460,6 @@ const VolumeBundle = () => {
       update.bundleDetail.discountOptions,
       update.bundleDetail.discountOptions.length - 1
     );
-    // }
     if (
       data.bundleDetail.products[0] ||
       data.bundleDetail.discountedProductType == "all_products"
@@ -542,7 +476,6 @@ const VolumeBundle = () => {
             ? data.bundleDetail.products[0].variants[0].price
             : 50
       );
-
       let calculatedPrice = calculateMrp(dummy);
       setPriceData([...priceData, dummy]);
       setSumData([...sumData, calculatedPrice]);
@@ -552,7 +485,6 @@ const VolumeBundle = () => {
       ]);
     }
   };
-
   const handleDeleteDiscountOption = (index) => {
     let update = { ...data };
     let lengthOfData = update.bundleDetail.discountOptions.length;
@@ -589,7 +521,6 @@ const VolumeBundle = () => {
     newUpdate.splice(index, 1);
     setEndPriceData(newUpdate);
   };
-
   const temp = {
     setPid,
     setAntModal,
@@ -597,32 +528,14 @@ const VolumeBundle = () => {
     setCheckedIds,
     setVariantData,
   };
-
-  const removeProductFromList = (item) => {
-    let update = [...data.bundleDetail.products];
-    update.splice(update.indexOf(item), 1);
-
-    setData({
-      ...data,
-      bundleDetail: {
-        ...data.bundleDetail,
-        products: update,
-        display: { ...data.bundleDetail.display, productPages: false, id: "" },
-      },
-    });
-  };
-
-  const handleDisplayOptions = (e) => {
-    if (e.target.checked) {
-      if (
-        data.bundleDetail.discountedProductType == "specific_product" &&
-        e.target.name == "bundle"
-      ) {
+  const handleDisplayOptions = (e, name) => {
+    if (e) {
+      if (data.bundleDetail.discountedProductType == "specific_product") {
         setData({
           ...data,
           bundleDetail: {
             ...data.bundleDetail,
-            display: { ...data.bundleDetail.display, [e.target.name]: true },
+            display: { ...data.bundleDetail.display, [name]: true },
           },
         });
       } else if (data.bundleDetail.products.length > 0) {
@@ -630,7 +543,7 @@ const VolumeBundle = () => {
           ...data,
           bundleDetail: {
             ...data.bundleDetail,
-            display: { ...data.bundleDetail.display, [e.target.name]: true },
+            display: { ...data.bundleDetail.display, [name]: true },
           },
         });
       }
@@ -639,40 +552,11 @@ const VolumeBundle = () => {
         ...data,
         bundleDetail: {
           ...data.bundleDetail,
-          display: { ...data.bundleDetail.display, [e.target.name]: false },
+          display: { ...data.bundleDetail.display, [name]: false },
         },
       });
     }
   };
-
-  const handleAllowDiscount = (e) => {
-    if (e.target.checked) {
-      let update = { ...data };
-      update.bundleDetail.discountOptions[
-        update.bundleDetail.discountOptions.length - 1
-      ].description = `Buy ${
-        update.bundleDetail.discountOptions[
-          update.bundleDetail.discountOptions.length - 1
-        ].quantity
-      }+ & Save {discount}`;
-      update.bundleDetail.allowDiscountOnIncrease = true;
-
-      setData(update);
-    } else {
-      let update = { ...data };
-      update.bundleDetail.discountOptions[
-        update.bundleDetail.discountOptions.length - 1
-      ].description = `Buy ${
-        update.bundleDetail.discountOptions[
-          update.bundleDetail.discountOptions.length - 1
-        ].quantity
-      } & Save {discount}`;
-      update.bundleDetail.allowDiscountOnIncrease = false;
-
-      setData(update);
-    }
-  };
-
   function calculateMrp(arr) {
     let sum = 0;
 
@@ -680,8 +564,7 @@ const VolumeBundle = () => {
       sum += parseFloat(item);
     });
     return parseFloat(sum.toFixed(2));
-  }
-
+  };
   function calculateFinalPrice(index, sumArray) {
     let finalPrice = 0;
 
@@ -718,8 +601,7 @@ const VolumeBundle = () => {
       finalPrice = parseFloat(sumArray[index]);
     }
     return finalPrice.toFixed(2);
-  }
-
+  };
   const handleVariantChoice = (e, main, index) => {
     let newArr = [...priceData];
     setShowPrice({ ...showPrice, [main]: e.target.value });
@@ -732,109 +614,54 @@ const VolumeBundle = () => {
     newUpdate.splice(main, 1, calculateFinalPrice(main, update));
     setEndPriceData(newUpdate);
   };
-
-  // const handleDelete = () => {};
-
+  const handleDelete = async () => {
+    let body = {
+      id: param.id,
+    };
+    const response = await postApi("/api/admin/deleteBundle", body, app);
+    if (response.data.status == 200) {
+      navigate("/bundle");
+      toastNotification("success", "Deleted", "bottom");
+    } else {
+      toastNotification(
+        "error ",
+        "something went wrong! please try again",
+        "bottom"
+      );
+    }
+  };
   const handleSave = async () => {
     let alertText = [];
-    let flag = true;
-    // const validNameAndTitle = new RegExp("^[^\s][A-Za-z0-9]*(?:\s*[A-Za-z0-9]+)*$");
-
     if (
       data.bundleDetail.products.length < 1 &&
       data.bundleDetail.discountedProductType == "specific_product"
     ) {
-      flag = false;
       alertText.push("Please select product for bundle.");
     }
     if (data.bundleDetail.display.productPages == false) {
-      flag = false;
       alertText.push("Please enable product page from display options");
     }
-    // if(validNameAndTitle.test(data.name) == false){
-    //   console.log("name if regex",validNameAndTitle.test(data.name))
-    //   flag = false;
-    //   alertText.push("Please Provide product name (blank name is not allowed)");
-    // }
-    // if(validNameAndTitle.test(data.title)==false){
-    //   console.log("title if regex",validNameAndTitle.test(data.title))
-    //   flag = false;
-    //   alertText.push("Please Provide product title (blank title is not allowed)");
-    // }
-    // console.log("name regex",validNameAndTitle.test(data.name))
-    // console.log("title regex",validNameAndTitle.test(data.title))
-    // console.log("name regex", data.name.trim(), "77777");
-    // console.log("title regex", data.title.trim());
-    // setData(data.name{})
     if (
       data.bundleDetail.products.length < 1 &&
       data.bundleDetail.discountedProductType == "collection"
     ) {
-      flag = false;
       alertText.push("Please select collection for bundle.");
     }
-
     if (data.name.trim() == "") {
-      flag = false;
       alertText.push("Please provide name of bundle");
-    } else {
-      // setData({}) data.name.trim()
-      // setData({})
-      let updateData = {
-        ...data,
-      };
-    }
-
+    } 
     if (data.title.trim() == "") {
-      flag = false;
       alertText.push("Please provide title of bundle");
     } else {
       data.title.trim();
     }
-    // if (data.startdate == "") {
-    //   if (!errorArray.includes("startdate")) {
-    //     setErrorArray((prev) => [...prev, "startdate"]);
-    //   }
-    //   flag = false;
-    //   alertText.push("Please select start date & time");
-    // }
     if (errorArray.length != 0) {
-      flag = false;
       alertText.push("Options quantities must be in increasing order");
     }
-    if (flag == false) {
-      alertCommon(setAlert, alertText, "critical", false);
-    }
-    if (flag == true) {
-      //   if (param.id == "create") {
-      //   const response  = await postApi("/api/admin/createBundle",data,app)
-      //   if(response.data.status === 200){
-      //     return (
-
-      //       toastNotification("success","Saved","top"),
-      //       navigate('/')
-      //     )
-      //   }else{
-      //     return alertCommon(setAlert, ["Something went wrong"],"warning",false)
-      //   }
-
-      //  }else{
-      //   const response = await postApi("/api/admin/updateBundle", data, app);
-
-      //   if (response.data.status === 200) {
-      //     return (
-      //       toastNotification("success", "Update successfully", "top"),
-      //       navigate("/")
-      //     );
-      //   } else {
-      //     return alertCommon(
-      //       setAlert,
-      //       ["Something went wrong"],
-      //       "warning",
-      //       false
-      //     );
-      //   }
-      // }
+    setWariningText(alertText);
+    const showBanner = alertText.length > 0;
+    setShowBanner(showBanner);
+    if (!showBanner) {
       if (param.id == "create") {
         setSpinner(true);
         const response = await postApi("/api/admin/createBundle", data, app);
@@ -846,7 +673,6 @@ const VolumeBundle = () => {
           );
         } else {
           setSpinner(false);
-
           return alertCommon(
             setAlert,
             ["Something went wrong"],
@@ -856,7 +682,6 @@ const VolumeBundle = () => {
         }
       } else {
         setSpinner(true);
-
         const response = await postApi("/api/admin/updateBundle", data, app);
         if (response.data.status === 200) {
           return (
@@ -875,368 +700,291 @@ const VolumeBundle = () => {
           );
         }
       }
-
-      // }else {
-      //   return alertCommon(setAlert, ["Somethingddede went wrong"],"warning",false)
     }
   };
+  const dataUpdateHandler = () => {
+    let priceArray = [];
+    let sumArray = [];
+    let endPriceArray = [];
+
+    data.bundleDetail.discountOptions.map((item, index) => {
+      let temp = Array.from({ length: item.quantity }, (x, itemIndex) =>
+        data.bundleDetail.discountedProductType == "specific_product"
+          ? data.bundleDetail.products[0].variants[0].price
+          : 50
+      );
+      priceArray.push(temp);
+      sumArray.push(calculateMrp(temp));
+      endPriceArray.push(calculateFinalPrice(index, sumArray));
+    });
+    setPriceData(priceArray);
+    setSumData(sumArray);
+    setEndPriceData(endPriceArray);
+  };
   return (
-    <Spin spinning={spinner} size="large">
-      <div className="Polaris-Page Polaris-Page--fullWidth">
-        <MoveToHomePage data={headerkey} />
-        {alert.state == true && (
-          <AlertSection
-            message={alert.message}
-            setAlert={setAlert}
-            status={alert.status}
+    <>
+      <Page
+        title={headerkey}
+        primaryAction={
+          <Button onClick={handleSave} variant="primary">
+            Save
+          </Button>
+        }
+        secondaryActions={
+          param.id !== "create" && (
+            <Button onClick={handleDelete} variant="primary" tone="critical">
+              Delete
+            </Button>
+          )
+        }
+        backAction={{ onAction: () => shopify.modal.show("my-modal") }}
+      >
+        <BlockStack gap="200">
+          <AlertBanner
+            showBanner={showBanner}
+            alertText={warningtText}
+            setShowBanner={setShowBanner}
           />
-        )}
-        <div className="sd-bundle-wrapper-common">
-          <div className="sd-bundle-left-section-common">
-            <div className="sd-bundle-bundleSection-common  sd-bundle-volumeBundle-browseSection">
-              <div className="sd-bundle-bundleSection-heading-common">
-                Discounted Products{" "}
-              </div>
-              <div className="sd-bundle-browseItem">
-                <input
-                  type="radio"
-                  id="all"
-                  name="discountProductType"
-                  value="all_products"
-                  checked={
-                    data.bundleDetail.discountedProductType == "all_products"
-                  }
-                  onChange={handleDiscountProductType}
-                />
-                <label htmlFor="all">All Products</label>
-              </div>
-              <div className="sd-bundle-browseItem">
-                <input
-                  type="radio"
-                  id="collection"
-                  name="discountProductType"
-                  value="collection"
-                  checked={
-                    data.bundleDetail.discountedProductType == "collection"
-                  }
-                  onChange={handleDiscountProductType}
-                />
-                <label htmlFor="collection">A Collection</label>
-              </div>
-              <div className="sd-bundle-browseItem">
-                <input
-                  type="radio"
-                  id="specific_product"
-                  name="discountProductType"
-                  value="specific_product"
-                  checked={
-                    data.bundleDetail.discountedProductType ==
-                    "specific_product"
-                  }
-                  onChange={handleDiscountProductType}
-                />
-                <label htmlFor="specific_product">A Specific Product</label>
-              </div>
-              {data.bundleDetail.discountedProductType != "all_products" && (
-                <>
-                  <div className="sd-bundle-plainText-common">
-                    Select the products for which you want to create this volume
-                    discount. You can create the volume discount for a specific
-                    product or all products of a collection or all of your
-                    products. The discount options will be available for each
-                    product separately
+          <Grid>
+            <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
+              <BlockStack gap="400">
+                <Card>
+                  <Text variant="headingMd">Discounted Products</Text>
+                  <div>
+                    <RadioButton
+                      label="All Products"
+                      type="radio"
+                      id="all_products"
+                      name="discountProductType"
+                      value="all_products"
+                      checked={
+                        data.bundleDetail.discountedProductType ==
+                        "all_products"
+                      }
+                      onChange={(e, value) =>
+                        handleDiscountProductType(e, value)
+                      }
+                    />
                   </div>
-                  <div className="">
-                    <input
-                      type="text"
-                      placeholder={
+                  <div>
+                    <RadioButton
+                      label="A Collection"
+                      type="radio"
+                      id="collection"
+                      name="discountProductType"
+                      value="collection"
+                      checked={
+                        data.bundleDetail.discountedProductType == "collection"
+                      }
+                      onChange={(e, value) =>
+                        handleDiscountProductType(e, value)
+                      }
+                    />
+                  </div>
+                  <div>
+                    <RadioButton
+                      label="A Specific Product"
+                      type="radio"
+                      id="specific_product"
+                      name="discountProductType"
+                      value="specific_product"
+                      checked={
                         data.bundleDetail.discountedProductType ==
                         "specific_product"
-                          ? "search products"
-                          : "search collection"
                       }
-                      onChange={handleSearchInput}
-                      className="sd-bundle-search-box-common"
-                      value={searchValue}
+                      onChange={(e, value) =>
+                        handleDiscountProductType(e, value)
+                      }
                     />
-                    <button
-                      type="button"
-                      // onClick={handleBrowseProducts}
-                      onClick={() => handleBrowseProducts()}
-                      className="sd-bundle-search-button-common"
-                    >
-                      Browse
-                    </button>
                   </div>
-                </>
-              )}
-              <BundlePickerData
-                page="volumeBundle"
-                modalType={
-                  data.bundleDetail.discountedProductType == "specific_product"
-                    ? "Product"
-                    : "Collection"
-                }
-                data={data}
-                setData={setData}
-                temp={temp}
-                errorArray={errorArray}
-                handleEditFurther={handleEditFurther}
-                removeProductFromList={removeProductFromList}
-              />
-            </div>
-            {modal && (
-              <CreateBundleModal
-                open={modal}
-                setOpen={setModal}
-                searchValue={searchValue}
-                setSearchValue={setSearchValue}
-                page={"volumeBundle"}
-                data={data}
-                setData={setData}
-                setPriceData={setPriceData}
-                modalType={
-                  data.bundleDetail.discountedProductType == "specific_product"
-                    ? "Product"
-                    : "Collection"
-                }
-                setSumData={setSumData}
-                calculateFinalPrice={calculateFinalPrice}
-                calculateMrp={calculateMrp}
-                setEndPriceData={setEndPriceData}
-                setShowPrice={setShowPrice}
-              />
-            )}
-
-            <div className="sd-bundle-bundleSection-common sd-bundle-volumeBundle-discountOptions">
-              <div className="sd-bundle-bundleSection-heading-common">
-                {" "}
-                Discount Options{" "}
-              </div>
-              {data.bundleDetail.discountOptions.map((item, index) => (
-                <div key={index} className="sd-volume-discount-option">
-                  <div
-                    className="sd-bundle-volume-discount-option-topbar"
-                    style={{ display: "flex", justifyContent: "space-between" }}
-                  >
-                    <p>Option {index + 1}</p>
-                    {data.bundleDetail.discountOptions.length > 1 && (
-                      <Button
-                        danger
-                        onClick={() => handleDeleteDiscountOption(index)}
-                      >
-                        DELETE
-                      </Button>
-                    )}
-                  </div>
-                  <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-                    <Col className="gutter-row" span={8}>
-                      <div>
-                        <p>Required items</p>
-                        <TextField
-                          type="number"
-                          // label="Minimum order"
-                          // placeholder="set minimum order  for item"
-                          onChange={(newvalue) =>
-                            handleDiscountQuantity(newvalue, index)
-                          }
-                          value={item.quantity}
-                          autoComplete="off"
-                          min={1}
-                        />
-                        {/* {errorArray.includes(`minimumQuantity${index}`) && (
-                        <InlineError message="Minimum quantity must be 2 " />
-                      )} */}
-                        {errorArray.includes(`increasingOrder${index}`) && (
-                          <InlineError message="Options quantities must be in increasing order " />
-                        )}
-                      </div>
-                    </Col>
-                    <Col className="gutter-row" span={8}>
-                      <div>
-                        <p>Discount Type</p>
-                        <Select
-                          value={data.bundleDetail.discountOptions[index].type}
-                          style={{
-                            width: "100%",
-                          }}
-                          onChange={(value) => handleDiscountType(value, index)}
-                          options={[
-                            {
-                              value: "fixed",
-                              label: "Fixed Discount",
-                            },
-                            {
-                              value: "percent",
-                              label: "Percentage Discount",
-                            },
-                            // {
-                            //   value: "price",
-                            //   label: "Set Price",
-                            // },
-                            {
-                              value: "freeShipping",
-                              label: "Free Shipping",
-                            },
-                            {
-                              value: "noDiscount",
-                              label: "No Discount",
-                            },
-                          ]}
-                        />
-                      </div>
-                    </Col>
-                    {(data.bundleDetail.discountOptions[index].type ===
-                      "percent" ||
-                      data.bundleDetail.discountOptions[index].type ===
-                        "fixed") ? 
-                      <Col className="gutter-row" span={8}>
-                        <div>
-                          <p>Discount value</p>
-                          <TextField
-                            type="number"
-                            // label="Minimum order"
-                            // placeholder="set minimum order  for item"
-                            onChange={(newvalue) =>
-                              handleDiscountValue(newvalue, index)
-                            }
-                            value={item.value}
-                            autoComplete="off"
-                            min={1}
-                          />
-                        </div>
-                      </Col>
-                      :
-                      <Col className="gutter-row" span={8}>
-                        <div>
-                          <p>Discount value</p>
-                          <TextField
-                            type="number"
-                            disabled
-                            onChange={(newvalue) =>
-                              handleDiscountValue(newvalue, index)
-                            }
-                            value={0}
-                            autoComplete="off"
-                            min={1}
-                          />
-                        </div>
-                      </Col>
-                    }
-                  </Row>
-                  <br />
-                  <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-                    <Col className="gutter-row" span={12}>   
-                      <p>Description</p>
-                      <Input
-                        placeholder="Buy"
-                        value={item.description}
-                        onChange={(e) => handleDiscountDescription(e, index)}
-                      />
-                      {(data.bundleDetail?.discountOptions[index]?.type ==
-                        "fixed" ||
-                        data.bundleDetail?.discountOptions[index]?.type ==
-                          "percent") && (
-                        <span className="sd-bundle-Disclaimer-common">
-                          Use discount to show the discount value
-                        </span>
+                  {data.bundleDetail.discountedProductType !=
+                    "all_products" && (
+                    <BundlePickerData
+                      page="volumeBundle"
+                      data={data}
+                      setData={setData}
+                      temp={temp}
+                      errorArray={errorArray}
+                      DescText={DescText}
+                      PickerType={pickerType}
+                      Placeholder={placeholder}
+                      Multiple={Multiple}
+                      setPriceData={setPriceData}
+                      dataUpdateHandler={dataUpdateHandler}
+                    />
+                  )}
+                </Card>
+                <Card>
+                  <Text as="h2" variant="headingSm">
+                    Discount Options
+                  </Text>
+                  {data.bundleDetail.discountOptions.map((item, index) => (
+                    <Fragment key={index}>
+                      <Text variant="headingSm" as="h6">
+                        Option {index + 1}
+                      </Text>
+                      {data.bundleDetail.discountOptions.length > 1 && (
+                        <BlockStack inlineAlign="end">
+                          <Button
+                            tone="critical"
+                            onClick={() => handleDeleteDiscountOption(index)}
+                          >
+                            DELETE
+                          </Button>
+                        </BlockStack>
                       )}
-                    </Col>
-                    <Col className="gutter-row" span={12}>   
-                      <p>Badge</p>
-                      <Input
-                        placeholder="Type the badge message..."
-                        value={item.badgeText}
-                        onChange={(e) => handleDiscountBadge(e, index)}
-                      />
-                    </Col>
-                    </Row>
-                  <br />
-
-                  {/* {data.bundleDetail.discountOptions.length == index + 1 && (
-                  <div className="sd-bundle-volumeBundle-allowDiscount">
-                    <input
-                      type="checkbox"
-                      id="discountOptionCheckbox"
-                      name=""
-                      value={data.bundleDetail.allowDiscount}
-                      onChange={handleAllowDiscount}
-                    />
-                    <label htmlFor="discountOptionCheckbox">
-                      Allow this discount to be applied on more items than the
-                      required numbers
-                    </label>
-                  </div>
-                )} */}
-                  <Divider />
-                </div>
-              ))}
-              <Button size="large" onClick={handleAddDiscountOption}>
-                Add Another Option
-              </Button>
-            </div>
-            <General data={data} setData={setData} errorArray={errorArray} />
-            {/* <DateTime data={data} setData={setData} errorArray={errorArray} /> */}
-            <DeleteSave handleSave={handleSave} />
-          </div>
-          <div className="sd-bundle-productBundle-rightSection Polaris-Layout__Section Polaris-Layout__Section--secondary">
-            <BundleStatus data={data} setData={setData} />
-            <DisplayOptions
-              bundleType="volume"
-              discountedProductType={data.bundleDetail.discountedProductType}
-              title={data.bundleDetail.products[0]?.title}
-              display={data.bundleDetail.display}
-              handleDisplayOptions={handleDisplayOptions}
-              products={data.bundleDetail.products}
-              data={data}
-            />
-
-            {/* <VolumePreview
-            data={data}
-            setData={setData}
-            currency={currencyCode}
-            discountType={"product"}
-            sumData={sumData}
-            allowDiscountOnIncrease={data.bundleDetail.allowDiscountOnIncrease}
-            endPriceData={endPriceData}
-            handleVariantChoice={handleVariantChoice}
-            showPrice={showPrice}
-          /> */}
-
-            <VolumeBundlePreview
-              data={data}
-              setData={setData}
-              currency={currencyCode}
-              discountTypes={discountType}
-              sumData={sumData}
-              allowDiscountOnIncrease={
-                data.bundleDetail.allowDiscountOnIncrease
-              }
-              endPriceData={endPriceData}
-              handleVariantChoice={handleVariantChoice}
-              showPrice={showPrice}
-            />
-          </div>
-        </div>
-        {antModal && (
-          <Modal
-            title="Select Variant Options  for Bundle Modal"
-            open={antModal}
-            onOk={setOk}
-            onCancel={setCancel}
-            className="sd-bundle-modal sd-bundle-modal-variant"
-          >
-            <ProductVariantData
-              checkedIds={checkedIds}
-              setCheckedIds={setCheckedIds}
-              variantData={variantData}
-              loader={loader}
-              error={error}
-            />
-          </Modal>
-        )}
-      </div>
-    </Spin>
+                      <BlockStack gap={500}>
+                        <InlineGrid gap={400} columns={3}>
+                          <TextField
+                            label="Required items"
+                            type="number"
+                            onChange={(newvalue, e) =>
+                              handleDiscountQuantity(newvalue, e, index)
+                            }
+                            value={item.quantity}
+                            autoComplete="off"
+                            min={1}
+                          />
+                          {errorArray.includes(`increasingOrder${index}`) && (
+                            <InlineError message="Options quantities must be in increasing order " />
+                          )}
+                          <Select
+                            label="Discount Type"
+                            value={
+                              data.bundleDetail.discountOptions[index].type
+                            }
+                            style={{
+                              width: "100%",
+                            }}
+                            onChange={(value) =>
+                              handleDiscountType(value, index)
+                            }
+                            options={[
+                              {
+                                value: "fixed",
+                                label: "Fixed Discount",
+                              },
+                              {
+                                value: "percent",
+                                label: "Percentage Discount",
+                              },
+                              {
+                                value: "freeShipping",
+                                label: "Free Shipping",
+                              },
+                              {
+                                value: "noDiscount",
+                                label: "No Discount",
+                              },
+                            ]}
+                          />
+                          {data.bundleDetail.discountOptions[index].type ===
+                            "percent" ||
+                          data.bundleDetail.discountOptions[index].type ===
+                            "fixed" ? (
+                            <TextField
+                              type="number"
+                              label="Discount value"
+                              onChange={(newvalue) =>
+                                handleDiscountValue(newvalue, index)
+                              }
+                              value={item.value}
+                              autoComplete="off"
+                              min={1}
+                            />
+                          ) : (
+                            <TextField
+                              label="Discount value"
+                              type="number"
+                              disabled
+                              value={0}
+                            />
+                          )}
+                        </InlineGrid>
+                        <InlineGrid gap={400} columns={2}>
+                          <TextField
+                            label="Description"
+                            value={item.description}
+                            placeholder="Buy"
+                            onChange={(e) =>
+                              handleDiscountDescription(e, index)
+                            }
+                            helpText={
+                              (data.bundleDetail?.discountOptions[index]
+                                ?.type == "fixed" ||
+                                data.bundleDetail?.discountOptions[index]
+                                  ?.type == "percent") &&
+                              "Use {discount} to show the discount value"
+                            }
+                          />
+                          <TextField
+                            label="Badge"
+                            placeholder="Type the badge message..."
+                            value={item.badgeText}
+                            onChange={(e) => handleDiscountBadge(e, index)}
+                          />
+                        </InlineGrid>
+                        <Divider />
+                      </BlockStack>
+                      <br />
+                    </Fragment>
+                  ))}
+                  <Button size="large" onClick={handleAddDiscountOption}>
+                    Add Another Option
+                  </Button>
+                </Card>
+                <General data={data} setData={setData} errorArray={errorArray}/>
+              </BlockStack>
+            </Grid.Cell>
+            <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
+              <BlockStack gap="400">
+                <BundleStatus data={data} setData={setData} />
+                <DisplayOptions
+                  bundleType="volume"
+                  discountedProductType={
+                    data.bundleDetail.discountedProductType
+                  }
+                  title={data.bundleDetail.products[0]?.title}
+                  display={data.bundleDetail.display}
+                  handleDisplayOptions={handleDisplayOptions}
+                  products={data.bundleDetail.products}
+                  data={data}
+                />
+                <Card sectioned>
+                  <Text as="h2" variant="headingSm">
+                    Preview
+                  </Text>
+                  <VolumeBundlePreview
+                    data={data}
+                    setData={setData}
+                    currency={currencyCode}
+                    discountTypes={discountType}
+                    sumData={sumData}
+                    allowDiscountOnIncrease={
+                      data.bundleDetail.allowDiscountOnIncrease
+                    }
+                    endPriceData={endPriceData}
+                    handleVariantChoice={handleVariantChoice}
+                    showPrice={showPrice}
+                  />
+                </Card>
+              </BlockStack>
+            </Grid.Cell>
+          </Grid>
+        </BlockStack>
+      </Page>
+      <Modal variant="base" id="my-modal">
+        <Page>
+          <Text as="p">Are you sure you want to exit ?</Text>
+        </Page>
+        <TitleBar title="Exit confirmation">
+          <button onClick={() => navigate("/bundle")} variant="primary">
+            Confirm
+          </button>
+          <button onClick={() => shopify.modal.hide("my-modal")}>Cancel</button>
+        </TitleBar>
+      </Modal>
+    </>
   );
 };
 export default VolumeBundle;

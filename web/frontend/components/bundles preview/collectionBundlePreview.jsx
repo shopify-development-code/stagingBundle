@@ -13,8 +13,7 @@ const CollectionBundlePreview = ({ data, currency }) => {
   };  
 
   return (
-    <div className="sd-bundle-bundleSection-common">
-      <div className="sd-bundle-bundleSection-heading-common">Preview</div>
+    <>
       {data.bundleDetail.products.length > 0 ? (
         <div
           className="sd-collection-main-column "
@@ -154,7 +153,7 @@ const CollectionBundlePreview = ({ data, currency }) => {
       ) : (
         <EmptyPreview type="collection" />
       )}
-    </div>
+    </>
   );
 };
 export default CollectionBundlePreview;

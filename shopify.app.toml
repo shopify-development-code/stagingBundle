@@ -3,7 +3,7 @@
 client_id = "e13323374d92132ba17048d14e6ecb0e"
 name = "akashbundlelive"
 handle = "akashbundlelive"
-application_url = "https://editors-commentary-im-brad.trycloudflare.com"
+application_url = "https://controllers-weblog-structured-both.trycloudflare.com"
 embedded = true
 
 [build]
@@ -16,9 +16,9 @@ scopes = "read_content,read_themes,write_content,write_discounts,write_orders,wr
 
 [auth]
 redirect_urls = [
-  "https://editors-commentary-im-brad.trycloudflare.com/auth/callback",
-  "https://editors-commentary-im-brad.trycloudflare.com/auth/shopify/callback",
-  "https://editors-commentary-im-brad.trycloudflare.com/api/auth/callback"
+  "https://controllers-weblog-structured-both.trycloudflare.com/auth/callback",
+  "https://controllers-weblog-structured-both.trycloudflare.com/auth/shopify/callback",
+  "https://controllers-weblog-structured-both.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]

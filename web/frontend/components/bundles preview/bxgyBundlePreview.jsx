@@ -11,14 +11,12 @@ const BXGYBundlePreview = ({
   showPrice,
   handleVariantChoice,
 }) => {
-  // console.log("trest df wtedgf eydtyu", data);
   const { shop, timeZone, currencyCode } = useAPI();
   const fontFamily = {
     fontFamily: data?.customization?.[0]?.buyXgetY?.box?.fontFamily || 'inherit',
   };
   return (
-    <div className="sd-bundle-bundleSection-common sd-bundle-productBundle-preview first-previewCard">
-      <div className="sd-bundle-bundleSection-heading-common">Preview</div>
+    <>
       {data.bundleDetail.xproducts.length &&
       data.bundleDetail.yproducts.length > 0 ? (
         <div
@@ -381,7 +379,7 @@ const BXGYBundlePreview = ({
       ) : (
         <EmptyPreview type={""} />
       )}
-    </div>
+    </>
   );
 };
 
