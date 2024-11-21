@@ -83,7 +83,7 @@ return(
 
 <TextField
             type="number"
-            label="Border Size"
+            label="Border Radius"
             // placeholder="set minimum order  for item"
             onChange={(newvalue)=>handleChangeValueCommon2(newvalue,"productDetails","image","borderRadius",data,setData,bundleOption)}
             value={data[bundleOption]["productDetails"]["image"]["borderRadius"]}
@@ -115,7 +115,14 @@ return(
 
 </div>
 </div>
+<div className="sd-bundle-custom-item-inputSection">
+<input type="color" value={data[bundleOption]["productDetails"]["quantities"]["borderColor"]}  onChange={(e)=>handleChangeCommon2(e,"productDetails","quantities","borderColor",data,setData,bundleOption)}/>
+<div className="sd-bundle-custom-fieldColorCode-common">
+    <p>Border Color </p>
+<p> {data[bundleOption]["productDetails"]["quantities"]["borderColor"]} </p>
 
+</div>
+</div>
 </div>
 
 }
@@ -176,7 +183,15 @@ return(
 
 </div>
 </div>
+<div className="sd-bundle-custom-item-inputSection">
+<input type="color" value={data[bundleOption]["productDetails"]["variantSelector"]["borderColor"]}  onChange={(e)=>handleChangeCommon2(e,"productDetails","variantSelector","borderColor",data,setData,bundleOption)}/>
 
+<div className="sd-bundle-custom-fieldColorCode-common">
+    <p>Border Color </p>
+<p>{data[bundleOption]["productDetails"]["variantSelector"]["borderColor"]} </p>
+
+</div>
+</div>
 </div>
 
 
@@ -198,7 +213,17 @@ return(
 <p>{data[bundleOption]["productDetails"]["plusBackgroundColor"]}</p>
 
 </div>
+
 </div>
+<TextField
+            type="number"
+            label="Size"
+            // placeholder="set minimum order  for item"
+            onChange={(newvalue)=>handleChangeValueCommon2(newvalue,"productDetails","image","borderRadius",data,setData,bundleOption)}
+            value={data[bundleOption]["productDetails"]["image"]["borderRadius"]}
+            autoComplete="off"
+            min="0"
+          />
 </div>}
 
 </div> 

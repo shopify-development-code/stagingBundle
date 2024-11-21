@@ -152,14 +152,14 @@ console.log(data)
         <div class="bxgy_productsListing_main">
             <div class="bxgy_products_listing">
                 <div style={{"borderColor":data.buyXgetY.productDetails.image.borderColor,"borderRadius":data.buyXgetY.productDetails.image.borderRadius+"px"}} class="bxgy_product_listingImg">
-                    <img style={{"borderRadius":data.buyXgetY.productDetails.image.borderRadius+"px"}} src="https://i.ibb.co/VpF22Hc/image-5.png"></img>
+                    <img style={{"borderRadius":data.buyXgetY.productDetails.image.borderRadius+"px"}} src="https://cdn.shopify.com/s/files/1/0801/7264/6691/files/dummyImage.jpg?v=1700561335"></img>
                 </div>
                 <div class="bxgy_product_listingText">
                     <h6  style={{"color":data.buyXgetY.productDetails.title.color,"fontSize":data.buyXgetY.productDetails.title.fontSize +"px"}}>Sample product</h6>
 
                     <span style={{"color":data.buyXgetY.productDetails.price.color,"fontSize":data.buyXgetY.productDetails.price.fontSize+"px"}}>$5666</span>
                 </div>
-                <div style={{"color":data.buyXgetY.productDetails.quantities.color,"backgroundColor":data.buyXgetY.productDetails.quantities.backgroundColor}} class="bxgy_product_listingClose">
+                <div style={{"color":data.buyXgetY.productDetails.quantities.color,"backgroundColor":data.buyXgetY.productDetails.quantities.backgroundColor,"borderColor":data.buyXgetY.productDetails.quantities.borderColor}} class="bxgy_product_listingClose">
                     <h3 style={{"color":data.buyXgetY.productDetails.quantities.color}}>5X</h3>
                 </div>
             </div>
@@ -167,24 +167,24 @@ console.log(data)
             <div class="bxgy_productsListing_Column">
                 <div class="bxgy_products_listing">
                 <div style={{"borderColor":data.buyXgetY.productDetails.image.borderColor,"borderRadius":data.buyXgetY.productDetails.image.borderRadius+"px"}} class="bxgy_product_listingImg">
-                    <img style={{"borderRadius":data.buyXgetY.productDetails.image.borderRadius+"px"}} src="https://i.ibb.co/VpF22Hc/image-5.png"></img>
+                    <img style={{"borderRadius":data.buyXgetY.productDetails.image.borderRadius+"px"}} src="https://cdn.shopify.com/s/files/1/0801/7264/6691/files/dummyImage.jpg?v=1700561335"></img>
                 </div>
                     <div class="bxgy_product_listingText">
                     <h6  style={{"color":data.buyXgetY.productDetails.title.color,"fontSize":data.buyXgetY.productDetails.title.fontSize +"px"}}>Sample product</h6>
 
 <span style={{"color":data.buyXgetY.productDetails.price.color,"fontSize":data.buyXgetY.productDetails.price.fontSize+"px"}}>$5666</span>
                     </div>
-                    <div class="bxgy_product_listingClose">
-                        <h3 >5X</h3>
-                    </div>
+                    <div style={{"color":data.buyXgetY.productDetails.quantities.color,"backgroundColor":data.buyXgetY.productDetails.quantities.backgroundColor,"borderColor":data.buyXgetY.productDetails.quantities.borderColor}} class="bxgy_product_listingClose">
+                    <h3 style={{"color":data.buyXgetY.productDetails.quantities.color}}>5X</h3>
+                </div>
                 </div>
 
 
                 <div class="bxgy_product_variant_main">
                     <div class="bxgy_product_variant">
-                        <h6>#5</h6>
+                        <h6 style={{"color":data.buyXgetY.productDetails.variantSelector.color }}>1</h6>
                         <div class="bxgy_selected_field">
-                            <select class="selectpicker">
+                            <select style={{"backgroundColor":data.buyXgetY.productDetails.variantSelector.backgroundColor,"color":data.buyXgetY.productDetails.variantSelector.color,"borderColor":data.buyXgetY.productDetails.variantSelector.borderColor }} class="selectpicker">
                         <option>Select Variant</option>
                         <option>Select Variant</option>
                         <option>Select Variant</option>
@@ -192,9 +192,9 @@ console.log(data)
                         </div>
                     </div>
                     <div class="bxgy_product_variant">
-                        <h6>#5</h6>
+                    <h6 style={{"color":data.buyXgetY.productDetails.variantSelector.color }}>2</h6>
                         <div class="bxgy_selected_field">
-                            <select class="selectpicker">
+                            <select style={{"backgroundColor":data.buyXgetY.productDetails.variantSelector.backgroundColor,"color":data.buyXgetY.productDetails.variantSelector.color,"borderColor":data.buyXgetY.productDetails.variantSelector.borderColor }} class="selectpicker">
                         <option>Select Variant</option>
                         <option>Select Variant</option>
                         <option>Select Variant</option>
@@ -202,9 +202,9 @@ console.log(data)
                         </div>
                     </div>
                     <div class="bxgy_product_variant">
-                        <h6>#5</h6>
+                    <h6 style={{"color":data.buyXgetY.productDetails.variantSelector.color }}>3</h6>
                         <div class="bxgy_selected_field">
-                            <select class="selectpicker">
+                            <select style={{"backgroundColor":data.buyXgetY.productDetails.variantSelector.backgroundColor,"color":data.buyXgetY.productDetails.variantSelector.color,"borderColor":data.buyXgetY.productDetails.variantSelector.borderColor }} class="selectpicker">
                         <option>Select Variant</option>
                         <option>Select Variant</option>
                         <option>Select Variant</option>
@@ -220,37 +220,42 @@ console.log(data)
         </div>
 
         <div class="bxgy_productsListing_main">
+          {data.buyXgetY.DiscountBadge.badgeType == "rightBanner" ?
+  <div class="bxgy_productDiscount_badges" style={{"background": data.buyXgetY.DiscountBadge.backgroundColor}}>
+  <h5 style={{"color": data.buyXgetY.DiscountBadge.color, "fontSize": data.buyXgetY.DiscountBadge.fontSize +"px"}}>{ data.buyXgetY.DiscountBadge.text}</h5>
+</div>
+: data.buyXgetY.DiscountBadge.badgeType == "leftBanner" ?
+<div class="bxgy_productDiscount_badges left" style={{"background": data.buyXgetY.DiscountBadge.backgroundColor}}>
+  <h5 style={{"color": data.buyXgetY.DiscountBadge.color, "fontSize": data.buyXgetY.DiscountBadge.fontSize +"px"}}>{ data.buyXgetY.DiscountBadge.text}</h5>
+</div> 
+: data.buyXgetY.DiscountBadge.badgeType == "ribbon" ? 
+<div class="dis-ribbon" >
+  <span  style={{"background": data.buyXgetY.DiscountBadge.backgroundColor,"color": data.buyXgetY.DiscountBadge.color, "fontSize": data.buyXgetY.DiscountBadge.fontSize +"px"}}>{ data.buyXgetY.DiscountBadge.text}</span>
+  </div> : null
+          }
         
-          <div class="bxgy_productDiscount_badges">
-                <h5>10% Off</h5>
-            </div>
-
-            <div class="bxgy_productDiscount_badges left">
-                <h5>10% Off</h5>
-            </div> 
-            <div class="dis-ribbon"><span>35 % Off</span></div>
          
 
             <div class="bxgy_products_listing second">
             <div style={{"borderColor":data.buyXgetY.productDetails.image.borderColor,"borderRadius":data.buyXgetY.productDetails.image.borderRadius+"px"}} class="bxgy_product_listingImg">
-                    <img style={{"borderRadius":data.buyXgetY.productDetails.image.borderRadius+"px"}} src="https://i.ibb.co/VpF22Hc/image-5.png"></img>
+                    <img style={{"borderRadius":data.buyXgetY.productDetails.image.borderRadius+"px"}} src="https://cdn.shopify.com/s/files/1/0801/7264/6691/files/dummyImage.jpg?v=1700561335"></img>
                 </div>
                 <div class="bxgy_product_listingText">
                 <h6  style={{"color":data.buyXgetY.productDetails.title.color,"fontSize":data.buyXgetY.productDetails.title.fontSize +"px"}}>Sample product</h6>
 
 <span style={{"color":data.buyXgetY.productDetails.price.color,"fontSize":data.buyXgetY.productDetails.price.fontSize+"px"}}>$5666</span>
                 </div>
-                <div class="bxgy_product_listingClose">
-                    <h3>5X</h3>
+                <div style={{"color":data.buyXgetY.productDetails.quantities.color,"backgroundColor":data.buyXgetY.productDetails.quantities.backgroundColor,"borderColor":data.buyXgetY.productDetails.quantities.borderColor}} class="bxgy_product_listingClose">
+                    <h3 style={{"color":data.buyXgetY.productDetails.quantities.color}}>5X</h3>
                 </div>
             </div>
 
             <div class="bxgy_productsListing_Column">
                 <div class="bxgy_product_variant_main">
                     <div class="bxgy_product_variant">
-                        <h6>#5</h6>
+                    <h6 style={{"color":data.buyXgetY.productDetails.variantSelector.color }}>1</h6>
                         <div class="bxgy_selected_field">
-                            <select class="selectpicker">
+                            <select style={{"backgroundColor":data.buyXgetY.productDetails.variantSelector.backgroundColor,"color":data.buyXgetY.productDetails.variantSelector.color,"borderColor":data.buyXgetY.productDetails.variantSelector.borderColor }} class="selectpicker">
                         <option>Select Variant</option>
                         <option>Select Variant</option>
                         <option>Select Variant</option>
@@ -258,9 +263,9 @@ console.log(data)
                         </div>
                     </div>
                     <div class="bxgy_product_variant">
-                        <h6>#5</h6>
+                    <h6 style={{"color":data.buyXgetY.productDetails.variantSelector.color }}>2</h6>
                         <div class="bxgy_selected_field">
-                            <select class="selectpicker">
+                            <select style={{"backgroundColor":data.buyXgetY.productDetails.variantSelector.backgroundColor,"color":data.buyXgetY.productDetails.variantSelector.color,"borderColor":data.buyXgetY.productDetails.variantSelector.borderColor }} class="selectpicker">
                         <option>Select Variant</option>
                         <option>Select Variant</option>
                         <option>Select Variant</option>
@@ -268,9 +273,9 @@ console.log(data)
                         </div>
                     </div>
                     <div class="bxgy_product_variant">
-                        <h6>#5</h6>
+                    <h6 style={{"color":data.buyXgetY.productDetails.variantSelector.color }}>3</h6>
                         <div class="bxgy_selected_field">
-                            <select class="selectpicker">
+                            <select style={{"backgroundColor":data.buyXgetY.productDetails.variantSelector.backgroundColor,"color":data.buyXgetY.productDetails.variantSelector.color,"borderColor":data.buyXgetY.productDetails.variantSelector.borderColor }} class="selectpicker">
                         <option>Select Variant</option>
                         <option>Select Variant</option>
                         <option>Select Variant</option>
@@ -281,23 +286,23 @@ console.log(data)
             </div>
             <div class="bxgy_products_listing second">
             <div style={{"borderColor":data.buyXgetY.productDetails.image.borderColor,"borderRadius":data.buyXgetY.productDetails.image.borderRadius+"px"}} class="bxgy_product_listingImg">
-                    <img style={{"borderRadius":data.buyXgetY.productDetails.image.borderRadius+"px"}} src="https://i.ibb.co/VpF22Hc/image-5.png"></img>
+                    <img style={{"borderRadius":data.buyXgetY.productDetails.image.borderRadius+"px"}} src="https://cdn.shopify.com/s/files/1/0801/7264/6691/files/dummyImage.jpg?v=1700561335"></img>
                 </div>
                 <div class="bxgy_product_listingText">
                 <h6  style={{"color":data.buyXgetY.productDetails.title.color,"fontSize":data.buyXgetY.productDetails.title.fontSize +"px"}}>Sample product</h6>
 
 <span style={{"color":data.buyXgetY.productDetails.price.color,"fontSize":data.buyXgetY.productDetails.price.fontSize+"px"}}>$5666</span>
                 </div>
-                <div class="bxgy_product_listingClose">
-                    <h3>5X</h3>
+                <div style={{"color":data.buyXgetY.productDetails.quantities.color,"backgroundColor":data.buyXgetY.productDetails.quantities.backgroundColor,"borderColor":data.buyXgetY.productDetails.quantities.borderColor}} class="bxgy_product_listingClose">
+                    <h3 style={{"color":data.buyXgetY.productDetails.quantities.color}}>5X</h3>
                 </div>
             </div>
             <div class="bxgy_productsListing_Column">
                 <div class="bxgy_product_variant_main">
                     <div class="bxgy_product_variant">
-                        <h6>#5</h6>
+                    <h6 style={{"color":data.buyXgetY.productDetails.variantSelector.color }}>1</h6>
                         <div class="bxgy_selected_field">
-                            <select class="selectpicker">
+                            <select style={{"backgroundColor":data.buyXgetY.productDetails.variantSelector.backgroundColor,"color":data.buyXgetY.productDetails.variantSelector.color,"borderColor":data.buyXgetY.productDetails.variantSelector.borderColor }} class="selectpicker">
                         <option>Select Variant</option>
                         <option>Select Variant</option>
                         <option>Select Variant</option>
@@ -305,9 +310,9 @@ console.log(data)
                         </div>
                     </div>
                     <div class="bxgy_product_variant">
-                        <h6>#5</h6>
+                    <h6 style={{"color":data.buyXgetY.productDetails.variantSelector.color }}>2</h6>
                         <div class="bxgy_selected_field">
-                            <select class="selectpicker">
+                            <select style={{"backgroundColor":data.buyXgetY.productDetails.variantSelector.backgroundColor,"color":data.buyXgetY.productDetails.variantSelector.color,"borderColor":data.buyXgetY.productDetails.variantSelector.borderColor }} class="selectpicker">
                         <option>Select Variant</option>
                         <option>Select Variant</option>
                         <option>Select Variant</option>
@@ -315,9 +320,9 @@ console.log(data)
                         </div>
                     </div>
                     <div class="bxgy_product_variant">
-                        <h6>#5</h6>
+                    <h6 style={{"color":data.buyXgetY.productDetails.variantSelector.color }}>3</h6>
                         <div class="bxgy_selected_field">
-                            <select class="selectpicker">
+                            <select style={{"backgroundColor":data.buyXgetY.productDetails.variantSelector.backgroundColor,"color":data.buyXgetY.productDetails.variantSelector.color,"borderColor":data.buyXgetY.productDetails.variantSelector.borderColor }} class="selectpicker">
                         <option>Select Variant</option>
                         <option>Select Variant</option>
                         <option>Select Variant</option>
@@ -328,13 +333,13 @@ console.log(data)
             </div>
         </div>
 
-        <div class="bxgy_productTotal">
+        <div class="bxgy_productTotal" style={{"backgroundColor":data.buyXgetY.totalSection.background}}>
             <div class="bxgy_productTotal_text">
-                <h4>Total</h4>
+                <h4  style={{"color":data.buyXgetY.totalSection.color,"fontSize":data.buyXgetY.totalSection.fontSize +"px"}}>Total</h4>
             </div>
             <div class="bxgy_productTotal_price">
-                <h3>$567</h3>
-                <span>$8787</span>
+                <h3 style={{"color":data.buyXgetY.totalSection.originalPrice.color,"fontSize":data.buyXgetY.totalSection.originalPrice.fontSize +"px"}}>$567</h3>
+                <span style={{"color":data.buyXgetY.totalSection.finalPrice.color,"fontSize":data.buyXgetY.totalSection.finalPrice.fontSize +"px"}}>$8787</span>
             </div>
 
         </div>

@@ -31,12 +31,12 @@ const APIContext = createContext();
 
   async function getThemeId () {
 
-  // const response = await postApi('/api/admin/getThemeId',{},app)
-  // if(response.data.status == 200){
-  //   setThemeId(response.data.response)
+  const response = await postApi('/api/admin/getThemeId',{},app)
+  if(response.data.status == 200){
+    setThemeId(response.data.response)
     
 
-  // }
+  }
   }
   getThemeId()
  
