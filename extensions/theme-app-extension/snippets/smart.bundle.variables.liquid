@@ -1,5 +1,4 @@
 <script>
-
     let sdbundlePageType = '{{request.page_type}}';
     let sdbundleProductName = `{{ product.title }}`;
     let sdCurrencyIsoCode = '{{ shop.currency }}';
@@ -7,7 +6,7 @@
     let sdCurrentDateTime = '{{ "now" | date: "%Y-%m-%dT%H:%M:%S.%3NZ"  }}'
     let sdProductJson = {{ product | json }};
     let sdBundleProductId = '';
-
+    let sdCartType = '{{settings.cart_type}}'
 
     if (sdbundlePageType == "product") {
         sdBundleProductId = '{{product.id}}';
