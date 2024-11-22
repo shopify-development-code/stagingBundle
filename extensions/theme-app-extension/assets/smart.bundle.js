@@ -1,9 +1,85 @@
-let server = "https://bundlesgroup.com";
+let server = "https://bundle.shinedezigninfotech.com";
 
-console.log("Smart Bundle Discount app new version 4.0");
-// let server = "https://org-generally-hockey-oscar.trycloudflare.com";
+console.log("Smart Bundle Discount app new version6.0");
+// let server = "https://yu-hand-cambodia-springfield.trycloudflare.com";
 let smartNoImg = `data:image/png;base64,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`;
 let productPageClass = document.getElementsByClassName("sd-bundle-app");
+
+let cartDrawer = () =>{
+  if (sdCartType === "drawer") {
+    const btn = document.getElementById('cart-icon-bubble')
+    if (btn) {
+      setTimeout(()=>{
+        btn.click() // Trigger the drawer to open
+      },1000);
+      fetch('/cart')
+      .then(response => response.text())  
+      .then(cart => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(cart, 'text/html');
+        // Find the #CartDrawer element in the fetched HTML
+        const cartDrawerContent = doc?.querySelector('#CartDrawer');
+          const cartIconContent = doc?.querySelector('#cart-icon-bubble');
+        // If found, update the content of the current #CartDrawer element
+        if (cartDrawerContent) {
+          document.querySelector('#CartDrawer').innerHTML = cartDrawerContent.innerHTML;
+        document.querySelector('#cart-icon-bubble').innerHTML = cartIconContent.innerHTML;
+          document.querySelector('cart-drawer.drawer').classList.remove('is-empty');
+          updateCart();
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching cart:', error);
+      });
+    }else{
+      window.location.assign(`https://${Shopify.shop}/cart`);
+    }
+  } else {
+      window.location.assign(`https://${Shopify.shop}/cart`);
+  }
+}
+
+let updateCart = () =>{
+  const localData = JSON.parse(localStorage.getItem("sd_bundle_data"));
+  if (localData.discountType == "Fix") {
+    fetch(window.Shopify.routes.root + "cart.js", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        let allIdsMatch = localData.variantsId.every((item) => {
+          let matchingItem = response.items.find(
+            (i) => i.id === parseInt(item.id) && item.quantity <= i.quantity
+          );
+          return !!matchingItem;
+        });
+        if (allIdsMatch == true) {
+          activateRule(localData);
+          if (localData.discountType == "Fix") {
+            addDiscountToProduct();
+          }
+        } else {
+          deactivateRule(localData);
+          let formData = {
+            attributes: { SD_BUNDLE_ID: el._id },
+          };
+          fetch(window.Shopify.routes.root + "cart/add.js", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  }
+}
 
 function getRandomItems(arr, numItems) {
   for (let i = arr.length - 1; i > 0; i--) {
@@ -12,7 +88,7 @@ function getRandomItems(arr, numItems) {
   }
   return arr.slice(0, numItems);
 }
- 
+
 if (sdbundlePageType == "product") {
   if (productPageClass.length) {
     let sdBundleLoader = document.createElement("div");
@@ -123,45 +199,10 @@ async function getData() {
 }
 
 if (sdbundlePageType == "cart") {
-  const localData = JSON.parse(localStorage.getItem("sd_bundle_data"));
-  if (localData.discountType == "Fix") {
-    fetch(window.Shopify.routes.root + "cart.js", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        let allIdsMatch = localData.variantsId.every((item) => {
-          let matchingItem = response.items.find(
-            (i) => i.id === parseInt(item.id) && item.quantity <= i.quantity
-          );
-          return !!matchingItem;
-        });
-        if (allIdsMatch == true) {
-          activateRule(localData);
-          if (localData.discountType == "Fix") {
-            addDiscountToProduct();
-          }
-        } else {
-          deactivateRule(localData);
-          let formData = {
-            attributes: { SD_BUNDLE_ID: el._id },
-          };
-          fetch(window.Shopify.routes.root + "cart/add.js", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formData),
-          });
-        }
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  }
+  updateCart();
+}
+if (sdCartType === "drawer") {
+  updateCart();
 }
 
 if (sdbundlePageType == "page") {
@@ -216,8 +257,8 @@ function createBundle(BUNDLE_DATA) {
         BUNDLE_DIV.style.borderColor = el?.customization?.bundle?.box?.borderColor;
         BUNDLE_DIV.style.background = el?.customization?.bundle?.box?.backgroundColor;
         mainDiv.append(BUNDLE_DIV);
-
-        if (el?.badgeText != "" && el?.badgeText != undefined) {
+      
+        if (el?.customization?.bundle?.optionalBadge?.enable === true) {
           if (el?.bundleDetail?.discountType === "percent" || el?.bundleDetail?.discountType === "fixed") {
             let VOLUME_HEADER_DIV = document.createElement("span");
             VOLUME_HEADER_DIV.className = "sd-badges-part-optional";
@@ -226,7 +267,12 @@ function createBundle(BUNDLE_DATA) {
             VOLUME_HEADER_DIV.style.fontSize =`${el?.customization?.bundle?.optionalBadge?.fontSize}px`;
             let discountBadge = document.createElement("span");
             discountBadge.className = "sd-collectionMM-badge";
-            discountBadge.innerText = el?.badgeText;
+            if (el?.bundleDetail?.discountType === "percent") {
+                discountBadge.innerText = el?.translations?.translation?.save + " " + el?.bundleDetail?.discountValue + "%";
+            } else if (el?.bundleDetail?.discountType === "fixed") {
+                let newPrice = el?.bundleDetail?.discountValue;
+                discountBadge.innerText = el?.translations?.translation?.save + " " + showAmountWithCurrency(newPrice);
+            }
             VOLUME_HEADER_DIV.append(discountBadge);
             BUNDLE_DIV.append(VOLUME_HEADER_DIV);
           }
@@ -235,7 +281,7 @@ function createBundle(BUNDLE_DATA) {
         let BUNDLE_TITLE = document.createElement("div");
         BUNDLE_TITLE.className = "sd-bundle-text-detail";
         BUNDLE_DIV.append(BUNDLE_TITLE);
-        if (el?.badgeText != "" && el?.badgeText != undefined) {
+        if (el?.customization?.bundle?.optionalBadge?.enable === true) {
           if (el?.bundleDetail?.discountType === "percent" || el?.bundleDetail?.discountType === "fixed") {
             BUNDLE_TITLE.classList.add("extra-padding");
           }
@@ -624,6 +670,7 @@ function createBundle(BUNDLE_DATA) {
             items: mergedArrayResult,
             attributes: { SD_BUNDLE_ID: el._id },
           };
+          let cartRes ;
           fetch(window.Shopify.routes.root + "cart/add.js", {
             method: "POST",
             headers: {
@@ -639,6 +686,8 @@ function createBundle(BUNDLE_DATA) {
                 "sd-bundle-error-message"
               );
               errorDiv[0]?.remove();
+
+              
               if (response.status == 422 || response.status == 404) {
                 ADD_TO_CART_BUTTON.innerText =
                   el.translations.translation.addToCartButton;
@@ -648,6 +697,8 @@ function createBundle(BUNDLE_DATA) {
                 BUNDLE_DIV.append(errorMessage);
                 errorMessage.innerText = response.description;
               } else {
+          cartRes = response
+          
                 fetch(window.Shopify.routes.root + "cart.js", {
                   method: "GET",
                   headers: {
@@ -782,9 +833,7 @@ function createBundle(BUNDLE_DATA) {
                             };
                             var jsonString = JSON.stringify(sd_bundle_data);
                             localStorage.setItem("sd_bundle_data", jsonString);
-                            window.location.assign(
-                              `https://${Shopify.shop}/cart`
-                            );
+                            cartDrawer();
                           }
                         });
                     }
@@ -908,35 +957,74 @@ function createBundle(BUNDLE_DATA) {
             DISCOUNT_OPT_titleDiv.append(discountOptTitle);
 
             let DISCOUNT_OPT_BadgeSection = document.createElement("div");
-           if (ele?.badgeText != "" && ele?.badgeText != undefined) {
-            DISCOUNT_OPT_BadgeSection.className = "style_badge";
-        
-            const svg1 = `
-                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
-                    <path d="M8 0L0 8H8V0Z" fill=${el?.customization?.volume?.options?.saveDiscount?.backgroundColor}></path>
-                    <path d="M8 0L0 8H8V0Z" fill="black" opacity="0.2"></path>
-                </svg>
-            `;
             
-            const svg2 = `
-                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
-                    <path d="M0 0L8 8H0V0Z" fill=${el?.customization?.volume?.options?.saveDiscount?.backgroundColor}></path>
-                    <path d="M0 0L8 8H0V0Z" fill="black" opacity="0.2"></path>
-                </svg>
-            `;
-            let Badge_Text = document.createElement("span");
-            Badge_Text.innerText = ele.badgeText; // Use the actual badge text from the element
-            Badge_Text.style.fontFamily = el?.customization?.volume?.box?.fontFamily || 'inherit';
-            Badge_Text.style.background = el?.customization?.volume?.options?.saveDiscount?.backgroundColor
-            Badge_Text.style.fontSize = (el?.customization?.volume?.options?.saveDiscount?.fontSize || 16) + "px"; // Default to 16px if not defined
-            Badge_Text.style.color = el?.customization?.volume?.options?.saveDiscount?.color || 'white'; // Default to white if not defined
-            Badge_Text.style.padding = "2px 4px"; // Optional: add some padding to the badge text
-        
-            // Clear the badge section and append the SVGs and badge text
-            DISCOUNT_OPT_BadgeSection.innerHTML = svg1; // Set inner HTML to the first SVG
-            DISCOUNT_OPT_BadgeSection.append(Badge_Text); // Append the badge text
-            DISCOUNT_OPT_BadgeSection.innerHTML += svg2; // Append the second SVG
-          }
+
+            if(ele.type == "percent" || ele.type == "fixed"){
+              if(el?.customization?.volume?.options?.DiscountBadge?.badgeType == "options"){
+                DISCOUNT_OPT_BadgeSection.className = "sd-percent-badge";
+                let BagdeSpan = document.createElement("span");
+                BagdeSpan.style.fontFamily = el?.customization?.volume?.box?.fontFamily;
+                BagdeSpan.style.color = el?.customization?.volume?.options?.saveDiscount?.color;
+                BagdeSpan.style.background = el?.customization?.volume?.options?.saveDiscount?.backgroundColor;
+                BagdeSpan.style.borderRadius = `${el?.customization?.volume?.options?.saveDiscount?.borderRadius}px`;
+                BagdeSpan.style.fontSize = `${el?.customization?.volume?.options?.saveDiscount?.fontSize}px`;
+                if (ele.type == "percent") {
+                  BagdeSpan.innerText =
+                    el.translations.translation.save + " " + ele.value + "%";
+                } else if (ele.type == "price") {
+                  let newPrice = ele.value;
+                  BagdeSpan.innerText = showAmountWithCurrency(newPrice);
+                } else if (ele.type == "fixed") {
+                  let newPrice = ele.value;
+    
+                  BagdeSpan.innerText =
+                    el.translations.translation.save +
+                    " " +
+                    showAmountWithCurrency(newPrice) +
+                    " ";
+                }
+                DISCOUNT_OPT_BadgeSection.append(BagdeSpan) 
+              }else{
+                DISCOUNT_OPT_BadgeSection.className = "sd-bundle-product-badge1";
+                DISCOUNT_OPT_BadgeSection.innerHTML = `<svg
+                          width="91"
+                          height="24"
+                          viewBox="0 0 91 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M0 10L8.63148 0H83.3261L91 10H0Z"
+                            fill= ${
+                              el?.customization?.volume?.options
+                                ?.saveDiscount?.backgroundColor
+                            }
+                          />
+                          <path
+                            d="M9 0H83V19C83 21.7614 80.7614 24 78 24H14C11.2386 24 9 21.7614 9 19V0Z"
+                            fill= ${
+                              el?.customization?.volume?.options
+                                ?.saveDiscount?.backgroundColor
+                            }
+                          />
+                        </svg>`
+                let Badge_Text = document.createElement("h4");
+                if (ele.type == "percent") {
+                  Badge_Text.innerText =
+                    ele.value + "% Off";
+                } else if (ele.type == "fixed") {
+                  let newPrice = ele.value;
+                  Badge_Text.innerText =
+                    showAmountWithCurrency(newPrice)+
+                    " Off";
+                }
+                Badge_Text.style.fontFamily = el?.customization?.volume?.box?.fontFamily;
+                Badge_Text.style.fontSize = el?.customization?.volume?.options?.saveDiscount?.fontSize+"px";
+                Badge_Text.style.color = el?.customization?.volume?.options?.saveDiscount?.color;
+                DISCOUNT_OPT_BadgeSection.append(Badge_Text);
+              }
+            }
+
             DISCOUNT_OPT_HEADLINE.append(
               DISCOUNT_OPT_titleDiv,
               DISCOUNT_OPT_BadgeSection
@@ -1698,9 +1786,7 @@ function createBundle(BUNDLE_DATA) {
                             addToCartBtn.innerText =
                               el.translations.translation.addToCartButton;
                             volumeBtnSpinner.remove();
-                            window.location.assign(
-                              `https://${Shopify.shop}/cart`
-                            );
+                            cartDrawer();
                           }
                         });
                     }
@@ -1729,18 +1815,17 @@ function createBundle(BUNDLE_DATA) {
         collectionDiv.style.border = "1px solid" + el?.customization?.collectionMixMatch?.box?.borderColor;
         collectionDiv.style.borderRadius = el?.customization?.collectionMixMatch?.box?.borderRadius + "px";
         mainDiv.append(collectionDiv);
-        if (el?.badgeText != "" && el?.badgeText != undefined) {
+
         let VOLUME_HEADER_DIV = document.createElement("span");
-          VOLUME_HEADER_DIV.className = "sd-badges-part";
-          VOLUME_HEADER_DIV.style.background = el?.customization?.collectionMixMatch?.DiscountBadge?.backgroundColor;
-          VOLUME_HEADER_DIV.style.fontFamily = el?.customization?.collectionMixMatch?.box?.fontFamily;
-          VOLUME_HEADER_DIV.style.color = el?.customization?.collectionMixMatch?.DiscountBadge?.color;
-          let discountBadge = document.createElement("span");
-          discountBadge.className = "sd-collectionMM-badge";
-          discountBadge.innerText = el?.badgeText;
-          VOLUME_HEADER_DIV.append(discountBadge);
-          collectionDiv.append(VOLUME_HEADER_DIV);
-        }
+        VOLUME_HEADER_DIV.className = "sd-badges-part";
+        VOLUME_HEADER_DIV.style.background = el?.customization?.collectionMixMatch?.DiscountBadge?.backgroundColor;
+        VOLUME_HEADER_DIV.style.fontFamily = el?.customization?.collectionMixMatch?.box?.fontFamily;
+        VOLUME_HEADER_DIV.style.color = el?.customization?.collectionMixMatch?.DiscountBadge?.color;
+        let discountBadge = document.createElement("span");
+        discountBadge.className = "sd-collectionMM-badge";
+        discountBadge.innerText = el?.translations?.translation?.grabTheDeal;
+        VOLUME_HEADER_DIV.append(discountBadge);
+        collectionDiv.append(VOLUME_HEADER_DIV);
       
         let customiseTitle = document.createElement("div");
         customiseTitle.className = "sd-bundle-text-detail";
@@ -1751,9 +1836,7 @@ function createBundle(BUNDLE_DATA) {
         customiseTitleText.style.color = el?.customization?.collectionMixMatch?.title?.color;
         customiseTitleText.style.fontSize = el?.customization?.collectionMixMatch?.title?.fontSize + "px";
         customiseTitleText.style.textAlign = el?.customization?.collectionMixMatch?.title?.alignment;
-        if (el?.badgeText != "" && el?.badgeText != undefined) {
-            customiseTitle.classList.add("extra-padding");
-        }
+
         customiseTitle.append(customiseTitleText);
 
         let customiseDescriptionText = document.createElement("p");
@@ -1977,7 +2060,7 @@ function createBundle(BUNDLE_DATA) {
           FBT_DIV.id = `FBT_DIV${bundleIndex}`;
           mainDiv.append(FBT_DIV);
 
-          if (el?.badgeText != "" && el?.badgeText != undefined) {
+          if (el?.customization?.frequentlyBoughtTogether?.optionalBadge?.enable === true) {
             if (el?.bundleDetail?.discountType === "percent" || el?.bundleDetail?.discountType === "fixed") {
               let VOLUME_HEADER_DIV = document.createElement("span");
               VOLUME_HEADER_DIV.className = "sd-badges-part-optional";
@@ -1986,7 +2069,12 @@ function createBundle(BUNDLE_DATA) {
               VOLUME_HEADER_DIV.style.fontSize = el?.customization?.frequentlyBoughtTogether?.optionalBadge?.fontSize + "px"; 
               let discountBadge = document.createElement("span");
               discountBadge.className = "sd-collectionMM-badge";
-              discountBadge.innerText = el?.badgeText;
+              if (el.bundleDetail.discountType === "percent") {
+                  discountBadge.innerText = el.bundleDetail.discountValue + "% Off";
+              } else if (el.bundleDetail.discountType === "fixed") {
+                  let newPrice = el.bundleDetail.discountValue;
+                  discountBadge.innerText = showAmountWithCurrency(newPrice)+ " Off";
+              }
               VOLUME_HEADER_DIV.append(discountBadge);
               FBT_DIV.append(VOLUME_HEADER_DIV);
             }
@@ -1994,7 +2082,7 @@ function createBundle(BUNDLE_DATA) {
           
           let FBT_TITLE_DIV = document.createElement("div");
           FBT_TITLE_DIV.className = "sd-bundle-text-detail";
-          if (el?.badgeText != "" && el?.badgeText != undefined) {
+          if (el?.customization?.frequentlyBoughtTogether?.optionalBadge?.enable === true) {
             if (el.bundleDetail.discountType === "percent" || el.bundleDetail.discountType === "fixed") {
               FBT_TITLE_DIV.classList.add("extra-padding");
             }
@@ -2449,9 +2537,7 @@ function createBundle(BUNDLE_DATA) {
                               };
                               var jsonString = JSON.stringify(sd_bundle_data);
                               localStorage.setItem("sd_bundle_data", jsonString);
-                              window.location.assign(
-                                `https://${Shopify.shop}/cart`
-                              );
+                              cartDrawer();
                             }
                           });
                       }
@@ -2522,7 +2608,7 @@ function createBundle(BUNDLE_DATA) {
         FBT_DIV.id = `FBT_DIV${bundleIndex}`;
         mainDiv.append(FBT_DIV);
 
-        if (el?.badgeText != "" && el?.badgeText != undefined) {
+        if (el?.customization?.frequentlyBoughtTogether?.optionalBadge?.enable === true) {
           if (el.bundleDetail.discountType === "percent" || el.bundleDetail.discountType === "fixed") {
             let VOLUME_HEADER_DIV = document.createElement("span");
             VOLUME_HEADER_DIV.className = "sd-badges-part-optional";
@@ -2531,7 +2617,12 @@ function createBundle(BUNDLE_DATA) {
             VOLUME_HEADER_DIV.style.fontSize = el?.customization?.frequentlyBoughtTogether?.optionalBadge?.fontSize + "px"; 
             let discountBadge = document.createElement("span");
             discountBadge.className = "sd-collectionMM-badge";
-            discountBadge.innerText = el?.badgeText;
+            if (el.bundleDetail.discountType === "percent") {
+                discountBadge.innerText = el.bundleDetail.discountValue + "% Off";
+            } else if (el.bundleDetail.discountType === "fixed") {
+                let newPrice = el.bundleDetail.discountValue;
+                discountBadge.innerText = showAmountWithCurrency(newPrice) + " Off";
+            }
             VOLUME_HEADER_DIV.append(discountBadge);
             FBT_DIV.append(VOLUME_HEADER_DIV);
           }
@@ -2540,7 +2631,7 @@ function createBundle(BUNDLE_DATA) {
         let FBT_BUNDLE_DETAILS_DIV = document.createElement("div");
        
         FBT_BUNDLE_DETAILS_DIV.className = "sd-bundle-text-detail";
-        if (el?.badgeText != "" && el?.badgeText != undefined) {
+        if (el?.customization?.frequentlyBoughtTogether?.optionalBadge?.enable === true) {
           if (el?.bundleDetail?.discountType === "percent" || el?.bundleDetail?.discountType === "fixed") {
             FBT_BUNDLE_DETAILS_DIV.classList.add("extra-padding");
           }
@@ -2810,7 +2901,7 @@ function createBundle(BUNDLE_DATA) {
         FBT_DIV.append(FBT_ADDTOCART_TOTAL_DIV);
         
         let ADD_TO_CART_BUTTON = document.createElement("button");
-        ADD_TO_CART_BUTTON.style.backgroundColor = el?.customization?.frequentlyBoughtTogether?.button?.backgroundColor;
+        ADD_TO_CART_BUTTON.style.backgroundColor = el?.customization?.frequentlyBoughtTogether?.butto?.backgroundColor;
         ADD_TO_CART_BUTTON.style.borderColor = el?.customization?.frequentlyBoughtTogether?.button?.borderColor;
         ADD_TO_CART_BUTTON.style.borderRadius = el?.customization?.frequentlyBoughtTogether?.button?.borderRadius+"px";
         ADD_TO_CART_BUTTON.style.color = el?.customization?.frequentlyBoughtTogether?.button?.color;
@@ -3000,9 +3091,7 @@ function createBundle(BUNDLE_DATA) {
                           };
                           var jsonString = JSON.stringify(sd_bundle_data);
                           localStorage.setItem("sd_bundle_data", jsonString);
-                          window.location.assign(
-                            `https://${Shopify.shop}/cart`
-                          );
+                          cartDrawer();
                         }
                       });
                   }
@@ -4040,9 +4129,7 @@ function createBundle(BUNDLE_DATA) {
                             };
                             var jsonString = JSON.stringify(sd_bundle_data);
                             localStorage.setItem("sd_bundle_data", jsonString);
-                            window.location.assign(
-                              `https://${Shopify.shop}/cart`
-                            );
+                            cartDrawer();
                           }
                         });
                     }
@@ -4291,49 +4378,37 @@ function createBundle(BUNDLE_DATA) {
           BXGY_DIV.append(MAIN_GET_PRODUCT_NAME_IMAGE_DIV);
 
         let DISCOUNT_BADGE_DIV = document.createElement("div");
-        if(el?.customization?.buyXgetY?.DiscountBadge?.badgeType == "rightBanner"){
-          DISCOUNT_BADGE_DIV.className = "sd-bundle-product-badge";
-          DISCOUNT_BADGE_DIV.innerHTML = `<svg
-                    width="91"
-                    height="24"
-                    viewBox="0 0 91 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M0 10L8.63148 0H83.3261L91 10H0Z"
-                      fill= ${
-                        el?.customization?.buyXgetY?.DiscountBadge
-                          ?.backgroundColor
-                      }
-                    />
-                    <path
-                      d="M9 0H83V19C83 21.7614 80.7614 24 78 24H14C11.2386 24 9 21.7614 9 19V0Z"
-                      fill= ${
-                        el?.customization?.buyXgetY?.DiscountBadge
-                          ?.backgroundColor
-                      }
-                    />
-                  </svg>`
-                  let Badge_Text = document.createElement("h4");
-                  Badge_Text.className = "heading"
-                  Badge_Text.style.fontFamily = el?.customization?.buyXgetY?.box?.fontFamily;
-                  if(el.bundleDetail.discountType == "percent"){
-                    Badge_Text.innerText = `${el.bundleDetail.discountValue}% Off`;
-                  }else if(el.bundleDetail.discountType == "fixed"){
-                    Badge_Text.innerText = `${showAmountWithCurrency(el.bundleDetail.discountValue)} Off`;
-                  }else{
-                    Badge_Text.innerText = `Free`;
-                  }
-                  DISCOUNT_BADGE_DIV.append(Badge_Text);
-                  Badge_Text.style.color = el?.customization?.buyXgetY?.DiscountBadge?.color;
-                  Badge_Text.style.fontSize = `${el?.customization?.buyXgetY?.DiscountBadge?.fontSize}px`;
-        } else{
-          DISCOUNT_BADGE_DIV.className = "sd-bundle-product-badge left-badge";
-          let DISCOUNT_BADGE_Internal_DIV = document.createElement("div");
-          DISCOUNT_BADGE_Internal_DIV.className = "open-badge";
-          DISCOUNT_BADGE_Internal_DIV.style.background = el?.customization?.buyXgetY?.DiscountBadge?.backgroundColor;
-          DISCOUNT_BADGE_DIV.append(DISCOUNT_BADGE_Internal_DIV);
+          if(el?.customization?.buyXgetY?.DiscountBadge?.badgeType == "rightBanner"){
+            DISCOUNT_BADGE_DIV.className = "sd-bundle-product-badge";
+            DISCOUNT_BADGE_DIV.innerHTML = `<svg
+                      width="91"
+                      height="24"
+                      viewBox="0 0 91 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M0 10L8.63148 0H83.3261L91 10H0Z"
+                        fill= ${
+                          el?.customization?.buyXgetY?.DiscountBadge
+                            ?.backgroundColor
+                        }
+                      />
+                      <path
+                        d="M9 0H83V19C83 21.7614 80.7614 24 78 24H14C11.2386 24 9 21.7614 9 19V0Z"
+                        fill= ${
+                          el?.customization?.buyXgetY?.DiscountBadge
+                            ?.backgroundColor
+                        }
+                      />
+                    </svg>`
+          } else{
+            DISCOUNT_BADGE_DIV.className = "sd-bundle-product-badge left-badge";
+            let DISCOUNT_BADGE_Internal_DIV = document.createElement("div");
+            DISCOUNT_BADGE_Internal_DIV.className = "open-badge";
+            DISCOUNT_BADGE_Internal_DIV.style.background = el?.customization?.buyXgetY?.DiscountBadge?.backgroundColor;
+            DISCOUNT_BADGE_DIV.append(DISCOUNT_BADGE_Internal_DIV);
+          }
           let Badge_Text = document.createElement("h4");
           Badge_Text.style.fontFamily = el?.customization?.buyXgetY?.box?.fontFamily;
           if(el.bundleDetail.discountType == "percent"){
@@ -4343,11 +4418,9 @@ function createBundle(BUNDLE_DATA) {
           }else{
             Badge_Text.innerText = `Free`;
           }
-          DISCOUNT_BADGE_Internal_DIV.append(Badge_Text);
+          DISCOUNT_BADGE_DIV.append(Badge_Text);
           Badge_Text.style.color = el?.customization?.buyXgetY?.DiscountBadge?.color;
           Badge_Text.style.fontSize = `${el?.customization?.buyXgetY?.DiscountBadge?.fontSize}px`;
-        }
-         
           MAIN_GET_PRODUCT_NAME_IMAGE_DIV.append(DISCOUNT_BADGE_DIV);
           
           let Inner_Y_Div = document.createElement("div");
@@ -4672,9 +4745,7 @@ function createBundle(BUNDLE_DATA) {
                               ADD_TO_CART_BUTTON.innerText =
                               el.translations.translation.addToCartButton;
                               btnSpinner.remove();
-                              window.location.assign(
-                                `https://${Shopify.shop}/cart`
-                              );
+                              cartDrawer();
                             }
                           });
                     })
