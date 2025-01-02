@@ -12,7 +12,7 @@ const FBTResourcePicker = (props) => {
   //     setSlectMultiple(3);
   //   }
   // },[selectMultiple]);
-
+ 
     // const handleProducts = (e, page) => {
     //     if (page == "fbtMainProducts") {
     //       let x = {};
