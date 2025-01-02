@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import {
-  ArrowLeftOutlined,
+  ArrowLeftIcon,
   CaretRightOutlined,
   CaretDownOutlined,
   AppstoreAddOutlined,
@@ -38,7 +38,7 @@ import postApi from "../postApi";
 import { useAppBridge } from "@shopify/app-bridge-react";
 import toastNotification from "../commonSections/Toast";
 import { Text } from "@shopify/polaris";
-import { LockMajor } from "@shopify/polaris-icons";
+import { LockIcon } from "@shopify/polaris-icons";
 import CustomizationFBt from "./CustomizationFBTPreview";
 import Swal from "sweetalert2";
 import OrderOverview from "./OrderOverview";
@@ -402,7 +402,7 @@ const CustomizationEditor = (props) => {
         <div className="sd-bundle-customizationBundle-topbar">
           <div>
             <Button className="sd-bundle-backArrow" onClick={openModalFun}>
-              <ArrowLeftOutlined />
+              <ArrowLeftOutlined/>
             </Button>
 
             <Modal
@@ -417,7 +417,7 @@ const CustomizationEditor = (props) => {
               </h1>
             </Modal>
           </div>
-          {/* <div className="sd-bundle-backArrow" onClick={()=>navigate('/')}><ArrowLeftOutlined/></div> */}
+          {/* <div className="sd-bundle-backArrow" onClick={()=>navigate('/')}><ArrowLeftIcon/></div> */}
           <div className="sd-bundle-selectSection">
             <Select
               options={options}
@@ -511,7 +511,7 @@ const CustomizationEditor = (props) => {
                   <div className={`sd-bundle-listItem-common sd-bundle-listItem`} onClick={popUpAlertFun}>
                     <CaretRightOutlined />
                     <AppstoreAddOutlined />
-                    <Text>Buy X get Y <LockMajor className="sd-bundle-premium2" /></Text>
+                    <Text>Buy X get Y <LockIcon className="sd-bundle-premium2" /></Text>
 
                   </div>
                 }
@@ -539,7 +539,7 @@ const CustomizationEditor = (props) => {
                     <div className={`sd-bundle-listItem-common sd-bundle-listItem`} onClick={popUpAlertFun}>
                       <CaretRightOutlined />
                       <AppstoreAddOutlined />
-                      <Text>Product Mix & Match <LockMajor className="sd-bundle-premium2" /></Text>
+                      <Text>Product Mix & Match <LockIcon className="sd-bundle-premium2" /></Text>
                     </div>
                   </>
                 }
@@ -569,7 +569,7 @@ const CustomizationEditor = (props) => {
                   <div className={`sd-bundle-listItem-common sd-bundle-listItem`} onClick={popUpAlertFun}>
                     <CaretRightOutlined />
                     <AppstoreAddOutlined />
-                    <Text>Frequently Bought Together <LockMajor className="sd-bundle-premium2" /></Text>
+                    <Text>Frequently Bought Together <LockIcon className="sd-bundle-premium2" /></Text>
                   </div>
                 }
                 {props.bundleOption == "frequentlyBoughtTogether"

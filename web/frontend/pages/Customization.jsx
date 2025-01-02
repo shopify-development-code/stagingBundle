@@ -17,13 +17,13 @@ const Customization =()=>{
 const app = useAppBridge();
 
   const params = useLocation()
-  const fullscreen = Fullscreen.create(app);
+  // const fullscreen = Fullscreen.create(app);
 const navigate=useNavigate();
 
 useEffect(() => {
   if(params.pathname == "/customization"){
 
-    fullscreen.dispatch(Fullscreen.Action.EXIT);
+    // fullscreen.dispatch(Fullscreen.Action.EXIT);
   }
  
 

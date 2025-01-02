@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import pic from "../../assets/image2.png";
 import {
-  ArrowLeftOutlined,
+  ArrowLeftIcon,
   CaretRightOutlined,
   CaretDownOutlined,
   PlusOutlined,

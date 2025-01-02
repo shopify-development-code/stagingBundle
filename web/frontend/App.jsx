@@ -1,6 +1,6 @@
 
-import { BrowserRouter } from "react-router-dom";
-import { NavigationMenu } from "@shopify/app-bridge-react";
+import { BrowserRouter,Link } from "react-router-dom";
+import { NavMenu } from "@shopify/app-bridge-react";
 import Routes from "./Routes";
 import "./components/style.css"
 import "./components/responsive.css"
@@ -23,34 +23,12 @@ export default function App() {
           <QueryProvider>
           <ContextProvider>
          
-          <NavigationMenu
-              navigationLinks={[
-                {
-                  label: "Bundles",
-                  destination: "/bundle",
-
-                },
-                {
-                  label: "Customization",
-                  destination: "/customization",
-                },
-                {
-                  label: "Analytics"  ,
-                  destination: "/analytics",
-                },
-                {
-                  label: "Settings"  ,
-                  destination: "/settings",
-                },
-                {
-                  label: "Plans"  ,
-                  destination: "/plans",
-                  
-                }
-
-              ]}
-              matcher={(link, location) => link.destination === location.pathname}
-            />
+          <NavMenu
+            ><Link to="/bundle">Bundles</Link>
+            <Link to="/customization">Customization</Link>
+            <Link to="/analytics">Analytics</Link>
+            <Link to="/settings">Settings</Link>
+           <Link to="/plans">Plans</Link></NavMenu>
             <Routes pages={pages} />
             </ContextProvider>
               

@@ -2,15 +2,16 @@ import React ,{useState} from 'react'
 import { Button, Card } from 'antd'
 import {MediaCard} from '@shopify/polaris';
 import {useAPI} from "../components/shop"
-
+import { useAppBridge } from '@shopify/app-bridge-react';
 import Watermark from './watermark';
 import RecommendedApp from './recommendedApp';
 import LogoHeader from './logoHeader';
 import ContactUs from './contactUs';
 
 const Dashboard = () => {
-
-  const {shop,themeId} = useAPI()
+const app= useAppBridge();
+const shop= app.config.shop;
+  const {themeId} = useAPI()
   const [playVideo,setPlayVideo] = useState(false)
 function handleOpenCustomization () {
   window.open(

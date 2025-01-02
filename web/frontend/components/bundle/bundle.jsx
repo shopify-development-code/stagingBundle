@@ -21,7 +21,7 @@ import {
   EllipsisOutlined,
   GiftOutlined,
 } from "@ant-design/icons";
-import { useNavigate } from "@shopify/app-bridge-react";
+import { useNavigate } from "react-router-dom";
 import { useAppBridge } from "@shopify/app-bridge-react";
 import { useAPI } from "../shop";
 import postApi from "../postApi";
@@ -34,7 +34,7 @@ import noProductImg from "../../assets/NoProductImage.png";
 import LogoHeader from "../logoHeader";
 import Watermark from "../watermark";
 import ContactUs from "../contactUs";
-import { LockFilledMajor, LockMajor } from "@shopify/polaris-icons";
+import {  LockIcon } from "@shopify/polaris-icons";
 const CreateBundle = () => {
   const { shop } = useAPI();
   const app = useAppBridge();
@@ -332,7 +332,7 @@ const CreateBundle = () => {
           justifyContent: "space-between",
         }}
       >
-        Buy X get Y <LockMajor className="sd-bundle-premium1" />
+        Buy X get Y <LockIcon className="sd-bundle-premium1" />
       </div>
     );
 
@@ -347,7 +347,7 @@ const CreateBundle = () => {
           justifyContent: "space-between",
         }}
       >
-        Product mix & match <LockMajor className="sd-bundle-premium1" />
+        Product mix & match <LockIcon className="sd-bundle-premium1" />
       </div>
     );
 
@@ -362,7 +362,7 @@ const CreateBundle = () => {
           justifyContent: "space-between",
         }}
       >
-        Frequently bought together <LockMajor className="sd-bundle-premium1" />
+        Frequently bought together <LockIcon className="sd-bundle-premium1" />
       </div>
     );
 
@@ -1298,7 +1298,7 @@ const CreateBundle = () => {
             {/* :
               <div className="sd-bundle-choose-collectionMixAndMatch" onClick={() => navigate("/plans")}>
                 <Card
-                  title={<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>Buy X get Y <LockMajor className="sd-bundle-premium1" /></div>}
+                  title={<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>Buy X get Y <LockIcon className="sd-bundle-premium1" /></div>}
                   style={{
                     width: 300,
                   }}
@@ -1335,7 +1335,7 @@ const CreateBundle = () => {
             {/* :
               <div className="sd-bundle-choose-collectionMixAndMatch" onClick={() => navigate("/plans")}>
                 <Card
-                  title={<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>Product mix & match <LockMajor className="sd-bundle-premium1" /></div>}
+                  title={<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>Product mix & match <LockIcon className="sd-bundle-premium1" /></div>}
                   style={{
                     width: 300,
                   }}
@@ -1371,7 +1371,7 @@ const CreateBundle = () => {
             </div>
             {/* :
               <div className="sd-bundle-choose-collectionMixAndMatch" onClick={() => navigate("/plans")}>
-                <Card title={<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>Frequently bought together <LockMajor className="sd-bundle-premium1" /></div>}
+                <Card title={<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>Frequently bought together <LockIcon className="sd-bundle-premium1" /></div>}
                   style={{width: 300}}
                 >
                   <p className="sd-bundle-collectionMix-Icon">

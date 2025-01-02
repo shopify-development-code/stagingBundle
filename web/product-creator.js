@@ -88,16 +88,11 @@ export default async function productCreator(
 
   try {
     for (let i = 0; i < count; i++) {
-      await client.query({
-        data: {
-          query: CREATE_PRODUCTS_MUTATION,
+      await client.request(CREATE_PRODUCTS_MUTATION,{
           variables: {
-            input: {
               title: `${randomTitle()}`,
-              variants: [{ price: randomPrice() }],
-            },
-          },
-        },
+              variants: [{ price: randomPrice() }],   
+          },    
       });
     }
   } catch (error) {

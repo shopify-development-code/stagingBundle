@@ -12,7 +12,7 @@ import postApi from "../components/postApi";
 const BundleCustomization = () => {
   const app = useAppBridge();
   const params = useLocation()
-  const fullscreen = Fullscreen.create(app);
+  // const fullscreen = Fullscreen.create(app);
   // const [fullScreen, setFullScreen] = useState(false);
   const [bundleOption, setBundleOption] = useState("bundle");
   const [spinner, setSpinner] = useState(false)
@@ -55,7 +55,7 @@ const BundleCustomization = () => {
 
   useEffect(() => {
     if (params.pathname == "/bundleCustomization") {
-      fullscreen.dispatch(Fullscreen.Action.ENTER);
+      // fullscreen.dispatch(Fullscreen.Action.ENTER);
     }
     // setFullScreen(true);
   }, [])

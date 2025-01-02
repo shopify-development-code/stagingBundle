@@ -6,7 +6,7 @@ import dotenv from "dotenv";
 import sqlite3 from 'sqlite3';
 
 dotenv.config();
-// console.log(LATEST_API_VERSION,"lop")
+console.log(LATEST_API_VERSION,"LATEST_API_VERSION")
 // console.log("enter in ...........",SQLiteSessionStorage);
 const database = new sqlite3.Database(`${process.cwd()}/database.sqlite`);
 let scopes = process.env.SCOPES.split(",");
@@ -17,9 +17,9 @@ const shopify = shopifyApp({
     billing: undefined, 
     apiKey : process.env.SHOPIFY_API_KEY,
     apiSecretKey: process.env.SHOPIFY_API_SECRET,
-    hostScheme : "https",
-    hostName : process.env.DOMAIN,
-    scopes: scopes
+    // hostScheme : "https",
+    // hostName : process.env.DOMAIN,
+    // scopes: scopes
   },
   auth: {
     path: "/api/auth",

@@ -1,7 +1,9 @@
-import React from 'react'
-import { ResourcePicker } from "@shopify/app-bridge-react";
+import React from 'react';
+import { useAppBridge } from '@shopify/app-bridge-react';
+// import { ResourcePicker } from "@shopify/app-bridge-react";
 import toastNotification from '../commonSections/Toast';
 const BxgyResourcePicker = (props) => {
+  const app = useAppBridge();
     const handleProducts = (e, page) => {
          if (page == "xproduct") {
           let x = {};
@@ -162,22 +164,50 @@ const BxgyResourcePicker = (props) => {
        }
         return finalArray ;
       }
+     const  resourcePickFunc = async() =>{
+      console.log("props", props)
 
-  return (
-    <>
-    <ResourcePicker
-        resourceType={props.modalType}
-        open={props.open}
-        onSelection={(e) => handleProducts(e, props.page)}
-        initialSelectionIds={props.page == "xproduct" ? [...props?.data.bundleDetail?.xproducts]:props.page == "yproduct" ? [...props?.data.bundleDetail?.yproducts] : null }
-        onCancel={handleCancel}
-        initialQuery={props.searchValue ? props.searchValue : ""}
-        selectMultiple ={true}
-        showDraftBadge={true}
+      const productsAdded= props.page == "xproduct" ? [...props?.data.bundleDetail?.xproducts]:props.page == "yproduct" ? [...props?.data.bundleDetail?.yproducts] : null;
+      const selectionIds=productsAdded?.map((product)=>{
+        return { "id":product.id};
+      })
+      const selected = await app.resourcePicker({
+        type: props.modalType?.toLowerCase(),
+         multiple: true, 
+         selectionIds:selectionIds,
+         query:props.searchValue ? props.searchValue : "",
+        filter: {
+        hidden: false,
+        variants: true,
+        draft: false,
+        archived: false,
+      },
+    });
+    
+    if(selected){
+      handleProducts(selected,props.page)
+    }else{
+      handleCancel();
+    }
+     }
+
+  // return (
+  //   <>
+  //   <ResourcePicker
+  //       resourceType={props.modalType}
+  //       open={props.open}
+  //       onSelection={(e) => handleProducts(e, props.page)}
+  //       initialSelectionIds={props.page == "xproduct" ? [...props?.data.bundleDetail?.xproducts]:props.page == "yproduct" ? [...props?.data.bundleDetail?.yproducts] : null }
+  //       onCancel={handleCancel}
+  //       initialQuery={props.searchValue ? props.searchValue : ""}
+  //       selectMultiple ={true}
+  //       showDraftBadge={true}
                 
-      />
-    </>
-  )
-}
+  //     />
 
+      
+  //   </>
+  // )
+  resourcePickFunc();
+}
 export default BxgyResourcePicker

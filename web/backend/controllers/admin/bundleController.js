@@ -54,19 +54,14 @@ export async function createRule(req,res){
             }
           }`
           
-          const response = await client.query({
-            data: {
-              query: getDiscountquery,
-            }
-          });
+          const response = await client.request(getDiscountquery);
   
-          if(response.body.data.codeDiscountNode == null){
-            // console.log("discount id is null");
+          if(response.data.codeDiscountNode == null){
+            console.log("discount id is null");
   
             if(bundleType == "freeShipping"){
-              // console.log("discount id is null than create freeshipping");
-              let Input ={
-                "freeShippingCodeDiscount": {
+              console.log("discount id is null than create freeshipping");
+              let freeShippingCodeDiscount ={
                   // "startsAt": startDate,
               
                   "appliesOncePerCustomer": false,
@@ -83,7 +78,6 @@ export async function createRule(req,res){
                   "destination": {
                     "all": true
                   }
-                }
               }
   
               let queryString =`mutation discountCodeFreeShippingCreate($freeShippingCodeDiscount: DiscountCodeFreeShippingInput!) {
@@ -133,18 +127,18 @@ export async function createRule(req,res){
                 }
               }`
   
-              const response = await client.query({
-                data: {
-                  query: queryString,
-                  variables: Input,
-                },
+              const response = await client.request(queryString,{
+                  variables: {
+                    freeShippingCodeDiscount:freeShippingCodeDiscount
+                  },
+                
               });
-              let bundleDiscountId = response.body.data.discountCodeFreeShippingCreate.codeDiscountNode.id
+              let bundleDiscountId = response.data.discountCodeFreeShippingCreate.codeDiscountNode.id
               return  res.status(200).json({message:"SUCCESS!",response:bundleDiscountId,status:200})
             }else{
-              // console.log("discount id is null than create discountcode instead of freeshipping");
-              let Input ={
-                "basicCodeDiscount": {
+              console.log("discount id is null than create discountcode instead of freeshipping");
+              let basicCodeDiscount ={
+               
                   "appliesOncePerCustomer": false,
                   "code":code,
                   "combinesWith": {
@@ -176,7 +170,7 @@ export async function createRule(req,res){
                   // "startsAt": startDate,
                   "title": code,
                   "usageLimit": null
-                }
+                
               }
       
       
@@ -223,23 +217,20 @@ export async function createRule(req,res){
                 }
               }`;
       
-              const response = await client.query({
-                data: {
-                  query: queryString,
-                  variables: Input,
+              const response = await client.request(queryString,{
+                  variables: {
+                    basicCodeDiscount:basicCodeDiscount 
                 },
               });
-              let bundleDiscountId = response.body.data.discountCodeBasicCreate.codeDiscountNode.id
+              let bundleDiscountId = response.data.discountCodeBasicCreate.codeDiscountNode.id
               return  res.status(200).json({message:"SUCCESS!",response:bundleDiscountId,status:200})
             }
           }else{
             if(bundleType == "freeShipping"){
               // console.log("discount id is not null than update  freeshipping");
-              let bundleDiscountId = response.body.data.codeDiscountNode.id
-              let input=  {
-                "freeShippingCodeDiscount": {
+              let bundleDiscountId = response.data.codeDiscountNode.id
+              let freeShippingCodeDiscount=  {
                   // "startsAt": startDate,
-              
                   "appliesOncePerCustomer": false,
                   "title": code,
                   "code": code,
@@ -254,8 +245,10 @@ export async function createRule(req,res){
                   "destination": {
                     "all": true
                   }
-                },"id": bundleDiscountId
-              }
+                };
+                
+                let id= bundleDiscountId;
+              
             
               let queryString =`mutation discountCodeFreeShippingUpdate($freeShippingCodeDiscount: DiscountCodeFreeShippingInput!, $id: ID!) {
                 discountCodeFreeShippingUpdate(freeShippingCodeDiscount: $freeShippingCodeDiscount, id: $id) {
@@ -289,27 +282,27 @@ export async function createRule(req,res){
                   }
                 }
               }`
-              const update = await client.query({
-                data: {
-                  query: queryString,
-                  variables: input,
+              const update = await client.request(queryString,{
+                  variables: {
+                    freeShippingCodeDiscount:freeShippingCodeDiscount,
+                    id:id
                 },
               });
-              let bundleShoppingDiscountId = update.body.data.discountCodeFreeShippingUpdate.codeDiscountNode.id
+              console.log("updateupdate",update.data);
+              let bundleShoppingDiscountId = update.data.discountCodeFreeShippingUpdate.codeDiscountNode.id
               return  res.status(200).json({message:"SUCCESS!",response:bundleShoppingDiscountId,status:200})
             }else{
               // console.log("discount id is not null than update discount code instead of freeshipping");
-              let getDiscountProductArr = response.body.data.codeDiscountNode.codeDiscount.customerGets?.items.productVariants.edges ;
+              let getDiscountProductArr = response.data.codeDiscountNode.codeDiscount.customerGets?.items.productVariants.edges ;
               getDiscountProductArr?.forEach((e)=>{
                 productVariantsId.push(e.node.id)
               })
   
               const filteredArray = productVariantsId.filter((element) => !mergedArray.includes(element));
-              let bundleDiscountId = response.body.data.codeDiscountNode.id
+              let bundleDiscountId = response.data.codeDiscountNode.id
               
   
-              let Input ={
-                "basicCodeDiscount": {
+              let basicCodeDiscount ={  
                   "appliesOncePerCustomer": false,
                   "code": code,
                   "combinesWith": {
@@ -342,9 +335,9 @@ export async function createRule(req,res){
                   // "startsAt": startDate,
                   "title": code,
                   "usageLimit": null
-                },
-                "id":bundleDiscountId
-              }
+                };
+               let id= bundleDiscountId;
+              
   
               let queryString =   `mutation discountCodeBasicUpdate($id: ID!, $basicCodeDiscount: DiscountCodeBasicInput!) {
                 discountCodeBasicUpdate(id: $id, basicCodeDiscount: $basicCodeDiscount) {
@@ -387,20 +380,20 @@ export async function createRule(req,res){
                   }
                 }
               }`
-              const update = await client.query({
-                data: {
-                  query: queryString,
-                  variables: Input,
+              const update = await client.request(queryString,{
+                  variables: {
+                    basicCodeDiscount:basicCodeDiscount,
+                    id:id
                 },
               });
+              console.log("update",update.data)
               return res.status(200).json({message:"SUCCESS!",response:bundleDiscountId,status:200,update:update})
             }
           }
         }else{
           if(bundleType == "freeShipping"){
-            // console.log("discount id is found than create freeshipping");
-            let Input ={
-              "freeShippingCodeDiscount": {
+            console.log("discount id is found than create freeshipping");
+            let freeShippingCodeDiscount ={
                 "startsAt": "2022-06-22T21:12:07.000Z",
                 "appliesOncePerCustomer": false,
                 "title": code,
@@ -416,7 +409,6 @@ export async function createRule(req,res){
                 "destination": {
                   "all": true
                 }
-              }
             }
   
             let queryString =`mutation discountCodeFreeShippingCreate($freeShippingCodeDiscount: DiscountCodeFreeShippingInput!) {
@@ -466,22 +458,20 @@ export async function createRule(req,res){
               }
             }`
   
-            const response = await client.query({
-              data: {
-                query: queryString,
-                variables: Input,
+            const response = await client.request(queryString,{
+                variables: {
+                  freeShippingCodeDiscount:freeShippingCodeDiscount
               },
             });
   
-            let bundleDiscountId = response.body.data.discountCodeFreeShippingCreate.codeDiscountNode.id
+            let bundleDiscountId = response.data.discountCodeFreeShippingCreate.codeDiscountNode.id
             return  res.status(200).json({message:"SUCCESS!",response:bundleDiscountId,status:200})
   
           }else{
-            // console.log("discount id is found than create discount code instead of freeshipping",code);
+            console.log("discount id is found than create discount code instead of freeshipping",code);
             
   
-            let Input ={
-              "basicCodeDiscount": {
+            let basicCodeDiscount ={
                 "appliesOncePerCustomer": false,
                 "code":code,
                 "combinesWith": {
@@ -513,7 +503,6 @@ export async function createRule(req,res){
                 "startsAt": startDate,
                 "title": code,
                 "usageLimit": null
-              }
             }
       
             let queryString =  `  mutation 
@@ -560,14 +549,14 @@ export async function createRule(req,res){
               }
             }`;
       
-            const response = await client.query({
-              data: {
-                query: queryString,
-                variables: Input,
-              },
+            const response = await client.request(queryString,{
+                variables: {
+                  basicCodeDiscount:basicCodeDiscount
+                },
+              
             });
-            // console.log("responseresponseresponseresponse",response.body.data.discountCodeBasicCreate.userErrors);
-            let bundleDiscountId = response.body.data.discountCodeBasicCreate.codeDiscountNode.id
+            // console.log("responseresponseresponseresponse",response.data.discountCodeBasicCreate.userErrors);
+            let bundleDiscountId = response.data.discountCodeBasicCreate.codeDiscountNode.id
             return  res.status(200).json({message:"SUCCESS!",response:bundleDiscountId,status:200})
           }
         }  
@@ -602,9 +591,8 @@ export async function deactivateRule (req,res){
       accessToken:shopInfo.accessToken
     }});
 
-    let Input ={
-        "id":discountId
-      }
+    let id=discountId;
+      
       // console.log(bundle_type,"check deactivate discount id................................................",req);
     if(bundle_type != "bxgy"){
       let queryString = `mutation discountCodeDeactivate($id: ID!) {
@@ -627,11 +615,10 @@ export async function deactivateRule (req,res){
         }
       }`
 
-      const response = await client.query({
-        data: {
-          query: queryString,
-          variables: Input,
-        },
+      const response = await client.request(queryString,{
+          variables: {
+            id:id
+          },
       });
       return  res.status(200).json({message:"SUCCESS!",response:response})
 
@@ -657,10 +644,10 @@ export async function deactivateRule (req,res){
         }
       }`
 
-      const response = await client.query({
-        data: {
-          query: queryString,
-          variables: Input,
+      const response = await client.request(queryString,{
+          variables: {
+            id:id
+
         },
       });
       return  res.status(200).json({message:"SUCCESS!",response:response})
@@ -692,10 +679,8 @@ export async function activateRule (req,res){
       shop:shop,
       accessToken:shopInfo.accessToken
     }});
-
-    let Input ={
-        "id":discountId
-      }
+    // console.log("activateRulediscount id: ",req.body);
+    let id =discountId;
     if(bundle_type != "bxgy"){
       // console.log("Not.......... match with bundle type bxgy");
       let queryString = `mutation discountCodeActivate($id: ID!) {
@@ -717,10 +702,9 @@ export async function activateRule (req,res){
           }
         }
       }`
-      const response = await client.query({
-        data: {
-          query: queryString,
-          variables: Input,
+      const response = await client.request(queryString,{
+          variables: {
+            id:id
         },
       });
       return  res.status(200).json({message:"SUCCESS!",response:response})
@@ -746,10 +730,9 @@ export async function activateRule (req,res){
         }
       }`
 
-      const response = await client.query({
-        data: {
-          query: queryString,
-          variables: Input,
+      const response = await client.request(queryString,{
+          variables: {
+            id:id,
         },
       });
 
@@ -825,16 +808,11 @@ async function bxgyDiscountCodeCreate(req,res){
         }
       }`
       
-      const response = await client.query({
-        data: {
-          query: getDiscountquery,
-        }
-      });
-      // console.log("check out this id }}}}------------>",response.body.data.codeDiscountNode);
-      if(response.body.data.codeDiscountNode == null){
+      const response = await client.request(getDiscountquery);
+      console.log("check out this id }}}}------------>",response.data.codeDiscountNode);
+      if(response.data.codeDiscountNode == null){
         console.log("-------------------------------------------------------------------------in null");
-        let Input = {
-          "bxgyCodeDiscount": {
+        let bxgyCodeDiscount = {
             "code": code,
             "customerBuys": {
               "items": {
@@ -868,7 +846,6 @@ async function bxgyDiscountCodeCreate(req,res){
             "startsAt": "2023-06-21T00:00:00Z",
             "title": code,
             "usesPerOrderLimit": 3
-          }
         };
       
         let queryString = `mutation discountCodeBxgyCreate($bxgyCodeDiscount: DiscountCodeBxgyInput!) {
@@ -952,19 +929,17 @@ async function bxgyDiscountCodeCreate(req,res){
           }
         }`
     
-        const response = await client.query({
-          data: {
-            query: queryString,
-            variables: Input,
-          },
+        const response = await client.request(queryString,{
+            variables: {
+              bxgyCodeDiscount:bxgyCodeDiscount,
+            },
         });
         // console.log("check response in bxgy code creation",response);
-        let bundleDiscountId = response.body.data.discountCodeBxgyCreate.codeDiscountNode.id;
+        let bundleDiscountId = response.data.discountCodeBxgyCreate.codeDiscountNode.id;
         return  res.status(200).json({message:"SUCCESS!",response:bundleDiscountId,status:200})
       }else{
-        let Input = {
-          "id": response.body.data.codeDiscountNode.id,
-          "bxgyCodeDiscount": {
+        let id= response?.data?.codeDiscountNode?.id;
+          let bxgyCodeDiscount = {
             "code": code,
             "customerBuys": {
               "items": {
@@ -1000,7 +975,7 @@ async function bxgyDiscountCodeCreate(req,res){
             "title": code,
             "usesPerOrderLimit": 3
           }
-        }
+        
         
         let queryString = `mutation discountCodeBxgyUpdate($id: ID!, $bxgyCodeDiscount: DiscountCodeBxgyInput!) {
           discountCodeBxgyUpdate(id: $id, bxgyCodeDiscount: $bxgyCodeDiscount) {
@@ -1084,14 +1059,14 @@ async function bxgyDiscountCodeCreate(req,res){
             }
           }
         }`
-        const update = await client.query({
-          data: {
-            query: queryString,
-            variables: Input,
+        const update = await client.request(queryString,{
+            variables: {
+              bxgyCodeDiscount:bxgyCodeDiscount,
+              id:id,  
           },
         });
-        // console.log("check response in bxgy code creation",update.body.data.discountCodeBxgyUpdate.codeDiscountNode.id);
-        let bundleDiscountId = update.body.data.discountCodeBxgyUpdate.codeDiscountNode.id;
+        // console.log("check response in bxgy code creation",update.data.discountCodeBxgyUpdate.codeDiscountNode.id);
+        let bundleDiscountId = update.data.discountCodeBxgyUpdate.codeDiscountNode.id;
         return res.status(200).json({message:"Update!",response:bundleDiscountId,status:200})
       }
     }else{
@@ -1220,7 +1195,7 @@ async function bxgyDiscountCodeCreate(req,res){
           variables: Input,
         
       });
-      // console.log("check response in bxgy code creation",response.body.data,response.body.data.discountCodeBxgyCreate.userErrors);
+      // console.log("check response in bxgy code creation",response.data,response.data.discountCodeBxgyCreate.userErrors);
       let bundleDiscountId = response.data.discountCodeBxgyCreate.codeDiscountNode.id;
       return res.status(200).json({message:"SUCCESS!",response:bundleDiscountId,status:200})
     }
