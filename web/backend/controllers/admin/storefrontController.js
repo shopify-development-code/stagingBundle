@@ -365,7 +365,7 @@ export async function getPage(req, res) {
     try {
       const client= new shopify.api.clients.Graphql({session})
           const  page= await client.request(`{
-          pages(first: 100) {
+          pages(first: 250) {
             nodes {
               id
               title

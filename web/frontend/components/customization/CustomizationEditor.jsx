@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import {
-  ArrowLeftIcon,
+  ArrowLeftOutlined,
   CaretRightOutlined,
   CaretDownOutlined,
   AppstoreAddOutlined,
@@ -14,6 +14,8 @@ import {
   EditOutlined,
   TransactionOutlined,
 } from "@ant-design/icons";
+
+
 import { LegacyCard, Select, Tabs, Grid } from "@shopify/polaris";
 import { Button, Divider, Modal, Spin } from "antd";
 import { useNavigate } from "react-router-dom";
@@ -417,7 +419,7 @@ const CustomizationEditor = (props) => {
               </h1>
             </Modal>
           </div>
-          {/* <div className="sd-bundle-backArrow" onClick={()=>navigate('/')}><ArrowLeftIcon/></div> */}
+          {/* <div className="sd-bundle-backArrow" onClick={()=>navigate('/')}><ArrowLeftOutlined/></div> */}
           <div className="sd-bundle-selectSection">
             <Select
               options={options}

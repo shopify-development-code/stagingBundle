@@ -1,7 +1,7 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "5d237800fbe8fb809677f692033b02ae"
-application_url = "https://jelsoft-innovations-issues-workforce.trycloudflare.com"
+application_url = "https://equation-solar-surrey-republican.trycloudflare.com"
 embedded = true
 name = "latestBundle"
 handle = "latestbundle"
@@ -20,9 +20,9 @@ scopes = "read_content,read_inventory,read_themes,write_content,write_discounts,
 
 [auth]
 redirect_urls = [
-  "https://jelsoft-innovations-issues-workforce.trycloudflare.com/auth/callback",
-  "https://jelsoft-innovations-issues-workforce.trycloudflare.com/auth/shopify/callback",
-  "https://jelsoft-innovations-issues-workforce.trycloudflare.com/api/auth/callback"
+  "https://equation-solar-surrey-republican.trycloudflare.com/auth/callback",
+  "https://equation-solar-surrey-republican.trycloudflare.com/auth/shopify/callback",
+  "https://equation-solar-surrey-republican.trycloudflare.com/api/auth/callback"
 ]
 
 [pos]

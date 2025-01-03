@@ -1,12 +1,5 @@
 import React, { useEffect, useState } from "react";
 import pic from "../../assets/image2.png";
-import {
-  ArrowLeftIcon,
-  CaretRightOutlined,
-  CaretDownOutlined,
-  PlusOutlined,
-  MinusOutlined,
-} from "@ant-design/icons";
 import { useAPI } from "../shop";
 import { Button } from "antd";
 import { data } from "@shopify/app-bridge/actions/Modal";
