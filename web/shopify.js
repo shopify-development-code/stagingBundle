@@ -17,8 +17,8 @@ const shopify = shopifyApp({
     billing: undefined, 
     apiKey : process.env.SHOPIFY_API_KEY,
     apiSecretKey: process.env.SHOPIFY_API_SECRET,
-    // hostScheme : "https",
-    // hostName : process.env.DOMAIN,
+    hostScheme : "https",
+    hostName : process.env.DOMAIN,
     scopes: scopes
   },
   auth: {
