@@ -1704,16 +1704,14 @@ button.Polaris-Navigation__Item {
     max-width: 80%;
     margin: auto;
 }
-
-.sd-bundle-createBundle-delete-save .Polaris-Button.Polaris-Button--primary {
+.sd-bundle-createBundle-delete-save .Polaris-ButtonGroup__Item .Polaris-Button{
     box-shadow: none;
-    padding: 3px 20px;
+    padding: 10px 20px;
     border-radius: 3px;
-    background: #202937;
-}
-
-.sd-bundle-createBundle-delete-save .Polaris-Button.Polaris-Button--primary:hover,
-.sd-bundle-left-section-common .Polaris-Button--destructive:hover {
+    color: white;
+  }
+.sd-bundle-createBundle-delete-save .Polaris-ButtonGroup__Item:nth-of-type(2):hover,
+.sd-bundle-createBundle-delete-save .Polaris-ButtonGroup__Item:nth-of-type(1):hover {
     background: #093032;
     color: #fff;
 }
