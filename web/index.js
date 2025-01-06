@@ -103,17 +103,43 @@ app.get(
       })
 
 
-    const page =  new shopify.api.rest.Page({session:session});
-    page.title = "Collection Mix & Match";
-    page.handle = "sd-Collection-Mix-&-Match"
-    page.body_html = `<div id="sd-bundle-container"></div>`;
+    // const page =  new shopify.api.rest.Page({session:session});
+    // page.title = "Collection Mix & Match";
+    // page.handle = "sd-Collection-Mix-&-Match"
+    // page.body_html = `<div id="sd-bundle-container"></div>`;
 
 
-    await page.save({
-      update: true,
-    });
+    // await page.save({
+    //   update: true,
+    // });
 
+     async function createPage() {
+        const client= new shopify.api.clients.Graphql({session});
+        try {
+           const page_create_mutation = `mutation {
+                 pageCreate(
+                   page: {title: "Collection Mix & Match", body: "<div id='sd-bundle-container'></div>",handle:"sd-Collection-Mix-&-Match"}
+                 ) {
+                   page {
+                     id
+                     title
+                   }
+                   userErrors{
+                   code
+                   message
+                   field
+                 }
+                 }
+               }`
+           const page= await client.request(page_create_mutation); 
+        } catch (error) {
+          console.error(error);
+        }
+      
+    }
+    createPage();
 
+    
   //   const client = new shopify.api.clients.Graphql({ session: res.locals.shopify.session});
   // let Input = {
   //         "automaticAppDiscount": {

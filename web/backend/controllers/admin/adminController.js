@@ -76,57 +76,97 @@ export async function createBundle(req,res){
 }
 
 
+// export async function fetchVariants(req, res) {
+//   try {
+//     let p_id = req.body.p_id;
+//     p_id = p_id.split("/").at(-1);
+//     let session = res.locals.shopify.session;
+//     const data = await shopify.api.rest.Product.find({
+//       session: session,
+//       id: Number(p_id),
+//     });
+//     let arr = [];
+//     data.variants.map((item, index) => {
+//       let obj = {};
+//       obj["id"] = item.admin_graphql_api_id;
+//       obj["title"] = item.title;
+//       obj["price"] = item.price;
+//       obj["inventory_quantity"] = item.inventory_quantity;
+
+//       let img = data?.images.find((el) => el?.id == item?.image_id)?.src;
+
+//       obj["src"] = img ? img : null;
+
+//       arr.push(obj);
+//     });
+
+//     res.send({ data: arr });
+//   } catch (error) {
+//     console.log(error.message);
+//     res.send({ message: error.messsage });
+//   }
+// }
 export async function fetchVariants(req,res){
-
   try {
-     
-
-   let p_id=req.body.p_id;    
-   p_id=p_id.split("/").at(-1);
-          
-
-
-
-
-   let session =res.locals.shopify.session;
-
-
- const data = await shopify.api.rest.Product.find({
-   session: session,
-   id: Number(p_id),
- });
-
-
-
+  let session =res.locals.shopify.session;
+  let p_id=req.body.p_id;   
+const client = new shopify.api.clients.Graphql({session});
+const productQuery= `query{
+  product(id:"${p_id}") {
+    id
+    title
+    variants(first: 10) {
+      nodes {
+        id
+        price
+        title
+        inventoryQuantity
+        media(first: 5) {
+          nodes {
+            preview {
+              image {
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+      media(first: 5) {
+      nodes {
+        preview {
+          image {
+            url
+          }
+        }
+      }
+    }
+  }
+    
+}`
+const product = await client.request(productQuery);
 let arr=[];
-
-data.variants.map((item,index)=>{
+product?.data?.product?.variants?.nodes?.map((item,index)=>{
      let obj={};
-     obj['id']=item. admin_graphql_api_id;
+     obj['id']=item.id;
      obj['title']=item.title;
      obj['price']=item.price;
-     obj['inventory_quantity']=item.inventory_quantity;
+     obj['inventory_quantity']=item.inventoryQuantity;
        
-       let img=(data?.images.find(el=> el?.id==item?.image_id))?.src;
+    let img=item?.media?.nodes[0]?.preview?.image?.url || product?.data?.product?.media?.nodes[0]?.preview?.image?.url || "";
 
     obj['src']= img ? img: null;
    
    arr.push(obj)
- 
-})
-
-
+  })
 res.send({data:arr})
 
 }
 catch (error) {
 console.log(error.message)
 res.send({ message: error.messsage })
-
 }
-
 }
-
 export async function editBundle (req,res){
   
 try {
@@ -169,77 +209,97 @@ return res.status(503).send({message:"something went wrong",status:503})
 
 
 
+// export async function createProduct(session) {
+//   // let shop = session.shop;
+//   // const client = new shopify.api.clients.Graphql({ session });
+//   // let {name, price, check, quantity } = req.body;
+// // console.log("name, price, check, quantity ",name, price, check, quantity )
+//   const product = new shopify.api.rest.Product({
+//     session
+//   });
+ 
+//   product.title = "testpro";
+//   product.status = "active";
+//   product.variants = [
+//     {
+//       price: "10",
+//       taxable: true,
+//       requires_shipping: true,
+//       inventory_quantity: 2,
+//     },
+//   ];
+//   try {
+//     let result = await product.save({
+//       update: true,
+//     });
+//     console.log("result10june==>",product)
+//     // if (req.body.check2 == "createProductSubscriptionEdit") {
+//     //   console.log("iniffff10june")
+//     //   let pid = product?.admin_graphql_api_id;
+ 
+//     //   let vid = product?.variants[0].admin_graphql_api_id;
+ 
+//     //   let lines = [];
+ 
+//     //   lines.push({
+//     //     product_id: pid,
+ 
+//     //     product_name: product?.title,
+ 
+//     //     product_image:
+//     //       product?.images.length > 0 ? product.images[0].originalSrc : "",
+ 
+//     //     hasOnlyDefaultVariant: true,
+//     //     requiresShipping: product.variants[0].requires_shipping,
+//     //     id: vid,
+//     //     image: "",
+//     //     price: product.variants[0].price,
+ 
+//     //     title: product.variants[0].title,
+//     //     quantity: 1,
+//     //     // quantity: product.variants[0].inventory_quantity,
+//     //   });  
+ 
+//     //   req.createProductData = {
+//     //     data: lines,
+//     //   };
+ 
+//     //   next();
+//     // } else {
+//     //   console.log("first in createProduct");
+//     //   res.send({ message: "success", data: product });
+//     // }
+//   } catch (error) {
+//     console.log("error",error)
+//     // res.send({ message: "error", data: "Something went wrong" });
+//   }
+// }
 export async function createProduct(session) {
-  // let shop = res.locals.shopify.session.shop;
-  // let session = res.locals.shopify.session;
-  // const client = new shopify.api.clients.Graphql({ session });
-  // let {name, price, check, quantity } = req.body;
-// console.log("name, price, check, quantity ",name, price, check, quantity )
-  const product = new shopify.api.rest.Product({
-    session
-  });
- 
-  product.title = "testpro";
-  product.status = "active";
-  product.variants = [
-    {
-      price: "10",
-      taxable: true,
-      requires_shipping: true,
-      inventory_quantity: 2,
-    },
-  ];
+  const client = new shopify.api.clients.Graphql({ session });
+  const product_create_Mutation = `mutation {
+    productCreate(product: {title: "testpro"}){
+       product {
+         id
+         title
+         status
+       }
+     }
+   }`;
+
   try {
-    let result = await product.save({
-      update: true,
-    });
-    console.log("result10june==>",product)
-    // if (req.body.check2 == "createProductSubscriptionEdit") {
-    //   console.log("iniffff10june")
-    //   let pid = product?.admin_graphql_api_id;
- 
-    //   let vid = product?.variants[0].admin_graphql_api_id;
- 
-    //   let lines = [];
- 
-    //   lines.push({
-    //     product_id: pid,
- 
-    //     product_name: product?.title,
- 
-    //     product_image:
-    //       product?.images.length > 0 ? product.images[0].originalSrc : "",
- 
-    //     hasOnlyDefaultVariant: true,
-    //     requiresShipping: product.variants[0].requires_shipping,
-    //     id: vid,
-    //     image: "",
-    //     price: product.variants[0].price,
- 
-    //     title: product.variants[0].title,
-    //     quantity: 1,
-    //     // quantity: product.variants[0].inventory_quantity,
-    //   });  
- 
-    //   req.createProductData = {
-    //     data: lines,
-    //   };
- 
-    //   next();
-    // } else {
-    //   console.log("first in createProduct");
-    //   res.send({ message: "success", data: product });
-    // }
+    const products = await client.request(product_create_Mutation);
+    const productId = products?.data?.productCreate?.product?.id;
+   
   } catch (error) {
     console.log("error",error)
-    // res.send({ message: "error", data: "Something went wrong" });
   }
 }
+
 export async function getBundle (req,res){
    try {
     const session = res.locals.shopify.session;
     let shop = session.shop;
-    createProduct(session);
+    // createProduct(session);
     // const response = await bundleModel.aggregate(
     //   [
     //     {
@@ -367,13 +427,13 @@ export async function getCurrencyCode(req,res){
           }
         }
       }`
-       const data= await client.query({ data:queryString }) 
-        res.send({message:"success",data:data.body.data.shop}) 
+       const data= await client.request(queryString) 
+        res.send({message:"success",data:data.data.shop}) 
       } catch(error)
       {
          res.send({message:error.message}) 
         }
-       }
+}
 
 
 
@@ -626,23 +686,40 @@ export async function getSetting(req,res){
 }
 
 export async function getThemeId(req, res) {
-  try {
-    const session = res.locals.shopify.session;
-   console.log(session)
-    const client = new shopify.api.clients.Rest({session});
-const data = await client.get({
-  path: 'themes',
-});
-    // const client = new shopify.api.clients.Rest.Theme(shop,session.accessToken);
-    const {
-      body: { themes },
-    } = await client.get({ path: "themes", type: DataType.JSON });
-    const { id } = themes.find((el) => el.role === "main");
-    res.status(200).json({message:"success",response: id,status:200 });
-  } catch (err) {
-    console.error(err);
+//   try {
+//     const session = res.locals.shopify.session;
+//    console.log(session)
+//     const client = new shopify.api.clients.Rest({session});
+// const data = await client.get({
+//   path: 'themes',
+// });
+//     const {
+//       body: { themes },
+//     } = await client.get({ path: "themes", type: DataType.JSON });
+//     const { id } = themes.find((el) => el.role === "main");
+//     res.status(200).json({message:"success",response: id,status:200 });
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).send("Error getting theme ID");
+//   }
+
+try {
+  const session = res.locals.shopify.session;
+  const client = new shopify.api.clients.Graphql({ session });
+  const themeQuery =  `query {
+        themes(first: 1, roles: MAIN) {
+          nodes {
+            id
+          }
+        }
+    }`;
+  const themedata=await client.request(themeQuery);
+  const themeId = themedata?.data?.themes?.nodes[0]?.id?.split('/').pop();
+  res.status(200).json({message:"success",response: themeId,status:200 });
+} catch (err) {
+     console.error(err);
     res.status(500).send("Error getting theme ID");
-  }
+}
 }
 
 

@@ -248,55 +248,136 @@ export async function getBundleData(req, res) {
   }
 }
 
+// export async function createPage(req, res) {
+//   let shop = req.body.shop;
+//   const session = await shopInfoModel.findOne({ shop: shop });
+//   if (session) {
+//     const page = new shopify.api.rest.Page({
+//       session: {
+//         shop: session.shop,
+//         accessToken: session.accessToken,
+//       },
+//     });
+//     page.title = "Collection Mix & Match";
+//     page.body_html = `<div id="sd-bundle-container"></div>`;
+//     await page.save({
+//       update: true,
+//     });
+//     if (page) {
+//       const data = await pageDataModel.findOneAndUpdate(
+//         { shop: shop },
+//         { shop: shop, pageId: page.id },
+//         { upsert: true, new: true }
+//       );
+//       if (data) {
+//         return res
+//           .status(200)
+//           .send({ message: "success", data: page, status: 200 });
+//       } else {
+//         return res
+//           .status(400)
+//           .send({ message: "INTERNAL_SERVER_ERROR", status: 400 });
+//       }
+//     }
+//   }
+// }
 export async function createPage(req, res) {
   let shop = req.body.shop;
   const session = await shopInfoModel.findOne({ shop: shop });
   if (session) {
-    const page = new shopify.api.rest.Page({
-      session: {
-        shop: session.shop,
-        accessToken: session.accessToken,
-      },
-    });
-    page.title = "Collection Mix & Match";
-    page.body_html = `<div id="sd-bundle-container"></div>`;
-    await page.save({
-      update: true,
-    });
-    if (page) {
-      const data = await pageDataModel.findOneAndUpdate(
-        { shop: shop },
-        { shop: shop, pageId: page.id },
-        { upsert: true, new: true }
-      );
-      if (data) {
-        return res
-          .status(200)
-          .send({ message: "success", data: page, status: 200 });
-      } else {
-        return res
-          .status(400)
-          .send({ message: "INTERNAL_SERVER_ERROR", status: 400 });
-      }
+    const client= new shopify.api.clients.Graphql({session});
+    try {
+       const page_create_mutation = `mutation {
+             pageCreate(
+               page: {title: "Collection Mix & Match", body: "<div id='sd-bundle-container'></div>"}
+             ) {
+               page {
+                 id
+                 title
+               }
+               userErrors{
+               code
+               message
+               field
+             }
+             }
+           }`
+       const page= await client.request(page_create_mutation);
+       if (page?.data?.pageCreate && !page?.data?.pageCreate?.userErrors?.length) {
+        let pageId=page?.data?.pageCreate?.page?.id?.split('/')?.pop();
+        console.log("pageId", pageId);
+         const data = await pageDataModel.findOneAndUpdate(
+           { shop: shop },
+           { shop: shop, pageId: pageId },
+           { upsert: true, new: true }
+         );
+         if (data) {
+           return res
+             .status(200)
+             .send({ message: "success", data: page?.data?.pageCreate?.page, status: 200 });
+         } else {
+           return res
+             .status(400)
+             .send({ message: "INTERNAL_SERVER_ERROR", status: 400 });
+         }
+       }
+      
+    } catch (error) {
+      console.error(error);
     }
   }
 }
 
+// export async function getPage(req, res) {
+//   let shop = req.body.shop;
+//   const session = await shopInfoModel.findOne({ shop: shop });
+//   if (session) {
+//     const page = await shopify.api.rest.Page.all({
+//       session: {
+//         shop: shop,
+//         accessToken: session.accessToken,
+//       },
+//     });
+
+//     if (page) {
+//       const getId = await pageDataModel.findOne({ shop: shop });
+//       if (getId !== null) {
+//         const filter = page.data.filter((e) => e.id == getId.pageId);
+//         if (filter.length) {
+//           return res
+//             .status(200)
+//             .send({ message: "success", data: filter[0], status: 200 });
+//         } else {
+//           return res
+//             .status(200)
+//             .send({ message: "page not found", status: 400 });
+//         }
+//       } else {
+//         return res.status(200).send({ message: "page not found", status: 400 });
+//       }
+//     }
+//   }
+// } 
 export async function getPage(req, res) {
   let shop = req.body.shop;
   const session = await shopInfoModel.findOne({ shop: shop });
   if (session) {
-    const page = await shopify.api.rest.Page.all({
-      session: {
-        shop: shop,
-        accessToken: session.accessToken,
-      },
-    });
-
-    if (page) {
+    try {
+      const client= new shopify.api.clients.Graphql({session})
+          const  page= await client.request(`{
+          pages(first: 100) {
+            nodes {
+              id
+              title
+            }
+          }
+        }`)
+        
+    if (page?.data?.pages) {
+      console.log("pages",page.data?.pages?.nodes?.length);
       const getId = await pageDataModel.findOne({ shop: shop });
       if (getId !== null) {
-        const filter = page.data.filter((e) => e.id == getId.pageId);
+        const filter = page.data?.pages?.nodes?.filter((e) => e.id?.split('/')?.pop() == getId.pageId);
         if (filter.length) {
           return res
             .status(200)
@@ -310,9 +391,12 @@ export async function getPage(req, res) {
         return res.status(200).send({ message: "page not found", status: 400 });
       }
     }
+    } catch (error) {
+      console.log("error", error.message);
+    }
+     
   }
 } 
-
 export async function getCollectionMixMatchData(req, res) {
   try {
     let shop = req.body.shop;
@@ -429,13 +513,11 @@ export async function getCollectionProducts(req, res) {
           }
         }
       }`;
-      const response = await client.query({
-        data: queryString,
-      });
+      const response = await client.request(queryString);
 
       return res.json({
         message: "success",
-        response: response.body.data.collection,
+        response: response.data.collection,
       });
     }
   } catch (error) {
@@ -498,13 +580,11 @@ export async function getMoreCollectionProducts(req, res) {
             }
           }
         }`;
-        const response = await client.query({
-          data: queryString,
-        });
+        const response = await client.request(queryString);
 
         return res.json({
           message: "success",
-          response: response.body.data.collection,
+          response: response.data.collection,
           flag: 1,
         });
       }
@@ -576,16 +656,14 @@ export async function searchCollectionProducts(req, res) {
     }
   }
 }`;
-      const response = await client.query({
-        data: queryString,
-      });
+      const response = await client.request(queryString);
 
       let arr = [];
 
-      response.body.data.products.edges.map((item) => {
+      response.data.products.edges.map((item) => {
         item.node.collections.edges.map((el) => {
           if (collectionGid == el.node.id) {
-            arr = response.body.data.products;
+            arr = response.data.products;
           }
         });
       });
@@ -670,16 +748,15 @@ export async function updateAutomaticDiscount(req,res){
   });
   if(db.discountId){
     discountAutomaticId = db.discountId
-    const data = await client.query({
-      data: `query {
+    const data = await client.request( `query {
         discountNode(id: "${db.discountId}") {
           id
       }
       }`,
-    });
+    );
      console.log(discountAutomaticId)
-     console.log(data?.body?.data?.discountNode.id)
-    if(data?.body?.data?.discountNode.id!== null ){
+     console.log(data?.data?.discountNode.id)
+    if(data?.data?.discountNode.id!== null ){
      update = true;
     }else{
       update = false;
@@ -688,10 +765,8 @@ export async function updateAutomaticDiscount(req,res){
   if(update = true){
     //update old
     console.log("updateOld")
-   
-    let Input = {
-      "id": discountAutomaticId,
-      "automaticAppDiscount": {
+   let  id= discountAutomaticId;
+    let automaticAppDiscount = {
         "metafields": [
           {
             "key": "function-configuration",
@@ -699,7 +774,6 @@ export async function updateAutomaticDiscount(req,res){
             "value": `${jsonStringy}`
           }
         ]
-      }
     }
     
     let queryString = `mutation discountAutomaticAppUpdate($automaticAppDiscount: DiscountAutomaticAppInput!, $id: ID!) {
@@ -714,19 +788,17 @@ export async function updateAutomaticDiscount(req,res){
         }
       }
     }`
-    const response = await client.query({
-      data: {
-        query: queryString,
-        variables: Input,
-      },
+    const response = await client.request(queryString,{
+        variables: {
+          automaticAppDiscount:automaticAppDiscount,
+          id:id,
+        },
     });
     return res.status(200).json({message:"update success",response:response,status:200})
   }else{
     //create new
     console.log("createNew")
-
-    let Input = {
-            "automaticAppDiscount": {
+    let automaticAppDiscount = {
               "title": "Smart Bundle (DO NOT DELETE)",
               "functionId": "b96d3230-7a17-4b58-8417-afe9e1504fb7",
               "combinesWith": {
@@ -744,7 +816,6 @@ export async function updateAutomaticDiscount(req,res){
                   "value": jsonStringy
                 }
               ]
-            }
           }
           
     
@@ -773,10 +844,9 @@ export async function updateAutomaticDiscount(req,res){
         }
       }
       `
-      const response = await client.query({
-        data: {
-          query: queryString,
-          variables: Input,
+      const response = await client.request(queryString,{
+          variables: {
+            automaticAppDiscount:automaticAppDiscount,
         },
       });
       return res.status(200).json({message: "create success",response : response,status:200})
