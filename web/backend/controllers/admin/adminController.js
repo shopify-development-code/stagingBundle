@@ -605,9 +605,6 @@ export async function getThemeId(req, res) {
           }
       }`;
     const themedata=await client.request(themeQuery);
-    console.log("themedata",themedata);
-    console.log("themedata.data", themedata.data)
-    console.log(themedata?.data?.themes?.node[0])
     const themeId = themedata?.data?.themes?.nodes[0]?.id?.split('/').pop();
     res.status(200).json({message:"success",response: themeId,status:200 });
   } catch (err) {
