@@ -594,24 +594,27 @@ export async function getSetting(req,res){
 
 export async function getThemeId(req, res) {
 
-try {
-  const session = res.locals.shopify.session;
-  const client = new shopify.api.clients.Graphql({ session });
-  const themeQuery =  `query {
-        themes(first: 1, roles: MAIN) {
-          nodes {
-            id
+  try {
+    const session = res.locals.shopify.session;
+    const client = new shopify.api.clients.Graphql({ session });
+    const themeQuery =  `query {
+          themes(first: 1, roles: MAIN) {
+            nodes {
+              id
+            }
           }
-        }
-    }`;
-  const themedata=await client.request(themeQuery);
-  const themeId = themedata?.data?.themes?.nodes[0]?.id?.split('/').pop();
-  res.status(200).json({message:"success",response: themeId,status:200 });
-} catch (err) {
-     console.error(err);
-    res.status(500).send("Error getting theme ID");
-}
-}
+      }`;
+    const themedata=await client.request(themeQuery);
+    console.log("themedata",themedata);
+    console.log("themedata.data", themedata.data)
+    console.log(themedata?.data?.themes?.node[0])
+    const themeId = themedata?.data?.themes?.nodes[0]?.id?.split('/').pop();
+    res.status(200).json({message:"success",response: themeId,status:200 });
+  } catch (err) {
+       console.error(err);
+      res.status(500).send("Error getting theme ID");
+  }
+  }
 
 
 export function  privacyPolicy  (req,res) {
