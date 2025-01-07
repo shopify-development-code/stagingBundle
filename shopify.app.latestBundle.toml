@@ -3,7 +3,7 @@
 client_id = "5d237800fbe8fb809677f692033b02ae"
 name = "latestBundle"
 handle = "latestbundle"
-application_url = "https://timber-recipient-pushing-induced.trycloudflare.com"
+application_url = "https://offered-lowest-enforcement-baptist.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "read_content,read_inventory,read_themes,write_content,write_discounts,
 
 [auth]
 redirect_urls = [
-  "https://timber-recipient-pushing-induced.trycloudflare.com/auth/callback",
-  "https://timber-recipient-pushing-induced.trycloudflare.com/auth/shopify/callback",
-  "https://timber-recipient-pushing-induced.trycloudflare.com/api/auth/callback"
+  "https://offered-lowest-enforcement-baptist.trycloudflare.com/auth/callback",
+  "https://offered-lowest-enforcement-baptist.trycloudflare.com/auth/shopify/callback",
+  "https://offered-lowest-enforcement-baptist.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
