@@ -103,15 +103,7 @@ app.get(
       })
 
 
-    // const page =  new shopify.api.rest.Page({session:session});
-    // page.title = "Collection Mix & Match";
-    // page.handle = "sd-Collection-Mix-&-Match"
-    // page.body_html = `<div id="sd-bundle-container"></div>`;
-
-
-    // await page.save({
-    //   update: true,
-    // });
+  
 
      async function createPage() {
         const client= new shopify.api.clients.Graphql({session});

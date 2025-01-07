@@ -52,40 +52,7 @@ export async function recurringBiling(req, res) {
   }
   
   /****************************Billing Success***************************************** */
-  // export async function recurringBilingSelected(req, res) {
-  //   try {
-  //     const { charge_id } = req.body;
-  //     const shop =  res.locals.shopify.session.shop ;
-  //    const verifyBilling = await shopify.api.rest.RecurringApplicationCharge.find({
-  //      session : res.locals.shopify.session,
-  //      id : charge_id
-  //    })
-  
-  
-  //    if(verifyBilling.status === "active") {
-  //     const updatePlan = await planModel.findOneAndUpdate(
-  //       { shop },
-  //       { chargeId:charge_id, plan: verifyBilling.name, price: verifyBilling.price, interval: "MONTHLY" },
-  //       { upsert: true, new: true }
-  //     );
-  
-  //     if (!updatePlan) {
-  //       return res.json({
-  //         message: "something went wrong!!!",
-  //         result: 0,
-  //       });
-  //     } else {
-  //       return res
-  //         .status(202)
-  //         .json({ message: "Updated Successfully", result: 1, plan: verifyBilling.name });
-  //     }
-  //    } else {
-  //       res.status(499).json({message : "Payment status is pending!!!", result : 0})
-  //    }
-  //   } catch (err) {
-  //     return res.json({ message: "INTERNAL_SERVER_ERROR", err: err.message });
-  //   }
-  // }
+
 export async function recurringBilingSelected(req,res){
   try {
     const { charge_id } = req.body; 

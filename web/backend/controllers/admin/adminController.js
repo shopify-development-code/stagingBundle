@@ -76,36 +76,7 @@ export async function createBundle(req,res){
 }
 
 
-// export async function fetchVariants(req, res) {
-//   try {
-//     let p_id = req.body.p_id;
-//     p_id = p_id.split("/").at(-1);
-//     let session = res.locals.shopify.session;
-//     const data = await shopify.api.rest.Product.find({
-//       session: session,
-//       id: Number(p_id),
-//     });
-//     let arr = [];
-//     data.variants.map((item, index) => {
-//       let obj = {};
-//       obj["id"] = item.admin_graphql_api_id;
-//       obj["title"] = item.title;
-//       obj["price"] = item.price;
-//       obj["inventory_quantity"] = item.inventory_quantity;
 
-//       let img = data?.images.find((el) => el?.id == item?.image_id)?.src;
-
-//       obj["src"] = img ? img : null;
-
-//       arr.push(obj);
-//     });
-
-//     res.send({ data: arr });
-//   } catch (error) {
-//     console.log(error.message);
-//     res.send({ message: error.messsage });
-//   }
-// }
 export async function fetchVariants(req,res){
   try {
   let session =res.locals.shopify.session;
@@ -209,71 +180,7 @@ return res.status(503).send({message:"something went wrong",status:503})
 
 
 
-// export async function createProduct(session) {
-//   // let shop = session.shop;
-//   // const client = new shopify.api.clients.Graphql({ session });
-//   // let {name, price, check, quantity } = req.body;
-// // console.log("name, price, check, quantity ",name, price, check, quantity )
-//   const product = new shopify.api.rest.Product({
-//     session
-//   });
- 
-//   product.title = "testpro";
-//   product.status = "active";
-//   product.variants = [
-//     {
-//       price: "10",
-//       taxable: true,
-//       requires_shipping: true,
-//       inventory_quantity: 2,
-//     },
-//   ];
-//   try {
-//     let result = await product.save({
-//       update: true,
-//     });
-//     console.log("result10june==>",product)
-//     // if (req.body.check2 == "createProductSubscriptionEdit") {
-//     //   console.log("iniffff10june")
-//     //   let pid = product?.admin_graphql_api_id;
- 
-//     //   let vid = product?.variants[0].admin_graphql_api_id;
- 
-//     //   let lines = [];
- 
-//     //   lines.push({
-//     //     product_id: pid,
- 
-//     //     product_name: product?.title,
- 
-//     //     product_image:
-//     //       product?.images.length > 0 ? product.images[0].originalSrc : "",
- 
-//     //     hasOnlyDefaultVariant: true,
-//     //     requiresShipping: product.variants[0].requires_shipping,
-//     //     id: vid,
-//     //     image: "",
-//     //     price: product.variants[0].price,
- 
-//     //     title: product.variants[0].title,
-//     //     quantity: 1,
-//     //     // quantity: product.variants[0].inventory_quantity,
-//     //   });  
- 
-//     //   req.createProductData = {
-//     //     data: lines,
-//     //   };
- 
-//     //   next();
-//     // } else {
-//     //   console.log("first in createProduct");
-//     //   res.send({ message: "success", data: product });
-//     // }
-//   } catch (error) {
-//     console.log("error",error)
-//     // res.send({ message: "error", data: "Something went wrong" });
-//   }
-// }
+
 export async function createProduct(session) {
   const client = new shopify.api.clients.Graphql({ session });
   const product_create_Mutation = `mutation {
@@ -686,22 +593,6 @@ export async function getSetting(req,res){
 }
 
 export async function getThemeId(req, res) {
-//   try {
-//     const session = res.locals.shopify.session;
-//    console.log(session)
-//     const client = new shopify.api.clients.Rest({session});
-// const data = await client.get({
-//   path: 'themes',
-// });
-//     const {
-//       body: { themes },
-//     } = await client.get({ path: "themes", type: DataType.JSON });
-//     const { id } = themes.find((el) => el.role === "main");
-//     res.status(200).json({message:"success",response: id,status:200 });
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).send("Error getting theme ID");
-//   }
 
 try {
   const session = res.locals.shopify.session;
