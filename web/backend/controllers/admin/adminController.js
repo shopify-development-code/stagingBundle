@@ -182,6 +182,7 @@ return res.status(503).send({message:"something went wrong",status:503})
 
 
 export async function createProduct(session) {
+  let shop = session.shop;
   const client = new shopify.api.clients.Graphql({ session });
   const product_create_Mutation = `mutation {
     productCreate(product: {title: "testpro"}){
@@ -192,11 +193,49 @@ export async function createProduct(session) {
        }
      }
    }`;
-
+ 
   try {
     const products = await client.request(product_create_Mutation);
     const productId = products?.data?.productCreate?.product?.id;
    
+      // console.log("result==>",ProductCreated?.data?.productVariantsBulkCreate?.product,ProductCreated.data?.productVariantsBulkCreate?.productVariants)
+
+    // if (req.body.check2 == "createProductSubscriptionEdit") {
+    //   console.log("iniffff10june")
+    //   let pid = product?.admin_graphql_api_id;
+ 
+    //   let vid = product?.variants[0].admin_graphql_api_id;
+ 
+    //   let lines = [];
+ 
+    //   lines.push({
+    //     product_id: pid,
+ 
+    //     product_name: product?.title,
+ 
+    //     product_image:
+    //       product?.images.length > 0 ? product.images[0].originalSrc : "",
+ 
+    //     hasOnlyDefaultVariant: true,
+    //     requiresShipping: product.variants[0].requires_shipping,
+    //     id: vid,
+    //     image: "",
+    //     price: product.variants[0].price,
+ 
+    //     title: product.variants[0].title,
+    //     quantity: 1,
+    //     // quantity: product.variants[0].inventory_quantity,
+    //   });  
+ 
+    //   req.createProductData = {
+    //     data: lines,
+    //   };
+ 
+    //   next();
+    // } else {
+    //   console.log("first in createProduct");
+    //   res.send({ message: "success", data: product });
+    // }
   } catch (error) {
     console.log("error",error)
   }
@@ -592,27 +631,27 @@ export async function getSetting(req,res){
   }
 }
 
+
+
 export async function getThemeId(req, res) {
-
-  try {
-    const session = res.locals.shopify.session;
-    const client = new shopify.api.clients.Graphql({ session });
-    const themeQuery =  `query {
-          themes(first: 1, roles: MAIN) {
-            nodes {
-              id
-            }
+try {
+  const session = res.locals.shopify.session;
+   const client = new shopify.api.clients.Graphql({ session });
+  const themeQuery =  `query {
+        themes(first: 1, roles: MAIN) {
+          nodes {
+            id
           }
-      }`;
-    const themedata=await client.request(themeQuery);
-    const themeId = themedata?.data?.themes?.nodes[0]?.id?.split('/').pop();
-    res.status(200).json({message:"success",response: themeId,status:200 });
-  } catch (err) {
-       console.error(err);
-      res.status(500).send("Error getting theme ID");
-  }
-  }
-
+        }
+    }`;
+  const themedata=await client.request(themeQuery);
+  const themeId = themedata?.data?.themes?.nodes[0]?.id?.split('/').pop();
+  res.status(200).json({message:"success",response: themeId,status:200 });
+} catch (err) {
+     console.error(err);
+    res.status(500).send("Error getting theme ID");
+}
+}
 
 export function  privacyPolicy  (req,res) {
   const __filename = fileURLToPath(import.meta.url);

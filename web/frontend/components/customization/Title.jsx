@@ -9,9 +9,9 @@ import {
   Icon,
 } from "@shopify/polaris";
 import {
-  TextAlignmentCenterMajor,
-  TextAlignmentLeftMajor,
-  TextAlignmentRightMajor,
+  TextAlignCenterIcon,
+  TextAlignLeftIcon,
+  TextAlignRightIcon,
 } from "@shopify/polaris-icons";
 import {
   handleChangeCommon,
@@ -175,7 +175,7 @@ const Title = ({ bundleOption, displayOption, data, setData }) => {
                 <Icon
                   className="icon"
                   accessibilityLabel="left"
-                  source={TextAlignmentLeftMajor}
+                  source={TextAlignLeftIcon}
                   tone="base"
                 />
               </div>
@@ -196,7 +196,7 @@ const Title = ({ bundleOption, displayOption, data, setData }) => {
                 <Icon
                   className="icon"
                   accessibilityLabel="center"
-                  source={TextAlignmentCenterMajor}
+                  source={TextAlignCenterIcon}
                   tone="base"
                 />
               </div>
@@ -217,7 +217,7 @@ const Title = ({ bundleOption, displayOption, data, setData }) => {
                 <Icon
                   className="icon"
                   accessibilityLabel="right"
-                  source={TextAlignmentRightMajor}
+                  source={TextAlignRightIcon}
                   tone="base"
                 />
               </div>

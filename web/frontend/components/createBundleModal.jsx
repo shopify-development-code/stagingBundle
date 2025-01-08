@@ -1,7 +1,8 @@
 import React from "react";
-import { ResourcePicker } from "@shopify/app-bridge-react";
-
+// import { ResourcePicker } from "@shopify/app-bridge-react";
+import { useAppBridge } from "@shopify/app-bridge-react";
 function CreateBundleModal(props) {
+  const app = useAppBridge();
 
   const handleCancel = () => {    
     if (props.searchValue) {
@@ -235,22 +236,48 @@ function CreateBundleModal(props) {
     props.setSearchValue("");
     } 
    };
+   const  resourcePickFunc = async() =>{
+    console.log("props", props)
 
-  return (
-    <>
-      <ResourcePicker
-        resourceType={props.modalType}
-        open={props.open}
-        onSelection={(e) => handleProducts(e, props.page)}
-        initialSelectionIds={[...props?.data.bundleDetail?.products]}
-        onCancel={handleCancel}
-        initialQuery={props.searchValue ? props.searchValue : ""}
-        // selectMultiple={props.page == "volumeBundle" ? false : true || props.page == "CollectionMixMatch" ? 2 : true}
-        selectMultiple ={props.page == "productBundle" ? true : props.page == "volumeBundle" ? false : props.page == "CollectionMixMatch" ? 2 : true}
-        showDraftBadge={true}
-      />
-    </>
-  );
+    const productsAdded= [...props?.data.bundleDetail?.products];
+    const selectionIds=productsAdded?.map((product)=>{
+      return { "id":product.id};
+    })
+    const selected = await app.resourcePicker({ 
+      type: props.modalType?.toLowerCase(),
+      multiple:props.page == "productBundle" ? true : props.page == "volumeBundle" ? false : props.page == "CollectionMixMatch" ? 2 : true,
+      selectionIds:selectionIds,
+      query:props.searchValue ? props.searchValue : "",
+      filter: {
+      hidden: false,
+      variants: true,
+      draft: false,
+      archived: false,
+    },
+  });
+  
+  if(selected){
+    handleProducts(selected,props.page)
+  }else{
+    handleCancel();
+  }
+   }
+  // return (
+  //   <>
+  //     <ResourcePicker
+  //       resourceType={props.modalType}
+  //       open={props.open}
+  //       onSelection={(e) => handleProducts(e, props.page)}
+  //       initialSelectionIds={[...props?.data.bundleDetail?.products]}
+  //       onCancel={handleCancel}
+  //       initialQuery={props.searchValue ? props.searchValue : ""}
+  //       // selectMultiple={props.page == "volumeBundle" ? false : true || props.page == "CollectionMixMatch" ? 2 : true}
+  //       selectMultiple ={props.page == "productBundle" ? true : props.page == "volumeBundle" ? false : props.page == "CollectionMixMatch" ? 2 : true}
+  //       showDraftBadge={true}
+  //     />
+  //   </>
+  // );
+  resourcePickFunc();
 }
 
 export default CreateBundleModal;

@@ -358,7 +358,7 @@ const ProductMixMatchPreview = ({
                 }}                
               >
                 All Product
-                <input type="checkbox" checked />
+                <input type="checkbox" defaultChecked />
                 <div className="sd-control-indicator"></div>
               </label>
             </div>
@@ -395,8 +395,8 @@ const ProductMixMatchPreview = ({
                   <div className="sd-bundle-product-inner">
                     <div className="checkbox-wrapper-18">
                       <div className="round">
-                        <input type="checkbox" id="checkbox-18" checked />
-                        <label for="checkbox-18"></label>
+                        <input type="checkbox" id="checkbox-18" defaultChecked />
+                        <label htmlFor="checkbox-18"></label>
                       </div>
                     </div>
                     <div

@@ -14,8 +14,9 @@ import {
   EditOutlined,
   TransactionOutlined,
 } from "@ant-design/icons";
-import { LegacyCard, Select, Tabs, Grid } from "@shopify/polaris";
-import { Button, Divider, Modal, Spin } from "antd";
+
+import {  Select, Tabs, Grid } from "@shopify/polaris";
+import { Button, Divider, Spin } from "antd";
 import { useNavigate } from "react-router-dom";
 import Design from "./Design";
 import Box from "./Box";
@@ -38,12 +39,12 @@ import postApi from "../postApi";
 import { useAppBridge } from "@shopify/app-bridge-react";
 import toastNotification from "../commonSections/Toast";
 import { Text } from "@shopify/polaris";
-import { LockMajor } from "@shopify/polaris-icons";
+import { LockIcon } from "@shopify/polaris-icons";
 import CustomizationFBt from "./CustomizationFBTPreview";
 import Swal from "sweetalert2";
 import OrderOverview from "./OrderOverview";
 import OptionalBadges from "./optionalBadges";
-
+import ModalBox from "../modalBox";
 const CustomizationEditor = (props) => {
   const app = useAppBridge();
   const navigate = useNavigate();
@@ -222,15 +223,20 @@ const CustomizationEditor = (props) => {
       );
       if (response.data.status == 200) {
         setSpinner(false);
-        toastNotification("success", "Save Successfully", "bottom");
+        // toastNotification("success", "Save Successfully", "bottom");
+        app.toast.show("Save Successfully");
+
       } else {
         setSpinner(false);
-        toastNotification(
-          "success",
-          "Something went wrong ! Please try again",
-          "bottom"
-        );
+        // toastNotification(
+        //   "success",
+        //   "Something went wrong ! Please try again",
+        //   "bottom"
+        // );
+        app.toast.show("Something went wrong ! Please try again");
+
       }
+
   };
 
   const popUpAlertFun = () => {
@@ -278,6 +284,8 @@ const CustomizationEditor = (props) => {
 
   const openModalFun = () => {
     setIsModalOpen(true);
+ 
+
   };
 
   const handleCustomOption = (selectedTabIndex, clickedOption) => {
@@ -293,7 +301,14 @@ const CustomizationEditor = (props) => {
     //   setCustomOption("Box");
     // }
   };
-
+const handleClose=()=>{
+  setIsModalOpen(false); 
+}
+const handleOk=()=>{
+    setIsModalOpen(false);
+  props.handlleCloseModal();
+  
+}
   // const leftSideSectionCommon = (type) => {
   //   return (
   //     <div className="sd-bundle-listItem-wrapper">
@@ -405,17 +420,8 @@ const CustomizationEditor = (props) => {
               <ArrowLeftOutlined />
             </Button>
 
-            <Modal
-              title="Going Back?"
-              open={isModalOpen}
-              onOk={() => navigate("/customization")}
-              onCancel={() => setIsModalOpen(false)}
-            >
-              <h1>
-                Are you sure you want to go back? All unsaved changes will be
-                lost.
-              </h1>
-            </Modal>
+            {isModalOpen && <ModalBox status={isModalOpen}  handleClose={handleClose} handleOk={handleOk}/>}
+           
           </div>
           {/* <div className="sd-bundle-backArrow" onClick={()=>navigate('/')}><ArrowLeftOutlined/></div> */}
           <div className="sd-bundle-selectSection">
@@ -511,7 +517,7 @@ const CustomizationEditor = (props) => {
                   <div className={`sd-bundle-listItem-common sd-bundle-listItem`} onClick={popUpAlertFun}>
                     <CaretRightOutlined />
                     <AppstoreAddOutlined />
-                    <Text>Buy X get Y <LockMajor className="sd-bundle-premium2" /></Text>
+                    <Text>Buy X get Y <LockIcon className="sd-bundle-premium2" /></Text>
 
                   </div>
                 }
@@ -539,7 +545,7 @@ const CustomizationEditor = (props) => {
                     <div className={`sd-bundle-listItem-common sd-bundle-listItem`} onClick={popUpAlertFun}>
                       <CaretRightOutlined />
                       <AppstoreAddOutlined />
-                      <Text>Product Mix & Match <LockMajor className="sd-bundle-premium2" /></Text>
+                      <Text>Product Mix & Match <LockIcon className="sd-bundle-premium2" /></Text>
                     </div>
                   </>
                 }
@@ -569,7 +575,7 @@ const CustomizationEditor = (props) => {
                   <div className={`sd-bundle-listItem-common sd-bundle-listItem`} onClick={popUpAlertFun}>
                     <CaretRightOutlined />
                     <AppstoreAddOutlined />
-                    <Text>Frequently Bought Together <LockMajor className="sd-bundle-premium2" /></Text>
+                    <Text>Frequently Bought Together <LockIcon className="sd-bundle-premium2" /></Text>
                   </div>
                 }
                 {props.bundleOption == "frequentlyBoughtTogether"

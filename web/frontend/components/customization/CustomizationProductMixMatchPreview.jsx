@@ -12,7 +12,7 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
   return (
     <>
       <div
-        class="sd-bundle-main-column"
+        className="sd-bundle-main-column"
         style={{
           backgroundColor: data?.productMixMatch?.box?.backgroundColor,
           borderColor: data?.productMixMatch?.box?.borderColor,
@@ -20,7 +20,7 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
           border: `${data?.productMixMatch?.box?.thickness }px solid ${data?.buyXgetY?.box?.borderColor || 'transparent'}`
         }}        
       >
-        <div class="sd-bundle-text-detail">
+        <div className="sd-bundle-text-detail">
           <h4
             style={{
               ...textStyle,
@@ -45,15 +45,15 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
           </p>
         </div>
 
-        <div class="sd-show-selected-items-row">
-          <div class="sd-show-items">
-            <span class="active" style={{ ...textStyle }}>
+        <div className="sd-show-selected-items-row">
+          <div className="sd-show-items">
+            <span className="active" style={{ ...textStyle }}>
               2 items|5% off
             </span>
             <span style={{ ...textStyle }}>3 items|5% off</span>
             <span style={{ ...textStyle }}>5 items|5% off</span>
           </div>
-          <div class="sd-have-selected">
+          <div className="sd-have-selected">
             <h5
               style={{
                 ...textStyle,
@@ -75,9 +75,9 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
               5% discount is applied on the selected products.
             </p>
           </div>
-          <div class="sd-show-selected-product-item">
+          <div className="sd-show-selected-product-item">
             <div
-              class="sd-selected-product-itemImg"
+              className="sd-selected-product-itemImg"
               style={{
                 border: "1px solid white",
                 borderColor: data?.productMixMatch?.productDetails?.image?.borderColor,
@@ -86,7 +86,7 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
             >
               <img src={productImg} alt="" />
             </div>
-            <div class="plus-selectedIcon">
+            <div className="plus-selectedIcon">
               <svg
                 width="18"
                 height="18"
@@ -101,7 +101,7 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
               </svg>
             </div>
             <div
-              class="sd-selected-product-itemImg"
+              className="sd-selected-product-itemImg"
               style={{
                 border: "1px solid",
                 borderColor: data?.productMixMatch?.productDetails?.image?.borderColor,
@@ -113,21 +113,21 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
           </div>
         </div>
 
-        <div class="sd-select-all-product">
-          <div class="sd-checkbox-wrapper-21">
+        <div className="sd-select-all-product">
+          <div className="sd-checkbox-wrapper-21">
             <label
-              class="sd-control sd-control--checkbox"
+              className="sd-control sd-control--checkbox"
               style={{
                 ...textStyle,
                 color: data?.productMixMatch?.productDetails?.productDetailsBox?.allProductColor
               }}              
             >
               All Product
-              <input type="checkbox" checked />
-              <div class="sd-control-indicator"></div>
+              <input type="checkbox" defaultChecked />
+              <div className="sd-control-indicator"></div>
             </label>
           </div>
-          <div class="sd-bundle-product-quantity">
+          <div className="sd-bundle-product-quantity">
             <h6
               style={{
                 ...textStyle,
@@ -149,20 +149,20 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
         </div>
 
         <div
-          class="sd-bundle-product-detail"
+          className="sd-bundle-product-detail"
           style={{
             backgroundColor: data?.productMixMatch?.productDetails?.productDetailsBox?.backgroundColor 
           }}          
         >
-          <div class="sd-bundle-product-inner">
-            <div class="checkbox-wrapper-18">
-              <div class="round">
-                <input type="checkbox" id="checkbox-18" checked />
-                <label for="checkbox-18"></label>
+          <div className="sd-bundle-product-inner">
+            <div className="checkbox-wrapper-18">
+              <div className="round">
+                <input type="checkbox" id="checkbox-18" defaultChecked />
+                <label htmlFor="checkbox-18"></label>
               </div>
             </div>
             <div
-              class="sd-bundle-product-img"
+              className="sd-bundle-product-img"
               style={{
                 border: "1px solid white",
                 borderColor: data?.productMixMatch?.productDetails?.image?.borderColor,
@@ -171,7 +171,7 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
             >
               <img src={productImg} width="80" height="80" />
             </div>
-            <div class="sd-bundle-product-name">
+            <div className="sd-bundle-product-name">
               <h5
                style={{
                 ...textStyle,
@@ -204,7 +204,7 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
               </select>
             </div>
           </div>
-          <div class="sd-bundle-product-quantity">
+          <div className="sd-bundle-product-quantity">
             <h6
               style={{
                 ...textStyle,
@@ -226,20 +226,20 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
         </div>
 
         <div
-          class="sd-bundle-product-detail"
+          className="sd-bundle-product-detail"
           style={{
             backgroundColor: data?.productMixMatch?.productDetails?.productDetailsBox?.backgroundColor 
           }}          
         >
-          <div class="sd-bundle-product-inner">
-            <div class="checkbox-wrapper-18">
-              <div class="round">
-                <input type="checkbox" id="checkbox-19" checked />
-                <label for="checkbox-19"></label>
+          <div className="sd-bundle-product-inner">
+            <div className="checkbox-wrapper-18">
+              <div className="round">
+                <input type="checkbox" id="checkbox-19" defaultChecked />
+                <label htmlFor="checkbox-19"></label>
               </div>
             </div>
             <div
-              class="sd-bundle-product-img"
+              className="sd-bundle-product-img"
               style={{
                 border: "1px solid white",
                 borderColor: data?.productMixMatch?.productDetails?.image?.borderColor,
@@ -248,7 +248,7 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
             >
               <img src={productImg} width="80" height="80" />
             </div>
-            <div class="sd-bundle-product-name">
+            <div className="sd-bundle-product-name">
               <h5
                 style={{
                   ...textStyle,
@@ -285,7 +285,7 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
               </select>
             </div>
           </div>
-          <div class="sd-bundle-product-quantity">
+          <div className="sd-bundle-product-quantity">
             <h6
               style={{
                 ...textStyle,
@@ -305,8 +305,8 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
             </h6>
           </div>
         </div>
-        <div class="sd-product-bundle-total">
-          <div class="sd-total-desc">
+        <div className="sd-product-bundle-total">
+          <div className="sd-total-desc">
             <h4
               style={{
                 ...textStyle,
@@ -326,7 +326,7 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
               Discount will be applied at checkout
             </p>
           </div>
-          <div class="sd-total-amount">
+          <div className="sd-total-amount">
             <h4
               style={{
                 ...textStyle,
@@ -347,7 +347,7 @@ const CustomizationProductMixMatchPreview = ({ data }) => {
             </h6>
           </div>
         </div>
-        <div class="sd-bundle-addto-cart">
+        <div className="sd-bundle-addto-cart">
           <button
             style={{
               ...textStyle,

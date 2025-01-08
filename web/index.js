@@ -101,6 +101,36 @@ app.get(
       }).catch((err)=>{
         console.log(err.message)
       })
+       async function createPage() {
+          const client= new shopify.api.clients.Graphql({session});
+             const page_create_mutation = `mutation {
+                   pageCreate(
+                     page: {title: "Collection Mix & Match", body: "<div id='sd-bundle-container'></div>",handle: "sd-Collection-Mix-&-Match"}
+                   ) {
+                     page {
+                       id
+                       title
+                       handle
+                     }
+                     userErrors{
+                     code
+                     message
+                     field
+                   }
+                   }
+                 }`
+             const page= await client.request(page_create_mutation);
+             if (page?.data?.pageCreate && !page?.data?.pageCreate?.userErrors?.length) {
+              let pageId=page?.data?.pageCreate?.page?.id?.split('/')?.pop();
+             console.log("Collection Mix & Match page: ",pageId, page?.data?.pageCreate?.page);
+              
+             }    
+          } 
+        createPage();
+    // const page =  new shopify.api.rest.Page({session:session});
+    // page.title = "Collection Mix & Match";
+    // page.handle = "sd-Collection-Mix-&-Match"
+    // page.body_html = `<div id="sd-bundle-container"></div>`;
 
 
   

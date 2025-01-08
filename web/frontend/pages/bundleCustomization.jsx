@@ -9,10 +9,10 @@ import { useLocation } from "react-router-dom";
 import { Spin } from "antd";
 import postApi from "../components/postApi";
 
-const BundleCustomization = () => {
+const BundleCustomization = (props) => {
   const app = useAppBridge();
   const params = useLocation()
-  const fullscreen = Fullscreen.create(app);
+  // const fullscreen = Fullscreen.create(app);
   // const [fullScreen, setFullScreen] = useState(false);
   const [bundleOption, setBundleOption] = useState("bundle");
   const [spinner, setSpinner] = useState(false)
@@ -55,7 +55,7 @@ const BundleCustomization = () => {
 
   useEffect(() => {
     if (params.pathname == "/bundleCustomization") {
-      fullscreen.dispatch(Fullscreen.Action.ENTER);
+      // fullscreen.dispatch(Fullscreen.Action.ENTER);
     }
     // setFullScreen(true);
   }, [])
@@ -73,6 +73,7 @@ const BundleCustomization = () => {
             bundleOption={bundleOption}
             plansData={plansData}
             setBundleOption={setBundleOption}
+            handlleCloseModal={props.handlleCloseModal}
           />
         </Spin>
       </Suspense>

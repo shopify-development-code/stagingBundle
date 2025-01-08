@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { ResourcePicker } from "@shopify/app-bridge-react";
+import { useAppBridge } from '@shopify/app-bridge-react';
+// import { ResourcePicker } from "@shopify/app-bridge-react";
 import toastNotification from '../commonSections/Toast';
 const FBTResourcePicker = (props) => {
-  
+  const app= useAppBridge();
   // useEffect(()=>{
   //   console.log("props1july",props.open)
   //   if (props.type==='MainProduct') {
@@ -11,7 +12,7 @@ const FBTResourcePicker = (props) => {
   //     setSlectMultiple(3);
   //   }
   // },[selectMultiple]);
-
+ 
     // const handleProducts = (e, page) => {
     //     if (page == "fbtMainProducts") {
     //       let x = {};
@@ -177,21 +178,46 @@ const FBTResourcePicker = (props) => {
         }    
         props.setOpen(false);
       };       
+      const  resourcePickFunc = async() =>{
+        const productsAdded=props.page == "fbtMainProducts" ? [...props?.data.bundleDetail?.mainProducts]:props.page == "fbtOfferedProducts" ? props.initialSelectionIds: [{id:"gid://shopify/Product/8431470903600"}];
+        const selectionIds=productsAdded?.map((product)=>{
+          return { "id":product.id};
+        })
+        const selected = await app.resourcePicker({ 
+          type: props.modalType?.toLowerCase(),
+          multiple:props.type==='MainProduct' ? 1 : true,
+          selectionIds:selectionIds,
+         query:props.searchValue ? props.searchValue : "",
+          filter: {
+          hidden: false,
+          variants: true,
+          draft: false,
+          archived: false,
+        },
+      });
+      
+      if(selected){
+        handleProducts(selected,props.page)
+      }else{
+        handleCancel();
+      }
+       }
+  // return (
+  //   <>
+  //   /* <ResourcePicker
+  //       resourceType={props.modalType}
+  //       open={props.open}
+  //       onSelection={(e) => handleProducts(e, props.page)}
+  //       // initialSelectionIds={props.page == "fbtMainProducts" ? [...props?.data.bundleDetail?.mainProducts]:props.page == "fbtOfferedProducts" ? props.initialSelectionIds: [{id:"gid://shopify/Product/8431470903600"}] }
+  //       onCancel={handleCancel}
+  //       initialQuery={props.searchValue ? props.searchValue : ""}
+  //       selectMultiple ={props.type==='MainProduct' ? 1 : true}
+  //       showDraftBadge={true}
+  //     /> */
+  //   </>
+  // )
 
-  return (
-    <>
-    <ResourcePicker
-        resourceType={props.modalType}
-        open={props.open}
-        onSelection={(e) => handleProducts(e, props.page)}
-        // initialSelectionIds={props.page == "fbtMainProducts" ? [...props?.data.bundleDetail?.mainProducts]:props.page == "fbtOfferedProducts" ? props.initialSelectionIds: [{id:"gid://shopify/Product/8431470903600"}] }
-        onCancel={handleCancel}
-        initialQuery={props.searchValue ? props.searchValue : ""}
-        selectMultiple ={props.type==='MainProduct' ? 1 : true}
-        showDraftBadge={true}
-      />
-    </>
-  )
+  resourcePickFunc();
 }
 
 export default FBTResourcePicker

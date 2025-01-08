@@ -59,7 +59,6 @@ const Box = (props) => {
     { label: "Calibri", value: "Calibri" },
     { label: "Cambria", value: "Cambria" },
     { label: "Candara", value: "Candara" },
-    { label: "Courier New", value: "Courier New" },
     { label: "Dejavu Sans", value: "Dejavu Sans" },
     { label: "Franklin Gothic", value: "Franklin Gothic" },
     { label: "Helvetica", value: "Helvetica" },

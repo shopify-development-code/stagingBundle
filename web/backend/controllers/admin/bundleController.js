@@ -57,10 +57,10 @@ export async function createRule(req,res){
           const response = await client.request(getDiscountquery);
   
           if(response.data.codeDiscountNode == null){
-            console.log("discount id is null");
+            // console.log("discount id is null");
   
             if(bundleType == "freeShipping"){
-              console.log("discount id is null than create freeshipping");
+              // console.log("discount id is null than create freeshipping");
               let freeShippingCodeDiscount ={
                   // "startsAt": startDate,
               
@@ -136,7 +136,7 @@ export async function createRule(req,res){
               let bundleDiscountId = response.data.discountCodeFreeShippingCreate.codeDiscountNode.id
               return  res.status(200).json({message:"SUCCESS!",response:bundleDiscountId,status:200})
             }else{
-              console.log("discount id is null than create discountcode instead of freeshipping");
+              // console.log("discount id is null than create discountcode instead of freeshipping");
               let basicCodeDiscount ={
                
                   "appliesOncePerCustomer": false,
@@ -227,7 +227,7 @@ export async function createRule(req,res){
             }
           }else{
             if(bundleType == "freeShipping"){
-              console.log("discount id is not null than update  freeshipping");
+              // console.log("discount id is not null than update  freeshipping");
               let bundleDiscountId = response.data.codeDiscountNode.id
               let freeShippingCodeDiscount=  {
                   // "startsAt": startDate,
@@ -292,7 +292,7 @@ export async function createRule(req,res){
               let bundleShoppingDiscountId = update.data.discountCodeFreeShippingUpdate.codeDiscountNode.id
               return  res.status(200).json({message:"SUCCESS!",response:bundleShoppingDiscountId,status:200})
             }else{
-              console.log("discount id is not null than update discount code instead of freeshipping");
+              // console.log("discount id is not null than update discount code instead of freeshipping");
               let getDiscountProductArr = response.data.codeDiscountNode.codeDiscount.customerGets?.items.productVariants.edges ;
               getDiscountProductArr?.forEach((e)=>{
                 productVariantsId.push(e.node.id)

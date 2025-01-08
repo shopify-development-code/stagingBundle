@@ -8,7 +8,7 @@ import { Button } from '@shopify/polaris'
 import { useAPI } from '../components/shop'
 import noProductImg from "../assets/NoProductImage.png"
 import { showAmountWithCurrency } from '../components/showCurrencyFormat'
-import { AnalyticsMajor, QuickSaleMajor, BehaviorMajor, ViewMajor } from '@shopify/polaris-icons';
+import { ChartVerticalFilledIcon, CartSaleIcon, CursorFilledIcon, ViewIcon } from '@shopify/polaris-icons';
 import Watermark from '../components/watermark'
 import ContactUs from '../components/contactUs'
 import allProductsImg from "../assets/all_products.png";
@@ -230,7 +230,7 @@ const BundleAnalytics = () => {
               </div>
               <div className='sd-bundle-card-inner-icon'>
                 <Icon
-                  source={AnalyticsMajor}
+                  source={ChartVerticalFilledIcon}
                   color="base"
                 />
               </div>
@@ -253,7 +253,7 @@ const BundleAnalytics = () => {
               </div>
               <div className='sd-bundle-card-inner-icon'>
                 <Icon
-                  source={QuickSaleMajor}
+                  source={CartSaleIcon}
                   color="base"
                 />
               </div>
@@ -274,7 +274,7 @@ const BundleAnalytics = () => {
               </div>
               <div className='sd-bundle-card-inner-icon'>
                 <Icon
-                  source={BehaviorMajor}
+                  source={CursorFilledIcon}
                   color="base"
                 />
               </div>
@@ -295,7 +295,7 @@ const BundleAnalytics = () => {
               </div>
               <div className='sd-bundle-card-inner-icon'>
                 <Icon
-                  source={ViewMajor}
+                  source={ViewIcon}
                   color="base"
                 />
               </div>

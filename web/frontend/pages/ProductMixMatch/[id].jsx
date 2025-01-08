@@ -1289,7 +1289,7 @@ const ProductMixMatch = () => {
                     handleCheck(e);
                   }}
                 />
-                <label for="requiredItem">Enable required products</label>
+                <label htmlFor="requiredItem">Enable required products</label>
                 {data.bundleDetail.requiredItem.enable && (
                   <div className="sd-bundle-ProductListMain">
                     {data.bundleDetail.products.map((item, index) => {
@@ -1366,7 +1366,7 @@ const ProductMixMatch = () => {
                     handleCheck(e);
                   }}
                 />
-                <label for="multiItemSelection">
+                <label htmlFor="multiItemSelection">
                   Enable selecting multiple items
                 </label>
                 {data.bundleDetail.multiItemSelection.enable && (

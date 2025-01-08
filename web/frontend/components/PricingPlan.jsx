@@ -3,7 +3,7 @@ import LogoHeader from "../components/logoHeader";
 import Watermark from "../components/watermark";
 import { Card, Row, Col, Button, Skeleton } from "antd";
 import { Icon } from "@shopify/polaris";
-import { CircleTickMajor } from "@shopify/polaris-icons";
+import {  CheckCircleIcon } from "@shopify/polaris-icons";
 import postApi from "../components/postApi";
 import { useAppBridge } from "@shopify/app-bridge-react";
 import { useSearchParams } from "react-router-dom";
@@ -118,7 +118,7 @@ const PricingPlan = () => {
 
                     <strong>Includes:</strong>
                     <p>
-                      <Icon source={CircleTickMajor} tone="base" /> 3 types of
+                      <Icon source={ CheckCircleIcon} tone="base" /> 3 types of
                       bundles
                     </p>
                     <ul className="sd-bundle-plans-list">
@@ -127,11 +127,11 @@ const PricingPlan = () => {
                       <li>Collection Mix & Match Bundle</li>
                     </ul>
                     <p>
-                      <Icon source={CircleTickMajor} tone="base" />
+                      <Icon source={ CheckCircleIcon} tone="base" />
                       Design customizations
                     </p>
                     {/* <p>
-                    <Icon source={CircleTickMajor} tone="base" />
+                    <Icon source={ CheckCircleIcon} tone="base" />
                     24/7 support
                   </p> */}
                   </Card>
@@ -159,7 +159,7 @@ const PricingPlan = () => {
                     )}
                     <strong>All Free features, plus:</strong>
                     <p>
-                      <Icon source={CircleTickMajor} tone="base" />4 types of
+                      <Icon source={ CheckCircleIcon} tone="base" />4 types of
                       bundles
                     </p>
                     <ul className="sd-bundle-plans-list">
@@ -169,15 +169,15 @@ const PricingPlan = () => {
                       <li>Product Mix & Match Bundle</li>
                     </ul>
                     <p>
-                      <Icon source={CircleTickMajor} tone="base" />
+                      <Icon source={ CheckCircleIcon} tone="base" />
                       Design customizations
                     </p>
                     {/* <p>
-                    <Icon source={CircleTickMajor} tone="base" />
+                    <Icon source={ CheckCircleIcon} tone="base" />
                     24/7 support
                   </p> */}
                     <p>
-                      <Icon source={CircleTickMajor} tone="base" />
+                      <Icon source={ CheckCircleIcon} tone="base" />
                       Remove watermark
                     </p>
                   </Card>
@@ -213,7 +213,7 @@ const PricingPlan = () => {
                     )}
                     <strong>All Free features, plus:</strong>
                     <p>
-                      <Icon source={CircleTickMajor} tone="base" />
+                      <Icon source={ CheckCircleIcon} tone="base" />
                       All 6 types of bundles
                     </p>
                     <ul className="sd-bundle-plans-list">
@@ -225,15 +225,15 @@ const PricingPlan = () => {
                       <li>Frequently Bought Together Bundle</li>
                     </ul>
                     <p>
-                      <Icon source={CircleTickMajor} tone="base" />
+                      <Icon source={ CheckCircleIcon} tone="base" />
                       Design customizations
                     </p>
                     {/* <p>
-                    <Icon source={CircleTickMajor} tone="base" />
+                    <Icon source={ CheckCircleIcon} tone="base" />
                     24/7 support
                   </p> */}
                     <p>
-                      <Icon source={CircleTickMajor} tone="base" />
+                      <Icon source={ CheckCircleIcon} tone="base" />
                       Remove watermark
                     </p>
                   </Card>

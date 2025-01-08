@@ -94,7 +94,7 @@ const VolumeBundlePreview = ({
               }}
             >
               {item?.badgeText != "" && item?.badgeText != undefined && (
-                <div class="style_badge">
+                <div className="style_badge">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="8"

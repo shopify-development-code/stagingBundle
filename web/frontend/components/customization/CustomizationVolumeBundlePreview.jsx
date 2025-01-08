@@ -1,12 +1,5 @@
 import React, { useEffect, useState } from "react";
 import pic from "../../assets/image2.png";
-import {
-  ArrowLeftOutlined,
-  CaretRightOutlined,
-  CaretDownOutlined,
-  PlusOutlined,
-  MinusOutlined,
-} from "@ant-design/icons";
 import { useAPI } from "../shop";
 import { Button } from "antd";
 import { data } from "@shopify/app-bridge/actions/Modal";
@@ -41,14 +34,14 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
   return (
     <>
       <div
-        class="sd-bundle-main-column"
+        className="sd-bundle-main-column"
         style={{
           backgroundColor: data?.volume?.box?.backgroundColor,
           borderColor: data?.volume?.box?.borderColor,
           borderRadius: `${data?.volume?.box?.borderRadius}px`,
         }}        
       >
-        <div class="sd-bundle-text-detail">
+        <div className="sd-bundle-text-detail">
           <h4
             style={{
               ...textStyle,
@@ -73,7 +66,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
           </p>
         </div>
         <div
-          class="sd-volume-bundle-detail"
+          className="sd-volume-bundle-detail"
           style={{
             backgroundColor:
               data?.volume?.productDetails?.productDetailsBox?.backgroundColor,
@@ -113,12 +106,12 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
               </h4>
             </div> */}
 
-          <div class="sd-select-radio-with-text">
-            <div class="radio">
+          <div className="sd-select-radio-with-text">
+            <div className="radio">
               <input id="radio-1" name="radio" type="radio" />
               <label
-                for="radio-1"
-                class="sd-radio-label"
+                htmlFor="radio-1"
+                className="sd-radio-label"
                 style={{
                   ...textStyle,
                   color: data?.volume?.options?.color,
@@ -130,7 +123,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
             </div>
             {/* {data?.volume?.options?.DiscountBadge?.badgeType == "options" && (
               <div
-                class="sd-percent-badge"
+                className="sd-percent-badge"
                 style={{
                   backgroundColor: data?.volume?.options?.saveDiscount?.backgroundColor,
                   borderRadius: `${data?.volume?.options?.saveDiscount?.borderRadius}px`,
@@ -150,7 +143,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
           </div>
         </div>
         <div
-          class="sd-volume-bundle-detail"
+          className="sd-volume-bundle-detail"
           style={{
             backgroundColor: data?.volume?.productDetails?.productDetailsBox?.backgroundColor,
           }}          
@@ -189,12 +182,12 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
               </h4>
             </div>
           {/* )} */}
-          <div class="sd-select-radio-with-text">
-            <div class="radio">
-              <input id="radio-2" name="radio" type="radio" checked />
+          <div className="sd-select-radio-with-text">
+            <div className="radio">
+              <input id="radio-2" name="radio" type="radio" defaultChecked />
               <label
-                for="radio-2"
-                class="sd-radio-label"
+                htmlFor="radio-2"
+                className="sd-radio-label"
                 style={{
                   ...textStyle,
                   color: data?.volume?.options?.color,
@@ -206,7 +199,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
             </div>
             {/* {data?.volume?.options?.DiscountBadge?.badgeType == "options" && (
               <div
-                class="sd-percent-badge"
+                className="sd-percent-badge"
                 style={{
                   backgroundColor: data?.volume?.options?.saveDiscount?.backgroundColor,
                   borderRadius: `${data?.volume?.options?.saveDiscount?.borderRadius}px`,
@@ -225,14 +218,14 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
             )} */}
           </div>
           <div
-            class="sd-bundle-product-detail"
+            className="sd-bundle-product-detail"
             style={{
               backgroundColor: data?.volume?.productDetails?.productDetailsBox?.backgroundColor,
             }}            
           >
-            <div class="sd-bundle-product-inner">
+            <div className="sd-bundle-product-inner">
               <div
-                class="sd-bundle-product-img"
+                className="sd-bundle-product-img"
                 style={{
                   borderColor: data?.volume?.productDetails?.image?.borderColor,
                   borderRadius: `${data?.volume?.productDetails?.image?.borderRadius}px`,
@@ -240,7 +233,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
               >
                 <img src={productImg} width="80" height="80" />
               </div>
-              <div class="sd-bundle-product-name">
+              <div className="sd-bundle-product-name">
                 <h5
                   style={{
                     ...textStyle,
@@ -259,7 +252,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
                 >
                   Rs. 2500.00
                 </h4>
-                <div class="sd-bundle-product-select-main">
+                <div className="sd-bundle-product-select-main">
                   <select
                     style={{
                       ...textStyle,
@@ -274,7 +267,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
                 </div>
               </div>
             </div>
-            <div class="sd-bundle-product-quantity">
+            <div className="sd-bundle-product-quantity">
               <h6
                style={{
                 ...textStyle,
@@ -296,8 +289,8 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
           </div>
         </div>
 
-        <div class="sd-product-bundle-total">
-          <div class="sd-total-desc">
+        <div className="sd-product-bundle-total">
+          <div className="sd-total-desc">
             <h4
               style={{
                 ...textStyle,
@@ -317,7 +310,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
               Discount will be applied at checkout
             </p>
           </div>
-          <div class="sd-total-amount">
+          <div className="sd-total-amount">
             <h4
               style={{
                 ...textStyle,
@@ -338,7 +331,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
             </h6>
           </div>
         </div>
-        <div class="sd-bundle-addto-cart">
+        <div className="sd-bundle-addto-cart">
           <button
             type="button"
             style={{

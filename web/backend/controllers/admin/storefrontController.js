@@ -248,7 +248,6 @@ export async function getBundleData(req, res) {
   }
 }
 
-
 export async function createPage(req, res) {
   let shop = req.body.shop;
   const session = await shopInfoModel.findOne({ shop: shop });
@@ -296,7 +295,6 @@ export async function createPage(req, res) {
   }
 }
 
-
 export async function getPage(req, res) {
   let shop = req.body.shop;
   const session = await shopInfoModel.findOne({ shop: shop });
@@ -304,7 +302,7 @@ export async function getPage(req, res) {
     try {
       const client= new shopify.api.clients.Graphql({session})
           const  page= await client.request(`{
-          pages(first: 100) {
+          pages(first: 250) {
             nodes {
               id
               title

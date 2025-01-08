@@ -13,7 +13,7 @@ const CustomizationCollectionBundlePreview = ({ data }) => {
   return (
     <>
       <div
-        class="sd-bundle-main-column sd-collection-main-column"
+        className="sd-bundle-main-column sd-collection-main-column"
         style={{
           backgroundColor: data?.collection?.box?.backgroundColor,
           borderRadius: `${data?.collection?.box?.borderRadius}px`,
@@ -36,7 +36,7 @@ const CustomizationCollectionBundlePreview = ({ data }) => {
             {data?.collection?.DiscountBadge?.text}
           </span>
         </div>
-        <div class="sd-bundle-text-detail">
+        <div className="sd-bundle-text-detail">
           <h4
             style={{
               ...textStyle,
@@ -62,14 +62,14 @@ const CustomizationCollectionBundlePreview = ({ data }) => {
         </div>
 
         <div
-          class="sd-bundle-product-detail create-bundle-discount"
+          className="sd-bundle-product-detail create-bundle-discount"
           style={{
             backgroundColor: data?.collection?.collectionDetails?.collectionDetailsBox?.backgroundColor
           }}          
         >
-          <div class="sd-bundle-product-inner">
+          <div className="sd-bundle-product-inner">
             <div
-              class="sd-bundle-product-img"
+              className="sd-bundle-product-img"
               style={{
                 borderColor: data?.collection?.collectionDetails?.imageBorderColor,
                 borderRadius: `${data?.collection?.collectionDetails?.imageBorderRadius }px`
@@ -77,7 +77,7 @@ const CustomizationCollectionBundlePreview = ({ data }) => {
             >
               <img src={productImg} width="80" height="80" />
             </div>
-            <div class="sd-bundle-product-name">
+            <div className="sd-bundle-product-name">
               <h5
                 style={{
                   ...textStyle,
@@ -99,7 +99,7 @@ const CustomizationCollectionBundlePreview = ({ data }) => {
             </div>
           </div>
         </div>
-        <div class="sd-add-bundle">
+        <div className="sd-add-bundle">
           <svg
             width="18"
             height="18"
@@ -114,14 +114,14 @@ const CustomizationCollectionBundlePreview = ({ data }) => {
           </svg>
         </div>
         <div
-          class="sd-bundle-product-detail create-bundle-discount"
+          className="sd-bundle-product-detail create-bundle-discount"
           style={{
             backgroundColor: data?.collection?.collectionDetails?.collectionDetailsBox?.backgroundColor
           }}          
         >
-          <div class="sd-bundle-product-inner">
+          <div className="sd-bundle-product-inner">
             <div
-              class="sd-bundle-product-img"
+              className="sd-bundle-product-img"
               style={{
                 borderColor: data?.collection?.collectionDetails?.imageBorderColor,
                 borderRadius: `${data?.collection?.collectionDetails?.imageBorderRadius }px`
@@ -129,7 +129,7 @@ const CustomizationCollectionBundlePreview = ({ data }) => {
             >
               <img src={productImg} width="80" height="80" />
             </div>
-            <div class="sd-bundle-product-name">
+            <div className="sd-bundle-product-name">
               <h5
                 style={{
                   ...textStyle,
@@ -151,7 +151,7 @@ const CustomizationCollectionBundlePreview = ({ data }) => {
             </div>
           </div>
         </div>
-        <div class="sd-bundle-addto-cart">
+        <div className="sd-bundle-addto-cart">
           <button
             style={{
               ...textStyle,

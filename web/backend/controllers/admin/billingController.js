@@ -16,8 +16,6 @@ export async function recurringBiling(req, res) {
         shop == "nezuko-komada.myshopify.com" || shop=='pallavitesting.myshopify.com'
       ) {
         testCharge = true;
-      } else {
-        testCharge = false;
       }
       const recurringString = `mutation CreateSubscription {
               appSubscriptionCreate(
@@ -141,8 +139,15 @@ export async function recurringBilingSelected(req,res){
           price: pricingDetails.price.amount,
           interval: "MONTHLY",
         },
+        {
+          chargeId:charge_id,
+          plan: activeSubscription.name,
+          price: pricingDetails.price.amount,
+          interval: "MONTHLY",
+        },
         { upsert: true, new: true }
       );
+
 
       if (!updatePlan) {
         return res.json({
@@ -163,6 +168,8 @@ export async function recurringBilingSelected(req,res){
     return res.json({ message: "INTERNAL_SERVER_ERROR", err: err.message });
   }
 }
+      
+
   export async function getPlans(req,res){
     try {
       const shop = res.locals.shopify.session.shop
