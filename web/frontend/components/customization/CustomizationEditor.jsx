@@ -15,8 +15,7 @@ import {
   TransactionOutlined,
 } from "@ant-design/icons";
 
-import {Modal,TitleBar} from '@shopify/app-bridge-react';
-import { LegacyCard, Select, Tabs, Grid } from "@shopify/polaris";
+import {  Select, Tabs, Grid } from "@shopify/polaris";
 import { Button, Divider, Spin } from "antd";
 import { useNavigate } from "react-router-dom";
 import Design from "./Design";
@@ -45,7 +44,7 @@ import CustomizationFBt from "./CustomizationFBTPreview";
 import Swal from "sweetalert2";
 import OrderOverview from "./OrderOverview";
 import OptionalBadges from "./optionalBadges";
-
+import ModalBox from "../modalBox";
 const CustomizationEditor = (props) => {
   const app = useAppBridge();
   const navigate = useNavigate();
@@ -285,8 +284,7 @@ const CustomizationEditor = (props) => {
 
   const openModalFun = () => {
     setIsModalOpen(true);
-    // app.modal.show('back-modal');
-    // document.getElementById('my-modal').show()
+ 
 
   };
 
@@ -303,10 +301,13 @@ const CustomizationEditor = (props) => {
     //   setCustomOption("Box");
     // }
   };
-const hideModal=()=>{
-  setIsModalOpen(false);
-  // app.modal.hide('back-modal');
-  document.getElementById('my-modal').hide()
+const handleClose=()=>{
+  setIsModalOpen(false); 
+}
+const handleOk=()=>{
+    setIsModalOpen(false);
+  props.handlleCloseModal();
+  
 }
   // const leftSideSectionCommon = (type) => {
   //   return (
@@ -419,53 +420,8 @@ const hideModal=()=>{
               <ArrowLeftOutlined />
             </Button>
 
-            <Modal 
-            // id="back-modal"
-            open={isModalOpen}
-             onHide={() => {setIsModalOpen(false)
-              // app.modal.hide('back-modal')
-             }}>
-              <TitleBar title="Going Back?">
-                <button
-                  variant="primary"
-                  onClick={() => {
-                    setIsModalOpen(false);
-                    props.handlleCloseModal();
-                    // app.modal.hide('back-modal')
-                    //app.modal.hide('customization-modal')
-                    // navigate("/customization");
-                  }}
-                >
-                  Ok{" "}
-                </button>
-                <button onClick={() => {setIsModalOpen(false)
-                  // app.modal.hide('back-modal')
-                }}>Cancel</button>
-              </TitleBar>
-              <p style={{ padding: "10px" }}>
-                Are you sure you want to go back? All unsaved changes will be
-                lost.
-              </p>
-            </Modal>
-            {/* <ui-modal id="my-modal">
-              <p style={{ padding: "10px" }}>
-                Are you sure you want to go back? All unsaved changes will be
-                lost.
-              </p>
-              <ui-title-bar title="Going Back?">
-                <button
-                  variant="primary"
-                  onClick={() => {
-                    hideModal();
-                    app.modal.hide('customization-modal')
-                    navigate("/customization");
-                  }}
-                >
-                  Ok
-                </button>
-                <button onclick={hideModal}>Cancle</button>
-              </ui-title-bar>
-            </ui-modal> */}
+            {isModalOpen && <ModalBox status={isModalOpen}  handleClose={handleClose} handleOk={handleOk}/>}
+           
           </div>
           {/* <div className="sd-bundle-backArrow" onClick={()=>navigate('/')}><ArrowLeftOutlined/></div> */}
           <div className="sd-bundle-selectSection">

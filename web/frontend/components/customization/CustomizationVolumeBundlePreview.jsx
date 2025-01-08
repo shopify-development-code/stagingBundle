@@ -110,7 +110,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
             <div className="radio">
               <input id="radio-1" name="radio" type="radio" />
               <label
-                for="radio-1"
+                htmlFor="radio-1"
                 className="sd-radio-label"
                 style={{
                   ...textStyle,
@@ -186,7 +186,7 @@ const CustomizationVolumeBundlePreview = ({ data }) => {
             <div className="radio">
               <input id="radio-2" name="radio" type="radio" defaultChecked />
               <label
-                for="radio-2"
+                htmlFor="radio-2"
                 className="sd-radio-label"
                 style={{
                   ...textStyle,
