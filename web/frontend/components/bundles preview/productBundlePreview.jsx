@@ -218,6 +218,7 @@ const ProductBundlePreview = ({
                                   (showMore && mainindex == seeMoreIndex)) && (
                                   <>
                                     <select
+                                    key={index}
                                       style={{
                                         ...fontFamily,
                                         backgroundColor:
@@ -248,6 +249,7 @@ const ProductBundlePreview = ({
                                       {item?.variants?.map((sub, ind) => {
                                         return (
                                           <option
+                                          key={ind}
                                             style={{ ...fontFamily }}
                                             value={sub?.price}
                                             data-varindex="3"

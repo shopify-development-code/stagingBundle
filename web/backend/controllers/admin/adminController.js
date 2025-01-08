@@ -208,46 +208,7 @@ return res.status(503).send({message:"something went wrong",status:503})
 }
 
 
-async function productVariantsBulkCreate(productId, variants, client) {
-  try {
-    let variant_create_mutation = `mutation productVariantsBulkCreate($productId: ID!, $variants: [ProductVariantsBulkInput!]!) {
-  productVariantsBulkCreate(productId: $productId, variants: $variants) {
-    product {
-      id
-      title
-      status
-    }
-    productVariants {
-      id
-      title
-      price
-      inventoryItem {
-        tracked
-      }
-      inventoryQuantity
-    }
-      
 
-    userErrors {
-      field
-      message
-    }
-  }
-}`;
-
-    let createdVariants = await client.request(variant_create_mutation, {
-      variables: {
-        productId: productId,
-        variants: variants,
-      },
-    });
-  // console.log(createdVariants);
-    return createdVariants;
-  } catch (error) {
-    console.log(error);
-    return null;
-  }
-}
 // export async function createProduct(session) {
 //   // let shop = session.shop;
 //   // const client = new shopify.api.clients.Graphql({ session });
@@ -325,32 +286,11 @@ export async function createProduct(session) {
        }
      }
    }`;
-   const variants=[{
-      price:10,
-      optionValues: [
-        {
-          optionName: 'Title',
-          name: 'testpro',
-        },
-      ],
-      inventoryQuantities: [
-        {
-          locationId:`gid://shopify/Location/${69151162446}`,
-          availableQuantity:2,
-        },
-      ],
-}]
-
+ 
   try {
     const products = await client.request(product_create_Mutation);
     const productId = products?.data?.productCreate?.product?.id;
-    let ProductCreated;
-    if (productId) {
-      ProductCreated = await productVariantsBulkCreate(
-        productId,
-        variants,
-        client
-      )}
+   
       // console.log("result==>",ProductCreated?.data?.productVariantsBulkCreate?.product,ProductCreated.data?.productVariantsBulkCreate?.productVariants)
 
     // if (req.body.check2 == "createProductSubscriptionEdit") {

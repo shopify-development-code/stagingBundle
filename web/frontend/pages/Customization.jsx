@@ -17,7 +17,7 @@ const Customization =()=>{
 const app = useAppBridge();
 
   const params = useLocation()
-  // const fullscreen = Fullscreen.create(app);
+  const fullscreen = Fullscreen.create(app);
 const navigate=useNavigate();
 
 useEffect(() => {
@@ -54,7 +54,7 @@ You have the option to customize various design types for your bundles in differ
           To access the customization screen, simply click on the "Customization" button. This will take you to the interface where you can personalize your bundles' appearance.
             </p>
            
-           <Button  onClick={()=>navigate("/bundleCustomization")}>Customize</Button>
+           <Button  onClick={()=>navigate("/customizationModal")}>Customize</Button>
         </div>
     </div>
         </Col>  

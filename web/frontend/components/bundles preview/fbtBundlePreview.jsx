@@ -146,8 +146,8 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                     <div className="sd-bundle-product-inner">
                       <div className="checkbox-wrapper-18">
                         <div className="round">
-                          <input type="checkbox" id="checkbox-18" checked />
-                          <label for="checkbox-18"></label>
+                          <input type="checkbox" id="checkbox-18" defaultChecked />
+                          <label htmlFor="checkbox-18"></label>
                         </div>
                       </div>
                       <div
@@ -388,8 +388,8 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                     <div className="sd-bundle-product-inner">
                       <div className="checkbox-wrapper-18">
                         <div className="round">
-                          <input type="checkbox" id="checkbox-18" checked />
-                          <label for="checkbox-18"></label>
+                          <input type="checkbox" id="checkbox-18" defaultChecked />
+                          <label htmlFor="checkbox-18"></label>
                         </div>
                       </div>
                       <div
@@ -690,8 +690,8 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                     <div className="sd-bundle-product-inner">
                       <div className="checkbox-wrapper-18">
                         <div className="round">
-                          <input type="checkbox" id="checkbox-18" checked />
-                          <label for="checkbox-18"></label>
+                          <input type="checkbox" id="checkbox-18" defaultChecked />
+                          <label htmlFor="checkbox-18"></label>
                         </div>
                       </div>
                       <div className="sd-bundle-product-name">
@@ -994,8 +994,8 @@ const FBTBundlePreview = ({ data, mrp, endPrice, currency }) => {
                     <div className="sd-bundle-product-inner">
                       <div className="checkbox-wrapper-18">
                         <div className="round">
-                          <input type="checkbox" id="checkbox-18" checked />
-                          <label for="checkbox-18"></label>
+                          <input type="checkbox" id="checkbox-18" defaultChecked />
+                          <label htmlFor="checkbox-18"></label>
                         </div>
                       </div>
                       <div className="sd-bundle-product-name">

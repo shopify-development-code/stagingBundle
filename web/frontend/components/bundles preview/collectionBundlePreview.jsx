@@ -72,6 +72,7 @@ const CollectionBundlePreview = ({ data, currency }) => {
             return (
               <>
                 <div
+                key={index}
                   className="sd-bundle-product-detail create-bundle-discount"
                   style={{
                     backgroundColor: data?.customization?.[0]?.collectionMixMatch?.collectionDetails?.collectionDetailsBox?.backgroundColor

@@ -37,12 +37,12 @@ onConfirm={handleDelete}
 okText="Yes"
 cancelText="No"
 >
-<Button variant='primary' tone='critical'>
+<Button variant='primary' tone='critical' size='large'>
         Delete
       </Button> 
 </Popconfirm>
       :""}
-      <Button  onClick={props.handleSave}  variant='primary'  >
+      <Button  onClick={props.handleSave}  variant='primary' size='large' >
         Save
       </Button>
     </ButtonGroup>

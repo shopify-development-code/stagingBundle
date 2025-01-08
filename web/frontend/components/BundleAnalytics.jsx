@@ -8,7 +8,7 @@ import { Button } from '@shopify/polaris'
 import { useAPI } from '../components/shop'
 import noProductImg from "../assets/NoProductImage.png"
 import { showAmountWithCurrency } from '../components/showCurrencyFormat'
-import { ChartVerticalFilledIcon, CartSaleIcon, LightbulbIcon, ViewIcon } from '@shopify/polaris-icons';
+import { ChartVerticalFilledIcon, CartSaleIcon, CursorFilledIcon, ViewIcon } from '@shopify/polaris-icons';
 import Watermark from '../components/watermark'
 import ContactUs from '../components/contactUs'
 import allProductsImg from "../assets/all_products.png";
@@ -274,7 +274,7 @@ const BundleAnalytics = () => {
               </div>
               <div className='sd-bundle-card-inner-icon'>
                 <Icon
-                  source={LightbulbIcon}
+                  source={CursorFilledIcon}
                   color="base"
                 />
               </div>

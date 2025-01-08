@@ -1,4 +1,4 @@
-let server = "https://equation-solar-surrey-republican.trycloudflare.com";
+let server = "https://si-na-ebook-producers.trycloudflare.com";
 
 console.log("Smart Bundle Discount app new version6.0");
 // let server = "https://yu-hand-cambodia-springfield.trycloudflare.com";
@@ -5883,7 +5883,7 @@ async function addDiscountToProduct() {
           }
         })
         .catch((error) => {
-          console.log(error.message);
+          // console.log(error.message);
         });
     });
   });
@@ -5922,7 +5922,7 @@ async function activateRule(localData) {
       }
     })
     .catch((error) => {
-      console.log(error.message);
+      // console.log(error.message);
     });
 }
 async function deactivateRule(localData) {
@@ -5947,7 +5947,7 @@ async function deactivateRule(localData) {
       }
     })
     .catch((error) => {
-      console.log(error.message);
+      // console.log(error.message);
     });
 }
 function createDiscountName(dataArray) {

@@ -15,7 +15,7 @@ const CustomizationFBt = ({ data }) => {
     <>
       {data?.frequentlyBoughtTogether?.design === "modern" ? (
         <div
-          class="sd-bundle-main-column"
+          className="sd-bundle-main-column"
           style={{
             backgroundColor: data?.frequentlyBoughtTogether?.box?.backgroundColor,
             borderColor: data?.frequentlyBoughtTogether?.box?.borderColor,
@@ -38,7 +38,7 @@ const CustomizationFBt = ({ data }) => {
                 5% Off
               </span>
             </div>
-              {/* <div class="sd-bundle-text-detail"> */}
+              {/* <div className="sd-bundle-text-detail"> */}
           <div className={`sd-bundle-text-detail extra-padding`}>
             <h4
               style={{
@@ -65,20 +65,20 @@ const CustomizationFBt = ({ data }) => {
           </div>
 
           <div
-            class="sd-bundle-product-detail"
+            className="sd-bundle-product-detail"
             style={{
               backgroundColor: data?.frequentlyBoughtTogether?.productDetails?.productDetailsBox?.backgroundColor,
           }}          
           >
-            <div class="sd-bundle-product-inner">
-              <div class="checkbox-wrapper-18">
-                <div class="round">
-                  <input type="checkbox" id="checkbox-18" checked />
-                  <label for="checkbox-18"></label>
+            <div className="sd-bundle-product-inner">
+              <div className="checkbox-wrapper-18">
+                <div className="round">
+                  <input type="checkbox" id="checkbox-18" defaultChecked />
+                  <label htmlFor="checkbox-18"></label>
                 </div>
               </div>
               <div
-                class="sd-bundle-product-img"
+                className="sd-bundle-product-img"
                 style={{
                   borderColor: data?.frequentlyBoughtTogether?.productDetails?.image?.borderColor,
                   borderRadius: `${data?.frequentlyBoughtTogether?.productDetails?.image?.borderRadius || 12}px`,
@@ -86,7 +86,7 @@ const CustomizationFBt = ({ data }) => {
               >
                 <img src={productImg} width="80" height="80" />
               </div>
-              <div class="sd-bundle-product-name">
+              <div className="sd-bundle-product-name">
                 <h5
                   style={{
                     ...textStyle,
@@ -119,7 +119,7 @@ const CustomizationFBt = ({ data }) => {
                 </select>
               </div>
             </div>
-            <div class="sd-bundle-product-quantity">
+            <div className="sd-bundle-product-quantity">
               <h6
                 style={{
                   ...textStyle,
@@ -139,7 +139,7 @@ const CustomizationFBt = ({ data }) => {
               </h6>
             </div>
           </div>
-          <div class="sd-add-bundle">
+          <div className="sd-add-bundle">
             <svg
               width="18"
               height="18"
@@ -154,20 +154,20 @@ const CustomizationFBt = ({ data }) => {
             </svg>
           </div>
           <div
-            class="sd-bundle-product-detail"
+            className="sd-bundle-product-detail"
             style={{
               backgroundColor: data?.frequentlyBoughtTogether?.productDetails?.productDetailsBox?.backgroundColor,
           }}          
           >
-            <div class="sd-bundle-product-inner">
-              <div class="checkbox-wrapper-18">
-                <div class="round">
-                  <input type="checkbox" id="checkbox-19" checked />
-                  <label for="checkbox-19"></label>
+            <div className="sd-bundle-product-inner">
+              <div className="checkbox-wrapper-18">
+                <div className="round">
+                  <input type="checkbox" id="checkbox-19" defaultChecked />
+                  <label htmlFor="checkbox-19"></label>
                 </div>
               </div>
               <div
-                class="sd-bundle-product-img"
+                className="sd-bundle-product-img"
                 style={{
                   borderColor: data?.frequentlyBoughtTogether?.productDetails?.image?.borderColor,
                   borderRadius: `${data?.frequentlyBoughtTogether?.productDetails?.image?.borderRadius || 12}px`,
@@ -175,7 +175,7 @@ const CustomizationFBt = ({ data }) => {
               >
                 <img src={productImg} width="80" height="80" />
               </div>
-              <div class="sd-bundle-product-name">
+              <div className="sd-bundle-product-name">
                 <h5
                  style={{
                   ...textStyle,
@@ -208,7 +208,7 @@ const CustomizationFBt = ({ data }) => {
                 </select>
               </div>
             </div>
-            <div class="sd-bundle-product-quantity">
+            <div className="sd-bundle-product-quantity">
               <h6
                style={{
                 ...textStyle,
@@ -228,8 +228,8 @@ const CustomizationFBt = ({ data }) => {
               </h6>
             </div>
           </div>
-          <div class="sd-product-bundle-total">
-            <div class="sd-total-desc">
+          <div className="sd-product-bundle-total">
+            <div className="sd-total-desc">
               <h4
                 style={{
                   ...textStyle,
@@ -249,7 +249,7 @@ const CustomizationFBt = ({ data }) => {
                 Discount will be applied at checkout
               </p>
             </div>
-            <div class="sd-total-amount">
+            <div className="sd-total-amount">
               <h4
                 style={{
                   ...textStyle,
@@ -270,7 +270,7 @@ const CustomizationFBt = ({ data }) => {
               </h6>
             </div>
           </div>
-          <div class="sd-bundle-addto-cart">
+          <div className="sd-bundle-addto-cart">
             <button
               style={{
                 ...textStyle,
@@ -287,7 +287,7 @@ const CustomizationFBt = ({ data }) => {
         </div>
       ) : (
         <div
-          class="sd-bundle-main-column"
+          className="sd-bundle-main-column"
           style={{
             backgroundColor: data?.frequentlyBoughtTogether?.box?.backgroundColor,
             borderColor: data?.frequentlyBoughtTogether?.box?.borderColor,
@@ -333,9 +333,9 @@ const CustomizationFBt = ({ data }) => {
             >
               Buy and save 5%
             </p>
-            <div class="sd-show-selected-product-item">
+            <div className="sd-show-selected-product-item">
               <div
-                class="sd-bundle-product-img"
+                className="sd-bundle-product-img"
                 style={{
                   borderColor: data?.frequentlyBoughtTogether?.productDetails?.image?.borderColor,
                   borderRadius: `${data?.frequentlyBoughtTogether?.productDetails?.image?.borderRadius || 12}px`,
@@ -343,7 +343,7 @@ const CustomizationFBt = ({ data }) => {
               >
                 <img src={productImg} width="80" height="80" />
               </div>
-              <div class="plus-selectedIcon">
+              <div className="plus-selectedIcon">
                 <svg
                   width="18"
                   height="18"
@@ -358,7 +358,7 @@ const CustomizationFBt = ({ data }) => {
                 </svg>
               </div>
               <div
-                class="sd-bundle-product-img"
+                className="sd-bundle-product-img"
                 style={{
                   borderColor: data?.frequentlyBoughtTogether?.productDetails?.image?.borderColor,
                   borderRadius: `${data?.frequentlyBoughtTogether?.productDetails?.image?.borderRadius || 12}px`,
@@ -370,20 +370,20 @@ const CustomizationFBt = ({ data }) => {
           </div>
 
           <div
-            class="sd-bundle-product-detail"
+            className="sd-bundle-product-detail"
             style={{
               backgroundColor: data?.frequentlyBoughtTogether?.productDetails?.productDetailsBox?.backgroundColor,
           }}          
           >
-            <div class="sd-bundle-product-inner">
-              <div class="checkbox-wrapper-18">
-                <div class="round">
-                  <input type="checkbox" id="checkbox-18" checked />
-                  <label for="checkbox-18"></label>
+            <div className="sd-bundle-product-inner">
+              <div className="checkbox-wrapper-18">
+                <div className="round">
+                  <input type="checkbox" id="checkbox-18" defaultChecked />
+                  <label htmlFor="checkbox-18"></label>
                 </div>
               </div>
 
-              <div class="sd-bundle-product-name">
+              <div className="sd-bundle-product-name">
                 <h5
                   style={{
                     ...textStyle,
@@ -415,7 +415,7 @@ const CustomizationFBt = ({ data }) => {
                 </select>
               </div>
             </div>
-            <div class="sd-bundle-product-quantity">
+            <div className="sd-bundle-product-quantity">
               <h6
                 style={{
                   ...textStyle,
@@ -435,7 +435,7 @@ const CustomizationFBt = ({ data }) => {
               </h6>
             </div>
           </div>
-          <div class="sd-add-bundle">
+          <div className="sd-add-bundle">
             <svg
               width="18"
               height="18"
@@ -450,19 +450,19 @@ const CustomizationFBt = ({ data }) => {
             </svg>
           </div>
           <div
-            class="sd-bundle-product-detail"
+            className="sd-bundle-product-detail"
             style={{
               backgroundColor: data?.frequentlyBoughtTogether?.productDetails?.productDetailsBox?.backgroundColor,
             }}            
           >
-            <div class="sd-bundle-product-inner">
-              <div class="checkbox-wrapper-18">
-                <div class="round">
-                  <input type="checkbox" id="checkbox-19" checked />
-                  <label for="checkbox-19"></label>
+            <div className="sd-bundle-product-inner">
+              <div className="checkbox-wrapper-18">
+                <div className="round">
+                  <input type="checkbox" id="checkbox-19" defaultChecked />
+                  <label htmlFor="checkbox-19"></label>
                 </div>
               </div>
-              <div class="sd-bundle-product-name">
+              <div className="sd-bundle-product-name">
                 <h5
                   style={{
                     ...textStyle,
@@ -494,7 +494,7 @@ const CustomizationFBt = ({ data }) => {
                 </select>
               </div>
             </div>
-            <div class="sd-bundle-product-quantity">
+            <div className="sd-bundle-product-quantity">
               <h6
                 style={{
                   ...textStyle,
@@ -514,8 +514,8 @@ const CustomizationFBt = ({ data }) => {
               </h6>
             </div>
           </div>
-          <div class="sd-product-bundle-total">
-            <div class="sd-total-desc">
+          <div className="sd-product-bundle-total">
+            <div className="sd-total-desc">
               <h4
                 style={{
                   ...textStyle,
@@ -535,7 +535,7 @@ const CustomizationFBt = ({ data }) => {
                 Discount will be applied at checkout
               </p>
             </div>
-            <div class="sd-total-amount">
+            <div className="sd-total-amount">
               <h4
                 style={{
                   ...textStyle,
@@ -556,7 +556,7 @@ const CustomizationFBt = ({ data }) => {
               </h6>
             </div>
           </div>
-          <div class="sd-bundle-addto-cart">
+          <div className="sd-bundle-addto-cart">
             <button
               style={{
                 ...textStyle,

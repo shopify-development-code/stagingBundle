@@ -9,7 +9,7 @@ import { useLocation } from "react-router-dom";
 import { Spin } from "antd";
 import postApi from "../components/postApi";
 
-const BundleCustomization = () => {
+const BundleCustomization = (props) => {
   const app = useAppBridge();
   const params = useLocation()
   // const fullscreen = Fullscreen.create(app);
@@ -73,6 +73,7 @@ const BundleCustomization = () => {
             bundleOption={bundleOption}
             plansData={plansData}
             setBundleOption={setBundleOption}
+            handlleCloseModal={props.handlleCloseModal}
           />
         </Spin>
       </Suspense>

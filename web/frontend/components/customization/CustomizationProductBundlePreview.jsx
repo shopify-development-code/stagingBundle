@@ -15,7 +15,7 @@ const CustomizationProductBundlePreview = ({ data }) => {
   return (
     <>
       <div
-        class="sd-bundle-main-column"
+        className="sd-bundle-main-column"
         style={{
           backgroundColor: data?.bundle?.box?.backgroundColor,
           borderColor: data?.bundle?.box?.borderColor,
@@ -66,14 +66,14 @@ const CustomizationProductBundlePreview = ({ data }) => {
         </div>
 
         <div
-          class="sd-bundle-product-detail"
+          className="sd-bundle-product-detail"
           style={{
             backgroundColor: data?.bundle?.productDetails?.productDetailsBox?.backgroundColor,
           }}          
         >
-          <div class="sd-bundle-product-inner">
+          <div className="sd-bundle-product-inner">
             <div
-              class="sd-bundle-product-img"
+              className="sd-bundle-product-img"
               style={{
                 borderColor: data?.bundle?.productDetails?.image?.borderColor,
                 borderRadius: `${data?.bundle?.productDetails?.image?.borderRadius}px`,
@@ -81,7 +81,7 @@ const CustomizationProductBundlePreview = ({ data }) => {
             >
               <img src={productImg} width="80" height="80" />
             </div>
-            <div class="sd-bundle-product-name">
+            <div className="sd-bundle-product-name">
               <h5
                 style={{
                   ...textStyle,
@@ -113,7 +113,7 @@ const CustomizationProductBundlePreview = ({ data }) => {
               </select>
             </div>
           </div>
-          <div class="sd-bundle-product-quantity">
+          <div className="sd-bundle-product-quantity">
             <h6
               style={{
                 ...textStyle,
@@ -133,7 +133,7 @@ const CustomizationProductBundlePreview = ({ data }) => {
             </h6>
           </div>
         </div>
-        <div class="sd-add-bundle">
+        <div className="sd-add-bundle">
           <svg
             width="18"
             height="18"
@@ -148,14 +148,14 @@ const CustomizationProductBundlePreview = ({ data }) => {
           </svg>
         </div>
         <div
-          class="sd-bundle-product-detail"
+          className="sd-bundle-product-detail"
           style={{
             backgroundColor: data?.bundle?.productDetails?.productDetailsBox?.backgroundColor,
           }}          
         >
-          <div class="sd-bundle-product-inner">
+          <div className="sd-bundle-product-inner">
             <div
-              class="sd-bundle-product-img"
+              className="sd-bundle-product-img"
               style={{
                 borderColor: data?.bundle?.productDetails?.image?.borderColor,
                 borderRadius: `${data?.bundle?.productDetails?.image?.borderRadius}px`,
@@ -163,7 +163,7 @@ const CustomizationProductBundlePreview = ({ data }) => {
             >
               <img src={productImg} width="80" height="80" />
             </div>
-            <div class="sd-bundle-product-name">
+            <div className="sd-bundle-product-name">
               <h5
                 style={{
                   ...textStyle,
@@ -195,7 +195,7 @@ const CustomizationProductBundlePreview = ({ data }) => {
               </select>
             </div>
           </div>
-          <div class="sd-bundle-product-quantity">
+          <div className="sd-bundle-product-quantity">
             <h6
               style={{
                 ...textStyle,
@@ -215,8 +215,8 @@ const CustomizationProductBundlePreview = ({ data }) => {
             </h6>
           </div>
         </div>
-        <div class="sd-product-bundle-total">
-          <div class="sd-total-desc">
+        <div className="sd-product-bundle-total">
+          <div className="sd-total-desc">
             <h4
               style={{
                 ...textStyle,
@@ -236,7 +236,7 @@ const CustomizationProductBundlePreview = ({ data }) => {
               Discount will be applied at checkout
             </p>
           </div>
-          <div class="sd-total-amount">
+          <div className="sd-total-amount">
             <h4
               style={{
                 ...textStyle,
@@ -257,7 +257,7 @@ const CustomizationProductBundlePreview = ({ data }) => {
             </h6>
           </div>
         </div>
-        <div class="sd-bundle-addto-cart">
+        <div className="sd-bundle-addto-cart">
           <button
             type="button"
             style={{

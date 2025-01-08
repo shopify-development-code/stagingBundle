@@ -16,14 +16,14 @@ const CustomizationBuyXgetY = ({ data }) => {
   return (
     <>
       <div
-        class="sd-bundle-main-column"
+        className="sd-bundle-main-column"
         style={{
           backgroundColor: data?.buyXgetY?.box?.backgroundColor || 'transparent', // default to transparent if not available
           borderColor: `${data?.buyXgetY?.box?.borderColor || 'black'}`, // default thickness to 0 and border color to black
           borderRadius: (data?.buyXgetY?.box?.borderRadius || 14) + "px", // default to 0
         }}        
       >
-        <div class="sd-bundle-text-detail">
+        <div className="sd-bundle-text-detail">
           <h4
             style={{
               ...textStyle,
@@ -49,14 +49,14 @@ const CustomizationBuyXgetY = ({ data }) => {
         </div>
 
         <div
-          class="sd-bundle-product-detail"
+          className="sd-bundle-product-detail"
           style={{
             backgroundColor: data?.buyXgetY?.productDetails?.productDetailsBox?.backgroundColor || 'transparent', // default to 'transparent' if not available
           }}          
         >
-          <div class="sd-bundle-product-inner">
+          <div className="sd-bundle-product-inner">
             <div
-              class="sd-bundle-product-img"
+              className="sd-bundle-product-img"
               style={{
                 borderColor: data?.buyXgetY?.productDetails?.image?.borderColor || 'black', // default to 'black' if not available
                 borderRadius: (data?.buyXgetY?.productDetails?.image?.borderRadius || 15) + "px", // default to 0
@@ -64,7 +64,7 @@ const CustomizationBuyXgetY = ({ data }) => {
             >
               <img src={productImg} width="80" height="80" />
             </div>
-            <div class="sd-bundle-product-name">
+            <div className="sd-bundle-product-name">
               <h5
                 style={{
                   ...textStyle,
@@ -96,7 +96,7 @@ const CustomizationBuyXgetY = ({ data }) => {
               </select>
             </div>
           </div>
-          <div class="sd-bundle-product-quantity">
+          <div className="sd-bundle-product-quantity">
             <h6
               style={{
                 ...textStyle,
@@ -110,14 +110,14 @@ const CustomizationBuyXgetY = ({ data }) => {
         </div>
 
         <div
-          class="sd-bundle-product-detail"
+          className="sd-bundle-product-detail"
           style={{
             backgroundColor: data?.buyXgetY?.productDetails?.productDetailsBox?.backgroundColor || 'transparent', // default to 'transparent' if not available
           }}          
         >
-          <div class="sd-bundle-product-inner">
+          <div className="sd-bundle-product-inner">
             <div
-              class="sd-bundle-product-img"
+              className="sd-bundle-product-img"
               style={{
                 borderColor: data?.buyXgetY?.productDetails?.image?.borderColor || 'black', // default to 'black' if not available
                 borderRadius: (data?.buyXgetY?.productDetails?.image?.borderRadius || 15) + "px", // default to 0
@@ -125,7 +125,7 @@ const CustomizationBuyXgetY = ({ data }) => {
             >
               <img src={productImg} width="80" height="80" />
             </div>
-            <div class="sd-bundle-product-name">
+            <div className="sd-bundle-product-name">
               <h5
                 style={{
                   ...textStyle,
@@ -157,7 +157,7 @@ const CustomizationBuyXgetY = ({ data }) => {
               </select>
             </div>
           </div>
-          <div class="sd-bundle-product-quantity">
+          <div className="sd-bundle-product-quantity">
             <h6
               style={{
                 ...textStyle,
@@ -169,7 +169,7 @@ const CustomizationBuyXgetY = ({ data }) => {
             </h6>
           </div>
         </div>
-        <div class="sd-add-bundle">
+        <div className="sd-add-bundle">
           <svg
             width="18"
             height="18"
@@ -185,7 +185,7 @@ const CustomizationBuyXgetY = ({ data }) => {
         </div>
 
         <div
-          class="sd-bundle-product-detail"
+          className="sd-bundle-product-detail"
           style={{
             backgroundColor: data?.buyXgetY?.productDetails?.productDetailsBox?.backgroundColor || 'transparent', // default to 'transparent' if not available
           }}          
@@ -247,9 +247,9 @@ const CustomizationBuyXgetY = ({ data }) => {
           <h4>50% Off</h4>
         </div> */}
 
-          <div class="sd-bundle-product-inner">
+          <div className="sd-bundle-product-inner">
             <div
-              class="sd-bundle-product-img"
+              className="sd-bundle-product-img"
               style={{
                 borderColor: data?.buyXgetY?.productDetails?.image?.borderColor|| 'black',
                 borderRadius:
@@ -258,7 +258,7 @@ const CustomizationBuyXgetY = ({ data }) => {
             >
               <img src={productImg} width="80" height="80" />
             </div>
-            <div class="sd-bundle-product-name">
+            <div className="sd-bundle-product-name">
               <h5
                 style={{
                   ...textStyle,
@@ -290,7 +290,7 @@ const CustomizationBuyXgetY = ({ data }) => {
               </select>
             </div>
           </div>
-          <div class="sd-bundle-product-quantity">
+          <div className="sd-bundle-product-quantity">
             <h6
               style={{
                 ...textStyle,
@@ -302,8 +302,8 @@ const CustomizationBuyXgetY = ({ data }) => {
             </h6>
           </div>
         </div>
-        <div class="sd-product-bundle-total">
-          <div class="sd-total-desc">
+        <div className="sd-product-bundle-total">
+          <div className="sd-total-desc">
             <h4
               style={{
                 ...textStyle,
@@ -323,7 +323,7 @@ const CustomizationBuyXgetY = ({ data }) => {
               Discount will be applied at checkout
             </p>
           </div>
-          <div class="sd-total-amount">
+          <div className="sd-total-amount">
             <h4
               style={{
                 ...textStyle,
@@ -344,7 +344,7 @@ const CustomizationBuyXgetY = ({ data }) => {
             </h6>
           </div>
         </div>
-        <div class="sd-bundle-addto-cart">
+        <div className="sd-bundle-addto-cart">
           <button
             style={{
               ...textStyle,
