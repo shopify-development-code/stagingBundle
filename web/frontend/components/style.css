@@ -4194,7 +4194,8 @@ p.sd-bundle-custom-item-heading-common.optionalBadge {
 }
 .sd-bundle-productBundle-rightSection {
     flex: var(--pg-layout-relative-size) var(--pg-layout-relative-size) var(--pg-layout-width-primary-min);
-    min-width: 39%;
+    min-width: 39% !important;
+
 }
 .sd-dashboard-Polaris-Heading{
     font-size: 15px;
