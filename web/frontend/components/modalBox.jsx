@@ -19,7 +19,7 @@ export default function ModalBox({
       >
         <Box
           background="bg-surface-tertiary"
-          padding={200}
+          padding={400}
           borderStartStartRadius="200"
           borderStartEndRadius="200"
         >
@@ -27,9 +27,9 @@ export default function ModalBox({
             <Text as="h3" variant="headingSm">
             Going back?
             </Text>
-            <button onClick={handleClose} >
-              <Icon source={XIcon} />
-            </button>
+            <Button variant="plain" onClick={handleClose} >
+              <Icon source={XIcon} tone='primary' />
+            </Button>
           </InlineStack>
         </Box>
 

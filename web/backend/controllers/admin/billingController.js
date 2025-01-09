@@ -188,7 +188,7 @@ export async function recurringBilingSelected(req,res){
       console.log(req.body)
       const {plan} = req.body
       const shop = res.locals.shopify.session.shop ;
-      const response = await planModel.findOneAndUpdate({ shop }, { charge_id:"", plan: plan, price: "0", interval: "MONTHLY" },
+      const response = await planModel.findOneAndUpdate({ shop }, { charge_id:"", plan: plan, price: "0", interval: "monthly" },
       { upsert: true, new: true })
       if(response){
         res.status(200).json({message:"success",data:response,status:"200"})
@@ -207,7 +207,7 @@ shopData.forEach(item => {
                     {
                         updateOne: {
                             filter: { shop:  item.shop },
-                            update:{ shop:item.shop,interval:"MONTHLY",plan:"free",price:"0",chargeId:""},
+                            update:{ shop:item.shop,interval:"monthly",plan:"free",price:"0",chargeId:""},
                             upsert: true
                         }
                     }

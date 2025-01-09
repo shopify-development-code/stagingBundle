@@ -70,7 +70,7 @@
 
 .sd-bundle-wrapper-common .sd-bundle-left-section-common {
     width: 100%;
-    max-width: 60%;
+    max-width: 80%;
 }
 
 .sd-bundle-bundleSection-common .ant-btn-lg {
@@ -4151,23 +4151,57 @@ p.sd-bundle-custom-item-heading-common.optionalBadge {
     justify-content: center; 
     padding: 100px 0;
 }
-.sd-bundle-modalbox-container .Polaris-Button--variantPrimary{
-    background-color: rgb(8, 86, 230);
-
-}
-.sd-bundle-modalbox-container .Polaris-Button--variantPrimary:hover{
-    background-color: rgb(5, 72, 196);
-
-}
 .sd-bundle-modalbox-container > .Polaris-Box {
     position: absolute;
     top: 20%;
 }
- 
 /* Active Modal */
+
 .sd-bundle-modalbox-container.active {
     visibility: visible; 
     opacity: 1; 
     z-index: 9999; 
     transform: scale(1);
 }
+.sd-bundle-modalbox-container .Polaris-Button {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 6px;
+
+}
+.sd-bundle-modalbox-container .Polaris-Button--variantPrimary{
+    padding: 8px 20px;
+    background-color: rgb(15, 96, 247);
+
+}
+.sd-bundle-modalbox-container .Polaris-Button--variantPrimary:hover{
+    background-color: rgb(6, 66, 179);
+}
+.sd-bundle-modalbox-container .Polaris-Button--variantTertiary {
+    padding: 8px 12px;
+}
+.sd-bundle-modalbox-container .Polaris-Button--variantPlain  {
+    background: transparent;
+    padding: 5px 10px;
+}
+.sd-bundle-modalbox-container .Polaris-Button--variantPlain:hover  {
+    background: rgb(185, 185, 185);
+}
+.sd-bundle-productBundle-rightSection {
+    flex: var(--pg-layout-relative-size) var(--pg-layout-relative-size) var(--pg-layout-width-primary-min);
+    min-width: 39%;
+}
+.sd-dashboard-Polaris-Heading{
+    font-size: 15px;
+}
+.sd-dashboard-custom-list {
+    list-style-position: inside; 
+    font-size: 0.9rem; 
+    line-height: 1; 
+    padding-left: 0; 
+  }
+  
+  .sd-dashboard-custom-list li {
+    margin-bottom: 5px; 
+  }

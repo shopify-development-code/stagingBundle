@@ -249,7 +249,8 @@ function createBundle(BUNDLE_DATA) {
     bundleData.push([]);
     bundleSum.push([]);
     gidArray.push([]);
-    // console.log("eeeeeellllllllllll",el.type,el)
+    console.log("eeeeeellllllllllll",el.type,el.badgeText
+      ,el)
     if (el?.type == "productBundle") {
         let BUNDLE_DIV = document.createElement("div");
         BUNDLE_DIV.className = "sd-bundle-main-column";
@@ -258,7 +259,6 @@ function createBundle(BUNDLE_DATA) {
         BUNDLE_DIV.style.background = el?.customization?.bundle?.box?.backgroundColor;
         mainDiv.append(BUNDLE_DIV);
       
-        if (el?.customization?.bundle?.optionalBadge?.enable === true) {
           if (el?.bundleDetail?.discountType === "percent" || el?.bundleDetail?.discountType === "fixed") {
             let VOLUME_HEADER_DIV = document.createElement("span");
             VOLUME_HEADER_DIV.className = "sd-badges-part-optional";
@@ -267,25 +267,25 @@ function createBundle(BUNDLE_DATA) {
             VOLUME_HEADER_DIV.style.fontSize =`${el?.customization?.bundle?.optionalBadge?.fontSize}px`;
             let discountBadge = document.createElement("span");
             discountBadge.className = "sd-collectionMM-badge";
-            if (el?.bundleDetail?.discountType === "percent") {
-                discountBadge.innerText = el?.translations?.translation?.save + " " + el?.bundleDetail?.discountValue + "%";
-            } else if (el?.bundleDetail?.discountType === "fixed") {
-                let newPrice = el?.bundleDetail?.discountValue;
-                discountBadge.innerText = el?.translations?.translation?.save + " " + showAmountWithCurrency(newPrice);
-            }
+            // if (el?.bundleDetail?.discountType === "percent") {
+            //     discountBadge.innerText = el?.translations?.translation?.save + " " + el?.bundleDetail?.discountValue + "%";
+            // } else if (el?.bundleDetail?.discountType === "fixed") {
+            //     let newPrice = el?.bundleDetail?.discountValue;
+            //     discountBadge.innerText = el?.translations?.translation?.save + " " + showAmountWithCurrency(newPrice);
+            // }
+            discountBadge.innerText = el?.badgeText||"";
             VOLUME_HEADER_DIV.append(discountBadge);
             BUNDLE_DIV.append(VOLUME_HEADER_DIV);
           }
-        }
+        
 
         let BUNDLE_TITLE = document.createElement("div");
         BUNDLE_TITLE.className = "sd-bundle-text-detail";
         BUNDLE_DIV.append(BUNDLE_TITLE);
-        if (el?.customization?.bundle?.optionalBadge?.enable === true) {
           if (el?.bundleDetail?.discountType === "percent" || el?.bundleDetail?.discountType === "fixed") {
             BUNDLE_TITLE.classList.add("extra-padding");
           }
-        }
+        
         let bundleTitleText = document.createElement("h4");
         bundleTitleText.innerText = el?.title;
         bundleTitleText.style.color = el?.customization?.bundle?.title?.color;
@@ -1817,7 +1817,7 @@ function createBundle(BUNDLE_DATA) {
         collectionDiv.style.border = "1px solid" + el?.customization?.collectionMixMatch?.box?.borderColor;
         collectionDiv.style.borderRadius = el?.customization?.collectionMixMatch?.box?.borderRadius + "px";
         mainDiv.append(collectionDiv);
-
+        if (el?.bundleDetail?.discountType === "percent" || el?.bundleDetail?.discountType === "fixed") {
         let VOLUME_HEADER_DIV = document.createElement("span");
         VOLUME_HEADER_DIV.className = "sd-badges-part";
         VOLUME_HEADER_DIV.style.background = el?.customization?.collectionMixMatch?.DiscountBadge?.backgroundColor;
@@ -1825,10 +1825,11 @@ function createBundle(BUNDLE_DATA) {
         VOLUME_HEADER_DIV.style.color = el?.customization?.collectionMixMatch?.DiscountBadge?.color;
         let discountBadge = document.createElement("span");
         discountBadge.className = "sd-collectionMM-badge";
-        discountBadge.innerText = el?.translations?.translation?.grabTheDeal;
+        // discountBadge.innerText = el?.translations?.translation?.grabTheDeal;
+        discountBadge.innerText = el?.badgeText||"";
         VOLUME_HEADER_DIV.append(discountBadge);
         collectionDiv.append(VOLUME_HEADER_DIV);
-      
+        }
         let customiseTitle = document.createElement("div");
         customiseTitle.className = "sd-bundle-text-detail";
         collectionDiv.append(customiseTitle);
@@ -2062,7 +2063,6 @@ function createBundle(BUNDLE_DATA) {
           FBT_DIV.id = `FBT_DIV${bundleIndex}`;
           mainDiv.append(FBT_DIV);
 
-          if (el?.customization?.frequentlyBoughtTogether?.optionalBadge?.enable === true) {
             if (el?.bundleDetail?.discountType === "percent" || el?.bundleDetail?.discountType === "fixed") {
               let VOLUME_HEADER_DIV = document.createElement("span");
               VOLUME_HEADER_DIV.className = "sd-badges-part-optional";
@@ -2071,24 +2071,22 @@ function createBundle(BUNDLE_DATA) {
               VOLUME_HEADER_DIV.style.fontSize = el?.customization?.frequentlyBoughtTogether?.optionalBadge?.fontSize + "px"; 
               let discountBadge = document.createElement("span");
               discountBadge.className = "sd-collectionMM-badge";
-              if (el.bundleDetail.discountType === "percent") {
-                  discountBadge.innerText = el.bundleDetail.discountValue + "% Off";
-              } else if (el.bundleDetail.discountType === "fixed") {
-                  let newPrice = el.bundleDetail.discountValue;
-                  discountBadge.innerText = showAmountWithCurrency(newPrice)+ " Off";
-              }
+              // if (el.bundleDetail.discountType === "percent") {
+              //     discountBadge.innerText = el.bundleDetail.discountValue + "% Off";
+              // } else if (el.bundleDetail.discountType === "fixed") {
+              //     let newPrice = el.bundleDetail.discountValue;
+              //     discountBadge.innerText = showAmountWithCurrency(newPrice)+ " Off";
+              // }
+              discountBadge.innerText = el?.badgeText||"";
               VOLUME_HEADER_DIV.append(discountBadge);
               FBT_DIV.append(VOLUME_HEADER_DIV);
             }
-          }
           
           let FBT_TITLE_DIV = document.createElement("div");
           FBT_TITLE_DIV.className = "sd-bundle-text-detail";
-          if (el?.customization?.frequentlyBoughtTogether?.optionalBadge?.enable === true) {
             if (el.bundleDetail.discountType === "percent" || el.bundleDetail.discountType === "fixed") {
               FBT_TITLE_DIV.classList.add("extra-padding");
             }
-          }
           let FBT_TITLE_TEXT_DIV = document.createElement("h4");
           FBT_TITLE_TEXT_DIV.style.color = el?.customization?.frequentlyBoughtTogether?.title?.color;
           FBT_TITLE_TEXT_DIV.style.fontWeight = el?.customization?.frequentlyBoughtTogether?.title?.titleBold;
@@ -2610,7 +2608,6 @@ function createBundle(BUNDLE_DATA) {
         FBT_DIV.id = `FBT_DIV${bundleIndex}`;
         mainDiv.append(FBT_DIV);
 
-        if (el?.customization?.frequentlyBoughtTogether?.optionalBadge?.enable === true) {
           if (el.bundleDetail.discountType === "percent" || el.bundleDetail.discountType === "fixed") {
             let VOLUME_HEADER_DIV = document.createElement("span");
             VOLUME_HEADER_DIV.className = "sd-badges-part-optional";
@@ -2619,25 +2616,23 @@ function createBundle(BUNDLE_DATA) {
             VOLUME_HEADER_DIV.style.fontSize = el?.customization?.frequentlyBoughtTogether?.optionalBadge?.fontSize + "px"; 
             let discountBadge = document.createElement("span");
             discountBadge.className = "sd-collectionMM-badge";
-            if (el.bundleDetail.discountType === "percent") {
-                discountBadge.innerText = el.bundleDetail.discountValue + "% Off";
-            } else if (el.bundleDetail.discountType === "fixed") {
-                let newPrice = el.bundleDetail.discountValue;
-                discountBadge.innerText = showAmountWithCurrency(newPrice) + " Off";
-            }
+            // if (el.bundleDetail.discountType === "percent") {
+            //     discountBadge.innerText = el.bundleDetail.discountValue + "% Off";
+            // } else if (el.bundleDetail.discountType === "fixed") {
+            //     let newPrice = el.bundleDetail.discountValue;
+            //     discountBadge.innerText = showAmountWithCurrency(newPrice) + " Off";
+            // }
+            discountBadge.innerText = el?.badgeText||"";
             VOLUME_HEADER_DIV.append(discountBadge);
             FBT_DIV.append(VOLUME_HEADER_DIV);
           }
-        }
 
         let FBT_BUNDLE_DETAILS_DIV = document.createElement("div");
        
         FBT_BUNDLE_DETAILS_DIV.className = "sd-bundle-text-detail";
-        if (el?.customization?.frequentlyBoughtTogether?.optionalBadge?.enable === true) {
           if (el?.bundleDetail?.discountType === "percent" || el?.bundleDetail?.discountType === "fixed") {
             FBT_BUNDLE_DETAILS_DIV.classList.add("extra-padding");
           }
-        }
         FBT_DIV.append(FBT_BUNDLE_DETAILS_DIV);
 
         let FBT_TITLE_DIV = document.createElement("h4");
