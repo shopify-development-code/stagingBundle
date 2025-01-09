@@ -137,13 +137,13 @@ export async function recurringBilingSelected(req,res){
           chargeId:charge_id,
           plan: activeSubscription.name,
           price: pricingDetails.price.amount,
-          interval: "MONTHLY",
+          interval: "monthly",
         },
         {
           chargeId:charge_id,
           plan: activeSubscription.name,
           price: pricingDetails.price.amount,
-          interval: "MONTHLY",
+          interval: "monthly",
         },
         { upsert: true, new: true }
       );

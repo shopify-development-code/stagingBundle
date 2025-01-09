@@ -818,6 +818,7 @@ input[type="radio"] {
     justify-content: center;
     margin-top: 3rem;
     max-height: 600px;
+    background-color: rgb(240, 240, 240);
 }
 .sd-bundle-centerContent .sd-bundle-main-column {
     width:520px;
