@@ -816,9 +816,10 @@ input[type="radio"] {
     padding: 0px 10px 10px 10px;
     display: flex;
     justify-content: center;
-    margin-top: 3rem;
-    max-height: 600px;
+    /* margin-top: 3rem; */
+    /* max-height: 600px; */
     background-color: rgb(240, 240, 240);
+
 }
 .sd-bundle-centerContent .sd-bundle-main-column {
     width:520px;
@@ -916,7 +917,7 @@ input[type="radio"] {
 }
 
 .sd-bundle-rightSider .sd-bundle-info {
-    font-size: 18px;
+    font-size: 19px;
     font-weight: bold;
 }
 
@@ -3544,7 +3545,9 @@ svg.sd-bundle-premium1 {
     position: relative;
     border : 1px solid black;
     width: 100%;
-    overflow: hidden
+    overflow: hidden;
+    margin-top: 3rem;
+    
   }
   .sd-collection-main-column {
     overflow: hidden;
