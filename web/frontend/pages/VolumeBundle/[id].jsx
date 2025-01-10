@@ -803,7 +803,7 @@ const VolumeBundle = () => {
       alertText.push("Options quantities must be in increasing order");
     }
     if (flag == false) {
-      alertCommon(setAlert, alertText, "critical", false);
+      alertCommon(setAlert, alertText, "warning", false);
     }
     if (flag == true) {
       //   if (param.id == "create") {

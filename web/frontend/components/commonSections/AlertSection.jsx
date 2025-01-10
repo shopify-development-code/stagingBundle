@@ -4,10 +4,14 @@ import {Banner} from "@shopify/polaris";
 const AlertSection=(props)=>{
     return(
        
-       <Banner
+       <div style={{ margin :"15px 11rem",maxWidth:"100%"}}>
+        <Banner
           title="Alert !!"
           status={props.status}
           onDismiss={() => props.setAlert({ state: false, message:[],status:""})}
+          tone={props.status}
+          
+          
           // onDismiss={() => props.setAlert({ state: false, message:"",status:""})}
         >
           {
@@ -15,7 +19,7 @@ const AlertSection=(props)=>{
           <p key={index}> * {item}</p>
 )}
 
-        </Banner>
+        </Banner></div>
 
     )
 }
