@@ -1,7 +1,7 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "5d237800fbe8fb809677f692033b02ae"
-application_url = "https://supplier-developers-recorded-flex.trycloudflare.com"
+application_url = "https://hardwood-emotions-constant-dev.trycloudflare.com"
 embedded = true
 name = "latestBundle"
 handle = "latestbundle"
@@ -20,9 +20,9 @@ scopes = "read_content,read_themes,write_content,write_discounts,write_orders,wr
 
 [auth]
 redirect_urls = [
-  "https://supplier-developers-recorded-flex.trycloudflare.com/auth/callback",
-  "https://supplier-developers-recorded-flex.trycloudflare.com/auth/shopify/callback",
-  "https://supplier-developers-recorded-flex.trycloudflare.com/api/auth/callback"
+  "https://hardwood-emotions-constant-dev.trycloudflare.com/auth/callback",
+  "https://hardwood-emotions-constant-dev.trycloudflare.com/auth/shopify/callback",
+  "https://hardwood-emotions-constant-dev.trycloudflare.com/api/auth/callback"
 ]
 
 [pos]
