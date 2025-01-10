@@ -456,7 +456,7 @@ const BuyXgetY = () => {
       }
 
       if (flag == false) {
-        alertCommon(setAlert, alertText, "critical", false);
+        alertCommon(setAlert, alertText, "warning", false);
       }
 
       if (flag == true) {

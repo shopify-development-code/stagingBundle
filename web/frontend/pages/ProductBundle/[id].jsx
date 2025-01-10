@@ -506,7 +506,7 @@ function CreateBundle() {
     //   alertText.push("Please select start date & time");
     // }
     if (flag == false) {
-      alertCommon(setAlert, alertText, "critical", false);
+      alertCommon(setAlert, alertText, "warning", false);
     }
 
     if (flag == true) {

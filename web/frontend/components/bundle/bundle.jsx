@@ -782,9 +782,14 @@ const CreateBundle = () => {
       <div>
         {plan != "standard" &&
         (item.type == "bxgy" ||
-          item.type == "fbt" ||
-          item.type == "productMixMatch") ? (
-          <Tooltip title="Upgrade to 'Standard' plan">
+          item.type == "fbt" 
+          ||(plan === "free" && item.type === "productMixMatch")
+        ) ? (
+          <Tooltip   title={
+            plan === "free" && item.type === "productMixMatch"
+              ? "Upgrade to 'Basic' plan"
+              : "Upgrade to 'Standard' plan"
+          }>
             <Switch
               loading={switchIndex === index ? switchLoading : null}
               defaultChecked
@@ -988,9 +993,15 @@ const CreateBundle = () => {
       <div>
         {plan != "standard" &&
         (item.type == "bxgy" ||
-          item.type == "fbt" ||
-          item.type == "productMixMatch") ? (
-          <Tooltip title="Upgrade to 'Standard' plan">
+          item.type == "fbt" 
+          ||(plan === "free" && item.type === "productMixMatch")
+
+        ) ? (
+          <Tooltip title={
+            plan === "free" && item.type === "productMixMatch"
+              ? "Upgrade to 'Basic' plan"
+              : "Upgrade to 'Standard' plan"
+          }>
             <Switch
               loading={switchIndex === index ? switchLoading : null}
               defaultChecked
