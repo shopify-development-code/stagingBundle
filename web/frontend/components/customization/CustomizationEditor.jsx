@@ -168,6 +168,7 @@ const CustomizationEditor = (props) => {
       value == "productMixMatch" &&
       props.plansData.data.data.plan == "free"
     ) {
+      props.handlleCloseModal();
       Swal.fire({
         title: 'Upgrade to "Basic" Plan',
         text: "Do you want to continue",
@@ -187,6 +188,7 @@ const CustomizationEditor = (props) => {
       (value == "frequentlyBoughtTogether" &&
         props.plansData.data.data.plan != "standard")
     ) {
+  props.handlleCloseModal();
       Swal.fire({
         title: 'Upgrade to "Standard" Plan',
         text: "Do you want to continue",
