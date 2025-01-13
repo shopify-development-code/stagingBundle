@@ -1709,15 +1709,8 @@ font-size: 18px;
 }
 .sd-bundle-fbt-title-description{
 font-size:15px;
-}
-
-.sd-bundle-main-column.sd-collection-main-column {
-    padding-top: 40px;
-}
-
-
-
-
+}  
+  
 /* New Bundles dezign CSS Start From Here */
 .sd-bundle-main-column {
     padding: 20px 20px 20px 20px;
@@ -1740,7 +1733,6 @@ font-size:15px;
     position: relative;
     width: 100%;
     border : 1px solid black;
-    padding-top: 40px;
   }
   .sd-bundle-text-detail {
     border-bottom: 1px solid #cecece;
@@ -1782,8 +1774,8 @@ font-size:15px;
   .sd-bundle-product-img {
     border: 1px solid #CFCFCF;
     border-radius: 10px;
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1793,15 +1785,16 @@ font-size:15px;
   .sd-bundle-product-img img {
     width: 100%;
     height: 100%;
+    object-fit: contain;
 }
   .sd-bundle-product-inner {
     display: flex;
     gap: 15px;
   }
 .sd-bundle-product-name h5 {
-    font-size: 18px;
+    font-size: 12px;
     font-weight: 600;
-    line-height: 30px;
+    line-height: 1.1;
     padding-bottom: 10px;
     width: 100%;
     max-width: 180px;
@@ -1811,13 +1804,13 @@ font-size:15px;
   .sd-bundle-product-name h4 {
     font-size: 16px;
     font-weight: 400;
-    line-height: 16px;
+    line-height: 1.1;
     padding-bottom: 8px;
     margin-block-start: 0;
     margin-block-end: 0;
   }
 .sd-bundle-product-name select {
-    width: 130px;
+    width: 170px;
     border-radius: 20px;
     padding: 6px 10px;
     -webkit-appearance: none;
@@ -1830,7 +1823,7 @@ font-size:15px;
     border: 1px solid #D6D6D6;
 }
   .sd-bundle-product-quantity h6 {
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 700;
     line-height: 17px;
      margin-block-start: 0;
@@ -2003,9 +1996,10 @@ font-size:15px;
     right: -3px;
     padding: 2px 20px;
     border-radius: 0px 20px 0px 100px;
-    min-width: 170px;
+    min-width: 100px;
     text-align: center;
-    height: 30px;
+    height: 27px;
+    font-size:13px;
 }
   /***** ***********/
   .checkbox-wrapper-18 .round {
@@ -2076,7 +2070,7 @@ font-size:15px;
     font-weight: 500;
     line-height: 16px;
     text-align: center;
-    padding: 10px 15px;
+    padding: 10px 10px;
     border-radius: 30px;
     color: #6d6d6d;
     background: #E8E8E8;
@@ -2129,6 +2123,7 @@ font-size:15px;
   .sd-selected-product-itemImg img {
     width: 100%;
     height: 100%;
+    object-fit: contain;
   }
   .sd-checkbox-wrapper-21 .sd-control {
     display: block;
@@ -2202,21 +2197,22 @@ font-size:15px;
     right: 12px;
 }
 .sd-bundle-product-badge h4 {
-    position: absolute;
-    top: -17px;
-    left: 50%;
-    transform: translate(-50%, 0);
-    width: 100%;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 25px;
-    color: #fff;
-    text-align: center;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 25px;
+  color: #fff;
+  text-align: center;
+}
+.heading{
+ position: absolute;
+  top: -17px;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 .sd-bundle-product-badge.left-badge {
     right: auto;
     left: 0;
-    top: 7px;
     overflow: hidden;
     border-radius: 0 5px 5px 0;
 }
@@ -2229,34 +2225,36 @@ font-size:15px;
 img.BADGE {
     padding-left: 8px;
 }
-  .sd-bundle-product-badge1 {
-    position: absolute;
-    top: -11px;
-    right: 13px;
+  .style_badge {
+  display: flex;
+  position: absolute;
+  right: 9px;
+  top: calc(-8px - 1px);
 }
-.sd-bundle-product-badge1 h4 {
-    position: absolute;
-    top: -13px;
-    left: 50%;
-    transform: translate(-50%);
-    width: 100%;
-    font-size: 10px;
-    font-weight: 500;
-    line-height: normal;
-    color: #fff;
-    text-align: center;
+.style_badge span {
+  border-radius: 0 0 4px 4px;
+  background: red;
+  height: 20px;
+  padding: 1px 8px;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
 }
 .sd-badges-part-optional {
     background: #F4383B;
     position: absolute;
     top: 0;
-    right: 0;
-    padding: 5px 20px;
+    right: -3px;
+    padding: 2px 20px;
     border-radius: 0px 20px 0px 100px;
-    min-width: 170px;
+    min-width: 100px;
     text-align: center;
-    height: 30px;
+    height: 27px;
+    font-size:13px;
 }
 .extra-padding{
-    padding-top: 15px
-}
+    padding-top: 10px
+}         

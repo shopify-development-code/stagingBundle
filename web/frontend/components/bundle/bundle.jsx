@@ -87,7 +87,7 @@ const CreateBundle = () => {
     const response = await postApi("api/admin/getPlans", {}, app);
     if (response?.data?.status == 200) {
       setPlan(response?.data?.data?.plan);
-      setDraftPaidBundles();
+      response?.data?.data?.plan!=='standard' && setDraftPaidBundles();
     }
   };
   useEffect(() => {
@@ -97,26 +97,22 @@ const CreateBundle = () => {
     getBundleData();
   }, [plan]);
   const setDraftPaidBundles = async () => {
-    if ((plan !== "standard" && ( data.type === "bxgy" ||  data.type === "fbt")) ||
-    (plan === "free" &&  data.type === "productMixMatch")) {
-      let paidBundles = [];
-      dashboardData.filter((data) => {
-        if (
-          data.type == "fbt" ||
-          data.type == "bxgy" ||
-          data.type == "productMixMatch"
-        ) {
-          paidBundles.push(data._id);
+    console.log("setDraftPaidBundles",plan)
+        let paidBundles = [];
+        paidBundles=dashboardData.filter((data) => 
+        ( data.type === "bxgy"  ||  data.type === "fbt" ||
+          (plan === "free" &&  data.type === "productMixMatch") ) && data.status=='active'
+        ).map((data) => data._id);
+        console.log("paidBundles", paidBundles)
+        if (paidBundles.length > 0) {
+          let data = {
+            id: paidBundles,
+            status: "draft",
+          };
+          let response = await postApi("/api/admin/actionStatus", data, app);
+          await getBundle("setDraftPaidBundles");
         }
-      });
-      if (paidBundles.length > 0) {
-        let data = {
-          id: paidBundles,
-          status: "draft",
-        };
-        let response = await postApi("/api/admin/actionStatus", data, app);
-      }
-    }
+     
   };
 
   const handleUpdateStatus = async (e, id, type, index) => {
@@ -207,59 +203,112 @@ const CreateBundle = () => {
       }
     }
   }
+  // async function handleActionActive() {
+  //   try {
+  //     setSwitchLoading(true);
+  //     let paidBundles = [];
+  //     console.log("data",data)
+  //     console.log("actionId",actionId)
+  //     if ((plan !== "standard" && (data.type === "bxgy" || data.type === "fbt")) ||
+  //     (plan === "free" && data.type === "productMixMatch")) {
+  //       console.log(1)
+  //       paidBundles = dashboardData
+  //         .filter(
+  //           (data) =>
+  //             actionId.includes(data._id) &&
+  //             (data.type === "productBundle" ||
+  //               data.type === "collectionMixMatch" ||
+  //               data.type === "volumeBundle")
+  //         )
+  //         .map((data) => data._id);
+
+  //       if (paidBundles.length > 0) {
+  //         const data = {
+  //           id: paidBundles,
+  //           status: "active",
+  //         };
+  //         const response = await postApi("/api/admin/actionStatus", data, app);
+  //         if (response.data.status === 200) {
+  //           toastNotification("success", "Successfully Active!", "bottom");
+  //         } else if (response.data.status === 503) {
+  //           toastNotification(
+  //             "warning",
+  //             "Something went wrong! Please try again",
+  //             "bottom"
+  //           );
+  //         }
+  //         await getBundle();
+  //         setActionId([]);
+  //       }
+  //     } else {
+  //       console.log(2)
+
+  //       if (actionId.length > 0) {
+  //       console.log(2,1)
+
+  //         const data = {
+  //           id: actionId,
+  //           status: "active",
+  //         };
+  //         const response = await postApi("/api/admin/actionStatus", data, app);
+  //         if (response.data.status === 200) {
+  //           toastNotification("success", "Successfully Active!", "bottom");
+  //         } else if (response.data.status === 503) {
+  //           toastNotification(
+  //             "warning",
+  //             "Something went wrong! Please try again",
+  //             "bottom"
+  //           );
+  //         }
+  //         await getBundle();
+  //         setActionId([]);
+  //       }
+  //     }
+  //   } catch (error) {
+  //     toastNotification(
+  //       "error",
+  //       "An error occurred. Please try again later",
+  //       "bottom"
+  //     );
+  //   } finally {
+  //     setSwitchLoading(false);
+  //   }
+  // }
   async function handleActionActive() {
     try {
       setSwitchLoading(true);
       let paidBundles = [];
-      if ((plan !== "standard" && (data.type === "bxgy" || data.type === "fbt")) ||
-      (plan === "free" && data.type === "productMixMatch")) {
-        paidBundles = dashboardData
-          .filter(
-            (data) =>
-              actionId.includes(data._id) &&
-              (data.type === "productBundle" ||
-                data.type === "collectionMixMatch" ||
-                data.type === "volumeBundle")
-          )
-          .map((data) => data._id);
-
-        if (paidBundles.length > 0) {
-          const data = {
-            id: paidBundles,
-            status: "active",
-          };
-          const response = await postApi("/api/admin/actionStatus", data, app);
-          if (response.data.status === 200) {
-            toastNotification("success", "Successfully Active!", "bottom");
-          } else if (response.data.status === 503) {
-            toastNotification(
-              "warning",
-              "Something went wrong! Please try again",
-              "bottom"
-            );
-          }
-          await getBundle();
-          setActionId([]);
+      paidBundles = dashboardData
+        .filter(
+          (data) =>
+            actionId.includes(data._id) &&
+          (plan === "standard" ||
+          (plan === "basic" && data.type === "productMixMatch") ||
+            data.type === "volumeBundle" || 
+             data.type === "collectionMixMatch" || 
+             data.type === "productBundle")
+        )
+        .map((data) => data._id);
+      if (paidBundles.length > 0) {
+        const data = {
+          id: paidBundles,
+          status: "active",
+        };
+        const response = await postApi("/api/admin/actionStatus", data, app);
+        if (response.data.status === 200) {
+          toastNotification("success", "Successfully Active!", "bottom");
+        } else if (response.data.status === 503) {
+          toastNotification(
+            "warning",
+            "Something went wrong! Please try again",
+            "bottom"
+          );
         }
+        await getBundle();
+        setActionId([]);
       } else {
-        if (actionId.length > 0) {
-          const data = {
-            id: actionId,
-            status: "active",
-          };
-          const response = await postApi("/api/admin/actionStatus", data, app);
-          if (response.data.status === 200) {
-            toastNotification("success", "Successfully Active!", "bottom");
-          } else if (response.data.status === 503) {
-            toastNotification(
-              "warning",
-              "Something went wrong! Please try again",
-              "bottom"
-            );
-          }
-          await getBundle();
-          setActionId([]);
-        }
+        toastNotification("warning", "Upgrade your plan", "bottom");
+        setActionId([]);
       }
     } catch (error) {
       toastNotification(
@@ -271,7 +320,6 @@ const CreateBundle = () => {
       setSwitchLoading(false);
     }
   }
-
   async function handleActionDraft() {
     setSwitchLoading(true);
     if (actionId.length) {
