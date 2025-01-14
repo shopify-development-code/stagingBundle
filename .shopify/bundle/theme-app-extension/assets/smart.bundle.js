@@ -6081,7 +6081,7 @@
 
 
 
-let server = "https://carolina-textile-marcus-kong.trycloudflare.com";
+let server = "https://doll-cs-cuts-worm.trycloudflare.com";
 
 console.log("Smart Bundle Discount app new version 7.0");
 // let server = "https://org-generally-hockey-oscar.trycloudflare.com";
