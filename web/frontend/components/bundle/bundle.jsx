@@ -49,6 +49,7 @@ const CreateBundle = () => {
   const [actionId, setActionId] = useState([]);
   const [switchIndex, setSwitchIndex] = useState("");
   const [switchLoading, setSwitchLoading] = useState(false);
+  const [delModal,setDelModal] = useState(false);
   async function getBundle(key) {
     if (key == "onLoad") {
       setLoader(true);
@@ -175,8 +176,13 @@ const CreateBundle = () => {
       navigate(`/CollectionMixMatch/${id}`);
     }
   };
+const handleDelModal=()=>{
+  setDelModal(false);
+  setActionId([])
 
+}
   async function handleActionDelete() {
+    setDelModal(false);
     setSwitchLoading(true);
     if (actionId.length) {
       let data = {
@@ -416,7 +422,7 @@ const CreateBundle = () => {
 
   const items = [
     {
-      label: <a onClick={handleActionDelete}>Delete</a>,
+      label: <a onClick={()=>setDelModal(true)}>Delete</a>,
       key: "0",
     },
     {
@@ -1444,6 +1450,20 @@ const CreateBundle = () => {
             } */}
           </div>
         </Modal>
+        <Modal
+        title="Delete bundle"
+        open={delModal}
+        onCancel={handleDelModal}
+         children={`Are you sure to delete ${actionId.length>1?'these':'this'} ${actionId.length>1?'bundles':'bundle'}?`}
+        footer={[
+          <Button key="cancel" onClick={handleDelModal}>
+            Cancel
+          </Button>,
+          <Button  key="delete" type="primary"  htmlType="submit"  onClick={handleActionDelete}>
+           Delete
+          </Button>
+        ]}
+      ></Modal>
       </div>
       <Watermark />
       <ContactUs />
