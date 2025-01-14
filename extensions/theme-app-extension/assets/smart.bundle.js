@@ -1,5 +1,5 @@
 
-let server = "https://bundle.shinedezigninfotech.com/";
+let server = "https://bundle.shinedezigninfotech.com";
 
 console.log("Smart Bundle Discount app new version 7.0");
 // let server = "https://bundle.shinedezigninfotech.com/";
@@ -240,7 +240,7 @@ const gidArray = [];
 let volumeBundleArr = []; 
 let volumeBundleSum = [];
 function createBundle(BUNDLE_DATA) {
-  console.log("check foreach working=======**********",BUNDLE_DATA);
+  // console.log("check foreach working=======**********",BUNDLE_DATA);
   let bundleMainDiv = document.createElement("div");
   bundleMainDiv.className = "sd-bundle-main-container";
   bundleMainDiv.id = "sd-bundle-main-container";
