@@ -6080,7 +6080,7 @@
 
 
 
-let server = "https://doll-cs-cuts-worm.trycloudflare.com";
+let server = "https://bundle.shinedezigninfotech.com";
 
 console.log("Smart Bundle Discount app new version 7.0");
 // let server = "https://bundle.shinedezigninfotech.com/";
