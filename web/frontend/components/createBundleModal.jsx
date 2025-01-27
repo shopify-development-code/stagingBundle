@@ -237,8 +237,6 @@ function CreateBundleModal(props) {
     } 
    };
    const  resourcePickFunc = async() =>{
-    console.log("props", props)
-
     const productsAdded= [...props?.data.bundleDetail?.products];
     const selectionIds=productsAdded?.map((product)=>{
       return { "id":product.id};

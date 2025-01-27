@@ -91,8 +91,8 @@ export default async function productCreator(
       await client.request(CREATE_PRODUCTS_MUTATION,{
           variables: {
               title: `${randomTitle()}`,
-              variants: [{ price: randomPrice() }],   
-          },    
+              variants: [{ price: randomPrice() }]
+        },
       });
     }
   } catch (error) {

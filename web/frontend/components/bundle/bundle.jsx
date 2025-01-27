@@ -98,13 +98,11 @@ const CreateBundle = () => {
     getBundleData();
   }, [plan]);
   const setDraftPaidBundles = async () => {
-    console.log("setDraftPaidBundles",plan)
         let paidBundles = [];
         paidBundles=dashboardData.filter((data) => 
         ( data.type === "bxgy"  ||  data.type === "fbt" ||
           (plan === "free" &&  data.type === "productMixMatch") ) && data.status=='active'
         ).map((data) => data._id);
-        console.log("paidBundles", paidBundles)
         if (paidBundles.length > 0) {
           let data = {
             id: paidBundles,
@@ -213,11 +211,8 @@ const handleDelModal=()=>{
   //   try {
   //     setSwitchLoading(true);
   //     let paidBundles = [];
-  //     console.log("data",data)
-  //     console.log("actionId",actionId)
   //     if ((plan !== "standard" && (data.type === "bxgy" || data.type === "fbt")) ||
   //     (plan === "free" && data.type === "productMixMatch")) {
-  //       console.log(1)
   //       paidBundles = dashboardData
   //         .filter(
   //           (data) =>
@@ -247,10 +242,8 @@ const handleDelModal=()=>{
   //         setActionId([]);
   //       }
   //     } else {
-  //       console.log(2)
 
   //       if (actionId.length > 0) {
-  //       console.log(2,1)
 
   //         const data = {
   //           id: actionId,

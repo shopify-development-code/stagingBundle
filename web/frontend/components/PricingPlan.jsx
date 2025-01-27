@@ -58,7 +58,7 @@ const PricingPlan = () => {
       if (response.status == 200) {
         setLoader(false);
         let confirmationUrl =
-          response.data.data.appSubscriptionCreate.confirmationUrl; // removed  .body
+          response.data.data.appSubscriptionCreate.confirmationUrl;
         window.top.location.href = confirmationUrl;
       }
     } else if (key == "standard") {
@@ -72,7 +72,7 @@ const PricingPlan = () => {
       if (response.status == 200) {
         setLoader(false);
         let confirmationUrl =
-          response.data.data.appSubscriptionCreate.confirmationUrl;  // removed  .body
+          response.data.data.appSubscriptionCreate.confirmationUrl;
         window.top.location.href = confirmationUrl;
       }
     } else {

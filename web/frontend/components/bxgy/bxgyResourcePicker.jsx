@@ -165,8 +165,6 @@ const BxgyResourcePicker = (props) => {
         return finalArray ;
       }
      const  resourcePickFunc = async() =>{
-      console.log("props", props)
-
       const productsAdded= props.page == "xproduct" ? [...props?.data.bundleDetail?.xproducts]:props.page == "yproduct" ? [...props?.data.bundleDetail?.yproducts] : null;
       const selectionIds=productsAdded?.map((product)=>{
         return { "id":product.id};

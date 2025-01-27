@@ -248,39 +248,6 @@ export async function getBundleData(req, res) {
   }
 }
 
-// export async function createPage(req, res) {
-//   let shop = req.body.shop;
-//   const session = await shopInfoModel.findOne({ shop: shop });
-//   if (session) {
-//     const page = new shopify.api.rest.Page({
-//       session: {
-//         shop: session.shop,
-//         accessToken: session.accessToken,
-//       },
-//     });
-//     page.title = "Collection Mix & Match";
-//     page.body_html = `<div id="sd-bundle-container"></div>`;
-//     await page.save({
-//       update: true,
-//     });
-//     if (page) {
-//       const data = await pageDataModel.findOneAndUpdate(
-//         { shop: shop },
-//         { shop: shop, pageId: page.id },
-//         { upsert: true, new: true }
-//       );
-//       if (data) {
-//         return res
-//           .status(200)
-//           .send({ message: "success", data: page, status: 200 });
-//       } else {
-//         return res
-//           .status(400)
-//           .send({ message: "INTERNAL_SERVER_ERROR", status: 400 });
-//       }
-//     }
-//   }
-// }
 export async function createPage(req, res) {
   let shop = req.body.shop;
   const session = await shopInfoModel.findOne({ shop: shop });
@@ -328,36 +295,6 @@ export async function createPage(req, res) {
   }
 }
 
-// export async function getPage(req, res) {
-//   let shop = req.body.shop;
-//   const session = await shopInfoModel.findOne({ shop: shop });
-//   if (session) {
-//     const page = await shopify.api.rest.Page.all({
-//       session: {
-//         shop: shop,
-//         accessToken: session.accessToken,
-//       },
-//     });
-
-//     if (page) {
-//       const getId = await pageDataModel.findOne({ shop: shop });
-//       if (getId !== null) {
-//         const filter = page.data.filter((e) => e.id == getId.pageId);
-//         if (filter.length) {
-//           return res
-//             .status(200)
-//             .send({ message: "success", data: filter[0], status: 200 });
-//         } else {
-//           return res
-//             .status(200)
-//             .send({ message: "page not found", status: 400 });
-//         }
-//       } else {
-//         return res.status(200).send({ message: "page not found", status: 400 });
-//       }
-//     }
-//   }
-// } 
 export async function getPage(req, res) {
   let shop = req.body.shop;
   const session = await shopInfoModel.findOne({ shop: shop });
