@@ -127,10 +127,7 @@ app.get(
              }    
           } 
         createPage();
-    // const page =  new shopify.api.rest.Page({session:session});
-    // page.title = "Collection Mix & Match";
-    // page.handle = "sd-Collection-Mix-&-Match"
-    // page.body_html = `<div id="sd-bundle-container"></div>`;
+
 
 
   
