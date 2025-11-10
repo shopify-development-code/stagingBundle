@@ -13,7 +13,8 @@ import customizationModel from "./backend/models/customizationSchema.js";
 import shopInfoModel from "./backend/models/shopInfoSchema.js";
 import translationModel from "./backend/models/translationSchema.js";
 import settingModel from "./backend/models/settings.js";
-import Customizations from './backend/helper/Customization.json' assert { type: "json" }
+import Customizations from './backend/helper/Customization.json' 
+// assert { type: "json" }
 import { privacyPolicy } from "./backend/controllers/admin/adminController.js";
 
 import dotenv from "dotenv";
