@@ -13,7 +13,13 @@ import customizationModel from "./backend/models/customizationSchema.js";
 import shopInfoModel from "./backend/models/shopInfoSchema.js";
 import translationModel from "./backend/models/translationSchema.js";
 import settingModel from "./backend/models/settings.js";
+<<<<<<< HEAD
 import Customizations from './backend/helper/Customization.json' assert { type: "json" }
+=======
+const Customizations = JSON.parse(
+  readFileSync("./backend/helper/Customization.json", "utf8")
+);
+>>>>>>> 9bf7f707df9cd5aa9f6a5724d60e75237b248184
 import { privacyPolicy } from "./backend/controllers/admin/adminController.js";
 
 import dotenv from "dotenv";
