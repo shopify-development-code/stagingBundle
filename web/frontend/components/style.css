@@ -357,6 +357,10 @@ input[type="radio"] {
     font-size: 11px;
 }
 
+.sd-bundle-discountcombination-selection .ant-checkbox-group {
+    display: block;
+    padding: 10px;
+}
 .sd-bundle-createBundleDateTimeSection .sd-bundle-sub-section {
     padding: 10px;
 }

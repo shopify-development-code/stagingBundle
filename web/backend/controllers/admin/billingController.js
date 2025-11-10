@@ -13,7 +13,7 @@ export async function recurringBiling(req, res) {
       const client = new shopify.api.clients.Graphql({session});
       let testCharge;
       if (
-        shop == "nezuko-komada.myshopify.com" || shop=='pallavitesting.myshopify.com'
+        shop == "nezuko-komada.myshopify.com" || shop=='priti-testing.myshopify.com'
       ) {
         testCharge = true;
       } else {

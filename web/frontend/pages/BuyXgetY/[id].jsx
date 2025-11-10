@@ -19,6 +19,7 @@ import { alertCommon } from "../../components/helperFunctions";
 import AlertSection from "../../components/commonSections/AlertSection";
 import Swal from "sweetalert2";
 import BXGYBundlePreview from "../../components/bundles preview/bxgyBundlePreview";
+import DiscountCombination from "../../components/commonSections/discountCombination";
 
 const BuyXgetY = () => {
   const navigate = useNavigate();
@@ -53,6 +54,7 @@ const BuyXgetY = () => {
     bundleDetail: {
       discountType: "percent",
       discountValue: 5,
+      discountCombination: [],
       xproducts: [],
       yproducts: [],
       display: {
@@ -160,7 +162,15 @@ const BuyXgetY = () => {
   //     }
   //   }
   // };
-
+  const handleDiscountCombination = (e) => {
+    setData({
+      ...data,
+      bundleDetail: {
+        ...data.bundleDetail,
+        discountCombination: e,
+      },
+    });
+  };
   const handleDisplayOptions = (e) => {
     if (e.target.checked) {
       if (e.target.name == "productPages") {
@@ -528,6 +538,10 @@ const BuyXgetY = () => {
               discountValue={data.bundleDetail.discountValue}
               data={data}
               setData={setData}
+            />
+            <DiscountCombination
+              discountCombination={data.bundleDetail.discountCombination}
+              handleDiscountCombination={handleDiscountCombination}
             />
             <General data={data} setData={setData} errorArray={errorArray} />
           </div>
