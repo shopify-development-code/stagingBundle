@@ -1,6 +1,6 @@
 
-// let server = "https://bundle.shinedezigninfotech.com";
-let server = "https://direct-makes-saves-induction.trycloudflare.com";
+let server = "https://bundle.shinedezigninfotech.com";
+// let server = "https://direct-makes-saves-induction.trycloudflare.com";
 
 console.log("Smart Bundle Discount app new version 7.0");
 // let server = "https://bundle.shinedezigninfotech.com/";
