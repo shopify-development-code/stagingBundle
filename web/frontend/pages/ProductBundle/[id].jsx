@@ -20,6 +20,7 @@ import defaultData from "../../components/customization/defaultData.json";
 import postApi from "../../components/postApi";
 import { useNavigate, useParams } from "react-router-dom";
 import ProductBundlePreview from "../../components/bundles preview/productBundlePreview";
+import DiscountCombination from "../../components/commonSections/discountCombination";
 
 function CreateBundle() {
   let headerkey = "Create Product Bundle";
@@ -52,7 +53,7 @@ function CreateBundle() {
     name: "",
     title: "",
     description: "",
-    badgeText: "",  
+    badgeText: "",
     status: "active",
     startdate: "",
     endDate: "",
@@ -60,6 +61,7 @@ function CreateBundle() {
     bundleDetail: {
       discountType: "percent",
       discountValue: 5,
+      discountCombination: [],
       products: [],
       display: {
         productPages: true,
@@ -293,7 +295,16 @@ function CreateBundle() {
       }
     }
   };
-
+  const handleDiscountCombination = (e) => {
+   
+    setData({
+      ...data,
+      bundleDetail: {
+        ...data.bundleDetail,
+        discountCombination: e,
+      },
+    });
+  };
   useEffect(() => {
     setEndPrice(parseFloat(calculateFinalPrice()).toFixed(2));
   }, [arr, data.bundleDetail.discountType, data.bundleDetail.discountValue]);
@@ -517,7 +528,8 @@ function CreateBundle() {
         const response = await postApi("/api/admin/createBundle", data, app);
         if (response.data.status === 200) {
           return (
-            toastNotification("success", "Saved", "bottom"), navigate("/bundle")
+            toastNotification("success", "Saved", "bottom"),
+            navigate("/bundle")
           );
         } else {
           return alertCommon(
@@ -545,7 +557,7 @@ function CreateBundle() {
       }
     }
   };
-// console.log("test ...............",data);
+  // console.log("test ...............",data);
 
   return (
     <Spin spinning={spinner} size="large">
@@ -628,6 +640,10 @@ function CreateBundle() {
 
             {/* <DateTime data={data} setData={setData} errorArray={errorArray} /> */}
 
+            <DiscountCombination
+              discountCombination={data.bundleDetail.discountCombination}
+              handleDiscountCombination={handleDiscountCombination}
+            />
             <DeleteSave handleSave={handleSave} />
           </div>
 

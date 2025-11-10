@@ -24,6 +24,7 @@ import e from "cors";
 import { BuyPlanAlert } from "../../components/commonSections/buyPlansAlert";
 import Swal from "sweetalert2";
 import ProductMixMatchPreview from "../../components/bundles preview/productMixMatchPreview";
+import DiscountCombination from "../../components/commonSections/discountCombination";
 
 const ProductMixMatch = () => {
   let headerkey = "Create Product Mix & Match Bundle";
@@ -43,7 +44,7 @@ const ProductMixMatch = () => {
   const [sumData, setSumData] = useState([]);
   const [multiProductArray, setMultiProductArray] = useState([]);
   const [requiredProductArray, setRequiredProductArray] = useState([]);
-  
+
   const [data, setData] = useState({
     shop: shop,
     type: "productMixMatch",
@@ -65,6 +66,7 @@ const ProductMixMatch = () => {
           // description: "Buy 2 & Save {discount}",
         },
       ],
+      discountCombination: [],
       allowDiscountOnIncrease: false,
       display: {
         productPages: true,
@@ -125,7 +127,7 @@ const ProductMixMatch = () => {
         app
       );
       // console.log("test......................",response);
-      
+
       setData((prevData) => ({
         ...prevData,
         customization: [response.data.response],
@@ -135,7 +137,7 @@ const ProductMixMatch = () => {
     }
   }
   useEffect(() => {
-    getCustomization()
+    getCustomization();
     getPlans();
   }, []);
   useEffect(() => {
@@ -655,7 +657,16 @@ const ProductMixMatch = () => {
       }
     }
   };
-
+  const handleDiscountCombination = (e) => {
+   
+    setData({
+      ...data,
+      bundleDetail: {
+        ...data.bundleDetail,
+        discountCombination: e,
+      },
+    });
+  };
   const handleDiscountDescription = (e, index) => {
     let update = { ...data };
     update.bundleDetail.discountOptions[index].description = e.target.value;
@@ -1220,7 +1231,10 @@ const ProductMixMatch = () => {
               Add Another Option
             </Button> */}
             </div>
-
+            <DiscountCombination
+              discountCombination={data.bundleDetail.discountCombination}
+              handleDiscountCombination={handleDiscountCombination}
+            />   
             <General data={data} setData={setData} errorArray={errorArray} />
 
             {/* <div className="sd-bundle-bundleSection-common sd-bundle-createBundleNamingSection">
@@ -1428,6 +1442,7 @@ const ProductMixMatch = () => {
               </div>
             </div>
             {/* <DateTime data={data} setData={setData} errorArray={errorArray} /> */}
+         
             <DeleteSave handleSave={handleSave} />
           </div>
 

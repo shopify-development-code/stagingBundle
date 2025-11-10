@@ -17,6 +17,7 @@ import { alertCommon } from "../../components/helperFunctions";
 import AlertSection from "../../components/commonSections/AlertSection";
 import Swal from "sweetalert2";
 import FBTBundlePreview from "../../components/bundles preview/fbtBundlePreview";
+import DiscountCombination from "../../components/commonSections/discountCombination";
 
 const FrequentlyBoughtTogether = () => {
   const navigate = useNavigate();
@@ -48,6 +49,7 @@ const FrequentlyBoughtTogether = () => {
       discountedProductType: "specific_product",
       discountType: "percent",
       discountValue: 5,
+      discountCombination: [],
       mainProducts: [],
       offeredProducts: [],
     },
@@ -197,7 +199,16 @@ const FrequentlyBoughtTogether = () => {
       }
     }
   };
-
+  const handleDiscountCombination = (e) => {
+  
+    setData({
+      ...data,
+      bundleDetail: {
+        ...data.bundleDetail,
+        discountCombination: e,
+      },
+    });
+  };
   const getBundleData = async () => {
     let body = { id: param.id };
     setSpinner(true);
@@ -443,6 +454,7 @@ const FrequentlyBoughtTogether = () => {
               handleDiscountValue={handleDiscountValue}
               currency={currencyCode}
             />
+         
           </div>
           <div className="sd-bundle-productBundle-rightSection Polaris-Layout__Section Polaris-Layout__Section--secondary">
             <BundleStatus data={data} setData={setData} />
@@ -457,6 +469,10 @@ const FrequentlyBoughtTogether = () => {
           </div>
         </div>
         <div className="sd-bundle-wrapper-common">
+        <DiscountCombination
+              discountCombination={data.bundleDetail.discountCombination}
+              handleDiscountCombination={handleDiscountCombination}
+            />
           <DeleteSave handleSave={handleSave} />
         </div>
       </div>

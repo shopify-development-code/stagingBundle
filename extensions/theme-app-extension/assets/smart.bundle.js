@@ -1,5 +1,6 @@
 
-let server = "https://bundle.shinedezigninfotech.com";
+// let server = "https://bundle.shinedezigninfotech.com";
+let server = "https://direct-makes-saves-induction.trycloudflare.com";
 
 console.log("Smart Bundle Discount app new version 7.0");
 // let server = "https://bundle.shinedezigninfotech.com/";
@@ -136,10 +137,12 @@ async function getData() {
   sdBundleCollectionId.map((id) => {
     collectionId.push(`gid://shopify/Collection/${id}`);
   });
+
+
   const response = await fetch(`${server}/api/storefront/getBundleData`, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/json"
     },
     body: JSON.stringify({
       shop: shop,
@@ -147,9 +150,11 @@ async function getData() {
       collId: collectionId,
     }),
   });
+
   data = await response.json();
   if (data.status === 200) {
     if (sdbundlePageType == "product") {
+
       document.getElementById("sd-bundle-main-container-loader").style.display =
         "none";
       document.getElementById("sd-bundle-main-container-loader").remove();
@@ -789,6 +794,7 @@ function createBundle(BUNDLE_DATA) {
                         bundleType: el.bundleDetail.discountType,
                         totalPrice: total.toFixed(2),
                         discountCreateId: discountCodeId,
+                        discountCombination: el.bundleDetail.discountCombination,
                       };
 
                       fetch(server + "/api/storefront/createRule", {
@@ -1698,6 +1704,7 @@ function createBundle(BUNDLE_DATA) {
                         bundleType: el.bundleDetail.discountOptions[optionIndex].type,
                         totalPrice: xtotalprice,
                         discountCreateId: discountCodeId,
+                        discountCombination: el.bundleDetail.discountCombination,
                       };
 
                       fetch(server + "/api/storefront/createRule", {
@@ -2453,6 +2460,7 @@ function createBundle(BUNDLE_DATA) {
                           bundleType: el.bundleDetail.discountType,
                           totalPrice: originalPrice.toFixed(2),
                           discountCreateId: discountCodeId,
+                          discountCombination: el.bundleDetail.discountCombination,
                         };
                         fetch(server + "/api/storefront/createRule", {
                           method: "POST",
@@ -3002,6 +3010,7 @@ function createBundle(BUNDLE_DATA) {
                       bundleType: el.bundleDetail.discountType,
                       totalPrice: originalPrice.toFixed(2),
                       discountCreateId: discountCodeId,
+                      discountCombination: el.bundleDetail.discountCombination,
                     };
                     fetch(server + "/api/storefront/createRule", {
                       method: "POST",
@@ -4040,6 +4049,7 @@ function createBundle(BUNDLE_DATA) {
                         bundleType: DiscountType,
                         totalPrice: total.toFixed(2),
                         discountCreateId: discountCodeId,
+                        discountCombination: el.bundleDetail.discountCombination,
                       };
                       fetch(server + "/api/storefront/createRule", {
                         method: "POST",
@@ -4668,6 +4678,7 @@ function createBundle(BUNDLE_DATA) {
                           bundleType: el.bundleDetail.discountType,
                           totalPrice: total.toFixed(2),
                           discountCreateId: discountCodeId,
+                          discountCombination: el.bundleDetail.discountCombination,
                         };
 
                         fetch(server + "/api/storefront/createRule", {
@@ -5597,6 +5608,7 @@ async function bundlePageBuilder(data) {
                     bundleType: data.response.bundleDetail.discountType,
                     totalPrice: totalPrice,
                     discountCreateId: discountCodeId,
+                    discountCombination: el.bundleDetail.discountCombination,
                   };
                   fetch(server + "/api/storefront/createRule", {
                     method: "POST",

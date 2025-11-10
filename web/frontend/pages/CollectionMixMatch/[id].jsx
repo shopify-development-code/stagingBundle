@@ -21,6 +21,7 @@ import toastNotification from "../../components/commonSections/Toast";
 import noImg from "../../assets/no-Image.png";
 import General from "../../components/bxgy/General";
 import CollectionBundlePreview from "../../components/bundles preview/collectionBundlePreview";
+import DiscountCombination from "../../components/commonSections/discountCombination";
 
 const CollectionMixMatch = () => {
   const param = useParams();
@@ -53,6 +54,7 @@ const CollectionMixMatch = () => {
       quantities: [],
       discountType: "percent",
       discountValue: 5,
+      discountCombination: [],
     },
     customization: [defaultData],
     timeZone: timeZone,
@@ -210,7 +212,16 @@ const CollectionMixMatch = () => {
       }
     }
   };
-
+  const handleDiscountCombination = (e) => {
+   
+    setData({
+      ...data,
+      bundleDetail: {
+        ...data.bundleDetail,
+        discountCombination: e,
+      },
+    });
+  };
   const handleDisplayOptions = (e) => {
     if (e.target.checked) {
       if (e.target.name == "productPages") {
@@ -571,6 +582,10 @@ const CollectionMixMatch = () => {
               handleDiscountValue={handleDiscountValue}
               errorArray={errorArray}
               currency={currencyCode}
+            />
+            <DiscountCombination
+              discountCombination={data.bundleDetail.discountCombination}
+              handleDiscountCombination={handleDiscountCombination}
             />
 
             <DeleteSave handleSave={handleSave} />

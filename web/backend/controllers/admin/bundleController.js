@@ -3,10 +3,10 @@ import shopInfoModel from "../../models/shopInfoSchema.js";
 const MAX_RETRIES = 3;
 let retries = 0;
 
-export async function createRule(req,res){
+export async function createRule(req, res) {
   const type = req.body.type;
-  if(type != "bxgy"){
-    try{
+  if (type != "bxgy") {
+    try {
       const shop = req.body.shop;
       const title = req.body.discount_name;
       const code = req.body.code;
@@ -14,23 +14,26 @@ export async function createRule(req,res){
       const variantsId = req.body.variantsId;
       const startDate = req.body.startDate;
       const endDate = req.body.endDate;
-      const bundleType = req.body.bundleType
-      const totalPrice = req.body.totalPrice
-      const discountId = req.body.discountCreateId
-      const quantityItem = variantsId.length
-      const shopInfo = await shopInfoModel.findOne({shop})
-      const client = new shopify.api.clients.Graphql({ session:  {
-        shop:shop,
-        accessToken:shopInfo.accessToken
-      }});
+      const bundleType = req.body.bundleType;
+      const totalPrice = req.body.totalPrice;
+      const discountId = req.body.discountCreateId;
+      const discountCombination = req.body.discountCombination;
+      const quantityItem = variantsId.length;
+      const shopInfo = await shopInfoModel.findOne({ shop });
+      const client = new shopify.api.clients.Graphql({
+        session: {
+          shop: shop,
+          accessToken: shopInfo.accessToken,
+        },
+      });
       const uniqueSet = new Set(variantsId);
       const mergedArray = Array.from(uniqueSet);
-      let productVariantsId = []
+      let productVariantsId = [];
       // console.log("create rule check id***********************",code,"***********************",type);
-        // console.log("type != bxgy");
-          if(discountId.length > 0){ 
-            // console.log("discount id is greater than zero",discountId);
-          let getDiscountquery =`query {
+      console.log("type != bxgy", type);
+      if (discountId.length > 0) {
+        // console.log("discount id is greater than zero",discountId);
+        let getDiscountquery = `query {
             codeDiscountNode(id:"${discountId}") {
               id
               codeDiscount {
@@ -52,35 +55,42 @@ export async function createRule(req,res){
                 }
               }
             }
-          }`
-          
-          const response = await client.request(getDiscountquery);
-  
-          if(response.data.codeDiscountNode == null){
-            // console.log("discount id is null");
-  
-            if(bundleType == "freeShipping"){
-              // console.log("discount id is null than create freeshipping");
-              let freeShippingCodeDiscount ={
-                  // "startsAt": startDate,
-              
-                  "appliesOncePerCustomer": false,
-                  "title": code,
-                  "code": code,
-                  "minimumRequirement": {
-                    "subtotal": {
-                      "greaterThanOrEqualToSubtotal": totalPrice
-                    }
-                  },
-                  "customerSelection": {
-                    "all": true
-                  },
-                  "destination": {
-                    "all": true
-                  }
-              }
-  
-              let queryString =`mutation discountCodeFreeShippingCreate($freeShippingCodeDiscount: DiscountCodeFreeShippingInput!) {
+          }`;
+
+        const response = await client.request(getDiscountquery);
+
+        if (response.data.codeDiscountNode == null) {
+          // console.log("discount id is null");
+
+          if (bundleType == "freeShipping") {
+            // console.log("discount id is null than create freeshipping");
+            let freeShippingCodeDiscount = {
+              // "startsAt": startDate,
+
+              appliesOncePerCustomer: false,
+              title: code,
+              code: code,
+              minimumRequirement: {
+                subtotal: {
+                  greaterThanOrEqualToSubtotal: totalPrice,
+                },
+              },
+              customerSelection: {
+                all: true,
+              },
+              destination: {
+                all: true,
+              },
+              combinesWith: {
+                orderDiscounts: discountCombination.includes("orderDiscounts"),
+                productDiscounts:
+                  discountCombination.includes("productDiscounts"),
+                shippingDiscounts:
+                  discountCombination.includes("shippingDiscounts"),
+              },
+            };
+
+            let queryString = `mutation discountCodeFreeShippingCreate($freeShippingCodeDiscount: DiscountCodeFreeShippingInput!) {
                 discountCodeFreeShippingCreate(
                   freeShippingCodeDiscount: $freeShippingCodeDiscount
                 ) {
@@ -125,56 +135,60 @@ export async function createRule(req,res){
                     message
                   }
                 }
-              }`
-  
-              const response = await client.request(queryString,{
-                  variables: {
-                    freeShippingCodeDiscount:freeShippingCodeDiscount
+              }`;
+
+            const response = await client.request(queryString, {
+              variables: {
+                freeShippingCodeDiscount: freeShippingCodeDiscount,
+              },
+            });
+            let bundleDiscountId =
+              response.data.discountCodeFreeShippingCreate.codeDiscountNode.id;
+            return res.status(200).json({
+              message: "SUCCESS!",
+              response: bundleDiscountId,
+              status: 200,
+            });
+          } else {
+            // console.log("discount id is null than create discountcode instead of freeshipping");
+            let basicCodeDiscount = {
+              appliesOncePerCustomer: false,
+              code: code,
+              customerGets: {
+                items: {
+                  products: {
+                    productVariantsToAdd: mergedArray,
                   },
-                
-              });
-              let bundleDiscountId = response.data.discountCodeFreeShippingCreate.codeDiscountNode.id
-              return  res.status(200).json({message:"SUCCESS!",response:bundleDiscountId,status:200})
-            }else{
-              // console.log("discount id is null than create discountcode instead of freeshipping");
-              let basicCodeDiscount ={
-               
-                  "appliesOncePerCustomer": false,
-                  "code":code,
-                  "combinesWith": {
-                    "productDiscounts": true,
-                    "shippingDiscounts": true
+                },
+                value: {
+                  discountAmount: {
+                    amount: discountValue,
+                    appliesOnEachItem: false,
                   },
-                  "customerGets": {
-                    "items": {
-                      "products": {
-                        "productVariantsToAdd": mergedArray
-                      }
-                    },
-                    "value": {
-                      "discountAmount": {
-                        "amount": discountValue,
-                        "appliesOnEachItem": false
-                      }
-                    }
-                  },
-                  "customerSelection": {
-                    "all": true
-                  },
-                  "minimumRequirement": {
-                    "quantity": {
-                      "greaterThanOrEqualToQuantity": quantityItem.toString()
-                    }
-                  },
-              
-                  // "startsAt": startDate,
-                  "title": code,
-                  "usageLimit": null
-                
-              }
-      
-      
-              let queryString =  `  mutation discountCodeBasicCreate($basicCodeDiscount: DiscountCodeBasicInput!) {
+                },
+              },
+              customerSelection: {
+                all: true,
+              },
+              minimumRequirement: {
+                quantity: {
+                  greaterThanOrEqualToQuantity: quantityItem.toString(),
+                },
+              },
+
+              // "startsAt": startDate,
+              title: code,
+              usageLimit: null,
+              combinesWith: {
+                orderDiscounts: discountCombination.includes("orderDiscounts"),
+                productDiscounts:
+                  discountCombination.includes("productDiscounts"),
+                shippingDiscounts:
+                  discountCombination.includes("shippingDiscounts"),
+              },
+            };
+
+            let queryString = `  mutation discountCodeBasicCreate($basicCodeDiscount: DiscountCodeBasicInput!) {
                 discountCodeBasicCreate(basicCodeDiscount: $basicCodeDiscount) {
                   codeDiscountNode {
                     id
@@ -216,41 +230,52 @@ export async function createRule(req,res){
                   }
                 }
               }`;
-      
-              const response = await client.request(queryString,{
-                  variables: {
-                    basicCodeDiscount:basicCodeDiscount 
+
+            const response = await client.request(queryString, {
+              variables: {
+                basicCodeDiscount: basicCodeDiscount,
+              },
+            });
+            let bundleDiscountId =
+              response.data.discountCodeBasicCreate.codeDiscountNode.id;
+            return res.status(200).json({
+              message: "SUCCESS!",
+              response: bundleDiscountId,
+              status: 200,
+            });
+          }
+        } else {
+          if (bundleType == "freeShipping") {
+            // console.log("discount id is not null than update  freeshipping");
+            let bundleDiscountId = response.data.codeDiscountNode.id;
+            let freeShippingCodeDiscount = {
+              // "startsAt": startDate,
+              appliesOncePerCustomer: false,
+              title: code,
+              code: code,
+              minimumRequirement: {
+                subtotal: {
+                  greaterThanOrEqualToSubtotal: totalPrice,
                 },
-              });
-              let bundleDiscountId = response.data.discountCodeBasicCreate.codeDiscountNode.id
-              return  res.status(200).json({message:"SUCCESS!",response:bundleDiscountId,status:200})
-            }
-          }else{
-            if(bundleType == "freeShipping"){
-              // console.log("discount id is not null than update  freeshipping");
-              let bundleDiscountId = response.data.codeDiscountNode.id
-              let freeShippingCodeDiscount=  {
-                  // "startsAt": startDate,
-                  "appliesOncePerCustomer": false,
-                  "title": code,
-                  "code": code,
-                  "minimumRequirement": {
-                    "subtotal": {
-                      "greaterThanOrEqualToSubtotal": totalPrice
-                    }
-                  },
-                  "customerSelection": {
-                    "all": true
-                  },
-                  "destination": {
-                    "all": true
-                  }
-                };
-                
-                let id= bundleDiscountId;
-              
-            
-              let queryString =`mutation discountCodeFreeShippingUpdate($freeShippingCodeDiscount: DiscountCodeFreeShippingInput!, $id: ID!) {
+              },
+              customerSelection: {
+                all: true,
+              },
+              destination: {
+                all: true,
+              },
+              combinesWith: {
+                orderDiscounts: discountCombination.includes("orderDiscounts"),
+                productDiscounts:
+                  discountCombination.includes("productDiscounts"),
+                shippingDiscounts:
+                  discountCombination.includes("shippingDiscounts"),
+              },
+            };
+
+            let id = bundleDiscountId;
+
+            let queryString = `mutation discountCodeFreeShippingUpdate($freeShippingCodeDiscount: DiscountCodeFreeShippingInput!, $id: ID!) {
                 discountCodeFreeShippingUpdate(freeShippingCodeDiscount: $freeShippingCodeDiscount, id: $id) {
                   codeDiscountNode {
                     id
@@ -281,65 +306,79 @@ export async function createRule(req,res){
                     message
                   }
                 }
-              }`
-              const update = await client.request(queryString,{
-                  variables: {
-                    freeShippingCodeDiscount:freeShippingCodeDiscount,
-                    id:id
+              }`;
+            const update = await client.request(queryString, {
+              variables: {
+                freeShippingCodeDiscount: freeShippingCodeDiscount,
+                id: id,
+              },
+            });
+            console.log("updateupdate", update.data);
+            let bundleShoppingDiscountId =
+              update.data.discountCodeFreeShippingUpdate.codeDiscountNode.id;
+            return res.status(200).json({
+              message: "SUCCESS!",
+              response: bundleShoppingDiscountId,
+              status: 200,
+            });
+          } else {
+            // console.log("discount id is not null than update discount code instead of freeshipping");
+            let getDiscountProductArr =
+              response.data.codeDiscountNode.codeDiscount.customerGets?.items
+                .productVariants.edges;
+            getDiscountProductArr?.forEach((e) => {
+              productVariantsId.push(e.node.id);
+            });
+
+            const filteredArray = productVariantsId.filter(
+              (element) => !mergedArray.includes(element)
+            );
+            let bundleDiscountId = response.data.codeDiscountNode.id;
+
+            let basicCodeDiscount = {
+              appliesOncePerCustomer: false,
+              code: code,
+              combinesWith: {
+                productDiscounts: true,
+                shippingDiscounts: true,
+              },
+              customerGets: {
+                items: {
+                  products: {
+                    productVariantsToRemove: filteredArray,
+                    productVariantsToAdd: mergedArray,
+                  },
                 },
-              });
-              console.log("updateupdate",update.data);
-              let bundleShoppingDiscountId = update.data.discountCodeFreeShippingUpdate.codeDiscountNode.id
-              return  res.status(200).json({message:"SUCCESS!",response:bundleShoppingDiscountId,status:200})
-            }else{
-              // console.log("discount id is not null than update discount code instead of freeshipping");
-              let getDiscountProductArr = response.data.codeDiscountNode.codeDiscount.customerGets?.items.productVariants.edges ;
-              getDiscountProductArr?.forEach((e)=>{
-                productVariantsId.push(e.node.id)
-              })
-  
-              const filteredArray = productVariantsId.filter((element) => !mergedArray.includes(element));
-              let bundleDiscountId = response.data.codeDiscountNode.id
-              
-  
-              let basicCodeDiscount ={  
-                  "appliesOncePerCustomer": false,
-                  "code": code,
-                  "combinesWith": {
-                    "productDiscounts": true,
-                    "shippingDiscounts": true
+                value: {
+                  discountAmount: {
+                    amount: discountValue,
+                    appliesOnEachItem: false,
                   },
-                  "customerGets": {
-                    "items": {
-                      "products": {
-                        "productVariantsToRemove" : filteredArray,
-                        "productVariantsToAdd": mergedArray
-                      }
-                    },
-                    "value": {
-                      "discountAmount": {
-                        "amount": discountValue,
-                        "appliesOnEachItem": false
-                      }
-                    }
-                  },
-                  "customerSelection": {
-                    "all": true
-                  },
-                  "minimumRequirement": {
-                    "quantity": {
-                      "greaterThanOrEqualToQuantity": quantityItem.toString()
-                    }
-                  },
-                
-                  // "startsAt": startDate,
-                  "title": code,
-                  "usageLimit": null
-                };
-               let id= bundleDiscountId;
-              
-  
-              let queryString =   `mutation discountCodeBasicUpdate($id: ID!, $basicCodeDiscount: DiscountCodeBasicInput!) {
+                },
+              },
+              customerSelection: {
+                all: true,
+              },
+              minimumRequirement: {
+                quantity: {
+                  greaterThanOrEqualToQuantity: quantityItem.toString(),
+                },
+              },
+
+              // "startsAt": startDate,
+              title: code,
+              usageLimit: null,
+              combinesWith: {
+                orderDiscounts: discountCombination.includes("orderDiscounts"),
+                productDiscounts:
+                  discountCombination.includes("productDiscounts"),
+                shippingDiscounts:
+                  discountCombination.includes("shippingDiscounts"),
+              },
+            };
+            let id = bundleDiscountId;
+
+            let queryString = `mutation discountCodeBasicUpdate($id: ID!, $basicCodeDiscount: DiscountCodeBasicInput!) {
                 discountCodeBasicUpdate(id: $id, basicCodeDiscount: $basicCodeDiscount) {
                   codeDiscountNode {
                     codeDiscount {
@@ -379,39 +418,51 @@ export async function createRule(req,res){
                     message
                   }
                 }
-              }`
-              const update = await client.request(queryString,{
-                  variables: {
-                    basicCodeDiscount:basicCodeDiscount,
-                    id:id
-                },
-              });
-              console.log("update",update.data)
-              return res.status(200).json({message:"SUCCESS!",response:bundleDiscountId,status:200,update:update})
-            }
+              }`;
+            const update = await client.request(queryString, {
+              variables: {
+                basicCodeDiscount: basicCodeDiscount,
+                id: id,
+              },
+            });
+            console.log("update", update.data);
+            return res.status(200).json({
+              message: "SUCCESS!",
+              response: bundleDiscountId,
+              status: 200,
+              update: update,
+            });
           }
-        }else{
-          if(bundleType == "freeShipping"){
-            console.log("discount id is found than create freeshipping");
-            let freeShippingCodeDiscount ={
-                "startsAt": "2022-06-22T21:12:07.000Z",
-                "appliesOncePerCustomer": false,
-                "title": code,
-                "code": code,
-                "minimumRequirement": {
-                  "subtotal": {
-                    "greaterThanOrEqualToSubtotal": totalPrice
-                  }
-                },
-                "customerSelection": {
-                  "all": true
-                },
-                "destination": {
-                  "all": true
-                }
-            }
-  
-            let queryString =`mutation discountCodeFreeShippingCreate($freeShippingCodeDiscount: DiscountCodeFreeShippingInput!) {
+        }
+      } else {
+        if (bundleType == "freeShipping") {
+          console.log("discount id is found than create freeshipping");
+          let freeShippingCodeDiscount = {
+            startsAt: "2022-06-22T21:12:07.000Z",
+            appliesOncePerCustomer: false,
+            title: code,
+            code: code,
+            minimumRequirement: {
+              subtotal: {
+                greaterThanOrEqualToSubtotal: totalPrice,
+              },
+            },
+            customerSelection: {
+              all: true,
+            },
+            destination: {
+              all: true,
+            },
+            combinesWith: {
+              orderDiscounts: discountCombination.includes("orderDiscounts"),
+              productDiscounts:
+                discountCombination.includes("productDiscounts"),
+              shippingDiscounts:
+                discountCombination.includes("shippingDiscounts"),
+            },
+          };
+
+          let queryString = `mutation discountCodeFreeShippingCreate($freeShippingCodeDiscount: DiscountCodeFreeShippingInput!) {
               discountCodeFreeShippingCreate(
                 freeShippingCodeDiscount: $freeShippingCodeDiscount
               ){
@@ -456,56 +507,65 @@ export async function createRule(req,res){
                   message
                 }
               }
-            }`
-  
-            const response = await client.request(queryString,{
-                variables: {
-                  freeShippingCodeDiscount:freeShippingCodeDiscount
+            }`;
+
+          const response = await client.request(queryString, {
+            variables: {
+              freeShippingCodeDiscount: freeShippingCodeDiscount,
+            },
+          });
+
+          let bundleDiscountId =
+            response.data.discountCodeFreeShippingCreate.codeDiscountNode.id;
+          return res.status(200).json({
+            message: "SUCCESS!",
+            response: bundleDiscountId,
+            status: 200,
+          });
+        } else {
+          console.log(
+            "discount id is found than create discount code instead of freeshipping",
+            code
+          );
+
+          let basicCodeDiscount = {
+            appliesOncePerCustomer: false,
+            code: code,
+            customerGets: {
+              items: {
+                products: {
+                  productVariantsToAdd: mergedArray,
+                },
               },
-            });
-  
-            let bundleDiscountId = response.data.discountCodeFreeShippingCreate.codeDiscountNode.id
-            return  res.status(200).json({message:"SUCCESS!",response:bundleDiscountId,status:200})
-  
-          }else{
-            console.log("discount id is found than create discount code instead of freeshipping",code);
-            
-  
-            let basicCodeDiscount ={
-                "appliesOncePerCustomer": false,
-                "code":code,
-                "combinesWith": {
-                  "productDiscounts": true,
-                  "shippingDiscounts": true
+              value: {
+                discountAmount: {
+                  amount: discountValue,
+                  appliesOnEachItem: false,
                 },
-                "customerGets": {
-                  "items": {
-                    "products": {
-                      "productVariantsToAdd": mergedArray
-                    }
-                  },
-                  "value": {
-                    "discountAmount": {
-                      "amount": discountValue,
-                      "appliesOnEachItem": false
-                    }
-                  }
-                },
-                "customerSelection": {
-                  "all": true
-                },
-                "minimumRequirement": {
-                  "quantity": {
-                    "greaterThanOrEqualToQuantity": quantityItem.toString()
-                  }
-                },
-            
-                "startsAt": startDate,
-                "title": code,
-                "usageLimit": null
-            }
-      
-            let queryString =  `  mutation 
+              },
+            },
+            customerSelection: {
+              all: true,
+            },
+            minimumRequirement: {
+              quantity: {
+                greaterThanOrEqualToQuantity: quantityItem.toString(),
+              },
+            },
+
+            startsAt: startDate,
+            title: code,
+            usageLimit: null,
+            combinesWith: {
+              orderDiscounts: discountCombination.includes("orderDiscounts"),
+              productDiscounts:
+                discountCombination.includes("productDiscounts"),
+              shippingDiscounts:
+                discountCombination.includes("shippingDiscounts"),
+            },
+          };
+
+          let queryString = `  mutation 
             ($basicCodeDiscount: DiscountCodeBasicInput!) {
               discountCodeBasicCreate(basicCodeDiscount: $basicCodeDiscount) {
                 codeDiscountNode {
@@ -548,53 +608,57 @@ export async function createRule(req,res){
                 }
               }
             }`;
-      
-            const response = await client.request(queryString,{
-                variables: {
-                  basicCodeDiscount:basicCodeDiscount
-                },
-              
-            });
-            // console.log("responseresponseresponseresponse",response.data.discountCodeBasicCreate.userErrors);
-            let bundleDiscountId = response.data.discountCodeBasicCreate.codeDiscountNode.id
-            return  res.status(200).json({message:"SUCCESS!",response:bundleDiscountId,status:200})
-          }
-        }  
-    
-    }catch(error){
+
+          const response = await client.request(queryString, {
+            variables: {
+              basicCodeDiscount: basicCodeDiscount,
+            },
+          });
+          // console.log("responseresponseresponseresponse",response.data.discountCodeBasicCreate.userErrors);
+          let bundleDiscountId =
+            response.data.discountCodeBasicCreate.codeDiscountNode.id;
+          return res.status(200).json({
+            message: "SUCCESS!",
+            response: bundleDiscountId,
+            status: 200,
+          });
+        }
+      }
+    } catch (error) {
       console.error(`Error:::::::::::::::::::>>>>>>>>>>>>>: ${error.message}`);
-      if (error.code === 'ETIMEDOUT' && retries < MAX_RETRIES)  {
-          // console.log(`Operation timed out, retrying... (attempt ${retries + 1} of ${MAX_RETRIES})`);
-          retries++;
-          await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for 1 second before retrying
-          return myOperation(); // Retry the operation
-      
-      }else{
+      if (error.code === "ETIMEDOUT" && retries < MAX_RETRIES) {
+        // console.log(`Operation timed out, retrying... (attempt ${retries + 1} of ${MAX_RETRIES})`);
+        retries++;
+        await new Promise((resolve) => setTimeout(resolve, 1000)); // Wait for 1 second before retrying
+        return myOperation(); // Retry the operation
+      } else {
         // Gracefully terminate the application
         // console.log('Fatal error occurred, terminating application.');
         process.exit(1);
       }
     }
-  }else{
+  } else {
     // console.log("type === bxgy");
-    bxgyDiscountCodeCreate(req,res);
+    bxgyDiscountCodeCreate(req, res);
   }
 }
 
-export async function deactivateRule (req,res){
-  try{
-    const {shop,discountId,bundle_type} = req.body
-    const shopInfo = await shopInfoModel.findOne({shop:shop})
+export async function deactivateRule(req, res) {
+  try {
+    const { shop, discountId, bundle_type } = req.body;
+    const shopInfo = await shopInfoModel.findOne({ shop: shop });
 
-    const client = new shopify.api.clients.Graphql({ session:  {
-      shop:shop,
-      accessToken:shopInfo.accessToken
-    }});
+    const client = new shopify.api.clients.Graphql({
+      session: {
+        shop: shop,
+        accessToken: shopInfo.accessToken,
+      },
+    });
 
-    let id=discountId;
-      
-      // console.log(bundle_type,"check deactivate discount id................................................",req);
-    if(bundle_type != "bxgy"){
+    let id = discountId;
+
+    // console.log(bundle_type,"check deactivate discount id................................................",req);
+    if (bundle_type != "bxgy") {
       let queryString = `mutation discountCodeDeactivate($id: ID!) {
         discountCodeDeactivate(id: $id) {
           codeDiscountNode {
@@ -613,16 +677,15 @@ export async function deactivateRule (req,res){
             message
           }
         }
-      }`
+      }`;
 
-      const response = await client.request(queryString,{
-          variables: {
-            id:id
-          },
+      const response = await client.request(queryString, {
+        variables: {
+          id: id,
+        },
       });
-      return  res.status(200).json({message:"SUCCESS!",response:response})
-
-    }else{
+      return res.status(200).json({ message: "SUCCESS!", response: response });
+    } else {
       let queryString = `mutation discountCodeDeactivate($id: ID!) {
         discountCodeDeactivate(id: $id) {
           codeDiscountNode {
@@ -642,24 +705,21 @@ export async function deactivateRule (req,res){
             message
           }
         }
-      }`
+      }`;
 
-      const response = await client.request(queryString,{
-          variables: {
-            id:id
-
+      const response = await client.request(queryString, {
+        variables: {
+          id: id,
         },
       });
-      return  res.status(200).json({message:"SUCCESS!",response:response})
-
+      return res.status(200).json({ message: "SUCCESS!", response: response });
     }
-  }
-  catch(error){
+  } catch (error) {
     console.error(`Error: ${error.message}`);
-    if (error.code === 'ETIMEDOUT' && retries < MAX_RETRIES)  {
+    if (error.code === "ETIMEDOUT" && retries < MAX_RETRIES) {
       // console.log(`Operation timed out, retrying... (attempt ${retries + 1} of ${MAX_RETRIES})`);
       retries++;
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for 1 second before retrying
+      await new Promise((resolve) => setTimeout(resolve, 1000)); // Wait for 1 second before retrying
       return myOperation(); // Retry the operation
     } else {
       // Gracefully terminate the application
@@ -669,19 +729,21 @@ export async function deactivateRule (req,res){
   }
 }
 
-export async function activateRule (req,res){
-  try{
-    const {shop,discountId,bundle_type} = req.body
-    const shopInfo = await shopInfoModel.findOne({shop:shop})
-    
+export async function activateRule(req, res) {
+  try {
+    const { shop, discountId, bundle_type } = req.body;
+    const shopInfo = await shopInfoModel.findOne({ shop: shop });
+
     // console.log("not working in bxgy------------------------->",req.body);
-    const client = new shopify.api.clients.Graphql({ session:  {
-      shop:shop,
-      accessToken:shopInfo.accessToken
-    }});
+    const client = new shopify.api.clients.Graphql({
+      session: {
+        shop: shop,
+        accessToken: shopInfo.accessToken,
+      },
+    });
     // console.log("activateRulediscount id: ",req.body);
-    let id =discountId;
-    if(bundle_type != "bxgy"){
+    let id = discountId;
+    if (bundle_type != "bxgy") {
       // console.log("Not.......... match with bundle type bxgy");
       let queryString = `mutation discountCodeActivate($id: ID!) {
         discountCodeActivate(id: $id) {
@@ -701,14 +763,14 @@ export async function activateRule (req,res){
             message
           }
         }
-      }`
-      const response = await client.request(queryString,{
-          variables: {
-            id:id
+      }`;
+      const response = await client.request(queryString, {
+        variables: {
+          id: id,
         },
       });
-      return  res.status(200).json({message:"SUCCESS!",response:response})
-    }else{
+      return res.status(200).json({ message: "SUCCESS!", response: response });
+    } else {
       // console.log("Yes............. match with bundle type bxgy");
       let queryString = `mutation discountCodeActivate($id: ID!) {
         discountCodeActivate(id: $id) {
@@ -728,23 +790,24 @@ export async function activateRule (req,res){
             message
           }
         }
-      }`
+      }`;
 
-      const response = await client.request(queryString,{
-          variables: {
-            id:id,
+      const response = await client.request(queryString, {
+        variables: {
+          id: id,
         },
       });
 
-      return  res.status(200).json({message:"SUCCESS!",response:response})
+      return res.status(200).json({ message: "SUCCESS!", response: response });
     }
-  }
-  catch(error){
-    console.error(`Error::::::::::::::::::::::::::::::::::::::::::: ${error.message}`);
-    if (error.code === 'ETIMEDOUT' && retries < MAX_RETRIES)  {
+  } catch (error) {
+    console.error(
+      `Error::::::::::::::::::::::::::::::::::::::::::: ${error.message}`
+    );
+    if (error.code === "ETIMEDOUT" && retries < MAX_RETRIES) {
       // console.log(`Operation timed out, retrying... (attempt ${retries + 1} of ${MAX_RETRIES})`);
       retries++;
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for 1 second before retrying
+      await new Promise((resolve) => setTimeout(resolve, 1000)); // Wait for 1 second before retrying
       return myOperation(); // Retry the operation
     } else {
       // Gracefully terminate the application
@@ -754,8 +817,8 @@ export async function activateRule (req,res){
   }
 }
 
-async function bxgyDiscountCodeCreate(req,res){
-  try{
+async function bxgyDiscountCodeCreate(req, res) {
+  try {
     // console.log("check req.body.shop",req.body);
     const shop = req.body.shop;
     const title = req.body.discount_name;
@@ -765,26 +828,28 @@ async function bxgyDiscountCodeCreate(req,res){
     const YvariantsId = req.body.YvariantsId;
     const startDate = req.body.startDate;
     const endDate = req.body.endDate;
-    const bundleType = req.body.bundleType
-    const totalPrice = req.body.totalPrice
-    const discountId = req.body.discountCreateId
-    const XquantityItem = req.body.XvariantsId.length
-    const YquantityItem = req.body.YvariantsId.length
-    const shopInfo = await shopInfoModel.findOne({shop})
-    const client = new shopify.api.clients.Graphql({ session:  {
-      shop:shop,
-      accessToken:shopInfo.accessToken
-    }});
+    const bundleType = req.body.bundleType;
+    const totalPrice = req.body.totalPrice;
+    const discountId = req.body.discountCreateId;
+    const XquantityItem = req.body.XvariantsId.length;
+    const YquantityItem = req.body.YvariantsId.length;
+    const shopInfo = await shopInfoModel.findOne({ shop });
+    const client = new shopify.api.clients.Graphql({
+      session: {
+        shop: shop,
+        accessToken: shopInfo.accessToken,
+      },
+    });
     const XuniqueSet = new Set(XvariantsId);
     const XmergedArray = Array.from(XuniqueSet);
     const YuniqueSet = new Set(YvariantsId);
     const YmergedArray = Array.from(YuniqueSet);
-    let productVariantsId = []
+    let productVariantsId = [];
     // console.log(discountId,"bxgyDiscountCodeCreate response.........................................>",XquantityItem);
-    
-    if(discountId.length>0){
+
+    if (discountId.length > 0) {
       // console.log("enterrrrrrrr------");
-      let getDiscountquery =`query {
+      let getDiscountquery = `query {
         codeDiscountNode(id:"${discountId}") {
           id
           codeDiscount {
@@ -806,48 +871,59 @@ async function bxgyDiscountCodeCreate(req,res){
             }
           }
         }
-      }`
-      
+      }`;
+
       const response = await client.request(getDiscountquery);
-      console.log("check out this id }}}}------------>",response.data.codeDiscountNode);
-      if(response.data.codeDiscountNode == null){
-        console.log("-------------------------------------------------------------------------in null");
+      console.log(
+        "check out this id }}}}------------>",
+        response.data.codeDiscountNode
+      );
+      if (response.data.codeDiscountNode == null) {
+        console.log(
+          "-------------------------------------------------------------------------in null"
+        );
         let bxgyCodeDiscount = {
-            "code": code,
-            "customerBuys": {
-              "items": {
-                "products": {
-                  "productVariantsToAdd": XmergedArray
-                }
+          code: code,
+          customerBuys: {
+            items: {
+              products: {
+                productVariantsToAdd: XmergedArray,
               },
-              "value": {
-                "quantity": `${XquantityItem}`
-              }
             },
-            "customerGets": {
-              "items": {
-                "products": {
-                  "productVariantsToAdd": YmergedArray
-                }
+            value: {
+              quantity: `${XquantityItem}`,
+            },
+          },
+          customerGets: {
+            items: {
+              products: {
+                productVariantsToAdd: YmergedArray,
               },
-              "value": {
-                "discountOnQuantity": {
-                  "effect": {
-                    "amount": discountValue
-                  },
-                  "quantity": `${YquantityItem}`
-                }
-              }
             },
-            "customerSelection": {
-              "all": true
+            value: {
+              discountOnQuantity: {
+                effect: {
+                  amount: discountValue,
+                },
+                quantity: `${YquantityItem}`,
+              },
             },
-            "endsAt": "2024-09-21T00:00:00Z",
-            "startsAt": "2023-06-21T00:00:00Z",
-            "title": code,
-            "usesPerOrderLimit": 3
+          },
+          customerSelection: {
+            all: true,
+          },
+          endsAt: "2024-09-21T00:00:00Z",
+          startsAt: "2023-06-21T00:00:00Z",
+          title: code,
+          usesPerOrderLimit: 3,
+          combinesWith: {
+            orderDiscounts: discountCombination.includes("orderDiscounts"),
+            productDiscounts: discountCombination.includes("productDiscounts"),
+            shippingDiscounts:
+              discountCombination.includes("shippingDiscounts"),
+          },
         };
-      
+
         let queryString = `mutation discountCodeBxgyCreate($bxgyCodeDiscount: DiscountCodeBxgyInput!) {
           discountCodeBxgyCreate(bxgyCodeDiscount: $bxgyCodeDiscount) {
             codeDiscountNode {
@@ -927,56 +1003,66 @@ async function bxgyDiscountCodeCreate(req,res){
               message
             }
           }
-        }`
-    
-        const response = await client.request(queryString,{
-            variables: {
-              bxgyCodeDiscount:bxgyCodeDiscount,
-            },
+        }`;
+
+        const response = await client.request(queryString, {
+          variables: {
+            bxgyCodeDiscount: bxgyCodeDiscount,
+          },
         });
         // console.log("check response in bxgy code creation",response);
-        let bundleDiscountId = response.data.discountCodeBxgyCreate.codeDiscountNode.id;
-        return  res.status(200).json({message:"SUCCESS!",response:bundleDiscountId,status:200})
-      }else{
-        let id= response?.data?.codeDiscountNode?.id;
-          let bxgyCodeDiscount = {
-            "code": code,
-            "customerBuys": {
-              "items": {
-                "products": {
-                  "productVariantsToAdd": XmergedArray
-                }
+        let bundleDiscountId =
+          response.data.discountCodeBxgyCreate.codeDiscountNode.id;
+        return res.status(200).json({
+          message: "SUCCESS!",
+          response: bundleDiscountId,
+          status: 200,
+        });
+      } else {
+        let id = response?.data?.codeDiscountNode?.id;
+        let bxgyCodeDiscount = {
+          code: code,
+          customerBuys: {
+            items: {
+              products: {
+                productVariantsToAdd: XmergedArray,
               },
-              "value": {
-                "quantity": `${XquantityItem}`
-              }
             },
-            "customerGets": {
-              "items": {
-                "products": {
-                  "productVariantsToAdd": YmergedArray
-                }
+            value: {
+              quantity: `${XquantityItem}`,
+            },
+          },
+          customerGets: {
+            items: {
+              products: {
+                productVariantsToAdd: YmergedArray,
               },
-              "value": {
-                "discountOnQuantity": {
-                  "effect": {
-                    "amount": discountValue
-                    },
-                 
-                  "quantity": `${YquantityItem}`
-                }
-              }
             },
-            "customerSelection": {
-              "all": true
+            value: {
+              discountOnQuantity: {
+                effect: {
+                  amount: discountValue,
+                },
+
+                quantity: `${YquantityItem}`,
+              },
             },
-            "endsAt": "2024-09-21T00:00:00Z",
-            "startsAt": "2023-06-21T00:00:00Z",
-            "title": code,
-            "usesPerOrderLimit": 3
-          }
-        
-        
+          },
+          customerSelection: {
+            all: true,
+          },
+          endsAt: "2024-09-21T00:00:00Z",
+          startsAt: "2023-06-21T00:00:00Z",
+          title: code,
+          usesPerOrderLimit: 3,
+          combinesWith: {
+            orderDiscounts: discountCombination.includes("orderDiscounts"),
+            productDiscounts: discountCombination.includes("productDiscounts"),
+            shippingDiscounts:
+              discountCombination.includes("shippingDiscounts"),
+          },
+        };
+
         let queryString = `mutation discountCodeBxgyUpdate($id: ID!, $bxgyCodeDiscount: DiscountCodeBxgyInput!) {
           discountCodeBxgyUpdate(id: $id, bxgyCodeDiscount: $bxgyCodeDiscount) {
             codeDiscountNode {
@@ -1058,57 +1144,68 @@ async function bxgyDiscountCodeCreate(req,res){
               message
             }
           }
-        }`
-        const update = await client.request(queryString,{
-            variables: {
-              bxgyCodeDiscount:bxgyCodeDiscount,
-              id:id,  
+        }`;
+        const update = await client.request(queryString, {
+          variables: {
+            bxgyCodeDiscount: bxgyCodeDiscount,
+            id: id,
           },
         });
         // console.log("check response in bxgy code creation",update.data.discountCodeBxgyUpdate.codeDiscountNode.id);
-        let bundleDiscountId = update.data.discountCodeBxgyUpdate.codeDiscountNode.id;
-        return res.status(200).json({message:"Update!",response:bundleDiscountId,status:200})
+        let bundleDiscountId =
+          update.data.discountCodeBxgyUpdate.codeDiscountNode.id;
+        return res.status(200).json({
+          message: "Update!",
+          response: bundleDiscountId,
+          status: 200,
+        });
       }
-    }else{
+    } else {
       console.log("enterrrrrrrr------jjjjjjjjjjjjjj");
       let Input = {
-        "bxgyCodeDiscount": {
-          "code": code,
-          "customerBuys": {
-            "items": {
-              "products": {
-                "productVariantsToAdd": XmergedArray
-              }
+        bxgyCodeDiscount: {
+          code: code,
+          customerBuys: {
+            items: {
+              products: {
+                productVariantsToAdd: XmergedArray,
+              },
             },
-            "value": {
-              "quantity": `${XquantityItem}`
-            }
+            value: {
+              quantity: `${XquantityItem}`,
+            },
           },
-          "customerGets": {
-            "items": {
-              "products": {
-                "productVariantsToAdd": YmergedArray
-              }
+          customerGets: {
+            items: {
+              products: {
+                productVariantsToAdd: YmergedArray,
+              },
             },
-            "value": {
-              "discountOnQuantity": {
-                "effect": {
-                  "amount": discountValue
+            value: {
+              discountOnQuantity: {
+                effect: {
+                  amount: discountValue,
                 },
-                "quantity": `${YquantityItem}`
-              }
-            }
+                quantity: `${YquantityItem}`,
+              },
+            },
           },
-          "customerSelection": {
-            "all": true
+          customerSelection: {
+            all: true,
           },
-          "endsAt": "2024-09-21T00:00:00Z",
-          "startsAt": "2023-06-21T00:00:00Z",
-          "title": code,
-          "usesPerOrderLimit": 3
-        }
+          endsAt: "2024-09-21T00:00:00Z",
+          startsAt: "2023-06-21T00:00:00Z",
+          title: code,
+          usesPerOrderLimit: 3,
+          combinesWith: {
+            orderDiscounts: discountCombination.includes("orderDiscounts"),
+            productDiscounts: discountCombination.includes("productDiscounts"),
+            shippingDiscounts:
+              discountCombination.includes("shippingDiscounts"),
+          },
+        },
       };
-    
+
       let queryString = `mutation discountCodeBxgyCreate($bxgyCodeDiscount: DiscountCodeBxgyInput!) {
         discountCodeBxgyCreate(bxgyCodeDiscount: $bxgyCodeDiscount) {
           codeDiscountNode {
@@ -1188,22 +1285,23 @@ async function bxgyDiscountCodeCreate(req,res){
             message
           }
         }
-      }`
+      }`;
 
-      const response = await client.request(queryString,{
-      
-          variables: Input,
-        
+      const response = await client.request(queryString, {
+        variables: Input,
       });
       // console.log("check response in bxgy code creation",response.data,response.data.discountCodeBxgyCreate.userErrors);
-      let bundleDiscountId = response.data.discountCodeBxgyCreate.codeDiscountNode.id;
-      return res.status(200).json({message:"SUCCESS!",response:bundleDiscountId,status:200})
+      let bundleDiscountId =
+        response.data.discountCodeBxgyCreate.codeDiscountNode.id;
+      return res
+        .status(200)
+        .json({ message: "SUCCESS!", response: bundleDiscountId, status: 200 });
     }
-  }catch(err){
-    console.log(".*.*.*.*.*.*.*.*.*.*.*.*.*.*==>",err);
+  } catch (err) {
+    console.log(".*.*.*.*.*.*.*.*.*.*.*.*.*.*==>", err);
     res.status(500).send({
-      message:"Internal Server Error",
-      status:500
-    })
+      message: "Internal Server Error",
+      status: 500,
+    });
   }
 }

@@ -22,6 +22,7 @@ import postApi from "../../components/postApi";
 import { useNavigate, useParams } from "react-router-dom";
 import toastNotification from "../../components/commonSections/Toast";
 import VolumeBundlePreview from "../../components/bundles preview/volumeBundlePreview";
+import DiscountCombination from "../../components/commonSections/discountCombination";
 const VolumeBundle = () => {
   const navigate = useNavigate();
   const app = useAppBridge();
@@ -73,6 +74,7 @@ const VolumeBundle = () => {
           description: "Buy 2 & Save {discount}",
         },
       ],
+      discountCombination: [],
       allowDiscountOnIncrease: false,
       display: {
         productPages: false,
@@ -483,7 +485,16 @@ const VolumeBundle = () => {
       }
     }
   };
-
+  const handleDiscountCombination = (e) => {
+  
+    setData({
+      ...data,
+      bundleDetail: {
+        ...data.bundleDetail,
+        discountCombination: e,
+      },
+    });
+  };
   const handleDiscountDescription = (e, index) => {
     let update = { ...data };
     update.bundleDetail.discountOptions[index].description = e.target.value;
@@ -1177,6 +1188,10 @@ const VolumeBundle = () => {
             </div>
             <General data={data} setData={setData} errorArray={errorArray} />
             {/* <DateTime data={data} setData={setData} errorArray={errorArray} /> */}
+              <DiscountCombination
+              discountCombination={data.bundleDetail.discountCombination}
+              handleDiscountCombination={handleDiscountCombination}
+            />
             <DeleteSave handleSave={handleSave} />
           </div>
           <div className="sd-bundle-productBundle-rightSection Polaris-Layout__Section Polaris-Layout__Section--secondary">
