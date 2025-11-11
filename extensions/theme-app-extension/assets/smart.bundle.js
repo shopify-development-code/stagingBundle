@@ -794,7 +794,7 @@ function createBundle(BUNDLE_DATA) {
                         bundleType: el.bundleDetail.discountType,
                         totalPrice: total.toFixed(2),
                         discountCreateId: discountCodeId,
-                        discountCombination: el.bundleDetail.discountCombination,
+                        discountCombination: el.bundleDetail?.discountCombination,
                       };
 
                       fetch(server + "/api/storefront/createRule", {

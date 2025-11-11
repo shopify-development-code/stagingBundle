@@ -17,7 +17,7 @@ export async function createRule(req, res) {
       const bundleType = req.body.bundleType;
       const totalPrice = req.body.totalPrice;
       const discountId = req.body.discountCreateId;
-      const discountCombination = req.body.discountCombination;
+      const discountCombination = req.body?.discountCombination;
       const quantityItem = variantsId.length;
       const shopInfo = await shopInfoModel.findOne({ shop });
       const client = new shopify.api.clients.Graphql({
@@ -82,11 +82,11 @@ export async function createRule(req, res) {
                 all: true,
               },
               combinesWith: {
-                orderDiscounts: discountCombination.includes("orderDiscounts"),
+                orderDiscounts: discountCombination?.includes("orderDiscounts"),
                 productDiscounts:
-                  discountCombination.includes("productDiscounts"),
+                  discountCombination?.includes("productDiscounts"),
                 shippingDiscounts:
-                  discountCombination.includes("shippingDiscounts"),
+                  discountCombination?.includes("shippingDiscounts"),
               },
             };
 
@@ -180,11 +180,11 @@ export async function createRule(req, res) {
               title: code,
               usageLimit: null,
               combinesWith: {
-                orderDiscounts: discountCombination.includes("orderDiscounts"),
+                orderDiscounts: discountCombination?.includes("orderDiscounts"),
                 productDiscounts:
-                  discountCombination.includes("productDiscounts"),
+                  discountCombination?.includes("productDiscounts"),
                 shippingDiscounts:
-                  discountCombination.includes("shippingDiscounts"),
+                  discountCombination?.includes("shippingDiscounts"),
               },
             };
 
@@ -265,11 +265,11 @@ export async function createRule(req, res) {
                 all: true,
               },
               combinesWith: {
-                orderDiscounts: discountCombination.includes("orderDiscounts"),
+                orderDiscounts: discountCombination?.includes("orderDiscounts"),
                 productDiscounts:
-                  discountCombination.includes("productDiscounts"),
+                  discountCombination?.includes("productDiscounts"),
                 shippingDiscounts:
-                  discountCombination.includes("shippingDiscounts"),
+                  discountCombination?.includes("shippingDiscounts"),
               },
             };
 
@@ -365,11 +365,11 @@ export async function createRule(req, res) {
               title: code,
               usageLimit: null,
               combinesWith: {
-                orderDiscounts: discountCombination.includes("orderDiscounts"),
+                orderDiscounts: discountCombination?.includes("orderDiscounts"),
                 productDiscounts:
-                  discountCombination.includes("productDiscounts"),
+                  discountCombination?.includes("productDiscounts"),
                 shippingDiscounts:
-                  discountCombination.includes("shippingDiscounts"),
+                  discountCombination?.includes("shippingDiscounts"),
               },
             };
             let id = bundleDiscountId;
@@ -450,11 +450,11 @@ export async function createRule(req, res) {
               all: true,
             },
             combinesWith: {
-              orderDiscounts: discountCombination.includes("orderDiscounts"),
+              orderDiscounts: discountCombination?.includes("orderDiscounts"),
               productDiscounts:
-                discountCombination.includes("productDiscounts"),
+                discountCombination?.includes("productDiscounts"),
               shippingDiscounts:
-                discountCombination.includes("shippingDiscounts"),
+                discountCombination?.includes("shippingDiscounts"),
             },
           };
 
@@ -553,11 +553,11 @@ export async function createRule(req, res) {
             title: code,
             usageLimit: null,
             combinesWith: {
-              orderDiscounts: discountCombination.includes("orderDiscounts"),
+              orderDiscounts: discountCombination?.includes("orderDiscounts"),
               productDiscounts:
-                discountCombination.includes("productDiscounts"),
+                discountCombination?.includes("productDiscounts"),
               shippingDiscounts:
-                discountCombination.includes("shippingDiscounts"),
+                discountCombination?.includes("shippingDiscounts"),
             },
           };
 
@@ -913,10 +913,10 @@ async function bxgyDiscountCodeCreate(req, res) {
           title: code,
           usesPerOrderLimit: 3,
           combinesWith: {
-            orderDiscounts: discountCombination.includes("orderDiscounts"),
-            productDiscounts: discountCombination.includes("productDiscounts"),
+            orderDiscounts: discountCombination?.includes("orderDiscounts"),
+            productDiscounts: discountCombination?.includes("productDiscounts"),
             shippingDiscounts:
-              discountCombination.includes("shippingDiscounts"),
+              discountCombination?.includes("shippingDiscounts"),
           },
         };
 
@@ -1052,10 +1052,10 @@ async function bxgyDiscountCodeCreate(req, res) {
           title: code,
           usesPerOrderLimit: 3,
           combinesWith: {
-            orderDiscounts: discountCombination.includes("orderDiscounts"),
-            productDiscounts: discountCombination.includes("productDiscounts"),
+            orderDiscounts: discountCombination?.includes("orderDiscounts"),
+            productDiscounts: discountCombination?.includes("productDiscounts"),
             shippingDiscounts:
-              discountCombination.includes("shippingDiscounts"),
+              discountCombination?.includes("shippingDiscounts"),
           },
         };
 
@@ -1194,10 +1194,10 @@ async function bxgyDiscountCodeCreate(req, res) {
           title: code,
           usesPerOrderLimit: 3,
           combinesWith: {
-            orderDiscounts: discountCombination.includes("orderDiscounts"),
-            productDiscounts: discountCombination.includes("productDiscounts"),
+            orderDiscounts: discountCombination?.includes("orderDiscounts"),
+            productDiscounts: discountCombination?.includes("productDiscounts"),
             shippingDiscounts:
-              discountCombination.includes("shippingDiscounts"),
+              discountCombination?.includes("shippingDiscounts"),
           },
         },
       };
