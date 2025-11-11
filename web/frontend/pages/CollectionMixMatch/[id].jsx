@@ -584,7 +584,7 @@ const CollectionMixMatch = () => {
               currency={currencyCode}
             />
             <DiscountCombination
-              discountCombination={data.bundleDetail.discountCombination}
+              discountCombination={data.bundleDetail?.discountCombination??[]}
               handleDiscountCombination={handleDiscountCombination}
             />
 

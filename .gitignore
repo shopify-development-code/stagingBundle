@@ -26,6 +26,7 @@ dist/
 extensions/*/build
 
 # Node library SQLite database
+database.sqlite
 web/database.sqlite
 
 # TOML File

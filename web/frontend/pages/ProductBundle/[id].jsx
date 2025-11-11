@@ -641,7 +641,7 @@ function CreateBundle() {
             {/* <DateTime data={data} setData={setData} errorArray={errorArray} /> */}
 
             <DiscountCombination
-              discountCombination={data.bundleDetail.discountCombination}
+              discountCombination={data.bundleDetail?.discountCombination??[]}
               handleDiscountCombination={handleDiscountCombination}
             />
             <DeleteSave handleSave={handleSave} />

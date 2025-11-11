@@ -540,7 +540,7 @@ const BuyXgetY = () => {
               setData={setData}
             />
             <DiscountCombination
-              discountCombination={data.bundleDetail.discountCombination}
+              discountCombination={data.bundleDetail?.discountCombination??[]}
               handleDiscountCombination={handleDiscountCombination}
             />
             <General data={data} setData={setData} errorArray={errorArray} />

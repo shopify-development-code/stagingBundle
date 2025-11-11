@@ -454,7 +454,7 @@ const FrequentlyBoughtTogether = () => {
               currency={currencyCode}
             />
             <DiscountCombination
-              discountCombination={data.bundleDetail.discountCombination}
+              discountCombination={data.bundleDetail?.discountCombination??[]}
               handleDiscountCombination={handleDiscountCombination}
             />
           </div>
