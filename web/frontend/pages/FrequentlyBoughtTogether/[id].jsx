@@ -200,7 +200,6 @@ const FrequentlyBoughtTogether = () => {
     }
   };
   const handleDiscountCombination = (e) => {
-  
     setData({
       ...data,
       bundleDetail: {
@@ -454,7 +453,10 @@ const FrequentlyBoughtTogether = () => {
               handleDiscountValue={handleDiscountValue}
               currency={currencyCode}
             />
-         
+            <DiscountCombination
+              discountCombination={data.bundleDetail.discountCombination}
+              handleDiscountCombination={handleDiscountCombination}
+            />
           </div>
           <div className="sd-bundle-productBundle-rightSection Polaris-Layout__Section Polaris-Layout__Section--secondary">
             <BundleStatus data={data} setData={setData} />
@@ -469,10 +471,6 @@ const FrequentlyBoughtTogether = () => {
           </div>
         </div>
         <div className="sd-bundle-wrapper-common">
-        <DiscountCombination
-              discountCombination={data.bundleDetail.discountCombination}
-              handleDiscountCombination={handleDiscountCombination}
-            />
           <DeleteSave handleSave={handleSave} />
         </div>
       </div>

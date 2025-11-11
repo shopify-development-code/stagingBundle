@@ -1,8 +1,6 @@
-import React from "react";
 import { Checkbox } from "antd";
 
 const DiscountCombination = ({discountCombination,handleDiscountCombination}) => {
-    console.log(discountCombination);
   const options = [
     { value: "orderDiscounts", label: "Order Discounts" },
     { value: "productDiscounts", label: "Product Discounts" },
@@ -30,9 +28,9 @@ const DiscountCombination = ({discountCombination,handleDiscountCombination}) =>
       </p>
 
       <div className="sd-bundle-discountcombination-selection">
-        <Checkbox.Group value={discountCombination}>
-          {options.map(({ value, label }) => (
-            <div>
+        <Checkbox.Group value={discountCombination}   >
+          {options.map(({ value, label },index) => (
+            <div key={index}>
             <Checkbox
               key={value}
               value={value}
