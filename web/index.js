@@ -14,7 +14,7 @@ import shopInfoModel from "./backend/models/shopInfoSchema.js";
 import translationModel from "./backend/models/translationSchema.js";
 import settingModel from "./backend/models/settings.js";
 const Customizations = JSON.parse(
-  readFileSync("./backend/helper/Customization.json", "utf8")
+  readFileSync("./web/backend/helper/Customization.json", "utf8")
 );
 import { privacyPolicy } from "./backend/controllers/admin/adminController.js";
 
