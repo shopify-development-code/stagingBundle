@@ -338,10 +338,6 @@ export async function createRule(req, res) {
             let basicCodeDiscount = {
               appliesOncePerCustomer: false,
               code: code,
-              combinesWith: {
-                productDiscounts: true,
-                shippingDiscounts: true,
-              },
               customerGets: {
                 items: {
                   products: {
