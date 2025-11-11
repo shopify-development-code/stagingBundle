@@ -2,8 +2,8 @@ import { Checkbox } from "antd";
 
 const DiscountCombination = ({discountCombination,handleDiscountCombination}) => {
   const options = [
-    { value: "orderDiscounts", label: "Order Discounts" },
     { value: "productDiscounts", label: "Product Discounts" },
+    { value: "orderDiscounts", label: "Order Discounts" },
     { value: "shippingDiscounts", label: "Shipping Discounts" },
   ];
 

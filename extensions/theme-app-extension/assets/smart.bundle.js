@@ -1,6 +1,6 @@
 
+// let server = "https://reduced-stuffed-vhs-push.trycloudflare.com";
 let server = "https://bundle.shinedezigninfotech.com";
-// let server = "https://direct-makes-saves-induction.trycloudflare.com";
 
 console.log("Smart Bundle Discount app new version 7.0");
 // let server = "https://bundle.shinedezigninfotech.com/";
@@ -1704,7 +1704,7 @@ function createBundle(BUNDLE_DATA) {
                         bundleType: el.bundleDetail.discountOptions[optionIndex].type,
                         totalPrice: xtotalprice,
                         discountCreateId: discountCodeId,
-                        discountCombination: el.bundleDetail.discountCombination,
+                        discountCombination: el.bundleDetail?.discountCombination,
                       };
 
                       fetch(server + "/api/storefront/createRule", {
@@ -2460,7 +2460,7 @@ function createBundle(BUNDLE_DATA) {
                           bundleType: el.bundleDetail.discountType,
                           totalPrice: originalPrice.toFixed(2),
                           discountCreateId: discountCodeId,
-                          discountCombination: el.bundleDetail.discountCombination,
+                          discountCombination: el.bundleDetail?.discountCombination,
                         };
                         fetch(server + "/api/storefront/createRule", {
                           method: "POST",
@@ -3010,7 +3010,7 @@ function createBundle(BUNDLE_DATA) {
                       bundleType: el.bundleDetail.discountType,
                       totalPrice: originalPrice.toFixed(2),
                       discountCreateId: discountCodeId,
-                      discountCombination: el.bundleDetail.discountCombination,
+                      discountCombination: el.bundleDetail?.discountCombination,
                     };
                     fetch(server + "/api/storefront/createRule", {
                       method: "POST",
@@ -4049,7 +4049,7 @@ function createBundle(BUNDLE_DATA) {
                         bundleType: DiscountType,
                         totalPrice: total.toFixed(2),
                         discountCreateId: discountCodeId,
-                        discountCombination: el.bundleDetail.discountCombination,
+                        discountCombination: el.bundleDetail?.discountCombination,
                       };
                       fetch(server + "/api/storefront/createRule", {
                         method: "POST",
@@ -4678,7 +4678,7 @@ function createBundle(BUNDLE_DATA) {
                           bundleType: el.bundleDetail.discountType,
                           totalPrice: total.toFixed(2),
                           discountCreateId: discountCodeId,
-                          discountCombination: el.bundleDetail.discountCombination,
+                          discountCombination: el.bundleDetail?.discountCombination,
                         };
 
                         fetch(server + "/api/storefront/createRule", {
@@ -5554,6 +5554,7 @@ async function bundlePageBuilder(data) {
                     variantsId: idArray,
                     discountCreateId: localData.discountCreateId,
                     prefixCode: data.response.settings.discountLabel,
+                    
                   };
                   var jsonString = JSON.stringify(sd_bundle_data);
                   localStorage.setItem("sd_bundle_data", jsonString);
@@ -5608,7 +5609,7 @@ async function bundlePageBuilder(data) {
                     bundleType: data.response.bundleDetail.discountType,
                     totalPrice: totalPrice,
                     discountCreateId: discountCodeId,
-                    discountCombination: el.bundleDetail.discountCombination,
+                    discountCombination: data.response.bundleDetail?.discountCombination,
                   };
                   fetch(server + "/api/storefront/createRule", {
                     method: "POST",
