@@ -1,6 +1,6 @@
 
 // let server = "https://reduced-stuffed-vhs-push.trycloudflare.com";
-let server = "https://bundle.shinedezigninfotech.com";
+let server = "https://bundlesgroup.com/";
 
 console.log("Smart Bundle Discount app new version 7.0");
 // let server = "https://bundle.shinedezigninfotech.com/";
