@@ -1,6 +1,6 @@
 
 // let server = "https://reduced-stuffed-vhs-push.trycloudflare.com";
-let server = "https://bundlesgroup.com/";
+let server = "https://bundlesgroup.com";
 
 console.log("Smart Bundle Discount app new version 7.0");
 // let server = "https://bundle.shinedezigninfotech.com/";
@@ -66,7 +66,7 @@ let updateCart = () =>{
         } else {
           deactivateRule(localData);
           let formData = {
-            attributes: { SD_BUNDLE_ID: el._id },
+            attributes: { SD_BUNDLE_ID: "el._id" }, // review this line for _id
           };
           fetch(window.Shopify.routes.root + "cart/add.js", {
             method: "POST",

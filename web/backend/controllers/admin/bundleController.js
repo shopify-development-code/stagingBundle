@@ -829,6 +829,7 @@ async function bxgyDiscountCodeCreate(req, res) {
     const discountId = req.body.discountCreateId;
     const XquantityItem = req.body.XvariantsId.length;
     const YquantityItem = req.body.YvariantsId.length;
+    const discountCombination = req.body?.discountCombination;
     const shopInfo = await shopInfoModel.findOne({ shop });
     const client = new shopify.api.clients.Graphql({
       session: {
