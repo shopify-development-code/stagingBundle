@@ -28,8 +28,6 @@ extensions/*/build
 # Node library SQLite database
 web/database.sqlite
 
-# TOML File
-.toml
-shopify.app.toml
+
 
 
