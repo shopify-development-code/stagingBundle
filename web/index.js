@@ -14,7 +14,7 @@ import shopInfoModel from "./backend/models/shopInfoSchema.js";
 import translationModel from "./backend/models/translationSchema.js";
 import settingModel from "./backend/models/settings.js";
 const Customizations = JSON.parse(
-  readFileSync("./web/backend/helper/Customization.json", "utf8")
+  readFileSync("./backend/helper/Customization.json", "utf8")
 );
 import { privacyPolicy } from "./backend/controllers/admin/adminController.js";
 
@@ -247,7 +247,7 @@ app.use("/api/storefront",api)
 app.get("/api/privacy-policy", privacyPolicy)
 
 app.use("/api/*", shopify.validateAuthenticatedSession());
-console.log("dzfdhgfhdghfghedfhdfgdjsfhg");
+console.log("validateAuthenticatedSession");
 
 app.use("/api",api)
 

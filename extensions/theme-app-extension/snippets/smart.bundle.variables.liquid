@@ -7,6 +7,7 @@
     let sdProductJson = {{ product | json }};
     let sdBundleProductId = '';
     let sdCartType = '{{settings.cart_type}}'
+    let sdShopMeta = {{ shop.metafields["$app:shineDezign"].sd_bundles}};
 
     if (sdbundlePageType == "product") {
         sdBundleProductId = '{{product.id}}';
@@ -15,5 +16,6 @@
     let sdBundleCollectionId = [];
     {% for collection in product.collections %}
     sdBundleCollectionId.push({{ collection.id }});
+
     {% endfor %}
 </script>

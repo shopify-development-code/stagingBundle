@@ -1472,6 +1472,7 @@ td.ant-table-cell a:hover {
     border: none;
 }
 
+
 .sd-bundle-card-data-box .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn,
 .sd-bundle-analytics-tab-box .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
     background: #e0f8ee;
@@ -1570,6 +1571,7 @@ button.Polaris-Navigation__Item {
     margin: 20px auto;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
+
 
 .sd-bundle-logo-header {
     background: #1f2936;
@@ -1916,6 +1918,7 @@ button.Polaris-Navigation__Item {
     margin-top: 20px;
     border-radius: 4px;
 }
+
 
 .ant-card-contain-tabs .ant-card-head {
     background: none;
@@ -2576,6 +2579,7 @@ nav.Polaris-Navigation {
     border: none;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
+
 
 .sd-bundle-card-inner-icon {
     background: #e2f8ee;

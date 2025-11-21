@@ -1,88 +1,137 @@
 import shopify from "../../../shopify.js";
-import {  DataType } from "@shopify/shopify-api";
-import path from 'path';
-import { fileURLToPath } from 'url';
+import { DataType } from "@shopify/shopify-api";
+import path from "path";
+import { fileURLToPath } from "url";
 import bundleModel from "../../models/bundleSchema.js";
 import customizationModel from "../../models/customizationSchema.js";
 import translationModel from "../../models/translationSchema.js";
-import { ObjectId } from 'mongodb'
+import { ObjectId } from "mongodb";
 import analyticsModel from "../../models/analytics.js";
 import settingModel from "../../models/settings.js";
 import discountIdModel from "../../models/discountIdSchema.js";
 const MAX_RETRIES = 3;
 let retries = 0;
 
-export async function createBundle(req,res){
-  try{
- 
+export async function createBundle(req, res) {
+  try {
     const session = res.locals.shopify.session;
     let shop = session.shop;
-   const {type,name,title,badgeText,description,status,bundleDetail,customization,startdate,endDate,display,currencyCode,timeZone} = req.body
-   console.log("check customization===========>",req.body);
-   const response = await bundleModel.create({
-    shop:shop ,
-      type:type,
-      name:name,
+    const {
+      type,
+      name,
+      title,
+      badgeText,
+      description,
+      status,
+      bundleDetail,
+      customization,
+      startdate,
+      endDate,
+      display,
+      currencyCode,
+      timeZone,
+    } = req.body;
+    console.log("check customization===========>", req.body);
+    const response = await bundleModel.create({
+      shop: shop,
+      type: type,
+      name: name,
       title: title,
-      badgeText:badgeText,
-      description:description,
+      badgeText: badgeText,
+      description: description,
       status: status,
-      currencyCode:currencyCode,
-      bundleDetail:bundleDetail,
-      customization:customization,
-      startdate:startdate,
-      endDate:endDate,
-      display:display,
-      timeZone:timeZone
-   })
+      currencyCode: currencyCode,
+      bundleDetail: bundleDetail,
+      customization: customization,
+      startdate: startdate,
+      endDate: endDate,
+      display: display,
+      timeZone: timeZone,
+    });
 
-   if(response){
-   
-    let bundleId = response._id
-    const createBundle =  await analyticsModel.create({shop:shop,
-                                                         bundleId:bundleId,
-                                                         bundleClick:0,
-                                                         bundleSold:0,
-                                                         bundleSalesValue:0,
-                                                         bundleViews:0,
-                                                        })
+    if (response) {
+      let bundleId = response._id;
+      const createBundle = await analyticsModel.create({
+        shop: shop,
+        bundleId: bundleId,
+        bundleClick: 0,
+        bundleSold: 0,
+        bundleSalesValue: 0,
+        bundleViews: 0,
+      });
 
-    if(createBundle){
+      if (createBundle) {
+        const all_bundles = await bundleModel.find({ shop, status: "active" });
+        const client = new shopify.api.clients.Graphql({ session });
+        const metafieldMutation = `mutation MetafieldsSet($metafields: [MetafieldsSetInput!]!) {
+          metafieldsSet(metafields: $metafields) {
+            metafields {
+              key
+              namespace
+              value
+              createdAt
+              updatedAt
+            }
+            userErrors {
+              field
+              message
+              code
+            }
+          }
+        }`;
+        const metafields = [
+          {
+            key: "sd_bundles",
+            namespace: "$app:shineDezign",
+            type: "json",
+            ownerId: "gid://shopify/Shop/69020844208",
+            value: JSON.stringify(all_bundles),
+          },
+        ];
+        const data = await client.request(metafieldMutation, {
+          variables: { metafields },
+        });
 
-      return res.status(200).json({message:"success!",response:response,status:200 })
-    }else{
-    return res.status(503).json({message:"Query failed!!!" })
-
-    }
-   }else{
-    return res.status(503).json({message:"Query failed!!!" })
-
-   }
-  }
-  catch(error){
-        console.error(`Error: ${error.message}`);
-        if (error.code === 'ETIMEDOUT' && retries < MAX_RETRIES)  {
-            console.log(`Operation timed out, retrying... (attempt ${retries + 1} of ${MAX_RETRIES})`);
-            retries++;
-            await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for 1 second before retrying
-            return myOperation(); // Retry the operation
-        
-        } else {
-          // Gracefully terminate the application
-          console.log('Fatal error occurred, terminating application.');
-          process.exit(1);
+        console.log(
+          "data?.data?.metafieldsSet?.metafields",
+          data?.data?.metafieldsSet?.metafields?.length,
+          data?.data?.metafieldsSet?.metafields
+        );
+        if (data?.data?.metafieldsSet?.userErrors?.length) {
+          return res.status(503).json({ message: "Query failed!!!" });
         }
+        return res
+          .status(200)
+          .json({ message: "success!", response: response, status: 200 });
+      } else {
+        return res.status(503).json({ message: "Query failed!!!" });
+      }
+    } else {
+      return res.status(503).json({ message: "Query failed!!!" });
     }
+  } catch (error) {
+    console.error(`Error: ${error.message}`);
+    if (error.code === "ETIMEDOUT" && retries < MAX_RETRIES) {
+      console.log(
+        `Operation timed out, retrying... (attempt ${retries + 1} of ${MAX_RETRIES})`
+      );
+      retries++;
+      await new Promise((resolve) => setTimeout(resolve, 1000)); // Wait for 1 second before retrying
+      return myOperation(); // Retry the operation
+    } else {
+      // Gracefully terminate the application
+      console.log("Fatal error occurred, terminating application.");
+      process.exit(1);
+    }
+  }
 }
 
-
-
-export async function fetchVariants(req,res){
+export async function fetchVariants(req, res) {
   try {
-  let session =res.locals.shopify.session;
-  let p_id=req.body.p_id;   
-const client = new shopify.api.clients.Graphql({session});
-const productQuery= `query{
+    let session = res.locals.shopify.session;
+    let p_id = req.body.p_id;
+    const client = new shopify.api.clients.Graphql({ session });
+    const productQuery = `query{
   product(id:"${p_id}") {
     id
     title
@@ -114,72 +163,70 @@ const productQuery= `query{
     }
   }
     
-}`
-const product = await client.request(productQuery);
-let arr=[];
-product?.data?.product?.variants?.nodes?.map((item,index)=>{
-     let obj={};
-     obj['id']=item.id;
-     obj['title']=item.title;
-     obj['price']=item.price;
-     obj['inventory_quantity']=item.inventoryQuantity;
-       
-    let img=item?.media?.nodes[0]?.preview?.image?.url || product?.data?.product?.media?.nodes[0]?.preview?.image?.url || "";
+}`;
+    const product = await client.request(productQuery);
+    let arr = [];
+    product?.data?.product?.variants?.nodes?.map((item, index) => {
+      let obj = {};
+      obj["id"] = item.id;
+      obj["title"] = item.title;
+      obj["price"] = item.price;
+      obj["inventory_quantity"] = item.inventoryQuantity;
 
-    obj['src']= img ? img: null;
-   
-   arr.push(obj)
-  })
-res.send({data:arr})
+      let img =
+        item?.media?.nodes[0]?.preview?.image?.url ||
+        product?.data?.product?.media?.nodes[0]?.preview?.image?.url ||
+        "";
 
-}
-catch (error) {
-console.log(error.message)
-res.send({ message: error.messsage })
-}
-}
-export async function editBundle (req,res){
-  
-try {
-  const {id}= req.body
+      obj["src"] = img ? img : null;
 
-const session = res.locals.shopify.session;
-let shop = session.shop;
-const response = await bundleModel.aggregate([
-  {
-    $match:
-    
+      arr.push(obj);
+    });
+    res.send({ data: arr });
+  } catch (error) {
+    console.log(error.message);
+    res.send({ message: error.messsage });
+  }
+}
+export async function editBundle(req, res) {
+  try {
+    const { id } = req.body;
+
+    const session = res.locals.shopify.session;
+    let shop = session.shop;
+    const response = await bundleModel.aggregate([
       {
-        shop: shop,
-        _id: ObjectId.createFromHexString(id)
+        $match: {
+          shop: shop,
+          _id: ObjectId.createFromHexString(id),
+        },
       },
-  },
-  {
-    $lookup:
-   
       {
-        from: "customizations",
-        localField: "shop",
-        foreignField: "shop",
-        as: "customization",
+        $lookup: {
+          from: "customizations",
+          localField: "shop",
+          foreignField: "shop",
+          as: "customization",
+        },
       },
-  },
-])
+    ]);
 
-if(response){
-console.log("chedjedeeje///////////////////////////////////////////////////////////////=>",response);
-return res.status(200).send({message:"success",response:response[0],status:200})
-
+    if (response) {
+      console.log(
+        "chedjedeeje///////////////////////////////////////////////////////////////=>",
+        response
+      );
+      return res
+        .status(200)
+        .send({ message: "success", response: response[0], status: 200 });
+    }
+    return res
+      .status(503)
+      .send({ message: "something went wrong", status: 503 });
+  } catch (error) {
+    console.log(error.message);
+  }
 }
-return res.status(503).send({message:"something went wrong",status:503})
-} catch (error) {
-  console.log(error.message)
-}
-
-}
-
-
-
 
 export async function createProduct(session) {
   let shop = session.shop;
@@ -193,58 +240,129 @@ export async function createProduct(session) {
        }
      }
    }`;
- 
+
   try {
     const products = await client.request(product_create_Mutation);
     const productId = products?.data?.productCreate?.product?.id;
-   
-      // console.log("result==>",ProductCreated?.data?.productVariantsBulkCreate?.product,ProductCreated.data?.productVariantsBulkCreate?.productVariants)
+
+    // console.log("result==>",ProductCreated?.data?.productVariantsBulkCreate?.product,ProductCreated.data?.productVariantsBulkCreate?.productVariants)
 
     // if (req.body.check2 == "createProductSubscriptionEdit") {
     //   console.log("iniffff10june")
     //   let pid = product?.admin_graphql_api_id;
- 
+
     //   let vid = product?.variants[0].admin_graphql_api_id;
- 
+
     //   let lines = [];
- 
+
     //   lines.push({
     //     product_id: pid,
- 
+
     //     product_name: product?.title,
- 
+
     //     product_image:
     //       product?.images.length > 0 ? product.images[0].originalSrc : "",
- 
+
     //     hasOnlyDefaultVariant: true,
     //     requiresShipping: product.variants[0].requires_shipping,
     //     id: vid,
     //     image: "",
     //     price: product.variants[0].price,
- 
+
     //     title: product.variants[0].title,
     //     quantity: 1,
     //     // quantity: product.variants[0].inventory_quantity,
-    //   });  
- 
+    //   });
+
     //   req.createProductData = {
     //     data: lines,
     //   };
- 
+
     //   next();
     // } else {
     //   console.log("first in createProduct");
     //   res.send({ message: "success", data: product });
     // }
   } catch (error) {
-    console.log("error",error)
+    console.log("error", error);
   }
 }
 
-export async function getBundle (req,res){
-   try {
+export async function getBundle(req, res) {
+  console.log("getBundle");
+  try {
     const session = res.locals.shopify.session;
     let shop = session.shop;
+    if (0) {
+      const client = new shopify.api.clients.Graphql({ session });
+      const query = `mutation discountAutomaticAppCreate($automaticAppDiscount: DiscountAutomaticAppInput!) {
+      discountAutomaticAppCreate(automaticAppDiscount: $automaticAppDiscount) {
+        userErrors {
+          field
+          message
+        }
+        automaticAppDiscount {
+          discountId
+          title
+          startsAt
+          endsAt
+          status
+          appDiscountType {
+            appKey
+            functionId
+          }
+          combinesWith {
+            orderDiscounts
+            productDiscounts
+            shippingDiscounts
+          }
+        }
+      }
+    }`;
+      const automaticAppDiscounts = [
+        {
+          title: "DISCOUNT FUNCTION6",
+          discountClasses: ["SHIPPING"],
+          startsAt: "2025-11-20",
+          functionHandle: "discount-function",
+          combinesWith: {
+            orderDiscounts: true,
+            productDiscounts: true,
+          },
+        },
+      ];
+      const sleep = (ms) => new Promise((res) => setTimeout(res, ms));
+
+      for (const automaticAppDiscount of automaticAppDiscounts) {
+        await sleep(2000); // delay 1 second before each request
+
+        const data = await client.request(query, {
+          variables: { automaticAppDiscount },
+        });
+
+        console.log(
+          "userErrors",
+          data?.data?.discountAutomaticAppCreate?.userErrors?.[0]
+        );
+        console.log(
+          "discountAutomaticAppCreate",
+          data?.data?.discountAutomaticAppCreate?.automaticAppDiscount
+        );
+      }
+    }
+
+    const client = new shopify.api.clients.Graphql({ session });
+    const query = `query {
+        shop {
+          metafield(namespace: "$app:shineDezign", key: "sd_bundles") { 
+            jsonValue
+          }
+        }
+      }`;
+    const data = await client.request(query);
+    const metafield = data?.data?.shop?.metafield?.jsonValue;
+    console.log("metafields", metafield?.length);
+
     // createProduct(session);
     // const response = await bundleModel.aggregate(
     //   [
@@ -277,94 +395,175 @@ export async function getBundle (req,res){
     //   ],
 
     // )
- 
 
+    if (0) {
+      // Delete Metafields
+      const data2 = await client.request(
+        `mutation MetafieldsDelete($metafields: [MetafieldIdentifierInput!]!) {
+            metafieldsDelete(metafields: $metafields) {
+              deletedMetafields {
+                key
+                namespace
+                ownerId
+              }
+              userErrors {
+                field
+                message
+              }
+            }
+          }`,
+        {
+          variables: {
+            metafields: [
+              {
+                ownerId: "gid://shopify/Shop/69020844208",
+                namespace: "$app:#shineDezign",
+                key: "sd_bundles",
+              },
+            ],
+          },
+        }
+      );
+      console.log("deletedMetafields", data2?.data?.metafieldsDelete);
+    }
     const response = await bundleModel.aggregate([
       {
-        $match: { shop: shop }
+        $match: { shop: shop },
       },
       { $sort: { createdAt: 1 } },
       {
         $project: {
-          _id:1,
-          shop:1,
-          type:1,
-          name :1,
-          status:1,
-          badgeText:1,
-          "bundleDetail.discountValue" : 1,
-          "bundleDetail.discountOptions" : 1,
-          "bundleDetail.products.images" : 1,
-          "bundleDetail.products.image" : 1,
-          "bundleDetail.discountType":1,
-          "bundleDetail.xproducts":1,
-          "bundleDetail.yproducts":1,
-          "bundleDetail.mainProducts":1,
-          "bundleDetail.offeredProducts":1,
-          "bundleDetail.discountedProductType":1          
-        }
+          _id: 1,
+          shop: 1,
+          type: 1,
+          name: 1,
+          status: 1,
+          badgeText: 1,
+          "bundleDetail.discountValue": 1,
+          "bundleDetail.discountOptions": 1,
+          "bundleDetail.products.images": 1,
+          "bundleDetail.products.image": 1,
+          "bundleDetail.discountType": 1,
+          "bundleDetail.xproducts": 1,
+          "bundleDetail.yproducts": 1,
+          "bundleDetail.mainProducts": 1,
+          "bundleDetail.offeredProducts": 1,
+          "bundleDetail.discountedProductType": 1,
+        },
       },
       {
         $lookup: {
-          from: 'analytics',
-          localField: '_id',
-          foreignField: 'bundleId',
-          as: 'analytics'
-        }
+          from: "analytics",
+          localField: "_id",
+          foreignField: "bundleId",
+          as: "analytics",
+        },
       },
       {
         $addFields: {
-          analytics: { $arrayElemAt: ['$analytics', 0] }
-        }
-      }
+          analytics: { $arrayElemAt: ["$analytics", 0] },
+        },
+      },
     ]);
 
-  
-    if(response){
-console.log("test.............",response);
+    if (response) {
+      // console.log("test.............", response);
 
-        return res.status(200).json({message:"success!!",response:response.reverse(), status:200})
-        }else{
-            return res.status(200).json({message :"Query failed!!",status:503})
-        }
-   }   catch(error){
-    console.error(`Error: ${error.message}`);
-
-}
-}
-
-export async function updateStatus (req,res){
-  try{
-    const {id,status} = req.body
-    const response =  await bundleModel.findOneAndUpdate({_id:id},{$set: { status:status}})
-    if(response){
-    return res.status(200).send({message:"success",response:response,status:200})
-    }else{
-      return res.status(503).send({message:"something went wrong",status:503})
+      return res.status(200).json({
+        message: "success!!",
+        response: response.reverse(),
+        status: 200,
+        metafield,
+      });
+    } else {
+      return res.status(200).json({ message: "Query failed!!", status: 503 });
     }
+  } catch (error) {
+    console.error(`Error=: ${error.message}`);
   }
-  catch(error){
+}
+
+export async function updateStatus(req, res) {
+  try {
+    const { id, status } = req.body;
+    const session = res.locals.shopify.session;
+
+    const response = await bundleModel.findOneAndUpdate(
+      { _id: id },
+      { $set: { status: status } }
+    );
+    if (response) {
+      const all_bundles = await bundleModel.find({
+        shop: session.shop,
+        status: "active",
+      });
+      const client = new shopify.api.clients.Graphql({ session });
+      const metafieldMutation = `mutation MetafieldsSet($metafields: [MetafieldsSetInput!]!) {
+          metafieldsSet(metafields: $metafields) {
+            metafields {
+              key
+              namespace
+              createdAt
+              updatedAt
+            }
+            userErrors {
+              field
+              message
+              code
+            }
+          }
+        }`;
+      const metafields = [
+        {
+          key: "sd_bundles",
+          namespace: "$app:shineDezign",
+          type: "json",
+          ownerId: "gid://shopify/Shop/69020844208",
+          value: JSON.stringify(all_bundles),
+        },
+      ];
+      const data = await client.request(metafieldMutation, {
+        variables: { metafields },
+      });
+      console.log(
+        "data?.data?.metafieldsSet",
+        data?.data?.metafieldsSet?.metafields?.length,
+        data?.data?.metafieldsSet?.metafields
+      );
+      if (data?.data?.metafieldsSet?.userErrors?.length) {
+        return res.status(503).json({ message: "Query failed!!!" });
+      }
+
+      return res
+        .status(200)
+        .send({ message: "success", response: response, status: 200 });
+    } else {
+      return res
+        .status(503)
+        .send({ message: "something went wrong", status: 503 });
+    }
+  } catch (error) {
     console.error(`Error: ${error.message}`);
-    if (error.code === 'ETIMEDOUT' && retries < MAX_RETRIES)  {
-        console.log(`Operation timed out, retrying... (attempt ${retries + 1} of ${MAX_RETRIES})`);
-        retries++;
-        await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for 1 second before retrying
-        return myOperation(); // Retry the operation
-    
+    if (error.code === "ETIMEDOUT" && retries < MAX_RETRIES) {
+      console.log(
+        `Operation timed out, retrying... (attempt ${retries + 1} of ${MAX_RETRIES})`
+      );
+      retries++;
+      await new Promise((resolve) => setTimeout(resolve, 1000)); // Wait for 1 second before retrying
+      return myOperation(); // Retry the operation
     } else {
       // Gracefully terminate the application
-      console.log('Fatal error occurred, terminating application.');
+      console.log("Fatal error occurred, terminating application.");
       process.exit(1);
     }
-}
+  }
 }
 
-export async function getCurrencyCode(req,res){
-   try{
-
-     let session =res.locals.shopify.session;
-      const client = new shopify.api.clients.Graphql({ session });
-      let queryString =`{
+export async function getCurrencyCode(req, res) {
+  try {
+    let session = res.locals.shopify.session;
+    const client = new shopify.api.clients.Graphql({ session });
+    let queryString = `{
         shop {
           name
           ianaTimezone
@@ -372,307 +571,400 @@ export async function getCurrencyCode(req,res){
             moneyFormat
           }
         }
-      }`
-       const data= await client.request(queryString) 
-        res.send({message:"success",data:data.data.shop}) 
-      } catch(error)
-      {
-         res.send({message:error.message}) 
-        }
-}
-
-
-
-  export async function actionDelete (req,res){
-    try{
-      const session = res.locals.shopify.session;
-      let shop = session.shop;
-      const idsToDelete = req.body.id;
-      const filter = {shop:shop, _id: { $in: idsToDelete } };
-
-    const response = await bundleModel.deleteMany(filter)
-    if(response.acknowledged == true){
-      return res.status(200).send({message:"success",status:200})
-    }
-return res.status(503).send({message:"something went wrong",status:503})
-
-       } catch(error)
-       {
-          console.log(error) 
-          res.send({message:error.message}) 
-         }
-  }    
-
-  
-  
-  export async function actionStatus (req,res){
-    try{
-      const session = res.locals.shopify.session;
-
-      let shop = session.shop;
-      const ids = req.body.id;
-     const status = req.body.status;
-    const response = await bundleModel.updateMany( { shop:shop, _id: { $in: ids } },{status:status} )
-    if(response){
-      return res.status(200).send({message:"success",status:200})
-    }
-return res.status(503).send({message:"something went wrong",status:503})
-
-       } catch(error)
-       {
-          console.log(error) 
-          res.send({message:error.message}) 
-         }
-  }    
-
-  export async function deleteBundle (req,res){
-    try{
-      const session = res.locals.shopify.session;
-      let shop = session.shop;
-    
-      const filter = {shop:shop, _id: req.body.id };
-
-    const response = await bundleModel.deleteOne(filter)
-    if(response.acknowledged == true){
-      return res.status(200).send({message:"success",status:200})
-    }
-return res.status(503).send({message:"something went wrong",status:503})
-
-       } catch(error)
-       {
-          console.log(error) 
-          res.send({message:error.message}) 
-         }
-  }    
-
-
-  export async function updateBundle (req,res){
-    try{
-      const session = res.locals.shopify.session;
-      let shop = session.shop;
-
-    const response = await bundleModel.updateOne({shop:shop, _id:req.body._id},{...req.body})
-if(response.acknowledged == true){
-  return res.status(200).send({message:"success",status:200})
-}
-return res.status(503).send({message:"something went wrong",status:503})
-       } catch(error)
-       {
-          console.log(error) 
-          res.send({message:error.message}) 
-         }
-  }    
-
-  export async function updateBundleCustomization (req,res){
-    const session = res.locals.shopify.session;
-    let shop = session.shop;
-    // let body={product:"njdhjwhdkdkdkk"}
- 
-    const response = await customizationModel.findOneAndUpdate({shop:shop},{shop:shop,
-                                                                            bundle:req.body.bundle,
-                                                                            collectionMixMatch:req.body.collection,
-                                                                            volume:req.body.volume,
-                                                                            buyXgetY:req.body.buyXgetY,
-                                                                            frequentlyBoughtTogether:req.body.frequentlyBoughtTogether,
-                                                                            productMixMatch:req.body.productMixMatch,
-                                                                            popUp:req.body.popUp},
-                                                                            {upsert:true})
-                                                                           
-
-                                                                
-  if(response){
-    return res.status(200).send({message :"success",status : 200})
-    // console.log("check response from api update======>>>>>>>>><<<<<<<<<<========",req.body);
+      }`;
+    const data = await client.request(queryString);
+    res.send({ message: "success", data: data.data.shop });
+  } catch (error) {
+    res.send({ message: error.message });
   }
-  return res.status(400).send({message:"BAD_REQUEST",status:400})
-  }
-
-
-  export async function updateTranslation (req,res){
-    try{
-      const session = res.locals.shopify.session;
-      let shop = session.shop;
-    const response = await translationModel.updateOne({shop:shop},{translation:req.body},{upsert:true,new:true})
-if(response.acknowledged == true){
-  return res.status(200).send({message:"success",status:200})
 }
-return res.status(503).send({message:"something went wrong",status:503})
-       } catch(error)
-       {
-          console.log(error) 
-          res.send({message:error.message}) 
-         }
-  }    
 
-  export async function getTransaltion (req,res){
+export async function actionDelete(req, res) {
   try {
     const session = res.locals.shopify.session;
     let shop = session.shop;
-    const translation = await translationModel.findOne({shop:shop})
- 
-    if(translation){
-      return res.status(200).json({message:"success",response : translation,status:200})
-    }else{
-      return res.status(503).json({message :"something went wrong ",response:503})
+    const idsToDelete = req.body.id;
+    const filter = { shop: shop, _id: { $in: idsToDelete } };
+
+    const response = await bundleModel.deleteMany(filter);
+    if (response.acknowledged == true) {
+      return res.status(200).send({ message: "success", status: 200 });
     }
+    return res
+      .status(503)
+      .send({ message: "something went wrong", status: 503 });
   } catch (error) {
-    console.log(error.message)
-      return res.status(503).json({message :"something went wrong ",response:503})
-  
+    console.log(error);
+    res.send({ message: error.message });
   }
+}
 
+export async function actionStatus(req, res) {
+  try {
+    const session = res.locals.shopify.session;
+
+    let shop = session.shop;
+    const ids = req.body.id;
+    const status = req.body.status;
+    const response = await bundleModel.updateMany(
+      { shop: shop, _id: { $in: ids } },
+      { status: status }
+    );
+    if (response) {
+      return res.status(200).send({ message: "success", status: 200 });
+    }
+    return res
+      .status(503)
+      .send({ message: "something went wrong", status: 503 });
+  } catch (error) {
+    console.log(error);
+    res.send({ message: error.message });
   }
+}
 
+export async function deleteBundle(req, res) {
+  try {
+    const session = res.locals.shopify.session;
+    let shop = session.shop;
 
-  export async function getAnalyticsData(req,res){
-    try {
-      const session = res.locals.shopify.session;
-      let shop = session.shop;
-      const response = await bundleModel.aggregate(
-        [
-          {
-            $match: {
-              shop: shop
+    const filter = { shop: shop, _id: req.body.id };
+
+    const response = await bundleModel.deleteOne(filter);
+    if (response.acknowledged == true) {
+      const all_bundles = await bundleModel.find({ shop, status: "active" });
+      const client = new shopify.api.clients.Graphql({ session });
+      const metafieldMutation = `mutation MetafieldsSet($metafields: [MetafieldsSetInput!]!) {
+          metafieldsSet(metafields: $metafields) {
+            metafields {
+              key
+              namespace
+              createdAt
+              updatedAt
             }
-          },
-          {
-            $lookup: {
-              from: 'analytics',
-              localField: '_id',
-              foreignField: 'bundleId',
-              as: 'analytics'
-            }
-          },
-          {
-            $project: {
-              _id: 1,
-              shop: 1,
-              type: 1,
-              name: 1,
-              title: 1,
-              status: 1,
-              currencyCode: 1,
-              bundleDetail: 1,
-              startdate: 1,
-              endDate: 1,
-              analytics: {
-                $arrayElemAt: ['$analytics', 0]
-              }
+            userErrors {
+              field
+              message
+              code
             }
           }
-        ],
-        { maxTimeMS: 60000, allowDiskUse: true }
-      );    
-       if(Response){
-        return res.status(200).json({message:"success",response:response,status:200})
-       }else{
-        return res.status(500).json({message:"internal verber error",status:500})
-       }
-      
-    } catch (error) {
-      console.log(error.message)
-    }
-  }
-  
+        }`;
+      const metafields = [
+        {
+          key: "sd_bundles",
+          namespace: "$app:shineDezign",
+          type: "json",
+          ownerId: "gid://shopify/Shop/69020844208",
+          value: JSON.stringify(all_bundles),
+        },
+      ];
+      console.log(
+        "data?.data?.metafieldsSet",
+        data?.data?.metafieldsSet?.metafields?.length,
+        data?.data?.metafieldsSet?.metafields
+      );
+      const data = await client.request(metafieldMutation, {
+        variables: { metafields },
+      });
 
-  export async function getCustomization(req,res){
-    try {
-      const session = res.locals.shopify.session;
-      let shop = session.shop;
-      const response = await customizationModel.findOne({shop})
-    
-      if(response){
-       return res.status(200).json({message:"success",response:response,status:200})
-      }else{
-        return res.status(500).json({message:"INTERNA_SERVER_ERR",status:500})
-
+      if (data?.data?.metafieldsSet?.userErrors?.length) {
+        return res.status(503).json({ message: "Query failed!!!" });
       }
-    } catch (error) {
-      console.log(error.message)
+
+      return res.status(200).send({ message: "success", status: 200 });
     }
-  }
 
-
-
-export async function saveSetting(req,res){
-  try {
-    const session = res.locals.shopify.session;
-    let shop = session.shop;
-  
-    const response = await settingModel.findOneAndUpdate({shop:shop},{discountLabel:req.body.discountLabel},{upsert:true,new:true})
-    if(response){
-     return res.json({message:"success",status:200})
-    }else{
-     return res.json({message:"failed",status:500})
-
-    }
+    return res
+      .status(503)
+      .send({ message: "something went wrong", status: 503 });
   } catch (error) {
-    console.log(error.message)
-    
+    console.log(error);
+    res.send({ message: error.message });
   }
 }
 
-
-export async function getSetting(req,res){
+export async function updateBundle(req, res) {
   try {
     const session = res.locals.shopify.session;
     let shop = session.shop;
-  
-    const response = await settingModel.findOne({shop:shop})
-    if(response){
-     return res.json({message:"success",response:response,status:200})
-    }else{
-     return res.json({message:"failed",status:500})
 
+    const response = await bundleModel.updateOne(
+      { shop: shop, _id: req.body._id },
+      { ...req.body }
+    );
+    if (response.acknowledged == true) {
+      const all_bundles = await bundleModel.find({ shop, status: "active" });
+      const client = new shopify.api.clients.Graphql({ session });
+      const metafieldMutation = `mutation MetafieldsSet($metafields: [MetafieldsSetInput!]!) {
+          metafieldsSet(metafields: $metafields) {
+            metafields {
+              key
+              namespace
+              value
+              createdAt
+              updatedAt
+            }
+            userErrors {
+              field
+              message
+              code
+            }
+          }
+        }`;
+      const metafields = [
+        {
+          key: "sd_bundles",
+          namespace: "$app:shineDezign",
+          type: "json",
+          ownerId: "gid://shopify/Shop/69020844208",
+          value: JSON.stringify(all_bundles),
+        },
+      ];
+      console.log(
+        "data?.data?.metafieldsSet",
+        data?.data?.metafieldsSet?.metafields?.length,
+        data?.data?.metafieldsSet?.metafields
+      );
+      const data = await client.request(metafieldMutation, {
+        variables: { metafields },
+      });
+
+      if (data?.data?.metafieldsSet?.userErrors?.length) {
+        return res.status(503).json({ message: "Query failed!!!" });
+      }
+
+      return res.status(200).send({ message: "success", status: 200 });
     }
+    return res
+      .status(503)
+      .send({ message: "something went wrong", status: 503 });
   } catch (error) {
-    console.log(error.message)
-    
+    console.log(error);
+    res.send({ message: error.message });
   }
 }
 
+export async function updateBundleCustomization(req, res) {
+  const session = res.locals.shopify.session;
+  let shop = session.shop;
+  // let body={product:"njdhjwhdkdkdkk"}
 
+  const response = await customizationModel.findOneAndUpdate(
+    { shop: shop },
+    {
+      shop: shop,
+      bundle: req.body.bundle,
+      collectionMixMatch: req.body.collection,
+      volume: req.body.volume,
+      buyXgetY: req.body.buyXgetY,
+      frequentlyBoughtTogether: req.body.frequentlyBoughtTogether,
+      productMixMatch: req.body.productMixMatch,
+      popUp: req.body.popUp,
+    },
+    { upsert: true }
+  );
+
+  if (response) {
+    return res.status(200).send({ message: "success", status: 200 });
+    // console.log("check response from api update======>>>>>>>>><<<<<<<<<<========",req.body);
+  }
+  return res.status(400).send({ message: "BAD_REQUEST", status: 400 });
+}
+
+export async function updateTranslation(req, res) {
+  try {
+    const session = res.locals.shopify.session;
+    let shop = session.shop;
+    const response = await translationModel.updateOne(
+      { shop: shop },
+      { translation: req.body },
+      { upsert: true, new: true }
+    );
+    if (response.acknowledged == true) {
+      return res.status(200).send({ message: "success", status: 200 });
+    }
+    return res
+      .status(503)
+      .send({ message: "something went wrong", status: 503 });
+  } catch (error) {
+    console.log(error);
+    res.send({ message: error.message });
+  }
+}
+
+export async function getTransaltion(req, res) {
+  try {
+    const session = res.locals.shopify.session;
+    let shop = session.shop;
+    const translation = await translationModel.findOne({ shop: shop });
+
+    if (translation) {
+      return res
+        .status(200)
+        .json({ message: "success", response: translation, status: 200 });
+    } else {
+      return res
+        .status(503)
+        .json({ message: "something went wrong ", response: 503 });
+    }
+  } catch (error) {
+    console.log(error.message);
+    return res
+      .status(503)
+      .json({ message: "something went wrong ", response: 503 });
+  }
+}
+
+export async function getAnalyticsData(req, res) {
+  try {
+    const session = res.locals.shopify.session;
+    let shop = session.shop;
+    const response = await bundleModel.aggregate(
+      [
+        {
+          $match: {
+            shop: shop,
+          },
+        },
+        {
+          $lookup: {
+            from: "analytics",
+            localField: "_id",
+            foreignField: "bundleId",
+            as: "analytics",
+          },
+        },
+        {
+          $project: {
+            _id: 1,
+            shop: 1,
+            type: 1,
+            name: 1,
+            title: 1,
+            status: 1,
+            currencyCode: 1,
+            bundleDetail: 1,
+            startdate: 1,
+            endDate: 1,
+            analytics: {
+              $arrayElemAt: ["$analytics", 0],
+            },
+          },
+        },
+      ],
+      { maxTimeMS: 60000, allowDiskUse: true }
+    );
+    if (Response) {
+      return res
+        .status(200)
+        .json({ message: "success", response: response, status: 200 });
+    } else {
+      return res
+        .status(500)
+        .json({ message: "internal verber error", status: 500 });
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+export async function getCustomization(req, res) {
+  try {
+    const session = res.locals.shopify.session;
+    let shop = session.shop;
+    const response = await customizationModel.findOne({ shop });
+
+    if (response) {
+      return res
+        .status(200)
+        .json({ message: "success", response: response, status: 200 });
+    } else {
+      return res
+        .status(500)
+        .json({ message: "INTERNA_SERVER_ERR", status: 500 });
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+export async function saveSetting(req, res) {
+  try {
+    const session = res.locals.shopify.session;
+    let shop = session.shop;
+
+    const response = await settingModel.findOneAndUpdate(
+      { shop: shop },
+      { discountLabel: req.body.discountLabel },
+      { upsert: true, new: true }
+    );
+    if (response) {
+      return res.json({ message: "success", status: 200 });
+    } else {
+      return res.json({ message: "failed", status: 500 });
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+export async function getSetting(req, res) {
+  try {
+    const session = res.locals.shopify.session;
+    let shop = session.shop;
+
+    const response = await settingModel.findOne({ shop: shop });
+    if (response) {
+      return res.json({ message: "success", response: response, status: 200 });
+    } else {
+      return res.json({ message: "failed", status: 500 });
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
+}
 
 export async function getThemeId(req, res) {
-try {
-  const session = res.locals.shopify.session;
-   const client = new shopify.api.clients.Graphql({ session });
-  const themeQuery =  `query {
+  try {
+    const session = res.locals.shopify.session;
+    const client = new shopify.api.clients.Graphql({ session });
+    const themeQuery = `query {
         themes(first: 1, roles: MAIN) {
           nodes {
             id
           }
         }
     }`;
-  const themedata=await client.request(themeQuery);
-  const themeId = themedata?.data?.themes?.nodes[0]?.id?.split('/').pop();
-  res.status(200).json({message:"success",response: themeId,status:200 });
-} catch (err) {
-     console.error(err);
+    const themedata = await client.request(themeQuery);
+    const themeId = themedata?.data?.themes?.nodes[0]?.id?.split("/").pop();
+    res
+      .status(200)
+      .json({ message: "success", response: themeId, status: 200 });
+  } catch (err) {
+    console.error(err);
     res.status(500).send("Error getting theme ID");
-}
+  }
 }
 
-export function  privacyPolicy  (req,res) {
+export function privacyPolicy(req, res) {
   const __filename = fileURLToPath(import.meta.url);
 
-    const __dirname = path.dirname(__filename);
-    const dirPath = path.join(__dirname, "../../helper/templates");
-    res.render(`${dirPath}/privacyPolicy.ejs`);
+  const __dirname = path.dirname(__filename);
+  const dirPath = path.join(__dirname, "../../helper/templates");
+  res.render(`${dirPath}/privacyPolicy.ejs`);
 
-    res.end();
+  res.end();
 }
 
-export async function createAutomaticDiscount(req,res){
-
- 
-  const response = await discountIdModel.findOne({shop:res.locals.shopify.session.shop});
-  console.log(response.discountId)
+export async function createAutomaticDiscount(req, res) {
+  const response = await discountIdModel.findOne({
+    shop: res.locals.shopify.session.shop,
+  });
+  console.log(response.discountId);
   // if(response.body.id){
-    
+
   // }
   // const client = new shopify.api.clients.Graphql({ session: res.locals.shopify.session});
-  // let Input = 
+  // let Input =
   //     {
   //         "automaticAppDiscount": {
   //           "title": "Smart Bundle (DO NOT DELETE)",
@@ -683,7 +975,7 @@ export async function createAutomaticDiscount(req,res){
   //             "shippingDiscounts": true
   //           },
   //           "startsAt": "2021-02-02T17:09:21Z",
-           
+
   //           "metafields": [
   //             {
   //               "namespace": "product-discount",
@@ -694,8 +986,7 @@ export async function createAutomaticDiscount(req,res){
   //           ]
   //         }
   //       }
-        
-  
+
   // let queryString = `mutation discountAutomaticAppCreate($automaticAppDiscount: DiscountAutomaticAppInput!) {
   //     discountAutomaticAppCreate(automaticAppDiscount: $automaticAppDiscount) {
   //       userErrors {
@@ -759,7 +1050,6 @@ export async function createAutomaticDiscount(req,res){
 // // console.log("heyyyyyy ***** **** -------**** ******",response);
 //   // return res.send(response);
 // }
-
 
 // export async function testMutation(req,res){
 //   let session = res.locals.shopify.session

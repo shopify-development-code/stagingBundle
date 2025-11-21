@@ -59,7 +59,7 @@ const CreateBundle = () => {
     const response = await postApi("/api/admin/getBundle", { shop: shop }, app);
     if (response.data.status === 200) {
       setDashboardData(response.data.response);
-      // setDraftPaidBundles(response.data.response)
+      // setDraftPaidBundles(response.data.rgesponse)
       if (key == "onLoad") {
         setLoader(false);
       } else {

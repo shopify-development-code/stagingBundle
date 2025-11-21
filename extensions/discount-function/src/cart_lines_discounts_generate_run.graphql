@@ -1,0 +1,34 @@
+# @variable(namespace: "$app:shineDezign", key: "sd_bundles")
+
+query CartInput($namespace: String!, $key: String!) {
+  shop {
+    metafield(namespace: $namespace, key: $key) {
+      type
+      jsonValue
+    }
+  }
+  cart {
+    lines {
+      id
+      quantity
+      cost {
+        subtotalAmount {
+          amount
+        }
+      }
+      merchandise {
+        __typename
+        ... on ProductVariant {
+          id
+          title
+          product {
+            id
+          }
+        }
+      }
+    }
+  }
+  discount {
+    discountClasses
+  }
+}

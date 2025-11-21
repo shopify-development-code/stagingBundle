@@ -5,6 +5,11 @@ let retries = 0;
 
 export async function createRule(req, res) {
   const type = req.body.type;
+  return res.status(200).json({
+    message: "SUCCESS!",
+    response: req.body.discountCreateId,
+    status: 200,
+  });
   if (type != "bxgy") {
     try {
       const shop = req.body.shop;

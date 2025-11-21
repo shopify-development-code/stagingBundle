@@ -1,0 +1,8 @@
+{
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.formatOnPaste": true,
+    "diffEditor.codeLens": false,
+    "editor.acceptSuggestionOnCommitCharacter": true,
+    "editor.inlineSuggest.edits.allowCodeShifting": "always",
+    "graphql-config.load.configName": ""
+}

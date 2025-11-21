@@ -218,7 +218,7 @@ const BundleAnalytics = () => {
       label: `On Bundle`,
       children: <div className='sd-bundle-analytics-card-boxMain'> <Row gutter={16}>
         <Col span={6}>
-          <Card className='sd-bundle-analytics-card-box' bordered={true}>
+          <Card className='sd-bundle-analytics-card-box' variant={true}>
             <div className='sd-bundle-card-inner-main'>
               <div className='sd-bundle-card-inner-content'>
                 <h3>Sales value on bundles</h3>
@@ -241,7 +241,7 @@ const BundleAnalytics = () => {
           </Card>
         </Col>
         <Col span={6}>
-          <Card className='sd-bundle-analytics-card-box' bordered={true}>
+          <Card className='sd-bundle-analytics-card-box' variant={true}>
             <div className='sd-bundle-card-inner-main'>
               <div className='sd-bundle-card-inner-content'>
                 <h3>Number of sold bundles</h3>
@@ -262,7 +262,7 @@ const BundleAnalytics = () => {
           </Card>
         </Col>
         <Col span={6}>
-          <Card className='sd-bundle-analytics-card-box' bordered={true}>
+          <Card className='sd-bundle-analytics-card-box' variant={true}>
             <div className='sd-bundle-card-inner-main'>
               <div className='sd-bundle-card-inner-content'>
                 <h3>Bundles clicks</h3>
@@ -283,7 +283,7 @@ const BundleAnalytics = () => {
           </Card>
         </Col>
         <Col span={6}>
-          <Card className='sd-bundle-analytics-card-box' bordered={true}>
+          <Card className='sd-bundle-analytics-card-box' variant={true}>
             <div className='sd-bundle-card-inner-main'>
               <div className='sd-bundle-card-inner-content'>
                 <h3>Bundles views</h3>

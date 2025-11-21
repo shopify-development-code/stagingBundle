@@ -230,7 +230,7 @@ export async function getBundleData(req, res) {
       .status(400)
       .send({ message: "SOMETHING_WENT_WRONG", status: 400 });
   } catch (error) {
-    console.error(`Error: ${error.message}`);
+    console.error(`Error===: ${error.message}`);
     if (error.code === "ETIMEDOUT" && retries < MAX_RETRIES) {
       console.log(
         `Operation timed out, retrying... (attempt ${

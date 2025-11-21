@@ -107,7 +107,7 @@ const PricingPlan = () => {
         <div className="sd-plan-card-box">
           <Row className="sd-plan-group" gutter={16}>
             <Col>
-              <Card className="sd-plan" title="Free" bordered={false}>
+              <Card className="sd-plan" title="Free" variant={false}>
                 <Skeleton loading={loader} paragraph={{ rows: 7 }}>
                   <Card className="sd-plan-inner sd-plan-inner-box">
                     {selectedPlan == "free" ? (
@@ -149,7 +149,7 @@ const PricingPlan = () => {
               </Card>
             </Col>
             <Col>
-              <Card className="sd-plan" title="Basic" bordered={false}>
+              <Card className="sd-plan" title="Basic" variant={false}>
                 <Skeleton loading={loader} paragraph={{ rows: 7 }}>
                   <Card className="sd-plan-inner sd-plan-inner-box">
                     {selectedPlan == "basic" ? (
@@ -203,7 +203,7 @@ const PricingPlan = () => {
               </Card>
             </Col>
             <Col>
-              <Card className="sd-plan" title="Standard" bordered={false}>
+              <Card className="sd-plan" title="Standard" variant={false}>
                 <Skeleton loading={loader} paragraph={{ rows: 7 }}>
                   <Card className="sd-plan-inner sd-plan-inner-box">
                     {selectedPlan == "standard" ? (
