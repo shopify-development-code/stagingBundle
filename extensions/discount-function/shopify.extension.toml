@@ -20,7 +20,3 @@ description = "t:description"
   [extensions.build]
   command = ""
   path = "dist/function.wasm"
-
-  [extensions.input.variables]
-  namespace = "$app:shineDezign"
-  key = "sd_bundles"

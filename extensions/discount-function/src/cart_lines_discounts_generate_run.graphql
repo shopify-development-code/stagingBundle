@@ -1,12 +1,5 @@
-# @variable(namespace: "$app:shineDezign", key: "sd_bundles")
 
-query CartInput($namespace: String!, $key: String!) {
-  shop {
-    metafield(namespace: $namespace, key: $key) {
-      type
-      jsonValue
-    }
-  }
+query CartInput {
   cart {
     lines {
       id
@@ -26,9 +19,17 @@ query CartInput($namespace: String!, $key: String!) {
           }
         }
       }
+      UNIQUE_CODE: attribute(key: "_SD_BUNDLE_ID") {
+        value
+      }
     }
   }
   discount {
     discountClasses
+  }
+  shop {
+    metafield(namespace: "$app:discount-function", key: "sd_bundles") {
+      jsonValue
+    }
   }
 }

@@ -7,7 +7,7 @@
     let sdProductJson = {{ product | json }};
     let sdBundleProductId = '';
     let sdCartType = '{{settings.cart_type}}'
-    let sdShopMeta = {{ shop.metafields["$app:shineDezign"].sd_bundles}};
+    let sdShopMeta = {{ shop.metafields["$app:discount-function"].sd_bundles}};
 
     if (sdbundlePageType == "product") {
         sdBundleProductId = '{{product.id}}';

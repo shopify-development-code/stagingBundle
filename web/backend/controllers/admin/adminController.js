@@ -82,7 +82,7 @@ export async function createBundle(req, res) {
         const metafields = [
           {
             key: "sd_bundles",
-            namespace: "$app:shineDezign",
+            namespace: "$app:discount-function",
             type: "json",
             ownerId: "gid://shopify/Shop/69020844208",
             value: JSON.stringify(all_bundles),
@@ -93,8 +93,7 @@ export async function createBundle(req, res) {
         });
 
         console.log(
-          "data?.data?.metafieldsSet?.metafields",
-          data?.data?.metafieldsSet?.metafields?.length,
+          "data?.data?.metafieldsSet",
           data?.data?.metafieldsSet?.metafields
         );
         if (data?.data?.metafieldsSet?.userErrors?.length) {
@@ -354,7 +353,7 @@ export async function getBundle(req, res) {
     const client = new shopify.api.clients.Graphql({ session });
     const query = `query {
         shop {
-          metafield(namespace: "$app:shineDezign", key: "sd_bundles") { 
+          metafield(namespace: "$app:discount-function", key: "sd_bundles") { 
             jsonValue
           }
         }
@@ -417,7 +416,7 @@ export async function getBundle(req, res) {
             metafields: [
               {
                 ownerId: "gid://shopify/Shop/69020844208",
-                namespace: "$app:#shineDezign",
+                namespace: "$app:shineDezign",
                 key: "sd_bundles",
               },
             ],
@@ -516,7 +515,7 @@ export async function updateStatus(req, res) {
       const metafields = [
         {
           key: "sd_bundles",
-          namespace: "$app:shineDezign",
+          namespace: "$app:discount-function",
           type: "json",
           ownerId: "gid://shopify/Shop/69020844208",
           value: JSON.stringify(all_bundles),
@@ -526,8 +525,7 @@ export async function updateStatus(req, res) {
         variables: { metafields },
       });
       console.log(
-        "data?.data?.metafieldsSet",
-        data?.data?.metafieldsSet?.metafields?.length,
+        "data?.data?.metafieldsSet", 
         data?.data?.metafieldsSet?.metafields
       );
       if (data?.data?.metafieldsSet?.userErrors?.length) {
@@ -651,20 +649,19 @@ export async function deleteBundle(req, res) {
       const metafields = [
         {
           key: "sd_bundles",
-          namespace: "$app:shineDezign",
+          namespace: "$app:discount-function",
           type: "json",
           ownerId: "gid://shopify/Shop/69020844208",
           value: JSON.stringify(all_bundles),
         },
       ];
-      console.log(
-        "data?.data?.metafieldsSet",
-        data?.data?.metafieldsSet?.metafields?.length,
-        data?.data?.metafieldsSet?.metafields
-      );
       const data = await client.request(metafieldMutation, {
         variables: { metafields },
       });
+      console.log(
+        "data?.data?.metafieldsSet",
+        data?.data?.metafieldsSet?.metafields
+      );
 
       if (data?.data?.metafieldsSet?.userErrors?.length) {
         return res.status(503).json({ message: "Query failed!!!" });
@@ -713,20 +710,19 @@ export async function updateBundle(req, res) {
       const metafields = [
         {
           key: "sd_bundles",
-          namespace: "$app:shineDezign",
+          namespace: "$app:discount-function",
           type: "json",
           ownerId: "gid://shopify/Shop/69020844208",
           value: JSON.stringify(all_bundles),
         },
       ];
-      console.log(
-        "data?.data?.metafieldsSet",
-        data?.data?.metafieldsSet?.metafields?.length,
-        data?.data?.metafieldsSet?.metafields
-      );
       const data = await client.request(metafieldMutation, {
         variables: { metafields },
       });
+      console.log(
+        "data?.data?.metafieldsSet",
+        data?.data?.metafieldsSet?.metafields
+      );
 
       if (data?.data?.metafieldsSet?.userErrors?.length) {
         return res.status(503).json({ message: "Query failed!!!" });
